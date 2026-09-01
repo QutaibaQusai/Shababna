@@ -1,0 +1,13 @@
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  min_sdk_android: 21
+  remove_alpha_ios: true
+
+  # Standard icon (used as fallback and for older Android)
+  image_path: "assets/images/logo.png"
+
+  # Android adaptive icon (API 26+)
+  # Background uses brand color, logo sits centered on top
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/logo.png"
