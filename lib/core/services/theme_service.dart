@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../storage/local_storage.dart';
+import '../storage/storage_keys.dart';
+
+class ThemeService extends Cubit<ThemeMode> {
+  ThemeService(this._localStorage) : super(_loadSavedThemeMode(_localStorage));
+
+  final AppLocalStorage _localStorage;
+
+  static ThemeMode _loadSavedThemeMode(AppLocalStorage storage) {
+    final name = storage.getString(StorageKeys.themeMode);
+    return ThemeMode.values.asNameMap()[name] ?? ThemeMode.system;
+  }
+
+  void toggleThemeMode(Brightness currentBrightness) {
+    final next = currentBrightness == Brightness.dark
+        ? ThemeMode.light
+        : ThemeMode.dark;
+    _localStorage.setString(StorageKeys.themeMode, next.name);
+    emit(next);
+  }
+}
