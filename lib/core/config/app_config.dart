@@ -7,8 +7,7 @@ class AppConfig {
   static const String appVersion = '1.0.0';
   static const int appBuildNumber = 1;
 
-  // TODO: replace with the real backend base URL once it's provided.
-  static const String baseUrl = 'https://TODO-shababna-api.example.com';
+  static const String baseUrl = 'https://rhas.hitechjo.com';
 
   static bool get isProduction => !kDebugMode;
   static bool get isDevelopment => kDebugMode;

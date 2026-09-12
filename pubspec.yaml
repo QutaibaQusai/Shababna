@@ -19,6 +19,11 @@ dependencies:
   go_router: ^18.0.1
   logger: ^2.7.0
   google_fonts: ^8.2.1
+  dartz: ^0.10.1
+  flutter_secure_storage: ^11.1.1
+  dio: ^5.11.1
+  pretty_dio_logger: ^1.4.0
+  equatable: ^2.1.0
 
 dev_dependencies:
   flutter_test:

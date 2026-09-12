@@ -6,8 +6,6 @@ import 'app_text_styles.dart';
 class AppTheme {
   AppTheme._();
 
-  // Public theme getters
-
   static ThemeData light({required String fontFamily}) => ThemeData(
     useMaterial3: true,
     fontFamily: fontFamily,
@@ -118,8 +116,6 @@ class AppTheme {
     ),
   );
 
-  // ColorSchemes
-
   static const ColorScheme _lightColorScheme = ColorScheme(
     brightness: Brightness.light,
     primary: AppColors.brandNavy,
@@ -161,8 +157,6 @@ class AppTheme {
     onInverseSurface: AppColors.systemBackgroundDark,
     inversePrimary: AppColors.brandNavy,
   );
-
-  // Private builders
 
   static TextTheme _buildTextTheme({
     required Color primary,

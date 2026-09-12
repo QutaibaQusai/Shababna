@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
-  // Brand
   static const Color brandNavy = Color(0xFF00386C);
 
-  // System colors — light
   static const Color systemBlueLight = Color(0xFF007AFF);
   static const Color systemGreenLight = Color(0xFF34C759);
   static const Color systemRedLight = Color(0xFFFF3B30);
@@ -18,7 +16,6 @@ class AppColors {
   static const Color secondarySystemBackgroundLight = Color(0xFFF2F2F7);
   static const Color separatorLight = Color(0x4A3C3C43);
 
-  // System colors — dark
   static const Color systemBlueDark = Color(0xFF0A84FF);
   static const Color systemGreenDark = Color(0xFF30D158);
   static const Color systemRedDark = Color(0xFFFF453A);
