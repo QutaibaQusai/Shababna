@@ -24,6 +24,11 @@ class AppDimensions {
   static double get appBarHeight => 56.h;
   static double get bottomNavHeight => 56.h;
 
+  static double get iconSm => 16.r;
+  static double get iconField => 20.r;
+  static double get iconMd => 24.r;
+  static double get iconLg => 32.r;
+
   static const double elevationNone = 0;
   static const double elevationSm = 2;
   static const double elevationMd = 4;

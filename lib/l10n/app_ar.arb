@@ -1,5 +1,8 @@
 {
   "@@locale": "ar",
 
-  "appName": "شبابنا"
+  "appName": "شبابنا",
+  "retry": "إعادة المحاولة",
+  "somethingWentWrong": "حدث خطأ ما",
+  "noItemsFound": "لا توجد عناصر"
 }

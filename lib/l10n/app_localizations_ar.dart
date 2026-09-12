@@ -11,4 +11,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get appName => 'شبابنا';
+
+  @override
+  String get retry => 'إعادة المحاولة';
+
+  @override
+  String get somethingWentWrong => 'حدث خطأ ما';
+
+  @override
+  String get noItemsFound => 'لا توجد عناصر';
 }

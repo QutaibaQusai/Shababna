@@ -10,6 +10,10 @@ class AppTheme {
     useMaterial3: true,
     fontFamily: fontFamily,
     brightness: Brightness.light,
+    splashFactory: NoSplash.splashFactory,
+    splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
+    hoverColor: Colors.transparent,
     colorScheme: _lightColorScheme,
     textTheme: _buildTextTheme(
       primary: AppColors.textPrimaryLight,
@@ -21,14 +25,15 @@ class AppTheme {
       foregroundColor: AppColors.textPrimaryLight,
     ),
     elevatedButtonTheme: _buildElevatedButtonTheme(
-      background: AppColors.primaryLight,
+      background: AppColors.primaryColor,
       foreground: AppColors.surfaceLight,
     ),
     outlinedButtonTheme: _buildOutlinedButtonTheme(
-      borderColor: AppColors.primaryLight,
-      foreground: AppColors.primaryLight,
+      borderColor: AppColors.primaryColor,
+      foreground: AppColors.primaryColor,
     ),
     textButtonTheme: _buildTextButtonTheme(AppColors.infoLight),
+    iconButtonTheme: _buildIconButtonTheme(),
     inputDecorationTheme: _buildInputDecorationTheme(
       labelColor: AppColors.textSecondaryLight,
       fillColor: AppColors.surfaceLight,
@@ -37,11 +42,11 @@ class AppTheme {
     cardTheme: _buildCardTheme(color: AppColors.surfaceLight),
     navigationBarTheme: _buildNavigationBarTheme(
       background: AppColors.surfaceLight,
-      selected: AppColors.primaryLight,
+      selected: AppColors.primaryColor,
       unselected: AppColors.neutralLight,
     ),
     switchTheme: _buildSwitchTheme(
-      track: AppColors.primaryLight,
+      track: AppColors.primaryColor,
       unselectedTrack: AppColors.neutralLight,
     ),
     dialogTheme: _buildDialogTheme(
@@ -55,7 +60,7 @@ class AppTheme {
       space: 1,
     ),
     progressIndicatorTheme: _buildProgressIndicatorTheme(
-      color: AppColors.primaryLight,
+      color: AppColors.primaryColor,
       trackColor: AppColors.backgroundLight,
     ),
   );
@@ -64,6 +69,10 @@ class AppTheme {
     useMaterial3: true,
     fontFamily: fontFamily,
     brightness: Brightness.dark,
+    splashFactory: NoSplash.splashFactory,
+    splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
+    hoverColor: Colors.transparent,
     colorScheme: _darkColorScheme,
     textTheme: _buildTextTheme(
       primary: AppColors.textPrimaryDark,
@@ -75,14 +84,15 @@ class AppTheme {
       foregroundColor: AppColors.textPrimaryDark,
     ),
     elevatedButtonTheme: _buildElevatedButtonTheme(
-      background: AppColors.primaryDark,
+      background: AppColors.primaryColor,
       foreground: AppColors.textPrimaryDark,
     ),
     outlinedButtonTheme: _buildOutlinedButtonTheme(
-      borderColor: AppColors.primaryDark,
-      foreground: AppColors.primaryDark,
+      borderColor: AppColors.primaryColor,
+      foreground: AppColors.primaryColor,
     ),
     textButtonTheme: _buildTextButtonTheme(AppColors.infoDark),
+    iconButtonTheme: _buildIconButtonTheme(),
     inputDecorationTheme: _buildInputDecorationTheme(
       labelColor: AppColors.textSecondaryDark,
       fillColor: AppColors.surfaceDark,
@@ -91,11 +101,11 @@ class AppTheme {
     cardTheme: _buildCardTheme(color: AppColors.surfaceDark),
     navigationBarTheme: _buildNavigationBarTheme(
       background: AppColors.surfaceDark,
-      selected: AppColors.primaryDark,
+      selected: AppColors.primaryColor,
       unselected: AppColors.neutralDark,
     ),
     switchTheme: _buildSwitchTheme(
-      track: AppColors.primaryDark,
+      track: AppColors.primaryColor,
       unselectedTrack: AppColors.neutralDark,
     ),
     dialogTheme: _buildDialogTheme(
@@ -109,14 +119,14 @@ class AppTheme {
       space: 1,
     ),
     progressIndicatorTheme: _buildProgressIndicatorTheme(
-      color: AppColors.primaryDark,
+      color: AppColors.primaryColor,
       trackColor: AppColors.surfaceDark,
     ),
   );
 
   static const ColorScheme _lightColorScheme = ColorScheme(
     brightness: Brightness.light,
-    primary: AppColors.primaryLight,
+    primary: AppColors.primaryColor,
     onPrimary: AppColors.surfaceLight,
     secondary: AppColors.infoLight,
     onSecondary: AppColors.surfaceLight,
@@ -137,7 +147,7 @@ class AppTheme {
 
   static const ColorScheme _darkColorScheme = ColorScheme(
     brightness: Brightness.dark,
-    primary: AppColors.primaryDark,
+    primary: AppColors.primaryColor,
     onPrimary: AppColors.textPrimaryDark,
     secondary: AppColors.infoDark,
     onSecondary: AppColors.textPrimaryDark,
@@ -153,7 +163,7 @@ class AppTheme {
     scrim: AppColors.textPrimaryLight,
     inverseSurface: AppColors.textPrimaryDark,
     onInverseSurface: AppColors.backgroundDark,
-    inversePrimary: AppColors.primaryLight,
+    inversePrimary: AppColors.primaryColor,
   );
 
   static TextTheme _buildTextTheme({
@@ -197,6 +207,7 @@ class AppTheme {
       backgroundColor: background,
       foregroundColor: foreground,
       disabledBackgroundColor: background.withValues(alpha: 0.4),
+      overlayColor: Colors.transparent,
       minimumSize: Size(double.infinity, AppDimensions.buttonHeight),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
@@ -212,6 +223,7 @@ class AppTheme {
   }) => OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       foregroundColor: foreground,
+      overlayColor: Colors.transparent,
       minimumSize: Size(double.infinity, AppDimensions.buttonHeight),
       side: BorderSide(color: borderColor, width: 1),
       shape: RoundedRectangleBorder(
@@ -225,9 +237,13 @@ class AppTheme {
       TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: color,
+          overlayColor: Colors.transparent,
           textStyle: AppTextStyles.subheadline(),
         ),
       );
+
+  static IconButtonThemeData _buildIconButtonTheme() =>
+      IconButtonThemeData(style: IconButton.styleFrom(overlayColor: Colors.transparent));
 
   static InputDecorationTheme _buildInputDecorationTheme({
     required Color labelColor,

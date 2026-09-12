@@ -11,4 +11,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get appName => 'Shababna';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get somethingWentWrong => 'Something went wrong';
+
+  @override
+  String get noItemsFound => 'No items found';
 }

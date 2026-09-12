@@ -29,21 +29,21 @@ class ShababnaApp extends StatelessWidget {
           builder: (context) {
             final locale = context.watch<LocaleService>().state;
             final themeMode = context.watch<ThemeService>().state;
-            final effectiveLocale =
-                locale ?? WidgetsBinding.instance.platformDispatcher.locale;
-            final fontFamily = effectiveLocale.languageCode == 'ar'
-                ? AppTextStyles.fontFamilyArabic
-                : AppTextStyles.fontFamilyLatin;
             return MaterialApp.router(
               onGenerateTitle: (context) => context.l10n.appName,
               debugShowCheckedModeBanner: false,
-              theme: AppTheme.light(fontFamily: fontFamily),
-              darkTheme: AppTheme.dark(fontFamily: fontFamily),
+              theme: AppTheme.light(fontFamily: AppTextStyles.fontFamily),
+              darkTheme: AppTheme.dark(fontFamily: AppTextStyles.fontFamily),
               themeMode: themeMode,
               locale: locale,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               routerConfig: AppRouter.router,
+              builder: (context, child) => GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                child: child,
+              ),
             );
           },
         ),

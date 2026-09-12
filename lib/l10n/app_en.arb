@@ -1,5 +1,8 @@
 {
   "@@locale": "en",
 
-  "appName": "Shababna"
+  "appName": "Shababna",
+  "retry": "Retry",
+  "somethingWentWrong": "Something went wrong",
+  "noItemsFound": "No items found"
 }

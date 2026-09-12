@@ -5,8 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTextStyles {
   AppTextStyles._();
 
-  static final String fontFamilyLatin = GoogleFonts.inter().fontFamily!;
-  static final String fontFamilyArabic = GoogleFonts.almarai().fontFamily!;
+  static final String fontFamily = GoogleFonts.almarai().fontFamily!;
 
   static TextStyle _style({
     required double fontSize,
