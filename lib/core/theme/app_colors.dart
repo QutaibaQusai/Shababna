@@ -5,17 +5,10 @@ class AppColors {
 
   static const Color primaryColor = Color(0xFF004C96);
 
-  static const Color successLight = Color(0xFF34C759);
-  static const Color successDark = Color(0xFF30D158);
-
-  static const Color errorLight = Color(0xFFFF3B30);
-  static const Color errorDark = Color(0xFFFF453A);
-
-  static const Color warningLight = Color(0xFFFF9500);
-  static const Color warningDark = Color(0xFFFF9F0A);
-
-  static const Color infoLight = Color(0xFF007AFF);
-  static const Color infoDark = Color(0xFF0A84FF);
+  static const Color successColor = Color(0xFF34C759);
+  static const Color errorColor = Color(0xFFFF3B30);
+  static const Color warningColor = Color(0xFFFF9500);
+  static const Color infoColor = Color(0xFF007AFF);
 
   static const Color backgroundLight = Color(0xFFF2F2F7);
   static const Color backgroundDark = Color(0xFF000000);
