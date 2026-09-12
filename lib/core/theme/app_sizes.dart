@@ -1,0 +1,18 @@
+import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
+
+class AppSizes {
+  AppSizes._();
+
+  static const Size designSize = Size(390, 844);
+
+  static double get buttonHeight => 50.h;
+  static double get inputHeight => 52.h;
+  static double get appBarHeight => 56.h;
+  static double get bottomNavHeight => 56.h;
+
+  static double get iconSm => 16.r;
+  static double get iconField => 20.r;
+  static double get iconMd => 24.r;
+  static double get iconLg => 32.r;
+}

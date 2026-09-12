@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '../../theme/app_dimensions.dart';
+import '../../theme/app_sizes.dart';
+import '../../theme/app_typography.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
@@ -49,17 +50,18 @@ class _AppTextFieldState extends State<AppTextField> {
       textInputAction: widget.textInputAction,
       obscureText: _obscure,
       maxLines: widget.obscureText ? 1 : widget.maxLines,
+      style: AppTypography.body(),
       decoration: InputDecoration(
         labelText: widget.label,
         hintText: widget.hint,
         prefixIcon: widget.prefixIcon != null
-            ? Icon(widget.prefixIcon, size: AppDimensions.iconField)
+            ? Icon(widget.prefixIcon, size: AppSizes.iconField)
             : null,
         suffixIcon: widget.obscureText
             ? IconButton(
                 icon: Icon(
                   _obscure ? LucideIcons.eyeOff : LucideIcons.eye,
-                  size: AppDimensions.iconField,
+                  size: AppSizes.iconField,
                 ),
                 onPressed: () => setState(() => _obscure = !_obscure),
               )

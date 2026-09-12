@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+
+import 'app_borders.dart';
 import 'app_colors.dart';
-import 'app_dimensions.dart';
-import 'app_text_styles.dart';
+import 'app_radius.dart';
+import 'app_shadows.dart';
+import 'app_sizes.dart';
+import 'app_spacing.dart';
+import 'app_typography.dart';
 
 class AppTheme {
   AppTheme._();
@@ -21,7 +26,7 @@ class AppTheme {
     ),
     scaffoldBackgroundColor: AppColors.backgroundLight,
     appBarTheme: _buildAppBarTheme(
-      backgroundColor: AppColors.surfaceLight,
+      backgroundColor: AppColors.backgroundLight,
       foregroundColor: AppColors.textPrimaryLight,
     ),
     elevatedButtonTheme: _buildElevatedButtonTheme(
@@ -42,12 +47,12 @@ class AppTheme {
     cardTheme: _buildCardTheme(color: AppColors.surfaceLight),
     navigationBarTheme: _buildNavigationBarTheme(
       background: AppColors.surfaceLight,
-      selected: AppColors.primaryColor,
-      unselected: AppColors.neutralLight,
+      selected: AppColors.infoColor,
+      unselected: AppColors.neutralColor,
     ),
     switchTheme: _buildSwitchTheme(
       track: AppColors.primaryColor,
-      unselectedTrack: AppColors.neutralLight,
+      unselectedTrack: AppColors.neutralColor,
     ),
     dialogTheme: _buildDialogTheme(
       backgroundColor: AppColors.surfaceLight,
@@ -56,8 +61,8 @@ class AppTheme {
     ),
     dividerTheme: DividerThemeData(
       color: AppColors.borderLight,
-      thickness: 1,
-      space: 1,
+      thickness: AppBorders.hairline,
+      space: AppBorders.hairline,
     ),
     progressIndicatorTheme: _buildProgressIndicatorTheme(
       color: AppColors.primaryColor,
@@ -101,12 +106,12 @@ class AppTheme {
     cardTheme: _buildCardTheme(color: AppColors.surfaceDark),
     navigationBarTheme: _buildNavigationBarTheme(
       background: AppColors.surfaceDark,
-      selected: AppColors.primaryColor,
-      unselected: AppColors.neutralDark,
+      selected: AppColors.infoColor,
+      unselected: AppColors.neutralColor,
     ),
     switchTheme: _buildSwitchTheme(
       track: AppColors.primaryColor,
-      unselectedTrack: AppColors.neutralDark,
+      unselectedTrack: AppColors.neutralColor,
     ),
     dialogTheme: _buildDialogTheme(
       backgroundColor: AppColors.surfaceDark,
@@ -115,8 +120,8 @@ class AppTheme {
     ),
     dividerTheme: DividerThemeData(
       color: AppColors.borderDark,
-      thickness: 1,
-      space: 1,
+      thickness: AppBorders.hairline,
+      space: AppBorders.hairline,
     ),
     progressIndicatorTheme: _buildProgressIndicatorTheme(
       color: AppColors.primaryColor,
@@ -132,16 +137,16 @@ class AppTheme {
     onSecondary: AppColors.surfaceLight,
     surface: AppColors.surfaceLight,
     onSurface: AppColors.textPrimaryLight,
-    surfaceContainerHighest: AppColors.backgroundLight,
+    surfaceContainerHighest: AppColors.surfaceHighestLight,
     onSurfaceVariant: AppColors.textSecondaryLight,
     error: AppColors.errorColor,
     onError: AppColors.surfaceLight,
     outline: AppColors.borderLight,
-    outlineVariant: AppColors.backgroundLight,
-    shadow: AppColors.textPrimaryLight,
-    scrim: AppColors.textPrimaryLight,
-    inverseSurface: AppColors.textPrimaryLight,
-    onInverseSurface: AppColors.surfaceLight,
+    outlineVariant: AppColors.surfaceHighestLight,
+    shadow: Colors.black,
+    scrim: Colors.black,
+    inverseSurface: AppColors.backgroundDark,
+    onInverseSurface: AppColors.textPrimaryDark,
     inversePrimary: AppColors.infoColor,
   );
 
@@ -153,16 +158,16 @@ class AppTheme {
     onSecondary: AppColors.textPrimaryDark,
     surface: AppColors.surfaceDark,
     onSurface: AppColors.textPrimaryDark,
-    surfaceContainerHighest: AppColors.backgroundDark,
+    surfaceContainerHighest: AppColors.surfaceHighestDark,
     onSurfaceVariant: AppColors.textSecondaryDark,
     error: AppColors.errorColor,
     onError: AppColors.textPrimaryDark,
     outline: AppColors.borderDark,
-    outlineVariant: AppColors.backgroundDark,
-    shadow: AppColors.textPrimaryLight,
-    scrim: AppColors.textPrimaryLight,
-    inverseSurface: AppColors.textPrimaryDark,
-    onInverseSurface: AppColors.backgroundDark,
+    outlineVariant: AppColors.surfaceHighestDark,
+    shadow: Colors.black,
+    scrim: Colors.black,
+    inverseSurface: AppColors.backgroundLight,
+    onInverseSurface: AppColors.textPrimaryLight,
     inversePrimary: AppColors.primaryColor,
   );
 
@@ -170,21 +175,21 @@ class AppTheme {
     required Color primary,
     required Color secondary,
   }) => TextTheme(
-    displayLarge: AppTextStyles.largeTitle(color: primary),
-    displayMedium: AppTextStyles.title1(color: primary),
-    displaySmall: AppTextStyles.title2(color: primary),
-    headlineLarge: AppTextStyles.title3(color: primary),
-    headlineMedium: AppTextStyles.headline(color: primary),
-    headlineSmall: AppTextStyles.headline(color: primary),
-    titleLarge: AppTextStyles.headline(color: primary),
-    titleMedium: AppTextStyles.callout(color: primary),
-    titleSmall: AppTextStyles.subheadline(color: primary),
-    bodyLarge: AppTextStyles.body(color: primary),
-    bodyMedium: AppTextStyles.callout(color: primary),
-    bodySmall: AppTextStyles.footnote(color: secondary),
-    labelLarge: AppTextStyles.headline(color: primary),
-    labelMedium: AppTextStyles.caption1(color: secondary),
-    labelSmall: AppTextStyles.caption2(color: secondary),
+    displayLarge: AppTypography.largeTitle(color: primary),
+    displayMedium: AppTypography.title1(color: primary),
+    displaySmall: AppTypography.title2(color: primary),
+    headlineLarge: AppTypography.title3(color: primary),
+    headlineMedium: AppTypography.headline(color: primary),
+    headlineSmall: AppTypography.headline(color: primary),
+    titleLarge: AppTypography.headline(color: primary),
+    titleMedium: AppTypography.callout(color: primary),
+    titleSmall: AppTypography.subheadline(color: primary),
+    bodyLarge: AppTypography.body(color: primary),
+    bodyMedium: AppTypography.callout(color: primary),
+    bodySmall: AppTypography.footnote(color: secondary),
+    labelLarge: AppTypography.buttonLabel(color: primary),
+    labelMedium: AppTypography.caption1(color: secondary),
+    labelSmall: AppTypography.caption2(color: secondary),
   );
 
   static AppBarTheme _buildAppBarTheme({
@@ -193,10 +198,10 @@ class AppTheme {
   }) => AppBarTheme(
     backgroundColor: backgroundColor,
     foregroundColor: foregroundColor,
-    elevation: AppDimensions.elevationNone,
-    scrolledUnderElevation: 0,
+    elevation: AppShadows.none,
+    scrolledUnderElevation: AppShadows.none,
     centerTitle: true,
-    titleTextStyle: AppTextStyles.headline(color: foregroundColor),
+    titleTextStyle: AppTypography.headline(color: foregroundColor),
   );
 
   static ElevatedButtonThemeData _buildElevatedButtonTheme({
@@ -208,12 +213,10 @@ class AppTheme {
       foregroundColor: foreground,
       disabledBackgroundColor: background.withValues(alpha: 0.4),
       overlayColor: Colors.transparent,
-      minimumSize: Size(double.infinity, AppDimensions.buttonHeight),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
-      ),
-      elevation: AppDimensions.elevationNone,
-      textStyle: AppTextStyles.headline(),
+      minimumSize: Size(double.infinity, AppSizes.buttonHeight),
+      shape: RoundedRectangleBorder(borderRadius: AppRadius.mdRadius),
+      elevation: AppShadows.low,
+      textStyle: AppTypography.buttonLabel(),
     ),
   );
 
@@ -224,12 +227,10 @@ class AppTheme {
     style: OutlinedButton.styleFrom(
       foregroundColor: foreground,
       overlayColor: Colors.transparent,
-      minimumSize: Size(double.infinity, AppDimensions.buttonHeight),
-      side: BorderSide(color: borderColor, width: 1),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
-      ),
-      textStyle: AppTextStyles.headline(),
+      minimumSize: Size(double.infinity, AppSizes.buttonHeight),
+      side: AppBorders.side(borderColor),
+      shape: RoundedRectangleBorder(borderRadius: AppRadius.mdRadius),
+      textStyle: AppTypography.buttonLabel(),
     ),
   );
 
@@ -238,50 +239,61 @@ class AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: color,
           overlayColor: Colors.transparent,
-          textStyle: AppTextStyles.subheadline(),
+          textStyle: AppTypography.buttonLabel(),
         ),
       );
 
-  static IconButtonThemeData _buildIconButtonTheme() =>
-      IconButtonThemeData(style: IconButton.styleFrom(overlayColor: Colors.transparent));
+  static IconButtonThemeData _buildIconButtonTheme() => IconButtonThemeData(
+    style: IconButton.styleFrom(overlayColor: Colors.transparent),
+  );
 
   static InputDecorationTheme _buildInputDecorationTheme({
     required Color labelColor,
     required Color fillColor,
     required Color errorColor,
   }) {
-    final radius = BorderRadius.circular(AppDimensions.radiusMd);
+    final radius = AppRadius.mdRadius;
     return InputDecorationTheme(
       filled: true,
       fillColor: fillColor,
       contentPadding: EdgeInsets.symmetric(
-        horizontal: AppDimensions.spacingSm,
-        vertical: AppDimensions.spacingXs,
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
       ),
-      border: OutlineInputBorder(borderRadius: radius, borderSide: BorderSide.none),
-      enabledBorder: OutlineInputBorder(borderRadius: radius, borderSide: BorderSide.none),
-      focusedBorder: OutlineInputBorder(borderRadius: radius, borderSide: BorderSide.none),
+      border: OutlineInputBorder(
+        borderRadius: radius,
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: radius,
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: radius,
+        borderSide: BorderSide.none,
+      ),
       errorBorder: OutlineInputBorder(
         borderRadius: radius,
-        borderSide: BorderSide(color: errorColor),
+        borderSide: AppBorders.side(errorColor),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: radius,
-        borderSide: BorderSide(color: errorColor, width: 1.5),
+        borderSide: AppBorders.side(errorColor, width: AppBorders.thick),
       ),
-      disabledBorder: OutlineInputBorder(borderRadius: radius, borderSide: BorderSide.none),
-      labelStyle: AppTextStyles.body(color: labelColor),
-      hintStyle: AppTextStyles.body(color: labelColor),
-      errorStyle: AppTextStyles.footnote(color: errorColor),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: radius,
+        borderSide: BorderSide.none,
+      ),
+      labelStyle: AppTypography.body(color: labelColor),
+      hintStyle: AppTypography.body(color: labelColor),
+      errorStyle: AppTypography.footnote(color: errorColor),
     );
   }
 
   static CardThemeData _buildCardTheme({required Color color}) => CardThemeData(
     color: color,
-    elevation: AppDimensions.elevationNone,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
-    ),
+    elevation: AppShadows.low,
+    shape: RoundedRectangleBorder(borderRadius: AppRadius.mdRadius),
     margin: EdgeInsets.zero,
   );
 
@@ -291,16 +303,17 @@ class AppTheme {
     required Color unselected,
   }) => NavigationBarThemeData(
     backgroundColor: background,
-    height: AppDimensions.bottomNavHeight,
+    indicatorColor: selected.withValues(alpha: 0.12),
+    height: AppSizes.bottomNavHeight,
     iconTheme: WidgetStateProperty.resolveWith((states) {
       final isSelected = states.contains(WidgetState.selected);
       return IconThemeData(color: isSelected ? selected : unselected);
     }),
     labelTextStyle: WidgetStateProperty.resolveWith((states) {
       final isSelected = states.contains(WidgetState.selected);
-      return AppTextStyles.caption2(color: isSelected ? selected : unselected);
+      return AppTypography.caption2(color: isSelected ? selected : unselected);
     }),
-    elevation: AppDimensions.elevationSm,
+    elevation: AppShadows.low,
   );
 
   static SwitchThemeData _buildSwitchTheme({
@@ -318,16 +331,15 @@ class AppTheme {
     required Color contentColor,
   }) => DialogThemeData(
     backgroundColor: backgroundColor,
-    elevation: AppDimensions.elevationMd,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(AppDimensions.radiusLg),
-    ),
-    titleTextStyle: AppTextStyles.headline(color: titleColor),
-    contentTextStyle: AppTextStyles.subheadline(color: contentColor),
+    elevation: AppShadows.medium,
+    shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+    titleTextStyle: AppTypography.headline(color: titleColor),
+    contentTextStyle: AppTypography.subheadline(color: contentColor),
   );
 
   static ProgressIndicatorThemeData _buildProgressIndicatorTheme({
     required Color color,
     required Color trackColor,
-  }) => ProgressIndicatorThemeData(color: color, circularTrackColor: trackColor);
+  }) =>
+      ProgressIndicatorThemeData(color: color, circularTrackColor: trackColor);
 }
