@@ -1,0 +1,32 @@
+# Config for the flutter_native_splash package.
+# Run after editing: dart run flutter_native_splash:create --path=flutter_native_splash.yaml
+#
+# All source images here are alpha-matted (transparent background) recolors
+# of assets/images/logo.png - the original is kept flattened/opaque since app
+# icon generation (iOS in particular) requires a fully opaque source image.
+#
+# logo_splash_light.png / logo_splash_dark.png: full-size centered image used
+# for the legacy (pre-Android-12) splash screen, which has no size constraint.
+#
+# logo_android12_light.png / logo_android12_dark.png: a SEPARATE, smaller
+# render for Android 12+'s native SplashScreen API, which masks the icon to a
+# circle - content must fit within a 192dp safe zone inside a 288dp canvas
+# (https://developer.android.com/develop/ui/views/launch/splash-screen). The
+# wordmark is wide/short, so reusing the full-size splash image here would
+# have its outer strokes clipped by that circular mask.
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/logo_splash_light.png
+
+  color_dark: "#121417"
+  image_dark: assets/images/logo_splash_dark.png
+
+  android_12:
+    color: "#ffffff"
+    image: assets/images/logo_android12_light.png
+    color_dark: "#121417"
+    image_dark: assets/images/logo_android12_dark.png
+
+  android: true
+  ios: true
+  web: false
