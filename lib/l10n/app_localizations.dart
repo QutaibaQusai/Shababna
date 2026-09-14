@@ -121,6 +121,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No items found'**
   String get noItemsFound;
+
+  /// No description provided for @onboardingTitle1.
+  ///
+  /// In en, this message translates to:
+  /// **'Join the Youth Network'**
+  String get onboardingTitle1;
+
+  /// No description provided for @onboardingDescription1.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect with thousands of young Jordanians making a positive impact in their communities through volunteering and leadership.'**
+  String get onboardingDescription1;
+
+  /// No description provided for @onboardingTitle2.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn & Grow'**
+  String get onboardingTitle2;
+
+  /// No description provided for @onboardingDescription2.
+  ///
+  /// In en, this message translates to:
+  /// **'Access high-quality educational resources on physical fitness, mental well-being, and healthy lifestyles tailored for you.'**
+  String get onboardingDescription2;
+
+  /// No description provided for @onboardingTitle3.
+  ///
+  /// In en, this message translates to:
+  /// **'Make a Difference'**
+  String get onboardingTitle3;
+
+  /// No description provided for @onboardingDescription3.
+  ///
+  /// In en, this message translates to:
+  /// **'Participate in local initiatives, track your volunteer hours, and become a certified health ambassador in your city.'**
+  String get onboardingDescription3;
 }
 
 class _AppLocalizationsDelegate
