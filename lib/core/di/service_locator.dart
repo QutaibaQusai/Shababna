@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/auth/auth_injection.dart';
 import '../logging/app_logger.dart';
 import '../network/api_consumer.dart';
 import '../network/dio_consumer.dart';
@@ -59,6 +60,8 @@ Future<void> setupServiceLocator() async {
       onSessionExpired: () => sl<AuthSessionCubit>().markUnauthenticated(),
     ),
   );
+
+  registerAuthFeature(sl);
 
   sl.registerLazySingleton<GoRouter>(
     () => AppRouter.build(authSessionCubit: sl()),

@@ -122,41 +122,251 @@ abstract class AppLocalizations {
   /// **'No items found'**
   String get noItemsFound;
 
-  /// No description provided for @onboardingTitle1.
+  /// No description provided for @loginTitle.
   ///
   /// In en, this message translates to:
-  /// **'Join the Youth Network'**
-  String get onboardingTitle1;
+  /// **'Welcome back'**
+  String get loginTitle;
 
-  /// No description provided for @onboardingDescription1.
+  /// No description provided for @loginSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Connect with thousands of young Jordanians making a positive impact in their communities through volunteering and leadership.'**
-  String get onboardingDescription1;
+  /// **'Sign in to continue'**
+  String get loginSubtitle;
 
-  /// No description provided for @onboardingTitle2.
+  /// No description provided for @emailLabel.
   ///
   /// In en, this message translates to:
-  /// **'Learn & Grow'**
-  String get onboardingTitle2;
+  /// **'Email'**
+  String get emailLabel;
 
-  /// No description provided for @onboardingDescription2.
+  /// No description provided for @emailHint.
   ///
   /// In en, this message translates to:
-  /// **'Access high-quality educational resources on physical fitness, mental well-being, and healthy lifestyles tailored for you.'**
-  String get onboardingDescription2;
+  /// **'you@example.com'**
+  String get emailHint;
 
-  /// No description provided for @onboardingTitle3.
+  /// No description provided for @passwordLabel.
   ///
   /// In en, this message translates to:
-  /// **'Make a Difference'**
-  String get onboardingTitle3;
+  /// **'Password'**
+  String get passwordLabel;
 
-  /// No description provided for @onboardingDescription3.
+  /// No description provided for @loginButton.
   ///
   /// In en, this message translates to:
-  /// **'Participate in local initiatives, track your volunteer hours, and become a certified health ambassador in your city.'**
-  String get onboardingDescription3;
+  /// **'Login'**
+  String get loginButton;
+
+  /// No description provided for @forgotPasswordLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get forgotPasswordLink;
+
+  /// No description provided for @noAccountPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get noAccountPrompt;
+
+  /// No description provided for @registerLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get registerLink;
+
+  /// No description provided for @registerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create account'**
+  String get registerTitle;
+
+  /// No description provided for @stepNameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get stepNameTitle;
+
+  /// No description provided for @fullNameArLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name (Arabic)'**
+  String get fullNameArLabel;
+
+  /// No description provided for @fullNameEnLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name (English)'**
+  String get fullNameEnLabel;
+
+  /// No description provided for @stepContactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact details'**
+  String get stepContactTitle;
+
+  /// No description provided for @phoneNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get phoneNumberLabel;
+
+  /// No description provided for @stepPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Set a password'**
+  String get stepPasswordTitle;
+
+  /// No description provided for @confirmPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password'**
+  String get confirmPasswordLabel;
+
+  /// No description provided for @nextButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get nextButton;
+
+  /// No description provided for @backButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get backButton;
+
+  /// No description provided for @createAccountButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Create account'**
+  String get createAccountButton;
+
+  /// No description provided for @alreadyHaveAccountPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get alreadyHaveAccountPrompt;
+
+  /// No description provided for @loginLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get loginLink;
+
+  /// No description provided for @verifyEmailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify your email'**
+  String get verifyEmailTitle;
+
+  /// No description provided for @verifyEmailSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code sent to {email}'**
+  String verifyEmailSubtitle(String email);
+
+  /// No description provided for @verificationCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code'**
+  String get verificationCodeLabel;
+
+  /// No description provided for @verifyButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify'**
+  String get verifyButton;
+
+  /// No description provided for @resendCodePrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t receive the code?'**
+  String get resendCodePrompt;
+
+  /// No description provided for @resendCodeButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code'**
+  String get resendCodeButton;
+
+  /// No description provided for @emailVerifiedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Email verified. You can now log in.'**
+  String get emailVerifiedMessage;
+
+  /// No description provided for @forgotPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password'**
+  String get forgotPasswordTitle;
+
+  /// No description provided for @forgotPasswordSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email and we\'ll send you a code to reset your password'**
+  String get forgotPasswordSubtitle;
+
+  /// No description provided for @sendCodeButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Send code'**
+  String get sendCodeButton;
+
+  /// No description provided for @resetPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get resetPasswordTitle;
+
+  /// No description provided for @resetPasswordSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code sent to {email} and choose a new password'**
+  String resetPasswordSubtitle(String email);
+
+  /// No description provided for @newPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'New password'**
+  String get newPasswordLabel;
+
+  /// No description provided for @resetPasswordButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get resetPasswordButton;
+
+  /// No description provided for @passwordResetSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Password reset. You can now log in.'**
+  String get passwordResetSuccessMessage;
+
+  /// No description provided for @fieldRequiredError.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get fieldRequiredError;
+
+  /// No description provided for @invalidEmailError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email address'**
+  String get invalidEmailError;
+
+  /// No description provided for @passwordTooShortError.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters'**
+  String get passwordTooShortError;
+
+  /// No description provided for @passwordsDoNotMatchError.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordsDoNotMatchError;
 }
 
 class _AppLocalizationsDelegate

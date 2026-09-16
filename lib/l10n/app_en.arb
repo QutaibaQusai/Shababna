@@ -6,10 +6,56 @@
   "somethingWentWrong": "Something went wrong",
   "noItemsFound": "No items found",
 
-  "onboardingTitle1": "Join the Youth Network",
-  "onboardingDescription1": "Connect with thousands of young Jordanians making a positive impact in their communities through volunteering and leadership.",
-  "onboardingTitle2": "Learn & Grow",
-  "onboardingDescription2": "Access high-quality educational resources on physical fitness, mental well-being, and healthy lifestyles tailored for you.",
-  "onboardingTitle3": "Make a Difference",
-  "onboardingDescription3": "Participate in local initiatives, track your volunteer hours, and become a certified health ambassador in your city."
+  "loginTitle": "Welcome back",
+  "loginSubtitle": "Sign in to continue",
+  "emailLabel": "Email",
+  "emailHint": "you@example.com",
+  "passwordLabel": "Password",
+  "loginButton": "Login",
+  "forgotPasswordLink": "Forgot password?",
+  "noAccountPrompt": "Don't have an account?",
+  "registerLink": "Register",
+
+  "registerTitle": "Create account",
+  "stepNameTitle": "Your name",
+  "fullNameArLabel": "Full name (Arabic)",
+  "fullNameEnLabel": "Full name (English)",
+  "stepContactTitle": "Contact details",
+  "phoneNumberLabel": "Phone number",
+  "stepPasswordTitle": "Set a password",
+  "confirmPasswordLabel": "Confirm password",
+  "nextButton": "Next",
+  "backButton": "Back",
+  "createAccountButton": "Create account",
+  "alreadyHaveAccountPrompt": "Already have an account?",
+  "loginLink": "Login",
+
+  "verifyEmailTitle": "Verify your email",
+  "verifyEmailSubtitle": "Enter the code sent to {email}",
+  "@verifyEmailSubtitle": {
+    "placeholders": { "email": { "type": "String" } }
+  },
+  "verificationCodeLabel": "Verification code",
+  "verifyButton": "Verify",
+  "resendCodePrompt": "Didn't receive the code?",
+  "resendCodeButton": "Resend code",
+  "emailVerifiedMessage": "Email verified. You can now log in.",
+
+  "forgotPasswordTitle": "Forgot password",
+  "forgotPasswordSubtitle": "Enter your email and we'll send you a code to reset your password",
+  "sendCodeButton": "Send code",
+
+  "resetPasswordTitle": "Reset password",
+  "resetPasswordSubtitle": "Enter the code sent to {email} and choose a new password",
+  "@resetPasswordSubtitle": {
+    "placeholders": { "email": { "type": "String" } }
+  },
+  "newPasswordLabel": "New password",
+  "resetPasswordButton": "Reset password",
+  "passwordResetSuccessMessage": "Password reset. You can now log in.",
+
+  "fieldRequiredError": "This field is required",
+  "invalidEmailError": "Enter a valid email address",
+  "passwordTooShortError": "Password must be at least 8 characters",
+  "passwordsDoNotMatchError": "Passwords do not match"
 }

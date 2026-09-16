@@ -1,0 +1,109 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
+
+import '../../../../core/di/service_locator.dart';
+import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/routes/app_routes.dart';
+import '../../../../core/state/form_status.dart';
+import '../../../../core/validators/app_validators.dart';
+import '../../../../core/shared/widgets/app_button.dart';
+import '../../../../core/shared/widgets/app_loading_overlay.dart';
+import '../../../../core/shared/widgets/app_text_field.dart';
+import '../../../../core/theme/app_spacing.dart';
+import '../cubit/forgot_password_cubit.dart';
+import '../cubit/forgot_password_state.dart';
+import '../widgets/auth_error_banner.dart';
+
+class ForgotPasswordPage extends StatelessWidget {
+  const ForgotPasswordPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => sl<ForgotPasswordCubit>(),
+      child: const _ForgotPasswordView(),
+    );
+  }
+}
+
+class _ForgotPasswordView extends StatefulWidget {
+  const _ForgotPasswordView();
+
+  @override
+  State<_ForgotPasswordView> createState() => _ForgotPasswordViewState();
+}
+
+class _ForgotPasswordViewState extends State<_ForgotPasswordView> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  void _submit() {
+    if (!(_formKey.currentState?.validate() ?? false)) return;
+    context.read<ForgotPasswordCubit>().submit(email: _emailController.text.trim());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<ForgotPasswordCubit, ForgotPasswordState>(
+      listener: (context, state) {
+        if (state.status == FormStatus.success) {
+          context.go(AppRoutes.resetPassword, extra: _emailController.text.trim());
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(title: Text(context.l10n.forgotPasswordTitle)),
+        body: SafeArea(
+          child: BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
+            builder: (context, state) {
+              return AppLoadingOverlay(
+                isLoading: state.status == FormStatus.submitting,
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.all(AppSpacing.screenMargin),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          context.l10n.forgotPasswordSubtitle,
+                          style: context.textTheme.bodyMedium,
+                        ),
+                        SizedBox(height: AppSpacing.md),
+                        AuthErrorBanner(message: state.errorMessage),
+                        AppTextField(
+                          label: context.l10n.emailLabel,
+                          hint: context.l10n.emailHint,
+                          controller: _emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          prefixIcon: LucideIcons.mail,
+                          textInputAction: TextInputAction.done,
+                          validator: AppValidators.combine([
+                            AppValidators.required(context.l10n.fieldRequiredError),
+                            AppValidators.email(context.l10n.invalidEmailError),
+                          ]),
+                        ),
+                        SizedBox(height: AppSpacing.sm),
+                        AppButton.primary(
+                          label: context.l10n.sendCodeButton,
+                          onPressed: _submit,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
