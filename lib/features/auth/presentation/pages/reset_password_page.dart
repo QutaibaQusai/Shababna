@@ -8,6 +8,7 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/state/form_status.dart';
 import '../../../../core/validators/app_validators.dart';
+import '../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../core/shared/widgets/app_button.dart';
 import '../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../core/shared/widgets/app_text_field.dart';
@@ -75,7 +76,7 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: Text(context.l10n.resetPasswordTitle)),
+        appBar: AppAppBar(title: context.l10n.resetPasswordTitle),
         body: SafeArea(
           child: BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
             builder: (context, state) {

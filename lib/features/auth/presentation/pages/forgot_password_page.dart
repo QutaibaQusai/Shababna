@@ -8,6 +8,7 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/state/form_status.dart';
 import '../../../../core/validators/app_validators.dart';
+import '../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../core/shared/widgets/app_button.dart';
 import '../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../core/shared/widgets/app_text_field.dart';
@@ -64,7 +65,10 @@ class _ForgotPasswordViewState extends State<_ForgotPasswordView> {
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: Text(context.l10n.forgotPasswordTitle)),
+        appBar: AppAppBar(
+          title: context.l10n.forgotPasswordTitle,
+          onBack: () => context.pop(),
+        ),
         body: SafeArea(
           child: BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
             builder: (context, state) {

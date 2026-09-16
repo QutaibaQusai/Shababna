@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/routes/app_routes.dart';
+import '../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../core/shared/widgets/app_button.dart';
 import '../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../core/shared/widgets/app_toast.dart';
@@ -131,12 +132,9 @@ class _RegisterViewState extends State<_RegisterView> {
         _selectDefaultPhoneCodeIfNeeded(state.phoneCodes);
       },
       child: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: _goBack,
-          ),
-          title: Text(context.l10n.registerTitle),
+        appBar: AppAppBar(
+          title: context.l10n.registerTitle,
+          onBack: _goBack,
         ),
         body: SafeArea(
           child: BlocBuilder<RegisterCubit, RegisterState>(
