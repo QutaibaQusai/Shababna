@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '../../../../core/extensions/context_extensions.dart';
-import '../../../../core/validators/app_validators.dart';
-import '../../../../core/shared/widgets/app_text_field.dart';
-import '../../../../core/theme/app_spacing.dart';
+import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/validators/app_validators.dart';
+import '../../../../../core/shared/widgets/app_text_field.dart';
+import '../../../../../core/theme/app_spacing.dart';
 
 class RegisterStepPassword extends StatelessWidget {
   const RegisterStepPassword({

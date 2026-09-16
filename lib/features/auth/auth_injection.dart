@@ -7,11 +7,11 @@ import '../../core/storage/secure_storage.dart';
 import 'data/datasources/auth_remote_data_source.dart';
 import 'data/repositories/auth_repository_impl.dart';
 import 'domain/repositories/auth_repository.dart';
-import 'presentation/cubit/forgot_password_cubit.dart';
-import 'presentation/cubit/login_cubit.dart';
-import 'presentation/cubit/register_cubit.dart';
-import 'presentation/cubit/reset_password_cubit.dart';
-import 'presentation/cubit/verify_email_cubit.dart';
+import 'presentation/cubit/forgot_password/forgot_password_cubit.dart';
+import 'presentation/cubit/login/login_cubit.dart';
+import 'presentation/cubit/register/register_cubit.dart';
+import 'presentation/cubit/reset_password/reset_password_cubit.dart';
+import 'presentation/cubit/verify_email/verify_email_cubit.dart';
 
 void registerAuthFeature(GetIt sl) {
   sl.registerLazySingleton<AuthRemoteDataSource>(

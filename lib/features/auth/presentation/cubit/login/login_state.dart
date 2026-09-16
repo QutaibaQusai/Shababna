@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../../core/state/form_status.dart';
+import '../../../../../core/state/form_status.dart';
 
 class LoginState extends Equatable {
   const LoginState({this.status = FormStatus.initial, this.errorMessage});

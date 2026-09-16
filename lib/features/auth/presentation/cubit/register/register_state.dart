@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../../core/state/form_status.dart';
-import '../../domain/repositories/auth_repository.dart';
+import '../../../../../core/state/form_status.dart';
+import '../../../domain/repositories/auth_repository.dart';
 
 class RegisterState extends Equatable {
   const RegisterState({

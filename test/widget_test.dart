@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:shababna/app.dart';
 import 'package:shababna/core/di/service_locator.dart';
-import 'package:shababna/features/auth/presentation/pages/login_page.dart';
+import 'package:shababna/features/auth/presentation/pages/login/login_page.dart';
 
 void main() {
   const secureStorageChannel = MethodChannel(

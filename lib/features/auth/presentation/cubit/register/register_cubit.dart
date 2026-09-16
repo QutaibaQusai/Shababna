@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/state/form_status.dart';
-import '../../domain/repositories/auth_repository.dart';
+import '../../../../../core/state/form_status.dart';
+import '../../../domain/repositories/auth_repository.dart';
 import 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {

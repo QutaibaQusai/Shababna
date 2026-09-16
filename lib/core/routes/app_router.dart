@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/auth/presentation/pages/forgot_password_page.dart';
-import '../../features/auth/presentation/pages/login_page.dart';
-import '../../features/auth/presentation/pages/register_page.dart';
-import '../../features/auth/presentation/pages/reset_password_page.dart';
-import '../../features/auth/presentation/pages/verify_email_page.dart';
+import '../../features/auth/presentation/pages/forgot_password/forgot_password_page.dart';
+import '../../features/auth/presentation/pages/login/login_page.dart';
+import '../../features/auth/presentation/pages/register/register_page.dart';
+import '../../features/auth/presentation/pages/reset_password/reset_password_page.dart';
+import '../../features/auth/presentation/pages/verify_email/verify_email_page.dart';
 import '../extensions/context_extensions.dart';
 import '../session/auth_session_cubit.dart';
 import '../session/auth_status.dart';

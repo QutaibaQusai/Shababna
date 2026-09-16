@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/session/auth_session_cubit.dart';
-import '../../../../core/state/form_status.dart';
-import '../../domain/repositories/auth_repository.dart';
+import '../../../../../core/session/auth_session_cubit.dart';
+import '../../../../../core/state/form_status.dart';
+import '../../../domain/repositories/auth_repository.dart';
 import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {

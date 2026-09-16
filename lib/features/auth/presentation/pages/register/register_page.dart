@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/di/service_locator.dart';
-import '../../../../core/extensions/context_extensions.dart';
-import '../../../../core/routes/app_routes.dart';
-import '../../../../core/shared/widgets/app_app_bar.dart';
-import '../../../../core/shared/widgets/app_button.dart';
-import '../../../../core/shared/widgets/app_loading_overlay.dart';
-import '../../../../core/shared/widgets/app_toast.dart';
-import '../../../../core/state/form_status.dart';
-import '../../../../core/theme/app_spacing.dart';
-import '../../domain/repositories/auth_repository.dart';
-import '../cubit/register_cubit.dart';
-import '../cubit/register_state.dart';
-import '../widgets/register_step_contact.dart';
-import '../widgets/register_step_name.dart';
-import '../widgets/register_step_password.dart';
+import '../../../../../core/di/service_locator.dart';
+import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/routes/app_routes.dart';
+import '../../../../../core/shared/widgets/app_app_bar.dart';
+import '../../../../../core/shared/widgets/app_button.dart';
+import '../../../../../core/shared/widgets/app_loading_overlay.dart';
+import '../../../../../core/shared/widgets/app_toast.dart';
+import '../../../../../core/state/form_status.dart';
+import '../../../../../core/theme/app_spacing.dart';
+import '../../../domain/repositories/auth_repository.dart';
+import '../../cubit/register/register_cubit.dart';
+import '../../cubit/register/register_state.dart';
+import '../../widgets/register/register_step_contact.dart';
+import '../../widgets/register/register_step_name.dart';
+import '../../widgets/register/register_step_password.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
