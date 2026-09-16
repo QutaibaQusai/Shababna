@@ -1,5 +1,6 @@
 import '../../../../core/network/api_consumer.dart';
 import '../../../../core/network/end_points.dart';
+import '../models/country_phone_code_model.dart';
 import '../models/email_request_model.dart';
 import '../models/login_request_model.dart';
 import '../models/message_response_model.dart';
@@ -55,5 +56,12 @@ class AuthRemoteDataSource {
 
   Future<void> resetPassword(ResetPasswordRequestModel request) {
     return _apiConsumer.post(EndPoints.resetPassword, data: request.toJson());
+  }
+
+  Future<List<CountryPhoneCodeModel>> getPhoneCodes() async {
+    final response = await _apiConsumer.get(EndPoints.countryPhoneCodes);
+    return (response as List)
+        .map((item) => CountryPhoneCodeModel.fromJson(item as Map<String, dynamic>))
+        .toList();
   }
 }

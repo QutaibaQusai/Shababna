@@ -18,6 +18,9 @@ class AppTextField extends StatefulWidget {
     this.obscureText = false,
     this.maxLines = 1,
     this.autofocus = false,
+    this.readOnly = false,
+    this.onTap,
+    this.suffix,
   });
 
   final String label;
@@ -31,6 +34,9 @@ class AppTextField extends StatefulWidget {
   final bool obscureText;
   final int maxLines;
   final bool autofocus;
+  final bool readOnly;
+  final VoidCallback? onTap;
+  final Widget? suffix;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -50,6 +56,8 @@ class _AppTextFieldState extends State<AppTextField> {
       textInputAction: widget.textInputAction,
       obscureText: _obscure,
       maxLines: widget.obscureText ? 1 : widget.maxLines,
+      readOnly: widget.readOnly,
+      onTap: widget.onTap,
       style: AppTypography.body(),
       decoration: InputDecoration(
         labelText: widget.label,
@@ -65,7 +73,7 @@ class _AppTextFieldState extends State<AppTextField> {
                 ),
                 onPressed: () => setState(() => _obscure = !_obscure),
               )
-            : null,
+            : widget.suffix,
       ),
     );
   }

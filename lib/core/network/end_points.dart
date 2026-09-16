@@ -10,4 +10,6 @@ class EndPoints {
   static const String refresh = '/api/v1/auth/refresh';
   static const String logout = '/api/v1/auth/logout';
   static const String logoutAll = '/api/v1/auth/logout-all';
+
+  static const String countryPhoneCodes = '/api/v1/countries/phone-codes';
 }

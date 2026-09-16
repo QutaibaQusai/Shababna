@@ -149,4 +149,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordsDoNotMatchError => 'Passwords do not match';
+
+  @override
+  String get invalidPhoneNumberError => 'Enter a valid phone number';
+
+  @override
+  String get selectCountryTitle => 'Select country';
+
+  @override
+  String get searchCountryHint => 'Search country or code';
 }

@@ -9,6 +9,21 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   final AuthRepository _repository;
 
+  Future<void> loadPhoneCodes() async {
+    emit(state.copyWith(isLoadingPhoneCodes: true, phoneCodesError: null));
+
+    final result = await _repository.getPhoneCodes();
+
+    result.fold(
+      (failure) => emit(
+        state.copyWith(isLoadingPhoneCodes: false, phoneCodesError: failure.displayMessage),
+      ),
+      (phoneCodes) => emit(
+        state.copyWith(isLoadingPhoneCodes: false, phoneCodes: phoneCodes),
+      ),
+    );
+  }
+
   Future<void> submit({
     required String email,
     required String phoneNumber,
@@ -17,7 +32,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     required String password,
     required String confirmPassword,
   }) async {
-    emit(const RegisterState(status: FormStatus.submitting));
+    emit(state.copyWith(status: FormStatus.submitting));
 
     final result = await _repository.register(
       email: email,
@@ -30,10 +45,10 @@ class RegisterCubit extends Cubit<RegisterState> {
 
     result.fold(
       (failure) => emit(
-        RegisterState(status: FormStatus.failure, errorMessage: failure.displayMessage),
+        state.copyWith(status: FormStatus.failure, errorMessage: failure.displayMessage),
       ),
       (registerResult) => emit(
-        RegisterState(status: FormStatus.success, registeredEmail: registerResult.email),
+        state.copyWith(status: FormStatus.success, registeredEmail: registerResult.email),
       ),
     );
   }

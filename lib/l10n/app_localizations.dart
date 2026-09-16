@@ -367,6 +367,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passwords do not match'**
   String get passwordsDoNotMatchError;
+
+  /// No description provided for @invalidPhoneNumberError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid phone number'**
+  String get invalidPhoneNumberError;
+
+  /// No description provided for @selectCountryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select country'**
+  String get selectCountryTitle;
+
+  /// No description provided for @searchCountryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search country or code'**
+  String get searchCountryHint;
 }
 
 class _AppLocalizationsDelegate

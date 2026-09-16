@@ -5,10 +5,11 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/routes/app_routes.dart';
-import '../../../../core/state/form_status.dart';
 import '../../../../core/shared/widgets/app_button.dart';
 import '../../../../core/shared/widgets/app_loading_overlay.dart';
+import '../../../../core/state/form_status.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../domain/repositories/auth_repository.dart';
 import '../cubit/register_cubit.dart';
 import '../cubit/register_state.dart';
 import '../widgets/auth_error_banner.dart';
@@ -22,7 +23,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => sl<RegisterCubit>(),
+      create: (_) => sl<RegisterCubit>()..loadPhoneCodes(),
       child: const _RegisterView(),
     );
   }
@@ -47,7 +48,10 @@ class _RegisterViewState extends State<_RegisterView> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
+  CountryPhoneCode? _selectedPhoneCode;
+
   static const _stepCount = 3;
+  static const _defaultCountryCode = 'JO';
 
   @override
   void dispose() {
@@ -61,13 +65,28 @@ class _RegisterViewState extends State<_RegisterView> {
     super.dispose();
   }
 
+  void _selectDefaultPhoneCodeIfNeeded(List<CountryPhoneCode> phoneCodes) {
+    if (_selectedPhoneCode != null || phoneCodes.isEmpty) return;
+    final defaultCode = phoneCodes.firstWhere(
+      (code) => code.countryCode == _defaultCountryCode,
+      orElse: () => phoneCodes.first,
+    );
+    setState(() => _selectedPhoneCode = defaultCode);
+  }
+
+  String _stripLeadingZero(String digits) {
+    return digits.startsWith('0') ? digits.substring(1) : digits;
+  }
+
   void _goNext() {
     if (!(_stepFormKeys[_currentStep].currentState?.validate() ?? false)) return;
 
     if (_currentStep == _stepCount - 1) {
+      final phoneNumber =
+          '${_selectedPhoneCode!.callingCode}${_stripLeadingZero(_phoneNumberController.text.trim())}';
       context.read<RegisterCubit>().submit(
             email: _emailController.text.trim(),
-            phoneNumber: _phoneNumberController.text.trim(),
+            phoneNumber: phoneNumber,
             fullNameEn: _fullNameEnController.text.trim(),
             fullNameAr: _fullNameArController.text.trim(),
             password: _passwordController.text,
@@ -102,6 +121,7 @@ class _RegisterViewState extends State<_RegisterView> {
         if (state.status == FormStatus.success) {
           context.go(AppRoutes.verifyEmail, extra: state.registeredEmail);
         }
+        _selectDefaultPhoneCodeIfNeeded(state.phoneCodes);
       },
       child: Scaffold(
         appBar: AppBar(
@@ -136,6 +156,14 @@ class _RegisterViewState extends State<_RegisterView> {
                               formKey: _stepFormKeys[1],
                               emailController: _emailController,
                               phoneNumberController: _phoneNumberController,
+                              phoneCodes: state.phoneCodes,
+                              selectedPhoneCode: _selectedPhoneCode,
+                              onPhoneCodeSelected: (code) =>
+                                  setState(() => _selectedPhoneCode = code),
+                              isLoadingPhoneCodes: state.isLoadingPhoneCodes,
+                              phoneCodesError: state.phoneCodesError,
+                              onRetryLoadPhoneCodes: () =>
+                                  context.read<RegisterCubit>().loadPhoneCodes(),
                             ),
                             RegisterStepPassword(
                               formKey: _stepFormKeys[2],

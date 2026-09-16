@@ -18,6 +18,11 @@ class AppValidators {
         (value == null || value.length < length) ? message : null;
   }
 
+  static FormFieldValidator<String> digitsOnly(String message) {
+    final pattern = RegExp(r'^\d{6,12}$');
+    return (value) => (value == null || !pattern.hasMatch(value)) ? message : null;
+  }
+
   static FormFieldValidator<String> match(
     String Function() getOtherValue,
     String message,

@@ -9,6 +9,20 @@ class RegisterResult {
   final bool emailVerificationRequired;
 }
 
+class CountryPhoneCode {
+  const CountryPhoneCode({
+    required this.countryName,
+    required this.countryCode,
+    required this.callingCode,
+    required this.flag,
+  });
+
+  final String countryName;
+  final String countryCode;
+  final String callingCode;
+  final String flag;
+}
+
 abstract interface class AuthRepository {
   Future<Either<Failure, void>> login({
     required String email,
@@ -41,4 +55,6 @@ abstract interface class AuthRepository {
     required String newPassword,
     required String confirmPassword,
   });
+
+  Future<Either<Failure, List<CountryPhoneCode>>> getPhoneCodes();
 }

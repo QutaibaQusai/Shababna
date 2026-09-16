@@ -123,4 +123,19 @@ class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
       );
     });
   }
+
+  @override
+  Future<Either<Failure, List<CountryPhoneCode>>> getPhoneCodes() {
+    return guard(() async {
+      final response = await _remoteDataSource.getPhoneCodes();
+      return response
+          .map((item) => CountryPhoneCode(
+                countryName: item.countryName,
+                countryCode: item.countryCode,
+                callingCode: item.callingCode,
+                flag: item.flag,
+              ))
+          .toList();
+    });
+  }
 }

@@ -151,4 +151,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get passwordsDoNotMatchError => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get invalidPhoneNumberError => 'أدخل رقم هاتف صحيح';
+
+  @override
+  String get selectCountryTitle => 'اختر الدولة';
+
+  @override
+  String get searchCountryHint => 'ابحث عن الدولة أو الرمز';
 }
