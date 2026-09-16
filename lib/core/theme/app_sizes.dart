@@ -7,8 +7,6 @@ class AppSizes {
   static const Size designSize = Size(390, 844);
 
   static double get buttonHeight => 50.h;
-  static double get inputHeight => 52.h;
-  static double get appBarHeight => 56.h;
   static double get bottomNavHeight => 56.h;
 
   static double get iconSm => 16.r;

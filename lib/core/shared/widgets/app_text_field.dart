@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
+import '../../extensions/context_extensions.dart';
 import '../../theme/app_sizes.dart';
-import '../../theme/app_typography.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
@@ -58,7 +58,7 @@ class _AppTextFieldState extends State<AppTextField> {
       maxLines: widget.obscureText ? 1 : widget.maxLines,
       readOnly: widget.readOnly,
       onTap: widget.onTap,
-      style: AppTypography.body(),
+      style: context.textTheme.bodyLarge,
       decoration: InputDecoration(
         labelText: widget.label,
         hintText: widget.hint,
