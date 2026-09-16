@@ -112,6 +112,10 @@ class AppLocalizationsAr extends AppLocalizations {
       'تم تأكيد البريد الإلكتروني. يمكنك تسجيل الدخول الآن.';
 
   @override
+  String get registrationCompleteMessage =>
+      'تم إنشاء الحساب. يمكنك تسجيل الدخول الآن.';
+
+  @override
   String get forgotPasswordTitle => 'نسيت كلمة المرور';
 
   @override

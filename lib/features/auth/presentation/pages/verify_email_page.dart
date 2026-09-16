@@ -11,10 +11,10 @@ import '../../../../core/validators/app_validators.dart';
 import '../../../../core/shared/widgets/app_button.dart';
 import '../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../core/shared/widgets/app_text_field.dart';
+import '../../../../core/shared/widgets/app_toast.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../cubit/verify_email_cubit.dart';
 import '../cubit/verify_email_state.dart';
-import '../widgets/auth_error_banner.dart';
 
 class VerifyEmailPage extends StatelessWidget {
   const VerifyEmailPage({super.key, required this.email});
@@ -64,14 +64,16 @@ class _VerifyEmailViewState extends State<_VerifyEmailView> {
           previous.status != current.status || previous.resendMessage != current.resendMessage,
       listener: (context, state) {
         if (state.status == FormStatus.success) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(context.l10n.emailVerifiedMessage)),
-          );
+          AppToast.success(context, context.l10n.emailVerifiedMessage);
           context.go(AppRoutes.login);
+        } else if (state.status == FormStatus.failure && state.errorMessage != null) {
+          AppToast.error(context, state.errorMessage!);
         } else if (state.resendMessage != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.resendMessage!)),
-          );
+          if (state.resendFailed) {
+            AppToast.error(context, state.resendMessage!);
+          } else {
+            AppToast.success(context, state.resendMessage!);
+          }
         }
       },
       child: Scaffold(
@@ -93,7 +95,6 @@ class _VerifyEmailViewState extends State<_VerifyEmailView> {
                           style: context.textTheme.bodyMedium,
                         ),
                         SizedBox(height: AppSpacing.md),
-                        AuthErrorBanner(message: state.errorMessage),
                         AppTextField(
                           label: context.l10n.verificationCodeLabel,
                           controller: _codeController,

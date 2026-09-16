@@ -11,10 +11,10 @@ import '../../../../core/validators/app_validators.dart';
 import '../../../../core/shared/widgets/app_button.dart';
 import '../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../core/shared/widgets/app_text_field.dart';
+import '../../../../core/shared/widgets/app_toast.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../cubit/reset_password_cubit.dart';
 import '../cubit/reset_password_state.dart';
-import '../widgets/auth_error_banner.dart';
 
 class ResetPasswordPage extends StatelessWidget {
   const ResetPasswordPage({super.key, required this.email});
@@ -68,10 +68,10 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
     return BlocListener<ResetPasswordCubit, ResetPasswordState>(
       listener: (context, state) {
         if (state.status == FormStatus.success) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(context.l10n.passwordResetSuccessMessage)),
-          );
+          AppToast.success(context, context.l10n.passwordResetSuccessMessage);
           context.go(AppRoutes.login);
+        } else if (state.status == FormStatus.failure && state.errorMessage != null) {
+          AppToast.error(context, state.errorMessage!);
         }
       },
       child: Scaffold(
@@ -93,7 +93,6 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                           style: context.textTheme.bodyMedium,
                         ),
                         SizedBox(height: AppSpacing.md),
-                        AuthErrorBanner(message: state.errorMessage),
                         AppTextField(
                           label: context.l10n.verificationCodeLabel,
                           controller: _codeController,

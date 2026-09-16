@@ -296,6 +296,12 @@ abstract class AppLocalizations {
   /// **'Email verified. You can now log in.'**
   String get emailVerifiedMessage;
 
+  /// No description provided for @registrationCompleteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Account created. You can now log in.'**
+  String get registrationCompleteMessage;
+
   /// No description provided for @forgotPasswordTitle.
   ///
   /// In en, this message translates to:

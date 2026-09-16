@@ -37,6 +37,7 @@
   "resendCodePrompt": "لم يصلك الرمز؟",
   "resendCodeButton": "إعادة إرسال الرمز",
   "emailVerifiedMessage": "تم تأكيد البريد الإلكتروني. يمكنك تسجيل الدخول الآن.",
+  "registrationCompleteMessage": "تم إنشاء الحساب. يمكنك تسجيل الدخول الآن.",
 
   "forgotPasswordTitle": "نسيت كلمة المرور",
   "forgotPasswordSubtitle": "أدخل بريدك الإلكتروني وسنرسل لك رمزاً لإعادة تعيين كلمة المرور",

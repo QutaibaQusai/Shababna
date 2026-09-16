@@ -111,6 +111,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailVerifiedMessage => 'Email verified. You can now log in.';
 
   @override
+  String get registrationCompleteMessage =>
+      'Account created. You can now log in.';
+
+  @override
   String get forgotPasswordTitle => 'Forgot password';
 
   @override

@@ -18,7 +18,9 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
       (failure) => emit(
         ForgotPasswordState(status: FormStatus.failure, errorMessage: failure.displayMessage),
       ),
-      (_) => emit(const ForgotPasswordState(status: FormStatus.success)),
+      (message) => emit(
+        ForgotPasswordState(status: FormStatus.success, successMessage: message),
+      ),
     );
   }
 }

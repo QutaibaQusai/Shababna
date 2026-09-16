@@ -11,10 +11,10 @@ import '../../../../core/validators/app_validators.dart';
 import '../../../../core/shared/widgets/app_button.dart';
 import '../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../core/shared/widgets/app_text_field.dart';
+import '../../../../core/shared/widgets/app_toast.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../cubit/forgot_password_cubit.dart';
 import '../cubit/forgot_password_state.dart';
-import '../widgets/auth_error_banner.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});
@@ -55,7 +55,12 @@ class _ForgotPasswordViewState extends State<_ForgotPasswordView> {
     return BlocListener<ForgotPasswordCubit, ForgotPasswordState>(
       listener: (context, state) {
         if (state.status == FormStatus.success) {
+          if (state.successMessage != null) {
+            AppToast.info(context, state.successMessage!);
+          }
           context.go(AppRoutes.resetPassword, extra: _emailController.text.trim());
+        } else if (state.status == FormStatus.failure && state.errorMessage != null) {
+          AppToast.error(context, state.errorMessage!);
         }
       },
       child: Scaffold(
@@ -77,7 +82,6 @@ class _ForgotPasswordViewState extends State<_ForgotPasswordView> {
                           style: context.textTheme.bodyMedium,
                         ),
                         SizedBox(height: AppSpacing.md),
-                        AuthErrorBanner(message: state.errorMessage),
                         AppTextField(
                           label: context.l10n.emailLabel,
                           hint: context.l10n.emailHint,

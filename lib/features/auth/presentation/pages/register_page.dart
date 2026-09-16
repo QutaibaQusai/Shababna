@@ -7,12 +7,12 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/shared/widgets/app_button.dart';
 import '../../../../core/shared/widgets/app_loading_overlay.dart';
+import '../../../../core/shared/widgets/app_toast.dart';
 import '../../../../core/state/form_status.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../cubit/register_cubit.dart';
 import '../cubit/register_state.dart';
-import '../widgets/auth_error_banner.dart';
 import '../widgets/register_step_contact.dart';
 import '../widgets/register_step_name.dart';
 import '../widgets/register_step_password.dart';
@@ -119,7 +119,14 @@ class _RegisterViewState extends State<_RegisterView> {
     return BlocListener<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state.status == FormStatus.success) {
-          context.go(AppRoutes.verifyEmail, extra: state.registeredEmail);
+          if (state.emailVerificationRequired) {
+            context.go(AppRoutes.verifyEmail, extra: state.registeredEmail);
+          } else {
+            AppToast.success(context, context.l10n.registrationCompleteMessage);
+            context.go(AppRoutes.login);
+          }
+        } else if (state.status == FormStatus.failure && state.errorMessage != null) {
+          AppToast.error(context, state.errorMessage!);
         }
         _selectDefaultPhoneCodeIfNeeded(state.phoneCodes);
       },
@@ -141,7 +148,6 @@ class _RegisterViewState extends State<_RegisterView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AuthErrorBanner(message: state.errorMessage),
                       Expanded(
                         child: PageView(
                           controller: _pageController,

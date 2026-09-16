@@ -23,15 +23,21 @@ class VerifyEmailCubit extends Cubit<VerifyEmailState> {
   }
 
   Future<void> resend({required String email}) async {
-    emit(state.copyWith(isResending: true, resendMessage: null));
+    emit(state.copyWith(isResending: true, resendMessage: null, resendFailed: false));
 
     final result = await _repository.resendEmailVerification(email: email);
 
     result.fold(
       (failure) => emit(
-        state.copyWith(isResending: false, resendMessage: failure.displayMessage),
+        state.copyWith(
+          isResending: false,
+          resendMessage: failure.displayMessage,
+          resendFailed: true,
+        ),
       ),
-      (message) => emit(state.copyWith(isResending: false, resendMessage: message)),
+      (message) => emit(
+        state.copyWith(isResending: false, resendMessage: message, resendFailed: false),
+      ),
     );
   }
 }

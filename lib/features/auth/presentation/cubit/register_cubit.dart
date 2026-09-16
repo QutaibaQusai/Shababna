@@ -48,7 +48,11 @@ class RegisterCubit extends Cubit<RegisterState> {
         state.copyWith(status: FormStatus.failure, errorMessage: failure.displayMessage),
       ),
       (registerResult) => emit(
-        state.copyWith(status: FormStatus.success, registeredEmail: registerResult.email),
+        state.copyWith(
+          status: FormStatus.success,
+          registeredEmail: registerResult.email,
+          emailVerificationRequired: registerResult.emailVerificationRequired,
+        ),
       ),
     );
   }
