@@ -49,3 +49,6 @@ app.*.map.json
 
 # gen-l10n regenerates this on every build
 missing.txt
+
+# Internal project docs, not published to the repo
+/doc/

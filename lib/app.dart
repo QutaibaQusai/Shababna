@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
+import 'package:go_router/go_router.dart';
 
 import 'core/di/service_locator.dart';
 import 'core/extensions/context_extensions.dart';
 import 'core/services/locale_service.dart';
-import 'core/routes/app_router.dart';
 import 'core/services/theme_service.dart';
+import 'core/session/auth_session_cubit.dart';
 import 'core/theme/app_sizes.dart';
 import 'core/theme/app_typography.dart';
 import 'core/theme/app_theme.dart';
@@ -24,6 +25,7 @@ class ShababnaApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (_) => sl<LocaleService>()),
           BlocProvider(create: (_) => sl<ThemeService>()),
+          BlocProvider(create: (_) => sl<AuthSessionCubit>()),
         ],
         child: Builder(
           builder: (context) {
@@ -43,7 +45,7 @@ class ShababnaApp extends StatelessWidget {
               locale: locale,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
-              routerConfig: AppRouter.router,
+              routerConfig: sl<GoRouter>(),
               builder: (context, child) => GestureDetector(
                 behavior: HitTestBehavior.translucent,
                 onTap: () => FocusManager.instance.primaryFocus?.unfocus(),

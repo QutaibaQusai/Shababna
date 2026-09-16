@@ -26,10 +26,16 @@ class TokenRefreshInterceptor extends QueuedInterceptor {
     EndPoints.logoutAll,
   };
 
+  static const _retryFlag = 'isRetry';
+
   @override
   Future<void> onError(DioException err, ErrorInterceptorHandler handler) async {
     final failedPath = err.requestOptions.path;
     if (err.response?.statusCode != 401 || _noRefreshPaths.contains(failedPath)) {
+      return handler.next(err);
+    }
+
+    if (err.requestOptions.extra[_retryFlag] == true) {
       return handler.next(err);
     }
 
@@ -75,6 +81,7 @@ class TokenRefreshInterceptor extends QueuedInterceptor {
     try {
       final retryOptions = err.requestOptions;
       retryOptions.headers['Authorization'] = 'Bearer $accessToken';
+      retryOptions.extra[_retryFlag] = true;
       final retryResponse = await _dio.fetch(retryOptions);
       handler.resolve(retryResponse);
     } on DioException catch (retryError) {
