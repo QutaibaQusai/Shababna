@@ -57,6 +57,8 @@ Future<void> setupServiceLocator() async {
     () => DioConsumer(
       dio: Dio(),
       secureStorage: sl(),
+      localeService: sl(),
+      themeService: sl(),
       onSessionExpired: () => sl<AuthSessionCubit>().markUnauthenticated(),
     ),
   );

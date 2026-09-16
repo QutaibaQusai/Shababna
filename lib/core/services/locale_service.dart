@@ -14,6 +14,10 @@ class LocaleService extends Cubit<Locale?> {
     return code == null ? null : Locale(code);
   }
 
+  String get languageCode =>
+      state?.languageCode ??
+      WidgetsBinding.instance.platformDispatcher.locale.languageCode;
+
   void toggleLocale(Locale current) {
     final next = current.languageCode == 'ar'
         ? const Locale('en')

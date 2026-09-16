@@ -14,6 +14,15 @@ class ThemeService extends Cubit<ThemeMode> {
     return ThemeMode.values.asNameMap()[name] ?? ThemeMode.system;
   }
 
+  String get themeName {
+    if (state == ThemeMode.system) {
+      final platformBrightness =
+          WidgetsBinding.instance.platformDispatcher.platformBrightness;
+      return platformBrightness == Brightness.dark ? 'dark' : 'light';
+    }
+    return state.name;
+  }
+
   void toggleThemeMode(Brightness currentBrightness) {
     final next = currentBrightness == Brightness.dark
         ? ThemeMode.light

@@ -4,6 +4,8 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../config/app_config.dart';
 import '../error/exceptions.dart';
+import '../services/locale_service.dart';
+import '../services/theme_service.dart';
 import '../storage/secure_storage.dart';
 import 'api_consumer.dart';
 import 'api_interceptors.dart';
@@ -13,6 +15,8 @@ class DioConsumer implements ApiConsumer {
   DioConsumer({
     required this.dio,
     required AppSecureStorage secureStorage,
+    required LocaleService localeService,
+    required ThemeService themeService,
     void Function()? onSessionExpired,
   }) {
     dio.options
@@ -21,7 +25,13 @@ class DioConsumer implements ApiConsumer {
       ..receiveTimeout = const Duration(seconds: 30)
       ..responseType = ResponseType.json;
 
-    dio.interceptors.add(ApiInterceptor(secureStorage: secureStorage));
+    dio.interceptors.add(
+      ApiInterceptor(
+        secureStorage: secureStorage,
+        localeService: localeService,
+        themeService: themeService,
+      ),
+    );
 
     dio.interceptors.add(
       TokenRefreshInterceptor(
