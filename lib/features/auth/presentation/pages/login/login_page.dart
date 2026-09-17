@@ -64,12 +64,12 @@ class _LoginViewState extends State<_LoginView> {
           AppToast.error(context, state.errorMessage!);
         }
       },
-      child: Scaffold(
-        body: SafeArea(
-          child: BlocBuilder<LoginCubit, LoginState>(
-            builder: (context, state) {
-              return AppLoadingOverlay(
-                isLoading: state.status == FormStatus.submitting,
+      child: BlocBuilder<LoginCubit, LoginState>(
+        builder: (context, state) {
+          return AppLoadingOverlay(
+            isLoading: state.status == FormStatus.submitting,
+            child: Scaffold(
+              body: SafeArea(
                 child: SingleChildScrollView(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Form(
@@ -140,10 +140,10 @@ class _LoginViewState extends State<_LoginView> {
                     ),
                   ),
                 ),
-              );
-            },
-          ),
-        ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

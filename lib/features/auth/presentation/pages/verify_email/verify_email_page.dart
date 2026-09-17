@@ -77,13 +77,13 @@ class _VerifyEmailViewState extends State<_VerifyEmailView> {
           }
         }
       },
-      child: Scaffold(
-        appBar: AppAppBar(title: context.l10n.verifyEmailTitle),
-        body: SafeArea(
-          child: BlocBuilder<VerifyEmailCubit, VerifyEmailState>(
-            builder: (context, state) {
-              return AppLoadingOverlay(
-                isLoading: state.status == FormStatus.submitting,
+      child: BlocBuilder<VerifyEmailCubit, VerifyEmailState>(
+        builder: (context, state) {
+          return AppLoadingOverlay(
+            isLoading: state.status == FormStatus.submitting,
+            child: Scaffold(
+              appBar: AppAppBar(title: context.l10n.verifyEmailTitle),
+              body: SafeArea(
                 child: SingleChildScrollView(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Form(
@@ -128,10 +128,10 @@ class _VerifyEmailViewState extends State<_VerifyEmailView> {
                     ),
                   ),
                 ),
-              );
-            },
-          ),
-        ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

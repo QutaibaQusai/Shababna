@@ -41,7 +41,7 @@ class AppTheme {
       foreground: AppColors.primaryColor,
       fontFamily: fontFamily,
     ),
-    textButtonTheme: _buildTextButtonTheme(AppColors.infoColor, fontFamily: fontFamily),
+    textButtonTheme: _buildTextButtonTheme(AppColors.primaryColor, fontFamily: fontFamily),
     iconButtonTheme: _buildIconButtonTheme(),
     inputDecorationTheme: _buildInputDecorationTheme(
       labelColor: AppColors.textSecondaryLight,
@@ -107,7 +107,7 @@ class AppTheme {
       foreground: AppColors.primaryColor,
       fontFamily: fontFamily,
     ),
-    textButtonTheme: _buildTextButtonTheme(AppColors.infoColor, fontFamily: fontFamily),
+    textButtonTheme: _buildTextButtonTheme(AppColors.primaryColor, fontFamily: fontFamily),
     iconButtonTheme: _buildIconButtonTheme(),
     inputDecorationTheme: _buildInputDecorationTheme(
       labelColor: AppColors.textSecondaryDark,

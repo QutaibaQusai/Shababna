@@ -131,16 +131,16 @@ class _RegisterViewState extends State<_RegisterView> {
         }
         _selectDefaultPhoneCodeIfNeeded(state.phoneCodes);
       },
-      child: Scaffold(
-        appBar: AppAppBar(
-          title: context.l10n.registerTitle,
-          onBack: _goBack,
-        ),
-        body: SafeArea(
-          child: BlocBuilder<RegisterCubit, RegisterState>(
-            builder: (context, state) {
-              return AppLoadingOverlay(
-                isLoading: state.status == FormStatus.submitting,
+      child: BlocBuilder<RegisterCubit, RegisterState>(
+        builder: (context, state) {
+          return AppLoadingOverlay(
+            isLoading: state.status == FormStatus.submitting,
+            child: Scaffold(
+              appBar: AppAppBar(
+                title: context.l10n.registerTitle,
+                onBack: _goBack,
+              ),
+              body: SafeArea(
                 child: Padding(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Column(
@@ -200,10 +200,10 @@ class _RegisterViewState extends State<_RegisterView> {
                     ],
                   ),
                 ),
-              );
-            },
-          ),
-        ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -75,13 +75,13 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
           AppToast.error(context, state.errorMessage!);
         }
       },
-      child: Scaffold(
-        appBar: AppAppBar(title: context.l10n.resetPasswordTitle),
-        body: SafeArea(
-          child: BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
-            builder: (context, state) {
-              return AppLoadingOverlay(
-                isLoading: state.status == FormStatus.submitting,
+      child: BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
+        builder: (context, state) {
+          return AppLoadingOverlay(
+            isLoading: state.status == FormStatus.submitting,
+            child: Scaffold(
+              appBar: AppAppBar(title: context.l10n.resetPasswordTitle),
+              body: SafeArea(
                 child: SingleChildScrollView(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Form(
@@ -138,10 +138,10 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                     ),
                   ),
                 ),
-              );
-            },
-          ),
-        ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

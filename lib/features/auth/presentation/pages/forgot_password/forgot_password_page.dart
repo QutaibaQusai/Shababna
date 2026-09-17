@@ -64,16 +64,16 @@ class _ForgotPasswordViewState extends State<_ForgotPasswordView> {
           AppToast.error(context, state.errorMessage!);
         }
       },
-      child: Scaffold(
-        appBar: AppAppBar(
-          title: context.l10n.forgotPasswordTitle,
-          onBack: () => context.pop(),
-        ),
-        body: SafeArea(
-          child: BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
-            builder: (context, state) {
-              return AppLoadingOverlay(
-                isLoading: state.status == FormStatus.submitting,
+      child: BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
+        builder: (context, state) {
+          return AppLoadingOverlay(
+            isLoading: state.status == FormStatus.submitting,
+            child: Scaffold(
+              appBar: AppAppBar(
+                title: context.l10n.forgotPasswordTitle,
+                onBack: () => context.pop(),
+              ),
+              body: SafeArea(
                 child: SingleChildScrollView(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Form(
@@ -107,10 +107,10 @@ class _ForgotPasswordViewState extends State<_ForgotPasswordView> {
                     ),
                   ),
                 ),
-              );
-            },
-          ),
-        ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
