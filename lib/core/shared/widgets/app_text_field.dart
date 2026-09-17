@@ -16,8 +16,6 @@ class AppTextField extends StatefulWidget {
     this.textInputAction,
     this.prefixIcon,
     this.obscureText = false,
-    this.maxLines = 1,
-    this.autofocus = false,
     this.readOnly = false,
     this.onTap,
     this.suffix,
@@ -32,8 +30,6 @@ class AppTextField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final IconData? prefixIcon;
   final bool obscureText;
-  final int maxLines;
-  final bool autofocus;
   final bool readOnly;
   final VoidCallback? onTap;
   final Widget? suffix;
@@ -49,13 +45,12 @@ class _AppTextFieldState extends State<AppTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
-      autofocus: widget.autofocus,
       validator: widget.validator,
       onChanged: widget.onChanged,
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
       obscureText: _obscure,
-      maxLines: widget.obscureText ? 1 : widget.maxLines,
+      maxLines: 1,
       readOnly: widget.readOnly,
       onTap: widget.onTap,
       style: context.textTheme.bodyLarge,

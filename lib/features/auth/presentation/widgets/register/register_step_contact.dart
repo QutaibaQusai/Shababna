@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/shared/widgets/app_phone_field.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../core/validators/app_validators.dart';
 import '../../../domain/repositories/auth_repository.dart';
-import 'phone_number_field.dart';
 
 class RegisterStepContact extends StatelessWidget {
   const RegisterStepContact({
@@ -56,14 +56,24 @@ class RegisterStepContact extends StatelessWidget {
             ]),
           ),
           SizedBox(height: AppSpacing.sm),
-          PhoneNumberField(
+          AppPhoneField<CountryPhoneCode>(
+            label: context.l10n.phoneNumberLabel,
             numberController: phoneNumberController,
-            phoneCodes: phoneCodes,
-            selectedCode: selectedPhoneCode,
-            onCodeSelected: onPhoneCodeSelected,
-            isLoadingCodes: isLoadingPhoneCodes,
-            codesError: phoneCodesError,
-            onRetryLoadCodes: onRetryLoadPhoneCodes,
+            countries: phoneCodes,
+            selectedCountry: selectedPhoneCode,
+            onCountrySelected: onPhoneCodeSelected,
+            countryItemLabel: (code) => '${code.flag}  ${code.countryName} (${code.callingCode})',
+            countrySelectedLabel: (code) => '${code.flag} ${code.callingCode}',
+            isLoadingCountries: isLoadingPhoneCodes,
+            countriesError: phoneCodesError,
+            onRetryLoadCountries: onRetryLoadPhoneCodes,
+            sheetTitle: context.l10n.selectCountryTitle,
+            searchHint: context.l10n.searchCountryHint,
+            countryValidator: required,
+            numberValidator: AppValidators.combine([
+              required,
+              AppValidators.digitsOnly(context.l10n.invalidPhoneNumberError),
+            ]),
           ),
         ],
       ),
