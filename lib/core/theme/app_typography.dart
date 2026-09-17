@@ -5,8 +5,7 @@ class AppTypography {
   AppTypography._();
 
   static final String fontFamilyLatin = GoogleFonts.poppins().fontFamily!;
-  static final String fontFamilyArabic =
-      GoogleFonts.ibmPlexSansArabic().fontFamily!;
+  static final String fontFamilyArabic = GoogleFonts.almarai().fontFamily!;
 
   static TextStyle _style({
     required double fontSize,
