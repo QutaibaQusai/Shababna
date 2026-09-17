@@ -55,6 +55,5 @@
   "passwordsDoNotMatchError": "كلمتا المرور غير متطابقتين",
   "invalidPhoneNumberError": "أدخل رقم هاتف صحيح",
 
-  "selectCountryTitle": "اختر الدولة",
   "searchCountryHint": "ابحث عن الدولة أو الرمز"
 }

@@ -63,11 +63,10 @@ class RegisterStepContact extends StatelessWidget {
             selectedCountry: selectedPhoneCode,
             onCountrySelected: onPhoneCodeSelected,
             countryItemLabel: (code) => '${code.flag}  ${code.countryName} (${code.callingCode})',
-            countrySelectedLabel: (code) => '${code.flag} ${code.callingCode}',
+            countrySelectedLabel: (code) => '${code.flag} ',
             isLoadingCountries: isLoadingPhoneCodes,
             countriesError: phoneCodesError,
             onRetryLoadCountries: onRetryLoadPhoneCodes,
-            sheetTitle: context.l10n.selectCountryTitle,
             searchHint: context.l10n.searchCountryHint,
             countryValidator: required,
             numberValidator: AppValidators.combine([

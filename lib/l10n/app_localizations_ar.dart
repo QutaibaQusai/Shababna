@@ -160,8 +160,5 @@ class AppLocalizationsAr extends AppLocalizations {
   String get invalidPhoneNumberError => 'أدخل رقم هاتف صحيح';
 
   @override
-  String get selectCountryTitle => 'اختر الدولة';
-
-  @override
   String get searchCountryHint => 'ابحث عن الدولة أو الرمز';
 }

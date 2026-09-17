@@ -75,6 +75,7 @@ class AppTheme {
       color: AppColors.primaryColor,
       trackColor: AppColors.backgroundLight,
     ),
+    bottomSheetTheme: _buildBottomSheetTheme(backgroundColor: AppColors.backgroundLight),
   );
 
   static ThemeData dark({required String fontFamily}) => ThemeData(
@@ -141,6 +142,7 @@ class AppTheme {
       color: AppColors.primaryColor,
       trackColor: AppColors.surfaceDark,
     ),
+    bottomSheetTheme: _buildBottomSheetTheme(backgroundColor: AppColors.backgroundDark),
   );
 
   static const ColorScheme _lightColorScheme = ColorScheme(
@@ -368,4 +370,16 @@ class AppTheme {
     required Color trackColor,
   }) =>
       ProgressIndicatorThemeData(color: color, circularTrackColor: trackColor);
+
+  static BottomSheetThemeData _buildBottomSheetTheme({required Color backgroundColor}) =>
+      BottomSheetThemeData(
+        backgroundColor: backgroundColor,
+        elevation: AppShadows.medium,
+        showDragHandle: true,
+        dragHandleColor: AppColors.neutralColor.withValues(alpha: 0.4),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.lg)),
+        ),
+      );
 }
+

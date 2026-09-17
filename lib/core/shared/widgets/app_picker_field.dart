@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../extensions/context_extensions.dart';
+import '../../theme/app_radius.dart';
 import '../../theme/app_sizes.dart';
 import '../../theme/app_spacing.dart';
 import 'app_empty_widget.dart';
 import 'app_error_widget.dart';
 import 'app_loader.dart';
+import 'app_search_field.dart';
 import 'app_text_field.dart';
 
 class AppPickerField<T> extends StatefulWidget {
@@ -18,7 +20,6 @@ class AppPickerField<T> extends StatefulWidget {
     required this.onSelected,
     this.selectedItem,
     this.selectedLabel,
-    this.sheetTitle,
     this.searchHint,
     this.prefixIcon,
     this.isLoading = false,
@@ -33,7 +34,6 @@ class AppPickerField<T> extends StatefulWidget {
   final ValueChanged<T> onSelected;
   final T? selectedItem;
   final String Function(T item)? selectedLabel;
-  final String? sheetTitle;
   final String? searchHint;
   final IconData? prefixIcon;
   final bool isLoading;
@@ -58,7 +58,9 @@ class _AppPickerFieldState<T> extends State<AppPickerField<T>> {
   void didUpdateWidget(AppPickerField<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.selectedItem != widget.selectedItem) {
-      _controller.text = _displayText;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _controller.text = _displayText;
+      });
     }
   }
 
@@ -88,7 +90,7 @@ class _AppPickerFieldState<T> extends State<AppPickerField<T>> {
       builder: (sheetContext) => _PickerSheet<T>(
         items: widget.items,
         itemLabel: widget.itemLabel,
-        title: widget.sheetTitle,
+        selectedItem: widget.selectedItem,
         searchHint: widget.searchHint,
         isLoading: widget.isLoading,
         errorMessage: widget.errorMessage,
@@ -107,7 +109,7 @@ class _PickerSheet<T> extends StatefulWidget {
     required this.items,
     required this.itemLabel,
     required this.onSelected,
-    this.title,
+    this.selectedItem,
     this.searchHint,
     this.isLoading = false,
     this.errorMessage,
@@ -117,7 +119,7 @@ class _PickerSheet<T> extends StatefulWidget {
   final List<T> items;
   final String Function(T item) itemLabel;
   final ValueChanged<T> onSelected;
-  final String? title;
+  final T? selectedItem;
   final String? searchHint;
   final bool isLoading;
   final String? errorMessage;
@@ -153,19 +155,16 @@ class _PickerSheetState<T> extends State<_PickerSheet<T>> {
       child: SizedBox(
         height: MediaQuery.sizeOf(context).height * 0.7,
         child: Padding(
-          padding: EdgeInsets.all(AppSpacing.screenMargin),
+          padding: EdgeInsets.only(
+            
+            left: AppSpacing.screenMargin,
+            right: AppSpacing.screenMargin,
+            bottom: AppSpacing.screenMargin,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              if (widget.title != null) ...[
-                Text(widget.title!, style: context.textTheme.titleLarge),
-                SizedBox(height: AppSpacing.sm),
-              ],
-              AppTextField(
-                label: widget.searchHint ?? '',
-                prefixIcon: LucideIcons.search,
-                onChanged: _onSearchChanged,
-              ),
+              AppSearchField(hint: widget.searchHint, onChanged: _onSearchChanged),
               SizedBox(height: AppSpacing.sm),
               Expanded(child: _buildBody()),
             ],
@@ -182,13 +181,40 @@ class _PickerSheetState<T> extends State<_PickerSheet<T>> {
     }
     if (_filteredItems.isEmpty) return const AppEmptyWidget();
 
-    return ListView.builder(
+    return ListView.separated(
       itemCount: _filteredItems.length,
+      separatorBuilder: (context, index) => const Divider(height: 1),
       itemBuilder: (context, index) {
         final item = _filteredItems[index];
-        return ListTile(
-          title: Text(widget.itemLabel(item)),
-          onTap: () => widget.onSelected(item),
+        final isSelected = item == widget.selectedItem;
+        return Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: AppRadius.mdRadius,
+            onTap: () => widget.onSelected(item),
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: AppSpacing.sm, horizontal: AppSpacing.sm),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      widget.itemLabel(item),
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        fontWeight: isSelected ? FontWeight.w700 : FontWeight.w400,
+                        color: isSelected ? context.colorScheme.primary : null,
+                      ),
+                    ),
+                  ),
+                  if (isSelected)
+                    Icon(
+                      Icons.check_circle,
+                      size: AppSizes.iconField,
+                      color: context.colorScheme.primary,
+                    ),
+                ],
+              ),
+            ),
+          ),
         );
       },
     );

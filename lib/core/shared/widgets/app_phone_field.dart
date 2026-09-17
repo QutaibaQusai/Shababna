@@ -18,7 +18,6 @@ class AppPhoneField<T> extends StatelessWidget {
     this.isLoadingCountries = false,
     this.countriesError,
     this.onRetryLoadCountries,
-    this.sheetTitle,
     this.searchHint,
     this.countryValidator,
     this.numberValidator,
@@ -34,7 +33,6 @@ class AppPhoneField<T> extends StatelessWidget {
   final bool isLoadingCountries;
   final String? countriesError;
   final VoidCallback? onRetryLoadCountries;
-  final String? sheetTitle;
   final String? searchHint;
   final FormFieldValidator<String>? countryValidator;
   final FormFieldValidator<String>? numberValidator;
@@ -45,9 +43,9 @@ class AppPhoneField<T> extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          width: 110,
+          width: 100,
           child: AppPickerField<T>(
-            label: label,
+            label: '',
             items: countries,
             itemLabel: countryItemLabel,
             selectedLabel: countrySelectedLabel,
@@ -56,7 +54,6 @@ class AppPhoneField<T> extends StatelessWidget {
             isLoading: isLoadingCountries,
             errorMessage: countriesError,
             onRetry: onRetryLoadCountries,
-            sheetTitle: sheetTitle,
             searchHint: searchHint,
             validator: countryValidator,
           ),

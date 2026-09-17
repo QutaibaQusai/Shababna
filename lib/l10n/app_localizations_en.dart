@@ -158,8 +158,5 @@ class AppLocalizationsEn extends AppLocalizations {
   String get invalidPhoneNumberError => 'Enter a valid phone number';
 
   @override
-  String get selectCountryTitle => 'Select country';
-
-  @override
   String get searchCountryHint => 'Search country or code';
 }

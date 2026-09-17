@@ -380,12 +380,6 @@ abstract class AppLocalizations {
   /// **'Enter a valid phone number'**
   String get invalidPhoneNumberError;
 
-  /// No description provided for @selectCountryTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Select country'**
-  String get selectCountryTitle;
-
   /// No description provided for @searchCountryHint.
   ///
   /// In en, this message translates to:

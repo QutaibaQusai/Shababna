@@ -61,6 +61,5 @@
   "passwordsDoNotMatchError": "Passwords do not match",
   "invalidPhoneNumberError": "Enter a valid phone number",
 
-  "selectCountryTitle": "Select country",
   "searchCountryHint": "Search country or code"
 }
