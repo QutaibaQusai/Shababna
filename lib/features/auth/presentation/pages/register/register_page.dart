@@ -15,6 +15,7 @@ import '../../../domain/repositories/auth_repository.dart';
 import '../../cubit/register/register_cubit.dart';
 import '../../cubit/register/register_state.dart';
 import '../../widgets/register/register_step_contact.dart';
+import '../../widgets/register/register_step_indicator.dart';
 import '../../widgets/register/register_step_name.dart';
 import '../../widgets/register/register_step_password.dart';
 
@@ -146,6 +147,11 @@ class _RegisterViewState extends State<_RegisterView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      RegisterStepIndicator(
+                        currentStep: _currentStep,
+                        stepCount: _stepCount,
+                      ),
+                      SizedBox(height: AppSpacing.sm),
                       Expanded(
                         child: PageView(
                           controller: _pageController,
