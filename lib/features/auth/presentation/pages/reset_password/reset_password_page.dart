@@ -80,7 +80,10 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
           return AppLoadingOverlay(
             isLoading: state.status == FormStatus.submitting,
             child: Scaffold(
-              appBar: AppAppBar(title: context.l10n.resetPasswordTitle),
+              appBar: AppAppBar(
+                title: context.l10n.resetPasswordTitle,
+                onBack: () => context.go(AppRoutes.forgotPassword),
+              ),
               body: SafeArea(
                 child: SingleChildScrollView(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),

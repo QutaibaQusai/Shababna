@@ -105,7 +105,7 @@ class _RegisterViewState extends State<_RegisterView> {
 
   void _goBack() {
     if (_currentStep == 0) {
-      context.pop();
+      context.go(AppRoutes.login);
       return;
     }
     setState(() => _currentStep--);

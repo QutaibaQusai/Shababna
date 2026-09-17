@@ -71,7 +71,7 @@ class _ForgotPasswordViewState extends State<_ForgotPasswordView> {
             child: Scaffold(
               appBar: AppAppBar(
                 title: context.l10n.forgotPasswordTitle,
-                onBack: () => context.pop(),
+                onBack: () => context.go(AppRoutes.login),
               ),
               body: SafeArea(
                 child: SingleChildScrollView(
