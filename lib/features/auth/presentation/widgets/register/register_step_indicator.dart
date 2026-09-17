@@ -6,6 +6,9 @@ import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 
+const _kStepTransitionDuration = Duration(milliseconds: 500);
+const _kStepTransitionCurve = Curves.easeInOut;
+
 class RegisterStepIndicator extends StatelessWidget {
   const RegisterStepIndicator({
     super.key,
@@ -22,16 +25,7 @@ class RegisterStepIndicator extends StatelessWidget {
       children: [
         for (var i = 0; i < stepCount; i++) ...[
           _StepCircle(state: _stateFor(i), stepNumber: i + 1),
-          if (i != stepCount - 1)
-            Expanded(
-              child: Container(
-                height: 2,
-                margin: EdgeInsetsDirectional.symmetric(horizontal: AppSpacing.xs),
-                color: i < currentStep
-                    ? AppColors.primaryColor
-                    : context.colorScheme.outlineVariant,
-              ),
-            ),
+          if (i != stepCount - 1) Expanded(child: _StepConnector(filled: i < currentStep)),
         ],
       ],
     );
@@ -46,6 +40,33 @@ class RegisterStepIndicator extends StatelessWidget {
 
 enum _StepState { done, active, upcoming }
 
+class _StepConnector extends StatelessWidget {
+  const _StepConnector({required this.filled});
+
+  final bool filled;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 2,
+      margin: EdgeInsetsDirectional.symmetric(horizontal: AppSpacing.xs),
+      child: Stack(
+        alignment: AlignmentDirectional.centerStart,
+        children: [
+          Container(color: context.colorScheme.outlineVariant),
+          AnimatedFractionallySizedBox(
+            duration: _kStepTransitionDuration,
+            curve: _kStepTransitionCurve,
+            alignment: AlignmentDirectional.centerStart,
+            widthFactor: filled ? 1 : 0,
+            child: Container(color: AppColors.primaryColor),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _StepCircle extends StatelessWidget {
   const _StepCircle({required this.state, required this.stepNumber});
 
@@ -56,7 +77,9 @@ class _StepCircle extends StatelessWidget {
   Widget build(BuildContext context) {
     final isFilled = state == _StepState.done || state == _StepState.active;
 
-    return Container(
+    return AnimatedContainer(
+      duration: _kStepTransitionDuration,
+      curve: _kStepTransitionCurve,
       width: AppSizes.iconLg,
       height: AppSizes.iconLg,
       decoration: BoxDecoration(
@@ -67,17 +90,26 @@ class _StepCircle extends StatelessWidget {
             : Border.all(color: context.colorScheme.outlineVariant, width: 1.5),
       ),
       child: Center(
-        child: state == _StepState.done
-            ? Icon(LucideIcons.check, size: AppSizes.iconSm, color: context.colorScheme.onPrimary)
-            : Text(
-                '$stepNumber',
-                style: context.textTheme.labelMedium?.copyWith(
-                  color: state == _StepState.active
-                      ? context.colorScheme.onPrimary
-                      : context.colorScheme.onSurfaceVariant,
-                  fontWeight: FontWeight.w600,
+        child: AnimatedSwitcher(
+          duration: _kStepTransitionDuration,
+          child: state == _StepState.done
+              ? Icon(
+                  LucideIcons.check,
+                  key: const ValueKey('done'),
+                  size: AppSizes.iconSm,
+                  color: context.colorScheme.onPrimary,
+                )
+              : Text(
+                  '$stepNumber',
+                  key: ValueKey(stepNumber),
+                  style: context.textTheme.labelMedium?.copyWith(
+                    color: state == _StepState.active
+                        ? context.colorScheme.onPrimary
+                        : context.colorScheme.onSurfaceVariant,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
+        ),
       ),
     );
   }
