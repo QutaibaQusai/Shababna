@@ -74,37 +74,47 @@ class _ForgotPasswordViewState extends State<_ForgotPasswordView> {
                 onBack: () => context.go(AppRoutes.login),
               ),
               body: SafeArea(
-                child: SingleChildScrollView(
+                child: Padding(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(
-                          context.l10n.forgotPasswordSubtitle,
-                          style: context.textTheme.bodyMedium,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Text(
+                                  context.l10n.forgotPasswordSubtitle,
+                                  style: context.textTheme.bodyMedium,
+                                ),
+                                SizedBox(height: AppSpacing.md),
+                                AppTextField(
+                                  label: context.l10n.emailLabel,
+                                  hint: context.l10n.emailHint,
+                                  controller: _emailController,
+                                  keyboardType: TextInputType.emailAddress,
+                                  prefixIcon: LucideIcons.mail,
+                                  textInputAction: TextInputAction.done,
+                                  autofocus: true,
+                                  validator: AppValidators.combine([
+                                    AppValidators.required(context.l10n.fieldRequiredError),
+                                    AppValidators.email(context.l10n.invalidEmailError),
+                                  ]),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                        SizedBox(height: AppSpacing.md),
-                        AppTextField(
-                          label: context.l10n.emailLabel,
-                          hint: context.l10n.emailHint,
-                          controller: _emailController,
-                          keyboardType: TextInputType.emailAddress,
-                          prefixIcon: LucideIcons.mail,
-                          textInputAction: TextInputAction.done,
-                          validator: AppValidators.combine([
-                            AppValidators.required(context.l10n.fieldRequiredError),
-                            AppValidators.email(context.l10n.invalidEmailError),
-                          ]),
-                        ),
-                        SizedBox(height: AppSpacing.sm),
-                        AppButton.primary(
-                          label: context.l10n.sendCodeButton,
-                          onPressed: _submit,
-                        ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: AppSpacing.sm),
+                      AppButton.primary(
+                        label: context.l10n.sendCodeButton,
+                        onPressed: _submit,
+                      ),
+                    ],
                   ),
                 ),
               ),

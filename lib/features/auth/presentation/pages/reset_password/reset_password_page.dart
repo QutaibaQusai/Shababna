@@ -85,60 +85,70 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                 onBack: () => context.go(AppRoutes.forgotPassword),
               ),
               body: SafeArea(
-                child: SingleChildScrollView(
+                child: Padding(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(
-                          context.l10n.resetPasswordSubtitle(widget.email),
-                          style: context.textTheme.bodyMedium,
-                        ),
-                        SizedBox(height: AppSpacing.md),
-                        AppTextField(
-                          label: context.l10n.verificationCodeLabel,
-                          controller: _codeController,
-                          keyboardType: TextInputType.number,
-                          prefixIcon: LucideIcons.shieldCheck,
-                          textInputAction: TextInputAction.next,
-                          validator: AppValidators.required(context.l10n.fieldRequiredError),
-                        ),
-                        SizedBox(height: AppSpacing.sm),
-                        AppTextField(
-                          label: context.l10n.newPasswordLabel,
-                          controller: _newPasswordController,
-                          obscureText: true,
-                          prefixIcon: LucideIcons.lock,
-                          textInputAction: TextInputAction.next,
-                          validator: AppValidators.combine([
-                            AppValidators.required(context.l10n.fieldRequiredError),
-                            AppValidators.minLength(8, context.l10n.passwordTooShortError),
-                          ]),
-                        ),
-                        SizedBox(height: AppSpacing.sm),
-                        AppTextField(
-                          label: context.l10n.confirmPasswordLabel,
-                          controller: _confirmPasswordController,
-                          obscureText: true,
-                          prefixIcon: LucideIcons.lock,
-                          textInputAction: TextInputAction.done,
-                          validator: AppValidators.combine([
-                            AppValidators.required(context.l10n.fieldRequiredError),
-                            AppValidators.match(
-                              () => _newPasswordController.text,
-                              context.l10n.passwordsDoNotMatchError,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Text(
+                                  context.l10n.resetPasswordSubtitle(widget.email),
+                                  style: context.textTheme.bodyMedium,
+                                ),
+                                SizedBox(height: AppSpacing.md),
+                                AppTextField(
+                                  label: context.l10n.verificationCodeLabel,
+                                  controller: _codeController,
+                                  keyboardType: TextInputType.number,
+                                  prefixIcon: LucideIcons.shieldCheck,
+                                  textInputAction: TextInputAction.next,
+                                  autofocus: true,
+                                  validator: AppValidators.required(context.l10n.fieldRequiredError),
+                                ),
+                                SizedBox(height: AppSpacing.sm),
+                                AppTextField(
+                                  label: context.l10n.newPasswordLabel,
+                                  controller: _newPasswordController,
+                                  obscureText: true,
+                                  prefixIcon: LucideIcons.lock,
+                                  textInputAction: TextInputAction.next,
+                                  validator: AppValidators.combine([
+                                    AppValidators.required(context.l10n.fieldRequiredError),
+                                    AppValidators.minLength(8, context.l10n.passwordTooShortError),
+                                  ]),
+                                ),
+                                SizedBox(height: AppSpacing.sm),
+                                AppTextField(
+                                  label: context.l10n.confirmPasswordLabel,
+                                  controller: _confirmPasswordController,
+                                  obscureText: true,
+                                  prefixIcon: LucideIcons.lock,
+                                  textInputAction: TextInputAction.done,
+                                  validator: AppValidators.combine([
+                                    AppValidators.required(context.l10n.fieldRequiredError),
+                                    AppValidators.match(
+                                      () => _newPasswordController.text,
+                                      context.l10n.passwordsDoNotMatchError,
+                                    ),
+                                  ]),
+                                ),
+                              ],
                             ),
-                          ]),
+                          ),
                         ),
-                        SizedBox(height: AppSpacing.sm),
-                        AppButton.primary(
-                          label: context.l10n.resetPasswordButton,
-                          onPressed: _submit,
-                        ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: AppSpacing.sm),
+                      AppButton.primary(
+                        label: context.l10n.resetPasswordButton,
+                        onPressed: _submit,
+                      ),
+                    ],
                   ),
                 ),
               ),

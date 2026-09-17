@@ -19,6 +19,7 @@ class AppTextField extends StatefulWidget {
     this.readOnly = false,
     this.onTap,
     this.suffix,
+    this.autofocus = false,
   });
 
   final String label;
@@ -33,6 +34,7 @@ class AppTextField extends StatefulWidget {
   final bool readOnly;
   final VoidCallback? onTap;
   final Widget? suffix;
+  final bool autofocus;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -53,6 +55,7 @@ class _AppTextFieldState extends State<AppTextField> {
       maxLines: 1,
       readOnly: widget.readOnly,
       onTap: widget.onTap,
+      autofocus: widget.autofocus,
       style: context.textTheme.bodyLarge,
       decoration: InputDecoration(
         labelText: widget.label,
