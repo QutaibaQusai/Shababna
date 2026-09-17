@@ -55,6 +55,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stepNameTitle => 'Your name';
 
   @override
+  String get stepNameSubtitle => 'Tell us your full name in Arabic and English';
+
+  @override
   String get fullNameArLabel => 'Full name (Arabic)';
 
   @override
@@ -64,10 +67,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stepContactTitle => 'Contact details';
 
   @override
+  String get stepContactSubtitle =>
+      'We\'ll use this to verify your account and keep you updated';
+
+  @override
   String get phoneNumberLabel => 'Phone number';
 
   @override
   String get stepPasswordTitle => 'Set a password';
+
+  @override
+  String get stepPasswordSubtitle =>
+      'Choose a strong password to secure your account';
 
   @override
   String get confirmPasswordLabel => 'Confirm password';

@@ -42,7 +42,10 @@ class RegisterStepContact extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppPageHeader(title: context.l10n.stepContactTitle),
+          AppPageHeader(
+            title: context.l10n.stepContactTitle,
+            subtitle: context.l10n.stepContactSubtitle,
+          ),
           SizedBox(height: AppSpacing.md),
           AppTextField(
             label: context.l10n.emailLabel,

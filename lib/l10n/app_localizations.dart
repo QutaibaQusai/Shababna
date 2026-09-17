@@ -188,6 +188,12 @@ abstract class AppLocalizations {
   /// **'Your name'**
   String get stepNameTitle;
 
+  /// No description provided for @stepNameSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us your full name in Arabic and English'**
+  String get stepNameSubtitle;
+
   /// No description provided for @fullNameArLabel.
   ///
   /// In en, this message translates to:
@@ -206,6 +212,12 @@ abstract class AppLocalizations {
   /// **'Contact details'**
   String get stepContactTitle;
 
+  /// No description provided for @stepContactSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll use this to verify your account and keep you updated'**
+  String get stepContactSubtitle;
+
   /// No description provided for @phoneNumberLabel.
   ///
   /// In en, this message translates to:
@@ -217,6 +229,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Set a password'**
   String get stepPasswordTitle;
+
+  /// No description provided for @stepPasswordSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a strong password to secure your account'**
+  String get stepPasswordSubtitle;
 
   /// No description provided for @confirmPasswordLabel.
   ///

@@ -26,7 +26,10 @@ class RegisterStepPassword extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppPageHeader(title: context.l10n.stepPasswordTitle),
+          AppPageHeader(
+            title: context.l10n.stepPasswordTitle,
+            subtitle: context.l10n.stepPasswordSubtitle,
+          ),
           SizedBox(height: AppSpacing.md),
           AppTextField(
             label: context.l10n.passwordLabel,
