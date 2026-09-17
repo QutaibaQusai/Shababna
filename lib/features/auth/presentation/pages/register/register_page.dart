@@ -184,7 +184,6 @@ class _RegisterViewState extends State<_RegisterView> {
                             : context.l10n.nextButton,
                         onPressed: _goNext,
                       ),
-                      SizedBox(height: AppSpacing.sm),
                       Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
