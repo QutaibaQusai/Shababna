@@ -116,7 +116,10 @@ class AppLocalizationsAr extends AppLocalizations {
       'تم إنشاء الحساب. يمكنك تسجيل الدخول الآن.';
 
   @override
-  String get forgotPasswordTitle => 'نسيت كلمة المرور';
+  String get forgotPasswordAppBarTitle => 'استعادة الحساب';
+
+  @override
+  String get forgotPasswordTitle => 'نسيت كلمة المرور؟';
 
   @override
   String get forgotPasswordSubtitle =>
@@ -126,7 +129,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get sendCodeButton => 'إرسال الرمز';
 
   @override
-  String get resetPasswordTitle => 'إعادة تعيين كلمة المرور';
+  String get resetPasswordAppBarTitle => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get resetPasswordTitle => 'إنشاء كلمة مرور جديدة';
 
   @override
   String resetPasswordSubtitle(String email) {

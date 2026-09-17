@@ -39,11 +39,13 @@
   "emailVerifiedMessage": "تم تأكيد البريد الإلكتروني. يمكنك تسجيل الدخول الآن.",
   "registrationCompleteMessage": "تم إنشاء الحساب. يمكنك تسجيل الدخول الآن.",
 
-  "forgotPasswordTitle": "نسيت كلمة المرور",
+  "forgotPasswordAppBarTitle": "استعادة الحساب",
+  "forgotPasswordTitle": "نسيت كلمة المرور؟",
   "forgotPasswordSubtitle": "أدخل بريدك الإلكتروني وسنرسل لك رمزاً لإعادة تعيين كلمة المرور",
   "sendCodeButton": "إرسال الرمز",
 
-  "resetPasswordTitle": "إعادة تعيين كلمة المرور",
+  "resetPasswordAppBarTitle": "إعادة تعيين كلمة المرور",
+  "resetPasswordTitle": "إنشاء كلمة مرور جديدة",
   "resetPasswordSubtitle": "أدخل الرمز المُرسل إلى {email} واختر كلمة مرور جديدة",
   "newPasswordLabel": "كلمة المرور الجديدة",
   "resetPasswordButton": "إعادة تعيين كلمة المرور",

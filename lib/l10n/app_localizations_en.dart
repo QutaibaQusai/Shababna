@@ -115,7 +115,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Account created. You can now log in.';
 
   @override
-  String get forgotPasswordTitle => 'Forgot password';
+  String get forgotPasswordAppBarTitle => 'Account recovery';
+
+  @override
+  String get forgotPasswordTitle => 'Forgot your password?';
 
   @override
   String get forgotPasswordSubtitle =>
@@ -125,7 +128,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sendCodeButton => 'Send code';
 
   @override
-  String get resetPasswordTitle => 'Reset password';
+  String get resetPasswordAppBarTitle => 'Reset password';
+
+  @override
+  String get resetPasswordTitle => 'Create a new password';
 
   @override
   String resetPasswordSubtitle(String email) {

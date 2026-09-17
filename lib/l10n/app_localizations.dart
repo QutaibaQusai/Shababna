@@ -302,10 +302,16 @@ abstract class AppLocalizations {
   /// **'Account created. You can now log in.'**
   String get registrationCompleteMessage;
 
+  /// No description provided for @forgotPasswordAppBarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Account recovery'**
+  String get forgotPasswordAppBarTitle;
+
   /// No description provided for @forgotPasswordTitle.
   ///
   /// In en, this message translates to:
-  /// **'Forgot password'**
+  /// **'Forgot your password?'**
   String get forgotPasswordTitle;
 
   /// No description provided for @forgotPasswordSubtitle.
@@ -320,10 +326,16 @@ abstract class AppLocalizations {
   /// **'Send code'**
   String get sendCodeButton;
 
-  /// No description provided for @resetPasswordTitle.
+  /// No description provided for @resetPasswordAppBarTitle.
   ///
   /// In en, this message translates to:
   /// **'Reset password'**
+  String get resetPasswordAppBarTitle;
+
+  /// No description provided for @resetPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a new password'**
   String get resetPasswordTitle;
 
   /// No description provided for @resetPasswordSubtitle.

@@ -11,6 +11,7 @@ import '../../../../../core/validators/app_validators.dart';
 import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_button.dart';
 import '../../../../../core/shared/widgets/app_loading_overlay.dart';
+import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/shared/widgets/app_toast.dart';
 import '../../../../../core/theme/app_spacing.dart';
@@ -81,7 +82,7 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
             isLoading: state.status == FormStatus.submitting,
             child: Scaffold(
               appBar: AppAppBar(
-                title: context.l10n.resetPasswordTitle,
+                title: context.l10n.resetPasswordAppBarTitle,
                 onBack: () => context.go(AppRoutes.forgotPassword),
               ),
               body: SafeArea(
@@ -97,9 +98,9 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                Text(
-                                  context.l10n.resetPasswordSubtitle(widget.email),
-                                  style: context.textTheme.bodyMedium,
+                                AppPageHeader(
+                                  title: context.l10n.resetPasswordTitle,
+                                  subtitle: context.l10n.resetPasswordSubtitle(widget.email),
                                 ),
                                 SizedBox(height: AppSpacing.md),
                                 AppTextField(

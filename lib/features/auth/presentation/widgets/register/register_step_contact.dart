@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/shared/widgets/app_phone_field.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/theme/app_spacing.dart';
@@ -41,7 +42,7 @@ class RegisterStepContact extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(context.l10n.stepContactTitle, style: context.textTheme.headlineMedium),
+          AppPageHeader(title: context.l10n.stepContactTitle),
           SizedBox(height: AppSpacing.md),
           AppTextField(
             label: context.l10n.emailLabel,

@@ -42,11 +42,13 @@
   "emailVerifiedMessage": "Email verified. You can now log in.",
   "registrationCompleteMessage": "Account created. You can now log in.",
 
-  "forgotPasswordTitle": "Forgot password",
+  "forgotPasswordAppBarTitle": "Account recovery",
+  "forgotPasswordTitle": "Forgot your password?",
   "forgotPasswordSubtitle": "Enter your email and we'll send you a code to reset your password",
   "sendCodeButton": "Send code",
 
-  "resetPasswordTitle": "Reset password",
+  "resetPasswordAppBarTitle": "Reset password",
+  "resetPasswordTitle": "Create a new password",
   "resetPasswordSubtitle": "Enter the code sent to {email} and choose a new password",
   "@resetPasswordSubtitle": {
     "placeholders": { "email": { "type": "String" } }
