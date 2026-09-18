@@ -392,12 +392,6 @@ abstract class AppLocalizations {
   /// **'Enter a valid email address'**
   String get invalidEmailError;
 
-  /// No description provided for @passwordTooShortError.
-  ///
-  /// In en, this message translates to:
-  /// **'Password must be at least 8 characters'**
-  String get passwordTooShortError;
-
   /// No description provided for @passwordsDoNotMatchError.
   ///
   /// In en, this message translates to:

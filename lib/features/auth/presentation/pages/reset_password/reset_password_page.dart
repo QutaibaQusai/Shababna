@@ -119,10 +119,7 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                                   obscureText: true,
                                   prefixIcon: LucideIcons.lock,
                                   textInputAction: TextInputAction.next,
-                                  validator: AppValidators.combine([
-                                    AppValidators.required(context.l10n.fieldRequiredError),
-                                    AppValidators.minLength(8, context.l10n.passwordTooShortError),
-                                  ]),
+                                  validator: AppValidators.required(context.l10n.fieldRequiredError),
                                 ),
                                 SizedBox(height: AppSpacing.sm),
                                 AppTextField(

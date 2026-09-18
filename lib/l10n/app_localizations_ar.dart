@@ -166,10 +166,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get invalidEmailError => 'أدخل بريداً إلكترونياً صحيحاً';
 
   @override
-  String get passwordTooShortError =>
-      'يجب أن تتكون كلمة المرور من 8 أحرف على الأقل';
-
-  @override
   String get passwordsDoNotMatchError => 'كلمتا المرور غير متطابقتين';
 
   @override

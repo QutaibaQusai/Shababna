@@ -62,7 +62,6 @@
 
   "fieldRequiredError": "This field is required",
   "invalidEmailError": "Enter a valid email address",
-  "passwordTooShortError": "Password must be at least 8 characters",
   "passwordsDoNotMatchError": "Passwords do not match",
   "invalidPhoneNumberError": "Enter a valid phone number",
 

@@ -13,11 +13,6 @@ class AppValidators {
         (value == null || !pattern.hasMatch(value)) ? message : null;
   }
 
-  static FormFieldValidator<String> minLength(int length, String message) {
-    return (value) =>
-        (value == null || value.length < length) ? message : null;
-  }
-
   static FormFieldValidator<String> digitsOnly(String message) {
     final pattern = RegExp(r'^\d{6,12}$');
     return (value) => (value == null || !pattern.hasMatch(value)) ? message : null;

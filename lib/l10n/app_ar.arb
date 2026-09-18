@@ -56,7 +56,6 @@
 
   "fieldRequiredError": "هذا الحقل مطلوب",
   "invalidEmailError": "أدخل بريداً إلكترونياً صحيحاً",
-  "passwordTooShortError": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
   "passwordsDoNotMatchError": "كلمتا المرور غير متطابقتين",
   "invalidPhoneNumberError": "أدخل رقم هاتف صحيح",
 
