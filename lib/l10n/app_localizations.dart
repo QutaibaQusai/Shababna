@@ -284,12 +284,6 @@ abstract class AppLocalizations {
   /// **'Enter the code sent to {email}'**
   String verifyEmailSubtitle(String email);
 
-  /// No description provided for @verificationCodeLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Verification code'**
-  String get verificationCodeLabel;
-
   /// No description provided for @verifyButton.
   ///
   /// In en, this message translates to:

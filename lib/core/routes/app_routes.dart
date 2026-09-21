@@ -10,9 +10,6 @@ class AppRoutes {
   static const String register = '/register';
   static const String registerName = 'register';
 
-  static const String verifyEmail = '/verify-email';
-  static const String verifyEmailName = 'verify-email';
-
   static const String forgotPassword = '/forgot-password';
   static const String forgotPasswordName = 'forgot-password';
 
@@ -25,7 +22,6 @@ class AppRoutes {
   static const Set<String> publicRoutes = {
     login,
     register,
-    verifyEmail,
     forgotPassword,
     verifyResetCode,
     resetPassword,

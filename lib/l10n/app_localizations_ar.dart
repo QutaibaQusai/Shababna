@@ -106,9 +106,6 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get verificationCodeLabel => 'رمز التحقق';
-
-  @override
   String get verifyButton => 'تأكيد';
 
   @override

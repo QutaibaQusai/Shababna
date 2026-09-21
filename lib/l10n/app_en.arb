@@ -38,7 +38,6 @@
   "@verifyEmailSubtitle": {
     "placeholders": { "email": { "type": "String" } }
   },
-  "verificationCodeLabel": "Verification code",
   "verifyButton": "Verify",
   "resendCodePrompt": "Didn't receive the code?",
   "resendCodeButton": "Resend code",

@@ -6,7 +6,6 @@ import '../../features/auth/presentation/pages/login/login_page.dart';
 import '../../features/auth/presentation/pages/register/register_page.dart';
 import '../../features/auth/presentation/pages/reset_password/reset_password_args.dart';
 import '../../features/auth/presentation/pages/reset_password/reset_password_page.dart';
-import '../../features/auth/presentation/pages/verify_email/verify_email_page.dart';
 import '../../features/auth/presentation/pages/verify_reset_code/verify_reset_code_page.dart';
 import '../extensions/context_extensions.dart';
 import '../session/auth_session_cubit.dart';
@@ -42,12 +41,6 @@ class AppRouter {
           path: AppRoutes.register,
           name: AppRoutes.registerName,
           builder: (context, state) => const RegisterPage(),
-        ),
-        GoRoute(
-          path: AppRoutes.verifyEmail,
-          name: AppRoutes.verifyEmailName,
-          builder: (context, state) =>
-              VerifyEmailPage(email: state.extra as String? ?? ''),
         ),
         GoRoute(
           path: AppRoutes.forgotPassword,

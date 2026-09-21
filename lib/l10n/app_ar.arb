@@ -35,7 +35,6 @@
 
   "verifyEmailTitle": "تأكيد البريد الإلكتروني",
   "verifyEmailSubtitle": "أدخل الرمز المُرسل إلى {email}",
-  "verificationCodeLabel": "رمز التحقق",
   "verifyButton": "تأكيد",
   "resendCodePrompt": "لم يصلك الرمز؟",
   "resendCodeButton": "إعادة إرسال الرمز",

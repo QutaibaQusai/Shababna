@@ -107,9 +107,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get verificationCodeLabel => 'Verification code';
-
-  @override
   String get verifyButton => 'Verify';
 
   @override
