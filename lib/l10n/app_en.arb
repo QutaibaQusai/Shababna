@@ -50,6 +50,10 @@
   "forgotPasswordSubtitle": "Enter your email and we'll send you a code to reset your password",
   "sendCodeButton": "Send code",
 
+  "invalidCodeError": "Enter the {length}-digit code",
+  "@invalidCodeError": {
+    "placeholders": { "length": { "type": "int" } }
+  },
   "verifyResetCodeTitle": "Check your email",
   "verifyResetCodeSubtitle": "Enter the code we sent to {email}",
   "@verifyResetCodeSubtitle": {

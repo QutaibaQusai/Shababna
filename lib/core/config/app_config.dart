@@ -9,6 +9,8 @@ class AppConfig {
 
   static const String baseUrl = 'https://rhas.hitechjo.com';
 
+  static const int otpLength = 6;
+
   static bool get isProduction => !kDebugMode;
   static bool get isDevelopment => kDebugMode;
 }

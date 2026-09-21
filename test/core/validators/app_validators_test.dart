@@ -33,6 +33,21 @@ void main() {
     });
   });
 
+  group('exactLength', () {
+    final validate = AppValidators.exactLength(6, 'invalid code');
+
+    test('accepts a value of exactly the required length', () {
+      expect(validate('482913'), isNull);
+    });
+
+    test('rejects shorter, longer, empty and null values', () {
+      expect(validate('48291'), 'invalid code');
+      expect(validate('4829130'), 'invalid code');
+      expect(validate(''), 'invalid code');
+      expect(validate(null), 'invalid code');
+    });
+  });
+
   group('match', () {
     test('compares against the current value of the other field', () {
       var other = 'secret';

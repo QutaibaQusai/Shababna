@@ -344,6 +344,12 @@ abstract class AppLocalizations {
   /// **'Send code'**
   String get sendCodeButton;
 
+  /// No description provided for @invalidCodeError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the {length}-digit code'**
+  String invalidCodeError(int length);
+
   /// No description provided for @verifyResetCodeTitle.
   ///
   /// In en, this message translates to:

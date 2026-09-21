@@ -18,6 +18,10 @@ class AppValidators {
         (value == null || !pattern.hasMatch(value)) ? message : null;
   }
 
+  static FormFieldValidator<String> exactLength(int length, String message) {
+    return (value) => (value?.length ?? 0) == length ? null : message;
+  }
+
   static FormFieldValidator<String> nationalNumber({
     required String invalidMessage,
     required String Function(int length) lengthMessage,

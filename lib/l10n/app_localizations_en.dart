@@ -139,6 +139,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sendCodeButton => 'Send code';
 
   @override
+  String invalidCodeError(int length) {
+    return 'Enter the $length-digit code';
+  }
+
+  @override
   String get verifyResetCodeTitle => 'Check your email';
 
   @override

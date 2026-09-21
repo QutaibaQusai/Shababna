@@ -47,6 +47,7 @@
   "forgotPasswordSubtitle": "أدخل بريدك الإلكتروني وسنرسل لك رمزاً لإعادة تعيين كلمة المرور",
   "sendCodeButton": "إرسال الرمز",
 
+  "invalidCodeError": "أدخل الرمز المكوّن من {length} أرقام",
   "verifyResetCodeTitle": "تحقق من بريدك الإلكتروني",
   "verifyResetCodeSubtitle": "أدخل الرمز الذي أرسلناه إلى {email}",
 

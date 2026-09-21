@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 
+import '../../../../../core/config/app_config.dart';
 import '../../../../../core/di/service_locator.dart';
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_button.dart';
+import '../../../../../core/shared/widgets/app_cooldown_timer.dart';
 import '../../../../../core/shared/widgets/app_loading_overlay.dart';
+import '../../../../../core/shared/widgets/app_otp_field.dart';
 import '../../../../../core/shared/widgets/app_page_header.dart';
-import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/shared/widgets/app_toast.dart';
 import '../../../../../core/state/form_status.dart';
 import '../../../../../core/theme/app_spacing.dart';
@@ -111,31 +112,24 @@ class _VerifyResetCodeViewState extends State<_VerifyResetCodeView> {
                                   subtitle: context.l10n.verifyResetCodeSubtitle(widget.email),
                                 ),
                                 SizedBox(height: AppSpacing.md),
-                                AppTextField(
-                                  label: context.l10n.verificationCodeLabel,
+                                AppOtpField(
                                   controller: _codeController,
-                                  keyboardType: TextInputType.number,
-                                  prefixIcon: LucideIcons.shieldCheck,
-                                  textInputAction: TextInputAction.done,
                                   autofocus: true,
-                                  validator: AppValidators.required(
-                                    context.l10n.fieldRequiredError,
+                                  onCompleted: (_) => _submit(),
+                                  validator: AppValidators.exactLength(
+                                    AppConfig.otpLength,
+                                    context.l10n.invalidCodeError(AppConfig.otpLength),
                                   ),
                                 ),
-                                SizedBox(height: AppSpacing.sm),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(context.l10n.resendCodePrompt),
-                                    AppButton.text(
-                                      label: context.l10n.resendCodeButton,
-                                      onPressed: state.isResending
-                                          ? null
-                                          : () => context
-                                              .read<VerifyResetCodeCubit>()
-                                              .resend(email: widget.email),
-                                    ),
-                                  ],
+                                SizedBox(height: AppSpacing.md),
+                                Center(child: Text(context.l10n.resendCodePrompt)),
+                                Center(
+                                  child: AppCooldownTimer(
+                                    label: context.l10n.resendCodeButton,
+                                    onPressed: () => context
+                                        .read<VerifyResetCodeCubit>()
+                                        .resend(email: widget.email),
+                                  ),
                                 ),
                               ],
                             ),

@@ -11,6 +11,8 @@ class AppSizes {
   static double get toastHeight => 48.h;
   static double get iconButtonSize => 40.r;
   static double get loadingIndicatorSize => 72.r;
+  static double get otpBoxSize => 52.r;
+  static double get cooldownTimerSize => 48.r;
 
   static double get iconSm => 16.r;
   static double get iconField => 20.r;

@@ -7,7 +7,6 @@ class VerifyResetCodeState extends Equatable {
     this.status = FormStatus.initial,
     this.errorMessage,
     this.resetToken,
-    this.isResending = false,
     this.resendMessage,
     this.resendFailed = false,
   });
@@ -15,7 +14,6 @@ class VerifyResetCodeState extends Equatable {
   final FormStatus status;
   final String? errorMessage;
   final String? resetToken;
-  final bool isResending;
   final String? resendMessage;
   final bool resendFailed;
 
@@ -23,7 +21,6 @@ class VerifyResetCodeState extends Equatable {
     FormStatus? status,
     String? errorMessage,
     String? resetToken,
-    bool? isResending,
     String? resendMessage,
     bool? resendFailed,
   }) {
@@ -31,7 +28,6 @@ class VerifyResetCodeState extends Equatable {
       status: status ?? this.status,
       errorMessage: errorMessage,
       resetToken: resetToken ?? this.resetToken,
-      isResending: isResending ?? this.isResending,
       resendMessage: resendMessage,
       resendFailed: resendFailed ?? this.resendFailed,
     );
@@ -42,7 +38,6 @@ class VerifyResetCodeState extends Equatable {
         status,
         errorMessage,
         resetToken,
-        isResending,
         resendMessage,
         resendFailed,
       ];

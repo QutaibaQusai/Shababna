@@ -95,7 +95,7 @@ void main() {
 
   group('resend', () {
     blocTest<VerifyResetCodeCubit, VerifyResetCodeState>(
-      'emits resending then the success message',
+      'clears any old message then emits the success message',
       build: () {
         when(() => repository.forgotPassword(email: any(named: 'email')))
             .thenAnswer((_) async => const Right('Code sent'));
@@ -103,7 +103,7 @@ void main() {
       },
       act: (cubit) => cubit.resend(email: 'user@example.com'),
       expect: () => [
-        const VerifyResetCodeState(isResending: true),
+        const VerifyResetCodeState(),
         const VerifyResetCodeState(resendMessage: 'Code sent'),
       ],
     );
@@ -117,11 +117,30 @@ void main() {
       },
       act: (cubit) => cubit.resend(email: 'user@example.com'),
       expect: () => [
-        const VerifyResetCodeState(isResending: true),
+        const VerifyResetCodeState(),
         const VerifyResetCodeState(
           resendMessage: 'Too many requests',
           resendFailed: true,
         ),
+      ],
+    );
+
+    blocTest<VerifyResetCodeCubit, VerifyResetCodeState>(
+      'clears the previous message first so an identical message is emitted again',
+      build: () {
+        when(() => repository.forgotPassword(email: any(named: 'email')))
+            .thenAnswer((_) async => const Right('Code sent'));
+        return VerifyResetCodeCubit(repository);
+      },
+      act: (cubit) async {
+        await cubit.resend(email: 'user@example.com');
+        await cubit.resend(email: 'user@example.com');
+      },
+      expect: () => [
+        const VerifyResetCodeState(),
+        const VerifyResetCodeState(resendMessage: 'Code sent'),
+        const VerifyResetCodeState(),
+        const VerifyResetCodeState(resendMessage: 'Code sent'),
       ],
     );
   });

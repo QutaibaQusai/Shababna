@@ -25,21 +25,15 @@ class VerifyResetCodeCubit extends Cubit<VerifyResetCodeState> {
   }
 
   Future<void> resend({required String email}) async {
-    emit(state.copyWith(isResending: true, resendMessage: null, resendFailed: false));
+    emit(state.copyWith(resendMessage: null, resendFailed: false));
 
     final result = await _repository.forgotPassword(email: email);
 
     result.fold(
       (failure) => emit(
-        state.copyWith(
-          isResending: false,
-          resendMessage: failure.displayMessage,
-          resendFailed: true,
-        ),
+        state.copyWith(resendMessage: failure.displayMessage, resendFailed: true),
       ),
-      (message) => emit(
-        state.copyWith(isResending: false, resendMessage: message, resendFailed: false),
-      ),
+      (message) => emit(state.copyWith(resendMessage: message, resendFailed: false)),
     );
   }
 }

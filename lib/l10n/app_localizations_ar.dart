@@ -139,6 +139,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get sendCodeButton => 'إرسال الرمز';
 
   @override
+  String invalidCodeError(int length) {
+    return 'أدخل الرمز المكوّن من $length أرقام';
+  }
+
+  @override
   String get verifyResetCodeTitle => 'تحقق من بريدك الإلكتروني';
 
   @override
