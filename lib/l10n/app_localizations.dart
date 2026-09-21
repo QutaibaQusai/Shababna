@@ -122,6 +122,48 @@ abstract class AppLocalizations {
   /// **'No items found'**
   String get noItemsFound;
 
+  /// No description provided for @navHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get navHome;
+
+  /// No description provided for @navNews.
+  ///
+  /// In en, this message translates to:
+  /// **'News'**
+  String get navNews;
+
+  /// No description provided for @navEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Events'**
+  String get navEvents;
+
+  /// No description provided for @navProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get navProfile;
+
+  /// No description provided for @actionSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get actionSearch;
+
+  /// No description provided for @actionNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get actionNotifications;
+
+  /// No description provided for @comingSoonMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming soon'**
+  String get comingSoonMessage;
+
   /// No description provided for @loginTitle.
   ///
   /// In en, this message translates to:

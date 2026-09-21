@@ -10,34 +10,42 @@ class AppIconButton extends StatelessWidget {
     required this.onPressed,
     this.containerColor,
     this.iconColor,
+    this.semanticLabel,
   });
 
   final IconData icon;
   final VoidCallback? onPressed;
   final Color? containerColor;
   final Color? iconColor;
+  final String? semanticLabel;
 
   @override
   Widget build(BuildContext context) {
     final fieldColor = context.colorScheme.surfaceContainerHighest;
 
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        width: AppSizes.iconButtonSize,
-        height: AppSizes.iconButtonSize,
-        decoration: BoxDecoration(
-          color: containerColor ?? fieldColor,
-          shape: BoxShape.circle,
-        ),
-        child: Center(
-          child: Icon(
-            icon,
-            size: AppSizes.iconMd,
-            color: iconColor ??
-                (containerColor != null
-                    ? context.colorScheme.onPrimary
-                    : context.colorScheme.onSurface),
+    return Semantics(
+      button: true,
+      label: semanticLabel,
+      excludeSemantics: semanticLabel != null,
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Container(
+          width: AppSizes.iconButtonSize,
+          height: AppSizes.iconButtonSize,
+          decoration: BoxDecoration(
+            color: containerColor ?? fieldColor,
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: Icon(
+              icon,
+              size: AppSizes.iconMd,
+              color:
+                  iconColor ??
+                  (containerColor != null
+                      ? context.colorScheme.onPrimary
+                      : context.colorScheme.onSurface),
+            ),
           ),
         ),
       ),

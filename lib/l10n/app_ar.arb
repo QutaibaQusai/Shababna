@@ -6,6 +6,14 @@
   "somethingWentWrong": "حدث خطأ ما",
   "noItemsFound": "لا توجد عناصر",
 
+  "navHome": "الرئيسية",
+  "navNews": "الأخبار",
+  "navEvents": "الفعاليات",
+  "navProfile": "حسابي",
+  "actionSearch": "بحث",
+  "actionNotifications": "الإشعارات",
+  "comingSoonMessage": "قريباً",
+
   "loginTitle": "أهلاً بعودتك",
   "loginSubtitle": "سجّل الدخول للمتابعة",
   "emailLabel": "البريد الإلكتروني",

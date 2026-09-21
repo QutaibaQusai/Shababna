@@ -22,6 +22,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noItemsFound => 'No items found';
 
   @override
+  String get navHome => 'Home';
+
+  @override
+  String get navNews => 'News';
+
+  @override
+  String get navEvents => 'Events';
+
+  @override
+  String get navProfile => 'Profile';
+
+  @override
+  String get actionSearch => 'Search';
+
+  @override
+  String get actionNotifications => 'Notifications';
+
+  @override
+  String get comingSoonMessage => 'Coming soon';
+
+  @override
   String get loginTitle => 'Welcome back';
 
   @override

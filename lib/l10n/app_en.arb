@@ -6,6 +6,14 @@
   "somethingWentWrong": "Something went wrong",
   "noItemsFound": "No items found",
 
+  "navHome": "Home",
+  "navNews": "News",
+  "navEvents": "Events",
+  "navProfile": "Profile",
+  "actionSearch": "Search",
+  "actionNotifications": "Notifications",
+  "comingSoonMessage": "Coming soon",
+
   "loginTitle": "Welcome back",
   "loginSubtitle": "Sign in to continue",
   "emailLabel": "Email",

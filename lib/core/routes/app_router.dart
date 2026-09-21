@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/presentation/pages/forgot_password/forgot_password_page.dart';
@@ -7,7 +6,7 @@ import '../../features/auth/presentation/pages/register/register_page.dart';
 import '../../features/auth/presentation/pages/forgot_password/reset_password_args.dart';
 import '../../features/auth/presentation/pages/forgot_password/reset_password_page.dart';
 import '../../features/auth/presentation/pages/forgot_password/verify_reset_code_page.dart';
-import '../extensions/context_extensions.dart';
+import '../../features/layout/presentation/pages/main_layout_page.dart';
 import '../session/auth_session_cubit.dart';
 import '../session/auth_status.dart';
 import 'app_routes.dart';
@@ -66,11 +65,7 @@ class AppRouter {
         GoRoute(
           path: AppRoutes.home,
           name: AppRoutes.homeName,
-          builder: (context, state) => Scaffold(
-            body: Center(
-              child: Text(context.l10n.appName),
-            ),
-          ),
+          builder: (context, state) => const MainLayoutPage(),
         ),
       ],
     );

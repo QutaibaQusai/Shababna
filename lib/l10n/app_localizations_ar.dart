@@ -22,6 +22,27 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noItemsFound => 'لا توجد عناصر';
 
   @override
+  String get navHome => 'الرئيسية';
+
+  @override
+  String get navNews => 'الأخبار';
+
+  @override
+  String get navEvents => 'الفعاليات';
+
+  @override
+  String get navProfile => 'حسابي';
+
+  @override
+  String get actionSearch => 'بحث';
+
+  @override
+  String get actionNotifications => 'الإشعارات';
+
+  @override
+  String get comingSoonMessage => 'قريباً';
+
+  @override
   String get loginTitle => 'أهلاً بعودتك';
 
   @override
