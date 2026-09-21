@@ -5,8 +5,8 @@ import 'package:mocktail/mocktail.dart';
 import 'package:shababna/core/error/failures.dart';
 import 'package:shababna/core/state/form_status.dart';
 import 'package:shababna/features/auth/domain/repositories/auth_repository.dart';
-import 'package:shababna/features/auth/presentation/cubit/reset_password/reset_password_cubit.dart';
-import 'package:shababna/features/auth/presentation/cubit/reset_password/reset_password_state.dart';
+import 'package:shababna/features/auth/presentation/cubit/forgot_password/reset_password_cubit.dart';
+import 'package:shababna/features/auth/presentation/cubit/forgot_password/reset_password_state.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
 

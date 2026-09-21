@@ -15,8 +15,8 @@ import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/shared/widgets/app_toast.dart';
 import '../../../../../core/theme/app_spacing.dart';
-import '../../cubit/reset_password/reset_password_cubit.dart';
-import '../../cubit/reset_password/reset_password_state.dart';
+import '../../cubit/forgot_password/reset_password_cubit.dart';
+import '../../cubit/forgot_password/reset_password_state.dart';
 import 'reset_password_args.dart';
 
 class ResetPasswordPage extends StatelessWidget {

@@ -16,9 +16,9 @@ import '../../../../../core/shared/widgets/app_toast.dart';
 import '../../../../../core/state/form_status.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../core/validators/app_validators.dart';
-import '../../cubit/verify_reset_code/verify_reset_code_cubit.dart';
-import '../../cubit/verify_reset_code/verify_reset_code_state.dart';
-import '../reset_password/reset_password_args.dart';
+import '../../cubit/forgot_password/verify_reset_code_cubit.dart';
+import '../../cubit/forgot_password/verify_reset_code_state.dart';
+import 'reset_password_args.dart';
 
 class VerifyResetCodePage extends StatelessWidget {
   const VerifyResetCodePage({super.key, required this.email});
