@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -33,11 +34,13 @@ void main() {
     tester,
   ) async {
     await tester.pumpWidget(_host());
+
+    await tester.tap(_inNavBar(find.text('News')));
     await tester.pumpAndSettle();
 
-    expect(_iconColor(tester, Icons.home), AppColors.infoColor);
+    expect(_iconColor(tester, CupertinoIcons.news_solid), AppColors.infoColor);
     expect(
-      _iconColor(tester, Icons.newspaper_outlined),
+      _iconColor(tester, CupertinoIcons.house),
       AppColors.textPrimaryLight,
     );
   });
@@ -64,8 +67,14 @@ void main() {
     await tester.tap(_inNavBar(find.text('Events')));
     await tester.pumpAndSettle();
 
-    expect(_iconColor(tester, Icons.event), AppColors.infoColor);
-    expect(_iconColor(tester, Icons.home_outlined), AppColors.textPrimaryLight);
+    expect(
+      _iconColor(tester, CupertinoIcons.calendar_today),
+      AppColors.infoColor,
+    );
+    expect(
+      _iconColor(tester, CupertinoIcons.house),
+      AppColors.textPrimaryLight,
+    );
   });
 
   testWidgets('the selected tab has no indicator container', (tester) async {
@@ -83,10 +92,53 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(
-      _iconColor(tester, Icons.event_outlined),
+      _iconColor(tester, CupertinoIcons.calendar),
       AppColors.textPrimaryLight,
     );
     expect(_labelColor(tester, 'Events'), AppColors.textPrimaryLight);
     expect(AppColors.textPrimaryLight, isNot(AppColors.neutralColor));
+  });
+
+  testWidgets('every tab except Home uses a distinct filled Cupertino icon', (
+    tester,
+  ) async {
+    await tester.pumpWidget(_host());
+
+    final iconDestinations = tester
+        .widgetList<NavigationDestination>(find.byType(NavigationDestination))
+        .where((destination) => destination.selectedIcon is Icon)
+        .toList();
+
+    expect(iconDestinations, hasLength(3));
+
+    for (final destination in iconDestinations) {
+      final icon = (destination.icon as Icon).icon;
+      final selectedIcon = (destination.selectedIcon! as Icon).icon;
+      expect(selectedIcon, isNot(icon));
+      expect(selectedIcon?.fontFamily, 'CupertinoIcons');
+    }
+  });
+
+  testWidgets('the selected Home tab shows the app logo in a circle', (
+    tester,
+  ) async {
+    await tester.pumpWidget(_host());
+    await tester.pumpAndSettle();
+
+    expect(_inNavBar(find.byType(ClipOval)), findsOneWidget);
+    expect(_inNavBar(find.byType(Image)), findsOneWidget);
+    expect(_inNavBar(find.byIcon(CupertinoIcons.house)), findsNothing);
+  });
+
+  testWidgets('leaving Home swaps the logo back to the house icon', (
+    tester,
+  ) async {
+    await tester.pumpWidget(_host());
+
+    await tester.tap(_inNavBar(find.text('Events')));
+    await tester.pumpAndSettle();
+
+    expect(_inNavBar(find.byType(Image)), findsNothing);
+    expect(_inNavBar(find.byIcon(CupertinoIcons.house)), findsOneWidget);
   });
 }
