@@ -1,22 +1,15 @@
-import 'package:flutter/cupertino.dart';
-
+import '../../../../core/config/app_assets.dart';
 import '../../../../l10n/app_localizations.dart';
 
 enum LayoutTab {
-  home(CupertinoIcons.house, showsLogoWhenSelected: true),
-  news(CupertinoIcons.news, activeIcon: CupertinoIcons.news_solid),
-  events(CupertinoIcons.calendar, activeIcon: CupertinoIcons.calendar_today),
-  profile(CupertinoIcons.person, activeIcon: CupertinoIcons.person_fill);
+  home(AppAssets.iconHome),
+  news(AppAssets.iconNews),
+  events(AppAssets.iconCalendar),
+  profile(AppAssets.iconProfile);
 
-  const LayoutTab(
-    this.icon, {
-    this.activeIcon,
-    this.showsLogoWhenSelected = false,
-  });
+  const LayoutTab(this.iconAsset);
 
-  final IconData icon;
-  final IconData? activeIcon;
-  final bool showsLogoWhenSelected;
+  final String iconAsset;
 
   bool get hasSearch => this != profile;
 

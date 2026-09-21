@@ -2,18 +2,29 @@ import 'package:flutter/material.dart';
 
 import '../../extensions/context_extensions.dart';
 import '../../theme/app_sizes.dart';
+import 'app_svg_icon.dart';
 
 class AppIconButton extends StatelessWidget {
   const AppIconButton({
     super.key,
-    required this.icon,
+    required IconData this.icon,
     required this.onPressed,
     this.containerColor,
     this.iconColor,
     this.semanticLabel,
-  });
+  }) : svgAsset = null;
 
-  final IconData icon;
+  const AppIconButton.svg({
+    super.key,
+    required String this.svgAsset,
+    required this.onPressed,
+    this.containerColor,
+    this.iconColor,
+    this.semanticLabel,
+  }) : icon = null;
+
+  final IconData? icon;
+  final String? svgAsset;
   final VoidCallback? onPressed;
   final Color? containerColor;
   final Color? iconColor;
@@ -22,6 +33,11 @@ class AppIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fieldColor = context.colorScheme.surfaceContainerHighest;
+    final resolvedIconColor =
+        iconColor ??
+        (containerColor != null
+            ? context.colorScheme.onPrimary
+            : context.colorScheme.onSurface);
 
     return Semantics(
       button: true,
@@ -37,15 +53,13 @@ class AppIconButton extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           child: Center(
-            child: Icon(
-              icon,
-              size: AppSizes.iconMd,
-              color:
-                  iconColor ??
-                  (containerColor != null
-                      ? context.colorScheme.onPrimary
-                      : context.colorScheme.onSurface),
-            ),
+            child: svgAsset != null
+                ? AppSvgIcon(
+                    asset: svgAsset!,
+                    size: AppSizes.iconMd,
+                    color: resolvedIconColor,
+                  )
+                : Icon(icon, size: AppSizes.iconMd, color: resolvedIconColor),
           ),
         ),
       ),

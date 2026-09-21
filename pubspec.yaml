@@ -28,7 +28,7 @@ dependencies:
   lucide_icons_flutter: ^3.1.19
   uuid: ^4.5.1
   pinput: ^6.0.2
-  cupertino_icons: ^1.0.9
+  flutter_svg: ^2.3.0
 
 dev_dependencies:
   flutter_test:

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
+import '../../../../core/config/app_assets.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/shared/widgets/app_icon_button.dart';
 import '../../../../core/shared/widgets/app_toast.dart';
@@ -40,8 +41,8 @@ class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           SizedBox(width: AppSpacing.xs),
         ],
-        AppIconButton(
-          icon: LucideIcons.bell,
+        AppIconButton.svg(
+          svgAsset: AppAssets.iconNotification,
           semanticLabel: l10n.actionNotifications,
           onPressed: showComingSoon,
         ),
