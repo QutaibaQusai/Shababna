@@ -38,7 +38,7 @@ void main() {
     expect(_iconColor(tester, Icons.home), AppColors.infoColor);
     expect(
       _iconColor(tester, Icons.newspaper_outlined),
-      AppColors.neutralColor,
+      AppColors.textPrimaryLight,
     );
   });
 
@@ -48,14 +48,14 @@ void main() {
     await tester.pumpWidget(_host());
     await tester.pumpAndSettle();
 
-    expect(_labelColor(tester, 'Home'), AppColors.neutralColor);
-    expect(_labelColor(tester, 'News'), AppColors.neutralColor);
+    expect(_labelColor(tester, 'Home'), AppColors.textPrimaryLight);
+    expect(_labelColor(tester, 'News'), AppColors.textPrimaryLight);
 
     await tester.tap(_inNavBar(find.text('Events')));
     await tester.pumpAndSettle();
 
-    expect(_labelColor(tester, 'Events'), AppColors.neutralColor);
-    expect(_labelColor(tester, 'Home'), AppColors.neutralColor);
+    expect(_labelColor(tester, 'Events'), AppColors.textPrimaryLight);
+    expect(_labelColor(tester, 'Home'), AppColors.textPrimaryLight);
   });
 
   testWidgets('the icon color follows the selection', (tester) async {
@@ -65,7 +65,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(_iconColor(tester, Icons.event), AppColors.infoColor);
-    expect(_iconColor(tester, Icons.home_outlined), AppColors.neutralColor);
+    expect(_iconColor(tester, Icons.home_outlined), AppColors.textPrimaryLight);
   });
 
   testWidgets('the selected tab has no indicator container', (tester) async {
@@ -74,5 +74,19 @@ void main() {
     final theme = Theme.of(tester.element(find.byType(NavigationBar)));
 
     expect(theme.navigationBarTheme.indicatorColor, Colors.transparent);
+  });
+
+  testWidgets('unselected items use the app text color, not gray', (
+    tester,
+  ) async {
+    await tester.pumpWidget(_host());
+    await tester.pumpAndSettle();
+
+    expect(
+      _iconColor(tester, Icons.event_outlined),
+      AppColors.textPrimaryLight,
+    );
+    expect(_labelColor(tester, 'Events'), AppColors.textPrimaryLight);
+    expect(AppColors.textPrimaryLight, isNot(AppColors.neutralColor));
   });
 }

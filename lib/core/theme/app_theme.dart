@@ -56,7 +56,7 @@ class AppTheme {
     navigationBarTheme: _buildNavigationBarTheme(
       background: AppColors.backgroundLight,
       selected: AppColors.infoColor,
-      unselected: AppColors.neutralColor,
+      unselected: AppColors.textPrimaryLight,
       fontFamily: fontFamily,
     ),
     switchTheme: _buildSwitchTheme(
@@ -128,7 +128,7 @@ class AppTheme {
     navigationBarTheme: _buildNavigationBarTheme(
       background: AppColors.backgroundDark,
       selected: AppColors.infoColor,
-      unselected: AppColors.neutralColor,
+      unselected: AppColors.textPrimaryDark,
       fontFamily: fontFamily,
     ),
     switchTheme: _buildSwitchTheme(
