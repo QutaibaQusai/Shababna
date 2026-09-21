@@ -47,6 +47,22 @@ void main() {
     expect(find.byType(NavigationDestination), findsNWidgets(4));
   });
 
+  testWidgets('every tab has a distinct filled icon for its selected state', (
+    tester,
+  ) async {
+    await tester.pumpWidget(_host());
+
+    final destinations = tester.widgetList<NavigationDestination>(
+      find.byType(NavigationDestination),
+    );
+
+    for (final destination in destinations) {
+      final icon = (destination.icon as Icon).icon;
+      final selectedIcon = (destination.selectedIcon! as Icon).icon;
+      expect(selectedIcon, isNot(icon));
+    }
+  });
+
   testWidgets('tapping a tab changes the title and selection', (tester) async {
     await tester.pumpWidget(_host());
 

@@ -1,17 +1,17 @@
-import 'package:flutter/widgets.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../l10n/app_localizations.dart';
 
 enum LayoutTab {
-  home(LucideIcons.house),
-  news(LucideIcons.newspaper),
-  events(LucideIcons.calendar),
-  profile(LucideIcons.user);
+  home(Icons.home_outlined, Icons.home),
+  news(Icons.newspaper_outlined, Icons.newspaper),
+  events(Icons.event_outlined, Icons.event),
+  profile(Icons.person_outline, Icons.person);
 
-  const LayoutTab(this.icon);
+  const LayoutTab(this.icon, this.activeIcon);
 
   final IconData icon;
+  final IconData activeIcon;
 
   bool get hasSearch => this != profile;
 

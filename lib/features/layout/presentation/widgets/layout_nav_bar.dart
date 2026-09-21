@@ -19,7 +19,11 @@ class LayoutNavBar extends StatelessWidget {
           context.read<LayoutCubit>().goTo(LayoutTab.values[index]),
       destinations: [
         for (final tab in LayoutTab.values)
-          NavigationDestination(icon: Icon(tab.icon), label: tab.label(l10n)),
+          NavigationDestination(
+            icon: Icon(tab.icon),
+            selectedIcon: Icon(tab.activeIcon),
+            label: tab.label(l10n),
+          ),
       ],
     );
   }

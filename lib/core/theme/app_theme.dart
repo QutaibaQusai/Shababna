@@ -41,7 +41,10 @@ class AppTheme {
       foreground: AppColors.primaryColor,
       fontFamily: fontFamily,
     ),
-    textButtonTheme: _buildTextButtonTheme(AppColors.primaryColor, fontFamily: fontFamily),
+    textButtonTheme: _buildTextButtonTheme(
+      AppColors.primaryColor,
+      fontFamily: fontFamily,
+    ),
     iconButtonTheme: _buildIconButtonTheme(),
     inputDecorationTheme: _buildInputDecorationTheme(
       labelColor: AppColors.textSecondaryLight,
@@ -75,7 +78,9 @@ class AppTheme {
       color: AppColors.primaryColor,
       trackColor: AppColors.backgroundLight,
     ),
-    bottomSheetTheme: _buildBottomSheetTheme(backgroundColor: AppColors.backgroundLight),
+    bottomSheetTheme: _buildBottomSheetTheme(
+      backgroundColor: AppColors.backgroundLight,
+    ),
   );
 
   static ThemeData dark({required String fontFamily}) => ThemeData(
@@ -108,7 +113,10 @@ class AppTheme {
       foreground: AppColors.primaryColor,
       fontFamily: fontFamily,
     ),
-    textButtonTheme: _buildTextButtonTheme(AppColors.primaryColor, fontFamily: fontFamily),
+    textButtonTheme: _buildTextButtonTheme(
+      AppColors.primaryColor,
+      fontFamily: fontFamily,
+    ),
     iconButtonTheme: _buildIconButtonTheme(),
     inputDecorationTheme: _buildInputDecorationTheme(
       labelColor: AppColors.textSecondaryDark,
@@ -142,7 +150,9 @@ class AppTheme {
       color: AppColors.primaryColor,
       trackColor: AppColors.surfaceDark,
     ),
-    bottomSheetTheme: _buildBottomSheetTheme(backgroundColor: AppColors.backgroundDark),
+    bottomSheetTheme: _buildBottomSheetTheme(
+      backgroundColor: AppColors.backgroundDark,
+    ),
   );
 
   static const ColorScheme _lightColorScheme = ColorScheme(
@@ -192,21 +202,42 @@ class AppTheme {
     required Color secondary,
     required String fontFamily,
   }) => TextTheme(
-    displayLarge: AppTypography.largeTitle(fontFamily: fontFamily, color: primary),
+    displayLarge: AppTypography.largeTitle(
+      fontFamily: fontFamily,
+      color: primary,
+    ),
     displayMedium: AppTypography.title1(fontFamily: fontFamily, color: primary),
     displaySmall: AppTypography.title2(fontFamily: fontFamily, color: primary),
     headlineLarge: AppTypography.title3(fontFamily: fontFamily, color: primary),
-    headlineMedium: AppTypography.headline(fontFamily: fontFamily, color: primary),
-    headlineSmall: AppTypography.headline(fontFamily: fontFamily, color: primary),
+    headlineMedium: AppTypography.headline(
+      fontFamily: fontFamily,
+      color: primary,
+    ),
+    headlineSmall: AppTypography.headline(
+      fontFamily: fontFamily,
+      color: primary,
+    ),
     titleLarge: AppTypography.headline(fontFamily: fontFamily, color: primary),
     titleMedium: AppTypography.callout(fontFamily: fontFamily, color: primary),
-    titleSmall: AppTypography.subheadline(fontFamily: fontFamily, color: primary),
+    titleSmall: AppTypography.subheadline(
+      fontFamily: fontFamily,
+      color: primary,
+    ),
     bodyLarge: AppTypography.body(fontFamily: fontFamily, color: primary),
     bodyMedium: AppTypography.callout(fontFamily: fontFamily, color: primary),
     bodySmall: AppTypography.footnote(fontFamily: fontFamily, color: secondary),
-    labelLarge: AppTypography.buttonLabel(fontFamily: fontFamily, color: primary),
-    labelMedium: AppTypography.caption1(fontFamily: fontFamily, color: secondary),
-    labelSmall: AppTypography.caption2(fontFamily: fontFamily, color: secondary),
+    labelLarge: AppTypography.buttonLabel(
+      fontFamily: fontFamily,
+      color: primary,
+    ),
+    labelMedium: AppTypography.caption1(
+      fontFamily: fontFamily,
+      color: secondary,
+    ),
+    labelSmall: AppTypography.caption2(
+      fontFamily: fontFamily,
+      color: secondary,
+    ),
   );
 
   static AppBarTheme _buildAppBarTheme({
@@ -219,7 +250,10 @@ class AppTheme {
     elevation: AppShadows.none,
     scrolledUnderElevation: AppShadows.none,
     centerTitle: true,
-    titleTextStyle: AppTypography.headline(fontFamily: fontFamily, color: foregroundColor),
+    titleTextStyle: AppTypography.headline(
+      fontFamily: fontFamily,
+      color: foregroundColor,
+    ),
   );
 
   static ElevatedButtonThemeData _buildElevatedButtonTheme({
@@ -258,12 +292,12 @@ class AppTheme {
     Color color, {
     required String fontFamily,
   }) => TextButtonThemeData(
-        style: TextButton.styleFrom(
-          foregroundColor: color,
-          overlayColor: Colors.transparent,
-          textStyle: AppTypography.buttonLabel(fontFamily: fontFamily),
-        ),
-      );
+    style: TextButton.styleFrom(
+      foregroundColor: color,
+      overlayColor: Colors.transparent,
+      textStyle: AppTypography.buttonLabel(fontFamily: fontFamily),
+    ),
+  );
 
   static IconButtonThemeData _buildIconButtonTheme() => IconButtonThemeData(
     style: IconButton.styleFrom(overlayColor: Colors.transparent),
@@ -309,7 +343,10 @@ class AppTheme {
       ),
       labelStyle: AppTypography.body(fontFamily: fontFamily, color: labelColor),
       hintStyle: AppTypography.body(fontFamily: fontFamily, color: labelColor),
-      errorStyle: AppTypography.footnote(fontFamily: fontFamily, color: errorColor),
+      errorStyle: AppTypography.footnote(
+        fontFamily: fontFamily,
+        color: errorColor,
+      ),
     );
   }
 
@@ -327,19 +364,15 @@ class AppTheme {
     required String fontFamily,
   }) => NavigationBarThemeData(
     backgroundColor: background,
-    indicatorColor: selected.withValues(alpha: 0.12),
+    indicatorColor: Colors.transparent,
     height: AppSizes.bottomNavHeight,
     iconTheme: WidgetStateProperty.resolveWith((states) {
       final isSelected = states.contains(WidgetState.selected);
       return IconThemeData(color: isSelected ? selected : unselected);
     }),
-    labelTextStyle: WidgetStateProperty.resolveWith((states) {
-      final isSelected = states.contains(WidgetState.selected);
-      return AppTypography.caption2(
-        fontFamily: fontFamily,
-        color: isSelected ? selected : unselected,
-      );
-    }),
+    labelTextStyle: WidgetStatePropertyAll(
+      AppTypography.caption2(fontFamily: fontFamily, color: unselected),
+    ),
     elevation: AppShadows.low,
   );
 
@@ -361,8 +394,14 @@ class AppTheme {
     backgroundColor: backgroundColor,
     elevation: AppShadows.medium,
     shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
-    titleTextStyle: AppTypography.headline(fontFamily: fontFamily, color: titleColor),
-    contentTextStyle: AppTypography.subheadline(fontFamily: fontFamily, color: contentColor),
+    titleTextStyle: AppTypography.headline(
+      fontFamily: fontFamily,
+      color: titleColor,
+    ),
+    contentTextStyle: AppTypography.subheadline(
+      fontFamily: fontFamily,
+      color: contentColor,
+    ),
   );
 
   static ProgressIndicatorThemeData _buildProgressIndicatorTheme({
@@ -371,15 +410,15 @@ class AppTheme {
   }) =>
       ProgressIndicatorThemeData(color: color, circularTrackColor: trackColor);
 
-  static BottomSheetThemeData _buildBottomSheetTheme({required Color backgroundColor}) =>
-      BottomSheetThemeData(
-        backgroundColor: backgroundColor,
-        elevation: AppShadows.medium,
-        showDragHandle: true,
-        dragHandleColor: AppColors.neutralColor.withValues(alpha: 0.4),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.lg)),
-        ),
-      );
+  static BottomSheetThemeData _buildBottomSheetTheme({
+    required Color backgroundColor,
+  }) => BottomSheetThemeData(
+    backgroundColor: backgroundColor,
+    elevation: AppShadows.medium,
+    showDragHandle: true,
+    dragHandleColor: AppColors.neutralColor.withValues(alpha: 0.4),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.lg)),
+    ),
+  );
 }
-
