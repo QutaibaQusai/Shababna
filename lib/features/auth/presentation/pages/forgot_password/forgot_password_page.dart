@@ -60,7 +60,7 @@ class _ForgotPasswordViewState extends State<_ForgotPasswordView> {
           if (state.successMessage != null) {
             AppToast.info(context, state.successMessage!);
           }
-          context.go(AppRoutes.resetPassword, extra: _emailController.text.trim());
+          context.go(AppRoutes.verifyResetCode, extra: _emailController.text.trim());
         } else if (state.status == FormStatus.failure && state.errorMessage != null) {
           AppToast.error(context, state.errorMessage!);
         }
@@ -71,7 +71,7 @@ class _ForgotPasswordViewState extends State<_ForgotPasswordView> {
             isLoading: state.status == FormStatus.submitting,
             child: Scaffold(
               appBar: AppAppBar(
-                title: context.l10n.forgotPasswordAppBarTitle,
+                title: context.l10n.accountRecoveryTitle,
                 onBack: () => context.go(AppRoutes.login),
               ),
               body: SafeArea(

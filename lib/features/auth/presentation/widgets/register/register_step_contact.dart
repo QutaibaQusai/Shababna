@@ -75,7 +75,14 @@ class RegisterStepContact extends StatelessWidget {
             countryValidator: required,
             numberValidator: AppValidators.combine([
               required,
-              AppValidators.digitsOnly(context.l10n.invalidPhoneNumberError),
+              AppValidators.nationalNumber(
+                invalidMessage: context.l10n.invalidPhoneNumberError,
+                lengthMessage: context.l10n.phoneNumberLengthError,
+                prefixMessage: (prefixes) =>
+                    context.l10n.phoneNumberPrefixError(prefixes.join(' / ')),
+                length: selectedPhoneCode?.nationalNumberLength,
+                prefixes: selectedPhoneCode?.mobilePrefixes,
+              ),
             ]),
           ),
         ],

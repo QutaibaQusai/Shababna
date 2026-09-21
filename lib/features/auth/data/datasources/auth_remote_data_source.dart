@@ -9,6 +9,8 @@ import '../models/register_response_model.dart';
 import '../models/reset_password_request_model.dart';
 import '../models/token_response_model.dart';
 import '../models/verify_email_request_model.dart';
+import '../models/verify_reset_code_request_model.dart';
+import '../models/verify_reset_code_response_model.dart';
 
 class AuthRemoteDataSource {
   AuthRemoteDataSource(this._apiConsumer);
@@ -52,6 +54,16 @@ class AuthRemoteDataSource {
       data: request.toJson(),
     );
     return MessageResponseModel.fromJson(response as Map<String, dynamic>);
+  }
+
+  Future<VerifyResetCodeResponseModel> verifyResetCode(
+    VerifyResetCodeRequestModel request,
+  ) async {
+    final response = await _apiConsumer.post(
+      EndPoints.verifyResetCode,
+      data: request.toJson(),
+    );
+    return VerifyResetCodeResponseModel.fromJson(response as Map<String, dynamic>);
   }
 
   Future<void> resetPassword(ResetPasswordRequestModel request) {

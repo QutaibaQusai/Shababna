@@ -1,7 +1,12 @@
 import 'package:flutter/widgets.dart';
 
+import '../utils/phone_number.dart';
+
 class AppValidators {
   AppValidators._();
+
+  static final _digitsPattern = RegExp(r'^\d+$');
+  static final _genericNationalNumberPattern = RegExp(r'^\d{6,12}$');
 
   static FormFieldValidator<String> required(String message) {
     return (value) => (value == null || value.trim().isEmpty) ? message : null;
@@ -13,9 +18,29 @@ class AppValidators {
         (value == null || !pattern.hasMatch(value)) ? message : null;
   }
 
-  static FormFieldValidator<String> digitsOnly(String message) {
-    final pattern = RegExp(r'^\d{6,12}$');
-    return (value) => (value == null || !pattern.hasMatch(value)) ? message : null;
+  static FormFieldValidator<String> nationalNumber({
+    required String invalidMessage,
+    required String Function(int length) lengthMessage,
+    required String Function(List<String> prefixes) prefixMessage,
+    int? length,
+    List<String>? prefixes,
+  }) {
+    final requiredPrefixes = prefixes ?? const <String>[];
+    final hasRules = length != null || requiredPrefixes.isNotEmpty;
+
+    return (value) {
+      final digits = PhoneNumber.toNationalDigits(value ?? '');
+      if (!_digitsPattern.hasMatch(digits)) return invalidMessage;
+
+      if (!hasRules) {
+        return _genericNationalNumberPattern.hasMatch(digits) ? null : invalidMessage;
+      }
+      if (length != null && digits.length != length) return lengthMessage(length);
+      if (requiredPrefixes.isNotEmpty && !requiredPrefixes.any(digits.startsWith)) {
+        return prefixMessage(requiredPrefixes);
+      }
+      return null;
+    };
   }
 
   static FormFieldValidator<String> match(

@@ -11,7 +11,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
 
   Future<void> submit({
     required String email,
-    required String code,
+    required String resetToken,
     required String newPassword,
     required String confirmPassword,
   }) async {
@@ -19,7 +19,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
 
     final result = await _repository.resetPassword(
       email: email,
-      code: code,
+      resetToken: resetToken,
       newPassword: newPassword,
       confirmPassword: confirmPassword,
     );

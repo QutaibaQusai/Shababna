@@ -15,12 +15,16 @@ class CountryPhoneCode {
     required this.countryCode,
     required this.callingCode,
     required this.flag,
+    this.nationalNumberLength,
+    this.mobilePrefixes,
   });
 
   final String countryName;
   final String countryCode;
   final String callingCode;
   final String flag;
+  final int? nationalNumberLength;
+  final List<String>? mobilePrefixes;
 }
 
 abstract interface class AuthRepository {
@@ -49,9 +53,14 @@ abstract interface class AuthRepository {
 
   Future<Either<Failure, String>> forgotPassword({required String email});
 
-  Future<Either<Failure, void>> resetPassword({
+  Future<Either<Failure, String>> verifyResetCode({
     required String email,
     required String code,
+  });
+
+  Future<Either<Failure, void>> resetPassword({
+    required String email,
+    required String resetToken,
     required String newPassword,
     required String confirmPassword,
   });

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../extensions/context_extensions.dart';
@@ -20,6 +21,7 @@ class AppTextField extends StatefulWidget {
     this.onTap,
     this.suffix,
     this.autofocus = false,
+    this.inputFormatters,
   });
 
   final String label;
@@ -35,6 +37,7 @@ class AppTextField extends StatefulWidget {
   final VoidCallback? onTap;
   final Widget? suffix;
   final bool autofocus;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -56,6 +59,7 @@ class _AppTextFieldState extends State<AppTextField> {
       readOnly: widget.readOnly,
       onTap: widget.onTap,
       autofocus: widget.autofocus,
+      inputFormatters: widget.inputFormatters,
       style: context.textTheme.bodyLarge,
       decoration: InputDecoration(
         labelText: widget.label,

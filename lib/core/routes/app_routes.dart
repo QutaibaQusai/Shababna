@@ -16,6 +16,9 @@ class AppRoutes {
   static const String forgotPassword = '/forgot-password';
   static const String forgotPasswordName = 'forgot-password';
 
+  static const String verifyResetCode = '/verify-reset-code';
+  static const String verifyResetCodeName = 'verify-reset-code';
+
   static const String resetPassword = '/reset-password';
   static const String resetPasswordName = 'reset-password';
 
@@ -24,6 +27,7 @@ class AppRoutes {
     register,
     verifyEmail,
     forgotPassword,
+    verifyResetCode,
     resetPassword,
   };
 }

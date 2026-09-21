@@ -10,6 +10,7 @@ import '../../../../../core/shared/widgets/app_button.dart';
 import '../../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../../core/shared/widgets/app_toast.dart';
 import '../../../../../core/state/form_status.dart';
+import '../../../../../core/utils/phone_number.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/auth_repository.dart';
 import '../../cubit/register/register_cubit.dart';
@@ -76,16 +77,14 @@ class _RegisterViewState extends State<_RegisterView> {
     setState(() => _selectedPhoneCode = defaultCode);
   }
 
-  String _stripLeadingZero(String digits) {
-    return digits.startsWith('0') ? digits.substring(1) : digits;
-  }
-
   void _goNext() {
     if (!(_stepFormKeys[_currentStep].currentState?.validate() ?? false)) return;
 
     if (_currentStep == _stepCount - 1) {
-      final phoneNumber =
-          '${_selectedPhoneCode!.callingCode}${_stripLeadingZero(_phoneNumberController.text.trim())}';
+      final phoneNumber = PhoneNumber.toE164(
+        callingCode: _selectedPhoneCode!.callingCode,
+        input: _phoneNumberController.text,
+      );
       context.read<RegisterCubit>().submit(
             email: _emailController.text.trim(),
             phoneNumber: phoneNumber,

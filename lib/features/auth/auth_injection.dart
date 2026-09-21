@@ -12,6 +12,7 @@ import 'presentation/cubit/login/login_cubit.dart';
 import 'presentation/cubit/register/register_cubit.dart';
 import 'presentation/cubit/reset_password/reset_password_cubit.dart';
 import 'presentation/cubit/verify_email/verify_email_cubit.dart';
+import 'presentation/cubit/verify_reset_code/verify_reset_code_cubit.dart';
 
 void registerAuthFeature(GetIt sl) {
   sl.registerLazySingleton<AuthRemoteDataSource>(
@@ -35,6 +36,9 @@ void registerAuthFeature(GetIt sl) {
   );
   sl.registerFactory<ForgotPasswordCubit>(
     () => ForgotPasswordCubit(sl<AuthRepository>()),
+  );
+  sl.registerFactory<VerifyResetCodeCubit>(
+    () => VerifyResetCodeCubit(sl<AuthRepository>()),
   );
   sl.registerFactory<ResetPasswordCubit>(
     () => ResetPasswordCubit(sl<AuthRepository>()),

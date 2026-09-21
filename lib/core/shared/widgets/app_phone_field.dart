@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../theme/app_spacing.dart';
@@ -61,9 +62,10 @@ class AppPhoneField<T> extends StatelessWidget {
         SizedBox(width: AppSpacing.xs),
         Expanded(
           child: AppTextField(
-            label: '',
+            label: label,
             controller: numberController,
             keyboardType: TextInputType.phone,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             prefixIcon: LucideIcons.phone,
             textInputAction: TextInputAction.done,
             validator: numberValidator,

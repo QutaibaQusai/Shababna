@@ -42,14 +42,17 @@
   "emailVerifiedMessage": "تم تأكيد البريد الإلكتروني. يمكنك تسجيل الدخول الآن.",
   "registrationCompleteMessage": "تم إنشاء الحساب. يمكنك تسجيل الدخول الآن.",
 
-  "forgotPasswordAppBarTitle": "استعادة الحساب",
+  "accountRecoveryTitle": "استعادة الحساب",
   "forgotPasswordTitle": "نسيت كلمة المرور؟",
   "forgotPasswordSubtitle": "أدخل بريدك الإلكتروني وسنرسل لك رمزاً لإعادة تعيين كلمة المرور",
   "sendCodeButton": "إرسال الرمز",
 
+  "verifyResetCodeTitle": "تحقق من بريدك الإلكتروني",
+  "verifyResetCodeSubtitle": "أدخل الرمز الذي أرسلناه إلى {email}",
+
   "resetPasswordAppBarTitle": "إعادة تعيين كلمة المرور",
   "resetPasswordTitle": "إنشاء كلمة مرور جديدة",
-  "resetPasswordSubtitle": "أدخل الرمز المُرسل إلى {email} واختر كلمة مرور جديدة",
+  "resetPasswordSubtitle": "اختر كلمة مرور جديدة لحسابك",
   "newPasswordLabel": "كلمة المرور الجديدة",
   "resetPasswordButton": "إعادة تعيين كلمة المرور",
   "passwordResetSuccessMessage": "تم إعادة تعيين كلمة المرور. يمكنك تسجيل الدخول الآن.",
@@ -58,6 +61,8 @@
   "invalidEmailError": "أدخل بريداً إلكترونياً صحيحاً",
   "passwordsDoNotMatchError": "كلمتا المرور غير متطابقتين",
   "invalidPhoneNumberError": "أدخل رقم هاتف صحيح",
+  "phoneNumberLengthError": "يجب أن يتكون رقم الهاتف من {length} أرقام",
+  "phoneNumberPrefixError": "يجب أن يبدأ رقم الهاتف بـ {prefixes}",
 
   "searchCountryHint": "ابحث عن الدولة أو الرمز"
 }

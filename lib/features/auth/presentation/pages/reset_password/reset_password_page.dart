@@ -17,25 +17,26 @@ import '../../../../../core/shared/widgets/app_toast.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../cubit/reset_password/reset_password_cubit.dart';
 import '../../cubit/reset_password/reset_password_state.dart';
+import 'reset_password_args.dart';
 
 class ResetPasswordPage extends StatelessWidget {
-  const ResetPasswordPage({super.key, required this.email});
+  const ResetPasswordPage({super.key, required this.args});
 
-  final String email;
+  final ResetPasswordArgs args;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<ResetPasswordCubit>(),
-      child: _ResetPasswordView(email: email),
+      child: _ResetPasswordView(args: args),
     );
   }
 }
 
 class _ResetPasswordView extends StatefulWidget {
-  const _ResetPasswordView({required this.email});
+  const _ResetPasswordView({required this.args});
 
-  final String email;
+  final ResetPasswordArgs args;
 
   @override
   State<_ResetPasswordView> createState() => _ResetPasswordViewState();
@@ -43,13 +44,11 @@ class _ResetPasswordView extends StatefulWidget {
 
 class _ResetPasswordViewState extends State<_ResetPasswordView> {
   final _formKey = GlobalKey<FormState>();
-  final _codeController = TextEditingController();
   final _newPasswordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
   @override
   void dispose() {
-    _codeController.dispose();
     _newPasswordController.dispose();
     _confirmPasswordController.dispose();
     super.dispose();
@@ -58,8 +57,8 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
   void _submit() {
     if (!(_formKey.currentState?.validate() ?? false)) return;
     context.read<ResetPasswordCubit>().submit(
-          email: widget.email,
-          code: _codeController.text.trim(),
+          email: widget.args.email,
+          resetToken: widget.args.resetToken,
           newPassword: _newPasswordController.text,
           confirmPassword: _confirmPasswordController.text,
         );
@@ -100,25 +99,16 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                               children: [
                                 AppPageHeader(
                                   title: context.l10n.resetPasswordTitle,
-                                  subtitle: context.l10n.resetPasswordSubtitle(widget.email),
+                                  subtitle: context.l10n.resetPasswordSubtitle,
                                 ),
                                 SizedBox(height: AppSpacing.md),
-                                AppTextField(
-                                  label: context.l10n.verificationCodeLabel,
-                                  controller: _codeController,
-                                  keyboardType: TextInputType.number,
-                                  prefixIcon: LucideIcons.shieldCheck,
-                                  textInputAction: TextInputAction.next,
-                                  autofocus: true,
-                                  validator: AppValidators.required(context.l10n.fieldRequiredError),
-                                ),
-                                SizedBox(height: AppSpacing.sm),
                                 AppTextField(
                                   label: context.l10n.newPasswordLabel,
                                   controller: _newPasswordController,
                                   obscureText: true,
                                   prefixIcon: LucideIcons.lock,
                                   textInputAction: TextInputAction.next,
+                                  autofocus: true,
                                   validator: AppValidators.required(context.l10n.fieldRequiredError),
                                 ),
                                 SizedBox(height: AppSpacing.sm),

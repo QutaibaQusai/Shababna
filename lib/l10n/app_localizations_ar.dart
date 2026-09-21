@@ -126,7 +126,7 @@ class AppLocalizationsAr extends AppLocalizations {
       'تم إنشاء الحساب. يمكنك تسجيل الدخول الآن.';
 
   @override
-  String get forgotPasswordAppBarTitle => 'استعادة الحساب';
+  String get accountRecoveryTitle => 'استعادة الحساب';
 
   @override
   String get forgotPasswordTitle => 'نسيت كلمة المرور؟';
@@ -139,15 +139,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get sendCodeButton => 'إرسال الرمز';
 
   @override
+  String get verifyResetCodeTitle => 'تحقق من بريدك الإلكتروني';
+
+  @override
+  String verifyResetCodeSubtitle(String email) {
+    return 'أدخل الرمز الذي أرسلناه إلى $email';
+  }
+
+  @override
   String get resetPasswordAppBarTitle => 'إعادة تعيين كلمة المرور';
 
   @override
   String get resetPasswordTitle => 'إنشاء كلمة مرور جديدة';
 
   @override
-  String resetPasswordSubtitle(String email) {
-    return 'أدخل الرمز المُرسل إلى $email واختر كلمة مرور جديدة';
-  }
+  String get resetPasswordSubtitle => 'اختر كلمة مرور جديدة لحسابك';
 
   @override
   String get newPasswordLabel => 'كلمة المرور الجديدة';
@@ -170,6 +176,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get invalidPhoneNumberError => 'أدخل رقم هاتف صحيح';
+
+  @override
+  String phoneNumberLengthError(int length) {
+    return 'يجب أن يتكون رقم الهاتف من $length أرقام';
+  }
+
+  @override
+  String phoneNumberPrefixError(String prefixes) {
+    return 'يجب أن يبدأ رقم الهاتف بـ $prefixes';
+  }
 
   @override
   String get searchCountryHint => 'ابحث عن الدولة أو الرمز';

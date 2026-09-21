@@ -4,8 +4,10 @@ import 'package:go_router/go_router.dart';
 import '../../features/auth/presentation/pages/forgot_password/forgot_password_page.dart';
 import '../../features/auth/presentation/pages/login/login_page.dart';
 import '../../features/auth/presentation/pages/register/register_page.dart';
+import '../../features/auth/presentation/pages/reset_password/reset_password_args.dart';
 import '../../features/auth/presentation/pages/reset_password/reset_password_page.dart';
 import '../../features/auth/presentation/pages/verify_email/verify_email_page.dart';
+import '../../features/auth/presentation/pages/verify_reset_code/verify_reset_code_page.dart';
 import '../extensions/context_extensions.dart';
 import '../session/auth_session_cubit.dart';
 import '../session/auth_status.dart';
@@ -53,10 +55,20 @@ class AppRouter {
           builder: (context, state) => const ForgotPasswordPage(),
         ),
         GoRoute(
+          path: AppRoutes.verifyResetCode,
+          name: AppRoutes.verifyResetCodeName,
+          redirect: (context, state) =>
+              state.extra is String ? null : AppRoutes.forgotPassword,
+          builder: (context, state) =>
+              VerifyResetCodePage(email: state.extra! as String),
+        ),
+        GoRoute(
           path: AppRoutes.resetPassword,
           name: AppRoutes.resetPasswordName,
+          redirect: (context, state) =>
+              state.extra is ResetPasswordArgs ? null : AppRoutes.forgotPassword,
           builder: (context, state) =>
-              ResetPasswordPage(email: state.extra as String? ?? ''),
+              ResetPasswordPage(args: state.extra! as ResetPasswordArgs),
         ),
         GoRoute(
           path: AppRoutes.home,

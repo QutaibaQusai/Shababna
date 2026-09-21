@@ -126,7 +126,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Account created. You can now log in.';
 
   @override
-  String get forgotPasswordAppBarTitle => 'Account recovery';
+  String get accountRecoveryTitle => 'Account recovery';
 
   @override
   String get forgotPasswordTitle => 'Forgot your password?';
@@ -139,15 +139,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sendCodeButton => 'Send code';
 
   @override
+  String get verifyResetCodeTitle => 'Check your email';
+
+  @override
+  String verifyResetCodeSubtitle(String email) {
+    return 'Enter the code we sent to $email';
+  }
+
+  @override
   String get resetPasswordAppBarTitle => 'Reset password';
 
   @override
   String get resetPasswordTitle => 'Create a new password';
 
   @override
-  String resetPasswordSubtitle(String email) {
-    return 'Enter the code sent to $email and choose a new password';
-  }
+  String get resetPasswordSubtitle => 'Choose a new password for your account';
 
   @override
   String get newPasswordLabel => 'New password';
@@ -170,6 +176,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidPhoneNumberError => 'Enter a valid phone number';
+
+  @override
+  String phoneNumberLengthError(int length) {
+    return 'Phone number must be $length digits';
+  }
+
+  @override
+  String phoneNumberPrefixError(String prefixes) {
+    return 'Phone number must start with $prefixes';
+  }
 
   @override
   String get searchCountryHint => 'Search country or code';

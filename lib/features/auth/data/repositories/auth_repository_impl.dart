@@ -12,6 +12,7 @@ import '../models/login_request_model.dart';
 import '../models/register_request_model.dart';
 import '../models/reset_password_request_model.dart';
 import '../models/verify_email_request_model.dart';
+import '../models/verify_reset_code_request_model.dart';
 
 class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
   AuthRepositoryImpl(
@@ -106,9 +107,22 @@ class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, void>> resetPassword({
+  Future<Either<Failure, String>> verifyResetCode({
     required String email,
     required String code,
+  }) {
+    return guard(() async {
+      final response = await _remoteDataSource.verifyResetCode(
+        VerifyResetCodeRequestModel(email: email, code: code),
+      );
+      return response.resetToken;
+    });
+  }
+
+  @override
+  Future<Either<Failure, void>> resetPassword({
+    required String email,
+    required String resetToken,
     required String newPassword,
     required String confirmPassword,
   }) {
@@ -116,7 +130,7 @@ class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
       return _remoteDataSource.resetPassword(
         ResetPasswordRequestModel(
           email: email,
-          code: code,
+          resetToken: resetToken,
           newPassword: newPassword,
           confirmPassword: confirmPassword,
         ),
@@ -134,6 +148,8 @@ class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
                 countryCode: item.countryCode,
                 callingCode: item.callingCode,
                 flag: item.flag,
+                nationalNumberLength: item.nationalNumberLength,
+                mobilePrefixes: item.mobilePrefixes,
               ))
           .toList();
     });

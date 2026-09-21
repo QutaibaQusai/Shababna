@@ -1,19 +1,19 @@
 class ResetPasswordRequestModel {
   const ResetPasswordRequestModel({
     required this.email,
-    required this.code,
+    required this.resetToken,
     required this.newPassword,
     required this.confirmPassword,
   });
 
   final String email;
-  final String code;
+  final String resetToken;
   final String newPassword;
   final String confirmPassword;
 
   Map<String, dynamic> toJson() => {
         'email': email,
-        'code': code,
+        'resetToken': resetToken,
         'newPassword': newPassword,
         'confirmPassword': confirmPassword,
       };

@@ -45,17 +45,20 @@
   "emailVerifiedMessage": "Email verified. You can now log in.",
   "registrationCompleteMessage": "Account created. You can now log in.",
 
-  "forgotPasswordAppBarTitle": "Account recovery",
+  "accountRecoveryTitle": "Account recovery",
   "forgotPasswordTitle": "Forgot your password?",
   "forgotPasswordSubtitle": "Enter your email and we'll send you a code to reset your password",
   "sendCodeButton": "Send code",
 
-  "resetPasswordAppBarTitle": "Reset password",
-  "resetPasswordTitle": "Create a new password",
-  "resetPasswordSubtitle": "Enter the code sent to {email} and choose a new password",
-  "@resetPasswordSubtitle": {
+  "verifyResetCodeTitle": "Check your email",
+  "verifyResetCodeSubtitle": "Enter the code we sent to {email}",
+  "@verifyResetCodeSubtitle": {
     "placeholders": { "email": { "type": "String" } }
   },
+
+  "resetPasswordAppBarTitle": "Reset password",
+  "resetPasswordTitle": "Create a new password",
+  "resetPasswordSubtitle": "Choose a new password for your account",
   "newPasswordLabel": "New password",
   "resetPasswordButton": "Reset password",
   "passwordResetSuccessMessage": "Password reset. You can now log in.",
@@ -64,6 +67,14 @@
   "invalidEmailError": "Enter a valid email address",
   "passwordsDoNotMatchError": "Passwords do not match",
   "invalidPhoneNumberError": "Enter a valid phone number",
+  "phoneNumberLengthError": "Phone number must be {length} digits",
+  "@phoneNumberLengthError": {
+    "placeholders": { "length": { "type": "int" } }
+  },
+  "phoneNumberPrefixError": "Phone number must start with {prefixes}",
+  "@phoneNumberPrefixError": {
+    "placeholders": { "prefixes": { "type": "String" } }
+  },
 
   "searchCountryHint": "Search country or code"
 }

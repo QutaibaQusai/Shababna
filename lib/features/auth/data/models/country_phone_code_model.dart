@@ -4,6 +4,8 @@ class CountryPhoneCodeModel {
     required this.countryCode,
     required this.callingCode,
     required this.flag,
+    this.nationalNumberLength,
+    this.mobilePrefixes,
   });
 
   factory CountryPhoneCodeModel.fromJson(Map<String, dynamic> json) {
@@ -12,6 +14,8 @@ class CountryPhoneCodeModel {
       countryCode: json['countryCode'] as String,
       callingCode: json['callingCode'] as String,
       flag: json['flag'] as String,
+      nationalNumberLength: _parseLength(json['nationalNumberLength']),
+      mobilePrefixes: (json['mobilePrefixes'] as List?)?.cast<String>(),
     );
   }
 
@@ -19,4 +23,12 @@ class CountryPhoneCodeModel {
   final String countryCode;
   final String callingCode;
   final String flag;
+  final int? nationalNumberLength;
+  final List<String>? mobilePrefixes;
+
+  static int? _parseLength(Object? value) {
+    if (value is int) return value;
+    if (value is String) return int.tryParse(value);
+    return null;
+  }
 }

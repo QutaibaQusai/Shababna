@@ -320,11 +320,11 @@ abstract class AppLocalizations {
   /// **'Account created. You can now log in.'**
   String get registrationCompleteMessage;
 
-  /// No description provided for @forgotPasswordAppBarTitle.
+  /// No description provided for @accountRecoveryTitle.
   ///
   /// In en, this message translates to:
   /// **'Account recovery'**
-  String get forgotPasswordAppBarTitle;
+  String get accountRecoveryTitle;
 
   /// No description provided for @forgotPasswordTitle.
   ///
@@ -344,6 +344,18 @@ abstract class AppLocalizations {
   /// **'Send code'**
   String get sendCodeButton;
 
+  /// No description provided for @verifyResetCodeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your email'**
+  String get verifyResetCodeTitle;
+
+  /// No description provided for @verifyResetCodeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code we sent to {email}'**
+  String verifyResetCodeSubtitle(String email);
+
   /// No description provided for @resetPasswordAppBarTitle.
   ///
   /// In en, this message translates to:
@@ -359,8 +371,8 @@ abstract class AppLocalizations {
   /// No description provided for @resetPasswordSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Enter the code sent to {email} and choose a new password'**
-  String resetPasswordSubtitle(String email);
+  /// **'Choose a new password for your account'**
+  String get resetPasswordSubtitle;
 
   /// No description provided for @newPasswordLabel.
   ///
@@ -403,6 +415,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter a valid phone number'**
   String get invalidPhoneNumberError;
+
+  /// No description provided for @phoneNumberLengthError.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number must be {length} digits'**
+  String phoneNumberLengthError(int length);
+
+  /// No description provided for @phoneNumberPrefixError.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number must start with {prefixes}'**
+  String phoneNumberPrefixError(String prefixes);
 
   /// No description provided for @searchCountryHint.
   ///
