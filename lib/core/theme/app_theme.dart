@@ -51,7 +51,7 @@ class AppTheme {
     ),
     cardTheme: _buildCardTheme(color: AppColors.surfaceLight),
     navigationBarTheme: _buildNavigationBarTheme(
-      background: AppColors.surfaceLight,
+      background: AppColors.backgroundLight,
       selected: AppColors.infoColor,
       unselected: AppColors.neutralColor,
       fontFamily: fontFamily,
@@ -118,7 +118,7 @@ class AppTheme {
     ),
     cardTheme: _buildCardTheme(color: AppColors.surfaceDark),
     navigationBarTheme: _buildNavigationBarTheme(
-      background: AppColors.surfaceDark,
+      background: AppColors.backgroundDark,
       selected: AppColors.infoColor,
       unselected: AppColors.neutralColor,
       fontFamily: fontFamily,
