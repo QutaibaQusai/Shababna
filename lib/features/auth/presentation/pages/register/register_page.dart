@@ -15,8 +15,8 @@ import '../../../../../core/utils/phone_number.dart';
 import '../../../domain/repositories/auth_repository.dart';
 import '../../cubit/register/register_cubit.dart';
 import '../../cubit/register/register_state.dart';
-import '../../cubit/register/verify_email_cubit.dart';
-import '../../cubit/register/verify_email_state.dart';
+import '../../cubit/register/register_verify_cubit.dart';
+import '../../cubit/register/register_verify_state.dart';
 import '../../widgets/register/register_step_contact.dart';
 import '../../widgets/register/register_step_indicator.dart';
 import '../../widgets/register/register_step_name.dart';
@@ -31,7 +31,7 @@ class RegisterPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => sl<RegisterCubit>()..loadPhoneCodes()),
-        BlocProvider(create: (_) => sl<VerifyEmailCubit>()),
+        BlocProvider(create: (_) => sl<RegisterVerifyCubit>()),
       ],
       child: const _RegisterView(),
     );
@@ -47,14 +47,16 @@ class _RegisterView extends StatefulWidget {
 
 class _RegisterViewState extends State<_RegisterView> {
   static const _stepCount = 4;
-  static const _passwordStep = 2;
-  static const _verifyStep = 3;
+  static const _nameStep = 0;
+  static const _contactStep = 1;
+  static const _codeStep = 2;
+  static const _passwordStep = 3;
   static const _defaultCountryCode = 'JO';
   static const _stepDuration = Duration(milliseconds: 250);
 
   final _pageController = PageController();
   final _stepFormKeys = List.generate(_stepCount, (_) => GlobalKey<FormState>());
-  int _currentStep = 0;
+  int _currentStep = _nameStep;
 
   final _fullNameArController = TextEditingController();
   final _fullNameEnController = TextEditingController();
@@ -88,8 +90,10 @@ class _RegisterViewState extends State<_RegisterView> {
     setState(() => _selectedPhoneCode = defaultCode);
   }
 
-  String _emailToVerify(RegisterState state) =>
-      state.registeredEmail ?? _emailController.text.trim();
+  String get _composedPhoneNumber => PhoneNumber.toE164(
+        callingCode: _selectedPhoneCode!.callingCode,
+        input: _phoneNumberController.text,
+      );
 
   void _advance() {
     setState(() => _currentStep++);
@@ -100,45 +104,52 @@ class _RegisterViewState extends State<_RegisterView> {
     if (!(_stepFormKeys[_currentStep].currentState?.validate() ?? false)) return;
 
     switch (_currentStep) {
+      case _contactStep:
+        _sendCode();
+      case _codeStep:
+        _verifyCode();
       case _passwordStep:
         _register();
-      case _verifyStep:
-        _verifyEmail();
       default:
         _advance();
     }
   }
 
-  void _register() {
-    final phoneNumber = PhoneNumber.toE164(
-      callingCode: _selectedPhoneCode!.callingCode,
-      input: _phoneNumberController.text,
-    );
-    context.read<RegisterCubit>().submit(
+  void _sendCode() {
+    context.read<RegisterVerifyCubit>().sendCode(
           email: _emailController.text.trim(),
-          phoneNumber: phoneNumber,
-          fullNameEn: _fullNameEnController.text.trim(),
-          fullNameAr: _fullNameArController.text.trim(),
-          password: _passwordController.text,
-          confirmPassword: _confirmPasswordController.text,
+          phoneNumber: _composedPhoneNumber,
         );
   }
 
-  void _verifyEmail() {
-    context.read<VerifyEmailCubit>().verify(
-          email: _emailToVerify(context.read<RegisterCubit>().state),
+  void _verifyCode() {
+    context.read<RegisterVerifyCubit>().verify(
+          email: _emailController.text.trim(),
           code: _otpController.text.trim(),
         );
   }
 
   void _resendCode() {
-    context.read<VerifyEmailCubit>().resend(
-          email: _emailToVerify(context.read<RegisterCubit>().state),
+    context.read<RegisterVerifyCubit>().resend(
+          email: _emailController.text.trim(),
+          phoneNumber: _composedPhoneNumber,
+        );
+  }
+
+  void _register() {
+    context.read<RegisterCubit>().submit(
+          email: _emailController.text.trim(),
+          phoneNumber: _composedPhoneNumber,
+          fullNameEn: _fullNameEnController.text.trim(),
+          fullNameAr: _fullNameArController.text.trim(),
+          password: _passwordController.text,
+          confirmPassword: _confirmPasswordController.text,
+          verificationToken: context.read<RegisterVerifyCubit>().state.verificationToken!,
         );
   }
 
   void _goBack() {
-    if (_currentStep == 0 || _currentStep == _verifyStep) {
+    if (_currentStep == _nameStep) {
       context.go(AppRoutes.login);
       return;
     }
@@ -148,21 +159,16 @@ class _RegisterViewState extends State<_RegisterView> {
 
   void _onRegisterStatusChanged(BuildContext context, RegisterState state) {
     if (state.status == FormStatus.success) {
-      if (state.emailVerificationRequired) {
-        _advance();
-      } else {
-        AppToast.success(context, context.l10n.registrationCompleteMessage);
-        context.go(AppRoutes.login);
-      }
+      AppToast.success(context, context.l10n.registrationCompleteMessage);
+      context.go(AppRoutes.login);
     } else if (state.status == FormStatus.failure && state.errorMessage != null) {
       AppToast.error(context, state.errorMessage!);
     }
   }
 
-  void _onVerifyStateChanged(BuildContext context, VerifyEmailState state) {
+  void _onRegisterVerifyStateChanged(BuildContext context, RegisterVerifyState state) {
     if (state.status == FormStatus.success) {
-      AppToast.success(context, context.l10n.emailVerifiedMessage);
-      context.go(AppRoutes.login);
+      _advance();
     } else if (state.status == FormStatus.failure && state.errorMessage != null) {
       AppToast.error(context, state.errorMessage!);
     } else if (state.resendMessage != null) {
@@ -175,8 +181,9 @@ class _RegisterViewState extends State<_RegisterView> {
   }
 
   String _primaryLabel(BuildContext context) => switch (_currentStep) {
+        _contactStep => context.l10n.sendCodeButton,
+        _codeStep => context.l10n.verifyButton,
         _passwordStep => context.l10n.createAccountButton,
-        _verifyStep => context.l10n.verifyButton,
         _ => context.l10n.nextButton,
       };
 
@@ -192,17 +199,17 @@ class _RegisterViewState extends State<_RegisterView> {
           listenWhen: (previous, current) => previous.phoneCodes != current.phoneCodes,
           listener: (_, state) => _selectDefaultPhoneCodeIfNeeded(state.phoneCodes),
         ),
-        BlocListener<VerifyEmailCubit, VerifyEmailState>(
+        BlocListener<RegisterVerifyCubit, RegisterVerifyState>(
           listenWhen: (previous, current) =>
               previous.status != current.status ||
               previous.resendMessage != current.resendMessage,
-          listener: _onVerifyStateChanged,
+          listener: _onRegisterVerifyStateChanged,
         ),
       ],
       child: BlocBuilder<RegisterCubit, RegisterState>(
         builder: (context, state) {
           final isVerifying =
-              context.watch<VerifyEmailCubit>().state.status == FormStatus.submitting;
+              context.watch<RegisterVerifyCubit>().state.status == FormStatus.submitting;
 
           return AppLoadingOverlay(
             isLoading: state.status == FormStatus.submitting || isVerifying,
@@ -228,12 +235,12 @@ class _RegisterViewState extends State<_RegisterView> {
                           physics: const NeverScrollableScrollPhysics(),
                           children: [
                             RegisterStepName(
-                              formKey: _stepFormKeys[0],
+                              formKey: _stepFormKeys[_nameStep],
                               fullNameArController: _fullNameArController,
                               fullNameEnController: _fullNameEnController,
                             ),
                             RegisterStepContact(
-                              formKey: _stepFormKeys[1],
+                              formKey: _stepFormKeys[_contactStep],
                               emailController: _emailController,
                               phoneNumberController: _phoneNumberController,
                               phoneCodes: state.phoneCodes,
@@ -245,17 +252,17 @@ class _RegisterViewState extends State<_RegisterView> {
                               onRetryLoadPhoneCodes: () =>
                                   context.read<RegisterCubit>().loadPhoneCodes(),
                             ),
+                            RegisterStepVerifyEmail(
+                              formKey: _stepFormKeys[_codeStep],
+                              codeController: _otpController,
+                              email: _emailController.text.trim(),
+                              onCompleted: _goNext,
+                              onResend: _resendCode,
+                            ),
                             RegisterStepPassword(
                               formKey: _stepFormKeys[_passwordStep],
                               passwordController: _passwordController,
                               confirmPasswordController: _confirmPasswordController,
-                            ),
-                            RegisterStepVerifyEmail(
-                              formKey: _stepFormKeys[_verifyStep],
-                              codeController: _otpController,
-                              email: _emailToVerify(state),
-                              onCompleted: _goNext,
-                              onResend: _resendCode,
                             ),
                           ],
                         ),
@@ -265,7 +272,7 @@ class _RegisterViewState extends State<_RegisterView> {
                         label: _primaryLabel(context),
                         onPressed: _goNext,
                       ),
-                      if (_currentStep != _verifyStep)
+                      if (_currentStep != _codeStep)
                         Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

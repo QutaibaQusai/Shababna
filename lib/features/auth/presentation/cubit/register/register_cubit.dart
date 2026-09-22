@@ -31,6 +31,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     required String fullNameAr,
     required String password,
     required String confirmPassword,
+    required String verificationToken,
   }) async {
     emit(state.copyWith(status: FormStatus.submitting));
 
@@ -41,19 +42,14 @@ class RegisterCubit extends Cubit<RegisterState> {
       fullNameAr: fullNameAr,
       password: password,
       confirmPassword: confirmPassword,
+      verificationToken: verificationToken,
     );
 
     result.fold(
       (failure) => emit(
         state.copyWith(status: FormStatus.failure, errorMessage: failure.displayMessage),
       ),
-      (registerResult) => emit(
-        state.copyWith(
-          status: FormStatus.success,
-          registeredEmail: registerResult.email,
-          emailVerificationRequired: registerResult.emailVerificationRequired,
-        ),
-      ),
+      (_) => emit(state.copyWith(status: FormStatus.success)),
     );
   }
 }

@@ -11,7 +11,7 @@ import 'presentation/cubit/forgot_password/forgot_password_cubit.dart';
 import 'presentation/cubit/login/login_cubit.dart';
 import 'presentation/cubit/register/register_cubit.dart';
 import 'presentation/cubit/forgot_password/reset_password_cubit.dart';
-import 'presentation/cubit/register/verify_email_cubit.dart';
+import 'presentation/cubit/register/register_verify_cubit.dart';
 import 'presentation/cubit/forgot_password/verify_reset_code_cubit.dart';
 
 void registerAuthFeature(GetIt sl) {
@@ -31,8 +31,8 @@ void registerAuthFeature(GetIt sl) {
     () => LoginCubit(sl<AuthRepository>(), sl<AuthSessionCubit>()),
   );
   sl.registerFactory<RegisterCubit>(() => RegisterCubit(sl<AuthRepository>()));
-  sl.registerFactory<VerifyEmailCubit>(
-    () => VerifyEmailCubit(sl<AuthRepository>()),
+  sl.registerFactory<RegisterVerifyCubit>(
+    () => RegisterVerifyCubit(sl<AuthRepository>()),
   );
   sl.registerFactory<ForgotPasswordCubit>(
     () => ForgotPasswordCubit(sl<AuthRepository>()),

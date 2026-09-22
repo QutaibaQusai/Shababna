@@ -49,7 +49,6 @@
   "verifyButton": "Verify",
   "resendCodePrompt": "Didn't receive the code?",
   "resendCodeButton": "Resend code",
-  "emailVerifiedMessage": "Email verified. You can now log in.",
   "registrationCompleteMessage": "Account created. You can now log in.",
 
   "accountRecoveryTitle": "Account recovery",

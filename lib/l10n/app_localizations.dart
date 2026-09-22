@@ -344,12 +344,6 @@ abstract class AppLocalizations {
   /// **'Resend code'**
   String get resendCodeButton;
 
-  /// No description provided for @emailVerifiedMessage.
-  ///
-  /// In en, this message translates to:
-  /// **'Email verified. You can now log in.'**
-  String get emailVerifiedMessage;
-
   /// No description provided for @registrationCompleteMessage.
   ///
   /// In en, this message translates to:

@@ -1,5 +1,6 @@
 import '../../../../core/network/api_consumer.dart';
 import '../../../../core/network/end_points.dart';
+import '../models/check_registration_request_model.dart';
 import '../models/country_phone_code_model.dart';
 import '../models/email_request_model.dart';
 import '../models/login_request_model.dart';
@@ -8,7 +9,8 @@ import '../models/register_request_model.dart';
 import '../models/register_response_model.dart';
 import '../models/reset_password_request_model.dart';
 import '../models/token_response_model.dart';
-import '../models/verify_email_request_model.dart';
+import '../models/verify_registration_code_request_model.dart';
+import '../models/verify_registration_code_response_model.dart';
 import '../models/verify_reset_code_request_model.dart';
 import '../models/verify_reset_code_response_model.dart';
 
@@ -25,6 +27,26 @@ class AuthRemoteDataSource {
     return TokenResponseModel.fromJson(response as Map<String, dynamic>);
   }
 
+  Future<MessageResponseModel> checkRegistration(
+    CheckRegistrationRequestModel request,
+  ) async {
+    final response = await _apiConsumer.post(
+      EndPoints.checkRegistration,
+      data: request.toJson(),
+    );
+    return MessageResponseModel.fromJson(response as Map<String, dynamic>);
+  }
+
+  Future<VerifyRegistrationCodeResponseModel> verifyRegistrationCode(
+    VerifyRegistrationCodeRequestModel request,
+  ) async {
+    final response = await _apiConsumer.post(
+      EndPoints.verifyRegistrationCode,
+      data: request.toJson(),
+    );
+    return VerifyRegistrationCodeResponseModel.fromJson(response as Map<String, dynamic>);
+  }
+
   Future<RegisterResponseModel> register(RegisterRequestModel request) async {
     final response = await _apiConsumer.post(
       EndPoints.register,
@@ -32,20 +54,6 @@ class AuthRemoteDataSource {
       isFormData: true,
     );
     return RegisterResponseModel.fromJson(response as Map<String, dynamic>);
-  }
-
-  Future<void> verifyEmail(VerifyEmailRequestModel request) {
-    return _apiConsumer.post(EndPoints.verifyEmail, data: request.toJson());
-  }
-
-  Future<MessageResponseModel> resendEmailVerification(
-    EmailRequestModel request,
-  ) async {
-    final response = await _apiConsumer.post(
-      EndPoints.resendEmailVerification,
-      data: request.toJson(),
-    );
-    return MessageResponseModel.fromJson(response as Map<String, dynamic>);
   }
 
   Future<MessageResponseModel> forgotPassword(EmailRequestModel request) async {

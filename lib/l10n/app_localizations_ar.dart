@@ -136,10 +136,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resendCodeButton => 'إعادة إرسال الرمز';
 
   @override
-  String get emailVerifiedMessage =>
-      'تم تأكيد البريد الإلكتروني. يمكنك تسجيل الدخول الآن.';
-
-  @override
   String get registrationCompleteMessage =>
       'تم إنشاء الحساب. يمكنك تسجيل الدخول الآن.';
 

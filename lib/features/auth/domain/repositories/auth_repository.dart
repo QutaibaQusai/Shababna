@@ -2,13 +2,6 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
 
-class RegisterResult {
-  const RegisterResult({required this.email, required this.emailVerificationRequired});
-
-  final String email;
-  final bool emailVerificationRequired;
-}
-
 class CountryPhoneCode {
   const CountryPhoneCode({
     required this.countryName,
@@ -33,22 +26,24 @@ abstract interface class AuthRepository {
     required String password,
   });
 
-  Future<Either<Failure, RegisterResult>> register({
+  Future<Either<Failure, String>> checkRegistration({
+    required String email,
+    required String phoneNumber,
+  });
+
+  Future<Either<Failure, String>> verifyRegistrationCode({
+    required String email,
+    required String code,
+  });
+
+  Future<Either<Failure, void>> register({
     required String email,
     required String phoneNumber,
     required String fullNameEn,
     required String fullNameAr,
     required String password,
     required String confirmPassword,
-  });
-
-  Future<Either<Failure, void>> verifyEmail({
-    required String email,
-    required String code,
-  });
-
-  Future<Either<Failure, String>> resendEmailVerification({
-    required String email,
+    required String verificationToken,
   });
 
   Future<Either<Failure, String>> forgotPassword({required String email});

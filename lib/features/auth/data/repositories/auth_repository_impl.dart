@@ -7,11 +7,12 @@ import '../../../../core/storage/secure_storage.dart';
 import '../../../../core/storage/storage_keys.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../datasources/auth_remote_data_source.dart';
+import '../models/check_registration_request_model.dart';
 import '../models/email_request_model.dart';
 import '../models/login_request_model.dart';
 import '../models/register_request_model.dart';
 import '../models/reset_password_request_model.dart';
-import '../models/verify_email_request_model.dart';
+import '../models/verify_registration_code_request_model.dart';
 import '../models/verify_reset_code_request_model.dart';
 
 class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
@@ -46,16 +47,43 @@ class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, RegisterResult>> register({
+  Future<Either<Failure, String>> checkRegistration({
+    required String email,
+    required String phoneNumber,
+  }) {
+    return guard(() async {
+      final response = await _remoteDataSource.checkRegistration(
+        CheckRegistrationRequestModel(email: email, phoneNumber: phoneNumber),
+      );
+      return response.message;
+    });
+  }
+
+  @override
+  Future<Either<Failure, String>> verifyRegistrationCode({
+    required String email,
+    required String code,
+  }) {
+    return guard(() async {
+      final response = await _remoteDataSource.verifyRegistrationCode(
+        VerifyRegistrationCodeRequestModel(email: email, code: code),
+      );
+      return response.verificationToken;
+    });
+  }
+
+  @override
+  Future<Either<Failure, void>> register({
     required String email,
     required String phoneNumber,
     required String fullNameEn,
     required String fullNameAr,
     required String password,
     required String confirmPassword,
+    required String verificationToken,
   }) {
     return guard(() async {
-      final response = await _remoteDataSource.register(
+      await _remoteDataSource.register(
         RegisterRequestModel(
           email: email,
           phoneNumber: phoneNumber,
@@ -63,36 +91,9 @@ class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
           fullNameAr: fullNameAr,
           password: password,
           confirmPassword: confirmPassword,
+          verificationToken: verificationToken,
         ),
       );
-      return RegisterResult(
-        email: response.email,
-        emailVerificationRequired: response.emailVerificationRequired,
-      );
-    });
-  }
-
-  @override
-  Future<Either<Failure, void>> verifyEmail({
-    required String email,
-    required String code,
-  }) {
-    return guard(() {
-      return _remoteDataSource.verifyEmail(
-        VerifyEmailRequestModel(email: email, code: code),
-      );
-    });
-  }
-
-  @override
-  Future<Either<Failure, String>> resendEmailVerification({
-    required String email,
-  }) {
-    return guard(() async {
-      final response = await _remoteDataSource.resendEmailVerification(
-        EmailRequestModel(email: email),
-      );
-      return response.message;
     });
   }
 

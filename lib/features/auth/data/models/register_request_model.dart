@@ -6,6 +6,7 @@ class RegisterRequestModel {
     required this.fullNameAr,
     required this.password,
     required this.confirmPassword,
+    required this.verificationToken,
   });
 
   final String email;
@@ -14,6 +15,7 @@ class RegisterRequestModel {
   final String fullNameAr;
   final String password;
   final String confirmPassword;
+  final String verificationToken;
 
   Map<String, dynamic> toFormMap() => {
         'Email': email,
@@ -22,5 +24,6 @@ class RegisterRequestModel {
         'FullNameAr': fullNameAr,
         'Password': password,
         'ConfirmPassword': confirmPassword,
+        'VerificationToken': verificationToken,
       };
 }

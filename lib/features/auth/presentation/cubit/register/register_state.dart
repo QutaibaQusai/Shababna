@@ -7,8 +7,6 @@ class RegisterState extends Equatable {
   const RegisterState({
     this.status = FormStatus.initial,
     this.errorMessage,
-    this.registeredEmail,
-    this.emailVerificationRequired = true,
     this.phoneCodes = const [],
     this.isLoadingPhoneCodes = false,
     this.phoneCodesError,
@@ -16,8 +14,6 @@ class RegisterState extends Equatable {
 
   final FormStatus status;
   final String? errorMessage;
-  final String? registeredEmail;
-  final bool emailVerificationRequired;
   final List<CountryPhoneCode> phoneCodes;
   final bool isLoadingPhoneCodes;
   final String? phoneCodesError;
@@ -25,8 +21,6 @@ class RegisterState extends Equatable {
   RegisterState copyWith({
     FormStatus? status,
     String? errorMessage,
-    String? registeredEmail,
-    bool? emailVerificationRequired,
     List<CountryPhoneCode>? phoneCodes,
     bool? isLoadingPhoneCodes,
     String? phoneCodesError,
@@ -34,8 +28,6 @@ class RegisterState extends Equatable {
     return RegisterState(
       status: status ?? this.status,
       errorMessage: errorMessage,
-      registeredEmail: registeredEmail ?? this.registeredEmail,
-      emailVerificationRequired: emailVerificationRequired ?? this.emailVerificationRequired,
       phoneCodes: phoneCodes ?? this.phoneCodes,
       isLoadingPhoneCodes: isLoadingPhoneCodes ?? this.isLoadingPhoneCodes,
       phoneCodesError: phoneCodesError,
@@ -46,8 +38,6 @@ class RegisterState extends Equatable {
   List<Object?> get props => [
         status,
         errorMessage,
-        registeredEmail,
-        emailVerificationRequired,
         phoneCodes,
         isLoadingPhoneCodes,
         phoneCodesError,
