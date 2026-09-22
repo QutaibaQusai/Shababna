@@ -13,6 +13,8 @@ enum LayoutTab {
 
   bool get hasSearch => this != profile;
 
+  bool get hasActions => this != profile;
+
   String label(AppLocalizations l10n) => switch (this) {
     home => l10n.navHome,
     news => l10n.navNews,

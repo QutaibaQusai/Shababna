@@ -1,0 +1,19 @@
+import 'package:get_it/get_it.dart';
+
+import '../../core/network/api_consumer.dart';
+import 'data/datasources/profile_remote_data_source.dart';
+import 'data/repositories/profile_repository_impl.dart';
+import 'domain/repositories/profile_repository.dart';
+import 'presentation/cubit/profile_cubit.dart';
+
+void registerProfileFeature(GetIt sl) {
+  sl.registerLazySingleton<ProfileRemoteDataSource>(
+    () => ProfileRemoteDataSource(sl<ApiConsumer>()),
+  );
+
+  sl.registerLazySingleton<ProfileRepository>(
+    () => ProfileRepositoryImpl(sl<ProfileRemoteDataSource>()),
+  );
+
+  sl.registerFactory<ProfileCubit>(() => ProfileCubit(sl<ProfileRepository>()));
+}

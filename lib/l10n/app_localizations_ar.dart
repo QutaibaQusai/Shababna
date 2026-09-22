@@ -34,6 +34,43 @@ class AppLocalizationsAr extends AppLocalizations {
   String get navProfile => 'حسابي';
 
   @override
+  String get profileMenuLanguage => 'اللغة';
+
+  @override
+  String get profileMenuTheme => 'المظهر';
+
+  @override
+  String get profileMenuNotifications => 'الإشعارات';
+
+  @override
+  String get profileMenuNotificationsSubtitle =>
+      'إدارة الإشعارات وتحديثات التطبيق العامة.';
+
+  @override
+  String get profileMenuContactUs => 'تواصل معنا';
+
+  @override
+  String get profileMenuPrivacyPolicy => 'سياسة الخصوصية';
+
+  @override
+  String get profileMenuLogout => 'تسجيل الخروج';
+
+  @override
+  String get themeSystem => 'النظام';
+
+  @override
+  String get themeLight => 'فاتح';
+
+  @override
+  String get themeDark => 'داكن';
+
+  @override
+  String get languageEnglish => 'English';
+
+  @override
+  String get languageArabic => 'العربية';
+
+  @override
   String get actionSearch => 'بحث';
 
   @override

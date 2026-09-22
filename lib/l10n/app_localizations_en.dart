@@ -31,7 +31,44 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navEvents => 'Events';
 
   @override
-  String get navProfile => 'Profile';
+  String get navProfile => 'My Account';
+
+  @override
+  String get profileMenuLanguage => 'Language';
+
+  @override
+  String get profileMenuTheme => 'Theme';
+
+  @override
+  String get profileMenuNotifications => 'Notifications';
+
+  @override
+  String get profileMenuNotificationsSubtitle =>
+      'Manage notifications and general app updates.';
+
+  @override
+  String get profileMenuContactUs => 'Contact Us';
+
+  @override
+  String get profileMenuPrivacyPolicy => 'Privacy Policy';
+
+  @override
+  String get profileMenuLogout => 'Logout';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get themeLight => 'Light';
+
+  @override
+  String get themeDark => 'Dark';
+
+  @override
+  String get languageEnglish => 'English';
+
+  @override
+  String get languageArabic => 'العربية';
 
   @override
   String get actionSearch => 'Search';

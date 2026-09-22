@@ -32,22 +32,24 @@ class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
           fontWeight: FontWeight.w700,
         ),
       ),
-      actions: [
-        if (tab.hasSearch) ...[
-          AppIconButton(
-            icon: LucideIcons.search,
-            semanticLabel: l10n.actionSearch,
-            onPressed: showComingSoon,
-          ),
-          SizedBox(width: AppSpacing.xs),
-        ],
-        AppIconButton.svg(
-          svgAsset: AppAssets.iconNotification,
-          semanticLabel: l10n.actionNotifications,
-          onPressed: showComingSoon,
-        ),
-        SizedBox(width: AppSpacing.screenMargin),
-      ],
+      actions: tab.hasActions
+          ? [
+              if (tab.hasSearch) ...[
+                AppIconButton(
+                  icon: LucideIcons.search,
+                  semanticLabel: l10n.actionSearch,
+                  onPressed: showComingSoon,
+                ),
+                SizedBox(width: AppSpacing.xs),
+              ],
+              AppIconButton.svg(
+                svgAsset: AppAssets.iconNotification,
+                semanticLabel: l10n.actionNotifications,
+                onPressed: showComingSoon,
+              ),
+              SizedBox(width: AppSpacing.screenMargin),
+            ]
+          : null,
     );
   }
 }

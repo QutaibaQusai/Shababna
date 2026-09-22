@@ -13,6 +13,7 @@ class AppSizes {
   static double get loadingIndicatorSize => 72.r;
   static double get otpBoxSize => 52.r;
   static double get cooldownTimerSize => 48.r;
+  static double get avatarSize => 56.r;
 
   static double get iconSm => 16.r;
   static double get iconField => 20.r;

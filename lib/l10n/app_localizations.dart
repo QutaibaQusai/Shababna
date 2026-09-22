@@ -143,8 +143,80 @@ abstract class AppLocalizations {
   /// No description provided for @navProfile.
   ///
   /// In en, this message translates to:
-  /// **'Profile'**
+  /// **'My Account'**
   String get navProfile;
+
+  /// No description provided for @profileMenuLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get profileMenuLanguage;
+
+  /// No description provided for @profileMenuTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get profileMenuTheme;
+
+  /// No description provided for @profileMenuNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get profileMenuNotifications;
+
+  /// No description provided for @profileMenuNotificationsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage notifications and general app updates.'**
+  String get profileMenuNotificationsSubtitle;
+
+  /// No description provided for @profileMenuContactUs.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Us'**
+  String get profileMenuContactUs;
+
+  /// No description provided for @profileMenuPrivacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get profileMenuPrivacyPolicy;
+
+  /// No description provided for @profileMenuLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get profileMenuLogout;
+
+  /// No description provided for @themeSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get themeSystem;
+
+  /// No description provided for @themeLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get themeLight;
+
+  /// No description provided for @themeDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get themeDark;
+
+  /// No description provided for @languageEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get languageEnglish;
+
+  /// No description provided for @languageArabic.
+  ///
+  /// In en, this message translates to:
+  /// **'العربية'**
+  String get languageArabic;
 
   /// No description provided for @actionSearch.
   ///

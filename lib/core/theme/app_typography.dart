@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTypography {
   AppTypography._();
 
-  static final String fontFamilyLatin = GoogleFonts.poppins().fontFamily!;
+  static final String fontFamilyLatin = GoogleFonts.inter().fontFamily!;
   static final String fontFamilyArabic = GoogleFonts.almarai().fontFamily!;
 
   static TextStyle _style({
