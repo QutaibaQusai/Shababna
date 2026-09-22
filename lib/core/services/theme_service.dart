@@ -23,11 +23,8 @@ class ThemeService extends Cubit<ThemeMode> {
     return state.name;
   }
 
-  void toggleThemeMode(Brightness currentBrightness) {
-    final next = currentBrightness == Brightness.dark
-        ? ThemeMode.light
-        : ThemeMode.dark;
-    _localStorage.setString(StorageKeys.themeMode, next.name);
-    emit(next);
+  void setThemeMode(ThemeMode mode) {
+    _localStorage.setString(StorageKeys.themeMode, mode.name);
+    emit(mode);
   }
 }

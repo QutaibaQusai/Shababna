@@ -18,11 +18,8 @@ class LocaleService extends Cubit<Locale?> {
       state?.languageCode ??
       WidgetsBinding.instance.platformDispatcher.locale.languageCode;
 
-  void toggleLocale(Locale current) {
-    final next = current.languageCode == 'ar'
-        ? const Locale('en')
-        : const Locale('ar');
-    _localStorage.setString(StorageKeys.locale, next.languageCode);
-    emit(next);
+  void setLocale(Locale locale) {
+    _localStorage.setString(StorageKeys.locale, locale.languageCode);
+    emit(locale);
   }
 }

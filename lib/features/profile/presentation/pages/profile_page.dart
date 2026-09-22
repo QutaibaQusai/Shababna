@@ -11,9 +11,11 @@ import '../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../domain/repositories/profile_repository.dart';
 import '../cubit/profile_cubit.dart';
+import '../widgets/language_sheet.dart';
 import '../widgets/profile_header_tile.dart';
 import '../widgets/profile_menu_tile.dart';
 import '../widgets/profile_toggle_tile.dart';
+import '../widgets/theme_sheet.dart';
 
 const _placeholderProfile = Profile(
   fullNameEn: 'Loading Name',
@@ -45,6 +47,28 @@ class _ProfileView extends StatelessWidget {
         ThemeMode.light => context.l10n.themeLight,
         ThemeMode.dark => context.l10n.themeDark,
       };
+
+  void _openLanguageSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => BlocProvider.value(
+        value: context.read<LocaleService>(),
+        child: const LanguageSheet(),
+      ),
+    );
+  }
+
+  void _openThemeSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => BlocProvider.value(
+        value: context.read<ThemeService>(),
+        child: const ThemeSheet(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,11 +106,13 @@ class _ProfileView extends StatelessWidget {
             value: languageCode == 'ar'
                 ? context.l10n.languageArabic
                 : context.l10n.languageEnglish,
+            onTap: () => _openLanguageSheet(context),
           ),
           ProfileMenuTile(
             icon: LucideIcons.palette,
             title: context.l10n.profileMenuTheme,
             value: _themeLabel(context, themeMode),
+            onTap: () => _openThemeSheet(context),
           ),
           const _NotificationsToggleTile(),
           ProfileMenuTile(

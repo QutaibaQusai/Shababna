@@ -70,7 +70,7 @@ class ProfileMenuTile extends StatelessWidget {
             ],
             if (!isDestructive)
               Icon(
-                LucideIcons.chevronRight,
+                context.isRTL ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
                 size: AppSizes.iconMd,
                 color: context.colorScheme.onSurfaceVariant,
               ),

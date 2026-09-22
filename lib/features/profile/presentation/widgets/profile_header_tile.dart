@@ -44,7 +44,7 @@ class ProfileHeaderTile extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: context.textTheme.titleLarge?.copyWith(
+                  style: context.textTheme.displaySmall?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
