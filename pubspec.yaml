@@ -30,6 +30,11 @@ dependencies:
   pinput: ^6.0.2
   flutter_svg: ^2.3.0
   skeletonizer: ^3.0.0
+  flutter_html: ^3.0.0
+  custom_refresh_indicator: ^4.0.2
+
+dependency_overrides:
+  html: 0.15.6
 dev_dependencies:
   flutter_test:
     sdk: flutter

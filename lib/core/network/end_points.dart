@@ -15,4 +15,6 @@ class EndPoints {
   static const String countryPhoneCodes = '/api/v1/countries/phone-codes';
 
   static const String profile = '/api/v1/profile';
+
+  static const String generalContent = '/api/v1/configuration/general-content';
 }

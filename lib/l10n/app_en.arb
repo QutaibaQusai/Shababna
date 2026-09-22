@@ -19,6 +19,7 @@
   "profileMenuNotificationsSubtitle": "Manage notifications and general app updates.",
   "profileMenuContactUs": "Contact Us",
   "profileMenuPrivacyPolicy": "Privacy Policy",
+  "profileMenuTermsAndConditions": "Terms & Conditions",
   "profileMenuLogout": "Logout",
   "logoutSheetTitle": "Logout",
   "logoutSheetConfirmation": "Are you sure you want to logout?",

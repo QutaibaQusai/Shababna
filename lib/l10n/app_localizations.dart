@@ -194,6 +194,12 @@ abstract class AppLocalizations {
   /// **'Privacy Policy'**
   String get profileMenuPrivacyPolicy;
 
+  /// No description provided for @profileMenuTermsAndConditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms & Conditions'**
+  String get profileMenuTermsAndConditions;
+
   /// No description provided for @profileMenuLogout.
   ///
   /// In en, this message translates to:

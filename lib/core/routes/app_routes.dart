@@ -19,6 +19,9 @@ class AppRoutes {
   static const String resetPassword = '/reset-password';
   static const String resetPasswordName = 'reset-password';
 
+  static const String legalContent = '/legal-content';
+  static const String legalContentName = 'legal-content';
+
   static const Set<String> publicRoutes = {
     login,
     register,

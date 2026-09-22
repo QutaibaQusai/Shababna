@@ -7,6 +7,7 @@ import '../../features/auth/presentation/pages/forgot_password/reset_password_ar
 import '../../features/auth/presentation/pages/forgot_password/reset_password_page.dart';
 import '../../features/auth/presentation/pages/forgot_password/verify_reset_code_page.dart';
 import '../../features/layout/presentation/pages/main_layout_page.dart';
+import '../../features/legal/presentation/pages/legal_content_page.dart';
 import '../session/auth_session_cubit.dart';
 import '../session/auth_status.dart';
 import 'app_routes.dart';
@@ -66,6 +67,14 @@ class AppRouter {
           path: AppRoutes.home,
           name: AppRoutes.homeName,
           builder: (context, state) => const MainLayoutPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.legalContent,
+          name: AppRoutes.legalContentName,
+          redirect: (context, state) =>
+              state.extra is LegalDocumentType ? null : AppRoutes.home,
+          builder: (context, state) =>
+              LegalContentPage(documentType: state.extra! as LegalDocumentType),
         ),
       ],
     );

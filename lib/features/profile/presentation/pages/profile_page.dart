@@ -1,33 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/services/locale_service.dart';
 import '../../../../core/services/theme_service.dart';
 import '../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../core/theme/app_spacing.dart';
-import '../../domain/repositories/profile_repository.dart';
+import '../../../legal/presentation/pages/legal_content_page.dart';
 import '../cubit/profile_cubit.dart';
 import '../../../auth/presentation/cubit/logout/logout_cubit.dart';
 import '../widgets/language_sheet.dart';
 import '../widgets/logout_sheet.dart';
+import '../widgets/profile_header_skeleton.dart';
 import '../widgets/profile_header_tile.dart';
 import '../widgets/profile_menu_tile.dart';
 import '../widgets/profile_toggle_tile.dart';
 import '../widgets/theme_sheet.dart';
-
-const _placeholderProfile = Profile(
-  fullNameEn: 'Loading Name',
-  fullNameAr: 'الاسم قيد التحميل',
-  email: 'loading@example.com',
-  emailConfirmed: true,
-  phoneNumber: null,
-  profilePictureUrl: null,
-  hasProfilePicture: false,
-);
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -98,11 +90,10 @@ class _ProfileView extends StatelessWidget {
               message: state.errorMessage!,
               onRetry: () => context.read<ProfileCubit>().loadProfile(),
             )
+          else if (state.isLoading || state.profile == null)
+            const ProfileHeaderSkeleton()
           else
-            Skeletonizer(
-              enabled: state.isLoading,
-              child: ProfileHeaderTile(profile: state.profile ?? _placeholderProfile),
-            ),
+            ProfileHeaderTile(profile: state.profile!),
           SizedBox(height: AppSpacing.xs),
           const Divider(height: 1),
           ProfileMenuTile(
@@ -135,6 +126,18 @@ class _ProfileView extends StatelessWidget {
           ProfileMenuTile(
             icon: LucideIcons.shield,
             title: context.l10n.profileMenuPrivacyPolicy,
+            onTap: () => context.push(
+              AppRoutes.legalContent,
+              extra: LegalDocumentType.privacyPolicy,
+            ),
+          ),
+          ProfileMenuTile(
+            icon: LucideIcons.fileText,
+            title: context.l10n.profileMenuTermsAndConditions,
+            onTap: () => context.push(
+              AppRoutes.legalContent,
+              extra: LegalDocumentType.termsAndConditions,
+            ),
           ),
           ProfileMenuTile(
             icon: LucideIcons.power,

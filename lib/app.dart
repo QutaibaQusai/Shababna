@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import 'core/di/service_locator.dart';
 import 'core/extensions/context_extensions.dart';
@@ -46,10 +47,13 @@ class ShababnaApp extends StatelessWidget {
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               routerConfig: sl<GoRouter>(),
-              builder: (context, child) => GestureDetector(
-                behavior: HitTestBehavior.translucent,
-                onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-                child: child,
+              builder: (context, child) => SkeletonizerConfig(
+                data: SkeletonizerConfigData(brightness: Theme.of(context).brightness),
+                child: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                  child: child,
+                ),
               ),
             );
           },

@@ -59,6 +59,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileMenuPrivacyPolicy => 'سياسة الخصوصية';
 
   @override
+  String get profileMenuTermsAndConditions => 'الشروط والأحكام';
+
+  @override
   String get profileMenuLogout => 'تسجيل الخروج';
 
   @override
