@@ -12,7 +12,9 @@
   "navProfile": "My Account",
 
   "profileMenuLanguage": "Language",
+  "profileMenuLanguageSubtitle": "Choose your preferred language",
   "profileMenuTheme": "Theme",
+  "profileMenuThemeSubtitle": "Choose your preferred appearance",
   "profileMenuNotifications": "Notifications",
   "profileMenuNotificationsSubtitle": "Manage notifications and general app updates.",
   "profileMenuContactUs": "Contact Us",

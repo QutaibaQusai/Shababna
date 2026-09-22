@@ -37,7 +37,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileMenuLanguage => 'اللغة';
 
   @override
+  String get profileMenuLanguageSubtitle => 'اختر لغتك المفضلة';
+
+  @override
   String get profileMenuTheme => 'المظهر';
+
+  @override
+  String get profileMenuThemeSubtitle => 'اختر المظهر المفضل لديك';
 
   @override
   String get profileMenuNotifications => 'الإشعارات';

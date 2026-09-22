@@ -37,7 +37,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileMenuLanguage => 'Language';
 
   @override
+  String get profileMenuLanguageSubtitle => 'Choose your preferred language';
+
+  @override
   String get profileMenuTheme => 'Theme';
+
+  @override
+  String get profileMenuThemeSubtitle => 'Choose your preferred appearance';
 
   @override
   String get profileMenuNotifications => 'Notifications';

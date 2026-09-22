@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/services/theme_service.dart';
+import '../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../core/theme/app_spacing.dart';
 import 'sheet_option_tile.dart';
 
@@ -29,6 +30,11 @@ class ThemeSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            AppPageHeader(
+              title: context.l10n.profileMenuTheme,
+              subtitle: context.l10n.profileMenuThemeSubtitle,
+            ),
+            SizedBox(height: AppSpacing.sm),
             SheetOptionTile(
               title: context.l10n.themeSystem,
               isSelected: themeMode == ThemeMode.system,

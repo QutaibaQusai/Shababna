@@ -152,11 +152,23 @@ abstract class AppLocalizations {
   /// **'Language'**
   String get profileMenuLanguage;
 
+  /// No description provided for @profileMenuLanguageSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your preferred language'**
+  String get profileMenuLanguageSubtitle;
+
   /// No description provided for @profileMenuTheme.
   ///
   /// In en, this message translates to:
   /// **'Theme'**
   String get profileMenuTheme;
+
+  /// No description provided for @profileMenuThemeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your preferred appearance'**
+  String get profileMenuThemeSubtitle;
 
   /// No description provided for @profileMenuNotifications.
   ///

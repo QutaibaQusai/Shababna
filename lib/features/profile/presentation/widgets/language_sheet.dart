@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/services/locale_service.dart';
+import '../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../core/theme/app_spacing.dart';
 import 'sheet_option_tile.dart';
 
@@ -20,15 +21,19 @@ class LanguageSheet extends StatelessWidget {
 
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.only(
+       padding: EdgeInsets.only(
           left: AppSpacing.screenMargin,
           right: AppSpacing.screenMargin,
-          bottom: AppSpacing.sm,
-        ),
+          bottom: AppSpacing.sm),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            AppPageHeader(
+              title: context.l10n.profileMenuLanguage,
+              subtitle: context.l10n.profileMenuLanguageSubtitle,
+            ),
+            SizedBox(height: AppSpacing.sm),
             SheetOptionTile(
               title: context.l10n.languageArabic,
               isSelected: languageCode == 'ar',

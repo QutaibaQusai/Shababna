@@ -12,7 +12,9 @@
   "navProfile": "حسابي",
 
   "profileMenuLanguage": "اللغة",
+  "profileMenuLanguageSubtitle": "اختر لغتك المفضلة",
   "profileMenuTheme": "المظهر",
+  "profileMenuThemeSubtitle": "اختر المظهر المفضل لديك",
   "profileMenuNotifications": "الإشعارات",
   "profileMenuNotificationsSubtitle": "إدارة الإشعارات وتحديثات التطبيق العامة.",
   "profileMenuContactUs": "تواصل معنا",
