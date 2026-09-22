@@ -25,7 +25,6 @@ class ProfileMenuTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = isDestructive ? context.colorScheme.error : context.colorScheme.onSurface;
 
     return InkWell(
       onTap: onTap,
@@ -36,7 +35,7 @@ class ProfileMenuTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(icon, size: AppSizes.iconMd, color: color),
+            Icon(icon, size: AppSizes.iconMd, color: context.colorScheme.onSurface),
             SizedBox(width: AppSpacing.xs),
             Expanded(
               child: Column(
@@ -45,7 +44,7 @@ class ProfileMenuTile extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: context.textTheme.bodyMedium?.copyWith(color: color),
+                    style: context.textTheme.bodyMedium?.copyWith(color: context.colorScheme.onSurface),
                   ),
                   if (subtitle != null) ...[
                     SizedBox(height: AppSpacing.xxs),

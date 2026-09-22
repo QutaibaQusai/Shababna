@@ -11,7 +11,9 @@ import '../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../domain/repositories/profile_repository.dart';
 import '../cubit/profile_cubit.dart';
+import '../../../auth/presentation/cubit/logout/logout_cubit.dart';
 import '../widgets/language_sheet.dart';
+import '../widgets/logout_sheet.dart';
 import '../widgets/profile_header_tile.dart';
 import '../widgets/profile_menu_tile.dart';
 import '../widgets/profile_toggle_tile.dart';
@@ -70,6 +72,17 @@ class _ProfileView extends StatelessWidget {
     );
   }
 
+  void _openLogoutSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => BlocProvider(
+        create: (_) => sl<LogoutCubit>(),
+        child: const LogoutSheet(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final state = context.watch<ProfileCubit>().state;
@@ -124,8 +137,10 @@ class _ProfileView extends StatelessWidget {
             title: context.l10n.profileMenuPrivacyPolicy,
           ),
           ProfileMenuTile(
-            icon: LucideIcons.logOut,
+            icon: LucideIcons.power,
             title: context.l10n.profileMenuLogout,
+            isDestructive: true,
+            onTap: () => _openLogoutSheet(context),
           ),
         ],
       ),

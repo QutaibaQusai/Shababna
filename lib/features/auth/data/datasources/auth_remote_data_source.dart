@@ -84,4 +84,8 @@ class AuthRemoteDataSource {
         .map((item) => CountryPhoneCodeModel.fromJson(item as Map<String, dynamic>))
         .toList();
   }
+
+  Future<void> logout() {
+    return _apiConsumer.post(EndPoints.logout);
+  }
 }

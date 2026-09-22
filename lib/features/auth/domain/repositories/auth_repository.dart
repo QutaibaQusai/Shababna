@@ -61,4 +61,6 @@ abstract interface class AuthRepository {
   });
 
   Future<Either<Failure, List<CountryPhoneCode>>> getPhoneCodes();
+
+  Future<Either<Failure, void>> logout();
 }

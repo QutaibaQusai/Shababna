@@ -188,6 +188,30 @@ abstract class AppLocalizations {
   /// **'Logout'**
   String get profileMenuLogout;
 
+  /// No description provided for @logoutSheetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logoutSheetTitle;
+
+  /// No description provided for @logoutSheetConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to logout?'**
+  String get logoutSheetConfirmation;
+
+  /// No description provided for @logoutConfirmButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logoutConfirmButton;
+
+  /// No description provided for @cancelButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelButton;
+
   /// No description provided for @themeSystem.
   ///
   /// In en, this message translates to:

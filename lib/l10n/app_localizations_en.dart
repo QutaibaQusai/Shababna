@@ -56,6 +56,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileMenuLogout => 'Logout';
 
   @override
+  String get logoutSheetTitle => 'Logout';
+
+  @override
+  String get logoutSheetConfirmation => 'Are you sure you want to logout?';
+
+  @override
+  String get logoutConfirmButton => 'Logout';
+
+  @override
+  String get cancelButton => 'Cancel';
+
+  @override
   String get themeSystem => 'System';
 
   @override

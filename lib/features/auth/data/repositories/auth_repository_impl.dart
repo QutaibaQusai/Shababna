@@ -155,4 +155,9 @@ class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
           .toList();
     });
   }
+
+  @override
+  Future<Either<Failure, void>> logout() {
+    return guard(() => _remoteDataSource.logout());
+  }
 }

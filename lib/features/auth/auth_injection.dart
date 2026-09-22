@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 
+import '../../core/logging/app_logger.dart';
 import '../../core/network/api_consumer.dart';
 import '../../core/services/device_identity_service.dart';
 import '../../core/session/auth_session_cubit.dart';
@@ -9,6 +10,7 @@ import 'data/repositories/auth_repository_impl.dart';
 import 'domain/repositories/auth_repository.dart';
 import 'presentation/cubit/forgot_password/forgot_password_cubit.dart';
 import 'presentation/cubit/login/login_cubit.dart';
+import 'presentation/cubit/logout/logout_cubit.dart';
 import 'presentation/cubit/register/register_cubit.dart';
 import 'presentation/cubit/forgot_password/reset_password_cubit.dart';
 import 'presentation/cubit/register/register_verify_cubit.dart';
@@ -29,6 +31,9 @@ void registerAuthFeature(GetIt sl) {
 
   sl.registerFactory<LoginCubit>(
     () => LoginCubit(sl<AuthRepository>(), sl<AuthSessionCubit>()),
+  );
+  sl.registerFactory<LogoutCubit>(
+    () => LogoutCubit(sl<AuthRepository>(), sl<AuthSessionCubit>(), sl<AppLogger>()),
   );
   sl.registerFactory<RegisterCubit>(() => RegisterCubit(sl<AuthRepository>()));
   sl.registerFactory<RegisterVerifyCubit>(
