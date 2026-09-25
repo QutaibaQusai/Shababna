@@ -9,6 +9,7 @@ import '../../../../core/routes/app_routes.dart';
 import '../../../../core/services/locale_service.dart';
 import '../../../../core/services/theme_service.dart';
 import '../../../../core/shared/widgets/app_error_widget.dart';
+import '../../../../core/shared/widgets/app_menu_tile.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../legal/presentation/pages/legal_content_page.dart';
 import '../cubit/profile_cubit.dart';
@@ -17,7 +18,6 @@ import '../widgets/language_sheet.dart';
 import '../widgets/logout_sheet.dart';
 import '../widgets/profile_header_skeleton.dart';
 import '../widgets/profile_header_tile.dart';
-import '../widgets/profile_menu_tile.dart';
 import '../widgets/profile_toggle_tile.dart';
 import '../widgets/theme_sheet.dart';
 
@@ -96,15 +96,15 @@ class _ProfileView extends StatelessWidget {
             ProfileHeaderTile(profile: state.profile!),
           SizedBox(height: AppSpacing.xs),
           const Divider(height: 1),
-          ProfileMenuTile(
+          AppMenuTile(
             icon: LucideIcons.calendar,
             title: context.l10n.navEvents,
           ),
-          ProfileMenuTile(
+          AppMenuTile(
             icon: LucideIcons.newspaper,
             title: context.l10n.navNews,
           ),
-          ProfileMenuTile(
+          AppMenuTile(
             icon: LucideIcons.languages,
             title: context.l10n.profileMenuLanguage,
             value: languageCode == 'ar'
@@ -112,34 +112,39 @@ class _ProfileView extends StatelessWidget {
                 : context.l10n.languageEnglish,
             onTap: () => _openLanguageSheet(context),
           ),
-          ProfileMenuTile(
+          AppMenuTile(
             icon: LucideIcons.palette,
             title: context.l10n.profileMenuTheme,
             value: _themeLabel(context, themeMode),
             onTap: () => _openThemeSheet(context),
           ),
           const _NotificationsToggleTile(),
-          ProfileMenuTile(
+          AppMenuTile(
+            icon: LucideIcons.shieldCheck,
+            title: context.l10n.profileMenuAccountSecurity,
+            onTap: () => context.push(AppRoutes.accountSecurity),
+          ),
+          AppMenuTile(
             icon: LucideIcons.info,
             title: context.l10n.profileMenuContactInfo,
             onTap: () => context.push(AppRoutes.contactInfo),
           ),
-          ProfileMenuTile(
+          AppMenuTile(
             icon: LucideIcons.messageCircle,
             title: context.l10n.profileMenuContactUs,
             onTap: () => context.push(AppRoutes.contactForm),
           ),
-          ProfileMenuTile(
+          AppMenuTile(
             icon: LucideIcons.users,
             title: context.l10n.profileMenuAboutUs,
             onTap: () => context.push(AppRoutes.aboutUs),
           ),
-          ProfileMenuTile(
+          AppMenuTile(
             icon: LucideIcons.share2,
             title: context.l10n.profileMenuSocialMedia,
             onTap: () => context.push(AppRoutes.socialMedia),
           ),
-          ProfileMenuTile(
+          AppMenuTile(
             icon: LucideIcons.shield,
             title: context.l10n.profileMenuPrivacyPolicy,
             onTap: () => context.push(
@@ -147,7 +152,7 @@ class _ProfileView extends StatelessWidget {
               extra: LegalDocumentType.privacyPolicy,
             ),
           ),
-          ProfileMenuTile(
+          AppMenuTile(
             icon: LucideIcons.fileText,
             title: context.l10n.profileMenuTermsAndConditions,
             onTap: () => context.push(
@@ -155,7 +160,7 @@ class _ProfileView extends StatelessWidget {
               extra: LegalDocumentType.termsAndConditions,
             ),
           ),
-          ProfileMenuTile(
+          AppMenuTile(
             icon: LucideIcons.power,
             title: context.l10n.profileMenuLogout,
             isDestructive: true,

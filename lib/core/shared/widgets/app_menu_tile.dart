@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '../../../../core/extensions/context_extensions.dart';
-import '../../../../core/theme/app_sizes.dart';
-import '../../../../core/theme/app_spacing.dart';
+import '../../extensions/context_extensions.dart';
+import '../../theme/app_sizes.dart';
+import '../../theme/app_spacing.dart';
 
-class ProfileMenuTile extends StatelessWidget {
-  const ProfileMenuTile({
+class AppMenuTile extends StatelessWidget {
+  const AppMenuTile({
     super.key,
     required this.icon,
     required this.title,
@@ -35,7 +35,11 @@ class ProfileMenuTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(icon, size: AppSizes.iconMd, color: context.colorScheme.onSurface),
+            Icon(
+              icon,
+              size: AppSizes.iconMd,
+              color: isDestructive ? context.colorScheme.error : context.colorScheme.onSurface,
+            ),
             SizedBox(width: AppSpacing.xs),
             Expanded(
               child: Column(
@@ -44,7 +48,9 @@ class ProfileMenuTile extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: context.textTheme.bodyMedium?.copyWith(color: context.colorScheme.onSurface),
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      color: isDestructive ? context.colorScheme.error : context.colorScheme.onSurface,
+                    ),
                   ),
                   if (subtitle != null) ...[
                     SizedBox(height: AppSpacing.xxs),
@@ -67,12 +73,11 @@ class ProfileMenuTile extends StatelessWidget {
               ),
               SizedBox(width: AppSpacing.xs),
             ],
-            if (!isDestructive)
-              Icon(
-                context.isRTL ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
-                size: AppSizes.iconMd,
-                color: context.colorScheme.onSurfaceVariant,
-              ),
+            Icon(
+              context.isRTL ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
+              size: AppSizes.iconMd,
+              color: isDestructive ? context.colorScheme.error : context.colorScheme.onSurfaceVariant,
+            ),
           ],
         ),
       ),

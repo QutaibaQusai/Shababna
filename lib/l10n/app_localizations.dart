@@ -182,6 +182,54 @@ abstract class AppLocalizations {
   /// **'Manage notifications and general app updates.'**
   String get profileMenuNotificationsSubtitle;
 
+  /// No description provided for @profileMenuAccountSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Security'**
+  String get profileMenuAccountSecurity;
+
+  /// No description provided for @accountSecuritySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage your password and account protection'**
+  String get accountSecuritySubtitle;
+
+  /// No description provided for @changePasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get changePasswordTitle;
+
+  /// No description provided for @changePasswordSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a strong password to keep your account secure'**
+  String get changePasswordSubtitle;
+
+  /// No description provided for @currentPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Current password'**
+  String get currentPasswordLabel;
+
+  /// No description provided for @changePasswordButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Password'**
+  String get changePasswordButton;
+
+  /// No description provided for @changePasswordSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Password updated successfully'**
+  String get changePasswordSuccessMessage;
+
+  /// No description provided for @deleteAccountTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get deleteAccountTitle;
+
   /// No description provided for @profileMenuContactUs.
   ///
   /// In en, this message translates to:

@@ -22,4 +22,6 @@ class EndPoints {
   static const String contactForms = '/api/v1/contact-forms';
 
   static const String socialMediaLinks = '/api/v1/configuration/social-media-links';
+
+  static const String changePassword = '/api/v1/profile/change-password';
 }

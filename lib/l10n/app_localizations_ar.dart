@@ -53,6 +53,31 @@ class AppLocalizationsAr extends AppLocalizations {
       'إدارة الإشعارات وتحديثات التطبيق العامة.';
 
   @override
+  String get profileMenuAccountSecurity => 'أمان الحساب';
+
+  @override
+  String get accountSecuritySubtitle => 'إدارة كلمة المرور وحماية حسابك';
+
+  @override
+  String get changePasswordTitle => 'تغيير كلمة المرور';
+
+  @override
+  String get changePasswordSubtitle =>
+      'اختر كلمة مرور قوية للحفاظ على أمان حسابك';
+
+  @override
+  String get currentPasswordLabel => 'كلمة المرور الحالية';
+
+  @override
+  String get changePasswordButton => 'تحديث كلمة المرور';
+
+  @override
+  String get changePasswordSuccessMessage => 'تم تحديث كلمة المرور بنجاح';
+
+  @override
+  String get deleteAccountTitle => 'حذف الحساب';
+
+  @override
   String get profileMenuContactUs => 'تواصل معنا';
 
   @override

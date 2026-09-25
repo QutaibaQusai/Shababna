@@ -53,6 +53,32 @@ class AppLocalizationsEn extends AppLocalizations {
       'Manage notifications and general app updates.';
 
   @override
+  String get profileMenuAccountSecurity => 'Account Security';
+
+  @override
+  String get accountSecuritySubtitle =>
+      'Manage your password and account protection';
+
+  @override
+  String get changePasswordTitle => 'Change Password';
+
+  @override
+  String get changePasswordSubtitle =>
+      'Choose a strong password to keep your account secure';
+
+  @override
+  String get currentPasswordLabel => 'Current password';
+
+  @override
+  String get changePasswordButton => 'Update Password';
+
+  @override
+  String get changePasswordSuccessMessage => 'Password updated successfully';
+
+  @override
+  String get deleteAccountTitle => 'Delete Account';
+
+  @override
   String get profileMenuContactUs => 'Contact Us';
 
   @override

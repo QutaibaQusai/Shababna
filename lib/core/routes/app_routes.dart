@@ -37,6 +37,12 @@ class AppRoutes {
   static const String webView = '/web-view';
   static const String webViewName = 'web-view';
 
+  static const String accountSecurity = '/account-security';
+  static const String accountSecurityName = 'account-security';
+
+  static const String changePassword = '/change-password';
+  static const String changePasswordName = 'change-password';
+
   static const Set<String> publicRoutes = {
     login,
     register,

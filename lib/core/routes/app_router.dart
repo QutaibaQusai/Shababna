@@ -11,6 +11,8 @@ import '../../features/contact_form/presentation/pages/contact_form_page.dart';
 import '../../features/contact_info/presentation/pages/contact_info_page.dart';
 import '../../features/layout/presentation/pages/main_layout_page.dart';
 import '../../features/legal/presentation/pages/legal_content_page.dart';
+import '../../features/profile/presentation/pages/account_security_page.dart';
+import '../../features/profile/presentation/pages/change_password_page.dart';
 import '../../features/social_media/presentation/pages/social_media_page.dart';
 import '../shared/views/app_web_view_page.dart';
 import '../session/auth_session_cubit.dart';
@@ -108,6 +110,16 @@ class AppRouter {
             url: state.uri.queryParameters['url'] ?? '',
             title: state.uri.queryParameters['title'] ?? '',
           ),
+        ),
+        GoRoute(
+          path: AppRoutes.accountSecurity,
+          name: AppRoutes.accountSecurityName,
+          builder: (context, state) => const AccountSecurityPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.changePassword,
+          name: AppRoutes.changePasswordName,
+          builder: (context, state) => const ChangePasswordPage(),
         ),
       ],
     );
