@@ -171,21 +171,21 @@ class _EditProfileViewState extends State<_EditProfileView> {
         }
       },
       builder: (context, state) {
-        return Scaffold(
-          appBar: AppAppBar(title: context.l10n.editProfileTitle, onBack: () => context.pop()),
-          body: state.isLoading
-              ? const EditProfileSkeleton()
-              : state.loadError != null
-                  ? AppErrorWidget(
-                      message: state.loadError!,
-                      onRetry: () => context.read<EditProfileCubit>().load(),
-                    )
-                  : state.profile == null
-                      ? const SizedBox.shrink()
-                      : AppLoadingOverlay(
-                          isLoading: state.submitStatus == FormStatus.submitting,
-                          child: _buildContent(context, state, state.profile!),
-                        ),
+        return AppLoadingOverlay(
+          isLoading: state.submitStatus == FormStatus.submitting,
+          child: Scaffold(
+            appBar: AppAppBar(title: context.l10n.editProfileTitle, onBack: () => context.pop()),
+            body: state.isLoading
+                ? const EditProfileSkeleton()
+                : state.loadError != null
+                    ? AppErrorWidget(
+                        message: state.loadError!,
+                        onRetry: () => context.read<EditProfileCubit>().load(),
+                      )
+                    : state.profile == null
+                        ? const SizedBox.shrink()
+                        : _buildContent(context, state, state.profile!),
+          ),
         );
       },
     );
