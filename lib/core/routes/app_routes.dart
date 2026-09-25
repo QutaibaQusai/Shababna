@@ -22,6 +22,12 @@ class AppRoutes {
   static const String legalContent = '/legal-content';
   static const String legalContentName = 'legal-content';
 
+  static const String contactInfo = '/contact-info';
+  static const String contactInfoName = 'contact-info';
+
+  static const String contactForm = '/contact-form';
+  static const String contactFormName = 'contact-form';
+
   static const Set<String> publicRoutes = {
     login,
     register,

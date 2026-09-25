@@ -188,6 +188,12 @@ abstract class AppLocalizations {
   /// **'Contact Us'**
   String get profileMenuContactUs;
 
+  /// No description provided for @profileMenuContactInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Information'**
+  String get profileMenuContactInfo;
+
   /// No description provided for @profileMenuPrivacyPolicy.
   ///
   /// In en, this message translates to:
@@ -583,6 +589,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search country or code'**
   String get searchCountryHint;
+
+  /// No description provided for @contactInfoEmailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get contactInfoEmailLabel;
+
+  /// No description provided for @contactInfoComplaintsEmailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Complaints Email'**
+  String get contactInfoComplaintsEmailLabel;
+
+  /// No description provided for @contactInfoPhoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get contactInfoPhoneLabel;
+
+  /// No description provided for @contactInfoComplaintsPhoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Complaints Phone'**
+  String get contactInfoComplaintsPhoneLabel;
+
+  /// No description provided for @contactInfoAddressLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get contactInfoAddressLabel;
+
+  /// No description provided for @contactFormTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send us a message'**
+  String get contactFormTitle;
+
+  /// No description provided for @contactFormSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll get back to you as soon as possible'**
+  String get contactFormSubtitle;
+
+  /// No description provided for @fullNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Name'**
+  String get fullNameLabel;
+
+  /// No description provided for @subjectLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get subjectLabel;
+
+  /// No description provided for @messageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get messageLabel;
+
+  /// No description provided for @contactSendButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get contactSendButton;
+
+  /// No description provided for @contactSubmitSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your message has been sent. We\'ll be in touch soon.'**
+  String get contactSubmitSuccessMessage;
 }
 
 class _AppLocalizationsDelegate

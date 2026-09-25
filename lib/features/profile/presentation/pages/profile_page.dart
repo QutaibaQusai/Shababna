@@ -120,8 +120,14 @@ class _ProfileView extends StatelessWidget {
           ),
           const _NotificationsToggleTile(),
           ProfileMenuTile(
+            icon: LucideIcons.info,
+            title: context.l10n.profileMenuContactInfo,
+            onTap: () => context.push(AppRoutes.contactInfo),
+          ),
+          ProfileMenuTile(
             icon: LucideIcons.messageCircle,
             title: context.l10n.profileMenuContactUs,
+            onTap: () => context.push(AppRoutes.contactForm),
           ),
           ProfileMenuTile(
             icon: LucideIcons.shield,

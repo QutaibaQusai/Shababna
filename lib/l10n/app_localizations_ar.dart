@@ -56,6 +56,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileMenuContactUs => 'تواصل معنا';
 
   @override
+  String get profileMenuContactInfo => 'معلومات التواصل';
+
+  @override
   String get profileMenuPrivacyPolicy => 'سياسة الخصوصية';
 
   @override
@@ -266,4 +269,41 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get searchCountryHint => 'ابحث عن الدولة أو الرمز';
+
+  @override
+  String get contactInfoEmailLabel => 'البريد الإلكتروني';
+
+  @override
+  String get contactInfoComplaintsEmailLabel => 'بريد الشكاوى';
+
+  @override
+  String get contactInfoPhoneLabel => 'رقم الهاتف';
+
+  @override
+  String get contactInfoComplaintsPhoneLabel => 'رقم هاتف الشكاوى';
+
+  @override
+  String get contactInfoAddressLabel => 'العنوان';
+
+  @override
+  String get contactFormTitle => 'أرسل لنا رسالة';
+
+  @override
+  String get contactFormSubtitle => 'سنعاود التواصل معك في أقرب وقت ممكن';
+
+  @override
+  String get fullNameLabel => 'الاسم الكامل';
+
+  @override
+  String get subjectLabel => 'الموضوع';
+
+  @override
+  String get messageLabel => 'الرسالة';
+
+  @override
+  String get contactSendButton => 'إرسال';
+
+  @override
+  String get contactSubmitSuccessMessage =>
+      'تم إرسال رسالتك. سنتواصل معك قريباً.';
 }

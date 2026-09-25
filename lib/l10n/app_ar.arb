@@ -18,6 +18,7 @@
   "profileMenuNotifications": "الإشعارات",
   "profileMenuNotificationsSubtitle": "إدارة الإشعارات وتحديثات التطبيق العامة.",
   "profileMenuContactUs": "تواصل معنا",
+  "profileMenuContactInfo": "معلومات التواصل",
   "profileMenuPrivacyPolicy": "سياسة الخصوصية",
   "profileMenuTermsAndConditions": "الشروط والأحكام",
   "profileMenuLogout": "تسجيل الخروج",
@@ -91,5 +92,18 @@
   "phoneNumberLengthError": "يجب أن يتكون رقم الهاتف من {length} أرقام",
   "phoneNumberPrefixError": "يجب أن يبدأ رقم الهاتف بـ {prefixes}",
 
-  "searchCountryHint": "ابحث عن الدولة أو الرمز"
+  "searchCountryHint": "ابحث عن الدولة أو الرمز",
+
+  "contactInfoEmailLabel": "البريد الإلكتروني",
+  "contactInfoComplaintsEmailLabel": "بريد الشكاوى",
+  "contactInfoPhoneLabel": "رقم الهاتف",
+  "contactInfoComplaintsPhoneLabel": "رقم هاتف الشكاوى",
+  "contactInfoAddressLabel": "العنوان",
+  "contactFormTitle": "أرسل لنا رسالة",
+  "contactFormSubtitle": "سنعاود التواصل معك في أقرب وقت ممكن",
+  "fullNameLabel": "الاسم الكامل",
+  "subjectLabel": "الموضوع",
+  "messageLabel": "الرسالة",
+  "contactSendButton": "إرسال",
+  "contactSubmitSuccessMessage": "تم إرسال رسالتك. سنتواصل معك قريباً."
 }

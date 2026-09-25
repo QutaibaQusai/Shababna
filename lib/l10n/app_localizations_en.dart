@@ -56,6 +56,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileMenuContactUs => 'Contact Us';
 
   @override
+  String get profileMenuContactInfo => 'Contact Information';
+
+  @override
   String get profileMenuPrivacyPolicy => 'Privacy Policy';
 
   @override
@@ -267,4 +270,42 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get searchCountryHint => 'Search country or code';
+
+  @override
+  String get contactInfoEmailLabel => 'Email';
+
+  @override
+  String get contactInfoComplaintsEmailLabel => 'Complaints Email';
+
+  @override
+  String get contactInfoPhoneLabel => 'Phone';
+
+  @override
+  String get contactInfoComplaintsPhoneLabel => 'Complaints Phone';
+
+  @override
+  String get contactInfoAddressLabel => 'Address';
+
+  @override
+  String get contactFormTitle => 'Send us a message';
+
+  @override
+  String get contactFormSubtitle =>
+      'We\'ll get back to you as soon as possible';
+
+  @override
+  String get fullNameLabel => 'Full Name';
+
+  @override
+  String get subjectLabel => 'Subject';
+
+  @override
+  String get messageLabel => 'Message';
+
+  @override
+  String get contactSendButton => 'Send';
+
+  @override
+  String get contactSubmitSuccessMessage =>
+      'Your message has been sent. We\'ll be in touch soon.';
 }

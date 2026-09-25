@@ -17,4 +17,7 @@ class EndPoints {
   static const String profile = '/api/v1/profile';
 
   static const String generalContent = '/api/v1/configuration/general-content';
+
+  static const String contactInformation = '/api/v1/configuration/contact-information';
+  static const String contactForms = '/api/v1/contact-forms';
 }

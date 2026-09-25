@@ -6,6 +6,8 @@ import '../../features/auth/presentation/pages/register/register_page.dart';
 import '../../features/auth/presentation/pages/forgot_password/reset_password_args.dart';
 import '../../features/auth/presentation/pages/forgot_password/reset_password_page.dart';
 import '../../features/auth/presentation/pages/forgot_password/verify_reset_code_page.dart';
+import '../../features/contact_form/presentation/pages/contact_form_page.dart';
+import '../../features/contact_info/presentation/pages/contact_info_page.dart';
 import '../../features/layout/presentation/pages/main_layout_page.dart';
 import '../../features/legal/presentation/pages/legal_content_page.dart';
 import '../session/auth_session_cubit.dart';
@@ -75,6 +77,16 @@ class AppRouter {
               state.extra is LegalDocumentType ? null : AppRoutes.home,
           builder: (context, state) =>
               LegalContentPage(documentType: state.extra! as LegalDocumentType),
+        ),
+        GoRoute(
+          path: AppRoutes.contactInfo,
+          name: AppRoutes.contactInfoName,
+          builder: (context, state) => const ContactInfoPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.contactForm,
+          name: AppRoutes.contactFormName,
+          builder: (context, state) => const ContactFormPage(),
         ),
       ],
     );

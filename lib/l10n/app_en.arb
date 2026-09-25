@@ -18,6 +18,7 @@
   "profileMenuNotifications": "Notifications",
   "profileMenuNotificationsSubtitle": "Manage notifications and general app updates.",
   "profileMenuContactUs": "Contact Us",
+  "profileMenuContactInfo": "Contact Information",
   "profileMenuPrivacyPolicy": "Privacy Policy",
   "profileMenuTermsAndConditions": "Terms & Conditions",
   "profileMenuLogout": "Logout",
@@ -106,5 +107,18 @@
     "placeholders": { "prefixes": { "type": "String" } }
   },
 
-  "searchCountryHint": "Search country or code"
+  "searchCountryHint": "Search country or code",
+
+  "contactInfoEmailLabel": "Email",
+  "contactInfoComplaintsEmailLabel": "Complaints Email",
+  "contactInfoPhoneLabel": "Phone",
+  "contactInfoComplaintsPhoneLabel": "Complaints Phone",
+  "contactInfoAddressLabel": "Address",
+  "contactFormTitle": "Send us a message",
+  "contactFormSubtitle": "We'll get back to you as soon as possible",
+  "fullNameLabel": "Full Name",
+  "subjectLabel": "Subject",
+  "messageLabel": "Message",
+  "contactSendButton": "Send",
+  "contactSubmitSuccessMessage": "Your message has been sent. We'll be in touch soon."
 }

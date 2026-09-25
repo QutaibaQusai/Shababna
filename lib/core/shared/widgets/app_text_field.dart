@@ -22,6 +22,8 @@ class AppTextField extends StatefulWidget {
     this.suffix,
     this.autofocus = false,
     this.inputFormatters,
+    this.maxLines = 1,
+    this.minLines,
   });
 
   final String label;
@@ -38,6 +40,8 @@ class AppTextField extends StatefulWidget {
   final Widget? suffix;
   final bool autofocus;
   final List<TextInputFormatter>? inputFormatters;
+  final int maxLines;
+  final int? minLines;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -55,7 +59,8 @@ class _AppTextFieldState extends State<AppTextField> {
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
       obscureText: _obscure,
-      maxLines: 1,
+      maxLines: widget.maxLines,
+      minLines: widget.minLines,
       readOnly: widget.readOnly,
       onTap: widget.onTap,
       autofocus: widget.autofocus,
