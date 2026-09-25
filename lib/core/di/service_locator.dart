@@ -10,6 +10,7 @@ import '../../features/contact_form/contact_form_injection.dart';
 import '../../features/contact_info/contact_info_injection.dart';
 import '../../features/legal/legal_injection.dart';
 import '../../features/profile/profile_injection.dart';
+import '../../features/social_media/social_media_injection.dart';
 import '../logging/app_logger.dart';
 import '../network/api_consumer.dart';
 import '../network/dio_consumer.dart';
@@ -74,6 +75,7 @@ Future<void> setupServiceLocator() async {
   registerContactInfoFeature(sl);
   registerContactFormFeature(sl);
   registerAboutUsFeature(sl);
+  registerSocialMediaFeature(sl);
 
   sl.registerLazySingleton<GoRouter>(
     () => AppRouter.build(authSessionCubit: sl()),

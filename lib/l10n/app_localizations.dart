@@ -200,6 +200,72 @@ abstract class AppLocalizations {
   /// **'About Us'**
   String get profileMenuAboutUs;
 
+  /// No description provided for @profileMenuSocialMedia.
+  ///
+  /// In en, this message translates to:
+  /// **'Social Media'**
+  String get profileMenuSocialMedia;
+
+  /// No description provided for @socialMediaEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No social media links available'**
+  String get socialMediaEmptyMessage;
+
+  /// No description provided for @socialMediaFacebook.
+  ///
+  /// In en, this message translates to:
+  /// **'Facebook'**
+  String get socialMediaFacebook;
+
+  /// No description provided for @socialMediaTwitter.
+  ///
+  /// In en, this message translates to:
+  /// **'Twitter'**
+  String get socialMediaTwitter;
+
+  /// No description provided for @socialMediaInstagram.
+  ///
+  /// In en, this message translates to:
+  /// **'Instagram'**
+  String get socialMediaInstagram;
+
+  /// No description provided for @socialMediaThreads.
+  ///
+  /// In en, this message translates to:
+  /// **'Threads'**
+  String get socialMediaThreads;
+
+  /// No description provided for @socialMediaSnapchat.
+  ///
+  /// In en, this message translates to:
+  /// **'Snapchat'**
+  String get socialMediaSnapchat;
+
+  /// No description provided for @socialMediaLinkedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'LinkedIn'**
+  String get socialMediaLinkedIn;
+
+  /// No description provided for @socialMediaTikTok.
+  ///
+  /// In en, this message translates to:
+  /// **'TikTok'**
+  String get socialMediaTikTok;
+
+  /// No description provided for @socialMediaYoutube.
+  ///
+  /// In en, this message translates to:
+  /// **'YouTube'**
+  String get socialMediaYoutube;
+
+  /// No description provided for @webViewDefaultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'More Details'**
+  String get webViewDefaultTitle;
+
   /// No description provided for @profileMenuPrivacyPolicy.
   ///
   /// In en, this message translates to:

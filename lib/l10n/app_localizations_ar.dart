@@ -62,6 +62,39 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileMenuAboutUs => 'من نحن';
 
   @override
+  String get profileMenuSocialMedia => 'وسائل التواصل الاجتماعي';
+
+  @override
+  String get socialMediaEmptyMessage => 'لا توجد روابط تواصل اجتماعي متاحة';
+
+  @override
+  String get socialMediaFacebook => 'فيسبوك';
+
+  @override
+  String get socialMediaTwitter => 'تويتر';
+
+  @override
+  String get socialMediaInstagram => 'إنستغرام';
+
+  @override
+  String get socialMediaThreads => 'ثريدز';
+
+  @override
+  String get socialMediaSnapchat => 'سناب شات';
+
+  @override
+  String get socialMediaLinkedIn => 'لينكدإن';
+
+  @override
+  String get socialMediaTikTok => 'تيك توك';
+
+  @override
+  String get socialMediaYoutube => 'يوتيوب';
+
+  @override
+  String get webViewDefaultTitle => 'مزيد من التفاصيل';
+
+  @override
   String get profileMenuPrivacyPolicy => 'سياسة الخصوصية';
 
   @override

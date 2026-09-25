@@ -33,6 +33,7 @@ dependencies:
   flutter_html: ^3.0.0
   custom_refresh_indicator: ^4.0.2
   url_launcher: ^6.3.2
+  flutter_inappwebview: ^6.1.5
 
 dependency_overrides:
   html: 0.15.6

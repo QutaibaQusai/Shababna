@@ -20,4 +20,6 @@ class EndPoints {
 
   static const String contactInformation = '/api/v1/configuration/contact-information';
   static const String contactForms = '/api/v1/contact-forms';
+
+  static const String socialMediaLinks = '/api/v1/configuration/social-media-links';
 }

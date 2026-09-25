@@ -31,6 +31,12 @@ class AppRoutes {
   static const String aboutUs = '/about-us';
   static const String aboutUsName = 'about-us';
 
+  static const String socialMedia = '/social-media';
+  static const String socialMediaName = 'social-media';
+
+  static const String webView = '/web-view';
+  static const String webViewName = 'web-view';
+
   static const Set<String> publicRoutes = {
     login,
     register,

@@ -11,6 +11,8 @@ import '../../features/contact_form/presentation/pages/contact_form_page.dart';
 import '../../features/contact_info/presentation/pages/contact_info_page.dart';
 import '../../features/layout/presentation/pages/main_layout_page.dart';
 import '../../features/legal/presentation/pages/legal_content_page.dart';
+import '../../features/social_media/presentation/pages/social_media_page.dart';
+import '../shared/views/app_web_view_page.dart';
 import '../session/auth_session_cubit.dart';
 import '../session/auth_status.dart';
 import 'app_routes.dart';
@@ -93,6 +95,19 @@ class AppRouter {
           path: AppRoutes.aboutUs,
           name: AppRoutes.aboutUsName,
           builder: (context, state) => const AboutUsPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.socialMedia,
+          name: AppRoutes.socialMediaName,
+          builder: (context, state) => const SocialMediaPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.webView,
+          name: AppRoutes.webViewName,
+          builder: (context, state) => AppWebViewPage(
+            url: state.uri.queryParameters['url'] ?? '',
+            title: state.uri.queryParameters['title'] ?? '',
+          ),
         ),
       ],
     );

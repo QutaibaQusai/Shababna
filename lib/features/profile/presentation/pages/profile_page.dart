@@ -135,6 +135,11 @@ class _ProfileView extends StatelessWidget {
             onTap: () => context.push(AppRoutes.aboutUs),
           ),
           ProfileMenuTile(
+            icon: LucideIcons.share2,
+            title: context.l10n.profileMenuSocialMedia,
+            onTap: () => context.push(AppRoutes.socialMedia),
+          ),
+          ProfileMenuTile(
             icon: LucideIcons.shield,
             title: context.l10n.profileMenuPrivacyPolicy,
             onTap: () => context.push(

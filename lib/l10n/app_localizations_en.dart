@@ -62,6 +62,39 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileMenuAboutUs => 'About Us';
 
   @override
+  String get profileMenuSocialMedia => 'Social Media';
+
+  @override
+  String get socialMediaEmptyMessage => 'No social media links available';
+
+  @override
+  String get socialMediaFacebook => 'Facebook';
+
+  @override
+  String get socialMediaTwitter => 'Twitter';
+
+  @override
+  String get socialMediaInstagram => 'Instagram';
+
+  @override
+  String get socialMediaThreads => 'Threads';
+
+  @override
+  String get socialMediaSnapchat => 'Snapchat';
+
+  @override
+  String get socialMediaLinkedIn => 'LinkedIn';
+
+  @override
+  String get socialMediaTikTok => 'TikTok';
+
+  @override
+  String get socialMediaYoutube => 'YouTube';
+
+  @override
+  String get webViewDefaultTitle => 'More Details';
+
+  @override
   String get profileMenuPrivacyPolicy => 'Privacy Policy';
 
   @override
