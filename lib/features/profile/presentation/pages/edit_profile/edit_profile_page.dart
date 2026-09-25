@@ -201,250 +201,223 @@ class _EditProfileViewState extends State<_EditProfileView> {
               children: [
                 _NameCard(profile: profile),
                 SizedBox(height: AppSpacing.sm),
-                _StatusRow(
-                  icon: LucideIcons.image,
-                  title: context.l10n.profilePictureLabel,
-                  value: profile.hasProfilePicture
-                      ? context.l10n.documentUploadedStatus
-                      : context.l10n.documentNotUploadedStatus,
-                  onTap: () => _navigateAndReload(
-                    context,
-                    AppRoutes.editProfilePicture,
-                    extra: EditProfilePictureArgs(
-                      hasPicture: profile.hasProfilePicture,
-                      pictureUrl: profile.profilePictureUrl,
+                AppCard(
+                  child: _StatusRow(
+                    icon: LucideIcons.image,
+                    title: context.l10n.profilePictureLabel,
+                    value: profile.hasProfilePicture
+                        ? context.l10n.documentUploadedStatus
+                        : context.l10n.documentNotUploadedStatus,
+                    onTap: () => _navigateAndReload(
+                      context,
+                      AppRoutes.editProfilePicture,
+                      extra: EditProfilePictureArgs(
+                        hasPicture: profile.hasProfilePicture,
+                        pictureUrl: profile.profilePictureUrl,
+                      ),
                     ),
                   ),
                 ),
+                SizedBox(height: AppSpacing.sm),
+                AppCard(
+                  child: _StatusRow(
+                    icon: LucideIcons.phone,
+                    title: context.l10n.phoneNumberLabel,
+                    value: profile.phoneNumber,
+                    onTap: () => _navigateAndReload(
+                      context,
+                      AppRoutes.changePhoneNumber,
+                      extra: profile.phoneNumber,
+                    ),
+                  ),
+                ),
+                SizedBox(height: AppSpacing.sm),
+                AppCard(
+                  child: _StatusRow(
+                    icon: LucideIcons.mail,
+                    title: context.l10n.emailLabel,
+                    value: profile.email,
+                    isVerified: profile.emailConfirmed,
+                    onTap: () => _navigateAndReload(context, AppRoutes.changeEmail),
+                  ),
+                ),
+                SizedBox(height: AppSpacing.md),
+                Text(context.l10n.genderLabel, style: context.textTheme.titleSmall),
                 SizedBox(height: AppSpacing.xs),
-                _StatusRow(
-                  icon: LucideIcons.phone,
-                  title: context.l10n.phoneNumberLabel,
-                  value: profile.phoneNumber,
-                  onTap: () => _navigateAndReload(
-                    context,
-                    AppRoutes.changePhoneNumber,
-                    extra: profile.phoneNumber,
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: _GenderOption(
+                        label: context.l10n.genderMale,
+                        icon: Icons.male,
+                        selected: _gender == ProfileGender.male,
+                        onTap: () => setState(() => _gender = ProfileGender.male),
+                      ),
+                    ),
+                    SizedBox(width: AppSpacing.xs),
+                    Expanded(
+                      child: _GenderOption(
+                        label: context.l10n.genderFemale,
+                        icon: Icons.female,
+                        selected: _gender == ProfileGender.female,
+                        onTap: () => setState(() => _gender = ProfileGender.female),
+                      ),
+                    ),
+                  ],
                 ),
+                SizedBox(height: AppSpacing.sm),
+                AppDateField(
+                  label: context.l10n.dateOfBirthLabel,
+                  value: _dateOfBirth,
+                  onChanged: (value) => setState(() => _dateOfBirth = value),
+                ),
+                SizedBox(height: AppSpacing.sm),
+                AppPickerField<Country>(
+                  label: context.l10n.nationalityLabel,
+                  items: state.countries,
+                  itemLabel: (item) => item.displayName(context.isArabic),
+                  selectedItem: _nationality,
+                  onSelected: (value) => setState(() => _nationality = value),
+                  searchHint: context.l10n.actionSearch,
+                  prefixIcon: LucideIcons.flag,
+                ),
+                SizedBox(height: AppSpacing.sm),
+                AppPickerField<City>(
+                  label: context.l10n.cityLabel,
+                  items: state.cities,
+                  itemLabel: (item) => item.displayName(context.isArabic),
+                  selectedItem: _city,
+                  onSelected: (value) => setState(() => _city = value),
+                  searchHint: context.l10n.actionSearch,
+                  prefixIcon: LucideIcons.mapPin,
+                ),
+                SizedBox(height: AppSpacing.sm),
+                AppPickerField<Education>(
+                  label: context.l10n.educationLabel,
+                  items: state.educations,
+                  itemLabel: (item) => item.displayName(context.isArabic),
+                  selectedItem: _education,
+                  onSelected: (value) => setState(() => _education = value),
+                  searchHint: context.l10n.actionSearch,
+                  prefixIcon: LucideIcons.graduationCap,
+                ),
+                if (_education?.isMajorRequired == true) ...[
+                  SizedBox(height: AppSpacing.sm),
+                  AppTextField(
+                    label: context.l10n.majorLabel,
+                    controller: _majorController,
+                    prefixIcon: LucideIcons.bookOpen,
+                  ),
+                ],
+                SizedBox(height: AppSpacing.sm),
+                AppTextField(
+                  label: context.l10n.universityNameLabel,
+                  controller: _universityNameController,
+                  prefixIcon: LucideIcons.school,
+                ),
+                SizedBox(height: AppSpacing.md),
+                Text(context.l10n.addressSectionTitle, style: context.textTheme.titleSmall),
+                SizedBox(height: AppSpacing.sm),
+                AppTextField(
+                  label: context.l10n.nearestLandmarkLabel,
+                  controller: _nearestLandmarkController,
+                ),
+                SizedBox(height: AppSpacing.sm),
+                AppTextField(
+                  label: context.l10n.districtLabel,
+                  controller: _districtController,
+                ),
+                SizedBox(height: AppSpacing.sm),
+                AppTextField(
+                  label: context.l10n.neighborhoodLabel,
+                  controller: _neighborhoodController,
+                ),
+                SizedBox(height: AppSpacing.sm),
+                AppTextField(
+                  label: context.l10n.detailedAddressLabel,
+                  controller: _detailedAddressController,
+                  maxLines: 3,
+                  minLines: 2,
+                ),
+                SizedBox(height: AppSpacing.md),
+                Text(context.l10n.volunteeringSectionTitle, style: context.textTheme.titleSmall),
                 SizedBox(height: AppSpacing.xs),
-                _StatusRow(
-                  icon: LucideIcons.mail,
-                  title: context.l10n.emailLabel,
-                  value: profile.email,
-                  isVerified: profile.emailConfirmed,
-                  onTap: () => _navigateAndReload(context, AppRoutes.changeEmail),
+                _SwitchRow(
+                  label: context.l10n.isFirstTimeVolunteerLabel,
+                  value: _isFirstTimeVolunteer,
+                  onChanged: (value) => setState(() => _isFirstTimeVolunteer = value),
+                ),
+                _SwitchRow(
+                  label: context.l10n.volunteerAwardsLabel,
+                  value: _volunteerAwards,
+                  onChanged: (value) => setState(() => _volunteerAwards = value),
+                ),
+                _SwitchRow(
+                  label: context.l10n.isAvailableToVolunteerLabel,
+                  value: _isAvailableToVolunteer,
+                  onChanged: (value) => setState(() => _isAvailableToVolunteer = value),
+                ),
+                _SwitchRow(
+                  label: context.l10n.willSignVolunteerServiceAgreementLabel,
+                  value: _willSignVolunteerServiceAgreement,
+                  onChanged: (value) =>
+                      setState(() => _willSignVolunteerServiceAgreement = value),
+                ),
+                _SwitchRow(
+                  label: context.l10n.willProvideNccLabel,
+                  value: _willProvideNcc,
+                  onChanged: (value) => setState(() => _willProvideNcc = value),
+                ),
+                SizedBox(height: AppSpacing.sm),
+                AppTextField(
+                  label: context.l10n.estimatedWeeklyHoursLabel,
+                  controller: _estimatedWeeklyHoursController,
+                  keyboardType: TextInputType.number,
+                ),
+                SizedBox(height: AppSpacing.sm),
+                AppMultiSelectField<VolunteeringType>(
+                  label: context.l10n.volunteeringTypesLabel,
+                  items: state.volunteeringTypes,
+                  itemLabel: (item) => item.displayName(context.isArabic),
+                  selectedItems: _volunteeringTypes,
+                  onChanged: (value) => setState(() => _volunteeringTypes = value),
+                  searchHint: context.l10n.actionSearch,
+                ),
+                SizedBox(height: AppSpacing.sm),
+                AppTextField(
+                  label: context.l10n.otherVolunteeringSubjectsLabel,
+                  controller: _otherVolunteeringSubjectsController,
+                  maxLines: 3,
+                  minLines: 2,
                 ),
                 SizedBox(height: AppSpacing.sm),
                 AppCard(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(context.l10n.genderLabel, style: context.textTheme.titleSmall),
-                      SizedBox(height: AppSpacing.xs),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: _GenderOption(
-                              label: context.l10n.genderMale,
-                              icon: Icons.male,
-                              selected: _gender == ProfileGender.male,
-                              onTap: () => setState(() => _gender = ProfileGender.male),
-                            ),
-                          ),
-                          SizedBox(width: AppSpacing.xs),
-                          Expanded(
-                            child: _GenderOption(
-                              label: context.l10n.genderFemale,
-                              icon: Icons.female,
-                              selected: _gender == ProfileGender.female,
-                              onTap: () => setState(() => _gender = ProfileGender.female),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: AppSpacing.sm),
-                AppCard(
-                  child: AppDateField(
-                    label: context.l10n.dateOfBirthLabel,
-                    value: _dateOfBirth,
-                    onChanged: (value) => setState(() => _dateOfBirth = value),
-                  ),
-                ),
-                SizedBox(height: AppSpacing.sm),
-                AppCard(
-                  child: AppPickerField<Country>(
-                    label: context.l10n.nationalityLabel,
-                    items: state.countries,
-                    itemLabel: (item) => item.displayName(context.isArabic),
-                    selectedItem: _nationality,
-                    onSelected: (value) => setState(() => _nationality = value),
-                    searchHint: context.l10n.actionSearch,
-                    prefixIcon: LucideIcons.flag,
-                  ),
-                ),
-                SizedBox(height: AppSpacing.sm),
-                AppCard(
-                  child: AppPickerField<City>(
-                    label: context.l10n.cityLabel,
-                    items: state.cities,
-                    itemLabel: (item) => item.displayName(context.isArabic),
-                    selectedItem: _city,
-                    onSelected: (value) => setState(() => _city = value),
-                    searchHint: context.l10n.actionSearch,
-                    prefixIcon: LucideIcons.mapPin,
+                  child: _StatusRow(
+                    icon: LucideIcons.fileText,
+                    title: context.l10n.cvLabel,
+                    value: profile.hasCv
+                        ? (profile.cvFileName ?? context.l10n.documentUploadedStatus)
+                        : context.l10n.documentNotUploadedStatus,
+                    onTap: () => _navigateAndReload(
+                      context,
+                      AppRoutes.editCv,
+                      extra: EditCvArgs(hasCv: profile.hasCv, cvFileName: profile.cvFileName),
+                    ),
                   ),
                 ),
                 SizedBox(height: AppSpacing.sm),
                 AppCard(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      AppPickerField<Education>(
-                        label: context.l10n.educationLabel,
-                        items: state.educations,
-                        itemLabel: (item) => item.displayName(context.isArabic),
-                        selectedItem: _education,
-                        onSelected: (value) => setState(() => _education = value),
-                        searchHint: context.l10n.actionSearch,
-                        prefixIcon: LucideIcons.graduationCap,
-                      ),
-                      if (_education?.isMajorRequired == true) ...[
-                        SizedBox(height: AppSpacing.sm),
-                        AppTextField(
-                          label: context.l10n.majorLabel,
-                          controller: _majorController,
-                          prefixIcon: LucideIcons.bookOpen,
-                        ),
-                      ],
-                      SizedBox(height: AppSpacing.sm),
-                      AppTextField(
-                        label: context.l10n.universityNameLabel,
-                        controller: _universityNameController,
-                        prefixIcon: LucideIcons.school,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: AppSpacing.sm),
-                AppCard(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(context.l10n.addressSectionTitle, style: context.textTheme.titleSmall),
-                      SizedBox(height: AppSpacing.sm),
-                      AppTextField(
-                        label: context.l10n.nearestLandmarkLabel,
-                        controller: _nearestLandmarkController,
-                      ),
-                      SizedBox(height: AppSpacing.sm),
-                      AppTextField(
-                        label: context.l10n.districtLabel,
-                        controller: _districtController,
-                      ),
-                      SizedBox(height: AppSpacing.sm),
-                      AppTextField(
-                        label: context.l10n.neighborhoodLabel,
-                        controller: _neighborhoodController,
-                      ),
-                      SizedBox(height: AppSpacing.sm),
-                      AppTextField(
-                        label: context.l10n.detailedAddressLabel,
-                        controller: _detailedAddressController,
-                        maxLines: 3,
-                        minLines: 2,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: AppSpacing.sm),
-                AppCard(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        context.l10n.volunteeringSectionTitle,
-                        style: context.textTheme.titleSmall,
-                      ),
-                      SizedBox(height: AppSpacing.xs),
-                      _SwitchRow(
-                        label: context.l10n.isFirstTimeVolunteerLabel,
-                        value: _isFirstTimeVolunteer,
-                        onChanged: (value) => setState(() => _isFirstTimeVolunteer = value),
-                      ),
-                      _SwitchRow(
-                        label: context.l10n.volunteerAwardsLabel,
-                        value: _volunteerAwards,
-                        onChanged: (value) => setState(() => _volunteerAwards = value),
-                      ),
-                      _SwitchRow(
-                        label: context.l10n.isAvailableToVolunteerLabel,
-                        value: _isAvailableToVolunteer,
-                        onChanged: (value) => setState(() => _isAvailableToVolunteer = value),
-                      ),
-                      _SwitchRow(
-                        label: context.l10n.willSignVolunteerServiceAgreementLabel,
-                        value: _willSignVolunteerServiceAgreement,
-                        onChanged: (value) =>
-                            setState(() => _willSignVolunteerServiceAgreement = value),
-                      ),
-                      _SwitchRow(
-                        label: context.l10n.willProvideNccLabel,
-                        value: _willProvideNcc,
-                        onChanged: (value) => setState(() => _willProvideNcc = value),
-                      ),
-                      SizedBox(height: AppSpacing.sm),
-                      AppTextField(
-                        label: context.l10n.estimatedWeeklyHoursLabel,
-                        controller: _estimatedWeeklyHoursController,
-                        keyboardType: TextInputType.number,
-                      ),
-                      SizedBox(height: AppSpacing.sm),
-                      AppMultiSelectField<VolunteeringType>(
-                        label: context.l10n.volunteeringTypesLabel,
-                        items: state.volunteeringTypes,
-                        itemLabel: (item) => item.displayName(context.isArabic),
-                        selectedItems: _volunteeringTypes,
-                        onChanged: (value) => setState(() => _volunteeringTypes = value),
-                        searchHint: context.l10n.actionSearch,
-                      ),
-                      SizedBox(height: AppSpacing.sm),
-                      AppTextField(
-                        label: context.l10n.otherVolunteeringSubjectsLabel,
-                        controller: _otherVolunteeringSubjectsController,
-                        maxLines: 3,
-                        minLines: 2,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: AppSpacing.sm),
-                _StatusRow(
-                  icon: LucideIcons.fileText,
-                  title: context.l10n.cvLabel,
-                  value: profile.hasCv
-                      ? (profile.cvFileName ?? context.l10n.documentUploadedStatus)
-                      : context.l10n.documentNotUploadedStatus,
-                  onTap: () => _navigateAndReload(
-                    context,
-                    AppRoutes.editCv,
-                    extra: EditCvArgs(hasCv: profile.hasCv, cvFileName: profile.cvFileName),
-                  ),
-                ),
-                SizedBox(height: AppSpacing.xs),
-                _StatusRow(
-                  icon: LucideIcons.idCard,
-                  title: context.l10n.nationalIdPictureLabel,
-                  value: profile.hasNationalIdPicture
-                      ? context.l10n.documentUploadedStatus
-                      : context.l10n.documentNotUploadedStatus,
-                  onTap: () => _navigateAndReload(
-                    context,
-                    AppRoutes.editNationalId,
-                    extra: profile.hasNationalIdPicture,
+                  child: _StatusRow(
+                    icon: LucideIcons.idCard,
+                    title: context.l10n.nationalIdPictureLabel,
+                    value: profile.hasNationalIdPicture
+                        ? context.l10n.documentUploadedStatus
+                        : context.l10n.documentNotUploadedStatus,
+                    onTap: () => _navigateAndReload(
+                      context,
+                      AppRoutes.editNationalId,
+                      extra: profile.hasNationalIdPicture,
+                    ),
                   ),
                 ),
               ],
@@ -502,40 +475,38 @@ class _StatusRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: AppSpacing.xs),
-        child: Row(
-          children: [
-            Icon(icon, size: AppSizes.iconMd, color: context.colorScheme.onSurfaceVariant),
-            SizedBox(width: AppSpacing.xs),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    title,
-                    style: context.textTheme.bodySmall?.copyWith(
-                      color: context.colorScheme.onSurfaceVariant,
-                    ),
+      borderRadius: AppRadius.mdRadius,
+      child: Row(
+        children: [
+          Icon(icon, size: AppSizes.iconMd, color: context.colorScheme.onSurfaceVariant),
+          SizedBox(width: AppSpacing.xs),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  title,
+                  style: context.textTheme.bodySmall?.copyWith(
+                    color: context.colorScheme.onSurfaceVariant,
                   ),
-                  SizedBox(height: AppSpacing.xxs),
-                  Text(value ?? '-', style: context.textTheme.bodyLarge),
-                ],
-              ),
+                ),
+                SizedBox(height: AppSpacing.xxs),
+                Text(value ?? '-', style: context.textTheme.bodyLarge),
+              ],
             ),
-            if (isVerified) ...[
-              Icon(LucideIcons.badgeCheck, size: AppSizes.iconMd, color: context.colorScheme.primary),
-              SizedBox(width: AppSpacing.xs),
-            ],
-            if (onTap != null)
-              Icon(
-                context.isRTL ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
-                size: AppSizes.iconMd,
-                color: context.colorScheme.onSurfaceVariant,
-              ),
+          ),
+          if (isVerified) ...[
+            Icon(LucideIcons.badgeCheck, size: AppSizes.iconMd, color: context.colorScheme.primary),
+            SizedBox(width: AppSpacing.xs),
           ],
-        ),
+          if (onTap != null)
+            Icon(
+              context.isRTL ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
+              size: AppSizes.iconMd,
+              color: context.colorScheme.onSurfaceVariant,
+            ),
+        ],
       ),
     );
   }
