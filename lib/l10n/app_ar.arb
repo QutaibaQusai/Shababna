@@ -21,6 +21,10 @@
   "verifyEmailChangeTitle": "تحقق من بريدك الإلكتروني الجديد",
 
   "profilePictureLabel": "الصورة الشخصية",
+  "phoneNumberFieldSubtitle": "نستخدم هذا الرقم فقط للتحديثات المهمة",
+  "emailFieldSubtitle": "يُستخدم لتسجيل الدخول واستلام الإشعارات المهمة",
+  "cvFieldSubtitle": "ارفع سيرتك الذاتية للتقدم لفرص التطوع",
+  "nationalIdFieldSubtitle": "مطلوبة للتحقق من هويتك",
   "editProfilePictureSuccessMessage": "تم تحديث الصورة الشخصية بنجاح",
   "choosePhotoButton": "اختيار صورة",
   "replacePhotoButton": "استبدال الصورة",

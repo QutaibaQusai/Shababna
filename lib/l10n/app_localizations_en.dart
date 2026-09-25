@@ -64,6 +64,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profilePictureLabel => 'Profile Picture';
 
   @override
+  String get phoneNumberFieldSubtitle =>
+      'We only use this for important updates';
+
+  @override
+  String get emailFieldSubtitle =>
+      'Used to sign in and receive important notifications';
+
+  @override
+  String get cvFieldSubtitle =>
+      'Upload your CV to apply for volunteer opportunities';
+
+  @override
+  String get nationalIdFieldSubtitle => 'Required to verify your identity';
+
+  @override
   String get editProfilePictureSuccessMessage =>
       'Profile picture updated successfully';
 

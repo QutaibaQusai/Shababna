@@ -21,6 +21,10 @@
   "verifyEmailChangeTitle": "Verify your new email",
 
   "profilePictureLabel": "Profile Picture",
+  "phoneNumberFieldSubtitle": "We only use this for important updates",
+  "emailFieldSubtitle": "Used to sign in and receive important notifications",
+  "cvFieldSubtitle": "Upload your CV to apply for volunteer opportunities",
+  "nationalIdFieldSubtitle": "Required to verify your identity",
   "editProfilePictureSuccessMessage": "Profile picture updated successfully",
   "choosePhotoButton": "Choose Photo",
   "replacePhotoButton": "Replace Photo",

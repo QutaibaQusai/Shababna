@@ -63,6 +63,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profilePictureLabel => 'الصورة الشخصية';
 
   @override
+  String get phoneNumberFieldSubtitle =>
+      'نستخدم هذا الرقم فقط للتحديثات المهمة';
+
+  @override
+  String get emailFieldSubtitle =>
+      'يُستخدم لتسجيل الدخول واستلام الإشعارات المهمة';
+
+  @override
+  String get cvFieldSubtitle => 'ارفع سيرتك الذاتية للتقدم لفرص التطوع';
+
+  @override
+  String get nationalIdFieldSubtitle => 'مطلوبة للتحقق من هويتك';
+
+  @override
   String get editProfilePictureSuccessMessage =>
       'تم تحديث الصورة الشخصية بنجاح';
 

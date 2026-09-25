@@ -7,8 +7,6 @@ import '../../../../../core/di/service_locator.dart';
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/shared/widgets/app_app_bar.dart';
-import '../../../../../core/shared/widgets/app_button.dart';
-import '../../../../../core/shared/widgets/app_card.dart';
 import '../../../../../core/shared/widgets/app_date_field.dart';
 import '../../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../../core/shared/widgets/app_loading_overlay.dart';
@@ -17,14 +15,17 @@ import '../../../../../core/shared/widgets/app_picker_field.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/shared/widgets/app_toast.dart';
 import '../../../../../core/state/form_status.dart';
-import '../../../../../core/theme/app_radius.dart';
-import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/profile_lookups_repository.dart';
 import '../../../domain/repositories/profile_repository.dart';
 import '../../cubit/edit_profile/edit_profile_cubit.dart';
 import '../../cubit/edit_profile/edit_profile_state.dart';
+import '../../widgets/edit_profile/app_card.dart';
+import '../../widgets/edit_profile/edit_profile_bottom_bar.dart';
+import '../../widgets/edit_profile/edit_profile_picture_field.dart';
 import '../../widgets/edit_profile/edit_profile_skeleton.dart';
+import '../../widgets/edit_profile/gender_option.dart';
+import '../../widgets/edit_profile/switch_row.dart';
 import '../edit_cv/edit_cv_args.dart';
 import '../edit_profile_picture/edit_profile_picture_args.dart';
 
@@ -199,47 +200,47 @@ class _EditProfileViewState extends State<_EditProfileView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _NameCard(profile: profile),
+                EditProfilePictureField(
+                  hasPicture: profile.hasProfilePicture,
+                  pictureUrl: profile.profilePictureUrl,
+                  onTap: () => _navigateAndReload(
+                    context,
+                    AppRoutes.editProfilePicture,
+                    extra: EditProfilePictureArgs(
+                      hasPicture: profile.hasProfilePicture,
+                      pictureUrl: profile.profilePictureUrl,
+                    ),
+                  ),
+                ),
+                SizedBox(height: AppSpacing.md),
+                AppTextField(
+                  label: context.l10n.fullNameLabel,
+                  controller: TextEditingController(
+                    text: context.isArabic ? profile.fullNameAr : profile.fullNameEn,
+                  ),
+                  readOnly: true,
+                  prefixIcon: LucideIcons.user,
+                ),
                 SizedBox(height: AppSpacing.sm),
                 AppCard(
-                  child: _StatusRow(
-                    icon: LucideIcons.image,
-                    title: context.l10n.profilePictureLabel,
-                    value: profile.hasProfilePicture
-                        ? context.l10n.documentUploadedStatus
-                        : context.l10n.documentNotUploadedStatus,
-                    onTap: () => _navigateAndReload(
-                      context,
-                      AppRoutes.editProfilePicture,
-                      extra: EditProfilePictureArgs(
-                        hasPicture: profile.hasProfilePicture,
-                        pictureUrl: profile.profilePictureUrl,
-                      ),
-                    ),
+                  title: context.l10n.phoneNumberLabel,
+                  subtitle: context.l10n.phoneNumberFieldSubtitle,
+                  icon: LucideIcons.phone,
+                  value: profile.phoneNumber,
+                  onTap: () => _navigateAndReload(
+                    context,
+                    AppRoutes.changePhoneNumber,
+                    extra: profile.phoneNumber,
                   ),
                 ),
                 SizedBox(height: AppSpacing.sm),
                 AppCard(
-                  child: _StatusRow(
-                    icon: LucideIcons.phone,
-                    title: context.l10n.phoneNumberLabel,
-                    value: profile.phoneNumber,
-                    onTap: () => _navigateAndReload(
-                      context,
-                      AppRoutes.changePhoneNumber,
-                      extra: profile.phoneNumber,
-                    ),
-                  ),
-                ),
-                SizedBox(height: AppSpacing.sm),
-                AppCard(
-                  child: _StatusRow(
-                    icon: LucideIcons.mail,
-                    title: context.l10n.emailLabel,
-                    value: profile.email,
-                    isVerified: profile.emailConfirmed,
-                    onTap: () => _navigateAndReload(context, AppRoutes.changeEmail),
-                  ),
+                  title: context.l10n.emailLabel,
+                  subtitle: context.l10n.emailFieldSubtitle,
+                  icon: LucideIcons.mail,
+                  value: profile.email,
+                  isVerified: profile.emailConfirmed,
+                  onTap: () => _navigateAndReload(context, AppRoutes.changeEmail),
                 ),
                 SizedBox(height: AppSpacing.md),
                 Text(context.l10n.genderLabel, style: context.textTheme.titleSmall),
@@ -247,7 +248,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
                 Row(
                   children: [
                     Expanded(
-                      child: _GenderOption(
+                      child: GenderOption(
                         label: context.l10n.genderMale,
                         icon: Icons.male,
                         selected: _gender == ProfileGender.male,
@@ -256,7 +257,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
                     ),
                     SizedBox(width: AppSpacing.xs),
                     Expanded(
-                      child: _GenderOption(
+                      child: GenderOption(
                         label: context.l10n.genderFemale,
                         icon: Icons.female,
                         selected: _gender == ProfileGender.female,
@@ -342,28 +343,28 @@ class _EditProfileViewState extends State<_EditProfileView> {
                 SizedBox(height: AppSpacing.md),
                 Text(context.l10n.volunteeringSectionTitle, style: context.textTheme.titleSmall),
                 SizedBox(height: AppSpacing.xs),
-                _SwitchRow(
+                SwitchRow(
                   label: context.l10n.isFirstTimeVolunteerLabel,
                   value: _isFirstTimeVolunteer,
                   onChanged: (value) => setState(() => _isFirstTimeVolunteer = value),
                 ),
-                _SwitchRow(
+                SwitchRow(
                   label: context.l10n.volunteerAwardsLabel,
                   value: _volunteerAwards,
                   onChanged: (value) => setState(() => _volunteerAwards = value),
                 ),
-                _SwitchRow(
+                SwitchRow(
                   label: context.l10n.isAvailableToVolunteerLabel,
                   value: _isAvailableToVolunteer,
                   onChanged: (value) => setState(() => _isAvailableToVolunteer = value),
                 ),
-                _SwitchRow(
+                SwitchRow(
                   label: context.l10n.willSignVolunteerServiceAgreementLabel,
                   value: _willSignVolunteerServiceAgreement,
                   onChanged: (value) =>
                       setState(() => _willSignVolunteerServiceAgreement = value),
                 ),
-                _SwitchRow(
+                SwitchRow(
                   label: context.l10n.willProvideNccLabel,
                   value: _willProvideNcc,
                   onChanged: (value) => setState(() => _willProvideNcc = value),
@@ -392,240 +393,38 @@ class _EditProfileViewState extends State<_EditProfileView> {
                 ),
                 SizedBox(height: AppSpacing.sm),
                 AppCard(
-                  child: _StatusRow(
-                    icon: LucideIcons.fileText,
-                    title: context.l10n.cvLabel,
-                    value: profile.hasCv
-                        ? (profile.cvFileName ?? context.l10n.documentUploadedStatus)
-                        : context.l10n.documentNotUploadedStatus,
-                    onTap: () => _navigateAndReload(
-                      context,
-                      AppRoutes.editCv,
-                      extra: EditCvArgs(hasCv: profile.hasCv, cvFileName: profile.cvFileName),
-                    ),
+                  title: context.l10n.cvLabel,
+                  subtitle: context.l10n.cvFieldSubtitle,
+                  icon: LucideIcons.fileText,
+                  value: profile.hasCv
+                      ? (profile.cvFileName ?? context.l10n.documentUploadedStatus)
+                      : context.l10n.documentNotUploadedStatus,
+                  onTap: () => _navigateAndReload(
+                    context,
+                    AppRoutes.editCv,
+                    extra: EditCvArgs(hasCv: profile.hasCv, cvFileName: profile.cvFileName),
                   ),
                 ),
                 SizedBox(height: AppSpacing.sm),
                 AppCard(
-                  child: _StatusRow(
-                    icon: LucideIcons.idCard,
-                    title: context.l10n.nationalIdPictureLabel,
-                    value: profile.hasNationalIdPicture
-                        ? context.l10n.documentUploadedStatus
-                        : context.l10n.documentNotUploadedStatus,
-                    onTap: () => _navigateAndReload(
-                      context,
-                      AppRoutes.editNationalId,
-                      extra: profile.hasNationalIdPicture,
-                    ),
+                  title: context.l10n.nationalIdPictureLabel,
+                  subtitle: context.l10n.nationalIdFieldSubtitle,
+                  icon: LucideIcons.idCard,
+                  value: profile.hasNationalIdPicture
+                      ? context.l10n.documentUploadedStatus
+                      : context.l10n.documentNotUploadedStatus,
+                  onTap: () => _navigateAndReload(
+                    context,
+                    AppRoutes.editNationalId,
+                    extra: profile.hasNationalIdPicture,
                   ),
                 ),
               ],
             ),
           ),
         ),
-        _BottomBar(percentage: profile.completionPercentage, onSave: _submit),
+        EditProfileBottomBar(percentage: profile.completionPercentage, onSave: _submit),
       ],
-    );
-  }
-}
-
-class _NameCard extends StatelessWidget {
-  const _NameCard({required this.profile});
-
-  final Profile profile;
-
-  @override
-  Widget build(BuildContext context) {
-    final name = context.isArabic ? profile.fullNameAr : profile.fullNameEn;
-
-    return AppCard(
-      child: Row(
-        children: [
-          Icon(LucideIcons.user, size: AppSizes.iconMd, color: context.colorScheme.onSurface),
-          SizedBox(width: AppSpacing.xs),
-          Expanded(
-            child: Text(
-              name,
-              style: context.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _StatusRow extends StatelessWidget {
-  const _StatusRow({
-    required this.icon,
-    required this.title,
-    required this.value,
-    this.isVerified = false,
-    this.onTap,
-  });
-
-  final IconData icon;
-  final String title;
-  final String? value;
-  final bool isVerified;
-  final VoidCallback? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: AppRadius.mdRadius,
-      child: Row(
-        children: [
-          Icon(icon, size: AppSizes.iconMd, color: context.colorScheme.onSurfaceVariant),
-          SizedBox(width: AppSpacing.xs),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  title,
-                  style: context.textTheme.bodySmall?.copyWith(
-                    color: context.colorScheme.onSurfaceVariant,
-                  ),
-                ),
-                SizedBox(height: AppSpacing.xxs),
-                Text(value ?? '-', style: context.textTheme.bodyLarge),
-              ],
-            ),
-          ),
-          if (isVerified) ...[
-            Icon(LucideIcons.badgeCheck, size: AppSizes.iconMd, color: context.colorScheme.primary),
-            SizedBox(width: AppSpacing.xs),
-          ],
-          if (onTap != null)
-            Icon(
-              context.isRTL ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
-              size: AppSizes.iconMd,
-              color: context.colorScheme.onSurfaceVariant,
-            ),
-        ],
-      ),
-    );
-  }
-}
-
-class _GenderOption extends StatelessWidget {
-  const _GenderOption({
-    required this.label,
-    required this.icon,
-    required this.selected,
-    required this.onTap,
-  });
-
-  final String label;
-  final IconData icon;
-  final bool selected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: AppRadius.mdRadius,
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: AppSpacing.sm, horizontal: AppSpacing.xs),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: selected ? context.colorScheme.primary : context.colorScheme.outlineVariant,
-            width: selected ? 2 : 1,
-          ),
-          borderRadius: AppRadius.mdRadius,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              size: AppSizes.iconMd,
-              color: selected ? context.colorScheme.primary : context.colorScheme.onSurfaceVariant,
-            ),
-            SizedBox(width: AppSpacing.xxs),
-            Text(
-              label,
-              style: context.textTheme.bodyMedium?.copyWith(
-                color: selected ? context.colorScheme.primary : context.colorScheme.onSurface,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _SwitchRow extends StatelessWidget {
-  const _SwitchRow({required this.label, required this.value, required this.onChanged});
-
-  final String label;
-  final bool value;
-  final ValueChanged<bool> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(child: Text(label, style: context.textTheme.bodyMedium)),
-        Switch(value: value, onChanged: onChanged),
-      ],
-    );
-  }
-}
-
-class _BottomBar extends StatelessWidget {
-  const _BottomBar({required this.percentage, required this.onSave});
-
-  final int percentage;
-  final VoidCallback onSave;
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      child: Container(
-        padding: EdgeInsets.all(AppSpacing.screenMargin),
-        decoration: BoxDecoration(
-          color: context.colorScheme.surface,
-          border: Border(top: BorderSide(color: context.colorScheme.outlineVariant)),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  context.l10n.completeYourProfileLabel,
-                  style: context.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: AppSpacing.xs, vertical: AppSpacing.xxs),
-                  decoration: BoxDecoration(
-                    color: context.colorScheme.primaryContainer,
-                    borderRadius: AppRadius.pillRadius,
-                  ),
-                  child: Text(
-                    '$percentage%',
-                    style: context.textTheme.labelMedium?.copyWith(
-                      color: context.colorScheme.onPrimaryContainer,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: AppSpacing.sm),
-            AppButton.primary(label: context.l10n.saveButton, onPressed: onSave),
-          ],
-        ),
-      ),
     );
   }
 }

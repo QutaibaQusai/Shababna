@@ -200,6 +200,30 @@ abstract class AppLocalizations {
   /// **'Profile Picture'**
   String get profilePictureLabel;
 
+  /// No description provided for @phoneNumberFieldSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We only use this for important updates'**
+  String get phoneNumberFieldSubtitle;
+
+  /// No description provided for @emailFieldSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Used to sign in and receive important notifications'**
+  String get emailFieldSubtitle;
+
+  /// No description provided for @cvFieldSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload your CV to apply for volunteer opportunities'**
+  String get cvFieldSubtitle;
+
+  /// No description provided for @nationalIdFieldSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Required to verify your identity'**
+  String get nationalIdFieldSubtitle;
+
   /// No description provided for @editProfilePictureSuccessMessage.
   ///
   /// In en, this message translates to:
