@@ -7,6 +7,7 @@ class ProfileModel {
     required this.phoneNumber,
     required this.profilePictureUrl,
     required this.hasProfilePicture,
+    required this.completionPercentage,
   });
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
@@ -18,6 +19,7 @@ class ProfileModel {
       phoneNumber: json['phoneNumber'] as String?,
       profilePictureUrl: json['profilePictureUrl'] as String?,
       hasProfilePicture: json['hasProfilePicture'] as bool,
+      completionPercentage: _parsePercentage(json['profileCompletionPercentage']),
     );
   }
 
@@ -28,4 +30,11 @@ class ProfileModel {
   final String? phoneNumber;
   final String? profilePictureUrl;
   final bool hasProfilePicture;
+  final int completionPercentage;
+
+  static int _parsePercentage(Object? value) {
+    if (value is int) return value;
+    if (value is String) return int.tryParse(value) ?? 100;
+    return 100;
+  }
 }

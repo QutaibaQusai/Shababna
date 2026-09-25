@@ -22,6 +22,7 @@ class ProfileRepositoryImpl with RepositoryGuardMixin implements ProfileReposito
         phoneNumber: response.phoneNumber,
         profilePictureUrl: response.profilePictureUrl,
         hasProfilePicture: response.hasProfilePicture,
+        completionPercentage: response.completionPercentage,
       );
     });
   }

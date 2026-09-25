@@ -11,6 +11,7 @@ class Profile {
     required this.phoneNumber,
     required this.profilePictureUrl,
     required this.hasProfilePicture,
+    required this.completionPercentage,
   });
 
   final String fullNameEn;
@@ -20,6 +21,7 @@ class Profile {
   final String? phoneNumber;
   final String? profilePictureUrl;
   final bool hasProfilePicture;
+  final int completionPercentage;
 }
 
 abstract interface class ProfileRepository {

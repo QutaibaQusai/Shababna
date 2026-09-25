@@ -5,6 +5,7 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_sizes.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../domain/repositories/profile_repository.dart';
+import 'profile_completion_badge.dart';
 
 String _initialsOf(String name) {
   final parts = name.split(' ').where((part) => part.isNotEmpty).toList();
@@ -58,6 +59,7 @@ class ProfileHeaderTile extends StatelessWidget {
               ],
             ),
           ),
+          ProfileCompletionBadge(percentage: profile.completionPercentage),
         ],
       ),
     );
