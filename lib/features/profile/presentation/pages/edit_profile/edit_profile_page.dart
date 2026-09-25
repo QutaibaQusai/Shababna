@@ -227,6 +227,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
                   subtitle: context.l10n.phoneNumberFieldSubtitle,
                   icon: LucideIcons.phone,
                   value: profile.phoneNumber,
+                  valueDirection: TextDirection.ltr,
                   onTap: () => _navigateAndReload(
                     context,
                     AppRoutes.changePhoneNumber,

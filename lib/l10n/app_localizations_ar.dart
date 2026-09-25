@@ -25,6 +25,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirmButton => 'تأكيد';
 
   @override
+  String get yesLabel => 'نعم';
+
+  @override
+  String get noLabel => 'لا';
+
+  @override
   String get cameraOption => 'الكاميرا';
 
   @override

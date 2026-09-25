@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/shared/widgets/app_switch.dart';
+import '../../../../../core/theme/app_spacing.dart';
 
 class SwitchRow extends StatelessWidget {
   const SwitchRow({
@@ -16,11 +18,14 @@ class SwitchRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(child: Text(label, style: context.textTheme.bodyMedium)),
-        Switch(value: value, onChanged: onChanged),
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: AppSpacing.xs),
+      child: Row(
+        children: [
+          Expanded(child: Text(label, style: context.textTheme.bodyMedium)),
+          AppSwitch(value: value, onChanged: onChanged),
+        ],
+      ),
     );
   }
 }

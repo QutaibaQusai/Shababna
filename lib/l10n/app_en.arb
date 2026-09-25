@@ -6,6 +6,8 @@
   "somethingWentWrong": "Something went wrong",
   "noItemsFound": "No items found",
   "confirmButton": "Confirm",
+  "yesLabel": "Yes",
+  "noLabel": "No",
   "cameraOption": "Camera",
   "galleryOption": "Gallery",
   "codeResentMessage": "Code resent",

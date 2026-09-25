@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
@@ -13,6 +14,7 @@ class AppCard extends StatelessWidget {
     required this.icon,
     required this.value,
     this.isVerified = false,
+    this.valueDirection,
     this.onTap,
   });
 
@@ -21,6 +23,7 @@ class AppCard extends StatelessWidget {
   final IconData icon;
   final String? value;
   final bool isVerified;
+  final TextDirection? valueDirection;
   final VoidCallback? onTap;
 
   @override
@@ -61,13 +64,20 @@ class AppCard extends StatelessWidget {
                   Icon(icon, size: AppSizes.iconField, color: context.colorScheme.onSurfaceVariant),
                   SizedBox(width: AppSpacing.xs),
                   Expanded(
-                    child: Text(value ?? '-', style: context.textTheme.bodyLarge),
+                    child: Text(
+                      value ?? '-',
+                      textDirection: valueDirection,
+                      style: context.textTheme.bodyLarge,
+                    ),
                   ),
                   if (isVerified)
                     Container(
                       width: AppSizes.iconField,
                       height: AppSizes.iconField,
-                      decoration: const BoxDecoration(color: Colors.green, shape: BoxShape.circle),
+                      decoration: const BoxDecoration(
+                        color: AppColors.successColor,
+                        shape: BoxShape.circle,
+                      ),
                       child: const Icon(Icons.check, size: 14, color: Colors.white),
                     ),
                 ],

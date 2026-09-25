@@ -128,6 +128,18 @@ abstract class AppLocalizations {
   /// **'Confirm'**
   String get confirmButton;
 
+  /// No description provided for @yesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yesLabel;
+
+  /// No description provided for @noLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get noLabel;
+
   /// No description provided for @cameraOption.
   ///
   /// In en, this message translates to:

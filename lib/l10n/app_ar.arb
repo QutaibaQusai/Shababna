@@ -6,6 +6,8 @@
   "somethingWentWrong": "حدث خطأ ما",
   "noItemsFound": "لا توجد عناصر",
   "confirmButton": "تأكيد",
+  "yesLabel": "نعم",
+  "noLabel": "لا",
   "cameraOption": "الكاميرا",
   "galleryOption": "المعرض",
   "codeResentMessage": "تم إعادة إرسال الرمز",
