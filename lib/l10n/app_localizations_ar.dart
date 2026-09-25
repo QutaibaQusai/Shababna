@@ -59,6 +59,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileMenuContactInfo => 'معلومات التواصل';
 
   @override
+  String get profileMenuAboutUs => 'من نحن';
+
+  @override
   String get profileMenuPrivacyPolicy => 'سياسة الخصوصية';
 
   @override

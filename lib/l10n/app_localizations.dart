@@ -194,6 +194,12 @@ abstract class AppLocalizations {
   /// **'Contact Information'**
   String get profileMenuContactInfo;
 
+  /// No description provided for @profileMenuAboutUs.
+  ///
+  /// In en, this message translates to:
+  /// **'About Us'**
+  String get profileMenuAboutUs;
+
   /// No description provided for @profileMenuPrivacyPolicy.
   ///
   /// In en, this message translates to:

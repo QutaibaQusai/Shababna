@@ -28,6 +28,9 @@ class AppRoutes {
   static const String contactForm = '/contact-form';
   static const String contactFormName = 'contact-form';
 
+  static const String aboutUs = '/about-us';
+  static const String aboutUsName = 'about-us';
+
   static const Set<String> publicRoutes = {
     login,
     register,

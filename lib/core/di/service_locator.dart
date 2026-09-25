@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/about_us/about_us_injection.dart';
 import '../../features/auth/auth_injection.dart';
 import '../../features/contact_form/contact_form_injection.dart';
 import '../../features/contact_info/contact_info_injection.dart';
@@ -72,6 +73,7 @@ Future<void> setupServiceLocator() async {
   registerLegalFeature(sl);
   registerContactInfoFeature(sl);
   registerContactFormFeature(sl);
+  registerAboutUsFeature(sl);
 
   sl.registerLazySingleton<GoRouter>(
     () => AppRouter.build(authSessionCubit: sl()),

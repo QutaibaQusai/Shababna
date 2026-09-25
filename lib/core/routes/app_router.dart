@@ -6,6 +6,7 @@ import '../../features/auth/presentation/pages/register/register_page.dart';
 import '../../features/auth/presentation/pages/forgot_password/reset_password_args.dart';
 import '../../features/auth/presentation/pages/forgot_password/reset_password_page.dart';
 import '../../features/auth/presentation/pages/forgot_password/verify_reset_code_page.dart';
+import '../../features/about_us/presentation/pages/about_us_page.dart';
 import '../../features/contact_form/presentation/pages/contact_form_page.dart';
 import '../../features/contact_info/presentation/pages/contact_info_page.dart';
 import '../../features/layout/presentation/pages/main_layout_page.dart';
@@ -87,6 +88,11 @@ class AppRouter {
           path: AppRoutes.contactForm,
           name: AppRoutes.contactFormName,
           builder: (context, state) => const ContactFormPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.aboutUs,
+          name: AppRoutes.aboutUsName,
+          builder: (context, state) => const AboutUsPage(),
         ),
       ],
     );

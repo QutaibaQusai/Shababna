@@ -130,6 +130,11 @@ class _ProfileView extends StatelessWidget {
             onTap: () => context.push(AppRoutes.contactForm),
           ),
           ProfileMenuTile(
+            icon: LucideIcons.users,
+            title: context.l10n.profileMenuAboutUs,
+            onTap: () => context.push(AppRoutes.aboutUs),
+          ),
+          ProfileMenuTile(
             icon: LucideIcons.shield,
             title: context.l10n.profileMenuPrivacyPolicy,
             onTap: () => context.push(
