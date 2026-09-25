@@ -21,6 +21,7 @@ import '../../cubit/edit_profile/edit_profile_cubit.dart';
 import '../../cubit/edit_profile/edit_profile_state.dart';
 import '../../widgets/edit_profile/edit_profile_bottom_bar.dart';
 import '../../widgets/edit_profile/edit_profile_picture_field.dart';
+import '../../widgets/edit_profile/edit_profile_section_title.dart';
 import '../../widgets/edit_profile/edit_profile_skeleton.dart';
 import '../../widgets/edit_profile/field_card.dart';
 import '../../widgets/edit_profile/gender_option.dart';
@@ -213,6 +214,8 @@ class _EditProfileViewState extends State<_EditProfileView> {
                   ),
                 ),
                 SizedBox(height: AppSpacing.md),
+                EditProfileSectionTitle(title: context.l10n.personalInfoSectionTitle),
+                SizedBox(height: AppSpacing.sm),
                 AppTextField(
                   label: context.l10n.fullNameLabel,
                   controller: TextEditingController(
@@ -223,8 +226,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
                 ),
                 SizedBox(height: AppSpacing.sm),
                 FieldCard(
-                  title: context.l10n.phoneNumberLabel,
-                  subtitle: context.l10n.phoneNumberFieldSubtitle,
+                  label: context.l10n.phoneNumberLabel,
                   icon: LucideIcons.phone,
                   value: profile.phoneNumber,
                   valueDirection: TextDirection.ltr,
@@ -236,16 +238,13 @@ class _EditProfileViewState extends State<_EditProfileView> {
                 ),
                 SizedBox(height: AppSpacing.sm),
                 FieldCard(
-                  title: context.l10n.emailLabel,
-                  subtitle: context.l10n.emailFieldSubtitle,
+                  label: context.l10n.emailLabel,
                   icon: LucideIcons.mail,
                   value: profile.email,
                   isVerified: profile.emailConfirmed,
                   onTap: () => _navigateAndReload(context, AppRoutes.changeEmail),
                 ),
-                SizedBox(height: AppSpacing.md),
-                Text(context.l10n.genderLabel, style: context.textTheme.titleSmall),
-                SizedBox(height: AppSpacing.xs),
+                SizedBox(height: AppSpacing.sm),
                 Row(
                   children: [
                     Expanded(
@@ -317,8 +316,8 @@ class _EditProfileViewState extends State<_EditProfileView> {
                   controller: _universityNameController,
                   prefixIcon: LucideIcons.school,
                 ),
-                SizedBox(height: AppSpacing.md),
-                Text(context.l10n.addressSectionTitle, style: context.textTheme.titleSmall),
+                SizedBox(height: AppSpacing.lg),
+                EditProfileSectionTitle(title: context.l10n.addressSectionTitle),
                 SizedBox(height: AppSpacing.sm),
                 AppTextField(
                   label: context.l10n.nearestLandmarkLabel,
@@ -341,9 +340,9 @@ class _EditProfileViewState extends State<_EditProfileView> {
                   maxLines: 3,
                   minLines: 2,
                 ),
-                SizedBox(height: AppSpacing.md),
-                Text(context.l10n.volunteeringSectionTitle, style: context.textTheme.titleSmall),
-                SizedBox(height: AppSpacing.xs),
+                SizedBox(height: AppSpacing.lg),
+                EditProfileSectionTitle(title: context.l10n.volunteeringSectionTitle),
+                SizedBox(height: AppSpacing.sm),
                 SwitchRow(
                   label: context.l10n.isFirstTimeVolunteerLabel,
                   value: _isFirstTimeVolunteer,
@@ -389,12 +388,12 @@ class _EditProfileViewState extends State<_EditProfileView> {
                 AppTextField(
                   label: context.l10n.otherVolunteeringSubjectsLabel,
                   controller: _otherVolunteeringSubjectsController,
-            
                 ),
+                SizedBox(height: AppSpacing.lg),
+                EditProfileSectionTitle(title: context.l10n.documentsSectionTitle),
                 SizedBox(height: AppSpacing.sm),
                 FieldCard(
-                  title: context.l10n.cvLabel,
-                  subtitle: context.l10n.cvFieldSubtitle,
+                  label: context.l10n.cvLabel,
                   icon: LucideIcons.fileText,
                   value: profile.hasCv
                       ? (profile.cvFileName ?? context.l10n.documentUploadedStatus)
@@ -407,8 +406,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
                 ),
                 SizedBox(height: AppSpacing.sm),
                 FieldCard(
-                  title: context.l10n.nationalIdPictureLabel,
-                  subtitle: context.l10n.nationalIdFieldSubtitle,
+                  label: context.l10n.nationalIdPictureLabel,
                   icon: LucideIcons.idCard,
                   value: profile.hasNationalIdPicture
                       ? context.l10n.documentUploadedStatus

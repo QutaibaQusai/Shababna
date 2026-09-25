@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/theme/app_colors.dart';
-import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 
 class FieldCard extends StatelessWidget {
   const FieldCard({
     super.key,
-    required this.title,
-    this.subtitle,
+    required this.label,
     required this.icon,
     required this.value,
     this.isVerified = false,
@@ -18,8 +18,7 @@ class FieldCard extends StatelessWidget {
     this.onTap,
   });
 
-  final String title;
-  final String? subtitle;
+  final String label;
   final IconData icon;
   final String? value;
   final bool isVerified;
@@ -28,63 +27,15 @@ class FieldCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(AppSpacing.sm),
-      decoration: BoxDecoration(
-        color: context.colorScheme.surface,
-        borderRadius: AppRadius.mdRadius,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title, style: context.textTheme.titleSmall),
-          if (subtitle != null) ...[
-            SizedBox(height: AppSpacing.xxs),
-            Text(
-              subtitle!,
-              style: context.textTheme.bodySmall?.copyWith(
-                color: context.colorScheme.onSurfaceVariant,
-              ),
-            ),
-          ],
-          SizedBox(height: AppSpacing.sm),
-          InkWell(
-            onTap: onTap,
-            borderRadius: AppRadius.mdRadius,
-            child: Container(
-              height: AppSizes.buttonHeight,
-              padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-              decoration: BoxDecoration(
-                border: Border.all(color: context.colorScheme.outlineVariant),
-                borderRadius: AppRadius.mdRadius,
-              ),
-              child: Row(
-                children: [
-                  Icon(icon, size: AppSizes.iconField, color: context.colorScheme.onSurfaceVariant),
-                  SizedBox(width: AppSpacing.xs),
-                  Expanded(
-                    child: Text(
-                      value ?? '-',
-                      textDirection: valueDirection,
-                      style: context.textTheme.bodyLarge,
-                    ),
-                  ),
-                  if (isVerified)
-                    Container(
-                      width: AppSizes.iconField,
-                      height: AppSizes.iconField,
-                      decoration: const BoxDecoration(
-                        color: AppColors.successColor,
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(Icons.check, size: 14, color: Colors.white),
-                    ),
-                ],
-              ),
-            ),
-          ),
-        ],
+    return AppTextField(
+      label: label,
+      controller: TextEditingController(text: value ?? '-'),
+      readOnly: true,
+      prefixIcon: icon,
+      onTap: onTap,
+      suffix: Icon(
+        context.isRTL ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
+        size: AppSizes.iconField,
       ),
     );
   }
