@@ -5,6 +5,7 @@ import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
+import 'edit_profile_section_title.dart';
 
 class EditProfileSkeleton extends StatelessWidget {
   const EditProfileSkeleton({super.key});
@@ -19,36 +20,48 @@ class EditProfileSkeleton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Center(
-              child: CircleAvatar(
-                radius: AppSizes.avatarSize * 0.9,
-                backgroundColor: context.colorScheme.surface,
+              child: Container(
+                width: AppSizes.avatarSize,
+                height: AppSizes.avatarSize,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: context.colorScheme.surface,
+                ),
               ),
             ),
             SizedBox(height: AppSpacing.md),
-            const _FieldBone(),
-            SizedBox(height: AppSpacing.sm),
-            const _CardBone(),
-            SizedBox(height: AppSpacing.sm),
-            const _CardBone(),
-            SizedBox(height: AppSpacing.md),
-            Text(context.l10n.genderLabel, style: context.textTheme.titleSmall),
-            SizedBox(height: AppSpacing.xs),
-            Row(
-              children: [
-                Expanded(child: _OptionBone()),
-                SizedBox(width: AppSpacing.xs),
-                Expanded(child: _OptionBone()),
-              ],
-            ),
-            SizedBox(height: AppSpacing.sm),
-            const _FieldBone(),
-            SizedBox(height: AppSpacing.sm),
-            const _FieldBone(),
-            SizedBox(height: AppSpacing.sm),
-            const _FieldBone(),
+            _SectionBone(title: context.l10n.personalInfoSectionTitle, fieldCount: 8),
+            SizedBox(height: AppSpacing.lg),
+            _SectionBone(title: context.l10n.addressSectionTitle, fieldCount: 4),
+            SizedBox(height: AppSpacing.lg),
+            _SectionBone(title: context.l10n.volunteeringSectionTitle, fieldCount: 6),
+            SizedBox(height: AppSpacing.lg),
+            _SectionBone(title: context.l10n.documentsSectionTitle, fieldCount: 2),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _SectionBone extends StatelessWidget {
+  const _SectionBone({required this.title, required this.fieldCount});
+
+  final String title;
+  final int fieldCount;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        EditProfileSectionTitle(title: title),
+        SizedBox(height: AppSpacing.sm),
+        for (var i = 0; i < fieldCount; i++) ...[
+          if (i > 0) SizedBox(height: AppSpacing.sm),
+          const _FieldBone(),
+        ],
+      ],
     );
   }
 }
@@ -58,71 +71,11 @@ class _FieldBone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Label',
-          style: context.textTheme.bodySmall?.copyWith(color: context.colorScheme.onSurfaceVariant),
-        ),
-        SizedBox(height: AppSpacing.xxs),
-        Container(
-          height: AppSizes.buttonHeight,
-          decoration: BoxDecoration(
-            border: Border.all(color: context.colorScheme.outlineVariant),
-            borderRadius: AppRadius.mdRadius,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _OptionBone extends StatelessWidget {
-  const _OptionBone();
-
-  @override
-  Widget build(BuildContext context) {
     return Container(
       height: AppSizes.buttonHeight,
       decoration: BoxDecoration(
-        border: Border.all(color: context.colorScheme.outlineVariant),
-        borderRadius: AppRadius.mdRadius,
-      ),
-    );
-  }
-}
-
-class _CardBone extends StatelessWidget {
-  const _CardBone();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(AppSpacing.sm),
-      decoration: BoxDecoration(
         color: context.colorScheme.surface,
         borderRadius: AppRadius.mdRadius,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('Title', style: context.textTheme.titleSmall),
-          SizedBox(height: AppSpacing.xxs),
-          Text(
-            'Subtitle placeholder text',
-            style: context.textTheme.bodySmall?.copyWith(color: context.colorScheme.onSurfaceVariant),
-          ),
-          SizedBox(height: AppSpacing.sm),
-          Container(
-            height: AppSizes.buttonHeight,
-            decoration: BoxDecoration(
-              border: Border.all(color: context.colorScheme.outlineVariant),
-              borderRadius: AppRadius.mdRadius,
-            ),
-          ),
-        ],
       ),
     );
   }
