@@ -21,7 +21,7 @@ class EditProfileSkeleton extends StatelessWidget {
             Center(
               child: CircleAvatar(
                 radius: AppSizes.avatarSize * 0.9,
-                backgroundColor: context.colorScheme.onSurfaceVariant,
+                backgroundColor: context.colorScheme.surface,
               ),
             ),
             SizedBox(height: AppSpacing.md),

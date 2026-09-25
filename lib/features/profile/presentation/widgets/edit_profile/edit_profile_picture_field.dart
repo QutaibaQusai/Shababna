@@ -34,7 +34,7 @@ class EditProfilePictureField extends StatelessWidget {
               child: Container(
                 width: size,
                 height: size,
-                color: context.colorScheme.surfaceContainerHighest,
+                color: context.colorScheme.surface,
                 child: hasPicture && pictureUrl != null
                     ? _AuthenticatedImage(url: pictureUrl!, size: size)
                     : Icon(

@@ -26,7 +26,7 @@ class AppNetworkImage extends StatelessWidget {
 
   Widget _fallback(BuildContext context) {
     return ColoredBox(
-      color: context.colorScheme.surfaceContainerHighest,
+      color: context.colorScheme.surface,
       child: Icon(
         LucideIcons.image,
         size: size / 2,

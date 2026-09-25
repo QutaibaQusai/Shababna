@@ -22,7 +22,7 @@ class AppSwitch extends StatelessWidget {
       height: _height,
       padding: const EdgeInsets.all(_padding),
       decoration: BoxDecoration(
-        color: context.colorScheme.surfaceContainerHighest,
+        color: context.colorScheme.surface,
         borderRadius: AppRadius.pillRadius,
       ),
       child: Stack(

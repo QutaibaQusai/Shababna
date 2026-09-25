@@ -32,7 +32,7 @@ class AppIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fieldColor = context.colorScheme.surfaceContainerHighest;
+    final fieldColor = context.colorScheme.surface;
     final resolvedIconColor =
         iconColor ??
         (containerColor != null

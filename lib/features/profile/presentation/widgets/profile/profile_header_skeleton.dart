@@ -24,7 +24,7 @@ class ProfileHeaderSkeleton extends StatelessWidget {
               height: AppSizes.avatarSize,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: context.colorScheme.onSurfaceVariant,
+                color: context.colorScheme.surface,
               ),
             ),
             SizedBox(width: AppSpacing.sm),

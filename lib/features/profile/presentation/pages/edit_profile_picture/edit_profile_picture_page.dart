@@ -185,7 +185,7 @@ class _EditProfilePictureViewState extends State<_EditProfilePictureView> {
       child: Container(
         width: size,
         height: size,
-        color: context.colorScheme.surfaceContainerHighest,
+        color: context.colorScheme.surface,
         child: child,
       ),
     );

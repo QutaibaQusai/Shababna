@@ -97,7 +97,7 @@ class _CompletionProgress extends StatelessWidget {
               CircularProgressIndicator(
                 value: value / 100,
                 strokeWidth: 3,
-                backgroundColor: context.colorScheme.surfaceContainerHighest,
+                backgroundColor: context.colorScheme.surface,
                 color: context.colorScheme.primary,
               ),
               Text(
