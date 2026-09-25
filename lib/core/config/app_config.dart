@@ -8,6 +8,7 @@ class AppConfig {
   static const int appBuildNumber = 1;
 
   static const String baseUrl = 'https://rhas.hitechjo.com';
+  static const String webBaseUrl = 'https://shababna.hitechjo.com';
 
   static const int otpLength = 6;
 

@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
+import '../../../../core/config/app_share_links.dart';
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/routes/app_routes.dart';
@@ -11,6 +12,7 @@ import '../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../core/shared/widgets/app_empty_widget.dart';
 import '../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../core/shared/widgets/app_refresh_indicator.dart';
+import '../../../../core/shared/widgets/share_icon_button.dart';
 import '../../../../core/theme/app_sizes.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../domain/repositories/social_media_repository.dart';
@@ -48,6 +50,7 @@ class _SocialMediaView extends StatelessWidget {
       appBar: AppAppBar(
         title: context.l10n.profileMenuSocialMedia,
         onBack: () => context.pop(),
+        actions: [ShareIconButton(path: AppShareLinks.socialMedia)],
       ),
       body: AppRefreshIndicator(
         onRefresh: () => context.read<SocialMediaCubit>().loadSocialMediaLinks(),
