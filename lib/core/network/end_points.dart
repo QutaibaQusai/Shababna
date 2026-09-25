@@ -24,4 +24,18 @@ class EndPoints {
   static const String socialMediaLinks = '/api/v1/configuration/social-media-links';
 
   static const String changePassword = '/api/v1/profile/change-password';
+  static const String profileDetails = '/api/v1/profile/details';
+
+  static const String countries = '/api/v1/countries';
+  static const String cities = '/api/v1/cities';
+  static const String educations = '/api/v1/educations';
+  static const String volunteeringTypes = '/api/v1/volunteering-types';
+
+  static const String phoneNumber = '/api/v1/profile/phone-number';
+  static const String changeEmail = '/api/v1/profile/change-email';
+  static const String verifyEmailChange = '/api/v1/profile/verify-email-change';
+  static const String resendEmailChangeCode = '/api/v1/profile/resend-email-change-code';
+  static const String profilePicture = '/api/v1/profile/picture';
+  static const String cv = '/api/v1/profile/cv';
+  static const String nationalId = '/api/v1/profile/national-id';
 }

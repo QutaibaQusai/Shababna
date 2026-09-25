@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../events/presentation/pages/events_page.dart';
 import '../../../home/presentation/pages/home_page.dart';
 import '../../../news/presentation/pages/news_page.dart';
-import '../../../profile/presentation/pages/profile_page.dart';
+import '../../../profile/presentation/pages/profile/profile_page.dart';
 import '../cubit/layout_cubit.dart';
 import '../cubit/layout_tab.dart';
 import '../widgets/layout_app_bar.dart';

@@ -32,6 +32,10 @@
 		</array>
 		<key>LSRequiresIPhoneOS</key>
 		<true/>
+		<key>NSCameraUsageDescription</key>
+		<string>Shababna needs camera access to take a profile photo or national ID picture.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Shababna needs photo library access to choose a profile photo or national ID picture.</string>
 		<key>UIApplicationSceneManifest</key>
 		<dict>
 			<key>UIApplicationSupportsMultipleScenes</key>

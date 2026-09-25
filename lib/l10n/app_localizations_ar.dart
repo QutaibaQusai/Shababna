@@ -22,6 +22,76 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noItemsFound => 'لا توجد عناصر';
 
   @override
+  String get confirmButton => 'تأكيد';
+
+  @override
+  String get cameraOption => 'الكاميرا';
+
+  @override
+  String get galleryOption => 'المعرض';
+
+  @override
+  String get codeResentMessage => 'تم إعادة إرسال الرمز';
+
+  @override
+  String get changePhoneNumberTitle => 'تغيير رقم الهاتف';
+
+  @override
+  String get changePhoneNumberSubtitle =>
+      'أدخل الرقم الذي تريد استخدامه لحسابك';
+
+  @override
+  String get changePhoneNumberSuccessMessage => 'تم تحديث رقم الهاتف بنجاح';
+
+  @override
+  String get changeEmailTitle => 'تغيير البريد الإلكتروني';
+
+  @override
+  String get changeEmailSubtitle =>
+      'أدخل كلمة المرور الحالية والبريد الإلكتروني الجديد';
+
+  @override
+  String get changeEmailSuccessMessage => 'تم تحديث البريد الإلكتروني بنجاح';
+
+  @override
+  String get newEmailLabel => 'البريد الإلكتروني الجديد';
+
+  @override
+  String get verifyEmailChangeTitle => 'تحقق من بريدك الإلكتروني الجديد';
+
+  @override
+  String get profilePictureLabel => 'الصورة الشخصية';
+
+  @override
+  String get editProfilePictureSuccessMessage =>
+      'تم تحديث الصورة الشخصية بنجاح';
+
+  @override
+  String get choosePhotoButton => 'اختيار صورة';
+
+  @override
+  String get replacePhotoButton => 'استبدال الصورة';
+
+  @override
+  String get removePhotoButton => 'إزالة الصورة';
+
+  @override
+  String get editCvSuccessMessage => 'تم تحديث السيرة الذاتية بنجاح';
+
+  @override
+  String get uploadCvButton => 'رفع السيرة الذاتية';
+
+  @override
+  String get replaceCvButton => 'استبدال السيرة الذاتية';
+
+  @override
+  String get removeCvButton => 'إزالة السيرة الذاتية';
+
+  @override
+  String get editNationalIdSuccessMessage =>
+      'تم تحديث صورة الهوية الوطنية بنجاح';
+
+  @override
   String get navHome => 'الرئيسية';
 
   @override
@@ -157,6 +227,103 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get actionSearch => 'بحث';
+
+  @override
+  String get doneButton => 'تم';
+
+  @override
+  String get editProfileTitle => 'تعديل الملف الشخصي';
+
+  @override
+  String get editProfileSuccessMessage => 'تم تحديث الملف الشخصي بنجاح';
+
+  @override
+  String get completeYourProfileLabel => 'أكمل ملفك الشخصي';
+
+  @override
+  String get saveButton => 'حفظ';
+
+  @override
+  String get genderLabel => 'الجنس';
+
+  @override
+  String get genderMale => 'ذكر';
+
+  @override
+  String get genderFemale => 'أنثى';
+
+  @override
+  String get dateOfBirthLabel => 'تاريخ الميلاد';
+
+  @override
+  String get nationalityLabel => 'الجنسية';
+
+  @override
+  String get cityLabel => 'المدينة';
+
+  @override
+  String get educationLabel => 'المؤهل العلمي';
+
+  @override
+  String get majorLabel => 'التخصص';
+
+  @override
+  String get universityNameLabel => 'اسم الجامعة';
+
+  @override
+  String get addressSectionTitle => 'العنوان';
+
+  @override
+  String get nearestLandmarkLabel => 'أقرب معلم';
+
+  @override
+  String get districtLabel => 'المنطقة';
+
+  @override
+  String get neighborhoodLabel => 'الحي';
+
+  @override
+  String get detailedAddressLabel => 'العنوان التفصيلي';
+
+  @override
+  String get volunteeringSectionTitle => 'التطوع';
+
+  @override
+  String get isFirstTimeVolunteerLabel => 'متطوع لأول مرة';
+
+  @override
+  String get volunteerAwardsLabel => 'جوائز تطوعية';
+
+  @override
+  String get isAvailableToVolunteerLabel => 'متاح للتطوع';
+
+  @override
+  String get willSignVolunteerServiceAgreementLabel =>
+      'سيوقع اتفاقية الخدمة التطوعية';
+
+  @override
+  String get willProvideNccLabel => 'سيقدم شهادة عدم محكومية';
+
+  @override
+  String get estimatedWeeklyHoursLabel => 'الساعات الأسبوعية المتوقعة';
+
+  @override
+  String get volunteeringTypesLabel => 'أنواع التطوع';
+
+  @override
+  String get otherVolunteeringSubjectsLabel => 'مجالات تطوع أخرى';
+
+  @override
+  String get cvLabel => 'السيرة الذاتية';
+
+  @override
+  String get nationalIdPictureLabel => 'صورة الهوية الوطنية';
+
+  @override
+  String get documentUploadedStatus => 'تم الرفع';
+
+  @override
+  String get documentNotUploadedStatus => 'لم يتم الرفع';
 
   @override
   String get actionNotifications => 'الإشعارات';

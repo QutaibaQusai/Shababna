@@ -43,6 +43,27 @@ class AppRoutes {
   static const String changePassword = '/change-password';
   static const String changePasswordName = 'change-password';
 
+  static const String editProfile = '/edit-profile';
+  static const String editProfileName = 'edit-profile';
+
+  static const String changePhoneNumber = '/change-phone-number';
+  static const String changePhoneNumberName = 'change-phone-number';
+
+  static const String changeEmail = '/change-email';
+  static const String changeEmailName = 'change-email';
+
+  static const String verifyEmailChange = '/verify-email-change';
+  static const String verifyEmailChangeName = 'verify-email-change';
+
+  static const String editProfilePicture = '/edit-profile-picture';
+  static const String editProfilePictureName = 'edit-profile-picture';
+
+  static const String editCv = '/edit-cv';
+  static const String editCvName = 'edit-cv';
+
+  static const String editNationalId = '/edit-national-id';
+  static const String editNationalIdName = 'edit-national-id';
+
   static const Set<String> publicRoutes = {
     login,
     register,

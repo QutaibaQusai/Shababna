@@ -122,6 +122,138 @@ abstract class AppLocalizations {
   /// **'No items found'**
   String get noItemsFound;
 
+  /// No description provided for @confirmButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirmButton;
+
+  /// No description provided for @cameraOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get cameraOption;
+
+  /// No description provided for @galleryOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get galleryOption;
+
+  /// No description provided for @codeResentMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Code resent'**
+  String get codeResentMessage;
+
+  /// No description provided for @changePhoneNumberTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Phone Number'**
+  String get changePhoneNumberTitle;
+
+  /// No description provided for @changePhoneNumberSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the number you want to use for your account'**
+  String get changePhoneNumberSubtitle;
+
+  /// No description provided for @changePhoneNumberSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number updated successfully'**
+  String get changePhoneNumberSuccessMessage;
+
+  /// No description provided for @changeEmailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Email'**
+  String get changeEmailTitle;
+
+  /// No description provided for @changeEmailSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your current password and the new email address'**
+  String get changeEmailSubtitle;
+
+  /// No description provided for @changeEmailSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Email updated successfully'**
+  String get changeEmailSuccessMessage;
+
+  /// No description provided for @newEmailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'New email'**
+  String get newEmailLabel;
+
+  /// No description provided for @verifyEmailChangeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify your new email'**
+  String get verifyEmailChangeTitle;
+
+  /// No description provided for @profilePictureLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Picture'**
+  String get profilePictureLabel;
+
+  /// No description provided for @editProfilePictureSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile picture updated successfully'**
+  String get editProfilePictureSuccessMessage;
+
+  /// No description provided for @choosePhotoButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Photo'**
+  String get choosePhotoButton;
+
+  /// No description provided for @replacePhotoButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace Photo'**
+  String get replacePhotoButton;
+
+  /// No description provided for @removePhotoButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Photo'**
+  String get removePhotoButton;
+
+  /// No description provided for @editCvSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'CV updated successfully'**
+  String get editCvSuccessMessage;
+
+  /// No description provided for @uploadCvButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload CV'**
+  String get uploadCvButton;
+
+  /// No description provided for @replaceCvButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace CV'**
+  String get replaceCvButton;
+
+  /// No description provided for @removeCvButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove CV'**
+  String get removeCvButton;
+
+  /// No description provided for @editNationalIdSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'National ID picture updated successfully'**
+  String get editNationalIdSuccessMessage;
+
   /// No description provided for @navHome.
   ///
   /// In en, this message translates to:
@@ -391,6 +523,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search'**
   String get actionSearch;
+
+  /// No description provided for @doneButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get doneButton;
+
+  /// No description provided for @editProfileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get editProfileTitle;
+
+  /// No description provided for @editProfileSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated successfully'**
+  String get editProfileSuccessMessage;
+
+  /// No description provided for @completeYourProfileLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete your profile'**
+  String get completeYourProfileLabel;
+
+  /// No description provided for @saveButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get saveButton;
+
+  /// No description provided for @genderLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get genderLabel;
+
+  /// No description provided for @genderMale.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get genderMale;
+
+  /// No description provided for @genderFemale.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get genderFemale;
+
+  /// No description provided for @dateOfBirthLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of birth'**
+  String get dateOfBirthLabel;
+
+  /// No description provided for @nationalityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Nationality'**
+  String get nationalityLabel;
+
+  /// No description provided for @cityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get cityLabel;
+
+  /// No description provided for @educationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Education'**
+  String get educationLabel;
+
+  /// No description provided for @majorLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Major'**
+  String get majorLabel;
+
+  /// No description provided for @universityNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'University name'**
+  String get universityNameLabel;
+
+  /// No description provided for @addressSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get addressSectionTitle;
+
+  /// No description provided for @nearestLandmarkLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearest landmark'**
+  String get nearestLandmarkLabel;
+
+  /// No description provided for @districtLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get districtLabel;
+
+  /// No description provided for @neighborhoodLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Neighborhood'**
+  String get neighborhoodLabel;
+
+  /// No description provided for @detailedAddressLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Detailed address'**
+  String get detailedAddressLabel;
+
+  /// No description provided for @volunteeringSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Volunteering'**
+  String get volunteeringSectionTitle;
+
+  /// No description provided for @isFirstTimeVolunteerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'First-time volunteer'**
+  String get isFirstTimeVolunteerLabel;
+
+  /// No description provided for @volunteerAwardsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Volunteer awards'**
+  String get volunteerAwardsLabel;
+
+  /// No description provided for @isAvailableToVolunteerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Available to volunteer'**
+  String get isAvailableToVolunteerLabel;
+
+  /// No description provided for @willSignVolunteerServiceAgreementLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Will sign volunteer service agreement'**
+  String get willSignVolunteerServiceAgreementLabel;
+
+  /// No description provided for @willProvideNccLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Will provide non-criminal certificate'**
+  String get willProvideNccLabel;
+
+  /// No description provided for @estimatedWeeklyHoursLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated weekly hours'**
+  String get estimatedWeeklyHoursLabel;
+
+  /// No description provided for @volunteeringTypesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Volunteering types'**
+  String get volunteeringTypesLabel;
+
+  /// No description provided for @otherVolunteeringSubjectsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Other volunteering subjects'**
+  String get otherVolunteeringSubjectsLabel;
+
+  /// No description provided for @cvLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'CV'**
+  String get cvLabel;
+
+  /// No description provided for @nationalIdPictureLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'National ID picture'**
+  String get nationalIdPictureLabel;
+
+  /// No description provided for @documentUploadedStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploaded'**
+  String get documentUploadedStatus;
+
+  /// No description provided for @documentNotUploadedStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Not uploaded'**
+  String get documentNotUploadedStatus;
 
   /// No description provided for @actionNotifications.
   ///

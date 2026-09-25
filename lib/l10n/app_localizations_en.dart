@@ -22,6 +22,77 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noItemsFound => 'No items found';
 
   @override
+  String get confirmButton => 'Confirm';
+
+  @override
+  String get cameraOption => 'Camera';
+
+  @override
+  String get galleryOption => 'Gallery';
+
+  @override
+  String get codeResentMessage => 'Code resent';
+
+  @override
+  String get changePhoneNumberTitle => 'Change Phone Number';
+
+  @override
+  String get changePhoneNumberSubtitle =>
+      'Enter the number you want to use for your account';
+
+  @override
+  String get changePhoneNumberSuccessMessage =>
+      'Phone number updated successfully';
+
+  @override
+  String get changeEmailTitle => 'Change Email';
+
+  @override
+  String get changeEmailSubtitle =>
+      'Enter your current password and the new email address';
+
+  @override
+  String get changeEmailSuccessMessage => 'Email updated successfully';
+
+  @override
+  String get newEmailLabel => 'New email';
+
+  @override
+  String get verifyEmailChangeTitle => 'Verify your new email';
+
+  @override
+  String get profilePictureLabel => 'Profile Picture';
+
+  @override
+  String get editProfilePictureSuccessMessage =>
+      'Profile picture updated successfully';
+
+  @override
+  String get choosePhotoButton => 'Choose Photo';
+
+  @override
+  String get replacePhotoButton => 'Replace Photo';
+
+  @override
+  String get removePhotoButton => 'Remove Photo';
+
+  @override
+  String get editCvSuccessMessage => 'CV updated successfully';
+
+  @override
+  String get uploadCvButton => 'Upload CV';
+
+  @override
+  String get replaceCvButton => 'Replace CV';
+
+  @override
+  String get removeCvButton => 'Remove CV';
+
+  @override
+  String get editNationalIdSuccessMessage =>
+      'National ID picture updated successfully';
+
+  @override
   String get navHome => 'Home';
 
   @override
@@ -158,6 +229,103 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get actionSearch => 'Search';
+
+  @override
+  String get doneButton => 'Done';
+
+  @override
+  String get editProfileTitle => 'Edit Profile';
+
+  @override
+  String get editProfileSuccessMessage => 'Profile updated successfully';
+
+  @override
+  String get completeYourProfileLabel => 'Complete your profile';
+
+  @override
+  String get saveButton => 'Save';
+
+  @override
+  String get genderLabel => 'Gender';
+
+  @override
+  String get genderMale => 'Male';
+
+  @override
+  String get genderFemale => 'Female';
+
+  @override
+  String get dateOfBirthLabel => 'Date of birth';
+
+  @override
+  String get nationalityLabel => 'Nationality';
+
+  @override
+  String get cityLabel => 'City';
+
+  @override
+  String get educationLabel => 'Education';
+
+  @override
+  String get majorLabel => 'Major';
+
+  @override
+  String get universityNameLabel => 'University name';
+
+  @override
+  String get addressSectionTitle => 'Address';
+
+  @override
+  String get nearestLandmarkLabel => 'Nearest landmark';
+
+  @override
+  String get districtLabel => 'District';
+
+  @override
+  String get neighborhoodLabel => 'Neighborhood';
+
+  @override
+  String get detailedAddressLabel => 'Detailed address';
+
+  @override
+  String get volunteeringSectionTitle => 'Volunteering';
+
+  @override
+  String get isFirstTimeVolunteerLabel => 'First-time volunteer';
+
+  @override
+  String get volunteerAwardsLabel => 'Volunteer awards';
+
+  @override
+  String get isAvailableToVolunteerLabel => 'Available to volunteer';
+
+  @override
+  String get willSignVolunteerServiceAgreementLabel =>
+      'Will sign volunteer service agreement';
+
+  @override
+  String get willProvideNccLabel => 'Will provide non-criminal certificate';
+
+  @override
+  String get estimatedWeeklyHoursLabel => 'Estimated weekly hours';
+
+  @override
+  String get volunteeringTypesLabel => 'Volunteering types';
+
+  @override
+  String get otherVolunteeringSubjectsLabel => 'Other volunteering subjects';
+
+  @override
+  String get cvLabel => 'CV';
+
+  @override
+  String get nationalIdPictureLabel => 'National ID picture';
+
+  @override
+  String get documentUploadedStatus => 'Uploaded';
+
+  @override
+  String get documentNotUploadedStatus => 'Not uploaded';
 
   @override
   String get actionNotifications => 'Notifications';
