@@ -10,7 +10,6 @@ import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_date_field.dart';
 import '../../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../../core/shared/widgets/app_loading_overlay.dart';
-import '../../../../../core/shared/widgets/app_multi_select_field.dart';
 import '../../../../../core/shared/widgets/app_picker_field.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/shared/widgets/app_toast.dart';
@@ -20,11 +19,12 @@ import '../../../domain/repositories/profile_lookups_repository.dart';
 import '../../../domain/repositories/profile_repository.dart';
 import '../../cubit/edit_profile/edit_profile_cubit.dart';
 import '../../cubit/edit_profile/edit_profile_state.dart';
-import '../../widgets/edit_profile/app_card.dart';
 import '../../widgets/edit_profile/edit_profile_bottom_bar.dart';
 import '../../widgets/edit_profile/edit_profile_picture_field.dart';
 import '../../widgets/edit_profile/edit_profile_skeleton.dart';
+import '../../widgets/edit_profile/field_card.dart';
 import '../../widgets/edit_profile/gender_option.dart';
+import '../../widgets/edit_profile/multi_select_field.dart';
 import '../../widgets/edit_profile/switch_row.dart';
 import '../edit_cv/edit_cv_args.dart';
 import '../edit_profile_picture/edit_profile_picture_args.dart';
@@ -222,7 +222,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
                   prefixIcon: LucideIcons.user,
                 ),
                 SizedBox(height: AppSpacing.sm),
-                AppCard(
+                FieldCard(
                   title: context.l10n.phoneNumberLabel,
                   subtitle: context.l10n.phoneNumberFieldSubtitle,
                   icon: LucideIcons.phone,
@@ -235,7 +235,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
                   ),
                 ),
                 SizedBox(height: AppSpacing.sm),
-                AppCard(
+                FieldCard(
                   title: context.l10n.emailLabel,
                   subtitle: context.l10n.emailFieldSubtitle,
                   icon: LucideIcons.mail,
@@ -377,7 +377,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
                   keyboardType: TextInputType.number,
                 ),
                 SizedBox(height: AppSpacing.sm),
-                AppMultiSelectField<VolunteeringType>(
+                MultiSelectField<VolunteeringType>(
                   label: context.l10n.volunteeringTypesLabel,
                   items: state.volunteeringTypes,
                   itemLabel: (item) => item.displayName(context.isArabic),
@@ -389,11 +389,10 @@ class _EditProfileViewState extends State<_EditProfileView> {
                 AppTextField(
                   label: context.l10n.otherVolunteeringSubjectsLabel,
                   controller: _otherVolunteeringSubjectsController,
-                  maxLines: 3,
-                  minLines: 2,
+            
                 ),
                 SizedBox(height: AppSpacing.sm),
-                AppCard(
+                FieldCard(
                   title: context.l10n.cvLabel,
                   subtitle: context.l10n.cvFieldSubtitle,
                   icon: LucideIcons.fileText,
@@ -407,7 +406,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
                   ),
                 ),
                 SizedBox(height: AppSpacing.sm),
-                AppCard(
+                FieldCard(
                   title: context.l10n.nationalIdPictureLabel,
                   subtitle: context.l10n.nationalIdFieldSubtitle,
                   icon: LucideIcons.idCard,

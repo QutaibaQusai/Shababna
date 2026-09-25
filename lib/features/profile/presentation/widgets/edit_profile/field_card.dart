@@ -6,8 +6,8 @@ import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 
-class AppCard extends StatelessWidget {
-  const AppCard({
+class FieldCard extends StatelessWidget {
+  const FieldCard({
     super.key,
     required this.title,
     this.subtitle,

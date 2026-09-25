@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '../../extensions/context_extensions.dart';
-import '../../theme/app_radius.dart';
-import '../../theme/app_sizes.dart';
-import '../../theme/app_spacing.dart';
-import 'app_empty_widget.dart';
-import 'app_error_widget.dart';
-import 'app_loader.dart';
-import 'app_search_field.dart';
-import 'app_text_field.dart';
+import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/shared/widgets/app_button.dart';
+import '../../../../../core/shared/widgets/app_empty_widget.dart';
+import '../../../../../core/shared/widgets/app_error_widget.dart';
+import '../../../../../core/shared/widgets/app_loader.dart';
+import '../../../../../core/shared/widgets/app_search_field.dart';
+import '../../../../../core/shared/widgets/app_text_field.dart';
+import '../../../../../core/theme/app_radius.dart';
+import '../../../../../core/theme/app_sizes.dart';
+import '../../../../../core/theme/app_spacing.dart';
 
-class AppMultiSelectField<T> extends StatefulWidget {
-  const AppMultiSelectField({
+class MultiSelectField<T> extends StatefulWidget {
+  const MultiSelectField({
     super.key,
     required this.label,
     required this.items,
@@ -38,17 +39,17 @@ class AppMultiSelectField<T> extends StatefulWidget {
   final VoidCallback? onRetry;
 
   @override
-  State<AppMultiSelectField<T>> createState() => _AppMultiSelectFieldState<T>();
+  State<MultiSelectField<T>> createState() => _MultiSelectFieldState<T>();
 }
 
-class _AppMultiSelectFieldState<T> extends State<AppMultiSelectField<T>> {
+class _MultiSelectFieldState<T> extends State<MultiSelectField<T>> {
   late final _controller = TextEditingController(text: _displayText);
 
   String get _displayText =>
       widget.selectedItems.map(widget.itemLabel).join(', ');
 
   @override
-  void didUpdateWidget(AppMultiSelectField<T> oldWidget) {
+  void didUpdateWidget(MultiSelectField<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.selectedItems != widget.selectedItems) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -162,9 +163,9 @@ class _MultiSelectSheetState<T> extends State<_MultiSelectSheet<T>> {
               SizedBox(height: AppSpacing.sm),
               Expanded(child: _buildBody()),
               SizedBox(height: AppSpacing.sm),
-              FilledButton(
+              AppButton.primary(
+                label: context.l10n.doneButton,
                 onPressed: () => widget.onDone(_selected),
-                child: Text(context.l10n.doneButton),
               ),
             ],
           ),
@@ -207,6 +208,9 @@ class _MultiSelectSheetState<T> extends State<_MultiSelectSheet<T>> {
                   Checkbox(
                     value: isSelected,
                     onChanged: (_) => _toggle(item),
+                    shape: const CircleBorder(),
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    visualDensity: VisualDensity.compact,
                   ),
                 ],
               ),
