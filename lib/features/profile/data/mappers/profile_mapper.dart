@@ -1,10 +1,12 @@
 import '../../../../core/config/app_config.dart';
 import '../../domain/repositories/profile_repository.dart';
 import '../models/profile_model.dart';
+import '../models/update_profile_details_request_model.dart';
 
 extension ProfileModelMapper on ProfileModel {
   Profile toEntity() {
     return Profile(
+      id: id,
       fullNameEn: fullNameEn,
       fullNameAr: fullNameAr,
       email: email,
@@ -12,14 +14,14 @@ extension ProfileModelMapper on ProfileModel {
       phoneNumber: phoneNumber,
       profilePictureUrl: _absoluteUrl(profilePictureUrl),
       hasProfilePicture: hasProfilePicture,
-      completionPercentage: completionPercentage,
+      completionPercentage: completionPercentage.clamp(0, 100),
       hasCv: hasCv,
       cvFileName: cvFileName,
       nationality: nationality == null
           ? null
           : ProfileReference(id: nationality!.id, name: nationality!.name),
       city: city == null ? null : ProfileReference(id: city!.id, name: city!.name),
-      dateOfBirth: dateOfBirth,
+      dateOfBirth: dateOfBirth == null ? null : DateTime.tryParse(dateOfBirth!),
       gender: _genderFromApiValue(gender),
       education: education == null
           ? null
@@ -32,7 +34,6 @@ extension ProfileModelMapper on ProfileModel {
       universityName: universityName,
       isFirstTimeVolunteer: isFirstTimeVolunteer,
       hasNationalIdPicture: hasNationalIdPicture,
-      nationalIdPictureUrl: _absoluteUrl(nationalIdPictureUrl),
       isProfileComplete: isProfileComplete,
       nearestLandmark: nearestLandmark,
       district: district,
@@ -61,7 +62,41 @@ extension ProfileModelMapper on ProfileModel {
       };
 }
 
-String genderToApiValue(ProfileGender gender) => switch (gender) {
-      ProfileGender.male => 'Male',
-      ProfileGender.female => 'Female',
-    };
+extension ProfileDetailsMapper on ProfileDetails {
+  UpdateProfileDetailsRequestModel toRequest() {
+    return UpdateProfileDetailsRequestModel(
+      nationalityId: nationality?.id,
+      cityId: city?.id,
+      dateOfBirth: dateOfBirth == null ? null : _isoDate(dateOfBirth!),
+      gender: gender == null ? null : _genderToApiValue(gender!),
+      educationId: education?.id,
+      major: isMajorRequired ? _orNull(major) : null,
+      universityName: _orNull(universityName),
+      isFirstTimeVolunteer: isFirstTimeVolunteer,
+      nearestLandmark: _orNull(nearestLandmark),
+      district: _orNull(district),
+      neighborhood: _orNull(neighborhood),
+      detailedAddress: _orNull(detailedAddress),
+      volunteerAwards: volunteerAwards,
+      isAvailableToVolunteer: isAvailableToVolunteer,
+      estimatedWeeklyHours: int.tryParse(estimatedWeeklyHours.trim()),
+      willSignVolunteerServiceAgreement: willSignVolunteerServiceAgreement,
+      willProvideNcc: willProvideNcc,
+      volunteeringTypeIds: volunteeringTypes.map((item) => item.id).toSet().toList(),
+      otherVolunteeringSubjects: _orNull(otherVolunteeringSubjects),
+    );
+  }
+
+  String? _orNull(String value) {
+    final trimmed = value.trim();
+    return trimmed.isEmpty ? null : trimmed;
+  }
+
+  String _isoDate(DateTime date) =>
+      '${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+
+  String _genderToApiValue(ProfileGender gender) => switch (gender) {
+        ProfileGender.male => 'Male',
+        ProfileGender.female => 'Female',
+      };
+}

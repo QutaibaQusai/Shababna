@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -42,7 +43,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get changePhoneNumberTitle => 'تغيير رقم الهاتف';
 
   @override
-  String get changePhoneNumberSubtitle => 'أدخل الرقم الذي تريد استخدامه لحسابك';
+  String get changePhoneNumberSubtitle =>
+      'أدخل الرقم الذي تريد استخدامه لحسابك';
 
   @override
   String get changePhoneNumberSuccessMessage => 'تم تحديث رقم الهاتف بنجاح';
@@ -51,7 +53,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get changeEmailTitle => 'تغيير البريد الإلكتروني';
 
   @override
-  String get changeEmailSubtitle => 'أدخل كلمة المرور الحالية والبريد الإلكتروني الجديد';
+  String get changeEmailSubtitle =>
+      'أدخل كلمة المرور الحالية والبريد الإلكتروني الجديد';
 
   @override
   String get changeEmailSuccessMessage => 'تم تحديث البريد الإلكتروني بنجاح';
@@ -66,7 +69,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profilePictureLabel => 'الصورة الشخصية';
 
   @override
-  String get editProfilePictureSuccessMessage => 'تم تحديث الصورة الشخصية بنجاح';
+  String get editProfilePictureSuccessMessage =>
+      'تم تحديث الصورة الشخصية بنجاح';
 
   @override
   String get choosePhotoButton => 'اختيار صورة';
@@ -90,7 +94,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get removeCvButton => 'إزالة السيرة الذاتية';
 
   @override
-  String get editNationalIdSuccessMessage => 'تم تحديث صورة الهوية الوطنية بنجاح';
+  String get editNationalIdSuccessMessage =>
+      'تم تحديث صورة الهوية الوطنية بنجاح';
 
   @override
   String get navHome => 'الرئيسية';
@@ -120,7 +125,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileMenuNotifications => 'الإشعارات';
 
   @override
-  String get profileMenuNotificationsSubtitle => 'إدارة الإشعارات وتحديثات التطبيق العامة.';
+  String get profileMenuNotificationsSubtitle =>
+      'إدارة الإشعارات وتحديثات التطبيق العامة.';
 
   @override
   String get profileMenuAccountSecurity => 'أمان الحساب';
@@ -132,7 +138,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get changePasswordTitle => 'تغيير كلمة المرور';
 
   @override
-  String get changePasswordSubtitle => 'اختر كلمة مرور قوية للحفاظ على أمان حسابك';
+  String get changePasswordSubtitle =>
+      'اختر كلمة مرور قوية للحفاظ على أمان حسابك';
 
   @override
   String get currentPasswordLabel => 'كلمة المرور الحالية';
@@ -300,7 +307,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get isAvailableToVolunteerLabel => 'متاح للتطوع';
 
   @override
-  String get willSignVolunteerServiceAgreementLabel => 'سيوقع اتفاقية الخدمة التطوعية';
+  String get willSignVolunteerServiceAgreementLabel =>
+      'سيوقع اتفاقية الخدمة التطوعية';
 
   @override
   String get willProvideNccLabel => 'سيقدم شهادة عدم محكومية';
@@ -381,7 +389,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get stepContactTitle => 'بيانات التواصل';
 
   @override
-  String get stepContactSubtitle => 'سنستخدم هذه البيانات للتحقق من حسابك وإبقائك على اطلاع';
+  String get stepContactSubtitle =>
+      'سنستخدم هذه البيانات للتحقق من حسابك وإبقائك على اطلاع';
 
   @override
   String get phoneNumberLabel => 'رقم الهاتف';
@@ -428,7 +437,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resendCodeButton => 'إعادة إرسال الرمز';
 
   @override
-  String get registrationCompleteMessage => 'تم إنشاء الحساب. يمكنك تسجيل الدخول الآن.';
+  String get registrationCompleteMessage =>
+      'تم إنشاء الحساب. يمكنك تسجيل الدخول الآن.';
 
   @override
   String get accountRecoveryTitle => 'استعادة الحساب';
@@ -437,7 +447,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get forgotPasswordTitle => 'نسيت كلمة المرور؟';
 
   @override
-  String get forgotPasswordSubtitle => 'أدخل بريدك الإلكتروني وسنرسل لك رمزاً لإعادة تعيين كلمة المرور';
+  String get forgotPasswordSubtitle =>
+      'أدخل بريدك الإلكتروني وسنرسل لك رمزاً لإعادة تعيين كلمة المرور';
 
   @override
   String get sendCodeButton => 'إرسال الرمز';
@@ -471,7 +482,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPasswordButton => 'إعادة تعيين كلمة المرور';
 
   @override
-  String get passwordResetSuccessMessage => 'تم إعادة تعيين كلمة المرور. يمكنك تسجيل الدخول الآن.';
+  String get passwordResetSuccessMessage =>
+      'تم إعادة تعيين كلمة المرور. يمكنك تسجيل الدخول الآن.';
 
   @override
   String get fieldRequiredError => 'هذا الحقل مطلوب';
@@ -532,5 +544,115 @@ class AppLocalizationsAr extends AppLocalizations {
   String get contactSendButton => 'إرسال';
 
   @override
-  String get contactSubmitSuccessMessage => 'تم إرسال رسالتك. سنتواصل معك قريباً.';
+  String get contactSubmitSuccessMessage =>
+      'تم إرسال رسالتك. سنتواصل معك قريباً.';
+
+  @override
+  String get discardChangesTitle => 'تجاهل التغييرات؟';
+
+  @override
+  String get discardChangesMessage =>
+      'لديك تغييرات غير محفوظة. إذا غادرت الآن فستفقدها.';
+
+  @override
+  String get discardButton => 'تجاهل';
+
+  @override
+  String get removeButton => 'إزالة';
+
+  @override
+  String get uploadingLabel => 'جارٍ الرفع…';
+
+  @override
+  String weeklyHoursRangeError(int min, int max) {
+    return 'أدخل رقماً بين $min و$max';
+  }
+
+  @override
+  String get majorRequiredError => 'التخصص مطلوب لهذا المستوى التعليمي';
+
+  @override
+  String fileTooLargeError(int size) {
+    return 'حجم الملف كبير جداً. الحد الأقصى $size ميغابايت';
+  }
+
+  @override
+  String get emailVerifiedLabel => 'موثّق';
+
+  @override
+  String get emailNotVerifiedLabel => 'غير موثّق';
+
+  @override
+  String get currentEmailLabel => 'البريد الإلكتروني الحالي';
+
+  @override
+  String get currentPhoneNumberLabel => 'الرقم الحالي';
+
+  @override
+  String get newPhoneNumberLabel => 'رقم الهاتف الجديد';
+
+  @override
+  String get phoneNumberUnchangedHint => 'أدخل رقماً مختلفاً للمتابعة';
+
+  @override
+  String get newEmailSameAsCurrentError =>
+      'يجب أن يختلف البريد الإلكتروني الجديد عن الحالي';
+
+  @override
+  String profileVerifyEmailSubtitle(String email) {
+    return 'أدخل الرمز المرسل إلى $email لتأكيد بريدك الإلكتروني الجديد';
+  }
+
+  @override
+  String get profileVerifyEmailButton => 'تأكيد البريد الإلكتروني';
+
+  @override
+  String get profileResendEmailPrompt => 'لم يصلك الرمز؟';
+
+  @override
+  String get profileResendEmailButton => 'إرسال رمز جديد';
+
+  @override
+  String get profileEmailCodeResentMessage =>
+      'تم إرسال رمز جديد إلى بريدك الإلكتروني الجديد';
+
+  @override
+  String profileInvalidEmailCodeError(int length) {
+    return 'أدخل الرمز المكوّن من $length أرقام من بريدك';
+  }
+
+  @override
+  String get profilePictureRemovedMessage => 'تمت إزالة صورة الملف الشخصي';
+
+  @override
+  String get removePhotoConfirmTitle => 'إزالة صورة الملف الشخصي؟';
+
+  @override
+  String get removePhotoConfirmMessage => 'سيتم حذف صورة ملفك الشخصي.';
+
+  @override
+  String get cvRemovedMessage => 'تمت إزالة السيرة الذاتية';
+
+  @override
+  String get removeCvConfirmTitle => 'إزالة السيرة الذاتية؟';
+
+  @override
+  String get removeCvConfirmMessage => 'سيتم حذف سيرتك الذاتية من ملفك الشخصي.';
+
+  @override
+  String cvFormatsHint(int size) {
+    return 'PDF أو DOC أو DOCX · حتى $size ميغابايت';
+  }
+
+  @override
+  String get nationalIdRemovedMessage => 'تمت إزالة صورة الهوية';
+
+  @override
+  String get removeNationalIdConfirmTitle => 'إزالة صورة الهوية؟';
+
+  @override
+  String get removeNationalIdConfirmMessage => 'سيتم حذف صورة هويتك.';
+
+  @override
+  String get removeNationalIdButton => 'إزالة صورة الهوية';
 }

@@ -34,6 +34,7 @@ class ProfileEducationModel {
 
 class ProfileModel {
   const ProfileModel({
+    required this.id,
     required this.fullNameEn,
     required this.fullNameAr,
     required this.email,
@@ -53,7 +54,6 @@ class ProfileModel {
     required this.universityName,
     required this.isFirstTimeVolunteer,
     required this.hasNationalIdPicture,
-    required this.nationalIdPictureUrl,
     required this.isProfileComplete,
     required this.nearestLandmark,
     required this.district,
@@ -70,6 +70,7 @@ class ProfileModel {
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
     return ProfileModel(
+      id: json['id'] as String,
       fullNameEn: json['fullNameEn'] as String,
       fullNameAr: json['fullNameAr'] as String,
       email: json['email'] as String,
@@ -93,10 +94,9 @@ class ProfileModel {
           : ProfileEducationModel.fromJson(json['education'] as Map<String, dynamic>),
       major: json['major'] as String?,
       universityName: json['universityName'] as String?,
-      isFirstTimeVolunteer: json['isFirstTimeVolunteer'] as bool,
-      hasNationalIdPicture: json['hasNationalIdPicture'] as bool,
-      nationalIdPictureUrl: json['nationalIdPictureUrl'] as String?,
-      isProfileComplete: json['isProfileComplete'] as bool,
+      isFirstTimeVolunteer: json['isFirstTimeVolunteer'] as bool? ?? false,
+      hasNationalIdPicture: json['hasNationalIdPicture'] as bool? ?? false,
+      isProfileComplete: json['isProfileComplete'] as bool? ?? false,
       nearestLandmark: json['nearestLandmark'] as String?,
       district: json['district'] as String?,
       neighborhood: json['neighborhood'] as String?,
@@ -113,6 +113,7 @@ class ProfileModel {
     );
   }
 
+  final String id;
   final String fullNameEn;
   final String fullNameAr;
   final String email;
@@ -132,7 +133,6 @@ class ProfileModel {
   final String? universityName;
   final bool isFirstTimeVolunteer;
   final bool hasNationalIdPicture;
-  final String? nationalIdPictureUrl;
   final bool isProfileComplete;
   final String? nearestLandmark;
   final String? district;
@@ -148,8 +148,8 @@ class ProfileModel {
 
   static int _parsePercentage(Object? value) {
     if (value is int) return value;
-    if (value is String) return int.tryParse(value) ?? 100;
-    return 100;
+    if (value is String) return int.tryParse(value) ?? 0;
+    return 0;
   }
 
   static int? _parseInt(Object? value) {
@@ -157,5 +157,4 @@ class ProfileModel {
     if (value is String) return int.tryParse(value);
     return null;
   }
-
 }

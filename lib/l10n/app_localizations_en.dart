@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -42,16 +43,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get changePhoneNumberTitle => 'Change Phone Number';
 
   @override
-  String get changePhoneNumberSubtitle => 'Enter the number you want to use for your account';
+  String get changePhoneNumberSubtitle =>
+      'Enter the number you want to use for your account';
 
   @override
-  String get changePhoneNumberSuccessMessage => 'Phone number updated successfully';
+  String get changePhoneNumberSuccessMessage =>
+      'Phone number updated successfully';
 
   @override
   String get changeEmailTitle => 'Change Email';
 
   @override
-  String get changeEmailSubtitle => 'Enter your current password and the new email address';
+  String get changeEmailSubtitle =>
+      'Enter your current password and the new email address';
 
   @override
   String get changeEmailSuccessMessage => 'Email updated successfully';
@@ -66,7 +70,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profilePictureLabel => 'Profile Picture';
 
   @override
-  String get editProfilePictureSuccessMessage => 'Profile picture updated successfully';
+  String get editProfilePictureSuccessMessage =>
+      'Profile picture updated successfully';
 
   @override
   String get choosePhotoButton => 'Choose Photo';
@@ -90,7 +95,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get removeCvButton => 'Remove CV';
 
   @override
-  String get editNationalIdSuccessMessage => 'National ID picture updated successfully';
+  String get editNationalIdSuccessMessage =>
+      'National ID picture updated successfully';
 
   @override
   String get navHome => 'Home';
@@ -120,19 +126,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileMenuNotifications => 'Notifications';
 
   @override
-  String get profileMenuNotificationsSubtitle => 'Manage notifications and general app updates.';
+  String get profileMenuNotificationsSubtitle =>
+      'Manage notifications and general app updates.';
 
   @override
   String get profileMenuAccountSecurity => 'Account Security';
 
   @override
-  String get accountSecuritySubtitle => 'Manage your password and account protection';
+  String get accountSecuritySubtitle =>
+      'Manage your password and account protection';
 
   @override
   String get changePasswordTitle => 'Change Password';
 
   @override
-  String get changePasswordSubtitle => 'Choose a strong password to keep your account secure';
+  String get changePasswordSubtitle =>
+      'Choose a strong password to keep your account secure';
 
   @override
   String get currentPasswordLabel => 'Current password';
@@ -300,7 +309,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get isAvailableToVolunteerLabel => 'Available to volunteer';
 
   @override
-  String get willSignVolunteerServiceAgreementLabel => 'Will sign volunteer service agreement';
+  String get willSignVolunteerServiceAgreementLabel =>
+      'Will sign volunteer service agreement';
 
   @override
   String get willProvideNccLabel => 'Will provide non-criminal certificate';
@@ -381,7 +391,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stepContactTitle => 'Contact details';
 
   @override
-  String get stepContactSubtitle => 'We\'ll use this to verify your account and keep you updated';
+  String get stepContactSubtitle =>
+      'We\'ll use this to verify your account and keep you updated';
 
   @override
   String get phoneNumberLabel => 'Phone number';
@@ -390,7 +401,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stepPasswordTitle => 'Set a password';
 
   @override
-  String get stepPasswordSubtitle => 'Choose a strong password to secure your account';
+  String get stepPasswordSubtitle =>
+      'Choose a strong password to secure your account';
 
   @override
   String get confirmPasswordLabel => 'Confirm password';
@@ -428,7 +440,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resendCodeButton => 'Resend code';
 
   @override
-  String get registrationCompleteMessage => 'Account created. You can now log in.';
+  String get registrationCompleteMessage =>
+      'Account created. You can now log in.';
 
   @override
   String get accountRecoveryTitle => 'Account recovery';
@@ -437,7 +450,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgotPasswordTitle => 'Forgot your password?';
 
   @override
-  String get forgotPasswordSubtitle => 'Enter your email and we\'ll send you a code to reset your password';
+  String get forgotPasswordSubtitle =>
+      'Enter your email and we\'ll send you a code to reset your password';
 
   @override
   String get sendCodeButton => 'Send code';
@@ -471,7 +485,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetPasswordButton => 'Reset password';
 
   @override
-  String get passwordResetSuccessMessage => 'Password reset. You can now log in.';
+  String get passwordResetSuccessMessage =>
+      'Password reset. You can now log in.';
 
   @override
   String get fieldRequiredError => 'This field is required';
@@ -517,7 +532,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contactFormTitle => 'Send us a message';
 
   @override
-  String get contactFormSubtitle => 'We\'ll get back to you as soon as possible';
+  String get contactFormSubtitle =>
+      'We\'ll get back to you as soon as possible';
 
   @override
   String get fullNameLabel => 'Full Name';
@@ -532,5 +548,118 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contactSendButton => 'Send';
 
   @override
-  String get contactSubmitSuccessMessage => 'Your message has been sent. We\'ll be in touch soon.';
+  String get contactSubmitSuccessMessage =>
+      'Your message has been sent. We\'ll be in touch soon.';
+
+  @override
+  String get discardChangesTitle => 'Discard changes?';
+
+  @override
+  String get discardChangesMessage =>
+      'You have unsaved changes. If you leave now, they will be lost.';
+
+  @override
+  String get discardButton => 'Discard';
+
+  @override
+  String get removeButton => 'Remove';
+
+  @override
+  String get uploadingLabel => 'Uploading…';
+
+  @override
+  String weeklyHoursRangeError(int min, int max) {
+    return 'Enter a number between $min and $max';
+  }
+
+  @override
+  String get majorRequiredError => 'Major is required for this education level';
+
+  @override
+  String fileTooLargeError(int size) {
+    return 'File is too large. Maximum size is $size MB';
+  }
+
+  @override
+  String get emailVerifiedLabel => 'Verified';
+
+  @override
+  String get emailNotVerifiedLabel => 'Not verified';
+
+  @override
+  String get currentEmailLabel => 'Current email';
+
+  @override
+  String get currentPhoneNumberLabel => 'Current number';
+
+  @override
+  String get newPhoneNumberLabel => 'New phone number';
+
+  @override
+  String get phoneNumberUnchangedHint => 'Enter a different number to continue';
+
+  @override
+  String get newEmailSameAsCurrentError =>
+      'New email must be different from your current email';
+
+  @override
+  String profileVerifyEmailSubtitle(String email) {
+    return 'Enter the code we sent to $email to confirm your new email';
+  }
+
+  @override
+  String get profileVerifyEmailButton => 'Confirm email';
+
+  @override
+  String get profileResendEmailPrompt => 'Didn\'t get the code?';
+
+  @override
+  String get profileResendEmailButton => 'Send a new code';
+
+  @override
+  String get profileEmailCodeResentMessage =>
+      'A new code was sent to your new email';
+
+  @override
+  String profileInvalidEmailCodeError(int length) {
+    return 'Enter the $length-digit code from your email';
+  }
+
+  @override
+  String get profilePictureRemovedMessage => 'Profile picture removed';
+
+  @override
+  String get removePhotoConfirmTitle => 'Remove profile picture?';
+
+  @override
+  String get removePhotoConfirmMessage =>
+      'Your profile picture will be deleted.';
+
+  @override
+  String get cvRemovedMessage => 'CV removed';
+
+  @override
+  String get removeCvConfirmTitle => 'Remove CV?';
+
+  @override
+  String get removeCvConfirmMessage =>
+      'Your CV will be deleted from your profile.';
+
+  @override
+  String cvFormatsHint(int size) {
+    return 'PDF, DOC or DOCX · up to $size MB';
+  }
+
+  @override
+  String get nationalIdRemovedMessage => 'National ID picture removed';
+
+  @override
+  String get removeNationalIdConfirmTitle => 'Remove National ID picture?';
+
+  @override
+  String get removeNationalIdConfirmMessage =>
+      'Your National ID picture will be deleted.';
+
+  @override
+  String get removeNationalIdButton => 'Remove National ID';
 }

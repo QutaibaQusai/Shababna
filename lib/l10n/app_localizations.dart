@@ -62,7 +62,8 @@ import 'app_localizations_en.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -70,7 +71,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -82,17 +84,18 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
-    Locale('en')
+    Locale('en'),
   ];
 
   /// No description provided for @appName.
@@ -1126,9 +1129,202 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your message has been sent. We\'ll be in touch soon.'**
   String get contactSubmitSuccessMessage;
+
+  /// No description provided for @discardChangesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Discard changes?'**
+  String get discardChangesTitle;
+
+  /// No description provided for @discardChangesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You have unsaved changes. If you leave now, they will be lost.'**
+  String get discardChangesMessage;
+
+  /// No description provided for @discardButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Discard'**
+  String get discardButton;
+
+  /// No description provided for @removeButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get removeButton;
+
+  /// No description provided for @uploadingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading…'**
+  String get uploadingLabel;
+
+  /// No description provided for @weeklyHoursRangeError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number between {min} and {max}'**
+  String weeklyHoursRangeError(int min, int max);
+
+  /// No description provided for @majorRequiredError.
+  ///
+  /// In en, this message translates to:
+  /// **'Major is required for this education level'**
+  String get majorRequiredError;
+
+  /// No description provided for @fileTooLargeError.
+  ///
+  /// In en, this message translates to:
+  /// **'File is too large. Maximum size is {size} MB'**
+  String fileTooLargeError(int size);
+
+  /// No description provided for @emailVerifiedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get emailVerifiedLabel;
+
+  /// No description provided for @emailNotVerifiedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Not verified'**
+  String get emailNotVerifiedLabel;
+
+  /// No description provided for @currentEmailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Current email'**
+  String get currentEmailLabel;
+
+  /// No description provided for @currentPhoneNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Current number'**
+  String get currentPhoneNumberLabel;
+
+  /// No description provided for @newPhoneNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'New phone number'**
+  String get newPhoneNumberLabel;
+
+  /// No description provided for @phoneNumberUnchangedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a different number to continue'**
+  String get phoneNumberUnchangedHint;
+
+  /// No description provided for @newEmailSameAsCurrentError.
+  ///
+  /// In en, this message translates to:
+  /// **'New email must be different from your current email'**
+  String get newEmailSameAsCurrentError;
+
+  /// No description provided for @profileVerifyEmailSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code we sent to {email} to confirm your new email'**
+  String profileVerifyEmailSubtitle(String email);
+
+  /// No description provided for @profileVerifyEmailButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm email'**
+  String get profileVerifyEmailButton;
+
+  /// No description provided for @profileResendEmailPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t get the code?'**
+  String get profileResendEmailPrompt;
+
+  /// No description provided for @profileResendEmailButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a new code'**
+  String get profileResendEmailButton;
+
+  /// No description provided for @profileEmailCodeResentMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'A new code was sent to your new email'**
+  String get profileEmailCodeResentMessage;
+
+  /// No description provided for @profileInvalidEmailCodeError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the {length}-digit code from your email'**
+  String profileInvalidEmailCodeError(int length);
+
+  /// No description provided for @profilePictureRemovedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile picture removed'**
+  String get profilePictureRemovedMessage;
+
+  /// No description provided for @removePhotoConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove profile picture?'**
+  String get removePhotoConfirmTitle;
+
+  /// No description provided for @removePhotoConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your profile picture will be deleted.'**
+  String get removePhotoConfirmMessage;
+
+  /// No description provided for @cvRemovedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'CV removed'**
+  String get cvRemovedMessage;
+
+  /// No description provided for @removeCvConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove CV?'**
+  String get removeCvConfirmTitle;
+
+  /// No description provided for @removeCvConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your CV will be deleted from your profile.'**
+  String get removeCvConfirmMessage;
+
+  /// No description provided for @cvFormatsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'PDF, DOC or DOCX · up to {size} MB'**
+  String cvFormatsHint(int size);
+
+  /// No description provided for @nationalIdRemovedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'National ID picture removed'**
+  String get nationalIdRemovedMessage;
+
+  /// No description provided for @removeNationalIdConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove National ID picture?'**
+  String get removeNationalIdConfirmTitle;
+
+  /// No description provided for @removeNationalIdConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your National ID picture will be deleted.'**
+  String get removeNationalIdConfirmMessage;
+
+  /// No description provided for @removeNationalIdButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove National ID'**
+  String get removeNationalIdButton;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -1137,25 +1333,26 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar': return AppLocalizationsAr();
-    case 'en': return AppLocalizationsEn();
+    case 'ar':
+      return AppLocalizationsAr();
+    case 'en':
+      return AppLocalizationsEn();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
+    'that was used.',
   );
 }

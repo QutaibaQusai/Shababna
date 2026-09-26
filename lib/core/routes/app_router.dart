@@ -16,12 +16,7 @@ import '../../features/profile/presentation/pages/change_email/change_email_page
 import '../../features/profile/presentation/pages/change_email/verify_email_change_page.dart';
 import '../../features/profile/presentation/pages/change_password/change_password_page.dart';
 import '../../features/profile/presentation/pages/change_phone_number/change_phone_number_page.dart';
-import '../../features/profile/presentation/pages/edit_cv/edit_cv_args.dart';
-import '../../features/profile/presentation/pages/edit_cv/edit_cv_page.dart';
-import '../../features/profile/presentation/pages/edit_national_id/edit_national_id_page.dart';
 import '../../features/profile/presentation/pages/edit_profile/edit_profile_page.dart';
-import '../../features/profile/presentation/pages/edit_profile_picture/edit_profile_picture_args.dart';
-import '../../features/profile/presentation/pages/edit_profile_picture/edit_profile_picture_page.dart';
 import '../../features/social_media/presentation/pages/social_media_page.dart';
 import '../shared/views/app_web_view_page.dart';
 import '../session/auth_session_cubit.dart';
@@ -138,8 +133,7 @@ class AppRouter {
         GoRoute(
           path: AppRoutes.changePhoneNumber,
           name: AppRoutes.changePhoneNumberName,
-          builder: (context, state) =>
-              ChangePhoneNumberPage(currentPhoneNumber: state.extra as String?),
+          builder: (context, state) => const ChangePhoneNumberPage(),
         ),
         GoRoute(
           path: AppRoutes.changeEmail,
@@ -151,30 +145,6 @@ class AppRouter {
           name: AppRoutes.verifyEmailChangeName,
           redirect: (context, state) => state.extra is String ? null : AppRoutes.editProfile,
           builder: (context, state) => VerifyEmailChangePage(newEmail: state.extra! as String),
-        ),
-        GoRoute(
-          path: AppRoutes.editProfilePicture,
-          name: AppRoutes.editProfilePictureName,
-          builder: (context, state) {
-            final args = state.extra as EditProfilePictureArgs?;
-            return EditProfilePicturePage(
-              hasPicture: args?.hasPicture ?? false,
-              pictureUrl: args?.pictureUrl,
-            );
-          },
-        ),
-        GoRoute(
-          path: AppRoutes.editCv,
-          name: AppRoutes.editCvName,
-          builder: (context, state) {
-            final args = state.extra as EditCvArgs?;
-            return EditCvPage(hasCv: args?.hasCv ?? false, cvFileName: args?.cvFileName);
-          },
-        ),
-        GoRoute(
-          path: AppRoutes.editNationalId,
-          name: AppRoutes.editNationalIdName,
-          builder: (context, state) => EditNationalIdPage(hasPicture: state.extra as bool? ?? false),
         ),
       ],
     );

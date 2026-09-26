@@ -10,6 +10,7 @@ import '../../../../../core/services/locale_service.dart';
 import '../../../../../core/services/theme_service.dart';
 import '../../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../../core/shared/widgets/app_menu_tile.dart';
+import '../../../../../core/shared/widgets/app_refresh_indicator.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../legal/presentation/pages/legal_content_page.dart';
 import '../../cubit/profile/profile_cubit.dart';
@@ -26,30 +27,36 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => sl<ProfileCubit>()..loadProfile(),
-      child: const _ProfileView(),
-    );
+    return BlocProvider.value(value: sl<ProfileCubit>(), child: const _ProfileView());
   }
 }
 
-class _ProfileView extends StatelessWidget {
+class _ProfileView extends StatefulWidget {
   const _ProfileView();
 
+  @override
+  State<_ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<_ProfileView> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ProfileCubit>().ensureLoaded();
+  }
+
   String _themeLabel(BuildContext context, ThemeMode mode) => switch (mode) {
-        ThemeMode.system => context.l10n.themeSystem,
-        ThemeMode.light => context.l10n.themeLight,
-        ThemeMode.dark => context.l10n.themeDark,
-      };
+    ThemeMode.system => context.l10n.themeSystem,
+    ThemeMode.light => context.l10n.themeLight,
+    ThemeMode.dark => context.l10n.themeDark,
+  };
 
   void _openLanguageSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (_) => BlocProvider.value(
-        value: context.read<LocaleService>(),
-        child: const LanguageSheet(),
-      ),
+      builder: (_) =>
+          BlocProvider.value(value: context.read<LocaleService>(), child: const LanguageSheet()),
     );
   }
 
@@ -57,10 +64,8 @@ class _ProfileView extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (_) => BlocProvider.value(
-        value: context.read<ThemeService>(),
-        child: const ThemeSheet(),
-      ),
+      builder: (_) =>
+          BlocProvider.value(value: context.read<ThemeService>(), child: const ThemeSheet()),
     );
   }
 
@@ -68,10 +73,7 @@ class _ProfileView extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (_) => BlocProvider(
-        create: (_) => sl<LogoutCubit>(),
-        child: const LogoutSheet(),
-      ),
+      builder: (_) => BlocProvider(create: (_) => sl<LogoutCubit>(), child: const LogoutSheet()),
     );
   }
 
@@ -81,92 +83,94 @@ class _ProfileView extends StatelessWidget {
     final themeMode = context.watch<ThemeService>().state;
     final languageCode = context.watch<LocaleService>().languageCode;
 
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (state.errorMessage != null && !state.isLoading)
-            AppErrorWidget(
-              message: state.errorMessage!,
-              onRetry: () => context.read<ProfileCubit>().loadProfile(),
-            )
-          else if (state.isLoading || state.profile == null)
-            const ProfileHeaderSkeleton()
-          else
-            ProfileHeaderTile(profile: state.profile!),
-          SizedBox(height: AppSpacing.xs),
-          const Divider(height: 1),
-          AppMenuTile(
-            icon: LucideIcons.calendar,
-            title: context.l10n.navEvents,
+    final profile = state.profile;
+
+    return BlocListener<LocaleService, Locale?>(
+      listenWhen: (previous, current) => previous != current,
+      listener: (context, _) => context.read<ProfileCubit>().refresh(silent: true),
+      child: AppRefreshIndicator(
+        onRefresh: () => context.read<ProfileCubit>().refresh(silent: true),
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (profile != null)
+                ProfileHeaderTile(profile: profile, pictureCacheKey: state.pictureCacheKey)
+              else if (state.hasError)
+                AppErrorWidget(
+                  message: state.errorMessage ?? context.l10n.somethingWentWrong,
+                  onRetry: () => context.read<ProfileCubit>().refresh(),
+                )
+              else
+                const ProfileHeaderSkeleton(),
+              SizedBox(height: AppSpacing.xs),
+              const Divider(height: 1),
+              AppMenuTile(icon: LucideIcons.calendar, title: context.l10n.navEvents),
+              AppMenuTile(icon: LucideIcons.newspaper, title: context.l10n.navNews),
+              AppMenuTile(
+                icon: LucideIcons.languages,
+                title: context.l10n.profileMenuLanguage,
+                value: languageCode == 'ar'
+                    ? context.l10n.languageArabic
+                    : context.l10n.languageEnglish,
+                onTap: () => _openLanguageSheet(context),
+              ),
+              AppMenuTile(
+                icon: LucideIcons.palette,
+                title: context.l10n.profileMenuTheme,
+                value: _themeLabel(context, themeMode),
+                onTap: () => _openThemeSheet(context),
+              ),
+              const _NotificationsToggleTile(),
+              AppMenuTile(
+                icon: LucideIcons.shieldCheck,
+                title: context.l10n.profileMenuAccountSecurity,
+                onTap: () => context.push(AppRoutes.accountSecurity),
+              ),
+              AppMenuTile(
+                icon: LucideIcons.info,
+                title: context.l10n.profileMenuContactInfo,
+                onTap: () => context.push(AppRoutes.contactInfo),
+              ),
+              AppMenuTile(
+                icon: LucideIcons.messageCircle,
+                title: context.l10n.profileMenuContactUs,
+                onTap: () => context.push(AppRoutes.contactForm),
+              ),
+              AppMenuTile(
+                icon: LucideIcons.users,
+                title: context.l10n.profileMenuAboutUs,
+                onTap: () => context.push(AppRoutes.aboutUs),
+              ),
+              AppMenuTile(
+                icon: LucideIcons.share2,
+                title: context.l10n.profileMenuSocialMedia,
+                onTap: () => context.push(AppRoutes.socialMedia),
+              ),
+              AppMenuTile(
+                icon: LucideIcons.shield,
+                title: context.l10n.profileMenuPrivacyPolicy,
+                onTap: () =>
+                    context.push(AppRoutes.legalContent, extra: LegalDocumentType.privacyPolicy),
+              ),
+              AppMenuTile(
+                icon: LucideIcons.fileText,
+                title: context.l10n.profileMenuTermsAndConditions,
+                onTap: () => context.push(
+                  AppRoutes.legalContent,
+                  extra: LegalDocumentType.termsAndConditions,
+                ),
+              ),
+              AppMenuTile(
+                icon: LucideIcons.power,
+                title: context.l10n.profileMenuLogout,
+                isDestructive: true,
+                onTap: () => _openLogoutSheet(context),
+              ),
+            ],
           ),
-          AppMenuTile(
-            icon: LucideIcons.newspaper,
-            title: context.l10n.navNews,
-          ),
-          AppMenuTile(
-            icon: LucideIcons.languages,
-            title: context.l10n.profileMenuLanguage,
-            value: languageCode == 'ar'
-                ? context.l10n.languageArabic
-                : context.l10n.languageEnglish,
-            onTap: () => _openLanguageSheet(context),
-          ),
-          AppMenuTile(
-            icon: LucideIcons.palette,
-            title: context.l10n.profileMenuTheme,
-            value: _themeLabel(context, themeMode),
-            onTap: () => _openThemeSheet(context),
-          ),
-          const _NotificationsToggleTile(),
-          AppMenuTile(
-            icon: LucideIcons.shieldCheck,
-            title: context.l10n.profileMenuAccountSecurity,
-            onTap: () => context.push(AppRoutes.accountSecurity),
-          ),
-          AppMenuTile(
-            icon: LucideIcons.info,
-            title: context.l10n.profileMenuContactInfo,
-            onTap: () => context.push(AppRoutes.contactInfo),
-          ),
-          AppMenuTile(
-            icon: LucideIcons.messageCircle,
-            title: context.l10n.profileMenuContactUs,
-            onTap: () => context.push(AppRoutes.contactForm),
-          ),
-          AppMenuTile(
-            icon: LucideIcons.users,
-            title: context.l10n.profileMenuAboutUs,
-            onTap: () => context.push(AppRoutes.aboutUs),
-          ),
-          AppMenuTile(
-            icon: LucideIcons.share2,
-            title: context.l10n.profileMenuSocialMedia,
-            onTap: () => context.push(AppRoutes.socialMedia),
-          ),
-          AppMenuTile(
-            icon: LucideIcons.shield,
-            title: context.l10n.profileMenuPrivacyPolicy,
-            onTap: () => context.push(
-              AppRoutes.legalContent,
-              extra: LegalDocumentType.privacyPolicy,
-            ),
-          ),
-          AppMenuTile(
-            icon: LucideIcons.fileText,
-            title: context.l10n.profileMenuTermsAndConditions,
-            onTap: () => context.push(
-              AppRoutes.legalContent,
-              extra: LegalDocumentType.termsAndConditions,
-            ),
-          ),
-          AppMenuTile(
-            icon: LucideIcons.power,
-            title: context.l10n.profileMenuLogout,
-            isDestructive: true,
-            onTap: () => _openLogoutSheet(context),
-          ),
-        ],
+        ),
       ),
     );
   }

@@ -204,5 +204,52 @@
   "subjectLabel": "Subject",
   "messageLabel": "Message",
   "contactSendButton": "Send",
-  "contactSubmitSuccessMessage": "Your message has been sent. We'll be in touch soon."
+  "contactSubmitSuccessMessage": "Your message has been sent. We'll be in touch soon.",
+  "discardChangesTitle": "Discard changes?",
+  "discardChangesMessage": "You have unsaved changes. If you leave now, they will be lost.",
+  "discardButton": "Discard",
+  "removeButton": "Remove",
+  "uploadingLabel": "Uploading…",
+  "weeklyHoursRangeError": "Enter a number between {min} and {max}",
+  "@weeklyHoursRangeError": {
+    "placeholders": { "min": { "type": "int" }, "max": { "type": "int" } }
+  },
+  "majorRequiredError": "Major is required for this education level",
+  "fileTooLargeError": "File is too large. Maximum size is {size} MB",
+  "@fileTooLargeError": {
+    "placeholders": { "size": { "type": "int" } }
+  },
+  "emailVerifiedLabel": "Verified",
+  "emailNotVerifiedLabel": "Not verified",
+  "currentEmailLabel": "Current email",
+  "currentPhoneNumberLabel": "Current number",
+  "newPhoneNumberLabel": "New phone number",
+  "phoneNumberUnchangedHint": "Enter a different number to continue",
+  "newEmailSameAsCurrentError": "New email must be different from your current email",
+  "profileVerifyEmailSubtitle": "Enter the code we sent to {email} to confirm your new email",
+  "@profileVerifyEmailSubtitle": {
+    "placeholders": { "email": { "type": "String" } }
+  },
+  "profileVerifyEmailButton": "Confirm email",
+  "profileResendEmailPrompt": "Didn't get the code?",
+  "profileResendEmailButton": "Send a new code",
+  "profileEmailCodeResentMessage": "A new code was sent to your new email",
+  "profileInvalidEmailCodeError": "Enter the {length}-digit code from your email",
+  "@profileInvalidEmailCodeError": {
+    "placeholders": { "length": { "type": "int" } }
+  },
+  "profilePictureRemovedMessage": "Profile picture removed",
+  "removePhotoConfirmTitle": "Remove profile picture?",
+  "removePhotoConfirmMessage": "Your profile picture will be deleted.",
+  "cvRemovedMessage": "CV removed",
+  "removeCvConfirmTitle": "Remove CV?",
+  "removeCvConfirmMessage": "Your CV will be deleted from your profile.",
+  "cvFormatsHint": "PDF, DOC or DOCX · up to {size} MB",
+  "@cvFormatsHint": {
+    "placeholders": { "size": { "type": "int" } }
+  },
+  "nationalIdRemovedMessage": "National ID picture removed",
+  "removeNationalIdConfirmTitle": "Remove National ID picture?",
+  "removeNationalIdConfirmMessage": "Your National ID picture will be deleted.",
+  "removeNationalIdButton": "Remove National ID"
 }

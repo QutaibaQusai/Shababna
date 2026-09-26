@@ -62,6 +62,7 @@ class _ChangePasswordViewState extends State<_ChangePasswordView> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<ChangePasswordCubit, ChangePasswordState>(
+      listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         if (state.status == FormStatus.success) {
           AppToast.success(context, context.l10n.changePasswordSuccessMessage);

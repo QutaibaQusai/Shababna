@@ -15,19 +15,7 @@ class ChangeEmailState extends Equatable {
   final bool verificationRequired;
   final String? newEmail;
 
-  ChangeEmailState copyWith({
-    FormStatus? status,
-    String? errorMessage,
-    bool? verificationRequired,
-    String? newEmail,
-  }) {
-    return ChangeEmailState(
-      status: status ?? this.status,
-      errorMessage: errorMessage,
-      verificationRequired: verificationRequired ?? this.verificationRequired,
-      newEmail: newEmail ?? this.newEmail,
-    );
-  }
+  bool get isSubmitting => status == FormStatus.submitting;
 
   @override
   List<Object?> get props => [status, errorMessage, verificationRequired, newEmail];

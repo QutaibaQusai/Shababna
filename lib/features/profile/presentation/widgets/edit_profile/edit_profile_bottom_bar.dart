@@ -9,7 +9,7 @@ class EditProfileBottomBar extends StatelessWidget {
   const EditProfileBottomBar({super.key, required this.percentage, required this.onSave});
 
   final int percentage;
-  final VoidCallback onSave;
+  final VoidCallback? onSave;
 
   @override
   Widget build(BuildContext context) {

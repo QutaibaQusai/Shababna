@@ -55,15 +55,6 @@ class AppRoutes {
   static const String verifyEmailChange = '/verify-email-change';
   static const String verifyEmailChangeName = 'verify-email-change';
 
-  static const String editProfilePicture = '/edit-profile-picture';
-  static const String editProfilePictureName = 'edit-profile-picture';
-
-  static const String editCv = '/edit-cv';
-  static const String editCvName = 'edit-cv';
-
-  static const String editNationalId = '/edit-national-id';
-  static const String editNationalIdName = 'edit-national-id';
-
   static const Set<String> publicRoutes = {
     login,
     register,

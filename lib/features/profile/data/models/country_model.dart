@@ -1,9 +1,12 @@
+import 'lookup_json.dart';
+
 class CountryModel {
   const CountryModel({
     required this.id,
     required this.nameAr,
     required this.nameEn,
     required this.countryCode,
+    required this.isActive,
   });
 
   factory CountryModel.fromJson(Map<String, dynamic> json) {
@@ -12,6 +15,7 @@ class CountryModel {
       nameAr: json['nameAr'] as String,
       nameEn: json['nameEn'] as String,
       countryCode: json['countryCode'] as String,
+      isActive: parseIsActive(json['isActive']),
     );
   }
 
@@ -19,4 +23,5 @@ class CountryModel {
   final String nameAr;
   final String nameEn;
   final String countryCode;
+  final bool isActive;
 }
