@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_undraw/flutter_undraw.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../extensions/context_extensions.dart';
@@ -12,22 +13,28 @@ class AppEmptyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = context.colorScheme.primary;
+
     return Center(
-      child: Padding(
+      child: SingleChildScrollView(
         padding: EdgeInsets.all(AppSpacing.md),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              LucideIcons.inbox,
-              size: AppSizes.iconLg,
-              color: context.colorScheme.onSurfaceVariant,
+            Undraw(
+              illustration: UndrawIllustration.empty,
+              color: color,
+              height: AppSizes.illustrationSize,
+              placeholder: SizedBox(height: AppSizes.illustrationSize),
+              errorWidget: Icon(LucideIcons.inbox, size: AppSizes.iconLg, color: color),
             ),
-            SizedBox(height: AppSpacing.xs),
+            SizedBox(height: AppSpacing.md),
             Text(
               message ?? context.l10n.noItemsFound,
               textAlign: TextAlign.center,
-              style: context.textTheme.bodyMedium,
+              style: context.textTheme.bodyMedium?.copyWith(
+                color: context.colorScheme.onSurfaceVariant,
+              ),
             ),
           ],
         ),

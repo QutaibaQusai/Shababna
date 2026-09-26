@@ -248,5 +248,9 @@
   "nationalIdRemovedMessage": "National ID picture removed",
   "removeNationalIdConfirmTitle": "Remove National ID picture?",
   "removeNationalIdConfirmMessage": "Your National ID picture will be deleted.",
-  "removeNationalIdButton": "Remove National ID"
+  "removeNationalIdButton": "Remove National ID",
+  "continueAsGuestButton": "Continue as guest",
+  "guestGateTitle": "Sign in to continue",
+  "guestGateMessage": "Create a free account or sign in to use this feature and keep track of your volunteering.",
+  "guestProfileTitle": "Welcome to Shababna"
 }

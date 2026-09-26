@@ -55,6 +55,16 @@ class AppRoutes {
   static const String verifyEmailChange = '/verify-email-change';
   static const String verifyEmailChangeName = 'verify-email-change';
 
+  static const Set<String> memberRoutes = {
+    accountSecurity,
+    changePassword,
+    editProfile,
+    changePhoneNumber,
+    changeEmail,
+    verifyEmailChange,
+    contactForm,
+  };
+
   static const Set<String> publicRoutes = {
     login,
     register,

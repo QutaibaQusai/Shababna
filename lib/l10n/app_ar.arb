@@ -218,5 +218,9 @@
   "nationalIdRemovedMessage": "تمت إزالة صورة الهوية",
   "removeNationalIdConfirmTitle": "إزالة صورة الهوية؟",
   "removeNationalIdConfirmMessage": "سيتم حذف صورة هويتك.",
-  "removeNationalIdButton": "إزالة صورة الهوية"
+  "removeNationalIdButton": "إزالة صورة الهوية",
+  "continueAsGuestButton": "المتابعة كزائر",
+  "guestGateTitle": "سجّل الدخول للمتابعة",
+  "guestGateMessage": "أنشئ حساباً مجانياً أو سجّل الدخول لاستخدام هذه الميزة ومتابعة تطوعك.",
+  "guestProfileTitle": "أهلاً بك في شبابنا"
 }

@@ -7,6 +7,7 @@ import '../../../../../core/config/app_assets.dart';
 import '../../../../../core/di/service_locator.dart';
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/routes/app_routes.dart';
+import '../../../../../core/session/auth_session_cubit.dart';
 import '../../../../../core/shared/widgets/app_button.dart';
 import '../../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
@@ -54,6 +55,16 @@ class _LoginViewState extends State<_LoginView> {
           email: _emailController.text.trim(),
           password: _passwordController.text,
         );
+  }
+
+  Future<void> _continueAsGuest() async {
+    final session = context.read<AuthSessionCubit>();
+    if (session.state.isGuest && context.canPop()) {
+      context.pop();
+      return;
+    }
+    await session.continueAsGuest();
+    if (mounted) context.go(AppRoutes.home);
   }
 
   @override
@@ -135,6 +146,10 @@ class _LoginViewState extends State<_LoginView> {
                               onPressed: () => context.push(AppRoutes.register),
                             ),
                           ],
+                        ),
+                        AppButton.text(
+                          label: context.l10n.continueAsGuestButton,
+                          onPressed: _continueAsGuest,
                         ),
                       ],
                     ),

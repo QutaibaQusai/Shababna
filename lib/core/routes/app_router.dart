@@ -33,14 +33,15 @@ class AppRouter {
       debugLogDiagnostics: true,
       refreshListenable: GoRouterRefreshStream(authSessionCubit.stream),
       redirect: (context, state) {
-        final isAuthenticated =
-            authSessionCubit.state == AuthStatus.authenticated;
-        final isPublicRoute =
-            AppRoutes.publicRoutes.contains(state.matchedLocation);
+        final location = state.matchedLocation;
+        final isPublicRoute = AppRoutes.publicRoutes.contains(location);
 
-        if (!isAuthenticated && !isPublicRoute) return AppRoutes.login;
-        if (isAuthenticated && isPublicRoute) return AppRoutes.home;
-        return null;
+        return switch (authSessionCubit.state) {
+          AuthStatus.authenticated => isPublicRoute ? AppRoutes.home : null,
+          AuthStatus.guest =>
+            AppRoutes.memberRoutes.contains(location) ? AppRoutes.login : null,
+          AuthStatus.unauthenticated => isPublicRoute ? null : AppRoutes.login,
+        };
       },
       routes: [
         GoRoute(

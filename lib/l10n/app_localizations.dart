@@ -1303,6 +1303,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remove National ID'**
   String get removeNationalIdButton;
+
+  /// No description provided for @continueAsGuestButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue as guest'**
+  String get continueAsGuestButton;
+
+  /// No description provided for @guestGateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to continue'**
+  String get guestGateTitle;
+
+  /// No description provided for @guestGateMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a free account or sign in to use this feature and keep track of your volunteering.'**
+  String get guestGateMessage;
+
+  /// No description provided for @guestProfileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Shababna'**
+  String get guestProfileTitle;
 }
 
 class _AppLocalizationsDelegate

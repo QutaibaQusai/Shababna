@@ -646,4 +646,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get removeNationalIdButton => 'إزالة صورة الهوية';
+
+  @override
+  String get continueAsGuestButton => 'المتابعة كزائر';
+
+  @override
+  String get guestGateTitle => 'سجّل الدخول للمتابعة';
+
+  @override
+  String get guestGateMessage =>
+      'أنشئ حساباً مجانياً أو سجّل الدخول لاستخدام هذه الميزة ومتابعة تطوعك.';
+
+  @override
+  String get guestProfileTitle => 'أهلاً بك في شبابنا';
 }

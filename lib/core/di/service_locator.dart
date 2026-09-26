@@ -47,12 +47,16 @@ Future<void> setupServiceLocator() async {
   final secureStorage = sl<AppSecureStorage>();
   final hasStoredSession =
       await secureStorage.read(StorageKeys.accessToken) != null;
+  final isGuest = sl<AppLocalStorage>().getBool(StorageKeys.guestMode) ?? false;
   sl.registerLazySingleton<AuthSessionCubit>(
     () => AuthSessionCubit(
       sl(),
+      sl(),
       initialStatus: hasStoredSession
           ? AuthStatus.authenticated
-          : AuthStatus.unauthenticated,
+          : isGuest
+              ? AuthStatus.guest
+              : AuthStatus.unauthenticated,
     ),
   );
 
@@ -65,7 +69,7 @@ Future<void> setupServiceLocator() async {
       secureStorage: sl(),
       localeService: sl(),
       themeService: sl(),
-      onSessionExpired: () => sl<AuthSessionCubit>().markUnauthenticated(),
+      onSessionExpired: () => sl<AuthSessionCubit>().expireSession(),
     ),
   );
 

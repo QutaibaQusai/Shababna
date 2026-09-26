@@ -576,6 +576,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_undraw:
+    dependency: "direct main"
+    description:
+      name: flutter_undraw
+      sha256: a38083350fac9e0d44ddde0e53a39f00730498ed4a110f967a38c6fb1a161755
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.1"
   flutter_web_plugins:
     dependency: transitive
     description: flutter

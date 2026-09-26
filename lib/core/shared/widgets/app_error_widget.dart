@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_undraw/flutter_undraw.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../extensions/context_extensions.dart';
@@ -14,18 +15,22 @@ class AppErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = context.colorScheme.error;
+
     return Center(
-      child: Padding(
+      child: SingleChildScrollView(
         padding: EdgeInsets.all(AppSpacing.md),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              LucideIcons.triangleAlert,
-              size: AppSizes.iconLg,
-              color: context.colorScheme.error,
+            Undraw(
+              illustration: UndrawIllustration.warning,
+              color: color,
+              height: AppSizes.illustrationSize,
+              placeholder: SizedBox(height: AppSizes.illustrationSize),
+              errorWidget: Icon(LucideIcons.triangleAlert, size: AppSizes.iconLg, color: color),
             ),
-            SizedBox(height: AppSpacing.xs),
+            SizedBox(height: AppSpacing.md),
             Text(
               message,
               textAlign: TextAlign.center,

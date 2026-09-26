@@ -653,4 +653,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get removeNationalIdButton => 'Remove National ID';
+
+  @override
+  String get continueAsGuestButton => 'Continue as guest';
+
+  @override
+  String get guestGateTitle => 'Sign in to continue';
+
+  @override
+  String get guestGateMessage =>
+      'Create a free account or sign in to use this feature and keep track of your volunteering.';
+
+  @override
+  String get guestProfileTitle => 'Welcome to Shababna';
 }

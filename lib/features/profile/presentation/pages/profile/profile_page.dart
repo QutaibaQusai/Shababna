@@ -8,13 +8,17 @@ import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/services/locale_service.dart';
 import '../../../../../core/services/theme_service.dart';
+import '../../../../../core/session/auth_session_cubit.dart';
+import '../../../../../core/session/auth_status.dart';
 import '../../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../../core/shared/widgets/app_menu_tile.dart';
 import '../../../../../core/shared/widgets/app_refresh_indicator.dart';
+import '../../../../../core/shared/widgets/guest_gate.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../legal/presentation/pages/legal_content_page.dart';
 import '../../cubit/profile/profile_cubit.dart';
 import '../../../../auth/presentation/cubit/logout/logout_cubit.dart';
+import '../../widgets/profile/guest_profile_header.dart';
 import '../../widgets/profile/language_sheet.dart';
 import '../../widgets/profile/logout_sheet.dart';
 import '../../widgets/profile/profile_header_skeleton.dart';
@@ -42,7 +46,22 @@ class _ProfileViewState extends State<_ProfileView> {
   @override
   void initState() {
     super.initState();
-    context.read<ProfileCubit>().ensureLoaded();
+    _loadIfMember(context.read<AuthSessionCubit>().state);
+  }
+
+  void _loadIfMember(AuthStatus status) {
+    if (status.isAuthenticated) context.read<ProfileCubit>().ensureLoaded();
+  }
+
+  Future<void> _refreshIfMember() async {
+    if (context.read<AuthSessionCubit>().state.isAuthenticated) {
+      await context.read<ProfileCubit>().refresh(silent: true);
+    }
+  }
+
+  Future<void> _openContactForm(BuildContext context) async {
+    if (!await ensureSignedIn(context) || !context.mounted) return;
+    context.push(AppRoutes.contactForm);
   }
 
   String _themeLabel(BuildContext context, ThemeMode mode) => switch (mode) {
@@ -80,22 +99,32 @@ class _ProfileViewState extends State<_ProfileView> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<ProfileCubit>().state;
+    final isGuest = !context.watch<AuthSessionCubit>().state.isAuthenticated;
     final themeMode = context.watch<ThemeService>().state;
     final languageCode = context.watch<LocaleService>().languageCode;
 
     final profile = state.profile;
 
-    return BlocListener<LocaleService, Locale?>(
-      listenWhen: (previous, current) => previous != current,
-      listener: (context, _) => context.read<ProfileCubit>().refresh(silent: true),
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<AuthSessionCubit, AuthStatus>(
+          listener: (context, status) => _loadIfMember(status),
+        ),
+        BlocListener<LocaleService, Locale?>(
+          listenWhen: (previous, current) => previous != current,
+          listener: (context, _) => _refreshIfMember(),
+        ),
+      ],
       child: AppRefreshIndicator(
-        onRefresh: () => context.read<ProfileCubit>().refresh(silent: true),
+        onRefresh: _refreshIfMember,
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (profile != null)
+              if (isGuest)
+                const GuestProfileHeader()
+              else if (profile != null)
                 ProfileHeaderTile(profile: profile, pictureCacheKey: state.pictureCacheKey)
               else if (state.hasError)
                 AppErrorWidget(
@@ -123,11 +152,12 @@ class _ProfileViewState extends State<_ProfileView> {
                 onTap: () => _openThemeSheet(context),
               ),
               const _NotificationsToggleTile(),
-              AppMenuTile(
-                icon: LucideIcons.shieldCheck,
-                title: context.l10n.profileMenuAccountSecurity,
-                onTap: () => context.push(AppRoutes.accountSecurity),
-              ),
+              if (!isGuest)
+                AppMenuTile(
+                  icon: LucideIcons.shieldCheck,
+                  title: context.l10n.profileMenuAccountSecurity,
+                  onTap: () => context.push(AppRoutes.accountSecurity),
+                ),
               AppMenuTile(
                 icon: LucideIcons.info,
                 title: context.l10n.profileMenuContactInfo,
@@ -136,7 +166,7 @@ class _ProfileViewState extends State<_ProfileView> {
               AppMenuTile(
                 icon: LucideIcons.messageCircle,
                 title: context.l10n.profileMenuContactUs,
-                onTap: () => context.push(AppRoutes.contactForm),
+                onTap: () => _openContactForm(context),
               ),
               AppMenuTile(
                 icon: LucideIcons.users,
@@ -162,12 +192,13 @@ class _ProfileViewState extends State<_ProfileView> {
                   extra: LegalDocumentType.termsAndConditions,
                 ),
               ),
-              AppMenuTile(
-                icon: LucideIcons.power,
-                title: context.l10n.profileMenuLogout,
-                isDestructive: true,
-                onTap: () => _openLogoutSheet(context),
-              ),
+              if (!isGuest)
+                AppMenuTile(
+                  icon: LucideIcons.power,
+                  title: context.l10n.profileMenuLogout,
+                  isDestructive: true,
+                  onTap: () => _openLogoutSheet(context),
+                ),
             ],
           ),
         ),

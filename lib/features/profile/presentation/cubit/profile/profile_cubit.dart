@@ -12,7 +12,7 @@ import 'profile_state.dart';
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit(this._repository, AuthSessionCubit authSession) : super(const ProfileState()) {
     _sessionSubscription = authSession.stream.listen((status) {
-      if (status == AuthStatus.unauthenticated) reset();
+      if (!status.isAuthenticated) reset();
     });
   }
 
