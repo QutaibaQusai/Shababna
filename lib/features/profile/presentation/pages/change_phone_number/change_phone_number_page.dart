@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/di/service_locator.dart';
@@ -24,7 +23,6 @@ import '../../cubit/change_phone_number/change_phone_number_state.dart';
 import '../../cubit/profile/profile_cubit.dart';
 import '../../utils/phone_number_parts.dart';
 import '../../../../../core/shared/widgets/app_page_header.dart';
-import '../../widgets/edit_profile/field_card.dart';
 
 class ChangePhoneNumberPage extends StatelessWidget {
   const ChangePhoneNumberPage({super.key});
@@ -177,13 +175,6 @@ class _ChangePhoneNumberViewState extends State<_ChangePhoneNumberView> {
                       subtitle: context.l10n.changePhoneNumberSubtitle,
                     ),
                     SizedBox(height: AppSpacing.md),
-                    FieldCard(
-                      label: context.l10n.currentPhoneNumberLabel,
-                      icon: LucideIcons.phone,
-                      value: _currentPhoneNumber,
-                      valueDirection: TextDirection.ltr,
-                    ),
-                    SizedBox(height: AppSpacing.md),
                     if (isLoading)
                       Container(
                         height: AppSizes.buttonHeight,
@@ -194,7 +185,7 @@ class _ChangePhoneNumberViewState extends State<_ChangePhoneNumberView> {
                       )
                     else
                       AppPhoneField<PhoneCode>(
-                        label: context.l10n.newPhoneNumberLabel,
+                        label: context.l10n.phoneNumberLabel,
                         numberController: _numberController,
                         countries: state.phoneCodes,
                         selectedCountry: selectedCode,
@@ -216,15 +207,6 @@ class _ChangePhoneNumberViewState extends State<_ChangePhoneNumberView> {
                           ),
                         ]),
                       ),
-                    if (!isLoading && !_hasChanged && _numberController.text.isNotEmpty) ...[
-                      SizedBox(height: AppSpacing.xs),
-                      Text(
-                        context.l10n.phoneNumberUnchangedHint,
-                        style: context.textTheme.bodySmall?.copyWith(
-                          color: context.colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ],
                   ],
                 ),
               ),

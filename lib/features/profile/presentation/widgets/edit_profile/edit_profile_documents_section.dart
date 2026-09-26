@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/theme/app_spacing.dart';
@@ -24,7 +23,6 @@ class EditProfileDocumentsSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         ProfileDocumentTile(
-          icon: LucideIcons.fileText,
           label: context.l10n.cvLabel,
           isUploaded: profile.hasCv,
           status: profile.hasCv
@@ -40,7 +38,6 @@ class EditProfileDocumentsSection extends StatelessWidget {
         ),
         SizedBox(height: AppSpacing.sm),
         ProfileDocumentTile(
-          icon: LucideIcons.idCard,
           label: context.l10n.nationalIdPictureLabel,
           isUploaded: profile.hasNationalIdPicture,
           status: profile.hasNationalIdPicture

@@ -174,8 +174,13 @@ class _EditProfileViewState extends State<_EditProfileView> {
 
   void _onEditStatusChanged(BuildContext context, EditProfileState state) {
     if (state.status == FormStatus.success) {
-      _syncControllers(state.draft);
       AppToast.success(context, context.l10n.editProfileSuccessMessage);
+      final navigator = Navigator.of(context);
+      if (navigator.canPop()) {
+        navigator.pop();
+      } else {
+        _syncControllers(state.draft);
+      }
     } else if (state.status == FormStatus.failure) {
       AppToast.error(context, state.errorMessage ?? context.l10n.somethingWentWrong);
     }

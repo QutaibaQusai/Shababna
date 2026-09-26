@@ -25,6 +25,24 @@ class _ProfileCompletionBadgeState extends State<ProfileCompletionBadge> {
   @override
   void initState() {
     super.initState();
+    _play();
+  }
+
+  @override
+  void didUpdateWidget(ProfileCompletionBadge oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.percentage != widget.percentage) _play();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _play() {
+    _timer?.cancel();
+    _showProgress = false;
     _timer = Timer(_pencilDuration, () {
       if (!mounted) return;
       setState(() => _showProgress = true);
@@ -36,12 +54,6 @@ class _ProfileCompletionBadgeState extends State<ProfileCompletionBadge> {
   }
 
   @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 400),
@@ -50,7 +62,7 @@ class _ProfileCompletionBadgeState extends State<ProfileCompletionBadge> {
               key: const ValueKey('progress'),
               percentage: widget.percentage,
             )
-          : _PencilBadge(key: const ValueKey('pencil')),
+          : const _PencilBadge(key: ValueKey('pencil')),
     );
   }
 }

@@ -1196,24 +1196,6 @@ abstract class AppLocalizations {
   /// **'Current email'**
   String get currentEmailLabel;
 
-  /// No description provided for @currentPhoneNumberLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Current number'**
-  String get currentPhoneNumberLabel;
-
-  /// No description provided for @newPhoneNumberLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'New phone number'**
-  String get newPhoneNumberLabel;
-
-  /// No description provided for @phoneNumberUnchangedHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter a different number to continue'**
-  String get phoneNumberUnchangedHint;
-
   /// No description provided for @newEmailSameAsCurrentError.
   ///
   /// In en, this message translates to:

@@ -590,15 +590,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get currentEmailLabel => 'Current email';
 
   @override
-  String get currentPhoneNumberLabel => 'Current number';
-
-  @override
-  String get newPhoneNumberLabel => 'New phone number';
-
-  @override
-  String get phoneNumberUnchangedHint => 'Enter a different number to continue';
-
-  @override
   String get newEmailSameAsCurrentError =>
       'New email must be different from your current email';
 

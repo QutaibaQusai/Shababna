@@ -586,15 +586,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get currentEmailLabel => 'البريد الإلكتروني الحالي';
 
   @override
-  String get currentPhoneNumberLabel => 'الرقم الحالي';
-
-  @override
-  String get newPhoneNumberLabel => 'رقم الهاتف الجديد';
-
-  @override
-  String get phoneNumberUnchangedHint => 'أدخل رقماً مختلفاً للمتابعة';
-
-  @override
   String get newEmailSameAsCurrentError =>
       'يجب أن يختلف البريد الإلكتروني الجديد عن الحالي';
 

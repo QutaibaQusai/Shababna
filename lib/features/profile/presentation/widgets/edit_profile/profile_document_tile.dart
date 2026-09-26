@@ -9,7 +9,6 @@ import '../../../../../core/theme/app_spacing.dart';
 class ProfileDocumentTile extends StatelessWidget {
   const ProfileDocumentTile({
     super.key,
-    required this.icon,
     required this.label,
     required this.status,
     required this.isUploaded,
@@ -18,7 +17,6 @@ class ProfileDocumentTile extends StatelessWidget {
     this.isBusy = false,
   });
 
-  final IconData icon;
   final String label;
   final String status;
   final String? hint;
@@ -45,16 +43,6 @@ class ProfileDocumentTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Container(
-              width: AppSizes.iconButtonSize,
-              height: AppSizes.iconButtonSize,
-              decoration: BoxDecoration(
-                borderRadius: AppRadius.mdRadius,
-                color: accent.withValues(alpha: 0.1),
-              ),
-              child: Icon(icon, size: AppSizes.iconField, color: accent),
-            ),
-            SizedBox(width: AppSpacing.sm),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

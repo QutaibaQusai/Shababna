@@ -222,9 +222,6 @@
   "emailVerifiedLabel": "Verified",
   "emailNotVerifiedLabel": "Not verified",
   "currentEmailLabel": "Current email",
-  "currentPhoneNumberLabel": "Current number",
-  "newPhoneNumberLabel": "New phone number",
-  "phoneNumberUnchangedHint": "Enter a different number to continue",
   "newEmailSameAsCurrentError": "New email must be different from your current email",
   "profileVerifyEmailSubtitle": "Enter the code we sent to {email} to confirm your new email",
   "@profileVerifyEmailSubtitle": {
