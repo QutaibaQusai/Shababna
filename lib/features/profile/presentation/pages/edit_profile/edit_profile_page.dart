@@ -6,7 +6,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import '../../../../../core/di/service_locator.dart';
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/shared/widgets/app_app_bar.dart';
-import '../../../../../core/shared/widgets/app_date_field.dart';
+import '../../widgets/edit_profile/profile_birth_date_field.dart';
 import '../../../../../core/shared/widgets/app_dialog.dart';
 import '../../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../../core/shared/widgets/app_loading_overlay.dart';
@@ -238,7 +238,6 @@ class _EditProfileViewState extends State<_EditProfileView> {
   }
 
   Widget _buildForm(BuildContext context, ProfileDetails draft) {
-    final now = DateTime.now();
     final isArabic = context.isArabic;
 
     return SingleChildScrollView(
@@ -277,11 +276,9 @@ class _EditProfileViewState extends State<_EditProfileView> {
               ],
             ),
             SizedBox(height: AppSpacing.sm),
-            AppDateField(
+            ProfileBirthDateField(
               label: context.l10n.dateOfBirthLabel,
               value: draft.dateOfBirth,
-              firstDate: DateTime(now.year - 100),
-              lastDate: now,
               onChanged: (value) => _edit((d) => d.copyWith(dateOfBirth: value)),
             ),
             SizedBox(height: AppSpacing.sm),
