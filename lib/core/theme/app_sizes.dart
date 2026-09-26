@@ -16,6 +16,7 @@ class AppSizes {
   static double get avatarSize => 56.r;
   static double get illustrationSize => 140.r;
   static double get illustrationSizeCompact => 110.r;
+  static double get brandLogoHeight => 150.r;
 
   static double get iconSm => 16.r;
   static double get iconField => 20.r;

@@ -119,8 +119,8 @@
   "actionNotifications": "Notifications",
   "comingSoonMessage": "Coming soon",
 
-  "loginTitle": "Welcome back",
-  "loginSubtitle": "Sign in to continue",
+  "loginTitle": "Welcome to Shababna",
+  "loginSubtitle": "Discover volunteering opportunities, track your impact, and earn certificates for every contribution.",
   "emailLabel": "Email",
   "emailHint": "you@example.com",
   "passwordLabel": "Password",

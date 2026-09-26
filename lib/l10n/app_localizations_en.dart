@@ -346,10 +346,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get comingSoonMessage => 'Coming soon';
 
   @override
-  String get loginTitle => 'Welcome back';
+  String get loginTitle => 'Welcome to Shababna';
 
   @override
-  String get loginSubtitle => 'Sign in to continue';
+  String get loginSubtitle =>
+      'Discover volunteering opportunities, track your impact, and earn certificates for every contribution.';
 
   @override
   String get emailLabel => 'Email';

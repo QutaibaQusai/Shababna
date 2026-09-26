@@ -119,8 +119,8 @@
   "actionNotifications": "الإشعارات",
   "comingSoonMessage": "قريباً",
 
-  "loginTitle": "أهلاً بعودتك",
-  "loginSubtitle": "سجّل الدخول للمتابعة",
+  "loginTitle": "أهلاً بك في شبابنا",
+  "loginSubtitle": "اكتشف فرص التطوّع، وتابع أثرك، واحصل على شهادات تقديراً لكل مساهمة.",
   "emailLabel": "البريد الإلكتروني",
   "emailHint": "example@email.com",
   "passwordLabel": "كلمة المرور",

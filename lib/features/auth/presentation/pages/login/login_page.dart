@@ -13,6 +13,7 @@ import '../../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/shared/widgets/app_toast.dart';
 import '../../../../../core/state/form_status.dart';
+import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../core/validators/app_validators.dart';
 import '../../cubit/login/login_cubit.dart';
@@ -88,21 +89,31 @@ class _LoginViewState extends State<_LoginView> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        SizedBox(height: AppSpacing.xl),
-                        Image.asset(AppAssets.illustrationSignIn, height: 180),
                         SizedBox(height: AppSpacing.lg),
+                        Image.asset(
+                          AppAssets.logoFor(context.theme.brightness),
+                          height: AppSizes.brandLogoHeight,
+                          fit: BoxFit.contain,
+                        ),
                         Text(
                           context.l10n.loginTitle,
                           textAlign: TextAlign.center,
-                          style: context.textTheme.displaySmall,
+                          style: context.textTheme.headlineMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         SizedBox(height: AppSpacing.xs),
-                        Text(
-                          context.l10n.loginSubtitle,
-                          textAlign: TextAlign.center,
-                          style: context.textTheme.bodyMedium,
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                          child: Text(
+                            context.l10n.loginSubtitle,
+                            textAlign: TextAlign.center,
+                            style: context.textTheme.bodyMedium?.copyWith(
+                              color: context.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
                         ),
-                        SizedBox(height: AppSpacing.lg),
+                        SizedBox(height: AppSpacing.xl),
                         AppTextField(
                           label: context.l10n.emailLabel,
                           hint: context.l10n.emailHint,

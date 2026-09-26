@@ -755,13 +755,13 @@ abstract class AppLocalizations {
   /// No description provided for @loginTitle.
   ///
   /// In en, this message translates to:
-  /// **'Welcome back'**
+  /// **'Welcome to Shababna'**
   String get loginTitle;
 
   /// No description provided for @loginSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Sign in to continue'**
+  /// **'Discover volunteering opportunities, track your impact, and earn certificates for every contribution.'**
   String get loginSubtitle;
 
   /// No description provided for @emailLabel.

@@ -344,10 +344,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get comingSoonMessage => 'قريباً';
 
   @override
-  String get loginTitle => 'أهلاً بعودتك';
+  String get loginTitle => 'أهلاً بك في شبابنا';
 
   @override
-  String get loginSubtitle => 'سجّل الدخول للمتابعة';
+  String get loginSubtitle =>
+      'اكتشف فرص التطوّع، وتابع أثرك، واحصل على شهادات تقديراً لكل مساهمة.';
 
   @override
   String get emailLabel => 'البريد الإلكتروني';
