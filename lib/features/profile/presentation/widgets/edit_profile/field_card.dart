@@ -14,6 +14,7 @@ class FieldCard extends StatelessWidget {
     required this.value,
     this.valueDirection,
     this.badge,
+    this.opensPage = false,
     this.onTap,
   });
 
@@ -22,12 +23,18 @@ class FieldCard extends StatelessWidget {
   final String? value;
   final TextDirection? valueDirection;
   final Widget? badge;
+  final bool opensPage;
   final VoidCallback? onTap;
+
+  IconData _arrowIcon(BuildContext context) {
+    if (!opensPage) return LucideIcons.chevronDown;
+    return context.isRTL ? LucideIcons.chevronLeft : LucideIcons.chevronRight;
+  }
 
   @override
   Widget build(BuildContext context) {
     final text = value?.trim() ?? '';
-    final arrow = onTap == null ? null : Icon(LucideIcons.chevronDown, size: AppSizes.iconField);
+    final arrow = onTap == null ? null : Icon(_arrowIcon(context), size: AppSizes.iconField);
 
     return InkWell(
       onTap: onTap,

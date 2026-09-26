@@ -45,7 +45,6 @@ class ProfileLookupField<T> extends StatelessWidget {
       builder: (_) => BlocProvider(
         create: (_) => LookupCubit<T>(loader)..load(),
         child: _ProfileLookupSheet<T>(
-          title: label,
           idOf: idOf,
           itemLabel: itemLabel,
           initialSelectedIds: {?selectedId},
@@ -95,7 +94,6 @@ class ProfileLookupMultiField<T> extends StatelessWidget {
       builder: (_) => BlocProvider(
         create: (_) => LookupCubit<T>(loader)..load(),
         child: _ProfileLookupSheet<T>(
-          title: label,
           idOf: idOf,
           itemLabel: itemLabel,
           initialSelectedIds: selected.map((item) => item.id).toSet(),
@@ -133,14 +131,12 @@ class _LookupSelection<T> {
 
 class _ProfileLookupSheet<T> extends StatefulWidget {
   const _ProfileLookupSheet({
-    required this.title,
     required this.idOf,
     required this.itemLabel,
     required this.initialSelectedIds,
     required this.multiSelect,
   });
 
-  final String title;
   final String Function(T item) idOf;
   final String Function(T item) itemLabel;
   final Set<String> initialSelectedIds;
@@ -181,6 +177,7 @@ class _ProfileLookupSheetState<T> extends State<_ProfileLookupSheet<T>> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      bottom: false,
       child: SizedBox(
         height: MediaQuery.sizeOf(context).height * 0.75,
         child: Padding(
@@ -195,11 +192,6 @@ class _ProfileLookupSheetState<T> extends State<_ProfileLookupSheet<T>> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(
-                    widget.title,
-                    style: context.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: AppSpacing.sm),
                   AppSearchField(
                     hint: context.l10n.actionSearch,
                     onChanged: (value) => setState(() => _query = value),

@@ -52,6 +52,7 @@ class _ProfileActionSheetView<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      bottom: false,
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(
           AppSpacing.screenMargin,
@@ -77,20 +78,13 @@ class _ProfileActionSheetView<T> extends StatelessWidget {
               ),
             ],
             SizedBox(height: AppSpacing.sm),
-            for (final action in actions) ...[
+            for (final (index, action) in actions.indexed) ...[
+              if (index > 0) SizedBox(height: AppSpacing.xs),
               _ActionTile(
                 action: action,
                 onTap: () => Navigator.of(context).pop(action.value),
               ),
-              SizedBox(height: AppSpacing.xs),
             ],
-            SizedBox(
-              height: AppSizes.buttonHeight,
-              child: TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text(context.l10n.cancelButton),
-              ),
-            ),
           ],
         ),
       ),
