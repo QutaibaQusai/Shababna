@@ -37,55 +37,58 @@ class RegisterStepContact extends StatelessWidget {
   Widget build(BuildContext context) {
     final required = AppValidators.required(context.l10n.fieldRequiredError);
 
-    return Form(
-      key: formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppPageHeader(
-            title: context.l10n.stepContactTitle,
-            subtitle: context.l10n.stepContactSubtitle,
-          ),
-          SizedBox(height: AppSpacing.md),
-          AppTextField(
-            label: context.l10n.emailLabel,
-            hint: context.l10n.emailHint,
-            controller: emailController,
-            keyboardType: TextInputType.emailAddress,
-            prefixIcon: LucideIcons.mail,
-            textInputAction: TextInputAction.next,
-            validator: AppValidators.combine([
-              required,
-              AppValidators.email(context.l10n.invalidEmailError),
-            ]),
-          ),
-          SizedBox(height: AppSpacing.sm),
-          AppPhoneField<CountryPhoneCode>(
-            label: context.l10n.phoneNumberLabel,
-            numberController: phoneNumberController,
-            countries: phoneCodes,
-            selectedCountry: selectedPhoneCode,
-            onCountrySelected: onPhoneCodeSelected,
-            countryItemLabel: (code) => '${code.flag}  ${code.countryName} (${code.callingCode})',
-            countrySelectedLabel: (code) => '${code.flag} ',
-            isLoadingCountries: isLoadingPhoneCodes,
-            countriesError: phoneCodesError,
-            onRetryLoadCountries: onRetryLoadPhoneCodes,
-            searchHint: context.l10n.searchCountryHint,
-            countryValidator: required,
-            numberValidator: AppValidators.combine([
-              required,
-              AppValidators.nationalNumber(
-                invalidMessage: context.l10n.invalidPhoneNumberError,
-                lengthMessage: context.l10n.phoneNumberLengthError,
-                prefixMessage: (prefixes) =>
-                    context.l10n.phoneNumberPrefixError(prefixes.join(' / ')),
-                length: selectedPhoneCode?.nationalNumberLength,
-                prefixes: selectedPhoneCode?.mobilePrefixes,
-              ),
-            ]),
-          ),
-        ],
+    return SingleChildScrollView(
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      child: Form(
+        key: formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AppPageHeader(
+              title: context.l10n.stepContactTitle,
+              subtitle: context.l10n.stepContactSubtitle,
+            ),
+            SizedBox(height: AppSpacing.md),
+            AppTextField(
+              label: context.l10n.emailLabel,
+              hint: context.l10n.emailHint,
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+              prefixIcon: LucideIcons.mail,
+              textInputAction: TextInputAction.next,
+              validator: AppValidators.combine([
+                required,
+                AppValidators.email(context.l10n.invalidEmailError),
+              ]),
+            ),
+            SizedBox(height: AppSpacing.sm),
+            AppPhoneField<CountryPhoneCode>(
+              label: context.l10n.phoneNumberLabel,
+              numberController: phoneNumberController,
+              countries: phoneCodes,
+              selectedCountry: selectedPhoneCode,
+              onCountrySelected: onPhoneCodeSelected,
+              countryItemLabel: (code) => '${code.flag}  ${code.countryName} (${code.callingCode})',
+              countrySelectedLabel: (code) => '${code.flag} ',
+              isLoadingCountries: isLoadingPhoneCodes,
+              countriesError: phoneCodesError,
+              onRetryLoadCountries: onRetryLoadPhoneCodes,
+              searchHint: context.l10n.searchCountryHint,
+              countryValidator: required,
+              numberValidator: AppValidators.combine([
+                required,
+                AppValidators.nationalNumber(
+                  invalidMessage: context.l10n.invalidPhoneNumberError,
+                  lengthMessage: context.l10n.phoneNumberLengthError,
+                  prefixMessage: (prefixes) =>
+                      context.l10n.phoneNumberPrefixError(prefixes.join(' / ')),
+                  length: selectedPhoneCode?.nationalNumberLength,
+                  prefixes: selectedPhoneCode?.mobilePrefixes,
+                ),
+              ]),
+            ),
+          ],
+        ),
       ),
     );
   }

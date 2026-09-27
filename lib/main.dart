@@ -7,6 +7,7 @@ import 'core/services/system_ui_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemUiService.lockPortrait();
   await SystemUiService.hideAndroidNavigationBar();
   await setupServiceLocator();
   sl<AppLogger>().info('App started', tag: 'main');

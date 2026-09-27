@@ -7,6 +7,10 @@ class SystemUiService {
 
   static const _channel = MethodChannel('com.hitech.shababna/systemui');
 
+  static Future<void> lockPortrait() {
+    return SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  }
+
   static Future<void> hideAndroidNavigationBar() async {
     if (!Platform.isAndroid) return;
 

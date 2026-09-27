@@ -23,32 +23,35 @@ class RegisterStepName extends StatelessWidget {
   Widget build(BuildContext context) {
     final required = AppValidators.required(context.l10n.fieldRequiredError);
 
-    return Form(
-      key: formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppPageHeader(
-            title: context.l10n.stepNameTitle,
-            subtitle: context.l10n.stepNameSubtitle,
-          ),
-          SizedBox(height: AppSpacing.md),
-          AppTextField(
-            label: context.l10n.fullNameArLabel,
-            controller: fullNameArController,
-            validator: required,
-            prefixIcon: LucideIcons.user,
-            textInputAction: TextInputAction.next,
-          ),
-          SizedBox(height: AppSpacing.sm),
-          AppTextField(
-            label: context.l10n.fullNameEnLabel,
-            controller: fullNameEnController,
-            validator: required,
-            prefixIcon: LucideIcons.user,
-            textInputAction: TextInputAction.done,
-          ),
-        ],
+    return SingleChildScrollView(
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      child: Form(
+        key: formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AppPageHeader(
+              title: context.l10n.stepNameTitle,
+              subtitle: context.l10n.stepNameSubtitle,
+            ),
+            SizedBox(height: AppSpacing.md),
+            AppTextField(
+              label: context.l10n.fullNameArLabel,
+              controller: fullNameArController,
+              validator: required,
+              prefixIcon: LucideIcons.user,
+              textInputAction: TextInputAction.next,
+            ),
+            SizedBox(height: AppSpacing.sm),
+            AppTextField(
+              label: context.l10n.fullNameEnLabel,
+              controller: fullNameEnController,
+              validator: required,
+              prefixIcon: LucideIcons.user,
+              textInputAction: TextInputAction.done,
+            ),
+          ],
+        ),
       ),
     );
   }

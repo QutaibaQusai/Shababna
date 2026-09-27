@@ -21,40 +21,43 @@ class RegisterStepPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppPageHeader(
-            title: context.l10n.stepPasswordTitle,
-            subtitle: context.l10n.stepPasswordSubtitle,
-          ),
-          SizedBox(height: AppSpacing.md),
-          AppTextField(
-            label: context.l10n.passwordLabel,
-            controller: passwordController,
-            obscureText: true,
-            prefixIcon: LucideIcons.lock,
-            textInputAction: TextInputAction.next,
-            validator: AppValidators.required(context.l10n.fieldRequiredError),
-          ),
-          SizedBox(height: AppSpacing.sm),
-          AppTextField(
-            label: context.l10n.confirmPasswordLabel,
-            controller: confirmPasswordController,
-            obscureText: true,
-            prefixIcon: LucideIcons.lock,
-            textInputAction: TextInputAction.done,
-            validator: AppValidators.combine([
-              AppValidators.required(context.l10n.fieldRequiredError),
-              AppValidators.match(
-                () => passwordController.text,
-                context.l10n.passwordsDoNotMatchError,
-              ),
-            ]),
-          ),
-        ],
+    return SingleChildScrollView(
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      child: Form(
+        key: formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AppPageHeader(
+              title: context.l10n.stepPasswordTitle,
+              subtitle: context.l10n.stepPasswordSubtitle,
+            ),
+            SizedBox(height: AppSpacing.md),
+            AppTextField(
+              label: context.l10n.passwordLabel,
+              controller: passwordController,
+              obscureText: true,
+              prefixIcon: LucideIcons.lock,
+              textInputAction: TextInputAction.next,
+              validator: AppValidators.required(context.l10n.fieldRequiredError),
+            ),
+            SizedBox(height: AppSpacing.sm),
+            AppTextField(
+              label: context.l10n.confirmPasswordLabel,
+              controller: confirmPasswordController,
+              obscureText: true,
+              prefixIcon: LucideIcons.lock,
+              textInputAction: TextInputAction.done,
+              validator: AppValidators.combine([
+                AppValidators.required(context.l10n.fieldRequiredError),
+                AppValidators.match(
+                  () => passwordController.text,
+                  context.l10n.passwordsDoNotMatchError,
+                ),
+              ]),
+            ),
+          ],
+        ),
       ),
     );
   }
