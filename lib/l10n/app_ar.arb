@@ -222,5 +222,7 @@
   "continueAsGuestButton": "المتابعة كزائر",
   "guestGateTitle": "سجّل الدخول للمتابعة",
   "guestGateMessage": "أنشئ حساباً مجانياً أو سجّل الدخول لاستخدام هذه الميزة ومتابعة تطوعك.",
-  "guestProfileTitle": "أهلاً بك في شبابنا"
+  "guestProfileTitle": "أهلاً بك في شبابنا",
+  "newsEmptyMessage": "لا توجد أخبار حالياً",
+  "loadMoreFailedMessage": "تعذّر تحميل المزيد"
 }

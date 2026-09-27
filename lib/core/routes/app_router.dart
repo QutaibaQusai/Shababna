@@ -12,6 +12,8 @@ import '../../features/contact_form/presentation/pages/contact_form_page.dart';
 import '../../features/contact_info/presentation/pages/contact_info_page.dart';
 import '../../features/layout/presentation/pages/main_layout_page.dart';
 import '../../features/legal/presentation/pages/legal_content_page.dart';
+import '../../features/news/presentation/pages/news_details/news_details_page.dart';
+import '../../features/news/presentation/pages/news_list/news_list_page.dart';
 import '../../features/profile/presentation/pages/account_security/account_security_page.dart';
 import '../../features/profile/presentation/pages/change_email/change_email_page.dart';
 import '../../features/profile/presentation/pages/change_email/verify_email_change_page.dart';
@@ -103,6 +105,16 @@ class AppRouter {
               state.extra is LegalDocumentType ? null : AppRoutes.home,
           builder: (context, state) =>
               LegalContentPage(documentType: state.extra! as LegalDocumentType),
+        ),
+        GoRoute(
+          path: AppRoutes.news,
+          name: AppRoutes.newsName,
+          builder: (context, state) => const NewsListPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.newsDetails,
+          name: AppRoutes.newsDetailsName,
+          builder: (context, state) => NewsDetailsPage(id: state.pathParameters['id']!),
         ),
         GoRoute(
           path: AppRoutes.contactInfo,

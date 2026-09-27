@@ -3,7 +3,6 @@ import '../../../../l10n/app_localizations.dart';
 
 enum LayoutTab {
   home(AppAssets.iconHome),
-  news(AppAssets.iconNews),
   events(AppAssets.iconCalendar),
   profile(AppAssets.iconProfile);
 
@@ -17,7 +16,6 @@ enum LayoutTab {
 
   String label(AppLocalizations l10n) => switch (this) {
     home => l10n.navHome,
-    news => l10n.navNews,
     events => l10n.navEvents,
     profile => l10n.navProfile,
   };

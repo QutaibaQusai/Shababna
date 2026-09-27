@@ -9,6 +9,7 @@ import '../../features/auth/auth_injection.dart';
 import '../../features/contact_form/contact_form_injection.dart';
 import '../../features/contact_info/contact_info_injection.dart';
 import '../../features/legal/legal_injection.dart';
+import '../../features/news/news_injection.dart';
 import '../../features/profile/profile_injection.dart';
 import '../../features/social_media/social_media_injection.dart';
 import '../logging/app_logger.dart';
@@ -76,6 +77,7 @@ Future<void> setupServiceLocator() async {
   registerAuthFeature(sl);
   registerProfileFeature(sl);
   registerLegalFeature(sl);
+  registerNewsFeature(sl);
   registerContactInfoFeature(sl);
   registerContactFormFeature(sl);
   registerAboutUsFeature(sl);

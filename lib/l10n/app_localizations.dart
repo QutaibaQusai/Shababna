@@ -1327,6 +1327,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Welcome to Shababna'**
   String get guestProfileTitle;
+
+  /// No description provided for @newsEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No news yet'**
+  String get newsEmptyMessage;
+
+  /// No description provided for @loadMoreFailedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load more'**
+  String get loadMoreFailedMessage;
 }
 
 class _AppLocalizationsDelegate

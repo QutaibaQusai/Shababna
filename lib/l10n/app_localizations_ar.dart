@@ -660,4 +660,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get guestProfileTitle => 'أهلاً بك في شبابنا';
+
+  @override
+  String get newsEmptyMessage => 'لا توجد أخبار حالياً';
+
+  @override
+  String get loadMoreFailedMessage => 'تعذّر تحميل المزيد';
 }

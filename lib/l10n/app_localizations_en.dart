@@ -667,4 +667,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get guestProfileTitle => 'Welcome to Shababna';
+
+  @override
+  String get newsEmptyMessage => 'No news yet';
+
+  @override
+  String get loadMoreFailedMessage => 'Couldn\'t load more';
 }

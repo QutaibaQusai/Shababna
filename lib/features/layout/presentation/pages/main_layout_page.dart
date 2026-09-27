@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../events/presentation/pages/events_page.dart';
 import '../../../home/presentation/pages/home_page.dart';
-import '../../../news/presentation/pages/news_page.dart';
 import '../../../profile/presentation/pages/profile/profile_page.dart';
 import '../cubit/layout_cubit.dart';
 import '../cubit/layout_tab.dart';
@@ -28,7 +27,6 @@ class _MainLayoutView extends StatelessWidget {
 
   static Widget _pageFor(LayoutTab tab) => switch (tab) {
     LayoutTab.home => const HomePage(),
-    LayoutTab.news => const NewsPage(),
     LayoutTab.events => const EventsPage(),
     LayoutTab.profile => const ProfilePage(),
   };

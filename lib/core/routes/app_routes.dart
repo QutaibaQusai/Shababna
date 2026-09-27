@@ -57,6 +57,13 @@ class AppRoutes {
   static const String verifyEmailChange = '/verify-email-change';
   static const String verifyEmailChangeName = 'verify-email-change';
 
+  static const String news = '/news';
+  static const String newsName = 'news';
+
+  static const String newsDetails = '/news/:id';
+  static const String newsDetailsName = 'news-details';
+  static String newsDetailsPath(String id) => '/news/$id';
+
   static const Set<String> memberRoutes = {
     accountSecurity,
     changePassword,

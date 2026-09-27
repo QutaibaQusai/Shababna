@@ -252,5 +252,7 @@
   "continueAsGuestButton": "Continue as guest",
   "guestGateTitle": "Sign in to continue",
   "guestGateMessage": "Create a free account or sign in to use this feature and keep track of your volunteering.",
-  "guestProfileTitle": "Welcome to Shababna"
+  "guestProfileTitle": "Welcome to Shababna",
+  "newsEmptyMessage": "No news yet",
+  "loadMoreFailedMessage": "Couldn't load more"
 }

@@ -136,7 +136,11 @@ class _ProfileViewState extends State<_ProfileView> {
               SizedBox(height: AppSpacing.xs),
               const Divider(height: 1),
               AppMenuTile(icon: LucideIcons.calendar, title: context.l10n.navEvents),
-              AppMenuTile(icon: LucideIcons.newspaper, title: context.l10n.navNews),
+              AppMenuTile(
+                icon: LucideIcons.newspaper,
+                title: context.l10n.navNews,
+                onTap: () => context.push(AppRoutes.news),
+              ),
               AppMenuTile(
                 icon: LucideIcons.languages,
                 title: context.l10n.profileMenuLanguage,
