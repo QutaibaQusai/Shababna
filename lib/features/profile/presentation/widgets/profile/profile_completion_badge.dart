@@ -18,8 +18,11 @@ class ProfileCompletionBadge extends StatefulWidget {
 class _ProfileCompletionBadgeState extends State<ProfileCompletionBadge> {
   static const _pencilDuration = Duration(seconds: 1);
   static const _progressDuration = Duration(seconds: 3);
+  static const _ringDuration = Duration(milliseconds: 1200);
+  static const _switchDuration = Duration(milliseconds: 400);
 
-  bool _showProgress = false;
+  bool _showNumber = false;
+  int _ringTarget = 0;
   Timer? _timer;
 
   @override
@@ -42,33 +45,19 @@ class _ProfileCompletionBadgeState extends State<ProfileCompletionBadge> {
 
   void _play() {
     _timer?.cancel();
-    _showProgress = false;
+    _showNumber = false;
     _timer = Timer(_pencilDuration, () {
       if (!mounted) return;
-      setState(() => _showProgress = true);
+      setState(() {
+        _showNumber = true;
+        _ringTarget = widget.percentage;
+      });
       _timer = Timer(_progressDuration, () {
         if (!mounted) return;
-        setState(() => _showProgress = false);
+        setState(() => _showNumber = false);
       });
     });
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 400),
-      child: _showProgress
-          ? _CompletionProgress(
-              key: const ValueKey('progress'),
-              percentage: widget.percentage,
-            )
-          : const _PencilBadge(key: ValueKey('pencil')),
-    );
-  }
-}
-
-class _PencilBadge extends StatelessWidget {
-  const _PencilBadge({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -79,42 +68,36 @@ class _PencilBadge extends StatelessWidget {
         color: context.colorScheme.surface,
         shape: BoxShape.circle,
       ),
-      child: Icon(
-        LucideIcons.pencilLine,
-        size: AppSizes.iconSm,
-        color: context.colorScheme.onSurface,
-      ),
-    );
-  }
-}
-
-class _CompletionProgress extends StatelessWidget {
-  const _CompletionProgress({super.key, required this.percentage});
-
-  final int percentage;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: AppSizes.profileBadgeSize,
-      height: AppSizes.profileBadgeSize,
-      child: TweenAnimationBuilder<int>(
-        tween: IntTween(begin: 0, end: percentage),
-        duration: const Duration(milliseconds: 1200),
+      child: TweenAnimationBuilder<double>(
+        tween: Tween(end: _ringTarget.toDouble()),
+        duration: _ringDuration,
         curve: Curves.easeOut,
         builder: (context, value, child) {
           return Stack(
             alignment: Alignment.center,
             children: [
-              CircularProgressIndicator(
-                value: value / 100,
-                strokeWidth: 3,
-                backgroundColor: context.colorScheme.surface,
-                color: context.colorScheme.primary,
+              Positioned.fill(
+                child: CircularProgressIndicator(
+                  value: value / 100,
+                  strokeWidth: 3,
+                  backgroundColor: context.colorScheme.surface,
+                  color: context.colorScheme.primary,
+                ),
               ),
-              Text(
-                '$value%',
-                style: context.textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold),
+              AnimatedSwitcher(
+                duration: _switchDuration,
+                child: _showNumber
+                    ? Text(
+                        '${value.round()}%',
+                        key: const ValueKey('number'),
+                        style: context.textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold),
+                      )
+                    : Icon(
+                        LucideIcons.pencilLine,
+                        key: const ValueKey('pencil'),
+                        size: AppSizes.iconSm,
+                        color: context.colorScheme.onSurface,
+                      ),
               ),
             ],
           );
