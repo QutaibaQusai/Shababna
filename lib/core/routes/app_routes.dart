@@ -6,6 +6,8 @@ class AppRoutes {
 
   static const String login = '/login';
   static const String loginName = 'login';
+  static const String modalQuery = 'modal';
+  static const String loginModal = '$login?$modalQuery=true';
 
   static const String register = '/register';
   static const String registerName = 'register';

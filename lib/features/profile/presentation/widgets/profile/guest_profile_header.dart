@@ -13,7 +13,7 @@ class GuestProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void openLogin() => context.push(AppRoutes.login);
+    void openLogin() => context.push(AppRoutes.loginModal);
 
     return InkWell(
       onTap: openLogin,

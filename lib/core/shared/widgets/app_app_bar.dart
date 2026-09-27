@@ -6,10 +6,17 @@ import '../../theme/app_spacing.dart';
 import 'app_icon_button.dart';
 
 class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const AppAppBar({super.key, required this.title, this.onBack, this.actions});
+  const AppAppBar({
+    super.key,
+    required this.title,
+    this.onBack,
+    this.leadingIcon,
+    this.actions,
+  });
 
   final String title;
   final VoidCallback? onBack;
+  final IconData? leadingIcon;
   final List<Widget>? actions;
 
   @override
@@ -30,7 +37,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
               padding: EdgeInsetsDirectional.only(start: AppSpacing.screenMargin),
               child: Center(
                 child: AppIconButton(
-                  icon: isRtl ? LucideIcons.chevronRight : LucideIcons.chevronLeft,
+                  icon: leadingIcon ?? (isRtl ? LucideIcons.chevronRight : LucideIcons.chevronLeft),
                   onPressed: onBack,
                 ),
               ),

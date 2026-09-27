@@ -28,7 +28,7 @@ Future<bool> ensureSignedIn(BuildContext context) async {
         child: GuestGateContent(
           onSignIn: () {
             Navigator.of(sheetContext).pop();
-            context.push(AppRoutes.login);
+            context.push(AppRoutes.loginModal);
           },
           onCreateAccount: () {
             Navigator.of(sheetContext).pop();
@@ -56,7 +56,7 @@ class GuestGate extends StatelessWidget {
         child: SingleChildScrollView(
           padding: EdgeInsets.all(AppSpacing.screenMargin),
           child: GuestGateContent(
-            onSignIn: () => context.push(AppRoutes.login),
+            onSignIn: () => context.push(AppRoutes.loginModal),
             onCreateAccount: () => context.push(AppRoutes.register),
           ),
         ),

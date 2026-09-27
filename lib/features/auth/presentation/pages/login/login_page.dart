@@ -8,6 +8,7 @@ import '../../../../../core/di/service_locator.dart';
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/session/auth_session_cubit.dart';
+import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_button.dart';
 import '../../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
@@ -20,19 +21,23 @@ import '../../cubit/login/login_cubit.dart';
 import '../../cubit/login/login_state.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, this.isModal = false});
+
+  final bool isModal;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<LoginCubit>(),
-      child: const _LoginView(),
+      child: _LoginView(isModal: isModal),
     );
   }
 }
 
 class _LoginView extends StatefulWidget {
-  const _LoginView();
+  const _LoginView({required this.isModal});
+
+  final bool isModal;
 
   @override
   State<_LoginView> createState() => _LoginViewState();
@@ -81,6 +86,13 @@ class _LoginViewState extends State<_LoginView> {
           return AppLoadingOverlay(
             isLoading: state.status == FormStatus.submitting,
             child: Scaffold(
+              appBar: widget.isModal
+                  ? AppAppBar(
+                      title: '',
+                      leadingIcon: LucideIcons.x,
+                      onBack: () => context.pop(),
+                    )
+                  : null,
               body: SafeArea(
                 child: SingleChildScrollView(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),

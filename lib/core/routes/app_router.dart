@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/presentation/pages/forgot_password/forgot_password_page.dart';
@@ -47,7 +48,22 @@ class AppRouter {
         GoRoute(
           path: AppRoutes.login,
           name: AppRoutes.loginName,
-          builder: (context, state) => const LoginPage(),
+          pageBuilder: (context, state) {
+            final isModal = state.uri.queryParameters[AppRoutes.modalQuery] == 'true';
+            if (!isModal) return MaterialPage(key: state.pageKey, child: const LoginPage());
+            return CustomTransitionPage(
+              key: state.pageKey,
+              fullscreenDialog: true,
+              child: const LoginPage(isModal: true),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+                  SlideTransition(
+                    position: Tween(begin: const Offset(0, 1), end: Offset.zero)
+                        .chain(CurveTween(curve: Curves.easeOutCubic))
+                        .animate(animation),
+                    child: child,
+                  ),
+            );
+          },
         ),
         GoRoute(
           path: AppRoutes.register,
