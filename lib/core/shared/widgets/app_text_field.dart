@@ -24,6 +24,7 @@ class AppTextField extends StatefulWidget {
     this.inputFormatters,
     this.maxLines = 1,
     this.minLines,
+    this.maxLength,
   });
 
   final String label;
@@ -42,6 +43,7 @@ class AppTextField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
   final int maxLines;
   final int? minLines;
+  final int? maxLength;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -61,6 +63,7 @@ class _AppTextFieldState extends State<AppTextField> {
       obscureText: _obscure,
       maxLines: widget.maxLines,
       minLines: widget.minLines,
+      maxLength: widget.maxLength,
       readOnly: widget.readOnly,
       onTap: widget.onTap,
       autofocus: widget.autofocus,
@@ -69,6 +72,7 @@ class _AppTextFieldState extends State<AppTextField> {
       decoration: InputDecoration(
         labelText: widget.label,
         hintText: widget.hint,
+        alignLabelWithHint: widget.maxLines > 1,
         prefixIcon: widget.prefixIcon != null
             ? Icon(widget.prefixIcon, size: AppSizes.iconField)
             : null,

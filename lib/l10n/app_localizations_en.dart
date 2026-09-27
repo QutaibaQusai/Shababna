@@ -673,4 +673,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loadMoreFailedMessage => 'Couldn\'t load more';
+
+  @override
+  String get deleteAccountSubtitle =>
+      'We are sorry to see you go. Please read what happens before you continue.';
+
+  @override
+  String get deleteAccountReasonLabel => 'Why are you leaving? (optional)';
+
+  @override
+  String get deleteAccountButton => 'Delete my account';
+
+  @override
+  String get deleteAccountConfirmTitle => 'Delete your account?';
+
+  @override
+  String get deleteAccountConfirmMessage =>
+      'This can\'t be undone. You will be signed out immediately.';
+
+  @override
+  String get deleteAccountSuccessMessage => 'Your account has been deleted';
 }

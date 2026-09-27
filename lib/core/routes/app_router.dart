@@ -18,6 +18,7 @@ import '../../features/profile/presentation/pages/account_security/account_secur
 import '../../features/profile/presentation/pages/change_email/change_email_page.dart';
 import '../../features/profile/presentation/pages/change_email/verify_email_change_page.dart';
 import '../../features/profile/presentation/pages/change_password/change_password_page.dart';
+import '../../features/profile/presentation/pages/delete_account/delete_account_page.dart';
 import '../../features/profile/presentation/pages/change_phone_number/change_phone_number_page.dart';
 import '../../features/profile/presentation/pages/edit_profile/edit_profile_page.dart';
 import '../../features/social_media/presentation/pages/social_media_page.dart';
@@ -153,6 +154,11 @@ class AppRouter {
           path: AppRoutes.changePassword,
           name: AppRoutes.changePasswordName,
           builder: (context, state) => const ChangePasswordPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.deleteAccount,
+          name: AppRoutes.deleteAccountName,
+          builder: (context, state) => const DeleteAccountPage(),
         ),
         GoRoute(
           path: AppRoutes.editProfile,

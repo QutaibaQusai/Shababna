@@ -45,6 +45,9 @@ class AppRoutes {
   static const String changePassword = '/change-password';
   static const String changePasswordName = 'change-password';
 
+  static const String deleteAccount = '/delete-account';
+  static const String deleteAccountName = 'delete-account';
+
   static const String editProfile = '/edit-profile';
   static const String editProfileName = 'edit-profile';
 
@@ -67,6 +70,7 @@ class AppRoutes {
   static const Set<String> memberRoutes = {
     accountSecurity,
     changePassword,
+    deleteAccount,
     editProfile,
     changePhoneNumber,
     changeEmail,

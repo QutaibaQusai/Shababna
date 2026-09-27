@@ -254,5 +254,11 @@
   "guestGateMessage": "Create a free account or sign in to use this feature and keep track of your volunteering.",
   "guestProfileTitle": "Welcome to Shababna",
   "newsEmptyMessage": "No news yet",
-  "loadMoreFailedMessage": "Couldn't load more"
+  "loadMoreFailedMessage": "Couldn't load more",
+  "deleteAccountSubtitle": "We are sorry to see you go. Please read what happens before you continue.",
+  "deleteAccountReasonLabel": "Why are you leaving? (optional)",
+  "deleteAccountButton": "Delete my account",
+  "deleteAccountConfirmTitle": "Delete your account?",
+  "deleteAccountConfirmMessage": "This can't be undone. You will be signed out immediately.",
+  "deleteAccountSuccessMessage": "Your account has been deleted"
 }

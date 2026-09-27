@@ -1339,6 +1339,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Couldn\'t load more'**
   String get loadMoreFailedMessage;
+
+  /// No description provided for @deleteAccountSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We are sorry to see you go. Please read what happens before you continue.'**
+  String get deleteAccountSubtitle;
+
+  /// No description provided for @deleteAccountReasonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Why are you leaving? (optional)'**
+  String get deleteAccountReasonLabel;
+
+  /// No description provided for @deleteAccountButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete my account'**
+  String get deleteAccountButton;
+
+  /// No description provided for @deleteAccountConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete your account?'**
+  String get deleteAccountConfirmTitle;
+
+  /// No description provided for @deleteAccountConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This can\'t be undone. You will be signed out immediately.'**
+  String get deleteAccountConfirmMessage;
+
+  /// No description provided for @deleteAccountSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account has been deleted'**
+  String get deleteAccountSuccessMessage;
 }
 
 class _AppLocalizationsDelegate

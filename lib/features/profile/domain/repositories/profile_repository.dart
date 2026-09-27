@@ -289,4 +289,9 @@ abstract interface class ProfileRepository {
   Future<Either<Failure, Profile>> uploadAttachment(ProfileAttachment attachment, String filePath);
 
   Future<Either<Failure, void>> deleteAttachment(ProfileAttachment attachment);
+
+  Future<Either<Failure, void>> deleteAccount({
+    required String currentPassword,
+    String? reason,
+  });
 }

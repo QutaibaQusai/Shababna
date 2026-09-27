@@ -18,6 +18,7 @@ import 'presentation/cubit/change_email/change_email_cubit.dart';
 import 'presentation/cubit/change_email/verify_email_change_cubit.dart';
 import 'presentation/cubit/change_password/change_password_cubit.dart';
 import 'presentation/cubit/change_phone_number/change_phone_number_cubit.dart';
+import 'presentation/cubit/delete_account/delete_account_cubit.dart';
 import 'presentation/cubit/edit_profile/edit_profile_cubit.dart';
 import 'presentation/cubit/profile/profile_cubit.dart';
 import 'presentation/cubit/profile_attachment/profile_attachment_cubit.dart';
@@ -88,4 +89,8 @@ void registerProfileFeature(GetIt sl) {
   );
 
   sl.registerFactory<ChangePasswordCubit>(() => ChangePasswordCubit(sl<ChangePasswordRepository>()));
+
+  sl.registerFactory<DeleteAccountCubit>(
+    () => DeleteAccountCubit(sl<ProfileRepository>(), sl<AuthSessionCubit>()),
+  );
 }

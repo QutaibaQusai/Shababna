@@ -224,5 +224,11 @@
   "guestGateMessage": "أنشئ حساباً مجانياً أو سجّل الدخول لاستخدام هذه الميزة ومتابعة تطوعك.",
   "guestProfileTitle": "أهلاً بك في شبابنا",
   "newsEmptyMessage": "لا توجد أخبار حالياً",
-  "loadMoreFailedMessage": "تعذّر تحميل المزيد"
+  "loadMoreFailedMessage": "تعذّر تحميل المزيد",
+  "deleteAccountSubtitle": "يؤسفنا رحيلك. يرجى قراءة ما سيحدث قبل المتابعة.",
+  "deleteAccountReasonLabel": "لماذا تغادر؟ (اختياري)",
+  "deleteAccountButton": "حذف حسابي",
+  "deleteAccountConfirmTitle": "حذف حسابك؟",
+  "deleteAccountConfirmMessage": "لا يمكن التراجع عن هذا الإجراء. سيتم تسجيل خروجك فوراً.",
+  "deleteAccountSuccessMessage": "تم حذف حسابك"
 }

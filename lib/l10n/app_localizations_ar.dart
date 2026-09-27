@@ -666,4 +666,24 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get loadMoreFailedMessage => 'تعذّر تحميل المزيد';
+
+  @override
+  String get deleteAccountSubtitle =>
+      'يؤسفنا رحيلك. يرجى قراءة ما سيحدث قبل المتابعة.';
+
+  @override
+  String get deleteAccountReasonLabel => 'لماذا تغادر؟ (اختياري)';
+
+  @override
+  String get deleteAccountButton => 'حذف حسابي';
+
+  @override
+  String get deleteAccountConfirmTitle => 'حذف حسابك؟';
+
+  @override
+  String get deleteAccountConfirmMessage =>
+      'لا يمكن التراجع عن هذا الإجراء. سيتم تسجيل خروجك فوراً.';
+
+  @override
+  String get deleteAccountSuccessMessage => 'تم حذف حسابك';
 }

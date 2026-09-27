@@ -39,6 +39,8 @@ class EndPoints {
   static const String cv = '/api/v1/profile/cv';
   static const String nationalId = '/api/v1/profile/national-id';
 
+  static const String deleteAccount = '/api/v1/profile/delete-account';
+
   static const String news = '/api/v1/news';
   static String newsById(String id) => '$news/$id';
 }

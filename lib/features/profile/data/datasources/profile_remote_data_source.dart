@@ -38,6 +38,17 @@ class ProfileRemoteDataSource {
     return _apiConsumer.delete(_endpointOf(attachment));
   }
 
+  Future<void> deleteAccount({required String currentPassword, String? reason}) {
+    final trimmedReason = reason?.trim() ?? '';
+    return _apiConsumer.post(
+      EndPoints.deleteAccount,
+      data: {
+        'currentPassword': currentPassword,
+        if (trimmedReason.isNotEmpty) 'reason': trimmedReason,
+      },
+    );
+  }
+
   String _endpointOf(ProfileAttachment attachment) => switch (attachment) {
         ProfileAttachment.picture => EndPoints.profilePicture,
         ProfileAttachment.cv => EndPoints.cv,

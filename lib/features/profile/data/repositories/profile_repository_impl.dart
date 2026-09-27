@@ -44,4 +44,14 @@ class ProfileRepositoryImpl with RepositoryGuardMixin implements ProfileReposito
   Future<Either<Failure, void>> deleteAttachment(ProfileAttachment attachment) {
     return guard(() => _remoteDataSource.deleteAttachment(attachment));
   }
+
+  @override
+  Future<Either<Failure, void>> deleteAccount({
+    required String currentPassword,
+    String? reason,
+  }) {
+    return guard(
+      () => _remoteDataSource.deleteAccount(currentPassword: currentPassword, reason: reason),
+    );
+  }
 }

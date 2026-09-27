@@ -45,6 +45,7 @@ class AccountSecurityPage extends StatelessWidget {
               icon: LucideIcons.trash2,
               title: context.l10n.deleteAccountTitle,
               isDestructive: true,
+              onTap: () => context.push(AppRoutes.deleteAccount),
             ),
           ],
         ),
