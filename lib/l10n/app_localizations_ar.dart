@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -43,8 +42,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get changePhoneNumberTitle => 'تغيير رقم الهاتف';
 
   @override
-  String get changePhoneNumberSubtitle =>
-      'أدخل الرقم الذي تريد استخدامه لحسابك';
+  String get changePhoneNumberSubtitle => 'أدخل الرقم الذي تريد استخدامه لحسابك';
 
   @override
   String get changePhoneNumberSuccessMessage => 'تم تحديث رقم الهاتف بنجاح';
@@ -53,8 +51,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get changeEmailTitle => 'تغيير البريد الإلكتروني';
 
   @override
-  String get changeEmailSubtitle =>
-      'أدخل كلمة المرور الحالية والبريد الإلكتروني الجديد';
+  String get changeEmailSubtitle => 'أدخل كلمة المرور الحالية والبريد الإلكتروني الجديد';
 
   @override
   String get changeEmailSuccessMessage => 'تم تحديث البريد الإلكتروني بنجاح';
@@ -69,8 +66,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profilePictureLabel => 'الصورة الشخصية';
 
   @override
-  String get editProfilePictureSuccessMessage =>
-      'تم تحديث الصورة الشخصية بنجاح';
+  String get editProfilePictureSuccessMessage => 'تم تحديث الصورة الشخصية بنجاح';
 
   @override
   String get choosePhotoButton => 'اختيار صورة';
@@ -94,8 +90,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get removeCvButton => 'إزالة السيرة الذاتية';
 
   @override
-  String get editNationalIdSuccessMessage =>
-      'تم تحديث صورة الهوية الوطنية بنجاح';
+  String get editNationalIdSuccessMessage => 'تم تحديث صورة الهوية الوطنية بنجاح';
 
   @override
   String get navHome => 'الرئيسية';
@@ -125,8 +120,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileMenuNotifications => 'الإشعارات';
 
   @override
-  String get profileMenuNotificationsSubtitle =>
-      'إدارة الإشعارات وتحديثات التطبيق العامة.';
+  String get profileMenuNotificationsSubtitle => 'إدارة الإشعارات وتحديثات التطبيق العامة.';
 
   @override
   String get profileMenuAccountSecurity => 'أمان الحساب';
@@ -138,8 +132,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get changePasswordTitle => 'تغيير كلمة المرور';
 
   @override
-  String get changePasswordSubtitle =>
-      'اختر كلمة مرور قوية للحفاظ على أمان حسابك';
+  String get changePasswordSubtitle => 'اختر كلمة مرور قوية للحفاظ على أمان حسابك';
 
   @override
   String get currentPasswordLabel => 'كلمة المرور الحالية';
@@ -250,9 +243,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get saveButton => 'حفظ';
 
   @override
-  String get personalInfoSectionTitle => 'المعلومات الشخصية';
-
-  @override
   String get genderLabel => 'الجنس';
 
   @override
@@ -280,9 +270,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get universityNameLabel => 'اسم الجامعة';
 
   @override
-  String get addressSectionTitle => 'العنوان';
-
-  @override
   String get nearestLandmarkLabel => 'أقرب معلم';
 
   @override
@@ -295,9 +282,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get detailedAddressLabel => 'العنوان التفصيلي';
 
   @override
-  String get volunteeringSectionTitle => 'التطوع';
-
-  @override
   String get isFirstTimeVolunteerLabel => 'متطوع لأول مرة';
 
   @override
@@ -307,8 +291,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get isAvailableToVolunteerLabel => 'متاح للتطوع';
 
   @override
-  String get willSignVolunteerServiceAgreementLabel =>
-      'سيوقع اتفاقية الخدمة التطوعية';
+  String get willSignVolunteerServiceAgreementLabel => 'سيوقع اتفاقية الخدمة التطوعية';
 
   @override
   String get willProvideNccLabel => 'سيقدم شهادة عدم محكومية';
@@ -321,9 +304,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get otherVolunteeringSubjectsLabel => 'مجالات تطوع أخرى';
-
-  @override
-  String get documentsSectionTitle => 'المستندات';
 
   @override
   String get cvLabel => 'السيرة الذاتية';
@@ -347,8 +327,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loginTitle => 'أهلاً بك في شبابنا';
 
   @override
-  String get loginSubtitle =>
-      'اكتشف فرص التطوّع، وتابع أثرك، واحصل على شهادات تقديراً لكل مساهمة.';
+  String get loginSubtitle => 'اكتشف فرص التطوّع، وتابع أثرك، واحصل على شهادات تقديراً لكل مساهمة.';
 
   @override
   String get emailLabel => 'البريد الإلكتروني';
@@ -390,8 +369,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get stepContactTitle => 'بيانات التواصل';
 
   @override
-  String get stepContactSubtitle =>
-      'سنستخدم هذه البيانات للتحقق من حسابك وإبقائك على اطلاع';
+  String get stepContactSubtitle => 'سنستخدم هذه البيانات للتحقق من حسابك وإبقائك على اطلاع';
 
   @override
   String get phoneNumberLabel => 'رقم الهاتف';
@@ -438,8 +416,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resendCodeButton => 'إعادة إرسال الرمز';
 
   @override
-  String get registrationCompleteMessage =>
-      'تم إنشاء الحساب. يمكنك تسجيل الدخول الآن.';
+  String get registrationCompleteMessage => 'تم إنشاء الحساب. يمكنك تسجيل الدخول الآن.';
 
   @override
   String get accountRecoveryTitle => 'استعادة الحساب';
@@ -448,8 +425,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get forgotPasswordTitle => 'نسيت كلمة المرور؟';
 
   @override
-  String get forgotPasswordSubtitle =>
-      'أدخل بريدك الإلكتروني وسنرسل لك رمزاً لإعادة تعيين كلمة المرور';
+  String get forgotPasswordSubtitle => 'أدخل بريدك الإلكتروني وسنرسل لك رمزاً لإعادة تعيين كلمة المرور';
 
   @override
   String get sendCodeButton => 'إرسال الرمز';
@@ -483,8 +459,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPasswordButton => 'إعادة تعيين كلمة المرور';
 
   @override
-  String get passwordResetSuccessMessage =>
-      'تم إعادة تعيين كلمة المرور. يمكنك تسجيل الدخول الآن.';
+  String get passwordResetSuccessMessage => 'تم إعادة تعيين كلمة المرور. يمكنك تسجيل الدخول الآن.';
 
   @override
   String get fieldRequiredError => 'هذا الحقل مطلوب';
@@ -548,15 +523,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get contactSendButton => 'إرسال';
 
   @override
-  String get contactSubmitSuccessMessage =>
-      'تم إرسال رسالتك. سنتواصل معك قريباً.';
+  String get contactSubmitSuccessMessage => 'تم إرسال رسالتك. سنتواصل معك قريباً.';
 
   @override
   String get discardChangesTitle => 'تجاهل التغييرات؟';
 
   @override
-  String get discardChangesMessage =>
-      'لديك تغييرات غير محفوظة. إذا غادرت الآن فستفقدها.';
+  String get discardChangesMessage => 'لديك تغييرات غير محفوظة. إذا غادرت الآن فستفقدها.';
 
   @override
   String get discardButton => 'تجاهل';
@@ -590,8 +563,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get currentEmailLabel => 'البريد الإلكتروني الحالي';
 
   @override
-  String get newEmailSameAsCurrentError =>
-      'يجب أن يختلف البريد الإلكتروني الجديد عن الحالي';
+  String get newEmailSameAsCurrentError => 'يجب أن يختلف البريد الإلكتروني الجديد عن الحالي';
 
   @override
   String profileVerifyEmailSubtitle(String email) {
@@ -608,8 +580,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileResendEmailButton => 'إرسال رمز جديد';
 
   @override
-  String get profileEmailCodeResentMessage =>
-      'تم إرسال رمز جديد إلى بريدك الإلكتروني الجديد';
+  String get profileEmailCodeResentMessage => 'تم إرسال رمز جديد إلى بريدك الإلكتروني الجديد';
 
   @override
   String profileInvalidEmailCodeError(int length) {
@@ -658,8 +629,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get guestGateTitle => 'سجّل الدخول للمتابعة';
 
   @override
-  String get guestGateMessage =>
-      'أنشئ حساباً مجانياً أو سجّل الدخول لاستخدام هذه الميزة ومتابعة تطوعك.';
+  String get guestGateMessage => 'أنشئ حساباً مجانياً أو سجّل الدخول لاستخدام هذه الميزة ومتابعة تطوعك.';
 
   @override
   String get guestProfileTitle => 'أهلاً بك في شبابنا';
@@ -677,8 +647,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loadMoreFailedMessage => 'تعذّر تحميل المزيد';
 
   @override
-  String get deleteAccountSubtitle =>
-      'يؤسفنا رحيلك. يرجى قراءة ما سيحدث قبل المتابعة.';
+  String get deleteAccountSubtitle => 'يؤسفنا رحيلك. يرجى قراءة ما سيحدث قبل المتابعة.';
 
   @override
   String get deleteAccountReasonLabel => 'لماذا تغادر؟ (اختياري)';
@@ -690,8 +659,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get deleteAccountConfirmTitle => 'حذف حسابك؟';
 
   @override
-  String get deleteAccountConfirmMessage =>
-      'لا يمكن التراجع عن هذا الإجراء. سيتم تسجيل خروجك فوراً.';
+  String get deleteAccountConfirmMessage => 'لا يمكن التراجع عن هذا الإجراء. سيتم تسجيل خروجك فوراً.';
 
   @override
   String get deleteAccountSuccessMessage => 'تم حذف حسابك';

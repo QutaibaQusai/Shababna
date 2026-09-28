@@ -40,36 +40,44 @@ class AppPhoneField<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(
-          width: 100,
-          child: AppPickerField<T>(
-            label: '',
-            items: countries,
-            itemLabel: countryItemLabel,
-            selectedLabel: countrySelectedLabel,
-            onSelected: onCountrySelected,
-            selectedItem: selectedCountry,
-            isLoading: isLoadingCountries,
-            errorMessage: countriesError,
-            onRetry: onRetryLoadCountries,
-            searchHint: searchHint,
-            validator: countryValidator,
-          ),
-        ),
-        SizedBox(width: AppSpacing.xs),
-        Expanded(
-          child: AppTextField(
-            label: label,
-            controller: numberController,
-            keyboardType: TextInputType.phone,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            prefixIcon: LucideIcons.phone,
-            textInputAction: TextInputAction.done,
-            validator: numberValidator,
-          ),
+        AppFieldLabel(label: label),
+        SizedBox(height: AppSpacing.xs),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 100,
+              child: AppPickerField<T>(
+                label: '',
+                items: countries,
+                itemLabel: countryItemLabel,
+                selectedLabel: countrySelectedLabel,
+                onSelected: onCountrySelected,
+                selectedItem: selectedCountry,
+                isLoading: isLoadingCountries,
+                errorMessage: countriesError,
+                onRetry: onRetryLoadCountries,
+                searchHint: searchHint,
+                validator: countryValidator,
+              ),
+            ),
+            SizedBox(width: AppSpacing.xs),
+            Expanded(
+              child: AppTextField(
+                label: '',
+                controller: numberController,
+                keyboardType: TextInputType.phone,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                prefixIcon: LucideIcons.phone,
+                textInputAction: TextInputAction.done,
+                validator: numberValidator,
+              ),
+            ),
+          ],
         ),
       ],
     );

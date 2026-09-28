@@ -4,6 +4,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../extensions/context_extensions.dart';
 import '../../theme/app_sizes.dart';
+import '../../theme/app_spacing.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
@@ -54,7 +55,7 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    final field = TextFormField(
       controller: widget.controller,
       validator: widget.validator,
       onChanged: widget.onChanged,
@@ -70,9 +71,7 @@ class _AppTextFieldState extends State<AppTextField> {
       inputFormatters: widget.inputFormatters,
       style: context.textTheme.bodyLarge,
       decoration: InputDecoration(
-        labelText: widget.label,
         hintText: widget.hint,
-        alignLabelWithHint: widget.maxLines > 1,
         prefixIcon: widget.prefixIcon != null
             ? Icon(widget.prefixIcon, size: AppSizes.iconField)
             : null,
@@ -85,6 +84,35 @@ class _AppTextFieldState extends State<AppTextField> {
                 onPressed: () => setState(() => _obscure = !_obscure),
               )
             : widget.suffix,
+      ),
+    );
+
+    if (widget.label.isEmpty) return field;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AppFieldLabel(label: widget.label),
+        SizedBox(height: AppSpacing.xs),
+        field,
+      ],
+    );
+  }
+}
+
+class AppFieldLabel extends StatelessWidget {
+  const AppFieldLabel({super.key, required this.label});
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      label,
+      style: context.textTheme.labelLarge?.copyWith(
+        fontWeight: FontWeight.w600,
+        color: context.colorScheme.onSurface,
       ),
     );
   }

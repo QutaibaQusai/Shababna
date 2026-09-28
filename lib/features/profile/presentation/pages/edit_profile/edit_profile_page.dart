@@ -26,7 +26,6 @@ import '../../cubit/profile_attachment/profile_attachment_state.dart';
 import '../../widgets/edit_profile/edit_profile_account_fields.dart';
 import '../../widgets/edit_profile/edit_profile_bottom_bar.dart';
 import '../../widgets/edit_profile/edit_profile_documents_section.dart';
-import '../../widgets/edit_profile/edit_profile_section_title.dart';
 import '../../widgets/edit_profile/edit_profile_skeleton.dart';
 import '../../widgets/edit_profile/gender_option.dart';
 import '../../widgets/edit_profile/profile_attachment_flow.dart';
@@ -253,8 +252,6 @@ class _EditProfileViewState extends State<_EditProfileView> {
             SizedBox(height: AppSpacing.md),
             const VolunteerTierProgress(),
             SizedBox(height: AppSpacing.md),
-            EditProfileSectionTitle(title: context.l10n.personalInfoSectionTitle),
-            SizedBox(height: AppSpacing.sm),
             const EditProfileContactFields(),
             SizedBox(height: AppSpacing.sm),
             Row(
@@ -353,8 +350,6 @@ class _EditProfileViewState extends State<_EditProfileView> {
               onChanged: (value) => _edit((d) => d.copyWith(universityName: value)),
             ),
             SizedBox(height: AppSpacing.lg),
-            EditProfileSectionTitle(title: context.l10n.addressSectionTitle),
-            SizedBox(height: AppSpacing.sm),
             AppTextField(
               label: context.l10n.nearestLandmarkLabel,
               controller: _nearestLandmarkController,
@@ -387,8 +382,6 @@ class _EditProfileViewState extends State<_EditProfileView> {
               onChanged: (value) => _edit((d) => d.copyWith(detailedAddress: value)),
             ),
             SizedBox(height: AppSpacing.lg),
-            EditProfileSectionTitle(title: context.l10n.volunteeringSectionTitle),
-            SizedBox(height: AppSpacing.sm),
             SwitchRow(
               label: context.l10n.isFirstTimeVolunteerLabel,
               value: draft.isFirstTimeVolunteer,
@@ -447,8 +440,6 @@ class _EditProfileViewState extends State<_EditProfileView> {
               onChanged: (value) => _edit((d) => d.copyWith(otherVolunteeringSubjects: value)),
             ),
             SizedBox(height: AppSpacing.lg),
-            EditProfileSectionTitle(title: context.l10n.documentsSectionTitle),
-            SizedBox(height: AppSpacing.sm),
             const EditProfileDocumentsSection(),
           ],
         ),

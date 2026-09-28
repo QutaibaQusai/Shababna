@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
@@ -36,25 +37,32 @@ class FieldCard extends StatelessWidget {
     final text = value?.trim() ?? '';
     final arrow = onTap == null ? null : Icon(_arrowIcon(context), size: AppSizes.iconField);
 
-    return InkWell(
-      onTap: onTap,
-      borderRadius: AppRadius.mdRadius,
-      child: InputDecorator(
-        isEmpty: text.isEmpty,
-        decoration: InputDecoration(
-          labelText: label,
-          prefixIcon: Icon(icon, size: AppSizes.iconField),
-          suffixIcon: _suffix(arrow),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AppFieldLabel(label: label),
+        SizedBox(height: AppSpacing.xs),
+        InkWell(
+          onTap: onTap,
+          borderRadius: AppRadius.mdRadius,
+          child: InputDecorator(
+            isEmpty: text.isEmpty,
+            decoration: InputDecoration(
+              prefixIcon: Icon(icon, size: AppSizes.iconField),
+              suffixIcon: _suffix(arrow),
+            ),
+            child: Text(
+              text,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              textDirection: valueDirection,
+              textAlign: valueDirection == null ? null : TextAlign.start,
+              style: context.textTheme.bodyLarge,
+            ),
+          ),
         ),
-        child: Text(
-          text,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          textDirection: valueDirection,
-          textAlign: valueDirection == null ? null : TextAlign.start,
-          style: context.textTheme.bodyLarge,
-        ),
-      ),
+      ],
     );
   }
 
