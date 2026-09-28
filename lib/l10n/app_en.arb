@@ -260,5 +260,18 @@
   "deleteAccountButton": "Delete my account",
   "deleteAccountConfirmTitle": "Delete your account?",
   "deleteAccountConfirmMessage": "This can't be undone. You will be signed out immediately.",
-  "deleteAccountSuccessMessage": "Your account has been deleted"
+  "deleteAccountSuccessMessage": "Your account has been deleted",
+  "volunteerHoursCount": "{count, plural, =1{1 volunteering hour} other{{hours} volunteering hours}}",
+  "@volunteerHoursCount": {
+    "placeholders": { "count": { "type": "num" }, "hours": { "type": "String" } }
+  },
+  "volunteerHoursProgress": "Volunteering hours: {current} / {target}",
+  "@volunteerHoursProgress": {
+    "placeholders": { "current": { "type": "String" }, "target": { "type": "String" } }
+  },
+  "volunteerTierToReach": "left to reach {tier}",
+  "@volunteerTierToReach": {
+    "placeholders": { "tier": { "type": "String" } }
+  },
+  "volunteerTierMaxReached": "You've reached the highest tier"
 }

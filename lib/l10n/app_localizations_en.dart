@@ -693,4 +693,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get deleteAccountSuccessMessage => 'Your account has been deleted';
+
+  @override
+  String volunteerHoursCount(num count, String hours) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$hours volunteering hours',
+      one: '1 volunteering hour',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String volunteerHoursProgress(String current, String target) {
+    return 'Volunteering hours: $current / $target';
+  }
+
+  @override
+  String volunteerTierToReach(String tier) {
+    return 'left to reach $tier';
+  }
+
+  @override
+  String get volunteerTierMaxReached => 'You\'ve reached the highest tier';
 }

@@ -1375,6 +1375,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your account has been deleted'**
   String get deleteAccountSuccessMessage;
+
+  /// No description provided for @volunteerHoursCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 volunteering hour} other{{hours} volunteering hours}}'**
+  String volunteerHoursCount(num count, String hours);
+
+  /// No description provided for @volunteerHoursProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Volunteering hours: {current} / {target}'**
+  String volunteerHoursProgress(String current, String target);
+
+  /// No description provided for @volunteerTierToReach.
+  ///
+  /// In en, this message translates to:
+  /// **'left to reach {tier}'**
+  String volunteerTierToReach(String tier);
+
+  /// No description provided for @volunteerTierMaxReached.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve reached the highest tier'**
+  String get volunteerTierMaxReached;
 }
 
 class _AppLocalizationsDelegate

@@ -47,7 +47,41 @@ extension ProfileModelMapper on ProfileModel {
       volunteeringTypes:
           volunteeringTypes.map((item) => ProfileReference(id: item.id, name: item.name)).toList(),
       otherVolunteeringSubjects: otherVolunteeringSubjects,
+      volunteeringHours: volunteeringHours,
+      tier: tier == null
+          ? null
+          : VolunteerTier(
+              id: tier!.id,
+              name: tier!.name,
+              color: _parseColor(tier!.color),
+              minimumHours: tier!.minimumHours,
+              maximumHours: tier!.maximumHours,
+              lightIconUrl: tier!.lightIconUrl,
+              darkIconUrl: tier!.darkIconUrl,
+            ),
+      nextTier: nextTier == null
+          ? null
+          : NextVolunteerTier(
+              id: nextTier!.id,
+              name: nextTier!.name,
+              color: _parseColor(nextTier!.color),
+              requiredHours: nextTier!.requiredHours,
+              remainingHours: nextTier!.remainingHours,
+              lightIconUrl: nextTier!.lightIconUrl,
+              darkIconUrl: nextTier!.darkIconUrl,
+            ),
+      tierProgressPercentage: tierProgressPercentage,
     );
+  }
+
+  int _parseColor(String hex) {
+    final digits = hex.replaceFirst('#', '');
+    final value = int.parse(digits, radix: 16);
+    return switch (digits.length) {
+      6 => 0xFF000000 | value,
+      8 => value,
+      _ => throw FormatException('Invalid tier color', hex),
+    };
   }
 
   String? _absoluteUrl(String? path) {

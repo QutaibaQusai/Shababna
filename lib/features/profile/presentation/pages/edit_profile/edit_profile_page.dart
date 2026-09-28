@@ -32,6 +32,7 @@ import '../../widgets/edit_profile/gender_option.dart';
 import '../../widgets/edit_profile/profile_attachment_flow.dart';
 import '../../widgets/edit_profile/profile_lookup_field.dart';
 import '../../widgets/edit_profile/switch_row.dart';
+import '../../widgets/edit_profile/volunteer_tier_progress.dart';
 
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({super.key});
@@ -249,6 +250,8 @@ class _EditProfileViewState extends State<_EditProfileView> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const EditProfileAvatar(),
+            SizedBox(height: AppSpacing.md),
+            const VolunteerTierProgress(),
             SizedBox(height: AppSpacing.md),
             EditProfileSectionTitle(title: context.l10n.personalInfoSectionTitle),
             SizedBox(height: AppSpacing.sm),

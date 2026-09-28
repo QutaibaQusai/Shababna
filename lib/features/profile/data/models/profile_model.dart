@@ -32,6 +32,70 @@ class ProfileEducationModel {
   final bool isMajorRequired;
 }
 
+class ProfileTierModel {
+  const ProfileTierModel({
+    required this.id,
+    required this.name,
+    required this.color,
+    required this.minimumHours,
+    required this.maximumHours,
+    required this.lightIconUrl,
+    required this.darkIconUrl,
+  });
+
+  factory ProfileTierModel.fromJson(Map<String, dynamic> json) {
+    return ProfileTierModel(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      color: json['color'] as String,
+      minimumHours: (json['minimumHours'] as num).toDouble(),
+      maximumHours: (json['maximumHours'] as num?)?.toDouble(),
+      lightIconUrl: json['lightIconUrl'] as String,
+      darkIconUrl: json['darkIconUrl'] as String,
+    );
+  }
+
+  final String id;
+  final String name;
+  final String color;
+  final double minimumHours;
+  final double? maximumHours;
+  final String lightIconUrl;
+  final String darkIconUrl;
+}
+
+class ProfileNextTierModel {
+  const ProfileNextTierModel({
+    required this.id,
+    required this.name,
+    required this.color,
+    required this.requiredHours,
+    required this.remainingHours,
+    required this.lightIconUrl,
+    required this.darkIconUrl,
+  });
+
+  factory ProfileNextTierModel.fromJson(Map<String, dynamic> json) {
+    return ProfileNextTierModel(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      color: json['color'] as String,
+      requiredHours: (json['requiredHours'] as num).toDouble(),
+      remainingHours: (json['remainingHours'] as num).toDouble(),
+      lightIconUrl: json['lightIconUrl'] as String,
+      darkIconUrl: json['darkIconUrl'] as String,
+    );
+  }
+
+  final String id;
+  final String name;
+  final String color;
+  final double requiredHours;
+  final double remainingHours;
+  final String lightIconUrl;
+  final String darkIconUrl;
+}
+
 class ProfileModel {
   const ProfileModel({
     required this.id,
@@ -66,6 +130,10 @@ class ProfileModel {
     required this.willProvideNcc,
     required this.volunteeringTypes,
     required this.otherVolunteeringSubjects,
+    required this.volunteeringHours,
+    required this.tier,
+    required this.nextTier,
+    required this.tierProgressPercentage,
   });
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
@@ -110,6 +178,14 @@ class ProfileModel {
           .map((item) => ProfileReferenceModel.fromJson(item as Map<String, dynamic>))
           .toList(),
       otherVolunteeringSubjects: json['otherVolunteeringSubjects'] as String?,
+      volunteeringHours: (json['volunteeringHours'] as num).toDouble(),
+      tier: json['tier'] == null
+          ? null
+          : ProfileTierModel.fromJson(json['tier'] as Map<String, dynamic>),
+      nextTier: json['nextTier'] == null
+          ? null
+          : ProfileNextTierModel.fromJson(json['nextTier'] as Map<String, dynamic>),
+      tierProgressPercentage: (json['tierProgressPercentage'] as num).toInt(),
     );
   }
 
@@ -145,6 +221,10 @@ class ProfileModel {
   final bool? willProvideNcc;
   final List<ProfileReferenceModel> volunteeringTypes;
   final String? otherVolunteeringSubjects;
+  final double volunteeringHours;
+  final ProfileTierModel? tier;
+  final ProfileNextTierModel? nextTier;
+  final int tierProgressPercentage;
 
   static int _parsePercentage(Object? value) {
     if (value is int) return value;

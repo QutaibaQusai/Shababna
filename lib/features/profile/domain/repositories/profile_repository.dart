@@ -32,6 +32,52 @@ class ProfileEducation extends Equatable {
   List<Object?> get props => [id];
 }
 
+class VolunteerTier extends Equatable {
+  const VolunteerTier({
+    required this.id,
+    required this.name,
+    required this.color,
+    required this.minimumHours,
+    required this.maximumHours,
+    required this.lightIconUrl,
+    required this.darkIconUrl,
+  });
+
+  final String id;
+  final String name;
+  final int color;
+  final double minimumHours;
+  final double? maximumHours;
+  final String lightIconUrl;
+  final String darkIconUrl;
+
+  @override
+  List<Object?> get props => [id];
+}
+
+class NextVolunteerTier extends Equatable {
+  const NextVolunteerTier({
+    required this.id,
+    required this.name,
+    required this.color,
+    required this.requiredHours,
+    required this.remainingHours,
+    required this.lightIconUrl,
+    required this.darkIconUrl,
+  });
+
+  final String id;
+  final String name;
+  final int color;
+  final double requiredHours;
+  final double remainingHours;
+  final String lightIconUrl;
+  final String darkIconUrl;
+
+  @override
+  List<Object?> get props => [id];
+}
+
 class Profile {
   const Profile({
     required this.id,
@@ -66,6 +112,10 @@ class Profile {
     required this.willProvideNcc,
     required this.volunteeringTypes,
     required this.otherVolunteeringSubjects,
+    required this.volunteeringHours,
+    required this.tier,
+    required this.nextTier,
+    required this.tierProgressPercentage,
   });
 
   final String id;
@@ -100,6 +150,10 @@ class Profile {
   final bool? willProvideNcc;
   final List<ProfileReference> volunteeringTypes;
   final String? otherVolunteeringSubjects;
+  final double volunteeringHours;
+  final VolunteerTier? tier;
+  final NextVolunteerTier? nextTier;
+  final int tierProgressPercentage;
 
   String fullName(bool isArabic) => isArabic ? fullNameAr : fullNameEn;
 
@@ -137,6 +191,10 @@ class Profile {
       willProvideNcc: willProvideNcc,
       volunteeringTypes: volunteeringTypes,
       otherVolunteeringSubjects: otherVolunteeringSubjects,
+      volunteeringHours: volunteeringHours,
+      tier: tier,
+      nextTier: nextTier,
+      tierProgressPercentage: tierProgressPercentage,
     );
   }
 }

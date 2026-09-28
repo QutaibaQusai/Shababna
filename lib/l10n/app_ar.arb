@@ -230,5 +230,9 @@
   "deleteAccountButton": "حذف حسابي",
   "deleteAccountConfirmTitle": "حذف حسابك؟",
   "deleteAccountConfirmMessage": "لا يمكن التراجع عن هذا الإجراء. سيتم تسجيل خروجك فوراً.",
-  "deleteAccountSuccessMessage": "تم حذف حسابك"
+  "deleteAccountSuccessMessage": "تم حذف حسابك",
+  "volunteerHoursCount": "{count, plural, =1{ساعة تطوع واحدة} =2{ساعتا تطوع} few{{hours} ساعات تطوع} other{{hours} ساعة تطوع}}",
+  "volunteerHoursProgress": "ساعات التطوع: {current} / {target}",
+  "volunteerTierToReach": "متبقية للوصول إلى {tier}",
+  "volunteerTierMaxReached": "لقد وصلت إلى أعلى مستوى"
 }

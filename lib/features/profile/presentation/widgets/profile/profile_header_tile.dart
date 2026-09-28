@@ -8,6 +8,7 @@ import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/profile_repository.dart';
 import '../shared/profile_avatar.dart';
 import 'profile_completion_badge.dart';
+import 'volunteer_tier_badge.dart';
 
 class ProfileHeaderTile extends StatelessWidget {
   const ProfileHeaderTile({super.key, required this.profile, required this.pictureCacheKey});
@@ -18,6 +19,7 @@ class ProfileHeaderTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final name = profile.fullName(context.isArabic);
+    final tier = profile.tier;
 
     return InkWell(
       onTap: () => context.push(AppRoutes.editProfile),
@@ -39,11 +41,28 @@ class ProfileHeaderTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: context.textTheme.displaySmall?.copyWith(fontWeight: FontWeight.bold),
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: context.textTheme.displaySmall?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      if (tier != null) ...[
+                        SizedBox(width: AppSpacing.xxs),
+                        VolunteerTierBadge(
+                          name: tier.name,
+                          lightIconUrl: tier.lightIconUrl,
+                          darkIconUrl: tier.darkIconUrl,
+                          size: AppSizes.iconMd,
+                        ),
+                      ],
+                    ],
                   ),
                   SizedBox(height: AppSpacing.xxs),
                   Text(
