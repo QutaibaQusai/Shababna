@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -45,9 +44,9 @@ class VolunteerTierProgress extends StatelessWidget {
                 name: tier.name,
                 lightIconUrl: tier.lightIconUrl,
                 darkIconUrl: tier.darkIconUrl,
-                size: 44.r,
+                size: AppSizes.tierBadgeSize,
               ),
-              SizedBox(width: AppSpacing.sm),
+              SizedBox(width: AppSpacing.xs),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,7 +69,7 @@ class VolunteerTierProgress extends StatelessWidget {
                   ],
                 ),
               ),
-              if (next != null) _LockedTierBadge(tier: next, size: 36.r),
+              if (next != null) _LockedTierBadge(tier: next, size: AppSizes.tierBadgeSizeSmall),
             ],
           ),
           SizedBox(height: AppSpacing.sm),
@@ -155,7 +154,7 @@ class _TierProgressBar extends StatelessWidget {
 
     return LinearPercentIndicator(
       percent: percent,
-      lineHeight: 12.r,
+      lineHeight: AppSizes.progressBarHeight,
       padding: EdgeInsets.zero,
       barRadius: Radius.circular(AppRadius.pill),
       isRTL: isRtl,
@@ -204,7 +203,8 @@ class _LockedTierBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lockSize = AppSizes.iconSm + 2.r;
+    final lockSize = AppSizes.iconSm;
+    final lockOffset = -AppSpacing.xxs / 2;
 
     return Stack(
       clipBehavior: Clip.none,
@@ -222,8 +222,8 @@ class _LockedTierBadge extends StatelessWidget {
           ),
         ),
         PositionedDirectional(
-          end: -2.r,
-          bottom: -2.r,
+          end: lockOffset,
+          bottom: lockOffset,
           child: Container(
             width: lockSize,
             height: lockSize,
