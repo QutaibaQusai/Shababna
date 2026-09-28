@@ -9,6 +9,9 @@ class ContactInfo {
     required this.phoneNumber,
     required this.complaintsPhoneNumber,
     required this.address,
+    required this.latitude,
+    required this.longitude,
+    required this.googleMapsUrl,
   });
 
   final String email;
@@ -16,6 +19,9 @@ class ContactInfo {
   final String phoneNumber;
   final String complaintsPhoneNumber;
   final String address;
+  final double latitude;
+  final double longitude;
+  final String googleMapsUrl;
 }
 
 abstract interface class ContactInfoRepository {

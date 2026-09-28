@@ -14,6 +14,7 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../domain/repositories/contact_info_repository.dart';
 import '../cubit/contact_info_cubit.dart';
 import '../widgets/contact_info_skeleton.dart';
+import '../widgets/contact_location_map.dart';
 
 class ContactInfoPage extends StatelessWidget {
   const ContactInfoPage({super.key});
@@ -105,9 +106,13 @@ class _ContactInfoSection extends StatelessWidget {
           icon: LucideIcons.mapPin,
           label: context.l10n.contactInfoAddressLabel,
           value: content.address,
-          onTap: () => onLaunch(
-            Uri.https('www.google.com', '/maps/search/', {'api': '1', 'query': content.address}),
-          ),
+          onTap: () => onLaunch(Uri.parse(content.googleMapsUrl)),
+        ),
+        SizedBox(height: AppSpacing.xs),
+        ContactLocationMap(
+          latitude: content.latitude,
+          longitude: content.longitude,
+          onTap: () => onLaunch(Uri.parse(content.googleMapsUrl)),
         ),
       ],
     );

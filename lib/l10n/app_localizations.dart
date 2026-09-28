@@ -1088,6 +1088,12 @@ abstract class AppLocalizations {
   /// **'Address'**
   String get contactInfoAddressLabel;
 
+  /// No description provided for @contactInfoOpenInMaps.
+  ///
+  /// In en, this message translates to:
+  /// **'Open location in Google Maps'**
+  String get contactInfoOpenInMaps;
+
   /// No description provided for @contactFormTitle.
   ///
   /// In en, this message translates to:

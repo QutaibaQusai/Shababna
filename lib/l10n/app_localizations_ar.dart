@@ -527,6 +527,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get contactInfoAddressLabel => 'العنوان';
 
   @override
+  String get contactInfoOpenInMaps => 'فتح الموقع في خرائط جوجل';
+
+  @override
   String get contactFormTitle => 'أرسل لنا رسالة';
 
   @override

@@ -183,6 +183,7 @@
   "contactInfoPhoneLabel": "رقم الهاتف",
   "contactInfoComplaintsPhoneLabel": "رقم هاتف الشكاوى",
   "contactInfoAddressLabel": "العنوان",
+  "contactInfoOpenInMaps": "فتح الموقع في خرائط جوجل",
   "contactFormTitle": "أرسل لنا رسالة",
   "contactFormSubtitle": "سنعاود التواصل معك في أقرب وقت ممكن",
   "fullNameLabel": "الاسم الكامل",

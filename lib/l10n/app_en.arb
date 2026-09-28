@@ -198,6 +198,7 @@
   "contactInfoPhoneLabel": "Phone",
   "contactInfoComplaintsPhoneLabel": "Complaints Phone",
   "contactInfoAddressLabel": "Address",
+  "contactInfoOpenInMaps": "Open location in Google Maps",
   "contactFormTitle": "Send us a message",
   "contactFormSubtitle": "We'll get back to you as soon as possible",
   "fullNameLabel": "Full Name",

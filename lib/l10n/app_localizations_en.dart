@@ -530,6 +530,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contactInfoAddressLabel => 'Address';
 
   @override
+  String get contactInfoOpenInMaps => 'Open location in Google Maps';
+
+  @override
   String get contactFormTitle => 'Send us a message';
 
   @override

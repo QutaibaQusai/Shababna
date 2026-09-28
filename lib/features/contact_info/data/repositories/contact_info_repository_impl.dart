@@ -20,6 +20,9 @@ class ContactInfoRepositoryImpl with RepositoryGuardMixin implements ContactInfo
         phoneNumber: response.phoneNumber,
         complaintsPhoneNumber: response.complaintsPhoneNumber,
         address: response.address,
+        latitude: response.latitude,
+        longitude: response.longitude,
+        googleMapsUrl: response.googleMapsUrl,
       );
     });
   }
