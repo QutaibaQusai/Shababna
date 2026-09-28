@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/config/app_share_links.dart';
 import '../../../../../core/di/service_locator.dart';
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../../core/shared/widgets/app_refresh_indicator.dart';
-import '../../../../../core/theme/app_sizes.dart';
-import '../../../../../core/theme/app_spacing.dart';
+import '../../../../../core/shared/widgets/share_icon_button.dart';
 import '../../cubit/news_details/news_details_cubit.dart';
 import '../../cubit/news_details/news_details_state.dart';
 import '../../widgets/news_details/news_details_content.dart';
 import '../../widgets/news_details/news_details_skeleton.dart';
-import '../../widgets/shared/news_back_button.dart';
 import '../../widgets/shared/news_fill_viewport.dart';
 
 class NewsDetailsPage extends StatelessWidget {
@@ -38,13 +39,13 @@ class _NewsDetailsView extends StatelessWidget {
     final article = state.article;
 
     return Scaffold(
-      appBar: article == null
-          ? AppBar(
-              automaticallyImplyLeading: false,
-              leading: const NewsBackButton(),
-              leadingWidth: AppSizes.iconButtonSize + AppSpacing.screenMargin,
-            )
-          : null,
+      appBar: AppAppBar(
+        title: context.l10n.navNews,
+        onBack: () => context.pop(),
+        actions: article == null
+            ? null
+            : [ShareIconButton(path: AppShareLinks.newsDetails(article.id))],
+      ),
       body: AppRefreshIndicator(
         onRefresh: cubit.load,
         child: article != null
