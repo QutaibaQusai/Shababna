@@ -42,9 +42,7 @@ class _NewsDetailsView extends StatelessWidget {
       appBar: AppAppBar(
         title: context.l10n.navNews,
         onBack: () => context.pop(),
-        actions: article == null
-            ? null
-            : [ShareIconButton(path: AppShareLinks.newsDetails(article.id))],
+        actions: [ShareIconButton(path: AppShareLinks.newsDetails(cubit.id))],
       ),
       body: AppRefreshIndicator(
         onRefresh: cubit.load,
