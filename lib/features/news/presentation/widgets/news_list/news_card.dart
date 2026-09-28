@@ -46,7 +46,7 @@ class NewsCard extends StatelessWidget {
                     SizedBox(height: AppSpacing.xxs),
                     Text(
                       article.summary(isArabic),
-                      maxLines: 2,
+                      maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: context.textTheme.bodySmall?.copyWith(
                         color: context.colorScheme.onSurfaceVariant,
