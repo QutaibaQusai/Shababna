@@ -19,7 +19,9 @@ class NewsListSkeleton extends StatelessWidget {
     summaryEn: 'More than two hundred volunteers spent the weekend restoring green areas together.',
     summaryAr: 'أمضى أكثر من مئتي متطوع عطلة نهاية الأسبوع في إعادة تأهيل المساحات الخضراء معاً.',
     date: DateTime(2026),
-    imageUrl: null,
+    imageUrl: '',
+    images: const [],
+    videos: const [],
   );
 
   @override

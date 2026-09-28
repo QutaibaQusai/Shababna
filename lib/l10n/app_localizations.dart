@@ -1340,6 +1340,18 @@ abstract class AppLocalizations {
   /// **'No news yet'**
   String get newsEmptyMessage;
 
+  /// No description provided for @newsHeaderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest news'**
+  String get newsHeaderTitle;
+
+  /// No description provided for @newsHeaderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay up to date with Shababna\'s volunteering stories and announcements'**
+  String get newsHeaderSubtitle;
+
   /// No description provided for @loadMoreFailedMessage.
   ///
   /// In en, this message translates to:
@@ -1405,6 +1417,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You\'ve reached the highest tier'**
   String get volunteerTierMaxReached;
+
+  /// No description provided for @mediaOpenVideo.
+  ///
+  /// In en, this message translates to:
+  /// **'Open video'**
+  String get mediaOpenVideo;
+
+  /// No description provided for @mediaPlayVideo.
+  ///
+  /// In en, this message translates to:
+  /// **'Play video'**
+  String get mediaPlayVideo;
+
+  /// No description provided for @mediaGalleryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos & videos'**
+  String get mediaGalleryTitle;
+
+  /// No description provided for @mediaPhotosCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 Photo} other{{count} Photos}}'**
+  String mediaPhotosCount(int count);
 }
 
 class _AppLocalizationsDelegate

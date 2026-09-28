@@ -4,6 +4,27 @@ import 'package:equatable/equatable.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/network/paged_result.dart';
 
+class NewsImage extends Equatable {
+  const NewsImage({required this.id, required this.url});
+
+  final String id;
+  final String url;
+
+  @override
+  List<Object?> get props => [id, url];
+}
+
+class NewsVideo extends Equatable {
+  const NewsVideo({required this.id, required this.url, required this.isExternal});
+
+  final String id;
+  final String url;
+  final bool isExternal;
+
+  @override
+  List<Object?> get props => [id, url, isExternal];
+}
+
 class NewsArticle extends Equatable {
   const NewsArticle({
     required this.id,
@@ -15,6 +36,8 @@ class NewsArticle extends Equatable {
     required this.summaryAr,
     required this.date,
     required this.imageUrl,
+    required this.images,
+    required this.videos,
   });
 
   final String id;
@@ -24,8 +47,10 @@ class NewsArticle extends Equatable {
   final String descriptionAr;
   final String summaryEn;
   final String summaryAr;
-  final DateTime? date;
-  final String? imageUrl;
+  final DateTime date;
+  final String imageUrl;
+  final List<NewsImage> images;
+  final List<NewsVideo> videos;
 
   String title(bool isArabic) => isArabic ? titleAr : titleEn;
 
@@ -34,7 +59,17 @@ class NewsArticle extends Equatable {
   String summary(bool isArabic) => isArabic ? summaryAr : summaryEn;
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [
+        id,
+        titleEn,
+        titleAr,
+        descriptionEn,
+        descriptionAr,
+        date,
+        imageUrl,
+        images,
+        videos,
+      ];
 }
 
 abstract interface class NewsRepository {

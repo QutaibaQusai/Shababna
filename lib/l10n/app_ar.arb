@@ -225,6 +225,8 @@
   "guestGateMessage": "أنشئ حساباً مجانياً أو سجّل الدخول لاستخدام هذه الميزة ومتابعة تطوعك.",
   "guestProfileTitle": "أهلاً بك في شبابنا",
   "newsEmptyMessage": "لا توجد أخبار حالياً",
+  "newsHeaderTitle": "آخر الأخبار",
+  "newsHeaderSubtitle": "تابع آخر قصص التطوع وإعلانات شبابنا",
   "loadMoreFailedMessage": "تعذّر تحميل المزيد",
   "deleteAccountSubtitle": "يؤسفنا رحيلك. يرجى قراءة ما سيحدث قبل المتابعة.",
   "deleteAccountReasonLabel": "لماذا تغادر؟ (اختياري)",
@@ -235,5 +237,9 @@
   "volunteerHoursCount": "{count, plural, =1{ساعة تطوع واحدة} =2{ساعتا تطوع} few{{hours} ساعات تطوع} other{{hours} ساعة تطوع}}",
   "volunteerHoursProgress": "ساعات التطوع: {current} / {target}",
   "volunteerTierToReach": "متبقية للوصول إلى {tier}",
-  "volunteerTierMaxReached": "لقد وصلت إلى أعلى مستوى"
+  "volunteerTierMaxReached": "لقد وصلت إلى أعلى مستوى",
+  "mediaOpenVideo": "فتح الفيديو",
+  "mediaPlayVideo": "تشغيل الفيديو",
+  "mediaGalleryTitle": "الصور والفيديوهات",
+  "mediaPhotosCount": "{count, plural, =1{صورة واحدة} =2{صورتان} few{{count} صور} other{{count} صورة}}"
 }

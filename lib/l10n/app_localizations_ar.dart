@@ -668,6 +668,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get newsEmptyMessage => 'لا توجد أخبار حالياً';
 
   @override
+  String get newsHeaderTitle => 'آخر الأخبار';
+
+  @override
+  String get newsHeaderSubtitle => 'تابع آخر قصص التطوع وإعلانات شبابنا';
+
+  @override
   String get loadMoreFailedMessage => 'تعذّر تحميل المزيد';
 
   @override
@@ -715,4 +721,26 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get volunteerTierMaxReached => 'لقد وصلت إلى أعلى مستوى';
+
+  @override
+  String get mediaOpenVideo => 'فتح الفيديو';
+
+  @override
+  String get mediaPlayVideo => 'تشغيل الفيديو';
+
+  @override
+  String get mediaGalleryTitle => 'الصور والفيديوهات';
+
+  @override
+  String mediaPhotosCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count صورة',
+      few: '$count صور',
+      two: 'صورتان',
+      one: 'صورة واحدة',
+    );
+    return '$_temp0';
+  }
 }

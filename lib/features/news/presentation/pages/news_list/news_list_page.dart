@@ -7,6 +7,7 @@ import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_empty_widget.dart';
 import '../../../../../core/shared/widgets/app_error_widget.dart';
+import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/shared/widgets/app_refresh_indicator.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../cubit/news_list/news_list_cubit.dart';
@@ -68,16 +69,24 @@ class _NewsListView extends StatelessWidget {
             child: ListView.separated(
               physics: const AlwaysScrollableScrollPhysics(),
               padding: EdgeInsets.all(AppSpacing.screenMargin),
-              itemCount: state.items.length + (state.hasNextPage ? 1 : 0),
-              separatorBuilder: (context, index) => SizedBox(height: AppSpacing.sm),
+              itemCount: state.items.length + 1 + (state.hasNextPage ? 1 : 0),
+              separatorBuilder: (context, index) =>
+                  SizedBox(height: index == 0 ? AppSpacing.md : AppSpacing.sm),
               itemBuilder: (context, index) {
-                if (index == state.items.length) {
+                if (index == 0) {
+                  return AppPageHeader(
+                    title: context.l10n.newsHeaderTitle,
+                    subtitle: context.l10n.newsHeaderSubtitle,
+                  );
+                }
+                final itemIndex = index - 1;
+                if (itemIndex == state.items.length) {
                   return NewsLoadMoreFooter(
                     failed: state.loadMoreFailed,
                     onRetry: cubit.retryLoadMore,
                   );
                 }
-                return NewsCard(article: state.items[index]);
+                return NewsCard(article: state.items[itemIndex]);
               },
             ),
           ),

@@ -11,6 +11,7 @@ import '../../cubit/news_details/news_details_cubit.dart';
 import '../../cubit/news_details/news_details_state.dart';
 import '../../widgets/news_details/news_details_content.dart';
 import '../../widgets/news_details/news_details_skeleton.dart';
+import '../../widgets/shared/news_back_button.dart';
 import '../../widgets/shared/news_fill_viewport.dart';
 
 class NewsDetailsPage extends StatelessWidget {

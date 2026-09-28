@@ -13,53 +13,60 @@ import '../shared/news_date_text.dart';
 class NewsCard extends StatelessWidget {
   const NewsCard({super.key, required this.article});
 
-  static const _imageAspectRatio = 16 / 9;
-
   final NewsArticle article;
 
   @override
   Widget build(BuildContext context) {
     final isArabic = context.isArabic;
+    final imageSize = AppSizes.listThumbnailSize;
 
     return Material(
-      color: context.colorScheme.surface,
-      borderRadius: AppRadius.lgRadius,
-      clipBehavior: Clip.antiAlias,
+      type: MaterialType.transparency,
       child: InkWell(
         onTap: () => context.push(AppRoutes.newsDetailsPath(article.id)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            AspectRatio(
-              aspectRatio: _imageAspectRatio,
-              child: AppNetworkImage(url: article.imageUrl, size: AppSizes.iconLg * 2),
-            ),
-            Padding(
-              padding: EdgeInsets.all(AppSpacing.sm),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  NewsDateText(date: article.date),
-                  SizedBox(height: AppSpacing.xs),
-                  Text(
-                    article.title(isArabic),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: context.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: AppSpacing.xxs),
-                  Text(
-                    article.summary(isArabic),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: context.textTheme.bodyMedium?.copyWith(
-                      color: context.colorScheme.onSurfaceVariant,
+        borderRadius: AppRadius.lgRadius,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: AppSpacing.xs),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      article.title(isArabic),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: context.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        height: 1.3,
+                      ),
                     ),
-                  ),
-                ],
+                    SizedBox(height: AppSpacing.xxs),
+                    Text(
+                      article.summary(isArabic),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: context.textTheme.bodySmall?.copyWith(
+                        color: context.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                    SizedBox(height: AppSpacing.xs),
+                    NewsDateText(date: article.date),
+                  ],
+                ),
               ),
-            ),
-          ],
+              SizedBox(width: AppSpacing.sm),
+              ClipRRect(
+                borderRadius: AppRadius.xlRadius,
+                child: SizedBox.square(
+                  dimension: imageSize,
+                  child: AppNetworkImage(url: article.imageUrl, size: imageSize / 2),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

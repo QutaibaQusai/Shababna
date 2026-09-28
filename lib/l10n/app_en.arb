@@ -255,6 +255,8 @@
   "guestGateMessage": "Create a free account or sign in to use this feature and keep track of your volunteering.",
   "guestProfileTitle": "Welcome to Shababna",
   "newsEmptyMessage": "No news yet",
+  "newsHeaderTitle": "Latest news",
+  "newsHeaderSubtitle": "Stay up to date with Shababna's volunteering stories and announcements",
   "loadMoreFailedMessage": "Couldn't load more",
   "deleteAccountSubtitle": "We are sorry to see you go. Please read what happens before you continue.",
   "deleteAccountReasonLabel": "Why are you leaving? (optional)",
@@ -274,5 +276,12 @@
   "@volunteerTierToReach": {
     "placeholders": { "tier": { "type": "String" } }
   },
-  "volunteerTierMaxReached": "You've reached the highest tier"
+  "volunteerTierMaxReached": "You've reached the highest tier",
+  "mediaOpenVideo": "Open video",
+  "mediaPlayVideo": "Play video",
+  "mediaGalleryTitle": "Photos & videos",
+  "mediaPhotosCount": "{count, plural, =1{1 Photo} other{{count} Photos}}",
+  "@mediaPhotosCount": {
+    "placeholders": { "count": { "type": "int" } }
+  }
 }

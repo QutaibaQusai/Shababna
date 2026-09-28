@@ -12,8 +12,20 @@ extension NewsModelMapper on NewsModel {
       descriptionAr: descriptionAr,
       summaryEn: _plainText(descriptionEn),
       summaryAr: _plainText(descriptionAr),
-      date: date == null ? null : DateTime.tryParse(date!),
+      date: DateTime.parse(date),
       imageUrl: _absoluteUrl(imageUrl),
+      images: images
+          .map((image) => NewsImage(id: image.id, url: _absoluteUrl(image.url)))
+          .toList(),
+      videos: videos
+          .map(
+            (video) => NewsVideo(
+              id: video.id,
+              url: video.isExternal ? video.url : _absoluteUrl(video.url),
+              isExternal: video.isExternal,
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -29,10 +41,8 @@ extension NewsModelMapper on NewsModel {
     '&gt;': '>',
   };
 
-  String? _absoluteUrl(String? path) {
-    if (path == null || path.isEmpty) return null;
-    return path.startsWith('http') ? path : '${AppConfig.baseUrl}$path';
-  }
+  String _absoluteUrl(String path) =>
+      path.startsWith('http') ? path : '${AppConfig.baseUrl}$path';
 
   String _plainText(String html) {
     var text = html.replaceAll(_tags, ' ');

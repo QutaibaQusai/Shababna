@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:go_router/go_router.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/config/app_share_links.dart';
 import '../../../../../core/extensions/context_extensions.dart';
-import '../../../../../core/shared/widgets/app_icon_button.dart';
+import '../../../../../core/shared/views/media_viewer/show_media_browser.dart';
 import '../../../../../core/shared/widgets/app_network_image.dart';
 import '../../../../../core/shared/widgets/share_icon_button.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/news_repository.dart';
+import '../../mappers/news_gallery_mapper.dart';
+import '../shared/news_back_button.dart';
 import '../shared/news_date_text.dart';
 
 class NewsDetailsContent extends StatefulWidget {
@@ -60,6 +60,7 @@ class _NewsDetailsContentState extends State<NewsDetailsContent> {
   Widget build(BuildContext context) {
     final article = widget.article;
     final isArabic = context.isArabic;
+    final media = article.media;
 
     return CustomScrollView(
       controller: _scrollController,
@@ -81,7 +82,10 @@ class _NewsDetailsContentState extends State<NewsDetailsContent> {
           ],
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.parallax,
-            background: AppNetworkImage(url: article.imageUrl, size: AppSizes.iconLg * 2),
+            background: GestureDetector(
+              onTap: () => showMediaBrowser(context, media: media),
+              child: AppNetworkImage(url: article.imageUrl, size: AppSizes.iconLg * 2),
+            ),
           ),
         ),
         SliverPadding(
@@ -114,23 +118,6 @@ class _NewsDetailsContentState extends State<NewsDetailsContent> {
           ),
         ),
       ],
-    );
-  }
-}
-
-class NewsBackButton extends StatelessWidget {
-  const NewsBackButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsetsDirectional.only(start: AppSpacing.screenMargin),
-      child: Center(
-        child: AppIconButton(
-          icon: context.isRTL ? LucideIcons.chevronRight : LucideIcons.chevronLeft,
-          onPressed: () => context.pop(),
-        ),
-      ),
     );
   }
 }

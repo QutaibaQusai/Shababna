@@ -675,6 +675,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newsEmptyMessage => 'No news yet';
 
   @override
+  String get newsHeaderTitle => 'Latest news';
+
+  @override
+  String get newsHeaderSubtitle =>
+      'Stay up to date with Shababna\'s volunteering stories and announcements';
+
+  @override
   String get loadMoreFailedMessage => 'Couldn\'t load more';
 
   @override
@@ -720,4 +727,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get volunteerTierMaxReached => 'You\'ve reached the highest tier';
+
+  @override
+  String get mediaOpenVideo => 'Open video';
+
+  @override
+  String get mediaPlayVideo => 'Play video';
+
+  @override
+  String get mediaGalleryTitle => 'Photos & videos';
+
+  @override
+  String mediaPhotosCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Photos',
+      one: '1 Photo',
+    );
+    return '$_temp0';
+  }
 }
