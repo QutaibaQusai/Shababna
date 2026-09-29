@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/widgets.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 
+import '../../config/app_assets.dart';
 import '../../extensions/context_extensions.dart';
 
 class AppNetworkImage extends StatelessWidget {
@@ -14,7 +14,7 @@ class AppNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final url = this.url;
-    if (url == null) return _fallback(context);
+    if (url == null || url.isEmpty) return _fallback(context);
 
     return CachedNetworkImage(
       imageUrl: url,
@@ -27,10 +27,13 @@ class AppNetworkImage extends StatelessWidget {
   Widget _fallback(BuildContext context) {
     return ColoredBox(
       color: context.colorScheme.surface,
-      child: Icon(
-        LucideIcons.image,
-        size: size / 2,
-        color: context.colorScheme.onSurfaceVariant,
+      child: Center(
+        child: Image.asset(
+          AppAssets.logoPlaceholder,
+          width: size,
+          height: size,
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }

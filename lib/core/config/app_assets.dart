@@ -6,6 +6,7 @@ class AppAssets {
   static const String logo = 'assets/images/logo.png';
   static const String logoLight = 'assets/images/logo_splash.png';
   static const String logoIcon = 'assets/images/logo_icon.png';
+  static const String logoPlaceholder = 'assets/images/logo_placeholder.png';
 
   static String logoFor(Brightness brightness) =>
       brightness == Brightness.dark ? logoLight : logo;
