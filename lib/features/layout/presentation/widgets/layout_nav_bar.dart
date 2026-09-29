@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 
+import '../../../../core/config/app_assets.dart';
 import '../../../../core/extensions/context_extensions.dart';
-import '../../../../core/shared/widgets/app_svg_icon.dart';
+import '../../../../core/routes/app_routes.dart';
+import '../../../../core/theme/app_radius.dart';
+import '../../../../core/theme/app_sizes.dart';
+import '../../../../core/theme/app_spacing.dart';
 import '../cubit/layout_cubit.dart';
 import '../cubit/layout_tab.dart';
 
@@ -11,20 +18,171 @@ class LayoutNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selected = context.watch<LayoutCubit>().state;
-    final l10n = context.l10n;
+    return SafeArea(
+      top: false,
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(
+          AppSpacing.screenMargin,
+          AppSpacing.xs,
+          AppSpacing.screenMargin,
+          AppSpacing.xs,
+        ),
+        child: const Row(
+          children: [
+            _TabsPill(),
+            Spacer(),
+            _AssistantButton(),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
-    return NavigationBar(
-      selectedIndex: selected.index,
-      onDestinationSelected: (index) =>
-          context.read<LayoutCubit>().goTo(LayoutTab.values[index]),
-      destinations: [
-        for (final tab in LayoutTab.values)
-          NavigationDestination(
-            icon: AppSvgIcon(asset: tab.iconAsset),
-            label: tab.label(l10n),
+class _TabsPill extends StatelessWidget {
+  const _TabsPill();
+
+  @override
+  Widget build(BuildContext context) {
+    final selected = context.watch<LayoutCubit>().state;
+    final colors = context.colorScheme;
+
+    return Container(
+      height: AppSizes.navBarHeight,
+      padding: EdgeInsets.all(AppSpacing.xxs),
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: AppRadius.pillRadius,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          for (final tab in LayoutTab.values) _TabItem(tab: tab, isSelected: tab == selected),
+        ],
+      ),
+    );
+  }
+}
+
+class _TabItem extends StatelessWidget {
+  const _TabItem({required this.tab, required this.isSelected});
+
+  static const _duration = Duration(milliseconds: 200);
+
+  final LayoutTab tab;
+  final bool isSelected;
+
+  void _select(BuildContext context) {
+    if (isSelected) return;
+    HapticFeedback.selectionClick();
+    context.read<LayoutCubit>().goTo(tab);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colorScheme;
+    final label = tab.label(context.l10n);
+    final size = AppSizes.navItemSize;
+
+    return Semantics(
+      button: true,
+      selected: isSelected,
+      label: label,
+      child: Tooltip(
+        message: label,
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () => _select(context),
+          child: AnimatedContainer(
+            duration: _duration,
+            curve: Curves.easeOut,
+            width: size,
+            height: size,
+            decoration: BoxDecoration(
+              color: isSelected ? colors.primary : Colors.transparent,
+              shape: BoxShape.circle,
+            ),
+            child: Center(
+              child: Icon(
+                tab.icon,
+                size: AppSizes.iconMd,
+                color: isSelected ? colors.onPrimary : colors.onSurface,
+              ),
+            ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _AssistantButton extends StatelessWidget {
+  const _AssistantButton();
+
+  static const _animationScale = 1.0;
+  static const _accentLightness = 0.62;
+  static const _shadowLayer = 'Layer 1 Outlines';
+
+  LottieDelegates _delegates(ColorScheme colors) {
+    final accent = Color.lerp(colors.primary, Colors.white, _accentLightness)!;
+
+    return LottieDelegates(
+      values: [
+        ValueDelegate.color(
+          const ['**'],
+          callback: (frame) {
+            final original = frame.startValue;
+            if (original == null) return accent;
+            return _isCyan(original) ? accent : original;
+          },
+        ),
+        ValueDelegate.transformOpacity(const [_shadowLayer], value: 0),
       ],
+    );
+  }
+
+  static bool _isCyan(Color color) => color.r < 0.3 && color.g > 0.7 && color.b > 0.9;
+
+  void _open(BuildContext context) {
+    HapticFeedback.selectionClick();
+    context.push(AppRoutes.assistant);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colorScheme;
+    final label = context.l10n.assistantTitle;
+    final size = AppSizes.navBarHeight;
+
+    return Semantics(
+      button: true,
+      label: label,
+      child: Tooltip(
+        message: label,
+        child: Material(
+          color: colors.primary,
+          shape: const CircleBorder(),
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: () => _open(context),
+            child: SizedBox.square(
+              dimension: size,
+              child: OverflowBox(
+                maxWidth: size * _animationScale,
+                maxHeight: size * _animationScale,
+                child: Lottie.asset(
+                  AppAssets.assistantAnimation,
+                  width: size * _animationScale,
+                  height: size * _animationScale,
+                  fit: BoxFit.contain,
+                  frameRate: FrameRate.max,
+                  delegates: _delegates(colors),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

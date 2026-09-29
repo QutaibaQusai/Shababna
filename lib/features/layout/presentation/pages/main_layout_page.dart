@@ -41,6 +41,7 @@ class _MainLayoutView extends StatelessWidget {
         if (!didPop) context.read<LayoutCubit>().goTo(LayoutTab.home);
       },
       child: Scaffold(
+        extendBody: true,
         appBar: const LayoutAppBar(),
         body: LazyIndexedStack(
           index: tab.index,

@@ -119,6 +119,7 @@ class _ProfileViewState extends State<_ProfileView> {
         onRefresh: _refreshIfMember,
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
+          padding: EdgeInsets.only(bottom: MediaQuery.paddingOf(context).bottom),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -140,11 +141,6 @@ class _ProfileViewState extends State<_ProfileView> {
                 icon: LucideIcons.newspaper,
                 title: context.l10n.navNews,
                 onTap: () => context.push(AppRoutes.news),
-              ),
-              AppMenuTile(
-                icon: LucideIcons.botMessageSquare,
-                title: context.l10n.assistantTitle,
-                onTap: () => context.push(AppRoutes.assistant),
               ),
               AppMenuTile(
                 icon: LucideIcons.languages,

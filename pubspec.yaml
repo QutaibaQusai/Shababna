@@ -43,6 +43,7 @@ dependencies:
   chewie: ^1.13.0
   flutter_chat_ui: ^2.12.0
   flutter_chat_core: ^2.9.1
+  lottie: ^3.6.1
 
 dependency_overrides:
   html: 0.15.6
@@ -61,6 +62,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/animations/
     - packages/flutter_undraw/assets/undraw/empty.svg
     - packages/flutter_undraw/assets/undraw/warning.svg
     - packages/flutter_undraw/assets/undraw/secure_login.svg

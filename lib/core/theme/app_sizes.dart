@@ -8,6 +8,8 @@ class AppSizes {
 
   static double get buttonHeight => 44.h;
   static double get bottomNavHeight => 64.h;
+  static double get navBarHeight => 56.r;
+  static double get navItemSize => 48.r;
   static double get toastHeight => 48.h;
   static double get iconButtonSize => 40.r;
   static double get loadingIndicatorSize => 72.r;

@@ -1,14 +1,16 @@
-import '../../../../core/config/app_assets.dart';
+import 'package:flutter/widgets.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
+
 import '../../../../l10n/app_localizations.dart';
 
 enum LayoutTab {
-  home(AppAssets.iconHome),
-  events(AppAssets.iconCalendar),
-  profile(AppAssets.iconProfile);
+  home(LucideIcons.house),
+  events(LucideIcons.calendarDays),
+  profile(LucideIcons.userRound);
 
-  const LayoutTab(this.iconAsset);
+  const LayoutTab(this.icon);
 
-  final String iconAsset;
+  final IconData icon;
 
   bool get hasSearch => this != profile;
 
