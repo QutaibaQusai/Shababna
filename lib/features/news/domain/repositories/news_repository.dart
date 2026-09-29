@@ -72,8 +72,35 @@ class NewsArticle extends Equatable {
       ];
 }
 
+class NewsSearchResult extends Equatable {
+  const NewsSearchResult({
+    required this.id,
+    required this.titleEn,
+    required this.titleAr,
+    required this.date,
+    required this.imageUrl,
+  });
+
+  final String id;
+  final String titleEn;
+  final String titleAr;
+  final DateTime date;
+  final String imageUrl;
+
+  String title(bool isArabic) => isArabic ? titleAr : titleEn;
+
+  @override
+  List<Object?> get props => [id, titleEn, titleAr, date, imageUrl];
+}
+
 abstract interface class NewsRepository {
   Future<Either<Failure, PagedResult<NewsArticle>>> getNews({
+    required int page,
+    required int pageSize,
+  });
+
+  Future<Either<Failure, PagedResult<NewsSearchResult>>> searchNews({
+    required String query,
     required int page,
     required int pageSize,
   });

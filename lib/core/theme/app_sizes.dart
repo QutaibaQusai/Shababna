@@ -18,6 +18,7 @@ class AppSizes {
   static double get illustrationSizeCompact => 110.r;
   static double get brandLogoHeight => 150.r;
   static double get listThumbnailSize => 104.r;
+  static double get compactThumbnailSize => 64.r;
   static double get tierBadgeSize => 32.r;
   static double get tierBadgeSizeSmall => 26.r;
   static double get progressBarHeight => 12.r;

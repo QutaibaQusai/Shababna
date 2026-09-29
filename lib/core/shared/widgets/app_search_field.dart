@@ -12,17 +12,21 @@ class AppSearchField extends StatelessWidget {
     this.hint,
     this.controller,
     required this.onChanged,
+    this.autofocus = false,
   });
 
   final String? hint;
   final TextEditingController? controller;
   final ValueChanged<String> onChanged;
+  final bool autofocus;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
       onChanged: onChanged,
+      autofocus: autofocus,
+      textInputAction: TextInputAction.search,
       style: context.textTheme.bodyLarge,
       decoration: InputDecoration(
         hintText: hint,

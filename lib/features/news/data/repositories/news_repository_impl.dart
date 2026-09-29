@@ -30,6 +30,28 @@ class NewsRepositoryImpl with RepositoryGuardMixin implements NewsRepository {
   }
 
   @override
+  Future<Either<Failure, PagedResult<NewsSearchResult>>> searchNews({
+    required String query,
+    required int page,
+    required int pageSize,
+  }) {
+    return guard(() async {
+      final response = await _remoteDataSource.searchNews(
+        query: query,
+        page: page,
+        pageSize: pageSize,
+      );
+      return PagedResult(
+        items: response.items.map((item) => item.toEntity()).toList(),
+        page: response.page,
+        pageSize: response.pageSize,
+        totalCount: response.totalCount,
+        hasNextPage: response.hasNextPage,
+      );
+    });
+  }
+
+  @override
   Future<Either<Failure, NewsArticle>> getNewsById(String id) {
     return guard(() async {
       final response = await _remoteDataSource.getNewsById(id);

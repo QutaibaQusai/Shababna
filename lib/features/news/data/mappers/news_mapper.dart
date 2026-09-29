@@ -1,6 +1,7 @@
 import '../../../../core/config/app_config.dart';
 import '../../domain/repositories/news_repository.dart';
 import '../models/news_model.dart';
+import '../models/news_search_item_model.dart';
 
 extension NewsModelMapper on NewsModel {
   NewsArticle toEntity() {
@@ -41,8 +42,7 @@ extension NewsModelMapper on NewsModel {
     '&gt;': '>',
   };
 
-  String _absoluteUrl(String path) =>
-      path.startsWith('http') ? path : '${AppConfig.baseUrl}$path';
+  String _absoluteUrl(String path) => _toAbsoluteUrl(path);
 
   String _plainText(String html) {
     var text = html.replaceAll(_tags, ' ');
@@ -50,3 +50,18 @@ extension NewsModelMapper on NewsModel {
     return text.replaceAll(_whitespace, ' ').trim();
   }
 }
+
+extension NewsSearchItemModelMapper on NewsSearchItemModel {
+  NewsSearchResult toEntity() {
+    return NewsSearchResult(
+      id: id,
+      titleEn: titleEn,
+      titleAr: titleAr,
+      date: DateTime.parse(date),
+      imageUrl: _toAbsoluteUrl(imageUrl),
+    );
+  }
+}
+
+String _toAbsoluteUrl(String path) =>
+    path.startsWith('http') ? path : '${AppConfig.baseUrl}$path';

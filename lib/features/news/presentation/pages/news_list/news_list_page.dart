@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/di/service_locator.dart';
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_empty_widget.dart';
 import '../../../../../core/shared/widgets/app_error_widget.dart';
@@ -24,6 +26,16 @@ class NewsListPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppAppBar(title: context.l10n.navNews, onBack: () => context.pop()),
         body: const SafeArea(top: false, child: _NewsListView()),
+        floatingActionButton: FloatingActionButton(
+          tooltip: context.l10n.newsSearchTitle,
+          shape: const CircleBorder(),
+          elevation: 0,
+          focusElevation: 0,
+          hoverElevation: 0,
+          highlightElevation: 0,
+          onPressed: () => context.push(AppRoutes.newsSearch),
+          child: const Icon(LucideIcons.search),
+        ),
       ),
     );
   }

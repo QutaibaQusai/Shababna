@@ -14,6 +14,7 @@ import '../../features/layout/presentation/pages/main_layout_page.dart';
 import '../../features/legal/presentation/pages/legal_content_page.dart';
 import '../../features/news/presentation/pages/news_details/news_details_page.dart';
 import '../../features/news/presentation/pages/news_list/news_list_page.dart';
+import '../../features/news/presentation/pages/news_search/news_search_page.dart';
 import '../../features/profile/presentation/pages/account_security/account_security_page.dart';
 import '../../features/profile/presentation/pages/change_email/change_email_page.dart';
 import '../../features/profile/presentation/pages/change_email/verify_email_change_page.dart';
@@ -111,6 +112,11 @@ class AppRouter {
           path: AppRoutes.news,
           name: AppRoutes.newsName,
           builder: (context, state) => const NewsListPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.newsSearch,
+          name: AppRoutes.newsSearchName,
+          builder: (context, state) => const NewsSearchPage(),
         ),
         GoRoute(
           path: AppRoutes.newsDetails,

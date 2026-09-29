@@ -42,5 +42,6 @@ class EndPoints {
   static const String deleteAccount = '/api/v1/profile/delete-account';
 
   static const String news = '/api/v1/news';
+  static const String newsSearch = '$news/search';
   static String newsById(String id) => '$news/$id';
 }

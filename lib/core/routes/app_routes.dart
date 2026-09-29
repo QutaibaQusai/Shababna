@@ -63,6 +63,9 @@ class AppRoutes {
   static const String news = '/news';
   static const String newsName = 'news';
 
+  static const String newsSearch = '/news/search';
+  static const String newsSearchName = 'news-search';
+
   static const String newsDetails = '/news/:id';
   static const String newsDetailsName = 'news-details';
   static String newsDetailsPath(String id) => '/news/$id';

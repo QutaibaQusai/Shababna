@@ -253,6 +253,13 @@
   "newsEmptyMessage": "No news yet",
   "newsHeaderTitle": "Latest news",
   "newsHeaderSubtitle": "Stay up to date with Shababna's volunteering stories and announcements",
+  "newsSearchTitle": "Search news",
+  "newsSearchHint": "Search by title or topic",
+  "newsSearchIdleMessage": "Type at least 2 letters to search news",
+  "newsSearchEmptyMessage": "No news found for “{query}”",
+  "@newsSearchEmptyMessage": {
+    "placeholders": { "query": { "type": "String" } }
+  },
   "loadMoreFailedMessage": "Couldn't load more",
   "deleteAccountSubtitle": "We are sorry to see you go. Please read what happens before you continue.",
   "deleteAccountReasonLabel": "Why are you leaving? (optional)",

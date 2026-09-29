@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -42,16 +43,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get changePhoneNumberTitle => 'Change Phone Number';
 
   @override
-  String get changePhoneNumberSubtitle => 'Enter the number you want to use for your account';
+  String get changePhoneNumberSubtitle =>
+      'Enter the number you want to use for your account';
 
   @override
-  String get changePhoneNumberSuccessMessage => 'Phone number updated successfully';
+  String get changePhoneNumberSuccessMessage =>
+      'Phone number updated successfully';
 
   @override
   String get changeEmailTitle => 'Change Email';
 
   @override
-  String get changeEmailSubtitle => 'Enter your current password and the new email address';
+  String get changeEmailSubtitle =>
+      'Enter your current password and the new email address';
 
   @override
   String get changeEmailSuccessMessage => 'Email updated successfully';
@@ -66,7 +70,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profilePictureLabel => 'Profile Picture';
 
   @override
-  String get editProfilePictureSuccessMessage => 'Profile picture updated successfully';
+  String get editProfilePictureSuccessMessage =>
+      'Profile picture updated successfully';
 
   @override
   String get choosePhotoButton => 'Choose Photo';
@@ -90,7 +95,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get removeCvButton => 'Remove CV';
 
   @override
-  String get editNationalIdSuccessMessage => 'National ID picture updated successfully';
+  String get editNationalIdSuccessMessage =>
+      'National ID picture updated successfully';
 
   @override
   String get navHome => 'Home';
@@ -120,19 +126,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileMenuNotifications => 'Notifications';
 
   @override
-  String get profileMenuNotificationsSubtitle => 'Manage notifications and general app updates.';
+  String get profileMenuNotificationsSubtitle =>
+      'Manage notifications and general app updates.';
 
   @override
   String get profileMenuAccountSecurity => 'Account Security';
 
   @override
-  String get accountSecuritySubtitle => 'Manage your password and account protection';
+  String get accountSecuritySubtitle =>
+      'Manage your password and account protection';
 
   @override
   String get changePasswordTitle => 'Change Password';
 
   @override
-  String get changePasswordSubtitle => 'Choose a strong password to keep your account secure';
+  String get changePasswordSubtitle =>
+      'Choose a strong password to keep your account secure';
 
   @override
   String get currentPasswordLabel => 'Current password';
@@ -291,7 +300,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get isAvailableToVolunteerLabel => 'Available to volunteer';
 
   @override
-  String get willSignVolunteerServiceAgreementLabel => 'Will sign volunteer service agreement';
+  String get willSignVolunteerServiceAgreementLabel =>
+      'Will sign volunteer service agreement';
 
   @override
   String get willProvideNccLabel => 'Will provide non-criminal certificate';
@@ -327,7 +337,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginTitle => 'Welcome to Shababna';
 
   @override
-  String get loginSubtitle => 'Discover volunteering opportunities, track your impact, and earn certificates for every contribution.';
+  String get loginSubtitle =>
+      'Discover volunteering opportunities, track your impact, and earn certificates for every contribution.';
 
   @override
   String get emailLabel => 'Email';
@@ -369,7 +380,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stepContactTitle => 'Contact details';
 
   @override
-  String get stepContactSubtitle => 'We\'ll use this to verify your account and keep you updated';
+  String get stepContactSubtitle =>
+      'We\'ll use this to verify your account and keep you updated';
 
   @override
   String get phoneNumberLabel => 'Phone number';
@@ -378,7 +390,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stepPasswordTitle => 'Set a password';
 
   @override
-  String get stepPasswordSubtitle => 'Choose a strong password to secure your account';
+  String get stepPasswordSubtitle =>
+      'Choose a strong password to secure your account';
 
   @override
   String get confirmPasswordLabel => 'Confirm password';
@@ -416,7 +429,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resendCodeButton => 'Resend code';
 
   @override
-  String get registrationCompleteMessage => 'Account created. You can now log in.';
+  String get registrationCompleteMessage =>
+      'Account created. You can now log in.';
 
   @override
   String get accountRecoveryTitle => 'Account recovery';
@@ -425,7 +439,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgotPasswordTitle => 'Forgot your password?';
 
   @override
-  String get forgotPasswordSubtitle => 'Enter your email and we\'ll send you a code to reset your password';
+  String get forgotPasswordSubtitle =>
+      'Enter your email and we\'ll send you a code to reset your password';
 
   @override
   String get sendCodeButton => 'Send code';
@@ -459,7 +474,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetPasswordButton => 'Reset password';
 
   @override
-  String get passwordResetSuccessMessage => 'Password reset. You can now log in.';
+  String get passwordResetSuccessMessage =>
+      'Password reset. You can now log in.';
 
   @override
   String get fieldRequiredError => 'This field is required';
@@ -508,7 +524,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contactFormTitle => 'Send us a message';
 
   @override
-  String get contactFormSubtitle => 'We\'ll get back to you as soon as possible';
+  String get contactFormSubtitle =>
+      'We\'ll get back to you as soon as possible';
 
   @override
   String get fullNameLabel => 'Full Name';
@@ -523,13 +540,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contactSendButton => 'Send';
 
   @override
-  String get contactSubmitSuccessMessage => 'Your message has been sent. We\'ll be in touch soon.';
+  String get contactSubmitSuccessMessage =>
+      'Your message has been sent. We\'ll be in touch soon.';
 
   @override
   String get discardChangesTitle => 'Discard changes?';
 
   @override
-  String get discardChangesMessage => 'You have unsaved changes. If you leave now, they will be lost.';
+  String get discardChangesMessage =>
+      'You have unsaved changes. If you leave now, they will be lost.';
 
   @override
   String get discardButton => 'Discard';
@@ -563,7 +582,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get currentEmailLabel => 'Current email';
 
   @override
-  String get newEmailSameAsCurrentError => 'New email must be different from your current email';
+  String get newEmailSameAsCurrentError =>
+      'New email must be different from your current email';
 
   @override
   String profileVerifyEmailSubtitle(String email) {
@@ -580,7 +600,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileResendEmailButton => 'Send a new code';
 
   @override
-  String get profileEmailCodeResentMessage => 'A new code was sent to your new email';
+  String get profileEmailCodeResentMessage =>
+      'A new code was sent to your new email';
 
   @override
   String profileInvalidEmailCodeError(int length) {
@@ -594,7 +615,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get removePhotoConfirmTitle => 'Remove profile picture?';
 
   @override
-  String get removePhotoConfirmMessage => 'Your profile picture will be deleted.';
+  String get removePhotoConfirmMessage =>
+      'Your profile picture will be deleted.';
 
   @override
   String get cvRemovedMessage => 'CV removed';
@@ -603,7 +625,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get removeCvConfirmTitle => 'Remove CV?';
 
   @override
-  String get removeCvConfirmMessage => 'Your CV will be deleted from your profile.';
+  String get removeCvConfirmMessage =>
+      'Your CV will be deleted from your profile.';
 
   @override
   String cvFormatsHint(int size) {
@@ -617,7 +640,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get removeNationalIdConfirmTitle => 'Remove National ID picture?';
 
   @override
-  String get removeNationalIdConfirmMessage => 'Your National ID picture will be deleted.';
+  String get removeNationalIdConfirmMessage =>
+      'Your National ID picture will be deleted.';
 
   @override
   String get removeNationalIdButton => 'Remove National ID';
@@ -629,7 +653,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get guestGateTitle => 'Sign in to continue';
 
   @override
-  String get guestGateMessage => 'Create a free account or sign in to use this feature and keep track of your volunteering.';
+  String get guestGateMessage =>
+      'Create a free account or sign in to use this feature and keep track of your volunteering.';
 
   @override
   String get guestProfileTitle => 'Welcome to Shababna';
@@ -641,13 +666,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newsHeaderTitle => 'Latest news';
 
   @override
-  String get newsHeaderSubtitle => 'Stay up to date with Shababna\'s volunteering stories and announcements';
+  String get newsHeaderSubtitle =>
+      'Stay up to date with Shababna\'s volunteering stories and announcements';
+
+  @override
+  String get newsSearchTitle => 'Search news';
+
+  @override
+  String get newsSearchHint => 'Search by title or topic';
+
+  @override
+  String get newsSearchIdleMessage => 'Type at least 2 letters to search news';
+
+  @override
+  String newsSearchEmptyMessage(String query) {
+    return 'No news found for “$query”';
+  }
 
   @override
   String get loadMoreFailedMessage => 'Couldn\'t load more';
 
   @override
-  String get deleteAccountSubtitle => 'We are sorry to see you go. Please read what happens before you continue.';
+  String get deleteAccountSubtitle =>
+      'We are sorry to see you go. Please read what happens before you continue.';
 
   @override
   String get deleteAccountReasonLabel => 'Why are you leaving? (optional)';
@@ -659,7 +700,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deleteAccountConfirmTitle => 'Delete your account?';
 
   @override
-  String get deleteAccountConfirmMessage => 'This can\'t be undone. You will be signed out immediately.';
+  String get deleteAccountConfirmMessage =>
+      'This can\'t be undone. You will be signed out immediately.';
 
   @override
   String get deleteAccountSuccessMessage => 'Your account has been deleted';

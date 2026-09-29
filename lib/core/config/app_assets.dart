@@ -16,4 +16,6 @@ class AppAssets {
   static const String iconProfile = 'assets/images/icon_profile.svg';
   static const String iconNotification =
       'assets/images/icon_notification_2.svg';
+
+  static const String illustrationSearch = 'assets/images/illustration_search.svg';
 }
