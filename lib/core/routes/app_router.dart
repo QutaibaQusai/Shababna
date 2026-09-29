@@ -12,6 +12,7 @@ import '../../features/contact_form/presentation/pages/contact_form_page.dart';
 import '../../features/contact_info/presentation/pages/contact_info_page.dart';
 import '../../features/layout/presentation/pages/main_layout_page.dart';
 import '../../features/legal/presentation/pages/legal_content_page.dart';
+import '../../features/chatbot/presentation/pages/chatbot_page.dart';
 import '../../features/news/presentation/pages/news_details/news_details_page.dart';
 import '../../features/news/presentation/pages/news_list/news_list_page.dart';
 import '../../features/news/presentation/pages/news_search/news_search_page.dart';
@@ -112,6 +113,11 @@ class AppRouter {
           path: AppRoutes.news,
           name: AppRoutes.newsName,
           builder: (context, state) => const NewsListPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.assistant,
+          name: AppRoutes.assistantName,
+          builder: (context, state) => const ChatbotPage(),
         ),
         GoRoute(
           path: AppRoutes.newsSearch,

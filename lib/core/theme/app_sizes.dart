@@ -19,6 +19,10 @@ class AppSizes {
   static double get brandLogoHeight => 150.r;
   static double get listThumbnailSize => 104.r;
   static double get compactThumbnailSize => 64.r;
+  static double get chatAvatarSize => 28.r;
+  static double get chatWelcomeLogoSize => 72.r;
+  static double get chatTopicIconSize => 36.r;
+  static double get chatMediaHeight => 168.r;
   static double get tierBadgeSize => 32.r;
   static double get tierBadgeSizeSmall => 26.r;
   static double get progressBarHeight => 12.r;

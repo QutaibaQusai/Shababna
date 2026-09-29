@@ -745,4 +745,75 @@ class AppLocalizationsAr extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get assistantTitle => 'مساعد شبابنا';
+
+  @override
+  String get assistantBotName => 'شبابنا';
+
+  @override
+  String get assistantYou => 'أنت';
+
+  @override
+  String get assistantWelcomeTitle => 'أهلاً! كيف يمكنني مساعدتك اليوم؟';
+
+  @override
+  String get assistantWelcomeSubtitle =>
+      'اسألني عن التطوع والصحة والتغذية، أو اختر موضوعاً للبدء.';
+
+  @override
+  String get assistantTopicsLabel => 'مواضيع شائعة';
+
+  @override
+  String get assistantComposerHint => 'اسألني أي شيء…';
+
+  @override
+  String assistantTopicQuestions(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count سؤالاً',
+      few: '$count أسئلة',
+      two: 'سؤالان',
+      one: 'سؤال واحد',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String assistantTopicIntro(String topic) {
+    return 'إليك أكثر الأسئلة شيوعاً عن $topic. اختر سؤالاً أو اسألني بكلماتك.';
+  }
+
+  @override
+  String get assistantPickTopic => 'بكل سرور! أي موضوع تود أن تستكشف؟';
+
+  @override
+  String get assistantDidYouMean => 'وجدت بعض الأسئلة القريبة. هل تقصد أحدها؟';
+
+  @override
+  String get assistantNoAnswer =>
+      'لم أجد إجابة لهذا بعد. جرّب السؤال بطريقة أخرى، أو اختر أحد هذه المواضيع:';
+
+  @override
+  String get assistantError =>
+      'حدث خطأ أثناء جلب الإجابة. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get assistantOtherTopics => 'مواضيع أخرى';
+
+  @override
+  String get assistantNewChat => 'محادثة جديدة';
+
+  @override
+  String get assistantCopied => 'تم نسخ الإجابة';
+
+  @override
+  String assistantSource(String topic) {
+    return 'من $topic';
+  }
+
+  @override
+  String get assistantTyping => 'شبابنا يكتب';
 }

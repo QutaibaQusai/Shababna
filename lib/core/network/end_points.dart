@@ -44,4 +44,10 @@ class EndPoints {
   static const String news = '/api/v1/news';
   static const String newsSearch = '$news/search';
   static String newsById(String id) => '$news/$id';
+
+  static const String chatbots = '/api/v1/chatbots';
+  static const String chatbotQuestionsSearch = '$chatbots/questions/search';
+  static String chatbotQuestions(String chatbotId) => '$chatbots/$chatbotId/questions';
+  static String chatbotQuestion(String chatbotId, String questionId) =>
+      '$chatbots/$chatbotId/questions/$questionId';
 }

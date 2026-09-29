@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/about_us/about_us_injection.dart';
 import '../../features/auth/auth_injection.dart';
 import '../../features/contact_form/contact_form_injection.dart';
+import '../../features/chatbot/chatbot_injection.dart';
 import '../../features/contact_info/contact_info_injection.dart';
 import '../../features/legal/legal_injection.dart';
 import '../../features/news/news_injection.dart';
@@ -79,6 +80,7 @@ Future<void> setupServiceLocator() async {
   registerLegalFeature(sl);
   registerNewsFeature(sl);
   registerContactInfoFeature(sl);
+  registerChatbotFeature(sl);
   registerContactFormFeature(sl);
   registerAboutUsFeature(sl);
   registerSocialMediaFeature(sl);

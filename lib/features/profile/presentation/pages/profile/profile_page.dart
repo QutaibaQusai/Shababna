@@ -142,6 +142,11 @@ class _ProfileViewState extends State<_ProfileView> {
                 onTap: () => context.push(AppRoutes.news),
               ),
               AppMenuTile(
+                icon: LucideIcons.botMessageSquare,
+                title: context.l10n.assistantTitle,
+                onTap: () => context.push(AppRoutes.assistant),
+              ),
+              AppMenuTile(
                 icon: LucideIcons.languages,
                 title: context.l10n.profileMenuLanguage,
                 value: languageCode == 'ar'

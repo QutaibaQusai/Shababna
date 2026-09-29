@@ -749,4 +749,75 @@ class AppLocalizationsEn extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get assistantTitle => 'Shababna Assistant';
+
+  @override
+  String get assistantBotName => 'Shababna';
+
+  @override
+  String get assistantYou => 'You';
+
+  @override
+  String get assistantWelcomeTitle => 'Hi! How can I help you today?';
+
+  @override
+  String get assistantWelcomeSubtitle =>
+      'Ask me about volunteering, health and nutrition, or pick a topic to get started.';
+
+  @override
+  String get assistantTopicsLabel => 'Popular topics';
+
+  @override
+  String get assistantComposerHint => 'Ask me anything…';
+
+  @override
+  String assistantTopicQuestions(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count questions',
+      one: '1 question',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String assistantTopicIntro(String topic) {
+    return 'Here are the most common questions about $topic. Tap one, or ask me in your own words.';
+  }
+
+  @override
+  String get assistantPickTopic =>
+      'Sure! Which topic would you like to explore?';
+
+  @override
+  String get assistantDidYouMean =>
+      'I found a few related questions. Did you mean one of these?';
+
+  @override
+  String get assistantNoAnswer =>
+      'I couldn\'t find an answer to that yet. Try asking in a different way, or pick one of these topics:';
+
+  @override
+  String get assistantError =>
+      'Something went wrong while getting the answer. Please try again.';
+
+  @override
+  String get assistantOtherTopics => 'Other topics';
+
+  @override
+  String get assistantNewChat => 'New chat';
+
+  @override
+  String get assistantCopied => 'Answer copied';
+
+  @override
+  String assistantSource(String topic) {
+    return 'From $topic';
+  }
+
+  @override
+  String get assistantTyping => 'Shababna is typing';
 }

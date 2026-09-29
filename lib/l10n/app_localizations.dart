@@ -1441,6 +1441,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count, plural, =1{1 Photo} other{{count} Photos}}'**
   String mediaPhotosCount(int count);
+
+  /// No description provided for @assistantTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shababna Assistant'**
+  String get assistantTitle;
+
+  /// No description provided for @assistantBotName.
+  ///
+  /// In en, this message translates to:
+  /// **'Shababna'**
+  String get assistantBotName;
+
+  /// No description provided for @assistantYou.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get assistantYou;
+
+  /// No description provided for @assistantWelcomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hi! How can I help you today?'**
+  String get assistantWelcomeTitle;
+
+  /// No description provided for @assistantWelcomeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask me about volunteering, health and nutrition, or pick a topic to get started.'**
+  String get assistantWelcomeSubtitle;
+
+  /// No description provided for @assistantTopicsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Popular topics'**
+  String get assistantTopicsLabel;
+
+  /// No description provided for @assistantComposerHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask me anything…'**
+  String get assistantComposerHint;
+
+  /// No description provided for @assistantTopicQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 question} other{{count} questions}}'**
+  String assistantTopicQuestions(int count);
+
+  /// No description provided for @assistantTopicIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Here are the most common questions about {topic}. Tap one, or ask me in your own words.'**
+  String assistantTopicIntro(String topic);
+
+  /// No description provided for @assistantPickTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'Sure! Which topic would you like to explore?'**
+  String get assistantPickTopic;
+
+  /// No description provided for @assistantDidYouMean.
+  ///
+  /// In en, this message translates to:
+  /// **'I found a few related questions. Did you mean one of these?'**
+  String get assistantDidYouMean;
+
+  /// No description provided for @assistantNoAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'I couldn\'t find an answer to that yet. Try asking in a different way, or pick one of these topics:'**
+  String get assistantNoAnswer;
+
+  /// No description provided for @assistantError.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong while getting the answer. Please try again.'**
+  String get assistantError;
+
+  /// No description provided for @assistantOtherTopics.
+  ///
+  /// In en, this message translates to:
+  /// **'Other topics'**
+  String get assistantOtherTopics;
+
+  /// No description provided for @assistantNewChat.
+  ///
+  /// In en, this message translates to:
+  /// **'New chat'**
+  String get assistantNewChat;
+
+  /// No description provided for @assistantCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer copied'**
+  String get assistantCopied;
+
+  /// No description provided for @assistantSource.
+  ///
+  /// In en, this message translates to:
+  /// **'From {topic}'**
+  String assistantSource(String topic);
+
+  /// No description provided for @assistantTyping.
+  ///
+  /// In en, this message translates to:
+  /// **'Shababna is typing'**
+  String get assistantTyping;
 }
 
 class _AppLocalizationsDelegate

@@ -286,5 +286,32 @@
   "mediaPhotosCount": "{count, plural, =1{1 Photo} other{{count} Photos}}",
   "@mediaPhotosCount": {
     "placeholders": { "count": { "type": "int" } }
-  }
+  },
+  "assistantTitle": "Shababna Assistant",
+  "assistantBotName": "Shababna",
+  "assistantYou": "You",
+  "assistantWelcomeTitle": "Hi! How can I help you today?",
+  "assistantWelcomeSubtitle": "Ask me about volunteering, health and nutrition, or pick a topic to get started.",
+  "assistantTopicsLabel": "Popular topics",
+  "assistantComposerHint": "Ask me anything…",
+  "assistantTopicQuestions": "{count, plural, =1{1 question} other{{count} questions}}",
+  "@assistantTopicQuestions": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "assistantTopicIntro": "Here are the most common questions about {topic}. Tap one, or ask me in your own words.",
+  "@assistantTopicIntro": {
+    "placeholders": { "topic": { "type": "String" } }
+  },
+  "assistantPickTopic": "Sure! Which topic would you like to explore?",
+  "assistantDidYouMean": "I found a few related questions. Did you mean one of these?",
+  "assistantNoAnswer": "I couldn't find an answer to that yet. Try asking in a different way, or pick one of these topics:",
+  "assistantError": "Something went wrong while getting the answer. Please try again.",
+  "assistantOtherTopics": "Other topics",
+  "assistantNewChat": "New chat",
+  "assistantCopied": "Answer copied",
+  "assistantSource": "From {topic}",
+  "@assistantSource": {
+    "placeholders": { "topic": { "type": "String" } }
+  },
+  "assistantTyping": "Shababna is typing"
 }
