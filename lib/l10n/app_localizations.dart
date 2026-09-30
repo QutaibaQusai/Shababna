@@ -1549,6 +1549,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Shababna is typing'**
   String get assistantTyping;
+
+  /// No description provided for @onboardingSkip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get onboardingSkip;
+
+  /// No description provided for @onboardingNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get onboardingNext;
+
+  /// No description provided for @onboardingGetStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Get started'**
+  String get onboardingGetStarted;
+
+  /// No description provided for @onboardingLanguageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your language'**
+  String get onboardingLanguageTitle;
+
+  /// No description provided for @onboardingLanguageSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the language you\'re most comfortable with. You can change it anytime from your account.'**
+  String get onboardingLanguageSubtitle;
+
+  /// No description provided for @onboardingVolunteerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Volunteer with Shababna'**
+  String get onboardingVolunteerTitle;
+
+  /// No description provided for @onboardingVolunteerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Join the youth network of the Royal Health Awareness Society and help spread health awareness in your community.'**
+  String get onboardingVolunteerSubtitle;
+
+  /// No description provided for @onboardingEventsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find opportunities near you'**
+  String get onboardingEventsTitle;
+
+  /// No description provided for @onboardingEventsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse volunteering events across Jordan, register in a tap and follow your registration status.'**
+  String get onboardingEventsSubtitle;
+
+  /// No description provided for @onboardingCertificatesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn hours and certificates'**
+  String get onboardingCertificatesTitle;
+
+  /// No description provided for @onboardingCertificatesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Every task you complete adds volunteering hours, levels up your tier and earns you certificates for your CV.'**
+  String get onboardingCertificatesSubtitle;
+
+  /// No description provided for @onboardingThemeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick your look'**
+  String get onboardingThemeTitle;
+
+  /// No description provided for @onboardingThemeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose light, dark, or follow your phone\'s setting.'**
+  String get onboardingThemeSubtitle;
+
+  /// No description provided for @onboardingNotificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay in the loop'**
+  String get onboardingNotificationsTitle;
+
+  /// No description provided for @onboardingNotificationsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Get notified about new volunteering opportunities, updates on your registrations and the latest news.'**
+  String get onboardingNotificationsSubtitle;
+
+  /// No description provided for @onboardingNotificationsEnable.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on notifications'**
+  String get onboardingNotificationsEnable;
+
+  /// No description provided for @onboardingNotificationsEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications are on'**
+  String get onboardingNotificationsEnabled;
+
+  /// No description provided for @onboardingNotificationsDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications are off. You can turn them on later from your phone settings.'**
+  String get onboardingNotificationsDenied;
+
+  /// No description provided for @onboardingProgressLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total}'**
+  String onboardingProgressLabel(int current, int total);
 }
 
 class _AppLocalizationsDelegate

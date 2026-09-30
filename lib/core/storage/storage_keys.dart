@@ -7,4 +7,5 @@ class StorageKeys {
   static const String refreshToken = 'refresh_token';
   static const String deviceId = 'device_id';
   static const String guestMode = 'guest_mode';
+  static const String onboardingCompleted = 'onboarding_completed';
 }

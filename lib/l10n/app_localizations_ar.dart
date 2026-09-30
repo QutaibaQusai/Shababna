@@ -816,4 +816,70 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get assistantTyping => 'شبابنا يكتب';
+
+  @override
+  String get onboardingSkip => 'تخطي';
+
+  @override
+  String get onboardingNext => 'التالي';
+
+  @override
+  String get onboardingGetStarted => 'لنبدأ';
+
+  @override
+  String get onboardingLanguageTitle => 'اختر لغتك';
+
+  @override
+  String get onboardingLanguageSubtitle =>
+      'اختر اللغة الأنسب لك، ويمكنك تغييرها في أي وقت من حسابك.';
+
+  @override
+  String get onboardingVolunteerTitle => 'تطوّع مع شبابنا';
+
+  @override
+  String get onboardingVolunteerSubtitle =>
+      'انضم إلى الشبكة الشبابية للجمعية الملكية للتوعية الصحية، وساهم في نشر الوعي الصحي في مجتمعك.';
+
+  @override
+  String get onboardingEventsTitle => 'اكتشف فرص التطوع القريبة منك';
+
+  @override
+  String get onboardingEventsSubtitle =>
+      'تصفّح فعاليات التطوع في مختلف أنحاء الأردن، وسجّل بلمسة واحدة وتابع حالة تسجيلك.';
+
+  @override
+  String get onboardingCertificatesTitle => 'اجمع الساعات واحصل على الشهادات';
+
+  @override
+  String get onboardingCertificatesSubtitle =>
+      'كل مهمة تنجزها تضيف إلى ساعات تطوعك، وترفع مستواك، وتمنحك شهادات تدعم سيرتك الذاتية.';
+
+  @override
+  String get onboardingThemeTitle => 'اختر المظهر';
+
+  @override
+  String get onboardingThemeSubtitle =>
+      'اختر الوضع الفاتح أو الداكن، أو اتبع إعدادات هاتفك.';
+
+  @override
+  String get onboardingNotificationsTitle => 'ابقَ على اطلاع';
+
+  @override
+  String get onboardingNotificationsSubtitle =>
+      'احصل على إشعارات بفرص التطوع الجديدة، وتحديثات تسجيلاتك، وآخر الأخبار.';
+
+  @override
+  String get onboardingNotificationsEnable => 'تفعيل الإشعارات';
+
+  @override
+  String get onboardingNotificationsEnabled => 'الإشعارات مفعّلة';
+
+  @override
+  String get onboardingNotificationsDenied =>
+      'الإشعارات متوقفة، ويمكنك تفعيلها لاحقاً من إعدادات هاتفك.';
+
+  @override
+  String onboardingProgressLabel(int current, int total) {
+    return 'الخطوة $current من $total';
+  }
 }

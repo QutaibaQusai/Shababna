@@ -16,6 +16,8 @@ import '../../features/chatbot/presentation/pages/chatbot_page.dart';
 import '../../features/news/presentation/pages/news_details/news_details_page.dart';
 import '../../features/news/presentation/pages/news_list/news_list_page.dart';
 import '../../features/news/presentation/pages/news_search/news_search_page.dart';
+import '../../features/onboarding/domain/repositories/onboarding_repository.dart';
+import '../../features/onboarding/presentation/pages/onboarding_page.dart';
 import '../../features/profile/presentation/pages/account_security/account_security_page.dart';
 import '../../features/profile/presentation/pages/change_email/change_email_page.dart';
 import '../../features/profile/presentation/pages/change_email/verify_email_change_page.dart';
@@ -33,7 +35,10 @@ import 'go_router_refresh_stream.dart';
 class AppRouter {
   AppRouter._();
 
-  static GoRouter build({required AuthSessionCubit authSessionCubit}) {
+  static GoRouter build({
+    required AuthSessionCubit authSessionCubit,
+    required OnboardingRepository onboardingRepository,
+  }) {
     return GoRouter(
       initialLocation: AppRoutes.home,
       debugLogDiagnostics: true,
@@ -41,6 +46,14 @@ class AppRouter {
       redirect: (context, state) {
         final location = state.matchedLocation;
         final isPublicRoute = AppRoutes.publicRoutes.contains(location);
+        final isOnboarding = location == AppRoutes.onboarding;
+
+        if (authSessionCubit.state == AuthStatus.unauthenticated) {
+          if (!onboardingRepository.isCompleted) {
+            return isOnboarding ? null : AppRoutes.onboarding;
+          }
+          if (isOnboarding) return AppRoutes.login;
+        }
 
         return switch (authSessionCubit.state) {
           AuthStatus.authenticated => isPublicRoute ? AppRoutes.home : null,
@@ -50,6 +63,11 @@ class AppRouter {
         };
       },
       routes: [
+        GoRoute(
+          path: AppRoutes.onboarding,
+          name: AppRoutes.onboardingName,
+          builder: (context, state) => const OnboardingPage(),
+        ),
         GoRoute(
           path: AppRoutes.login,
           name: AppRoutes.loginName,

@@ -11,11 +11,14 @@ import '../../features/chatbot/chatbot_injection.dart';
 import '../../features/contact_info/contact_info_injection.dart';
 import '../../features/legal/legal_injection.dart';
 import '../../features/news/news_injection.dart';
+import '../../features/onboarding/domain/repositories/onboarding_repository.dart';
+import '../../features/onboarding/onboarding_injection.dart';
 import '../../features/profile/profile_injection.dart';
 import '../../features/social_media/social_media_injection.dart';
 import '../logging/app_logger.dart';
 import '../network/api_consumer.dart';
 import '../network/dio_consumer.dart';
+import '../notifications/notification_permission_service.dart';
 import '../routes/app_router.dart';
 import '../services/device_identity_service.dart';
 import '../services/locale_service.dart';
@@ -64,6 +67,9 @@ Future<void> setupServiceLocator() async {
 
   sl.registerLazySingleton<LocaleService>(() => LocaleService(sl()));
   sl.registerLazySingleton<ThemeService>(() => ThemeService(sl()));
+  sl.registerLazySingleton<NotificationPermissionService>(
+    () => FirebaseNotificationPermissionService(),
+  );
 
   sl.registerLazySingleton<ApiConsumer>(
     () => DioConsumer(
@@ -75,6 +81,7 @@ Future<void> setupServiceLocator() async {
     ),
   );
 
+  registerOnboardingFeature(sl);
   registerAuthFeature(sl);
   registerProfileFeature(sl);
   registerLegalFeature(sl);
@@ -86,6 +93,9 @@ Future<void> setupServiceLocator() async {
   registerSocialMediaFeature(sl);
 
   sl.registerLazySingleton<GoRouter>(
-    () => AppRouter.build(authSessionCubit: sl()),
+    () => AppRouter.build(
+      authSessionCubit: sl(),
+      onboardingRepository: sl<OnboardingRepository>(),
+    ),
   );
 }

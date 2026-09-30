@@ -4,6 +4,9 @@ class AppRoutes {
   static const String home = '/home';
   static const String homeName = 'home';
 
+  static const String onboarding = '/onboarding';
+  static const String onboardingName = 'onboarding';
+
   static const String login = '/login';
   static const String loginName = 'login';
   static const String modalQuery = 'modal';
@@ -85,6 +88,7 @@ class AppRoutes {
   };
 
   static const Set<String> publicRoutes = {
+    onboarding,
     login,
     register,
     forgotPassword,

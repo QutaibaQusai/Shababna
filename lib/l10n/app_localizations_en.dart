@@ -820,4 +820,70 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get assistantTyping => 'Shababna is typing';
+
+  @override
+  String get onboardingSkip => 'Skip';
+
+  @override
+  String get onboardingNext => 'Next';
+
+  @override
+  String get onboardingGetStarted => 'Get started';
+
+  @override
+  String get onboardingLanguageTitle => 'Choose your language';
+
+  @override
+  String get onboardingLanguageSubtitle =>
+      'Pick the language you\'re most comfortable with. You can change it anytime from your account.';
+
+  @override
+  String get onboardingVolunteerTitle => 'Volunteer with Shababna';
+
+  @override
+  String get onboardingVolunteerSubtitle =>
+      'Join the youth network of the Royal Health Awareness Society and help spread health awareness in your community.';
+
+  @override
+  String get onboardingEventsTitle => 'Find opportunities near you';
+
+  @override
+  String get onboardingEventsSubtitle =>
+      'Browse volunteering events across Jordan, register in a tap and follow your registration status.';
+
+  @override
+  String get onboardingCertificatesTitle => 'Earn hours and certificates';
+
+  @override
+  String get onboardingCertificatesSubtitle =>
+      'Every task you complete adds volunteering hours, levels up your tier and earns you certificates for your CV.';
+
+  @override
+  String get onboardingThemeTitle => 'Pick your look';
+
+  @override
+  String get onboardingThemeSubtitle =>
+      'Choose light, dark, or follow your phone\'s setting.';
+
+  @override
+  String get onboardingNotificationsTitle => 'Stay in the loop';
+
+  @override
+  String get onboardingNotificationsSubtitle =>
+      'Get notified about new volunteering opportunities, updates on your registrations and the latest news.';
+
+  @override
+  String get onboardingNotificationsEnable => 'Turn on notifications';
+
+  @override
+  String get onboardingNotificationsEnabled => 'Notifications are on';
+
+  @override
+  String get onboardingNotificationsDenied =>
+      'Notifications are off. You can turn them on later from your phone settings.';
+
+  @override
+  String onboardingProgressLabel(int current, int total) {
+    return 'Step $current of $total';
+  }
 }
