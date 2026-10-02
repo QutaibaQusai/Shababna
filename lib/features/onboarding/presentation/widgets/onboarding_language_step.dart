@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/services/locale_service.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../cubit/onboarding_step.dart';
@@ -21,24 +20,19 @@ class OnboardingLanguageStep extends StatelessWidget {
     context.watch<LocaleService>();
     final service = context.read<LocaleService>();
     final selectedCode = service.languageCode;
-    final l10n = context.l10n;
 
     return OnboardingStepLayout(
       step: OnboardingStep.language,
       child: Column(
         children: [
           OnboardingChoiceTile(
-            leading: const Text('ع'),
             label: _arabicName,
-            caption: l10n.languageArabic,
             isSelected: selectedCode == _arabic.languageCode,
             onTap: () => service.setLocale(_arabic),
           ),
           SizedBox(height: AppSpacing.sm),
           OnboardingChoiceTile(
-            leading: const Text('En'),
             label: _englishName,
-            caption: l10n.languageEnglish,
             isSelected: selectedCode == _english.languageCode,
             onTap: () => service.setLocale(_english),
           ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/services/theme_service.dart';
@@ -19,19 +18,18 @@ class OnboardingThemeStep extends StatelessWidget {
     final l10n = context.l10n;
 
     final options = [
-      (ThemeMode.system, LucideIcons.smartphone, l10n.themeSystem),
-      (ThemeMode.light, LucideIcons.sun, l10n.themeLight),
-      (ThemeMode.dark, LucideIcons.moon, l10n.themeDark),
+      (ThemeMode.system, l10n.themeSystem),
+      (ThemeMode.light, l10n.themeLight),
+      (ThemeMode.dark, l10n.themeDark),
     ];
 
     return OnboardingStepLayout(
       step: OnboardingStep.theme,
       child: Column(
         children: [
-          for (final (index, (mode, icon, label)) in options.indexed) ...[
+          for (final (index, (mode, label)) in options.indexed) ...[
             if (index > 0) SizedBox(height: AppSpacing.sm),
             OnboardingChoiceTile(
-              leading: Icon(icon),
               label: label,
               isSelected: selected == mode,
               onTap: () => service.setThemeMode(mode),
