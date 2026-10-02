@@ -1,42 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_spacing.dart';
-import '../../../domain/repositories/events_repository.dart';
-import 'event_card.dart';
 
 class EventsListSkeleton extends StatelessWidget {
   const EventsListSkeleton({super.key});
 
-  static const _placeholderCount = 3;
-
-  static final _placeholder = EventSummary(
-    id: 'placeholder',
-    titleEn: 'Community health awareness day in Amman',
-    titleAr: 'يوم التوعية الصحية المجتمعية في عمّان',
-    type: const EventReference(id: 'placeholder', name: 'Awareness campaign'),
-    from: DateTime(2026, 10, 12),
-    to: DateTime(2026, 10, 14),
-    address: 'Amman, Jordan',
-    gender: EventGender.both,
-    ageFrom: 16,
-    ageTo: 30,
-    hours: 6,
-    volunteersCount: 20,
-    requiresApproval: false,
-    imageUrl: '',
-  );
+  static const _ratios = [3 / 4, 1.0, 1.0, 3 / 4, 3 / 4, 1.0, 1.0, 3 / 4];
 
   @override
   Widget build(BuildContext context) {
     return Skeletonizer(
       enabled: true,
-      child: ListView.separated(
+      child: MasonryGridView.count(
         physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.all(AppSpacing.screenMargin),
-        itemCount: _placeholderCount,
-        separatorBuilder: (context, index) => SizedBox(height: AppSpacing.md),
-        itemBuilder: (context, index) => EventCard(event: _placeholder),
+        crossAxisCount: 2,
+        mainAxisSpacing: AppSpacing.md,
+        crossAxisSpacing: AppSpacing.sm,
+        itemCount: _ratios.length,
+        itemBuilder: (context, index) => AspectRatio(
+          aspectRatio: _ratios[index],
+          child: Bone(borderRadius: AppRadius.mdRadius),
+        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../../../../core/theme/app_spacing.dart';
 import '../../cubit/events_list/events_list_cubit.dart';
@@ -11,6 +12,7 @@ class EventsListContent extends StatelessWidget {
   const EventsListContent({super.key, required this.state});
 
   static const _loadMoreThreshold = 300.0;
+  static const columnCount = 2;
 
   final EventsListState state;
 
@@ -30,25 +32,34 @@ class EventsListContent extends StatelessWidget {
 
     return NotificationListener<ScrollNotification>(
       onNotification: (notification) => _onScroll(context, notification),
-      child: ListView.separated(
+      child: CustomScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
-        padding: EdgeInsets.fromLTRB(
-          margin,
-          margin,
-          margin,
-          margin + MediaQuery.paddingOf(context).bottom,
-        ),
-        itemCount: items.length + (state.hasNextPage ? 1 : 0),
-        separatorBuilder: (context, index) => SizedBox(height: AppSpacing.md),
-        itemBuilder: (context, index) {
-          if (index == items.length) {
-            return EventLoadMoreFooter(
-              failed: state.loadMoreFailed,
-              onRetry: context.read<EventsListCubit>().retryLoadMore,
-            );
-          }
-          return EventCard(event: items[index]);
-        },
+        slivers: [
+          SliverPadding(
+            padding: EdgeInsets.fromLTRB(margin, margin, margin, 0),
+            sliver: SliverMasonryGrid.count(
+              crossAxisCount: columnCount,
+              mainAxisSpacing: AppSpacing.md,
+              crossAxisSpacing: AppSpacing.sm,
+              childCount: items.length,
+              itemBuilder: (context, index) =>
+                  EventCard(event: items[index], isTall: EventCard.isTallAt(index)),
+            ),
+          ),
+          if (state.hasNextPage)
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.only(top: AppSpacing.sm),
+                child: EventLoadMoreFooter(
+                  failed: state.loadMoreFailed,
+                  onRetry: context.read<EventsListCubit>().retryLoadMore,
+                ),
+              ),
+            ),
+          SliverPadding(
+            padding: EdgeInsets.only(bottom: margin + MediaQuery.paddingOf(context).bottom),
+          ),
+        ],
       ),
     );
   }

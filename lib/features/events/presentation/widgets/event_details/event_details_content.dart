@@ -8,7 +8,6 @@ import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/events_repository.dart';
-import '../events_list/event_card.dart';
 import 'event_description.dart';
 import 'event_details_header.dart';
 import 'event_donors_section.dart';
@@ -18,6 +17,8 @@ import 'event_section_title.dart';
 
 class EventDetailsContent extends StatelessWidget {
   const EventDetailsContent({super.key, required this.event});
+
+  static const _imageAspectRatio = 16 / 9;
 
   final EventDetails event;
 
@@ -39,7 +40,7 @@ class EventDetailsContent extends StatelessWidget {
             child: ClipRRect(
               borderRadius: AppRadius.xlRadius,
               child: AspectRatio(
-                aspectRatio: EventCard.imageAspectRatio,
+                aspectRatio: _imageAspectRatio,
                 child: AppNetworkImage(url: event.imageUrl, size: AppSizes.iconLg * 2),
               ),
             ),
