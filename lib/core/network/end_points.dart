@@ -50,6 +50,8 @@ class EndPoints {
   static String eventRegister(String id) => '$events/$id/register';
   static String eventWithdraw(String id) => '$events/$id/withdraw';
 
+  static const String search = '/api/v1/search';
+
   static const String chatbots = '/api/v1/chatbots';
   static const String chatbotQuestionsSearch = '$chatbots/questions/search';
   static String chatbotQuestions(String chatbotId) => '$chatbots/$chatbotId/questions';

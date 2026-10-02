@@ -1855,6 +1855,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'To register for events, please fill in the following:'**
   String get eventProfileIncompleteMessage;
+
+  /// No description provided for @searchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get searchTitle;
+
+  /// No description provided for @searchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search events, news and questions'**
+  String get searchHint;
+
+  /// No description provided for @searchIdleMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Type at least 2 letters to search'**
+  String get searchIdleMessage;
+
+  /// No description provided for @searchEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No results for “{query}”'**
+  String searchEmptyMessage(String query);
+
+  /// No description provided for @searchFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get searchFilterAll;
+
+  /// No description provided for @searchFilterEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Events'**
+  String get searchFilterEvents;
+
+  /// No description provided for @searchFilterNews.
+  ///
+  /// In en, this message translates to:
+  /// **'News'**
+  String get searchFilterNews;
+
+  /// No description provided for @searchFilterFaq.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions'**
+  String get searchFilterFaq;
+
+  /// No description provided for @searchSeeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See all'**
+  String get searchSeeAll;
+
+  /// No description provided for @searchEventUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming'**
+  String get searchEventUpcoming;
+
+  /// No description provided for @searchEventOngoing.
+  ///
+  /// In en, this message translates to:
+  /// **'Happening now'**
+  String get searchEventOngoing;
+
+  /// No description provided for @searchEventPast.
+  ///
+  /// In en, this message translates to:
+  /// **'Ended'**
+  String get searchEventPast;
 }
 
 class _AppLocalizationsDelegate

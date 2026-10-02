@@ -310,5 +310,17 @@
   "eventRegistrationRejectedMessage": "لم يتم قبول تسجيلك في هذه الفعالية",
   "eventStatusChangedMessage": "تم تحديث حالة تسجيلك",
   "eventProfileIncompleteTitle": "أكمل ملفك الشخصي أولاً",
-  "eventProfileIncompleteMessage": "للتسجيل في الفعاليات، يرجى تعبئة ما يلي:"
+  "eventProfileIncompleteMessage": "للتسجيل في الفعاليات، يرجى تعبئة ما يلي:",
+  "searchTitle": "بحث",
+  "searchHint": "ابحث في الفعاليات والأخبار والأسئلة",
+  "searchIdleMessage": "اكتب حرفين على الأقل للبحث",
+  "searchEmptyMessage": "لا توجد نتائج لـ “{query}”",
+  "searchFilterAll": "الكل",
+  "searchFilterEvents": "الفعاليات",
+  "searchFilterNews": "الأخبار",
+  "searchFilterFaq": "الأسئلة",
+  "searchSeeAll": "عرض الكل",
+  "searchEventUpcoming": "قادمة",
+  "searchEventOngoing": "جارية الآن",
+  "searchEventPast": "انتهت"
 }

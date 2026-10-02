@@ -379,5 +379,20 @@
   "eventRegistrationRejectedMessage": "Your registration for this event was not accepted",
   "eventStatusChangedMessage": "Your registration status was updated",
   "eventProfileIncompleteTitle": "Complete your profile first",
-  "eventProfileIncompleteMessage": "To register for events, please fill in the following:"
+  "eventProfileIncompleteMessage": "To register for events, please fill in the following:",
+  "searchTitle": "Search",
+  "searchHint": "Search events, news and questions",
+  "searchIdleMessage": "Type at least 2 letters to search",
+  "searchEmptyMessage": "No results for “{query}”",
+  "@searchEmptyMessage": {
+    "placeholders": { "query": { "type": "String" } }
+  },
+  "searchFilterAll": "All",
+  "searchFilterEvents": "Events",
+  "searchFilterNews": "News",
+  "searchFilterFaq": "Questions",
+  "searchSeeAll": "See all",
+  "searchEventUpcoming": "Upcoming",
+  "searchEventOngoing": "Happening now",
+  "searchEventPast": "Ended"
 }

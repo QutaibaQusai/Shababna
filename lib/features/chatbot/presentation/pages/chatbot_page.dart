@@ -22,12 +22,23 @@ import '../widgets/chatbot_user_bubble.dart';
 import '../widgets/chatbot_welcome.dart';
 
 class ChatbotPage extends StatelessWidget {
-  const ChatbotPage({super.key});
+  const ChatbotPage({super.key, this.topicId, this.questionId});
+
+  final String? topicId;
+  final String? questionId;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => sl<ChatbotCubit>()..start(),
+      create: (_) {
+        final cubit = sl<ChatbotCubit>()..start();
+        final topicId = this.topicId;
+        final questionId = this.questionId;
+        if (topicId != null && questionId != null) {
+          cubit.openQuestion(topicId: topicId, questionId: questionId);
+        }
+        return cubit;
+      },
       child: const _ChatbotView(),
     );
   }

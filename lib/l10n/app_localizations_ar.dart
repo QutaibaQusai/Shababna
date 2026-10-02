@@ -1021,4 +1021,42 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get eventProfileIncompleteMessage =>
       'للتسجيل في الفعاليات، يرجى تعبئة ما يلي:';
+
+  @override
+  String get searchTitle => 'بحث';
+
+  @override
+  String get searchHint => 'ابحث في الفعاليات والأخبار والأسئلة';
+
+  @override
+  String get searchIdleMessage => 'اكتب حرفين على الأقل للبحث';
+
+  @override
+  String searchEmptyMessage(String query) {
+    return 'لا توجد نتائج لـ “$query”';
+  }
+
+  @override
+  String get searchFilterAll => 'الكل';
+
+  @override
+  String get searchFilterEvents => 'الفعاليات';
+
+  @override
+  String get searchFilterNews => 'الأخبار';
+
+  @override
+  String get searchFilterFaq => 'الأسئلة';
+
+  @override
+  String get searchSeeAll => 'عرض الكل';
+
+  @override
+  String get searchEventUpcoming => 'قادمة';
+
+  @override
+  String get searchEventOngoing => 'جارية الآن';
+
+  @override
+  String get searchEventPast => 'انتهت';
 }

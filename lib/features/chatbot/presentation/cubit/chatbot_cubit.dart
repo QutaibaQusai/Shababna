@@ -67,6 +67,16 @@ class ChatbotCubit extends Cubit<ChatbotState> {
     });
   }
 
+  Future<void> openQuestion({required String topicId, required String questionId}) async {
+    final result = await _loadQuestions(topicId);
+    if (isClosed) return;
+    final question = result.fold(
+      (_) => null,
+      (questions) => questions.where((question) => question.id == questionId).firstOrNull,
+    );
+    if (question != null) await askQuestion(question.ref);
+  }
+
   Future<void> askQuestion(FaqQuestionRef question) async {
     if (state.isBotTyping) return;
     _addUserMessage(UserQuestionMessage(_newId(), question));

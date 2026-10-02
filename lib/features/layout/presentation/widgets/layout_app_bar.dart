@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../core/config/app_assets.dart';
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/shared/widgets/app_icon_button.dart';
 import '../../../../core/shared/widgets/app_toast.dart';
 import '../../../../core/theme/app_spacing.dart';
@@ -38,7 +40,7 @@ class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
                 AppIconButton(
                   icon: LucideIcons.search,
                   semanticLabel: l10n.actionSearch,
-                  onPressed: showComingSoon,
+                  onPressed: () => context.push(AppRoutes.search),
                 ),
                 SizedBox(width: AppSpacing.xs),
               ],

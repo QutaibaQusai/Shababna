@@ -26,6 +26,7 @@ import '../../features/profile/presentation/pages/change_password/change_passwor
 import '../../features/profile/presentation/pages/delete_account/delete_account_page.dart';
 import '../../features/profile/presentation/pages/change_phone_number/change_phone_number_page.dart';
 import '../../features/profile/presentation/pages/edit_profile/edit_profile_page.dart';
+import '../../features/search/presentation/pages/global_search_page.dart';
 import '../../features/social_media/presentation/pages/social_media_page.dart';
 import '../shared/views/app_web_view_page.dart';
 import '../session/auth_session_cubit.dart';
@@ -136,7 +137,15 @@ class AppRouter {
         GoRoute(
           path: AppRoutes.assistant,
           name: AppRoutes.assistantName,
-          builder: (context, state) => const ChatbotPage(),
+          builder: (context, state) => ChatbotPage(
+            topicId: state.uri.queryParameters['topicId'],
+            questionId: state.uri.queryParameters['questionId'],
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.search,
+          name: AppRoutes.searchName,
+          builder: (context, state) => const GlobalSearchPage(),
         ),
         GoRoute(
           path: AppRoutes.newsSearch,

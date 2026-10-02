@@ -1016,4 +1016,42 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get eventProfileIncompleteMessage =>
       'To register for events, please fill in the following:';
+
+  @override
+  String get searchTitle => 'Search';
+
+  @override
+  String get searchHint => 'Search events, news and questions';
+
+  @override
+  String get searchIdleMessage => 'Type at least 2 letters to search';
+
+  @override
+  String searchEmptyMessage(String query) {
+    return 'No results for “$query”';
+  }
+
+  @override
+  String get searchFilterAll => 'All';
+
+  @override
+  String get searchFilterEvents => 'Events';
+
+  @override
+  String get searchFilterNews => 'News';
+
+  @override
+  String get searchFilterFaq => 'Questions';
+
+  @override
+  String get searchSeeAll => 'See all';
+
+  @override
+  String get searchEventUpcoming => 'Upcoming';
+
+  @override
+  String get searchEventOngoing => 'Happening now';
+
+  @override
+  String get searchEventPast => 'Ended';
 }

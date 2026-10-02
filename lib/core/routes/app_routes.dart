@@ -68,6 +68,12 @@ class AppRoutes {
 
   static const String assistant = '/assistant';
   static const String assistantName = 'assistant';
+  static String assistantQuestionPath({required String topicId, required String questionId}) =>
+      Uri(path: assistant, queryParameters: {'topicId': topicId, 'questionId': questionId})
+          .toString();
+
+  static const String search = '/search';
+  static const String searchName = 'search';
 
   static const String newsSearch = '/news/search';
   static const String newsSearchName = 'news-search';
