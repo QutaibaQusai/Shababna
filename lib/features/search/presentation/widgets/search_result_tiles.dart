@@ -5,8 +5,6 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_radius.dart';
-import '../../../../core/theme/app_spacing.dart';
 import '../../domain/repositories/search_repository.dart';
 import 'search_date_format.dart';
 import 'search_result_tile.dart';
@@ -26,7 +24,7 @@ class SearchEventTile extends StatelessWidget {
       leading: SearchImageThumbnail(url: result.imageUrl),
       title: result.title(isArabic),
       subtitle: typeName.isEmpty ? dates : '$typeName · $dates',
-      trailing: _TimelinePill(timeline: result.timeline),
+      trailing: _TimelineLabel(timeline: result.timeline),
       onTap: () => context.push(AppRoutes.eventDetailsPath(result.id)),
     );
   }
@@ -68,10 +66,8 @@ class SearchFaqTile extends StatelessWidget {
   }
 }
 
-class _TimelinePill extends StatelessWidget {
-  const _TimelinePill({required this.timeline});
-
-  static const _tintAlpha = 0.12;
+class _TimelineLabel extends StatelessWidget {
+  const _TimelineLabel({required this.timeline});
 
   final SearchEventTimeline timeline;
 
@@ -85,18 +81,9 @@ class _TimelinePill extends StatelessWidget {
       SearchEventTimeline.past => (l10n.searchEventPast, colorScheme.onSurfaceVariant),
     };
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: _tintAlpha),
-        borderRadius: AppRadius.pillRadius,
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppSpacing.xs, vertical: AppSpacing.xxs / 2),
-        child: Text(
-          label,
-          style: context.textTheme.labelSmall?.copyWith(color: color, fontWeight: FontWeight.w600),
-        ),
-      ),
+    return Text(
+      label,
+      style: context.textTheme.labelSmall?.copyWith(color: color, fontWeight: FontWeight.w600),
     );
   }
 }
