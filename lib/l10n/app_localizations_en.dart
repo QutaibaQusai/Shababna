@@ -237,6 +237,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get actionSearch => 'Search';
 
   @override
+  String get actionFilter => 'Filter';
+
+  @override
   String get doneButton => 'Done';
 
   @override

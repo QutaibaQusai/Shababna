@@ -81,6 +81,7 @@
   "languageEnglish": "English",
   "languageArabic": "العربية",
   "actionSearch": "Search",
+  "actionFilter": "Filter",
   "doneButton": "Done",
 
   "editProfileTitle": "Edit Profile",

@@ -3,6 +3,8 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../l10n/app_localizations.dart';
 
+enum LayoutNavAction { assistant, filter }
+
 enum LayoutTab {
   home(LucideIcons.house),
   events(LucideIcons.calendarDays),
@@ -15,6 +17,12 @@ enum LayoutTab {
   bool get hasSearch => this != profile;
 
   bool get hasActions => this != profile;
+
+  LayoutNavAction? get navAction => switch (this) {
+    home => LayoutNavAction.assistant,
+    events => LayoutNavAction.filter,
+    profile => null,
+  };
 
   String label(AppLocalizations l10n) => switch (this) {
     home => l10n.navHome,

@@ -536,6 +536,12 @@ abstract class AppLocalizations {
   /// **'Search'**
   String get actionSearch;
 
+  /// No description provided for @actionFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get actionFilter;
+
   /// No description provided for @doneButton.
   ///
   /// In en, this message translates to:

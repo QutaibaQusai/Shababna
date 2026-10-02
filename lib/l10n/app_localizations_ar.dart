@@ -235,6 +235,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get actionSearch => 'بحث';
 
   @override
+  String get actionFilter => 'تصفية';
+
+  @override
   String get doneButton => 'تم';
 
   @override

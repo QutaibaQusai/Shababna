@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../core/config/app_assets.dart';
 import '../../../../core/extensions/context_extensions.dart';
@@ -31,8 +32,62 @@ class LayoutNavBar extends StatelessWidget {
           children: [
             _TabsPill(),
             Spacer(),
-            _AssistantButton(),
+            _NavAction(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _NavAction extends StatelessWidget {
+  const _NavAction();
+
+  static const _duration = Duration(milliseconds: 350);
+  static const _startTurns = -0.25;
+
+  @override
+  Widget build(BuildContext context) {
+    final action = context.select((LayoutCubit cubit) => cubit.state.navAction);
+
+    return AnimatedSwitcher(
+      duration: _duration,
+      switchInCurve: Curves.easeOutBack,
+      switchOutCurve: Curves.easeIn,
+      transitionBuilder: (child, animation) => RotationTransition(
+        turns: Tween(begin: _startTurns, end: 0.0).animate(animation),
+        child: FadeTransition(opacity: animation, child: child),
+      ),
+      child: switch (action) {
+        LayoutNavAction.assistant => const _AssistantButton(key: ValueKey(LayoutNavAction.assistant)),
+        LayoutNavAction.filter => const _FilterButton(key: ValueKey(LayoutNavAction.filter)),
+        null => const SizedBox.shrink(),
+      },
+    );
+  }
+}
+
+class _FilterButton extends StatelessWidget {
+  const _FilterButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colorScheme;
+    final label = context.l10n.actionFilter;
+
+    return Semantics(
+      button: true,
+      enabled: false,
+      label: label,
+      child: Tooltip(
+        message: label,
+        child: Material(
+          color: colors.primary,
+          shape: const CircleBorder(),
+          child: SizedBox.square(
+            dimension: AppSizes.navBarHeight,
+            child: Icon(LucideIcons.listFilter, size: AppSizes.iconMd, color: colors.onPrimary),
+          ),
         ),
       ),
     );
@@ -117,7 +172,7 @@ class _TabItem extends StatelessWidget {
 }
 
 class _AssistantButton extends StatelessWidget {
-  const _AssistantButton();
+  const _AssistantButton({super.key});
 
   static const _animationScale = 1.0;
   static const _accentLightness = 0.62;
