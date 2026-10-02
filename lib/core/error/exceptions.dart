@@ -3,19 +3,28 @@ import 'package:dio/dio.dart';
 import 'network_failure_kind.dart';
 
 class ServerException implements Exception {
-  const ServerException(this.message);
+  const ServerException(this.message, {this.code, this.extensions = const {}});
 
   final String message;
+  final String? code;
+  final Map<String, dynamic> extensions;
 
   @override
   String toString() => message;
 }
 
 class ValidationException implements Exception {
-  const ValidationException(this.message, this.errors);
+  const ValidationException(
+    this.message,
+    this.errors, {
+    this.code,
+    this.extensions = const {},
+  });
 
   final String message;
   final Map<String, List<String>> errors;
+  final String? code;
+  final Map<String, dynamic> extensions;
 
   @override
   String toString() => message;
@@ -41,27 +50,33 @@ class CacheException implements Exception {
 }
 
 class UnauthorizedException implements Exception {
-  const UnauthorizedException(this.message);
+  const UnauthorizedException(this.message, {this.code, this.extensions = const {}});
 
   final String message;
+  final String? code;
+  final Map<String, dynamic> extensions;
 
   @override
   String toString() => message;
 }
 
 class ConflictException implements Exception {
-  const ConflictException(this.message);
+  const ConflictException(this.message, {this.code, this.extensions = const {}});
 
   final String message;
+  final String? code;
+  final Map<String, dynamic> extensions;
 
   @override
   String toString() => message;
 }
 
 class RateLimitException implements Exception {
-  const RateLimitException(this.message);
+  const RateLimitException(this.message, {this.code, this.extensions = const {}});
 
   final String message;
+  final String? code;
+  final Map<String, dynamic> extensions;
 
   @override
   String toString() => message;
@@ -82,6 +97,8 @@ Never handleDioExceptions(DioException e) {
       final statusCode = e.response?.statusCode;
       final responseData = e.response?.data;
       final message = _problemMessage(responseData) ?? _defaultMessage(statusCode);
+      final code = _problemCode(responseData);
+      final extensions = _problemExtensions(responseData);
 
       if (statusCode == 400 && responseData is Map<String, dynamic>) {
         final rawErrors = responseData['errors'];
@@ -94,19 +111,21 @@ Never handleDioExceptions(DioException e) {
                 (messages as List).map((m) => m.toString()).toList(),
               ),
             ),
+            code: code,
+            extensions: extensions,
           );
         }
       }
 
       switch (statusCode) {
         case 401:
-          throw UnauthorizedException(message);
+          throw UnauthorizedException(message, code: code, extensions: extensions);
         case 409:
-          throw ConflictException(message);
+          throw ConflictException(message, code: code, extensions: extensions);
         case 429:
-          throw RateLimitException(message);
+          throw RateLimitException(message, code: code, extensions: extensions);
         default:
-          throw ServerException(message);
+          throw ServerException(message, code: code, extensions: extensions);
       }
 
     case DioExceptionType.cancel:
@@ -133,9 +152,35 @@ Never handleDioExceptions(DioException e) {
   }
 }
 
+const _problemStandardKeys = {
+  'type',
+  'title',
+  'status',
+  'detail',
+  'instance',
+  'code',
+  'errors',
+  'errorCodes',
+  'traceId',
+};
+
 String? _problemMessage(Object? responseData) {
   if (responseData is! Map<String, dynamic>) return null;
   return (responseData['detail'] as String?) ?? (responseData['title'] as String?);
+}
+
+String? _problemCode(Object? responseData) {
+  if (responseData is! Map<String, dynamic>) return null;
+  final code = responseData['code'];
+  return code is String ? code : null;
+}
+
+Map<String, dynamic> _problemExtensions(Object? responseData) {
+  if (responseData is! Map<String, dynamic>) return const {};
+  return Map.unmodifiable({
+    for (final entry in responseData.entries)
+      if (!_problemStandardKeys.contains(entry.key)) entry.key: entry.value,
+  });
 }
 
 String _defaultMessage(int? statusCode) => switch (statusCode) {

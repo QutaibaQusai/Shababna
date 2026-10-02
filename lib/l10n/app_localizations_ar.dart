@@ -882,4 +882,150 @@ class AppLocalizationsAr extends AppLocalizations {
   String onboardingProgressLabel(int current, int total) {
     return 'الخطوة $current من $total';
   }
+
+  @override
+  String get eventsHeaderTitle => 'فعاليات التطوع';
+
+  @override
+  String get eventsHeaderSubtitle =>
+      'اعثر على الفرصة التي تناسبك وأحدث فرقاً في مجتمعك';
+
+  @override
+  String get eventsEmptyMessage => 'لا توجد فعاليات قادمة حالياً';
+
+  @override
+  String eventHours(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ساعة',
+      many: '$count ساعة',
+      few: '$count ساعات',
+      two: 'ساعتان',
+      one: 'ساعة واحدة',
+      zero: '0 ساعة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String eventVolunteers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count متطوع',
+      many: '$count متطوعاً',
+      few: '$count متطوعين',
+      two: 'متطوعان',
+      one: 'متطوع واحد',
+      zero: '0 متطوع',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String eventActivities(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count نشاط',
+      many: '$count نشاطاً',
+      few: '$count أنشطة',
+      two: 'نشاطان',
+      one: 'نشاط واحد',
+      zero: '0 نشاط',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get eventAboutTitle => 'عن الفعالية';
+
+  @override
+  String get eventEligibilityTitle => 'من يمكنه المشاركة';
+
+  @override
+  String get eventGenderBoth => 'الجميع';
+
+  @override
+  String get eventGenderMale => 'الذكور فقط';
+
+  @override
+  String get eventGenderFemale => 'الإناث فقط';
+
+  @override
+  String get eventAgeLabel => 'العمر';
+
+  @override
+  String eventAgeRange(int from, int to) {
+    return 'من $from إلى $to سنة';
+  }
+
+  @override
+  String get eventOpenToAll => 'مفتوح للجميع';
+
+  @override
+  String get eventSupportedByTitle => 'بدعم من';
+
+  @override
+  String get eventRegister => 'سجّل الآن';
+
+  @override
+  String get eventRegisterAgain => 'سجّل مجدداً';
+
+  @override
+  String get eventSignInToRegister => 'سجّل الدخول للتسجيل';
+
+  @override
+  String get eventEnded => 'انتهت هذه الفعالية';
+
+  @override
+  String get eventRequiresApprovalHint =>
+      'تتم مراجعة طلبات التسجيل من قِبل المنظمين';
+
+  @override
+  String get eventStatusPending => 'بانتظار الموافقة';
+
+  @override
+  String get eventStatusApproved => 'أنت مسجّل';
+
+  @override
+  String get eventStatusRejected => 'لم يتم قبول التسجيل';
+
+  @override
+  String get eventWithdraw => 'انسحاب';
+
+  @override
+  String get eventWithdrawConfirmTitle => 'هل تريد الانسحاب من الفعالية؟';
+
+  @override
+  String get eventWithdrawConfirmMessage =>
+      'يمكنك التسجيل مجدداً لاحقاً طالما أن التسجيل مفتوح.';
+
+  @override
+  String get eventRegisteredApprovedMessage => 'تم تسجيلك، نراك هناك!';
+
+  @override
+  String get eventRegisteredPendingMessage =>
+      'تم إرسال طلبك، وسنُعلمك عند مراجعته.';
+
+  @override
+  String get eventWithdrawnMessage => 'تم انسحابك من الفعالية';
+
+  @override
+  String get eventRegistrationClosedMessage => 'التسجيل في هذه الفعالية مغلق';
+
+  @override
+  String get eventRegistrationRejectedMessage =>
+      'لم يتم قبول تسجيلك في هذه الفعالية';
+
+  @override
+  String get eventStatusChangedMessage => 'تم تحديث حالة تسجيلك';
+
+  @override
+  String get eventProfileIncompleteTitle => 'أكمل ملفك الشخصي أولاً';
+
+  @override
+  String get eventProfileIncompleteMessage =>
+      'للتسجيل في الفعاليات، يرجى تعبئة ما يلي:';
 }

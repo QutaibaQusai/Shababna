@@ -30,6 +30,7 @@ class AppSizes {
   static double get tierBadgeSize => 32.r;
   static double get tierBadgeSizeSmall => 26.r;
   static double get progressBarHeight => 12.r;
+  static double get eventDonorLogoSize => 48.r;
 
   static double get iconSm => 16.r;
   static double get iconField => 20.r;

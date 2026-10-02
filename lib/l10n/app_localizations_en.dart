@@ -886,4 +886,141 @@ class AppLocalizationsEn extends AppLocalizations {
   String onboardingProgressLabel(int current, int total) {
     return 'Step $current of $total';
   }
+
+  @override
+  String get eventsHeaderTitle => 'Volunteering events';
+
+  @override
+  String get eventsHeaderSubtitle =>
+      'Find an opportunity that suits you and make a difference in your community';
+
+  @override
+  String get eventsEmptyMessage => 'No upcoming events right now';
+
+  @override
+  String eventHours(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count hours',
+      one: '1 hour',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String eventVolunteers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count volunteers',
+      one: '1 volunteer',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String eventActivities(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count activities',
+      one: '1 activity',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get eventAboutTitle => 'About the event';
+
+  @override
+  String get eventEligibilityTitle => 'Who can join';
+
+  @override
+  String get eventGenderBoth => 'Everyone';
+
+  @override
+  String get eventGenderMale => 'Males only';
+
+  @override
+  String get eventGenderFemale => 'Females only';
+
+  @override
+  String get eventAgeLabel => 'Age';
+
+  @override
+  String eventAgeRange(int from, int to) {
+    return '$from–$to years';
+  }
+
+  @override
+  String get eventOpenToAll => 'Open to all';
+
+  @override
+  String get eventSupportedByTitle => 'Supported by';
+
+  @override
+  String get eventRegister => 'Register';
+
+  @override
+  String get eventRegisterAgain => 'Register again';
+
+  @override
+  String get eventSignInToRegister => 'Sign in to register';
+
+  @override
+  String get eventEnded => 'This event has ended';
+
+  @override
+  String get eventRequiresApprovalHint =>
+      'Registrations are reviewed by the organisers';
+
+  @override
+  String get eventStatusPending => 'Pending approval';
+
+  @override
+  String get eventStatusApproved => 'You\'re registered';
+
+  @override
+  String get eventStatusRejected => 'Registration not accepted';
+
+  @override
+  String get eventWithdraw => 'Withdraw';
+
+  @override
+  String get eventWithdrawConfirmTitle => 'Withdraw your registration?';
+
+  @override
+  String get eventWithdrawConfirmMessage =>
+      'You can register again later as long as registration is open.';
+
+  @override
+  String get eventRegisteredApprovedMessage =>
+      'You\'re registered. See you there!';
+
+  @override
+  String get eventRegisteredPendingMessage =>
+      'Request sent. We\'ll let you know once it\'s reviewed.';
+
+  @override
+  String get eventWithdrawnMessage => 'You\'ve withdrawn from this event';
+
+  @override
+  String get eventRegistrationClosedMessage =>
+      'Registration for this event is closed';
+
+  @override
+  String get eventRegistrationRejectedMessage =>
+      'Your registration for this event was not accepted';
+
+  @override
+  String get eventStatusChangedMessage =>
+      'Your registration status was updated';
+
+  @override
+  String get eventProfileIncompleteTitle => 'Complete your profile first';
+
+  @override
+  String get eventProfileIncompleteMessage =>
+      'To register for events, please fill in the following:';
 }

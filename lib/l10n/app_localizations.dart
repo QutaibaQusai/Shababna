@@ -1663,6 +1663,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Step {current} of {total}'**
   String onboardingProgressLabel(int current, int total);
+
+  /// No description provided for @eventsHeaderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Volunteering events'**
+  String get eventsHeaderTitle;
+
+  /// No description provided for @eventsHeaderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find an opportunity that suits you and make a difference in your community'**
+  String get eventsHeaderSubtitle;
+
+  /// No description provided for @eventsEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No upcoming events right now'**
+  String get eventsEmptyMessage;
+
+  /// No description provided for @eventHours.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 hour} other{{count} hours}}'**
+  String eventHours(int count);
+
+  /// No description provided for @eventVolunteers.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 volunteer} other{{count} volunteers}}'**
+  String eventVolunteers(int count);
+
+  /// No description provided for @eventActivities.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 activity} other{{count} activities}}'**
+  String eventActivities(int count);
+
+  /// No description provided for @eventAboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About the event'**
+  String get eventAboutTitle;
+
+  /// No description provided for @eventEligibilityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Who can join'**
+  String get eventEligibilityTitle;
+
+  /// No description provided for @eventGenderBoth.
+  ///
+  /// In en, this message translates to:
+  /// **'Everyone'**
+  String get eventGenderBoth;
+
+  /// No description provided for @eventGenderMale.
+  ///
+  /// In en, this message translates to:
+  /// **'Males only'**
+  String get eventGenderMale;
+
+  /// No description provided for @eventGenderFemale.
+  ///
+  /// In en, this message translates to:
+  /// **'Females only'**
+  String get eventGenderFemale;
+
+  /// No description provided for @eventAgeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Age'**
+  String get eventAgeLabel;
+
+  /// No description provided for @eventAgeRange.
+  ///
+  /// In en, this message translates to:
+  /// **'{from}–{to} years'**
+  String eventAgeRange(int from, int to);
+
+  /// No description provided for @eventOpenToAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Open to all'**
+  String get eventOpenToAll;
+
+  /// No description provided for @eventSupportedByTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Supported by'**
+  String get eventSupportedByTitle;
+
+  /// No description provided for @eventRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get eventRegister;
+
+  /// No description provided for @eventRegisterAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Register again'**
+  String get eventRegisterAgain;
+
+  /// No description provided for @eventSignInToRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to register'**
+  String get eventSignInToRegister;
+
+  /// No description provided for @eventEnded.
+  ///
+  /// In en, this message translates to:
+  /// **'This event has ended'**
+  String get eventEnded;
+
+  /// No description provided for @eventRequiresApprovalHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Registrations are reviewed by the organisers'**
+  String get eventRequiresApprovalHint;
+
+  /// No description provided for @eventStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending approval'**
+  String get eventStatusPending;
+
+  /// No description provided for @eventStatusApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re registered'**
+  String get eventStatusApproved;
+
+  /// No description provided for @eventStatusRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration not accepted'**
+  String get eventStatusRejected;
+
+  /// No description provided for @eventWithdraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw'**
+  String get eventWithdraw;
+
+  /// No description provided for @eventWithdrawConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw your registration?'**
+  String get eventWithdrawConfirmTitle;
+
+  /// No description provided for @eventWithdrawConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You can register again later as long as registration is open.'**
+  String get eventWithdrawConfirmMessage;
+
+  /// No description provided for @eventRegisteredApprovedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re registered. See you there!'**
+  String get eventRegisteredApprovedMessage;
+
+  /// No description provided for @eventRegisteredPendingMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Request sent. We\'ll let you know once it\'s reviewed.'**
+  String get eventRegisteredPendingMessage;
+
+  /// No description provided for @eventWithdrawnMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve withdrawn from this event'**
+  String get eventWithdrawnMessage;
+
+  /// No description provided for @eventRegistrationClosedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration for this event is closed'**
+  String get eventRegistrationClosedMessage;
+
+  /// No description provided for @eventRegistrationRejectedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your registration for this event was not accepted'**
+  String get eventRegistrationRejectedMessage;
+
+  /// No description provided for @eventStatusChangedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your registration status was updated'**
+  String get eventStatusChangedMessage;
+
+  /// No description provided for @eventProfileIncompleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete your profile first'**
+  String get eventProfileIncompleteTitle;
+
+  /// No description provided for @eventProfileIncompleteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'To register for events, please fill in the following:'**
+  String get eventProfileIncompleteMessage;
 }
 
 class _AppLocalizationsDelegate

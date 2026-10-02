@@ -76,6 +76,10 @@ class AppRoutes {
   static const String newsDetailsName = 'news-details';
   static String newsDetailsPath(String id) => '/news/$id';
 
+  static const String eventDetails = '/events/:id';
+  static const String eventDetailsName = 'event-details';
+  static String eventDetailsPath(String id) => '/events/$id';
+
   static const Set<String> memberRoutes = {
     accountSecurity,
     changePassword,

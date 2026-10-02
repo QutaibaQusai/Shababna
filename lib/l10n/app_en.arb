@@ -335,5 +335,51 @@
   "onboardingProgressLabel": "Step {current} of {total}",
   "@onboardingProgressLabel": {
     "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
-  }
+  },
+  "eventsHeaderTitle": "Volunteering events",
+  "eventsHeaderSubtitle": "Find an opportunity that suits you and make a difference in your community",
+  "eventsEmptyMessage": "No upcoming events right now",
+  "eventHours": "{count, plural, =1{1 hour} other{{count} hours}}",
+  "@eventHours": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "eventVolunteers": "{count, plural, =1{1 volunteer} other{{count} volunteers}}",
+  "@eventVolunteers": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "eventActivities": "{count, plural, =1{1 activity} other{{count} activities}}",
+  "@eventActivities": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "eventAboutTitle": "About the event",
+  "eventEligibilityTitle": "Who can join",
+  "eventGenderBoth": "Everyone",
+  "eventGenderMale": "Males only",
+  "eventGenderFemale": "Females only",
+  "eventAgeLabel": "Age",
+  "eventAgeRange": "{from}–{to} years",
+  "@eventAgeRange": {
+    "placeholders": { "from": { "type": "int" }, "to": { "type": "int" } }
+  },
+  "eventOpenToAll": "Open to all",
+  "eventSupportedByTitle": "Supported by",
+  "eventRegister": "Register",
+  "eventRegisterAgain": "Register again",
+  "eventSignInToRegister": "Sign in to register",
+  "eventEnded": "This event has ended",
+  "eventRequiresApprovalHint": "Registrations are reviewed by the organisers",
+  "eventStatusPending": "Pending approval",
+  "eventStatusApproved": "You're registered",
+  "eventStatusRejected": "Registration not accepted",
+  "eventWithdraw": "Withdraw",
+  "eventWithdrawConfirmTitle": "Withdraw your registration?",
+  "eventWithdrawConfirmMessage": "You can register again later as long as registration is open.",
+  "eventRegisteredApprovedMessage": "You're registered. See you there!",
+  "eventRegisteredPendingMessage": "Request sent. We'll let you know once it's reviewed.",
+  "eventWithdrawnMessage": "You've withdrawn from this event",
+  "eventRegistrationClosedMessage": "Registration for this event is closed",
+  "eventRegistrationRejectedMessage": "Your registration for this event was not accepted",
+  "eventStatusChangedMessage": "Your registration status was updated",
+  "eventProfileIncompleteTitle": "Complete your profile first",
+  "eventProfileIncompleteMessage": "To register for events, please fill in the following:"
 }

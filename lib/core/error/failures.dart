@@ -3,21 +3,23 @@ import 'package:equatable/equatable.dart';
 import 'network_failure_kind.dart';
 
 abstract class Failure extends Equatable {
-  const Failure(this.message);
+  const Failure(this.message, {this.code, this.extensions = const {}});
 
   final String message;
+  final String? code;
+  final Map<String, dynamic> extensions;
 
   String get displayMessage => message;
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [message, code];
 
   @override
   String toString() => message;
 }
 
 class ServerFailure extends Failure {
-  const ServerFailure(super.message);
+  const ServerFailure(super.message, {super.code, super.extensions});
 }
 
 class NetworkFailure extends Failure {
@@ -34,7 +36,7 @@ class CacheFailure extends Failure {
 }
 
 class ValidationFailure extends Failure {
-  const ValidationFailure(super.message, {this.errors});
+  const ValidationFailure(super.message, {this.errors, super.code, super.extensions});
 
   final Map<String, List<String>>? errors;
 
@@ -47,19 +49,19 @@ class ValidationFailure extends Failure {
   }
 
   @override
-  List<Object?> get props => [message, errors];
+  List<Object?> get props => [message, code, errors];
 }
 
 class UnauthorizedFailure extends Failure {
-  const UnauthorizedFailure(super.message);
+  const UnauthorizedFailure(super.message, {super.code, super.extensions});
 }
 
 class ConflictFailure extends Failure {
-  const ConflictFailure(super.message);
+  const ConflictFailure(super.message, {super.code, super.extensions});
 }
 
 class RateLimitFailure extends Failure {
-  const RateLimitFailure(super.message);
+  const RateLimitFailure(super.message, {super.code, super.extensions});
 }
 
 class UnexpectedFailure extends Failure {

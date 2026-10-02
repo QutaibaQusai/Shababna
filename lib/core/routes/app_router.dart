@@ -13,6 +13,7 @@ import '../../features/contact_info/presentation/pages/contact_info_page.dart';
 import '../../features/layout/presentation/pages/main_layout_page.dart';
 import '../../features/legal/presentation/pages/legal_content_page.dart';
 import '../../features/chatbot/presentation/pages/chatbot_page.dart';
+import '../../features/events/presentation/pages/event_details_page.dart';
 import '../../features/news/presentation/pages/news_details/news_details_page.dart';
 import '../../features/news/presentation/pages/news_list/news_list_page.dart';
 import '../../features/news/presentation/pages/news_search/news_search_page.dart';
@@ -146,6 +147,11 @@ class AppRouter {
           path: AppRoutes.newsDetails,
           name: AppRoutes.newsDetailsName,
           builder: (context, state) => NewsDetailsPage(id: state.pathParameters['id']!),
+        ),
+        GoRoute(
+          path: AppRoutes.eventDetails,
+          name: AppRoutes.eventDetailsName,
+          builder: (context, state) => EventDetailsPage(id: state.pathParameters['id']!),
         ),
         GoRoute(
           path: AppRoutes.contactInfo,
