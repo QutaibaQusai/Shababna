@@ -1550,12 +1550,6 @@ abstract class AppLocalizations {
   /// **'Shababna is typing'**
   String get assistantTyping;
 
-  /// No description provided for @onboardingSkip.
-  ///
-  /// In en, this message translates to:
-  /// **'Skip'**
-  String get onboardingSkip;
-
   /// No description provided for @onboardingNext.
   ///
   /// In en, this message translates to:
@@ -1568,23 +1562,17 @@ abstract class AppLocalizations {
   /// **'Get started'**
   String get onboardingGetStarted;
 
-  /// No description provided for @onboardingLanguageTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Choose your language'**
-  String get onboardingLanguageTitle;
-
-  /// No description provided for @onboardingLanguageSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Pick the language you\'re most comfortable with. You can change it anytime from your account.'**
-  String get onboardingLanguageSubtitle;
-
   /// No description provided for @onboardingVolunteerTitle.
   ///
   /// In en, this message translates to:
-  /// **'Volunteer with Shababna'**
+  /// **'Volunteer with'**
   String get onboardingVolunteerTitle;
+
+  /// No description provided for @onboardingVolunteerHighlight.
+  ///
+  /// In en, this message translates to:
+  /// **'Shababna'**
+  String get onboardingVolunteerHighlight;
 
   /// No description provided for @onboardingVolunteerSubtitle.
   ///
@@ -1595,8 +1583,14 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingEventsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Find opportunities near you'**
+  /// **'Find opportunities'**
   String get onboardingEventsTitle;
+
+  /// No description provided for @onboardingEventsHighlight.
+  ///
+  /// In en, this message translates to:
+  /// **'near you'**
+  String get onboardingEventsHighlight;
 
   /// No description provided for @onboardingEventsSubtitle.
   ///
@@ -1607,8 +1601,14 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingCertificatesTitle.
   ///
   /// In en, this message translates to:
-  /// **'Earn hours and certificates'**
+  /// **'Earn hours and'**
   String get onboardingCertificatesTitle;
+
+  /// No description provided for @onboardingCertificatesHighlight.
+  ///
+  /// In en, this message translates to:
+  /// **'certificates'**
+  String get onboardingCertificatesHighlight;
 
   /// No description provided for @onboardingCertificatesSubtitle.
   ///
@@ -1619,8 +1619,14 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingThemeTitle.
   ///
   /// In en, this message translates to:
-  /// **'Pick your look'**
+  /// **'Pick your'**
   String get onboardingThemeTitle;
+
+  /// No description provided for @onboardingThemeHighlight.
+  ///
+  /// In en, this message translates to:
+  /// **'look'**
+  String get onboardingThemeHighlight;
 
   /// No description provided for @onboardingThemeSubtitle.
   ///
@@ -1631,8 +1637,14 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingNotificationsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Stay in the loop'**
+  /// **'Stay in'**
   String get onboardingNotificationsTitle;
+
+  /// No description provided for @onboardingNotificationsHighlight.
+  ///
+  /// In en, this message translates to:
+  /// **'the loop'**
+  String get onboardingNotificationsHighlight;
 
   /// No description provided for @onboardingNotificationsSubtitle.
   ///

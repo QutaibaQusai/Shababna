@@ -822,51 +822,56 @@ class AppLocalizationsEn extends AppLocalizations {
   String get assistantTyping => 'Shababna is typing';
 
   @override
-  String get onboardingSkip => 'Skip';
-
-  @override
   String get onboardingNext => 'Next';
 
   @override
   String get onboardingGetStarted => 'Get started';
 
   @override
-  String get onboardingLanguageTitle => 'Choose your language';
+  String get onboardingVolunteerTitle => 'Volunteer with';
 
   @override
-  String get onboardingLanguageSubtitle =>
-      'Pick the language you\'re most comfortable with. You can change it anytime from your account.';
-
-  @override
-  String get onboardingVolunteerTitle => 'Volunteer with Shababna';
+  String get onboardingVolunteerHighlight => 'Shababna';
 
   @override
   String get onboardingVolunteerSubtitle =>
       'Join the youth network of the Royal Health Awareness Society and help spread health awareness in your community.';
 
   @override
-  String get onboardingEventsTitle => 'Find opportunities near you';
+  String get onboardingEventsTitle => 'Find opportunities';
+
+  @override
+  String get onboardingEventsHighlight => 'near you';
 
   @override
   String get onboardingEventsSubtitle =>
       'Browse volunteering events across Jordan, register in a tap and follow your registration status.';
 
   @override
-  String get onboardingCertificatesTitle => 'Earn hours and certificates';
+  String get onboardingCertificatesTitle => 'Earn hours and';
+
+  @override
+  String get onboardingCertificatesHighlight => 'certificates';
 
   @override
   String get onboardingCertificatesSubtitle =>
       'Every task you complete adds volunteering hours, levels up your tier and earns you certificates for your CV.';
 
   @override
-  String get onboardingThemeTitle => 'Pick your look';
+  String get onboardingThemeTitle => 'Pick your';
+
+  @override
+  String get onboardingThemeHighlight => 'look';
 
   @override
   String get onboardingThemeSubtitle =>
       'Choose light, dark, or follow your phone\'s setting.';
 
   @override
-  String get onboardingNotificationsTitle => 'Stay in the loop';
+  String get onboardingNotificationsTitle => 'Stay in';
+
+  @override
+  String get onboardingNotificationsHighlight => 'the loop';
 
   @override
   String get onboardingNotificationsSubtitle =>

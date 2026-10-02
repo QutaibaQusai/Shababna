@@ -818,51 +818,56 @@ class AppLocalizationsAr extends AppLocalizations {
   String get assistantTyping => 'شبابنا يكتب';
 
   @override
-  String get onboardingSkip => 'تخطي';
-
-  @override
   String get onboardingNext => 'التالي';
 
   @override
   String get onboardingGetStarted => 'لنبدأ';
 
   @override
-  String get onboardingLanguageTitle => 'اختر لغتك';
+  String get onboardingVolunteerTitle => 'تطوّع مع';
 
   @override
-  String get onboardingLanguageSubtitle =>
-      'اختر اللغة الأنسب لك، ويمكنك تغييرها في أي وقت من حسابك.';
-
-  @override
-  String get onboardingVolunteerTitle => 'تطوّع مع شبابنا';
+  String get onboardingVolunteerHighlight => 'شبابنا';
 
   @override
   String get onboardingVolunteerSubtitle =>
       'انضم إلى الشبكة الشبابية للجمعية الملكية للتوعية الصحية، وساهم في نشر الوعي الصحي في مجتمعك.';
 
   @override
-  String get onboardingEventsTitle => 'اكتشف فرص التطوع القريبة منك';
+  String get onboardingEventsTitle => 'اكتشف فرص التطوع';
+
+  @override
+  String get onboardingEventsHighlight => 'القريبة منك';
 
   @override
   String get onboardingEventsSubtitle =>
       'تصفّح فعاليات التطوع في مختلف أنحاء الأردن، وسجّل بلمسة واحدة وتابع حالة تسجيلك.';
 
   @override
-  String get onboardingCertificatesTitle => 'اجمع الساعات واحصل على الشهادات';
+  String get onboardingCertificatesTitle => 'اجمع الساعات واحصل على';
+
+  @override
+  String get onboardingCertificatesHighlight => 'الشهادات';
 
   @override
   String get onboardingCertificatesSubtitle =>
       'كل مهمة تنجزها تضيف إلى ساعات تطوعك، وترفع مستواك، وتمنحك شهادات تدعم سيرتك الذاتية.';
 
   @override
-  String get onboardingThemeTitle => 'اختر المظهر';
+  String get onboardingThemeTitle => 'اختر';
+
+  @override
+  String get onboardingThemeHighlight => 'المظهر';
 
   @override
   String get onboardingThemeSubtitle =>
       'اختر الوضع الفاتح أو الداكن، أو اتبع إعدادات هاتفك.';
 
   @override
-  String get onboardingNotificationsTitle => 'ابقَ على اطلاع';
+  String get onboardingNotificationsTitle => 'ابقَ';
+
+  @override
+  String get onboardingNotificationsHighlight => 'على اطلاع';
 
   @override
   String get onboardingNotificationsSubtitle =>

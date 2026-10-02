@@ -10,8 +10,10 @@ class AppSizes {
   static double get bottomNavHeight => 64.h;
   static double get navBarHeight => 56.r;
   static double get navItemSize => 48.r;
-  static double get onboardingIllustrationHeight => 240.r;
-  static double get onboardingProgressHeight => 4.r;
+  static double get onboardingControlsHeight => 116.r;
+  static double get onboardingDotSize => 8.r;
+  static double get onboardingDotHeight => 5.r;
+  static double get onboardingDotActiveWidth => 24.r;
   static double get toastHeight => 48.h;
   static double get iconButtonSize => 40.r;
   static double get loadingIndicatorSize => 72.r;

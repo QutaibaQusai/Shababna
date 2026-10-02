@@ -20,12 +20,11 @@ class AppAssets {
 
   static const String illustrationSearch = 'assets/images/illustration_search.svg';
 
-  static const String onboardingLanguage = 'assets/images/onboarding_language.svg';
-  static const String onboardingVolunteer = 'assets/images/onboarding_volunteer.svg';
-  static const String onboardingEvents = 'assets/images/onboarding_events.svg';
-  static const String onboardingCertificates = 'assets/images/onboarding_certificates.svg';
-  static const String onboardingTheme = 'assets/images/onboarding_theme.svg';
-  static const String onboardingNotifications = 'assets/images/onboarding_notifications.svg';
+  static const String onboardingVolunteer = 'assets/images/onboarding_volunteer.jpg';
+  static const String onboardingEvents = 'assets/images/onboarding_events.jpg';
+  static const String onboardingCertificates = 'assets/images/onboarding_certificates.jpg';
+  static const String onboardingTheme = 'assets/images/onboarding_theme.jpg';
+  static const String onboardingNotifications = 'assets/images/onboarding_notifications.jpg';
 
   static const String assistantAnimation = 'assets/animations/assistant_robot.json';
 }
