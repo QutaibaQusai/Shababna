@@ -888,13 +888,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get eventsHeaderTitle => 'Volunteering events';
-
-  @override
-  String get eventsHeaderSubtitle =>
-      'Find an opportunity that suits you and make a difference in your community';
-
-  @override
   String get eventsEmptyMessage => 'No upcoming events right now';
 
   @override

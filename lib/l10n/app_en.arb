@@ -336,8 +336,6 @@
   "@onboardingProgressLabel": {
     "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
   },
-  "eventsHeaderTitle": "Volunteering events",
-  "eventsHeaderSubtitle": "Find an opportunity that suits you and make a difference in your community",
   "eventsEmptyMessage": "No upcoming events right now",
   "eventHours": "{count, plural, =1{1 hour} other{{count} hours}}",
   "@eventHours": {

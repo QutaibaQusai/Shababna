@@ -1664,18 +1664,6 @@ abstract class AppLocalizations {
   /// **'Step {current} of {total}'**
   String onboardingProgressLabel(int current, int total);
 
-  /// No description provided for @eventsHeaderTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Volunteering events'**
-  String get eventsHeaderTitle;
-
-  /// No description provided for @eventsHeaderSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Find an opportunity that suits you and make a difference in your community'**
-  String get eventsHeaderSubtitle;
-
   /// No description provided for @eventsEmptyMessage.
   ///
   /// In en, this message translates to:

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/extensions/context_extensions.dart';
-import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../cubit/events_list/events_list_cubit.dart';
 import '../../cubit/events_list/events_list_state.dart';
@@ -40,23 +38,16 @@ class EventsListContent extends StatelessWidget {
           margin,
           margin + MediaQuery.paddingOf(context).bottom,
         ),
-        itemCount: items.length + 1 + (state.hasNextPage ? 1 : 0),
+        itemCount: items.length + (state.hasNextPage ? 1 : 0),
         separatorBuilder: (context, index) => SizedBox(height: AppSpacing.md),
         itemBuilder: (context, index) {
-          if (index == 0) {
-            return AppPageHeader(
-              title: context.l10n.eventsHeaderTitle,
-              subtitle: context.l10n.eventsHeaderSubtitle,
-            );
-          }
-          final itemIndex = index - 1;
-          if (itemIndex == items.length) {
+          if (index == items.length) {
             return EventLoadMoreFooter(
               failed: state.loadMoreFailed,
               onRetry: context.read<EventsListCubit>().retryLoadMore,
             );
           }
-          return EventCard(event: items[itemIndex]);
+          return EventCard(event: items[index]);
         },
       ),
     );

@@ -884,13 +884,6 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get eventsHeaderTitle => 'فعاليات التطوع';
-
-  @override
-  String get eventsHeaderSubtitle =>
-      'اعثر على الفرصة التي تناسبك وأحدث فرقاً في مجتمعك';
-
-  @override
   String get eventsEmptyMessage => 'لا توجد فعاليات قادمة حالياً';
 
   @override
