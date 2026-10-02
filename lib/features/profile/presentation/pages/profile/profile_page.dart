@@ -136,7 +136,6 @@ class _ProfileViewState extends State<_ProfileView> {
                 const ProfileHeaderSkeleton(),
               SizedBox(height: AppSpacing.xs),
               const Divider(height: 1),
-              AppMenuTile(icon: LucideIcons.calendar, title: context.l10n.navEvents),
               AppMenuTile(
                 icon: LucideIcons.newspaper,
                 title: context.l10n.navNews,
