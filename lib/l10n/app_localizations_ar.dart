@@ -1042,10 +1042,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get eventStatusChangedMessage => 'تم تحديث حالة تسجيلك';
 
   @override
-  String get eventProfileIncompleteTitle => 'أكمل ملفك الشخصي أولاً';
+  String get profileIncompleteTitle => 'أكمل ملفك الشخصي أولاً';
 
   @override
-  String get eventProfileIncompleteMessage =>
+  String get profileIncompleteMessage =>
       'للتسجيل في الفعاليات، يرجى تعبئة ما يلي:';
 
   @override

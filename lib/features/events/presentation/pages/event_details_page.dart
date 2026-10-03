@@ -18,7 +18,7 @@ import '../cubit/event_details/event_details_state.dart';
 import '../widgets/event_details/event_details_content.dart';
 import '../widgets/event_details/event_details_skeleton.dart';
 import '../widgets/event_details/event_registration_bar.dart';
-import '../widgets/event_details/profile_incomplete_sheet.dart';
+import '../../../profile/presentation/widgets/missing_fields/profile_incomplete_sheet.dart';
 import '../widgets/shared/event_fill_viewport.dart';
 
 class EventDetailsPage extends StatelessWidget {

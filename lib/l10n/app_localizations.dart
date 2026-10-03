@@ -1898,17 +1898,17 @@ abstract class AppLocalizations {
   /// **'Your registration status was updated'**
   String get eventStatusChangedMessage;
 
-  /// No description provided for @eventProfileIncompleteTitle.
+  /// No description provided for @profileIncompleteTitle.
   ///
   /// In en, this message translates to:
   /// **'Complete your profile first'**
-  String get eventProfileIncompleteTitle;
+  String get profileIncompleteTitle;
 
-  /// No description provided for @eventProfileIncompleteMessage.
+  /// No description provided for @profileIncompleteMessage.
   ///
   /// In en, this message translates to:
   /// **'To register for events, please fill in the following:'**
-  String get eventProfileIncompleteMessage;
+  String get profileIncompleteMessage;
 
   /// No description provided for @searchTitle.
   ///

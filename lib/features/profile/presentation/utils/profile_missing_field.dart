@@ -1,3 +1,4 @@
+import '../../../../l10n/app_localizations.dart';
 import '../../domain/repositories/profile_repository.dart';
 
 enum ProfileMissingField {
@@ -38,6 +39,26 @@ enum ProfileMissingField {
     'volunteeringTypeIds' => volunteeringTypes,
     'nationalIdPicture' => nationalIdPicture,
     _ => null,
+  };
+
+  String label(AppLocalizations l10n) => switch (this) {
+    gender => l10n.genderLabel,
+    dateOfBirth => l10n.dateOfBirthLabel,
+    nationality => l10n.nationalityLabel,
+    city => l10n.cityLabel,
+    education => l10n.educationLabel,
+    major => l10n.majorLabel,
+    nearestLandmark => l10n.nearestLandmarkLabel,
+    district => l10n.districtLabel,
+    neighborhood => l10n.neighborhoodLabel,
+    detailedAddress => l10n.detailedAddressLabel,
+    volunteerAwards => l10n.volunteerAwardsLabel,
+    isAvailableToVolunteer => l10n.isAvailableToVolunteerLabel,
+    willSignVolunteerServiceAgreement => l10n.willSignVolunteerServiceAgreementLabel,
+    willProvideNcc => l10n.willProvideNccLabel,
+    estimatedWeeklyHours => l10n.estimatedWeeklyHoursLabel,
+    volunteeringTypes => l10n.volunteeringTypesLabel,
+    nationalIdPicture => l10n.nationalIdPictureLabel,
   };
 
   static Set<ProfileMissingField> parse(List<String> keys) =>

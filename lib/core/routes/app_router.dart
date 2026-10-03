@@ -209,7 +209,10 @@ class AppRouter {
           path: AppRoutes.editProfile,
           name: AppRoutes.editProfileName,
           builder: (context, state) => EditProfilePage(
-            missingFields: state.extra is List<String> ? state.extra! as List<String> : const [],
+            missingFields: switch (state.extra) {
+              final List<String> fields => fields,
+              _ => const [],
+            },
           ),
         ),
         GoRoute(

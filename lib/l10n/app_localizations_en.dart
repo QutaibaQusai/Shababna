@@ -1037,10 +1037,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Your registration status was updated';
 
   @override
-  String get eventProfileIncompleteTitle => 'Complete your profile first';
+  String get profileIncompleteTitle => 'Complete your profile first';
 
   @override
-  String get eventProfileIncompleteMessage =>
+  String get profileIncompleteMessage =>
       'To register for events, please fill in the following:';
 
   @override

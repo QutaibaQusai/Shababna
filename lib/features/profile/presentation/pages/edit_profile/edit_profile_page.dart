@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/di/service_locator.dart';
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/shared/widgets/app_app_bar.dart';
-import '../../widgets/edit_profile/profile_birth_date_field.dart';
 import '../../../../../core/shared/widgets/app_dialog.dart';
 import '../../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../../core/shared/widgets/app_loading_overlay.dart';
-import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/shared/widgets/app_toast.dart';
 import '../../../../../core/state/form_status.dart';
 import '../../../../../core/theme/app_spacing.dart';
-import '../../../../../core/validators/app_validators.dart';
-import '../../../domain/repositories/profile_lookups_repository.dart';
 import '../../../domain/repositories/profile_repository.dart';
 import '../../cubit/edit_profile/edit_profile_cubit.dart';
 import '../../cubit/edit_profile/edit_profile_state.dart';
@@ -23,15 +17,16 @@ import '../../cubit/profile/profile_cubit.dart';
 import '../../cubit/profile/profile_state.dart';
 import '../../cubit/profile_attachment/profile_attachment_cubit.dart';
 import '../../cubit/profile_attachment/profile_attachment_state.dart';
+import '../../utils/profile_missing_field.dart';
 import '../../widgets/edit_profile/edit_profile_account_fields.dart';
+import '../../widgets/edit_profile/edit_profile_address_section.dart';
 import '../../widgets/edit_profile/edit_profile_bottom_bar.dart';
 import '../../widgets/edit_profile/edit_profile_documents_section.dart';
+import '../../widgets/edit_profile/edit_profile_form_scope.dart';
+import '../../widgets/edit_profile/edit_profile_personal_section.dart';
 import '../../widgets/edit_profile/edit_profile_skeleton.dart';
-import '../../utils/profile_missing_field.dart';
-import '../../widgets/edit_profile/gender_option.dart';
+import '../../widgets/edit_profile/edit_profile_volunteering_section.dart';
 import '../../widgets/edit_profile/profile_attachment_flow.dart';
-import '../../widgets/edit_profile/profile_lookup_field.dart';
-import '../../widgets/edit_profile/switch_row.dart';
 import '../../widgets/edit_profile/volunteer_tier_progress.dart';
 
 class EditProfilePage extends StatelessWidget {
@@ -109,13 +104,10 @@ class _EditProfileView extends StatefulWidget {
 }
 
 class _EditProfileViewState extends State<_EditProfileView> {
-  static const _minWeeklyHours = 1;
-  static const _maxWeeklyHours = 168;
   static const _scrollDuration = Duration(milliseconds: 450);
   static const _scrollAlignment = 0.15;
 
   final _formKey = GlobalKey<FormState>();
-  final _lookups = sl<ProfileLookupsRepository>();
   final _fieldKeys = {for (final field in ProfileMissingField.values) field: GlobalKey()};
   bool _showMissing = false;
 
@@ -186,8 +178,6 @@ class _EditProfileViewState extends State<_EditProfileView> {
     sync(_otherSubjectsController, details.otherVolunteeringSubjects);
   }
 
-  void _edit(ProfileDetails Function(ProfileDetails draft) change) => _cubit.edit(change);
-
   void _submit() {
     FocusManager.instance.primaryFocus?.unfocus();
     if (!(_formKey.currentState?.validate() ?? false)) return;
@@ -217,16 +207,6 @@ class _EditProfileViewState extends State<_EditProfileView> {
     } else if (state.status == FormStatus.failure) {
       AppToast.error(context, state.errorMessage ?? context.l10n.somethingWentWrong);
     }
-  }
-
-  String? _validateWeeklyHours(String? value) {
-    final text = value?.trim() ?? '';
-    if (text.isEmpty) return null;
-    final hours = int.tryParse(text);
-    if (hours == null || hours < _minWeeklyHours || hours > _maxWeeklyHours) {
-      return context.l10n.weeklyHoursRangeError(_minWeeklyHours, _maxWeeklyHours);
-    }
-    return null;
   }
 
   @override
@@ -280,10 +260,12 @@ class _EditProfileViewState extends State<_EditProfileView> {
   }
 
   Widget _buildForm(BuildContext context, ProfileDetails draft, bool hasNationalIdPicture) {
-    final isArabic = context.isArabic;
-    bool missing(ProfileMissingField key) => _isMissing(key, draft, hasNationalIdPicture);
-    Widget anchor(ProfileMissingField key, Widget child) =>
-        KeyedSubtree(key: _fieldKeys[key], child: child);
+    final scope = EditProfileFormScope(
+      draft: draft,
+      edit: _cubit.edit,
+      isMissing: (field) => _isMissing(field, draft, hasNationalIdPicture),
+      anchor: (field, child) => KeyedSubtree(key: _fieldKeys[field], child: child),
+    );
 
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.screenMargin),
@@ -299,259 +281,30 @@ class _EditProfileViewState extends State<_EditProfileView> {
             SizedBox(height: AppSpacing.md),
             const EditProfileContactFields(),
             SizedBox(height: AppSpacing.sm),
-            anchor(
-              ProfileMissingField.gender,
-              Row(
-                children: [
-                  Expanded(
-                    child: GenderOption(
-                      label: context.l10n.genderMale,
-                      hasError: missing(ProfileMissingField.gender),
-                      icon: Icons.male,
-                      selected: draft.gender == ProfileGender.male,
-                      onTap: () => _edit((d) => d.copyWith(gender: ProfileGender.male)),
-                    ),
-                  ),
-                  SizedBox(width: AppSpacing.xs),
-                  Expanded(
-                    child: GenderOption(
-                      label: context.l10n.genderFemale,
-                      hasError: missing(ProfileMissingField.gender),
-                      icon: Icons.female,
-                      selected: draft.gender == ProfileGender.female,
-                      onTap: () => _edit((d) => d.copyWith(gender: ProfileGender.female)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: AppSpacing.sm),
-            anchor(
-              ProfileMissingField.dateOfBirth,
-              ProfileBirthDateField(
-                label: context.l10n.dateOfBirthLabel,
-                hasError: missing(ProfileMissingField.dateOfBirth),
-                value: draft.dateOfBirth,
-                onChanged: (value) => _edit((d) => d.copyWith(dateOfBirth: value)),
-              ),
-            ),
-            SizedBox(height: AppSpacing.sm),
-            anchor(
-              ProfileMissingField.nationality,
-              ProfileLookupField<Country>(
-                label: context.l10n.nationalityLabel,
-                hasError: missing(ProfileMissingField.nationality),
-                icon: LucideIcons.flag,
-                selectedId: draft.nationality?.id,
-                selectedLabel: draft.nationality?.name,
-                loader: _lookups.getCountries,
-                idOf: (item) => item.id,
-                itemLabel: (item) => item.displayName(isArabic),
-                onSelected: (item) => _edit(
-                  (d) => d.copyWith(
-                    nationality: ProfileReference(id: item.id, name: item.displayName(isArabic)),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: AppSpacing.sm),
-            anchor(
-              ProfileMissingField.city,
-              ProfileLookupField<City>(
-                label: context.l10n.cityLabel,
-                hasError: missing(ProfileMissingField.city),
-                icon: LucideIcons.mapPin,
-                selectedId: draft.city?.id,
-                selectedLabel: draft.city?.name,
-                loader: _lookups.getCities,
-                idOf: (item) => item.id,
-                itemLabel: (item) => item.displayName(isArabic),
-                onSelected: (item) => _edit(
-                  (d) => d.copyWith(
-                    city: ProfileReference(id: item.id, name: item.displayName(isArabic)),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: AppSpacing.sm),
-            anchor(
-              ProfileMissingField.education,
-              ProfileLookupField<Education>(
-                label: context.l10n.educationLabel,
-                hasError: missing(ProfileMissingField.education),
-                icon: LucideIcons.graduationCap,
-                selectedId: draft.education?.id,
-                selectedLabel: draft.education?.name,
-                loader: _lookups.getEducations,
-                idOf: (item) => item.id,
-                itemLabel: (item) => item.displayName(isArabic),
-                onSelected: (item) => _edit(
-                  (d) => d.copyWith(
-                    education: ProfileEducation(
-                      id: item.id,
-                      name: item.displayName(isArabic),
-                      isMajorRequired: item.isMajorRequired,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            if (draft.isMajorRequired) ...[
-              SizedBox(height: AppSpacing.sm),
-              anchor(
-                ProfileMissingField.major,
-                AppTextField(
-                  label: context.l10n.majorLabel,
-                  hasError: missing(ProfileMissingField.major),
-                  controller: _majorController,
-                  prefixIcon: LucideIcons.bookOpen,
-                  textInputAction: TextInputAction.next,
-                  onChanged: (value) => _edit((d) => d.copyWith(major: value)),
-                  validator: AppValidators.required(context.l10n.majorRequiredError),
-                ),
-              ),
-            ],
-            SizedBox(height: AppSpacing.sm),
-            AppTextField(
-              label: context.l10n.universityNameLabel,
-              controller: _universityNameController,
-              prefixIcon: LucideIcons.school,
-              textInputAction: TextInputAction.next,
-              onChanged: (value) => _edit((d) => d.copyWith(universityName: value)),
+            EditProfilePersonalSection(
+              scope: scope,
+              majorController: _majorController,
+              universityNameController: _universityNameController,
             ),
             SizedBox(height: AppSpacing.lg),
-            anchor(
-              ProfileMissingField.nearestLandmark,
-              AppTextField(
-                label: context.l10n.nearestLandmarkLabel,
-                hasError: missing(ProfileMissingField.nearestLandmark),
-                controller: _nearestLandmarkController,
-                prefixIcon: LucideIcons.landmark,
-                textInputAction: TextInputAction.next,
-                onChanged: (value) => _edit((d) => d.copyWith(nearestLandmark: value)),
-              ),
-            ),
-            SizedBox(height: AppSpacing.sm),
-            anchor(
-              ProfileMissingField.district,
-              AppTextField(
-                label: context.l10n.districtLabel,
-                hasError: missing(ProfileMissingField.district),
-                controller: _districtController,
-                prefixIcon: LucideIcons.map,
-                textInputAction: TextInputAction.next,
-                onChanged: (value) => _edit((d) => d.copyWith(district: value)),
-              ),
-            ),
-            SizedBox(height: AppSpacing.sm),
-            anchor(
-              ProfileMissingField.neighborhood,
-              AppTextField(
-                label: context.l10n.neighborhoodLabel,
-                hasError: missing(ProfileMissingField.neighborhood),
-                controller: _neighborhoodController,
-                prefixIcon: LucideIcons.house,
-                textInputAction: TextInputAction.next,
-                onChanged: (value) => _edit((d) => d.copyWith(neighborhood: value)),
-              ),
-            ),
-            SizedBox(height: AppSpacing.sm),
-            anchor(
-              ProfileMissingField.detailedAddress,
-              AppTextField(
-                label: context.l10n.detailedAddressLabel,
-                hasError: missing(ProfileMissingField.detailedAddress),
-                controller: _detailedAddressController,
-                onChanged: (value) => _edit((d) => d.copyWith(detailedAddress: value)),
-              ),
+            EditProfileAddressSection(
+              scope: scope,
+              nearestLandmarkController: _nearestLandmarkController,
+              districtController: _districtController,
+              neighborhoodController: _neighborhoodController,
+              detailedAddressController: _detailedAddressController,
             ),
             SizedBox(height: AppSpacing.lg),
-            SwitchRow(
-              label: context.l10n.isFirstTimeVolunteerLabel,
-              value: draft.isFirstTimeVolunteer,
-              onChanged: (value) => _edit((d) => d.copyWith(isFirstTimeVolunteer: value)),
-            ),
-            anchor(
-              ProfileMissingField.volunteerAwards,
-              SwitchRow(
-                label: context.l10n.volunteerAwardsLabel,
-                hasError: missing(ProfileMissingField.volunteerAwards),
-                value: draft.volunteerAwards,
-                onChanged: (value) => _edit((d) => d.copyWith(volunteerAwards: value)),
-              ),
-            ),
-            anchor(
-              ProfileMissingField.isAvailableToVolunteer,
-              SwitchRow(
-                label: context.l10n.isAvailableToVolunteerLabel,
-                hasError: missing(ProfileMissingField.isAvailableToVolunteer),
-                value: draft.isAvailableToVolunteer,
-                onChanged: (value) => _edit((d) => d.copyWith(isAvailableToVolunteer: value)),
-              ),
-            ),
-            anchor(
-              ProfileMissingField.willSignVolunteerServiceAgreement,
-              SwitchRow(
-                label: context.l10n.willSignVolunteerServiceAgreementLabel,
-                hasError: missing(ProfileMissingField.willSignVolunteerServiceAgreement),
-                value: draft.willSignVolunteerServiceAgreement,
-                onChanged: (value) =>
-                    _edit((d) => d.copyWith(willSignVolunteerServiceAgreement: value)),
-              ),
-            ),
-            anchor(
-              ProfileMissingField.willProvideNcc,
-              SwitchRow(
-                label: context.l10n.willProvideNccLabel,
-                hasError: missing(ProfileMissingField.willProvideNcc),
-                value: draft.willProvideNcc,
-                onChanged: (value) => _edit((d) => d.copyWith(willProvideNcc: value)),
-              ),
-            ),
-            SizedBox(height: AppSpacing.sm),
-            anchor(
-              ProfileMissingField.estimatedWeeklyHours,
-              AppTextField(
-                label: context.l10n.estimatedWeeklyHoursLabel,
-                hasError: missing(ProfileMissingField.estimatedWeeklyHours),
-                controller: _weeklyHoursController,
-                prefixIcon: LucideIcons.clock,
-                keyboardType: TextInputType.number,
-                textInputAction: TextInputAction.next,
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly,
-                  LengthLimitingTextInputFormatter(3),
-                ],
-                onChanged: (value) => _edit((d) => d.copyWith(estimatedWeeklyHours: value)),
-                validator: _validateWeeklyHours,
-              ),
-            ),
-            SizedBox(height: AppSpacing.sm),
-            anchor(
-              ProfileMissingField.volunteeringTypes,
-              ProfileLookupMultiField<VolunteeringType>(
-                label: context.l10n.volunteeringTypesLabel,
-                hasError: missing(ProfileMissingField.volunteeringTypes),
-                icon: LucideIcons.handHeart,
-                selected: draft.volunteeringTypes,
-                loader: _lookups.getVolunteeringTypes,
-                idOf: (item) => item.id,
-                itemLabel: (item) => item.displayName(isArabic),
-                onChanged: (value) => _edit((d) => d.copyWith(volunteeringTypes: value)),
-              ),
-            ),
-            SizedBox(height: AppSpacing.sm),
-            AppTextField(
-              label: context.l10n.otherVolunteeringSubjectsLabel,
-              controller: _otherSubjectsController,
-              textInputAction: TextInputAction.done,
-              onChanged: (value) => _edit((d) => d.copyWith(otherVolunteeringSubjects: value)),
+            EditProfileVolunteeringSection(
+              scope: scope,
+              weeklyHoursController: _weeklyHoursController,
+              otherSubjectsController: _otherSubjectsController,
             ),
             SizedBox(height: AppSpacing.lg),
-            anchor(
+            scope.anchor(
               ProfileMissingField.nationalIdPicture,
               EditProfileDocumentsSection(
-                isNationalIdMissing: missing(ProfileMissingField.nationalIdPicture),
+                isNationalIdMissing: scope.isMissing(ProfileMissingField.nationalIdPicture),
               ),
             ),
           ],
