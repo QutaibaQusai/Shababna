@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_radius.dart';
+import '../../../../core/theme/app_sizes.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/repositories/search_repository.dart';
@@ -45,6 +46,8 @@ class SearchFilterBar extends StatelessWidget {
 class _FilterPill extends StatelessWidget {
   const _FilterPill({required this.label, required this.isSelected, required this.onTap});
 
+  static const _duration = Duration(milliseconds: 200);
+
   final String label;
   final bool isSelected;
   final VoidCallback onTap;
@@ -53,20 +56,36 @@ class _FilterPill extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = context.colorScheme;
 
-    return Material(
-      color: isSelected ? colorScheme.primary : colorScheme.surface,
-      borderRadius: AppRadius.pillRadius,
+    return Semantics(
+      button: true,
+      selected: isSelected,
       child: InkWell(
         onTap: onTap,
-        borderRadius: AppRadius.pillRadius,
+        borderRadius: AppRadius.smRadius,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
-          child: Text(
-            label,
-            style: context.textTheme.labelLarge?.copyWith(
-              color: isSelected ? colorScheme.onPrimary : colorScheme.onSurface,
-              fontWeight: FontWeight.w600,
-            ),
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.xs, vertical: AppSpacing.xxs),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AnimatedDefaultTextStyle(
+                duration: _duration,
+                style: (context.textTheme.labelLarge ?? const TextStyle()).copyWith(
+                  color: isSelected ? colorScheme.primary : colorScheme.onSurfaceVariant,
+                  fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                ),
+                child: Text(label),
+              ),
+              SizedBox(height: AppSpacing.xxs),
+              AnimatedContainer(
+                duration: _duration,
+                width: AppSizes.tabIndicatorDotSize,
+                height: AppSizes.tabIndicatorDotSize,
+                decoration: BoxDecoration(
+                  color: isSelected ? colorScheme.primary : Colors.transparent,
+                  shape: BoxShape.circle,
+                ),
+              ),
+            ],
           ),
         ),
       ),
