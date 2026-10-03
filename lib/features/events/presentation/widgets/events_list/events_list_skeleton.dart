@@ -4,11 +4,12 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_spacing.dart';
+import 'event_card.dart';
 
 class EventsListSkeleton extends StatelessWidget {
   const EventsListSkeleton({super.key});
 
-  static const _ratios = [3 / 4, 1.0, 1.0, 3 / 4, 3 / 4, 1.0, 1.0, 3 / 4];
+  static const _placeholderCount = 8;
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +19,12 @@ class EventsListSkeleton extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.all(AppSpacing.screenMargin),
         crossAxisCount: 2,
-        mainAxisSpacing: AppSpacing.md,
+        mainAxisSpacing: AppSpacing.sm,
         crossAxisSpacing: AppSpacing.sm,
-        itemCount: _ratios.length,
+        itemCount: _placeholderCount,
         itemBuilder: (context, index) => AspectRatio(
-          aspectRatio: _ratios[index],
-          child: Bone(borderRadius: AppRadius.mdRadius),
+          aspectRatio: EventCard.aspectRatioAt(index),
+          child: Bone(borderRadius: AppRadius.lgRadius),
         ),
       ),
     );

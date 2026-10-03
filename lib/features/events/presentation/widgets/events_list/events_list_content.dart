@@ -39,7 +39,7 @@ class EventsListContent extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(margin, margin, margin, 0),
             sliver: SliverMasonryGrid.count(
               crossAxisCount: columnCount,
-              mainAxisSpacing: AppSpacing.md,
+              mainAxisSpacing: AppSpacing.sm,
               crossAxisSpacing: AppSpacing.sm,
               childCount: items.length,
               itemBuilder: (context, index) =>
