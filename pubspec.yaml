@@ -37,7 +37,6 @@ dependencies:
   share_plus: ^13.3.0
   image_picker: ^1.1.2
   file_picker: ^13.1.0
-  flutter_undraw: ^0.2.1
   percent_indicator: ^4.2.5
   video_player: ^2.14.0
   chewie: ^1.13.0
@@ -66,6 +65,3 @@ flutter:
   assets:
     - assets/images/
     - assets/animations/
-    - packages/flutter_undraw/assets/undraw/empty.svg
-    - packages/flutter_undraw/assets/undraw/warning.svg
-    - packages/flutter_undraw/assets/undraw/secure_login.svg

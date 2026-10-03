@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_undraw/flutter_undraw.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 
+import '../../config/app_assets.dart';
 import '../../extensions/context_extensions.dart';
 import '../../theme/app_sizes.dart';
 import '../../theme/app_spacing.dart';
+import 'app_illustration.dart';
 
 class AppEmptyWidget extends StatelessWidget {
   const AppEmptyWidget({super.key, this.message});
@@ -13,20 +13,15 @@ class AppEmptyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = context.colorScheme.primary;
-
     return Center(
       child: SingleChildScrollView(
         padding: EdgeInsets.all(AppSpacing.md),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Undraw(
-              illustration: UndrawIllustration.empty,
-              color: color,
+            AppIllustration(
+              asset: AppAssets.illustrationEmpty,
               height: AppSizes.illustrationSize,
-              placeholder: SizedBox(height: AppSizes.illustrationSize),
-              errorWidget: Icon(LucideIcons.inbox, size: AppSizes.iconLg, color: color),
             ),
             SizedBox(height: AppSpacing.md),
             Text(

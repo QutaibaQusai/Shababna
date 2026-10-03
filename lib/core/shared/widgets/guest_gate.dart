@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_undraw/flutter_undraw.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../config/app_assets.dart';
 import '../../extensions/context_extensions.dart';
 import '../../routes/app_routes.dart';
 import '../../session/auth_session_cubit.dart';
 import '../../theme/app_sizes.dart';
 import '../../theme/app_spacing.dart';
 import 'app_button.dart';
+import 'app_illustration.dart';
 
 Future<bool> ensureSignedIn(BuildContext context) async {
   if (context.read<AuthSessionCubit>().state.isAuthenticated) return true;
@@ -92,11 +93,9 @@ class GuestGateContent extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Undraw(
-            illustration: UndrawIllustration.secureLogin,
-            color: context.colorScheme.primary,
+          AppIllustration(
+            asset: AppAssets.illustrationSecureLogin,
             height: AppSizes.illustrationSizeCompact,
-            placeholder: SizedBox(height: AppSizes.illustrationSizeCompact),
           ),
           SizedBox(height: AppSpacing.md),
           Text(

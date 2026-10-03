@@ -19,6 +19,9 @@ class AppAssets {
       'assets/images/icon_notification_2.svg';
 
   static const String illustrationSearch = 'assets/images/illustration_search.svg';
+  static const String illustrationEmpty = 'assets/images/illustration_empty.svg';
+  static const String illustrationWarning = 'assets/images/illustration_warning.svg';
+  static const String illustrationSecureLogin = 'assets/images/illustration_secure_login.svg';
 
   static const String onboardingVolunteer = 'assets/images/onboarding_volunteer.jpg';
   static const String onboardingEvents = 'assets/images/onboarding_events.jpg';
