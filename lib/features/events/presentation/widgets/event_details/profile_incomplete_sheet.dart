@@ -5,6 +5,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/shared/widgets/app_button.dart';
+import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../l10n/app_localizations.dart';
@@ -38,7 +39,7 @@ class _ProfileIncompleteSheet extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.fromLTRB(
           AppSpacing.screenMargin,
-          AppSpacing.md,
+          0,
           AppSpacing.screenMargin,
           AppSpacing.md,
         ),
@@ -46,16 +47,9 @@ class _ProfileIncompleteSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              l10n.eventProfileIncompleteTitle,
-              style: context.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: AppSpacing.xs),
-            Text(
-              l10n.eventProfileIncompleteMessage,
-              style: context.textTheme.bodyMedium?.copyWith(
-                color: context.colorScheme.onSurfaceVariant,
-              ),
+            AppPageHeader(
+              title: l10n.eventProfileIncompleteTitle,
+              subtitle: l10n.eventProfileIncompleteMessage,
             ),
             SizedBox(height: AppSpacing.sm),
             Flexible(
