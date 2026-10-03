@@ -943,6 +943,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get eventInfoTitle => 'تفاصيل الفعالية';
 
   @override
+  String get eventDateLabel => 'التاريخ';
+
+  @override
+  String get eventPlaceLabel => 'المكان';
+
+  @override
+  String get eventHoursLabel => 'الساعات';
+
+  @override
+  String get eventVolunteersLabel => 'المتطوعون';
+
+  @override
+  String get eventActivitiesLabel => 'الأنشطة';
+
+  @override
   String get eventAboutTitle => 'عن الفعالية';
 
   @override

@@ -4,7 +4,7 @@ import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../l10n/app_localizations.dart';
 import '../../../domain/repositories/events_repository.dart';
-import 'event_section_title.dart';
+import 'event_key_value_row.dart';
 
 class EventEligibilitySection extends StatelessWidget {
   const EventEligibilitySection({super.key, required this.event});
@@ -40,47 +40,10 @@ class EventEligibilitySection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        EventSectionTitle(title: l10n.eventEligibilityTitle),
-        for (final (label, value) in rows) ...[
-          SizedBox(height: AppSpacing.sm),
-          _EligibilityRow(label: label, value: value),
+        for (var i = 0; i < rows.length; i++) ...[
+          if (i > 0) SizedBox(height: AppSpacing.sm),
+          EventKeyValueRow(label: rows[i].$1, value: rows[i].$2),
         ],
-      ],
-    );
-  }
-}
-
-class _EligibilityRow extends StatelessWidget {
-  const _EligibilityRow({required this.label, required this.value});
-
-  static const _labelFlex = 2;
-  static const _valueFlex = 3;
-
-  final String label;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          flex: _labelFlex,
-          child: Text(
-            label,
-            style: context.textTheme.bodyMedium?.copyWith(
-              color: context.colorScheme.onSurfaceVariant,
-            ),
-          ),
-        ),
-        SizedBox(width: AppSpacing.sm),
-        Expanded(
-          flex: _valueFlex,
-          child: Text(
-            value,
-            style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
-          ),
-        ),
       ],
     );
   }

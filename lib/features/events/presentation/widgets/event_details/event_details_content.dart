@@ -10,9 +10,8 @@ import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/events_repository.dart';
 import 'event_description.dart';
 import 'event_details_header.dart';
+import 'event_details_tabs.dart';
 import 'event_donors_section.dart';
-import 'event_eligibility_section.dart';
-import 'event_info_section.dart';
 import 'event_section_title.dart';
 
 class EventDetailsContent extends StatelessWidget {
@@ -63,9 +62,7 @@ class EventDetailsContent extends StatelessWidget {
           ),
         ],
         SizedBox(height: AppSpacing.md),
-        Padding(padding: margin, child: EventInfoSection(event: event)),
-        SizedBox(height: AppSpacing.md),
-        Padding(padding: margin, child: EventEligibilitySection(event: event)),
+        Padding(padding: margin, child: EventDetailsTabs(event: event)),
         if (event.donors.isNotEmpty) ...[
           SizedBox(height: AppSpacing.md),
           EventDonorsSection(donors: event.donors),

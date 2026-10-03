@@ -1712,6 +1712,36 @@ abstract class AppLocalizations {
   /// **'Event details'**
   String get eventInfoTitle;
 
+  /// No description provided for @eventDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get eventDateLabel;
+
+  /// No description provided for @eventPlaceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Place'**
+  String get eventPlaceLabel;
+
+  /// No description provided for @eventHoursLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Hours'**
+  String get eventHoursLabel;
+
+  /// No description provided for @eventVolunteersLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Volunteers'**
+  String get eventVolunteersLabel;
+
+  /// No description provided for @eventActivitiesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Activities'**
+  String get eventActivitiesLabel;
+
   /// No description provided for @eventAboutTitle.
   ///
   /// In en, this message translates to:

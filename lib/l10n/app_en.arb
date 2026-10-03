@@ -353,6 +353,11 @@
     "placeholders": { "count": { "type": "int" } }
   },
   "eventInfoTitle": "Event details",
+  "eventDateLabel": "Date",
+  "eventPlaceLabel": "Place",
+  "eventHoursLabel": "Hours",
+  "eventVolunteersLabel": "Volunteers",
+  "eventActivitiesLabel": "Activities",
   "eventAboutTitle": "About the event",
   "eventEligibilityTitle": "Who can join",
   "eventGenderBoth": "Everyone",

@@ -935,6 +935,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get eventInfoTitle => 'Event details';
 
   @override
+  String get eventDateLabel => 'Date';
+
+  @override
+  String get eventPlaceLabel => 'Place';
+
+  @override
+  String get eventHoursLabel => 'Hours';
+
+  @override
+  String get eventVolunteersLabel => 'Volunteers';
+
+  @override
+  String get eventActivitiesLabel => 'Activities';
+
+  @override
   String get eventAboutTitle => 'About the event';
 
   @override
