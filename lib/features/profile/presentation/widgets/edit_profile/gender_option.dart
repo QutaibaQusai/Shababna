@@ -12,12 +12,14 @@ class GenderOption extends StatelessWidget {
     required this.icon,
     required this.selected,
     required this.onTap,
+    this.hasError = false,
   });
 
   final String label;
   final IconData icon;
   final bool selected;
   final VoidCallback onTap;
+  final bool hasError;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,11 @@ class GenderOption extends StatelessWidget {
         decoration: BoxDecoration(
           color: selected ? context.colorScheme.primaryContainer : null,
           border: Border.all(
-            color: selected ? context.colorScheme.primary : context.colorScheme.outlineVariant,
+            color: selected
+                ? context.colorScheme.primary
+                : hasError
+                    ? context.colorScheme.error
+                    : context.colorScheme.outlineVariant,
           ),
           borderRadius: AppRadius.mdRadius,
         ),

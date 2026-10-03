@@ -26,6 +26,7 @@ class AppTextField extends StatefulWidget {
     this.maxLines = 1,
     this.minLines,
     this.maxLength,
+    this.hasError = false,
   });
 
   final String label;
@@ -45,6 +46,7 @@ class AppTextField extends StatefulWidget {
   final int maxLines;
   final int? minLines;
   final int? maxLength;
+  final bool hasError;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -55,6 +57,7 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final inputTheme = Theme.of(context).inputDecorationTheme;
     final field = TextFormField(
       controller: widget.controller,
       validator: widget.validator,
@@ -72,6 +75,8 @@ class _AppTextFieldState extends State<AppTextField> {
       style: context.textTheme.bodyLarge,
       decoration: InputDecoration(
         hintText: widget.hint,
+        enabledBorder: widget.hasError ? inputTheme.errorBorder : null,
+        focusedBorder: widget.hasError ? inputTheme.focusedErrorBorder : null,
         prefixIcon: widget.prefixIcon != null
             ? Icon(widget.prefixIcon, size: AppSizes.iconField)
             : null,
@@ -93,7 +98,7 @@ class _AppTextFieldState extends State<AppTextField> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        AppFieldLabel(label: widget.label),
+        AppFieldLabel(label: widget.label, hasError: widget.hasError),
         SizedBox(height: AppSpacing.xs),
         field,
       ],
@@ -102,9 +107,10 @@ class _AppTextFieldState extends State<AppTextField> {
 }
 
 class AppFieldLabel extends StatelessWidget {
-  const AppFieldLabel({super.key, required this.label});
+  const AppFieldLabel({super.key, required this.label, this.hasError = false});
 
   final String label;
+  final bool hasError;
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +118,7 @@ class AppFieldLabel extends StatelessWidget {
       label,
       style: context.textTheme.labelLarge?.copyWith(
         fontWeight: FontWeight.w600,
-        color: context.colorScheme.onSurface,
+        color: hasError ? context.colorScheme.error : context.colorScheme.onSurface,
       ),
     );
   }

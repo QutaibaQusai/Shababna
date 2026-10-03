@@ -27,6 +27,7 @@ class ProfileLookupField<T> extends StatelessWidget {
     required this.idOf,
     required this.itemLabel,
     required this.onSelected,
+    this.hasError = false,
   });
 
   final String label;
@@ -37,6 +38,7 @@ class ProfileLookupField<T> extends StatelessWidget {
   final String Function(T item) idOf;
   final String Function(T item) itemLabel;
   final ValueChanged<T> onSelected;
+  final bool hasError;
 
   Future<void> _open(BuildContext context) async {
     final result = await showModalBottomSheet<_LookupSelection<T>>(
@@ -63,6 +65,7 @@ class ProfileLookupField<T> extends StatelessWidget {
       icon: icon,
       value: selectedLabel,
       onTap: () => _open(context),
+      hasError: hasError,
     );
   }
 }
@@ -77,6 +80,7 @@ class ProfileLookupMultiField<T> extends StatelessWidget {
     required this.idOf,
     required this.itemLabel,
     required this.onChanged,
+    this.hasError = false,
   });
 
   final String label;
@@ -86,6 +90,7 @@ class ProfileLookupMultiField<T> extends StatelessWidget {
   final String Function(T item) idOf;
   final String Function(T item) itemLabel;
   final ValueChanged<List<ProfileReference>> onChanged;
+  final bool hasError;
 
   Future<void> _open(BuildContext context) async {
     final result = await showModalBottomSheet<_LookupSelection<T>>(
@@ -118,6 +123,7 @@ class ProfileLookupMultiField<T> extends StatelessWidget {
       icon: icon,
       value: selected.map((item) => item.name).join(context.isArabic ? '، ' : ', '),
       onTap: () => _open(context),
+      hasError: hasError,
     );
   }
 }

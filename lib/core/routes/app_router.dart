@@ -208,7 +208,9 @@ class AppRouter {
         GoRoute(
           path: AppRoutes.editProfile,
           name: AppRoutes.editProfileName,
-          builder: (context, state) => const EditProfilePage(),
+          builder: (context, state) => EditProfilePage(
+            missingFields: state.extra is List<String> ? state.extra! as List<String> : const [],
+          ),
         ),
         GoRoute(
           path: AppRoutes.changePhoneNumber,

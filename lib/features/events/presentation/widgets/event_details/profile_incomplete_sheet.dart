@@ -18,7 +18,7 @@ Future<void> showProfileIncompleteSheet(BuildContext context, List<String> missi
       missingFields: missingFields,
       onCompleteProfile: () {
         Navigator.of(sheetContext).pop();
-        context.push(AppRoutes.editProfile);
+        context.push(AppRoutes.editProfile, extra: missingFields);
       },
     ),
   );

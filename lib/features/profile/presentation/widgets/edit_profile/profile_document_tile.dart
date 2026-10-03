@@ -15,6 +15,7 @@ class ProfileDocumentTile extends StatelessWidget {
     required this.onTap,
     this.hint,
     this.isBusy = false,
+    this.hasError = false,
   });
 
   final String label;
@@ -22,6 +23,7 @@ class ProfileDocumentTile extends StatelessWidget {
   final String? hint;
   final bool isUploaded;
   final bool isBusy;
+  final bool hasError;
   final VoidCallback onTap;
 
   @override
@@ -38,7 +40,9 @@ class ProfileDocumentTile extends StatelessWidget {
           border: Border.all(
             color: isUploaded
                 ? context.colorScheme.primary.withValues(alpha: 0.4)
-                : context.colorScheme.outlineVariant,
+                : hasError
+                    ? context.colorScheme.error
+                    : context.colorScheme.outlineVariant,
           ),
         ),
         child: Row(

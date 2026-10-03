@@ -17,6 +17,7 @@ class FieldCard extends StatelessWidget {
     this.badge,
     this.opensPage = false,
     this.onTap,
+    this.hasError = false,
   });
 
   final String label;
@@ -26,6 +27,7 @@ class FieldCard extends StatelessWidget {
   final Widget? badge;
   final bool opensPage;
   final VoidCallback? onTap;
+  final bool hasError;
 
   IconData _arrowIcon(BuildContext context) {
     if (!opensPage) return LucideIcons.chevronDown;
@@ -34,6 +36,7 @@ class FieldCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final inputTheme = Theme.of(context).inputDecorationTheme;
     final text = value?.trim() ?? '';
     final arrow = onTap == null ? null : Icon(_arrowIcon(context), size: AppSizes.iconField);
 
@@ -41,7 +44,7 @@ class FieldCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        AppFieldLabel(label: label),
+        AppFieldLabel(label: label, hasError: hasError),
         SizedBox(height: AppSpacing.xs),
         InkWell(
           onTap: onTap,
@@ -49,6 +52,7 @@ class FieldCard extends StatelessWidget {
           child: InputDecorator(
             isEmpty: text.isEmpty,
             decoration: InputDecoration(
+              enabledBorder: hasError ? inputTheme.errorBorder : null,
               prefixIcon: Icon(icon, size: AppSizes.iconField),
               suffixIcon: _suffix(arrow),
             ),

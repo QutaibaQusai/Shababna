@@ -10,11 +10,13 @@ class SwitchRow extends StatelessWidget {
     required this.label,
     required this.value,
     required this.onChanged,
+    this.hasError = false,
   });
 
   final String label;
   final bool value;
   final ValueChanged<bool> onChanged;
+  final bool hasError;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,14 @@ class SwitchRow extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: AppSpacing.xs),
       child: Row(
         children: [
-          Expanded(child: Text(label, style: context.textTheme.bodyMedium)),
+          Expanded(
+            child: Text(
+              label,
+              style: context.textTheme.bodyMedium?.copyWith(
+                color: hasError ? context.colorScheme.error : null,
+              ),
+            ),
+          ),
           AppSwitch(value: value, onChanged: onChanged),
         ],
       ),

@@ -11,7 +11,9 @@ import 'profile_attachment_flow.dart';
 import 'profile_document_tile.dart';
 
 class EditProfileDocumentsSection extends StatelessWidget {
-  const EditProfileDocumentsSection({super.key});
+  const EditProfileDocumentsSection({super.key, this.isNationalIdMissing = false});
+
+  final bool isNationalIdMissing;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,7 @@ class EditProfileDocumentsSection extends StatelessWidget {
               ? context.l10n.documentUploadedStatus
               : context.l10n.documentNotUploadedStatus,
           isBusy: attachmentState.isBusyWith(ProfileAttachment.nationalId),
+          hasError: isNationalIdMissing,
           onTap: () => ProfileAttachmentFlow.start(
             context,
             ProfileAttachment.nationalId,

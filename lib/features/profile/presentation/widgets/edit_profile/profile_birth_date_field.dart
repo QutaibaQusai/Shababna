@@ -12,6 +12,7 @@ class ProfileBirthDateField extends StatelessWidget {
     required this.label,
     required this.value,
     required this.onChanged,
+    this.hasError = false,
   });
 
   static const _maxAgeYears = 100;
@@ -20,6 +21,7 @@ class ProfileBirthDateField extends StatelessWidget {
   final String label;
   final DateTime? value;
   final ValueChanged<DateTime> onChanged;
+  final bool hasError;
 
   Future<void> _open(BuildContext context) async {
     final now = DateTime.now();
@@ -58,6 +60,7 @@ class ProfileBirthDateField extends StatelessWidget {
       icon: LucideIcons.calendar,
       value: _format(value),
       onTap: () => _open(context),
+      hasError: hasError,
     );
   }
 }
