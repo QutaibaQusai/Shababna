@@ -7,7 +7,6 @@ import '../../../../../core/di/service_locator.dart';
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_error_widget.dart';
-import '../../../../../core/shared/widgets/app_refresh_indicator.dart';
 import '../../../../../core/shared/widgets/share_icon_button.dart';
 import '../../cubit/news_details/news_details_cubit.dart';
 import '../../cubit/news_details/news_details_state.dart';
@@ -44,12 +43,9 @@ class _NewsDetailsView extends StatelessWidget {
         onBack: () => context.pop(),
         actions: [ShareIconButton(path: AppShareLinks.newsDetails(cubit.id))],
       ),
-      body: AppRefreshIndicator(
-        onRefresh: cubit.load,
-        child: article != null
-            ? NewsDetailsContent(article: article)
-            : _placeholder(context, state, cubit),
-      ),
+      body: article != null
+          ? NewsDetailsContent(article: article)
+          : _placeholder(context, state, cubit),
     );
   }
 
