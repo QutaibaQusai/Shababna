@@ -30,10 +30,6 @@ Future<bool> ensureSignedIn(BuildContext context) async {
             Navigator.of(sheetContext).pop();
             context.push(AppRoutes.loginModal);
           },
-          onCreateAccount: () {
-            Navigator.of(sheetContext).pop();
-            context.push(AppRoutes.register);
-          },
         ),
       ),
     ),
@@ -57,7 +53,6 @@ class GuestGate extends StatelessWidget {
           padding: EdgeInsets.all(AppSpacing.screenMargin),
           child: GuestGateContent(
             onSignIn: () => context.push(AppRoutes.loginModal),
-            onCreateAccount: () => context.push(AppRoutes.register),
           ),
         ),
       ),
@@ -69,7 +64,6 @@ class GuestGateContent extends StatelessWidget {
   const GuestGateContent({
     super.key,
     required this.onSignIn,
-    required this.onCreateAccount,
     this.title,
     this.message,
   });
@@ -78,7 +72,6 @@ class GuestGateContent extends StatelessWidget {
   static const _entranceOffset = 16.0;
 
   final VoidCallback onSignIn;
-  final VoidCallback onCreateAccount;
   final String? title;
   final String? message;
 
@@ -121,8 +114,6 @@ class GuestGateContent extends StatelessWidget {
           ),
           SizedBox(height: AppSpacing.md),
           AppButton.primary(label: context.l10n.loginButton, onPressed: onSignIn),
-          SizedBox(height: AppSpacing.xs),
-          AppButton.text(label: context.l10n.createAccountButton, onPressed: onCreateAccount),
         ],
       ),
     );

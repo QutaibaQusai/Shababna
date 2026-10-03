@@ -49,10 +49,8 @@ class _EventDetailsTabsState extends State<EventDetailsTabs> {
         SizedBox(height: AppSpacing.sm),
         AnimatedSwitcher(
           duration: _switchDuration,
-          layoutBuilder: (current, previous) => Stack(
-            alignment: AlignmentDirectional.topStart,
-            children: [...previous, ?current],
-          ),
+          layoutBuilder: (current, previous) =>
+              Stack(alignment: AlignmentDirectional.topStart, children: [...previous, ?current]),
           child: KeyedSubtree(
             key: ValueKey(_selected),
             child: switch (_selected) {
@@ -85,31 +83,28 @@ class _TabLabel extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: AppRadius.smRadius,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: AppSpacing.xxs),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AnimatedDefaultTextStyle(
-                duration: _duration,
-                style: (context.textTheme.titleMedium ?? const TextStyle()).copyWith(
-                  color: isSelected ? colors.primary : colors.onSurfaceVariant,
-                  fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
-                ),
-                child: Text(label),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AnimatedDefaultTextStyle(
+              duration: _duration,
+              style: (context.textTheme.titleMedium ?? const TextStyle()).copyWith(
+                color: isSelected ? colors.primary : colors.onSurfaceVariant,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
               ),
-              SizedBox(height: AppSpacing.xxs),
-              AnimatedContainer(
-                duration: _duration,
-                width: AppSizes.tabIndicatorDotSize,
-                height: AppSizes.tabIndicatorDotSize,
-                decoration: BoxDecoration(
-                  color: isSelected ? colors.primary : Colors.transparent,
-                  shape: BoxShape.circle,
-                ),
+              child: Text(label),
+            ),
+            SizedBox(height: AppSpacing.xxs),
+            AnimatedContainer(
+              duration: _duration,
+              width: AppSizes.tabIndicatorDotSize,
+              height: AppSizes.tabIndicatorDotSize,
+              decoration: BoxDecoration(
+                color: isSelected ? colors.primary : Colors.transparent,
+                shape: BoxShape.circle,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

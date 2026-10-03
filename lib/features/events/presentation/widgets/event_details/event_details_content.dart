@@ -55,13 +55,13 @@ class EventDetailsContent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 EventSectionTitle(title: context.l10n.eventAboutTitle),
-                SizedBox(height: AppSpacing.sm),
+                SizedBox(height: AppSpacing.xs),
                 EventDescription(html: description),
               ],
             ),
           ),
         ],
-        SizedBox(height: AppSpacing.md),
+        SizedBox(height: AppSpacing.sm),
         Padding(padding: margin, child: EventDetailsTabs(event: event)),
         if (event.donors.isNotEmpty) ...[
           SizedBox(height: AppSpacing.md),

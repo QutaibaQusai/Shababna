@@ -24,7 +24,7 @@ class EventDonorsSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: margin),
           child: EventSectionTitle(title: context.l10n.eventSupportedByTitle),
         ),
-        SizedBox(height: AppSpacing.sm),
+        SizedBox(height: AppSpacing.xs),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           padding: EdgeInsets.symmetric(horizontal: margin),
