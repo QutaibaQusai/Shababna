@@ -29,11 +29,10 @@ class EventDonorsSection extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           padding: EdgeInsets.symmetric(horizontal: margin),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               for (var i = 0; i < donors.length; i++) ...[
-                if (i > 0) SizedBox(width: AppSpacing.sm),
-                _DonorItem(donor: donors[i]),
+                if (i > 0) SizedBox(width: AppSpacing.md),
+                _DonorCard(donor: donors[i]),
               ],
             ],
           ),
@@ -43,10 +42,8 @@ class EventDonorsSection extends StatelessWidget {
   }
 }
 
-class _DonorItem extends StatelessWidget {
-  const _DonorItem({required this.donor});
-
-  static const _widthFactor = 1.75;
+class _DonorCard extends StatelessWidget {
+  const _DonorCard({required this.donor});
 
   final EventDonor donor;
 
@@ -54,34 +51,30 @@ class _DonorItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final logoSize = AppSizes.eventDonorLogoSize;
 
-    return SizedBox(
-      width: logoSize * _widthFactor,
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: AppRadius.smRadius,
-            child: ColoredBox(
-              color: context.colorScheme.surfaceContainerHighest,
-              child: SizedBox.square(
-                dimension: logoSize,
-                child: AppNetworkImage(
-                  url: donor.imageUrl,
-                  size: logoSize / 2,
-                  fit: BoxFit.contain,
-                ),
-              ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ClipRRect(
+          borderRadius: AppRadius.xsRadius,
+          child: ColoredBox(
+            color: Colors.white,
+            child: SizedBox.square(
+              dimension: logoSize,
+              child: AppNetworkImage(url: donor.imageUrl, size: logoSize / 2, fit: BoxFit.contain),
             ),
           ),
-          SizedBox(height: AppSpacing.xxs),
-          Text(
+        ),
+        SizedBox(width: AppSpacing.xs),
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: AppSizes.eventDonorNameMaxWidth),
+          child: Text(
             donor.title,
             maxLines: 2,
-            textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
-            style: context.textTheme.labelSmall,
+            style: context.textTheme.labelLarge?.copyWith(fontWeight: FontWeight.w600),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
