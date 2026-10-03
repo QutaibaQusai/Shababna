@@ -9,7 +9,7 @@ import '../../../../core/session/auth_session_cubit.dart';
 import '../../../../core/session/auth_status.dart';
 import '../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../core/shared/widgets/app_error_widget.dart';
-import '../../../../core/shared/widgets/app_refresh_indicator.dart';
+import '../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../core/shared/widgets/app_toast.dart';
 import '../../../../core/shared/widgets/share_icon_button.dart';
 import '../../domain/repositories/events_repository.dart';
@@ -84,19 +84,19 @@ class _EventDetailsView extends StatelessWidget {
           listener: (context, _) => cubit.load(),
         ),
       ],
-      child: Scaffold(
-        appBar: AppAppBar(
-          title: context.l10n.navEvents,
-          onBack: () => context.pop(),
-          actions: [ShareIconButton(path: AppShareLinks.eventDetails(cubit.id))],
-        ),
-        body: AppRefreshIndicator(
-          onRefresh: cubit.load,
-          child: event != null
+      child: AppLoadingOverlay(
+        isLoading: state.isSubmitting,
+        child: Scaffold(
+          appBar: AppAppBar(
+            title: context.l10n.navEvents,
+            onBack: () => context.pop(),
+            actions: [ShareIconButton(path: AppShareLinks.eventDetails(cubit.id))],
+          ),
+          body: event != null
               ? EventDetailsContent(event: event)
               : _placeholder(context, state, cubit),
+          bottomNavigationBar: const EventRegistrationBar(),
         ),
-        bottomNavigationBar: const EventRegistrationBar(),
       ),
     );
   }

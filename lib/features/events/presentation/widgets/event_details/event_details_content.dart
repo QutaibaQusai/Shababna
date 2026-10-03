@@ -31,6 +31,8 @@ class EventDetailsContent extends StatelessWidget {
       physics: const AlwaysScrollableScrollPhysics(),
       padding: EdgeInsets.symmetric(vertical: AppSpacing.sm),
       children: [
+        Padding(padding: margin, child: EventDetailsHeader(event: event)),
+        SizedBox(height: AppSpacing.sm),
         Padding(
           padding: margin,
           child: GestureDetector(
@@ -38,7 +40,7 @@ class EventDetailsContent extends StatelessWidget {
                 ? null
                 : () => showMediaBrowser(context, media: [AppImageMedia(event.imageUrl)]),
             child: ClipRRect(
-              borderRadius: AppRadius.xlRadius,
+              borderRadius: AppRadius.lgRadius,
               child: AspectRatio(
                 aspectRatio: _imageAspectRatio,
                 child: AppNetworkImage(url: event.imageUrl, size: AppSizes.iconLg * 2),
@@ -46,28 +48,26 @@ class EventDetailsContent extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: AppSpacing.md),
-        Padding(padding: margin, child: EventDetailsHeader(event: event)),
-        SizedBox(height: AppSpacing.md),
-        Padding(padding: margin, child: EventInfoSection(event: event)),
-        SizedBox(height: AppSpacing.lg),
-        Padding(padding: margin, child: EventEligibilitySection(event: event)),
         if (description.trim().isNotEmpty) ...[
-          SizedBox(height: AppSpacing.lg),
+          SizedBox(height: AppSpacing.md),
           Padding(
             padding: margin,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 EventSectionTitle(title: context.l10n.eventAboutTitle),
-                SizedBox(height: AppSpacing.xs),
+                SizedBox(height: AppSpacing.sm),
                 EventDescription(html: description),
               ],
             ),
           ),
         ],
+        SizedBox(height: AppSpacing.md),
+        Padding(padding: margin, child: EventInfoSection(event: event)),
+        SizedBox(height: AppSpacing.md),
+        Padding(padding: margin, child: EventEligibilitySection(event: event)),
         if (event.donors.isNotEmpty) ...[
-          SizedBox(height: AppSpacing.lg),
+          SizedBox(height: AppSpacing.md),
           EventDonorsSection(donors: event.donors),
         ],
         SizedBox(height: AppSpacing.sm),

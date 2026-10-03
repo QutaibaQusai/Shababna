@@ -42,7 +42,7 @@ class EventEligibilitySection extends StatelessWidget {
       children: [
         EventSectionTitle(title: l10n.eventEligibilityTitle),
         for (final (label, value) in rows) ...[
-          SizedBox(height: AppSpacing.xs),
+          SizedBox(height: AppSpacing.sm),
           _EligibilityRow(label: label, value: value),
         ],
       ],

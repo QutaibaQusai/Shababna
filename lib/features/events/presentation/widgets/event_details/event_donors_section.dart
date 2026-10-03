@@ -59,7 +59,7 @@ class _DonorItem extends StatelessWidget {
       child: Column(
         children: [
           ClipRRect(
-            borderRadius: AppRadius.lgRadius,
+            borderRadius: AppRadius.smRadius,
             child: ColoredBox(
               color: context.colorScheme.surfaceContainerHighest,
               child: SizedBox.square(

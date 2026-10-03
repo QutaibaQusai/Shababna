@@ -1706,6 +1706,12 @@ abstract class AppLocalizations {
   /// **'{count, plural, =1{1 activity} other{{count} activities}}'**
   String eventActivities(int count);
 
+  /// No description provided for @eventInfoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Event details'**
+  String get eventInfoTitle;
+
   /// No description provided for @eventAboutTitle.
   ///
   /// In en, this message translates to:
@@ -1760,17 +1766,17 @@ abstract class AppLocalizations {
   /// **'Supported by'**
   String get eventSupportedByTitle;
 
-  /// No description provided for @eventRegister.
+  /// No description provided for @eventSlideToRegister.
   ///
   /// In en, this message translates to:
-  /// **'Register'**
-  String get eventRegister;
+  /// **'Slide to register'**
+  String get eventSlideToRegister;
 
-  /// No description provided for @eventRegisterAgain.
+  /// No description provided for @eventSlideToRegisterAgain.
   ///
   /// In en, this message translates to:
-  /// **'Register again'**
-  String get eventRegisterAgain;
+  /// **'Slide to register again'**
+  String get eventSlideToRegisterAgain;
 
   /// No description provided for @eventSignInToRegister.
   ///

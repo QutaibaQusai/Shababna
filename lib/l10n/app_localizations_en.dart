@@ -932,6 +932,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get eventInfoTitle => 'Event details';
+
+  @override
   String get eventAboutTitle => 'About the event';
 
   @override
@@ -961,10 +964,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get eventSupportedByTitle => 'Supported by';
 
   @override
-  String get eventRegister => 'Register';
+  String get eventSlideToRegister => 'Slide to register';
 
   @override
-  String get eventRegisterAgain => 'Register again';
+  String get eventSlideToRegisterAgain => 'Slide to register again';
 
   @override
   String get eventSignInToRegister => 'Sign in to register';

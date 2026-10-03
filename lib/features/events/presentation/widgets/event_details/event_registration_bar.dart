@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/session/auth_session_cubit.dart';
 import '../../../../../core/shared/widgets/app_button.dart';
 import '../../../../../core/shared/widgets/app_dialog.dart';
 import '../../../../../core/shared/widgets/guest_gate.dart';
-import '../../../../../core/theme/app_colors.dart';
+import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/events_repository.dart';
 import '../../cubit/event_details/event_details_cubit.dart';
+import 'slide_to_confirm.dart';
 
 class EventRegistrationBar extends StatelessWidget {
   const EventRegistrationBar({super.key});
+
+  static const _switchDuration = Duration(milliseconds: 250);
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +34,15 @@ class EventRegistrationBar extends StatelessWidget {
             AppSpacing.screenMargin,
             AppSpacing.sm,
             AppSpacing.screenMargin,
-            AppSpacing.sm,
+            AppSpacing.md,
           ),
-          child: _content(context, event, isAuthenticated, state.isSubmitting),
+          child: AnimatedSwitcher(
+            duration: _switchDuration,
+            child: KeyedSubtree(
+              key: ValueKey((event.registrationStatus, isAuthenticated, event.hasEnded)),
+              child: _content(context, event, isAuthenticated, state.isSubmitting),
+            ),
+          ),
         ),
       ),
     );
@@ -47,17 +55,15 @@ class EventRegistrationBar extends StatelessWidget {
     bool isSubmitting,
   ) {
     final l10n = context.l10n;
+    final colors = context.colorScheme;
     final cubit = context.read<EventDetailsCubit>();
     final status = event.registrationStatus;
-    final canRegister = status == EventRegistrationStatus.notRegistered ||
+    final canRegister =
+        status == EventRegistrationStatus.notRegistered ||
         status == EventRegistrationStatus.withdrawn;
 
     if (event.hasEnded && (canRegister || !isAuthenticated)) {
-      return _StatusLine(
-        icon: LucideIcons.calendarX,
-        text: l10n.eventEnded,
-        color: context.colorScheme.onSurfaceVariant,
-      );
+      return _StatusPill(text: l10n.eventEnded);
     }
 
     if (!isAuthenticated) {
@@ -69,55 +75,35 @@ class EventRegistrationBar extends StatelessWidget {
 
     return switch (status) {
       EventRegistrationStatus.notRegistered || EventRegistrationStatus.withdrawn => Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (event.requiresApproval) ...[
-              Text(
-                l10n.eventRequiresApprovalHint,
-                textAlign: TextAlign.center,
-                style: context.textTheme.bodySmall?.copyWith(
-                  color: context.colorScheme.onSurfaceVariant,
-                ),
-              ),
-              SizedBox(height: AppSpacing.xs),
-            ],
-            isSubmitting
-                ? const _SubmittingButton()
-                : AppButton.primary(
-                    label: status == EventRegistrationStatus.withdrawn
-                        ? l10n.eventRegisterAgain
-                        : l10n.eventRegister,
-                    onPressed: cubit.register,
-                  ),
-          ],
-        ),
-      EventRegistrationStatus.pendingApproval => Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _StatusLine(
-              icon: LucideIcons.hourglass,
-              text: l10n.eventStatusPending,
-              color: AppColors.warningColor,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (event.requiresApproval) ...[
+            Text(
+              l10n.eventRequiresApprovalHint,
+              textAlign: TextAlign.center,
+              style: context.textTheme.bodySmall?.copyWith(color: colors.onSurfaceVariant),
             ),
-            SizedBox(height: AppSpacing.sm),
-            isSubmitting
-                ? const _SubmittingButton()
-                : AppButton.secondary(
-                    label: l10n.eventWithdraw,
-                    onPressed: () => _confirmWithdraw(context),
-                  ),
+            SizedBox(height: AppSpacing.xs),
           ],
+          SlideToConfirm(
+            label: status == EventRegistrationStatus.withdrawn
+                ? l10n.eventSlideToRegisterAgain
+                : l10n.eventSlideToRegister,
+            isLoading: isSubmitting,
+            onConfirmed: cubit.register,
+          ),
+        ],
+      ),
+      EventRegistrationStatus.pendingApproval => _StatusPill(
+        text: l10n.eventStatusPending,
+        action: TextButton(
+          style: TextButton.styleFrom(foregroundColor: colors.onPrimary),
+          onPressed: () => _confirmWithdraw(context),
+          child: Text(l10n.eventWithdraw),
         ),
-      EventRegistrationStatus.approved => _StatusLine(
-          icon: LucideIcons.circleCheck,
-          text: l10n.eventStatusApproved,
-          color: AppColors.successColor,
-        ),
-      EventRegistrationStatus.rejected => _StatusLine(
-          icon: LucideIcons.circleX,
-          text: l10n.eventStatusRejected,
-          color: context.colorScheme.error,
-        ),
+      ),
+      EventRegistrationStatus.approved => _StatusPill(text: l10n.eventStatusApproved),
+      EventRegistrationStatus.rejected => _StatusPill(text: l10n.eventStatusRejected),
     };
   }
 
@@ -135,46 +121,38 @@ class EventRegistrationBar extends StatelessWidget {
   }
 }
 
-class _SubmittingButton extends StatelessWidget {
-  const _SubmittingButton();
+class _StatusPill extends StatelessWidget {
+  const _StatusPill({required this.text, this.action});
 
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: null,
-      child: SizedBox.square(
-        dimension: AppSizes.iconField,
-        child: const CircularProgressIndicator(strokeWidth: 2),
-      ),
-    );
-  }
-}
-
-class _StatusLine extends StatelessWidget {
-  const _StatusLine({required this.icon, required this.text, required this.color});
-
-  final IconData icon;
   final String text;
-  final Color color;
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: AppSizes.buttonHeight,
+    final action = this.action;
+    final colors = context.colorScheme;
+
+    return Container(
+      height: AppSizes.slideToConfirmHeight,
+      padding: EdgeInsetsDirectional.only(
+        start: AppSpacing.md,
+        end: action == null ? AppSpacing.md : AppSpacing.xs,
+      ),
+      decoration: BoxDecoration(color: colors.primary, borderRadius: AppRadius.mdRadius),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: AppSizes.iconMd, color: color),
-          SizedBox(width: AppSpacing.xs),
-          Flexible(
+          Expanded(
             child: Text(
               text,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: context.textTheme.titleSmall?.copyWith(
-                color: color,
-                fontWeight: FontWeight.w600,
+                color: colors.onPrimary,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ),
+          ?action,
         ],
       ),
     );

@@ -940,6 +940,9 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get eventInfoTitle => 'تفاصيل الفعالية';
+
+  @override
   String get eventAboutTitle => 'عن الفعالية';
 
   @override
@@ -969,10 +972,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get eventSupportedByTitle => 'بدعم من';
 
   @override
-  String get eventRegister => 'سجّل الآن';
+  String get eventSlideToRegister => 'اسحب للتسجيل';
 
   @override
-  String get eventRegisterAgain => 'سجّل مجدداً';
+  String get eventSlideToRegisterAgain => 'اسحب للتسجيل مجدداً';
 
   @override
   String get eventSignInToRegister => 'سجّل الدخول للتسجيل';

@@ -3,6 +3,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/theme/app_spacing.dart';
 
 class EventDescription extends StatelessWidget {
   const EventDescription({super.key, required this.html});
@@ -30,6 +31,7 @@ class EventDescription extends StatelessWidget {
           lineHeight: const LineHeight(_lineHeight),
           color: context.colorScheme.onSurface,
         ),
+        'p': Style(margin: Margins.only(top: 0, bottom: AppSpacing.xs)),
         'a': Style(color: context.colorScheme.primary),
       },
     );

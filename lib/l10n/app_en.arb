@@ -352,6 +352,7 @@
   "@eventActivities": {
     "placeholders": { "count": { "type": "int" } }
   },
+  "eventInfoTitle": "Event details",
   "eventAboutTitle": "About the event",
   "eventEligibilityTitle": "Who can join",
   "eventGenderBoth": "Everyone",
@@ -364,8 +365,8 @@
   },
   "eventOpenToAll": "Open to all",
   "eventSupportedByTitle": "Supported by",
-  "eventRegister": "Register",
-  "eventRegisterAgain": "Register again",
+  "eventSlideToRegister": "Slide to register",
+  "eventSlideToRegisterAgain": "Slide to register again",
   "eventSignInToRegister": "Sign in to register",
   "eventEnded": "This event has ended",
   "eventRequiresApprovalHint": "Registrations are reviewed by the organisers",

@@ -1,43 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../domain/repositories/events_repository.dart';
-import 'event_details_content.dart';
+import '../../../../../core/theme/app_radius.dart';
+import '../../../../../core/theme/app_spacing.dart';
 
 class EventDetailsSkeleton extends StatelessWidget {
   const EventDetailsSkeleton({super.key});
 
-  static final _placeholder = EventDetails(
-    id: 'placeholder',
-    titleEn: 'Community health awareness day in Amman',
-    titleAr: 'يوم التوعية الصحية المجتمعية في عمّان',
-    descriptionEn:
-        '<p>Join our volunteers for a day of health awareness activities with families in the community.</p>',
-    descriptionAr: '<p>انضم إلى متطوعينا في يوم من أنشطة التوعية الصحية مع العائلات في المجتمع.</p>',
-    type: const EventReference(id: 'placeholder', name: 'Awareness campaign'),
-    from: DateTime(2026, 10, 12),
-    to: DateTime(2026, 10, 14),
-    address: 'Amman, Jordan',
-    gender: EventGender.both,
-    ageFrom: 16,
-    ageTo: 30,
-    hours: 6,
-    activitiesCount: 3,
-    volunteersCount: 20,
-    requiresApproval: false,
-    nationalities: const [],
-    cities: const [],
-    educations: const [],
-    imageUrl: '',
-    registrationStatus: EventRegistrationStatus.notRegistered,
-    donors: const [],
-  );
+  static const _imageAspectRatio = 16 / 9;
+  static const _sectionLines = [5, 4, 3];
 
   @override
   Widget build(BuildContext context) {
     return Skeletonizer(
       enabled: true,
-      child: IgnorePointer(child: EventDetailsContent(event: _placeholder)),
+      child: ListView(
+        physics: const NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.all(AppSpacing.screenMargin),
+        children: [
+          const Bone.text(words: 2),
+          SizedBox(height: AppSpacing.xs),
+          const Bone.text(words: 5),
+          SizedBox(height: AppSpacing.sm),
+          AspectRatio(
+            aspectRatio: _imageAspectRatio,
+            child: Bone(borderRadius: AppRadius.lgRadius),
+          ),
+          for (final lines in _sectionLines) ...[
+            SizedBox(height: AppSpacing.md),
+            const Bone.text(words: 2),
+            SizedBox(height: AppSpacing.sm),
+            for (var i = 0; i < lines; i++) ...[
+              if (i > 0) SizedBox(height: AppSpacing.xs),
+              const Bone.text(words: 6),
+            ],
+          ],
+        ],
+      ),
     );
   }
 }
