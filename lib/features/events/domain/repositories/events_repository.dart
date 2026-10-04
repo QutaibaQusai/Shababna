@@ -50,6 +50,16 @@ class EventDonor extends Equatable {
   List<Object?> get props => [id, title, imageUrl];
 }
 
+class EventImage extends Equatable {
+  const EventImage({required this.id, required this.url});
+
+  final String id;
+  final String url;
+
+  @override
+  List<Object?> get props => [id, url];
+}
+
 class EventSummary extends Equatable {
   const EventSummary({
     required this.id,
@@ -87,21 +97,21 @@ class EventSummary extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        titleEn,
-        titleAr,
-        type,
-        from,
-        to,
-        address,
-        gender,
-        ageFrom,
-        ageTo,
-        hours,
-        volunteersCount,
-        requiresApproval,
-        imageUrl,
-      ];
+    id,
+    titleEn,
+    titleAr,
+    type,
+    from,
+    to,
+    address,
+    gender,
+    ageFrom,
+    ageTo,
+    hours,
+    volunteersCount,
+    requiresApproval,
+    imageUrl,
+  ];
 }
 
 class EventDetails extends Equatable {
@@ -128,6 +138,7 @@ class EventDetails extends Equatable {
     required this.imageUrl,
     required this.registrationStatus,
     required this.donors,
+    required this.images,
   });
 
   final String id;
@@ -152,6 +163,7 @@ class EventDetails extends Equatable {
   final String imageUrl;
   final EventRegistrationStatus registrationStatus;
   final List<EventDonor> donors;
+  final List<EventImage> images;
 
   String title(bool isArabic) => isArabic ? titleAr : titleEn;
 
@@ -186,34 +198,36 @@ class EventDetails extends Equatable {
       imageUrl: imageUrl,
       registrationStatus: registrationStatus ?? this.registrationStatus,
       donors: donors,
+      images: images,
     );
   }
 
   @override
   List<Object?> get props => [
-        id,
-        titleEn,
-        titleAr,
-        descriptionEn,
-        descriptionAr,
-        type,
-        from,
-        to,
-        address,
-        gender,
-        ageFrom,
-        ageTo,
-        hours,
-        activitiesCount,
-        volunteersCount,
-        requiresApproval,
-        nationalities,
-        cities,
-        educations,
-        imageUrl,
-        registrationStatus,
-        donors,
-      ];
+    id,
+    titleEn,
+    titleAr,
+    descriptionEn,
+    descriptionAr,
+    type,
+    from,
+    to,
+    address,
+    gender,
+    ageFrom,
+    ageTo,
+    hours,
+    activitiesCount,
+    volunteersCount,
+    requiresApproval,
+    nationalities,
+    cities,
+    educations,
+    imageUrl,
+    registrationStatus,
+    donors,
+    images,
+  ];
 }
 
 class EventRegistrationResult extends Equatable {

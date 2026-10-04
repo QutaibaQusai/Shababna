@@ -6,7 +6,7 @@ import '../../../domain/repositories/news_repository.dart';
 import '../../mappers/news_media_mapper.dart';
 import 'news_details_body.dart';
 import 'news_details_header.dart';
-import 'news_media_slider.dart';
+import '../../../../../core/shared/widgets/app_media_slider.dart';
 
 class NewsDetailsContent extends StatelessWidget {
   const NewsDetailsContent({super.key, required this.article});
@@ -26,7 +26,7 @@ class NewsDetailsContent extends StatelessWidget {
           child: NewsDetailsHeader(article: article),
         ),
         SizedBox(height: AppSpacing.md),
-        NewsMediaSlider(media: article.media),
+        AppMediaSlider(media: article.media),
         Padding(
           padding: EdgeInsets.all(margin),
           child: NewsDetailsBody(html: article.description(context.isArabic)),

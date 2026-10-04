@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../../../core/shared/widgets/app_media_slider.dart';
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_spacing.dart';
 
 class EventDetailsSkeleton extends StatelessWidget {
   const EventDetailsSkeleton({super.key});
 
-  static const _imageAspectRatio = 16 / 9;
   static const _sectionLines = [5, 4, 3];
 
   @override
@@ -23,8 +23,8 @@ class EventDetailsSkeleton extends StatelessWidget {
           const Bone.text(words: 5),
           SizedBox(height: AppSpacing.sm),
           AspectRatio(
-            aspectRatio: _imageAspectRatio,
-            child: Bone(borderRadius: AppRadius.lgRadius),
+            aspectRatio: AppMediaSlider.itemAspectRatio,
+            child: Bone(borderRadius: AppRadius.smRadius),
           ),
           for (final lines in _sectionLines) ...[
             SizedBox(height: AppSpacing.md),

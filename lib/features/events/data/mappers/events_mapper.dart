@@ -60,6 +60,10 @@ extension EventDetailsModelMapper on EventDetailsModel {
             ),
           )
           .toList(),
+      images: images
+          .where((image) => image.url.isNotEmpty)
+          .map((image) => EventImage(id: image.id, url: _toAbsoluteUrl(image.url)))
+          .toList(),
     );
   }
 }
@@ -95,18 +99,18 @@ extension on EventReferenceModel {
 }
 
 EventGender _gender(String value) => switch (value) {
-      'Male' => EventGender.male,
-      'Female' => EventGender.female,
-      _ => EventGender.both,
-    };
+  'Male' => EventGender.male,
+  'Female' => EventGender.female,
+  _ => EventGender.both,
+};
 
 EventRegistrationStatus _registrationStatus(String value) => switch (value) {
-      'PendingApproval' => EventRegistrationStatus.pendingApproval,
-      'Approved' => EventRegistrationStatus.approved,
-      'Withdrawn' => EventRegistrationStatus.withdrawn,
-      'Rejected' => EventRegistrationStatus.rejected,
-      _ => EventRegistrationStatus.notRegistered,
-    };
+  'PendingApproval' => EventRegistrationStatus.pendingApproval,
+  'Approved' => EventRegistrationStatus.approved,
+  'Withdrawn' => EventRegistrationStatus.withdrawn,
+  'Rejected' => EventRegistrationStatus.rejected,
+  _ => EventRegistrationStatus.notRegistered,
+};
 
 String _toAbsoluteUrl(String path) {
   if (path.isEmpty || path.startsWith('http')) return path;

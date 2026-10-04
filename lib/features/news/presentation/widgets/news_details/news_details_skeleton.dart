@@ -5,7 +5,7 @@ import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
-import 'news_media_slider.dart';
+import '../../../../../core/shared/widgets/app_media_slider.dart';
 
 class NewsDetailsSkeleton extends StatelessWidget {
   const NewsDetailsSkeleton({super.key});
@@ -48,14 +48,14 @@ class NewsDetailsSkeleton extends StatelessWidget {
             LayoutBuilder(
               builder: (context, constraints) {
                 final width =
-                    constraints.maxWidth * NewsMediaSlider.peekWidthFactor - AppSpacing.screenMargin;
+                    constraints.maxWidth * AppMediaSlider.peekWidthFactor - AppSpacing.screenMargin;
                 return Padding(
                   padding: EdgeInsetsDirectional.only(start: AppSpacing.screenMargin),
                   child: Align(
                     alignment: AlignmentDirectional.centerStart,
                     child: Bone(
                       width: width,
-                      height: width / NewsMediaSlider.itemAspectRatio,
+                      height: width / AppMediaSlider.itemAspectRatio,
                       borderRadius: AppRadius.smRadius,
                     ),
                   ),

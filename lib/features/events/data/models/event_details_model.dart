@@ -16,6 +16,17 @@ class EventDonorModel {
   final String imageUrl;
 }
 
+class EventImageModel {
+  const EventImageModel({required this.id, required this.url});
+
+  factory EventImageModel.fromJson(Map<String, dynamic> json) {
+    return EventImageModel(id: json['id'] as String? ?? '', url: json['url'] as String? ?? '');
+  }
+
+  final String id;
+  final String url;
+}
+
 class EventDetailsModel {
   const EventDetailsModel({
     required this.id,
@@ -40,6 +51,7 @@ class EventDetailsModel {
     required this.imageUrl,
     required this.registrationStatus,
     required this.donors,
+    required this.images,
   });
 
   factory EventDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -68,6 +80,7 @@ class EventDetailsModel {
       imageUrl: json['imageUrl'] as String? ?? '',
       registrationStatus: json['registrationStatus'] as String? ?? '',
       donors: parseEventList(json['donors'], EventDonorModel.fromJson),
+      images: parseEventList(json['images'], EventImageModel.fromJson),
     );
   }
 
@@ -93,4 +106,5 @@ class EventDetailsModel {
   final String imageUrl;
   final String registrationStatus;
   final List<EventDonorModel> donors;
+  final List<EventImageModel> images;
 }
