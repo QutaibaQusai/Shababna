@@ -141,8 +141,6 @@ class _QuestionHeader extends StatelessWidget {
     required this.hasError,
   });
 
-  static const _tintAlpha = 0.12;
-
   final int number;
   final String label;
   final bool isRequired;
@@ -161,17 +159,14 @@ class _QuestionHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         DecoratedBox(
-          decoration: BoxDecoration(
-            color: color.withValues(alpha: _tintAlpha),
-            shape: BoxShape.circle,
-          ),
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
           child: SizedBox.square(
             dimension: AppSizes.iconMd,
             child: Center(
               child: Text(
                 '$number',
                 style: context.textTheme.labelMedium?.copyWith(
-                  color: color,
+                  color: hasError ? colors.onError : colors.onPrimary,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -328,7 +323,6 @@ class _OptionTile extends StatelessWidget {
     this.isLeading = false,
   });
 
-  static const _selectedAlpha = 0.08;
   static const _duration = Duration(milliseconds: 150);
 
   final String label;
@@ -346,7 +340,7 @@ class _OptionTile extends StatelessWidget {
         : hasError
         ? colors.error
         : Colors.transparent;
-    final contentColor = isSelected ? colors.primary : colors.onSurface;
+    final contentColor = isSelected ? colors.onPrimary : colors.onSurface;
 
     return Semantics(
       button: true,
@@ -361,7 +355,7 @@ class _OptionTile extends StatelessWidget {
             constraints: BoxConstraints(minHeight: AppSizes.buttonHeight),
             padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
             decoration: BoxDecoration(
-              color: isSelected ? colors.primary.withValues(alpha: _selectedAlpha) : colors.surface,
+              color: isSelected ? colors.primary : colors.surface,
               border: Border.all(color: borderColor),
               borderRadius: AppRadius.mdRadius,
             ),
@@ -371,7 +365,7 @@ class _OptionTile extends StatelessWidget {
                 Icon(
                   icon,
                   size: AppSizes.iconField,
-                  color: isSelected ? colors.primary : colors.onSurfaceVariant,
+                  color: isSelected ? colors.onPrimary : colors.onSurfaceVariant,
                 ),
                 SizedBox(width: AppSpacing.xs),
                 Flexible(
