@@ -9,8 +9,6 @@ import '../../../../../core/theme/app_spacing.dart';
 class EventTasksCard extends StatelessWidget {
   const EventTasksCard({super.key, required this.onTap});
 
-  static const _badgeAlpha = 0.1;
-
   final VoidCallback onTap;
 
   @override
@@ -41,16 +39,13 @@ class EventTasksCard extends StatelessWidget {
           ),
           SizedBox(width: AppSpacing.sm),
           DecoratedBox(
-            decoration: BoxDecoration(
-              color: colors.primary.withValues(alpha: _badgeAlpha),
-              shape: BoxShape.circle,
-            ),
+            decoration: BoxDecoration(color: colors.primary, shape: BoxShape.circle),
             child: SizedBox.square(
               dimension: AppSizes.iconButtonSize,
               child: Icon(
                 context.isRTL ? LucideIcons.arrowLeft : LucideIcons.arrowRight,
                 size: AppSizes.iconField,
-                color: colors.primary,
+                color: colors.onPrimary,
               ),
             ),
           ),
