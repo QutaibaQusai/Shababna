@@ -94,13 +94,12 @@ class EventRegistrationBar extends StatelessWidget {
           ),
         ],
       ),
-      EventRegistrationStatus.pendingApproval => _StatusPill(
-        text: l10n.eventStatusPending,
-        action: TextButton(
-          style: TextButton.styleFrom(foregroundColor: colors.onPrimary),
-          onPressed: () => _confirmWithdraw(context),
-          child: Text(l10n.eventWithdraw),
-        ),
+      EventRegistrationStatus.pendingApproval => Row(
+        children: [
+          Expanded(child: _StatusPill(text: l10n.eventStatusPending)),
+          SizedBox(width: AppSpacing.xs),
+          _WithdrawButton(label: l10n.eventWithdraw, onPressed: () => _confirmWithdraw(context)),
+        ],
       ),
       EventRegistrationStatus.approved => _StatusPill(text: l10n.eventStatusApproved),
       EventRegistrationStatus.rejected => _StatusPill(text: l10n.eventStatusRejected),
@@ -122,38 +121,61 @@ class EventRegistrationBar extends StatelessWidget {
 }
 
 class _StatusPill extends StatelessWidget {
-  const _StatusPill({required this.text, this.action});
+  const _StatusPill({required this.text});
 
   final String text;
-  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
-    final action = this.action;
     final colors = context.colorScheme;
 
     return Container(
       height: AppSizes.slideToConfirmHeight,
-      padding: EdgeInsetsDirectional.only(
-        start: AppSpacing.md,
-        end: action == null ? AppSpacing.md : AppSpacing.xs,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
+      alignment: Alignment.center,
       decoration: BoxDecoration(color: colors.primary, borderRadius: AppRadius.mdRadius),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              text,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: context.textTheme.titleSmall?.copyWith(
-                color: colors.onPrimary,
-                fontWeight: FontWeight.w700,
-              ),
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: context.textTheme.titleSmall?.copyWith(
+          color: colors.onPrimary,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
+  }
+}
+
+class _WithdrawButton extends StatelessWidget {
+  const _WithdrawButton({required this.label, required this.onPressed});
+
+  final String label;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colorScheme;
+
+    return Material(
+      color: colors.error,
+      borderRadius: AppRadius.mdRadius,
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onPressed,
+        child: Container(
+          height: AppSizes.slideToConfirmHeight,
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
+          alignment: Alignment.center,
+          child: Text(
+            label,
+            style: context.textTheme.titleSmall?.copyWith(
+              color: colors.onError,
+              fontWeight: FontWeight.w700,
             ),
           ),
-          ?action,
-        ],
+        ),
       ),
     );
   }
