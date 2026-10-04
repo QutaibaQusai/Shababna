@@ -115,6 +115,7 @@ class EventRegistrationBar extends StatelessWidget {
       message: l10n.eventWithdrawConfirmMessage,
       confirmText: l10n.eventWithdraw,
       cancelText: l10n.cancelButton,
+      isDestructive: true,
     );
     if (confirmed) await cubit.withdraw();
   }

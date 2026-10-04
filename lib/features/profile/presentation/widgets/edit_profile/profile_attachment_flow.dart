@@ -44,6 +44,7 @@ abstract final class ProfileAttachmentFlow {
         message: attachment.removeConfirmMessage(context.l10n),
         confirmText: context.l10n.removeButton,
         cancelText: context.l10n.cancelButton,
+        isDestructive: true,
       );
       if (confirmed) cubit.remove(attachment);
       return;

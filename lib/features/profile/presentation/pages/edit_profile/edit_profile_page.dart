@@ -191,6 +191,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
       message: context.l10n.discardChangesMessage,
       confirmText: context.l10n.discardButton,
       cancelText: context.l10n.cancelButton,
+      isDestructive: true,
     );
     if (discard && mounted) Navigator.of(context).pop();
   }

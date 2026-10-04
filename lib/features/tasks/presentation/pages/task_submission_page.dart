@@ -66,6 +66,7 @@ class _TaskSubmissionView extends StatelessWidget {
       message: l10n.discardChangesMessage,
       confirmText: l10n.discardButton,
       cancelText: l10n.cancelButton,
+      isDestructive: true,
     );
     if (discard) navigator.pop();
   }

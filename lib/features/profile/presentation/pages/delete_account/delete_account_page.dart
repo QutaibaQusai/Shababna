@@ -71,6 +71,7 @@ class _DeleteAccountViewState extends State<_DeleteAccountView> {
       message: context.l10n.deleteAccountConfirmMessage,
       confirmText: context.l10n.deleteAccountButton,
       cancelText: context.l10n.cancelButton,
+      isDestructive: true,
     );
     if (!confirmed || !mounted) return;
 
