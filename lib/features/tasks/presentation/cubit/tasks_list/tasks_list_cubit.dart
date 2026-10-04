@@ -17,7 +17,7 @@ class TasksListCubit extends Cubit<TasksListState> {
     await _fetch();
   }
 
-  Future<void> refresh() => _fetch();
+  Future<void> refresh() => load();
 
   void selectTab(TaskTab tab) {
     if (tab != state.tab) emit(state.copyWith(tab: tab));
