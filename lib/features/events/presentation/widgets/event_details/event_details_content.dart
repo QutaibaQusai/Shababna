@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/shared/views/media_viewer/app_media.dart';
 import '../../../../../core/shared/views/media_viewer/show_media_browser.dart';
-import '../../../../../core/shared/widgets/app_menu_tile.dart';
 import '../../../../../core/shared/widgets/app_network_image.dart';
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
@@ -17,6 +15,7 @@ import 'event_details_header.dart';
 import 'event_details_tabs.dart';
 import 'event_donors_section.dart';
 import 'event_section_title.dart';
+import 'event_tasks_card.dart';
 
 class EventDetailsContent extends StatelessWidget {
   const EventDetailsContent({super.key, required this.event});
@@ -69,10 +68,9 @@ class EventDetailsContent extends StatelessWidget {
         Padding(padding: margin, child: EventDetailsTabs(event: event)),
         if (event.registrationStatus == EventRegistrationStatus.approved) ...[
           SizedBox(height: AppSpacing.md),
-          AppMenuTile(
-            icon: LucideIcons.listTodo,
-            title: context.l10n.tasksEventTitle,
-            onTap: () => context.push(AppRoutes.eventTasksPath(event.id)),
+          Padding(
+            padding: margin,
+            child: EventTasksCard(onTap: () => context.push(AppRoutes.eventTasksPath(event.id))),
           ),
         ],
         if (event.donors.isNotEmpty) ...[

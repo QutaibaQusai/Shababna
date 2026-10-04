@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/tasks_repository.dart';
 import '../shared/task_file_tile.dart';
 import '../shared/task_formatters.dart';
-import '../shared/task_key_value_row.dart';
 import '../shared/task_section_title.dart';
-import '../shared/task_status_label.dart';
 
 class TaskSubmissionSummary extends StatelessWidget {
   const TaskSubmissionSummary({
@@ -38,51 +37,51 @@ class TaskSubmissionSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final colors = context.colorScheme;
-    final creditedHours = submission.creditedHours;
-    final reason = submission.rejectionReason?.trim() ?? '';
-    final rows = [
-      (l10n.taskSubmittedOnLabel, TaskFormatters.date(context, submission.submittedAt), null),
-      if (creditedHours != null)
-        (l10n.taskCreditedHoursLabel, TaskFormatters.hours(context, creditedHours), null),
-      if (submission.status == TaskSubmissionStatus.rejected && reason.isNotEmpty)
-        (l10n.taskRejectionReasonLabel, reason, colors.error),
-    ];
+    final isArabic = context.isArabic;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Row(
-          children: [
-            Expanded(child: TaskSectionTitle(title: l10n.taskSubmissionTitle)),
-            TaskStatusLabel(status: submission.status),
-          ],
+        TaskSectionTitle(title: l10n.taskSubmissionTitle),
+        SizedBox(height: AppSpacing.xxs),
+        Text(
+          '${l10n.taskSubmittedOnLabel} · ${TaskFormatters.date(context, submission.submittedAt)}',
+          style: context.textTheme.labelMedium?.copyWith(color: colors.onSurfaceVariant),
         ),
-        for (final (label, value, color) in rows) ...[
-          SizedBox(height: AppSpacing.sm),
-          TaskKeyValueRow(label: label, value: value, valueColor: color),
-        ],
         for (final answer in submission.answers) ...[
-          SizedBox(height: AppSpacing.sm),
-          if (answer.type.isUpload) ...[
-            Text(
-              answer.label(context.isArabic),
-              style: context.textTheme.bodyMedium?.copyWith(color: colors.onSurfaceVariant),
-            ),
-            for (final file in answer.files) ...[
-              SizedBox(height: AppSpacing.xs),
-              TaskFileTile(
-                fileName: file.fileName,
-                sizeBytes: file.sizeBytes,
-                isImage: file.contentType.startsWith('image/'),
-                isBusy: busyFileId == file.id,
-                onTap: () => onOpenFile(file),
+          SizedBox(height: AppSpacing.xs),
+          DecoratedBox(
+            decoration: BoxDecoration(color: colors.surface, borderRadius: AppRadius.mdRadius),
+            child: Padding(
+              padding: EdgeInsets.all(AppSpacing.sm),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    answer.label(isArabic),
+                    style: context.textTheme.labelMedium?.copyWith(color: colors.onSurfaceVariant),
+                  ),
+                  SizedBox(height: AppSpacing.xxs),
+                  if (answer.type.isUpload)
+                    for (final file in answer.files) ...[
+                      if (file != answer.files.first) SizedBox(height: AppSpacing.xxs),
+                      TaskFileTile(
+                        fileName: file.fileName,
+                        sizeBytes: file.sizeBytes,
+                        isImage: file.contentType.startsWith('image/'),
+                        isBusy: busyFileId == file.id,
+                        onTap: () => onOpenFile(file),
+                      ),
+                    ]
+                  else
+                    Text(
+                      _answerText(context, answer),
+                      style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+                    ),
+                ],
               ),
-            ],
-          ] else
-            TaskKeyValueRow(
-              label: answer.label(context.isArabic),
-              value: _answerText(context, answer),
             ),
+          ),
         ],
       ],
     );

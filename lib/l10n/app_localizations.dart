@@ -2000,6 +2000,12 @@ abstract class AppLocalizations {
   /// **'Event tasks'**
   String get tasksEventTitle;
 
+  /// No description provided for @eventTasksCardSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete your tasks and submit proof to earn volunteering hours'**
+  String get eventTasksCardSubtitle;
+
   /// No description provided for @tasksEmptyMessage.
   ///
   /// In en, this message translates to:
@@ -2017,18 +2023,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'About the task'**
   String get taskAboutTitle;
-
-  /// No description provided for @taskInfoTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Task details'**
-  String get taskInfoTitle;
-
-  /// No description provided for @taskEventLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Event'**
-  String get taskEventLabel;
 
   /// No description provided for @taskDueLabel.
   ///
@@ -2102,18 +2096,6 @@ abstract class AppLocalizations {
   /// **'Submitted'**
   String get taskSubmittedOnLabel;
 
-  /// No description provided for @taskCreditedHoursLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Credited hours'**
-  String get taskCreditedHoursLabel;
-
-  /// No description provided for @taskRejectionReasonLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Reason'**
-  String get taskRejectionReasonLabel;
-
   /// No description provided for @taskSubmitProof.
   ///
   /// In en, this message translates to:
@@ -2149,18 +2131,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Submit'**
   String get taskFormSubmit;
-
-  /// No description provided for @taskOptional.
-  ///
-  /// In en, this message translates to:
-  /// **'Optional'**
-  String get taskOptional;
-
-  /// No description provided for @taskAddPhoto.
-  ///
-  /// In en, this message translates to:
-  /// **'Add photo'**
-  String get taskAddPhoto;
 
   /// No description provided for @taskAddFile.
   ///
@@ -2245,6 +2215,228 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Couldn\'t open the file'**
   String get taskOpenFileFailed;
+
+  /// No description provided for @tasksTabAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get tasksTabAll;
+
+  /// No description provided for @tasksTabTodo.
+  ///
+  /// In en, this message translates to:
+  /// **'To do'**
+  String get tasksTabTodo;
+
+  /// No description provided for @tasksTabInReview.
+  ///
+  /// In en, this message translates to:
+  /// **'In review'**
+  String get tasksTabInReview;
+
+  /// No description provided for @tasksTabCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get tasksTabCompleted;
+
+  /// No description provided for @tasksEmptyTodo.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re all caught up'**
+  String get tasksEmptyTodo;
+
+  /// No description provided for @tasksEmptyInReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing waiting for review'**
+  String get tasksEmptyInReview;
+
+  /// No description provided for @tasksEmptyCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'No completed tasks yet'**
+  String get tasksEmptyCompleted;
+
+  /// No description provided for @tasksProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total} tasks completed'**
+  String tasksProgress(int done, int total);
+
+  /// No description provided for @tasksHoursEarned.
+  ///
+  /// In en, this message translates to:
+  /// **'Hours earned'**
+  String get tasksHoursEarned;
+
+  /// No description provided for @tasksWaitingReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting review'**
+  String get tasksWaitingReview;
+
+  /// No description provided for @taskGroupThisWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'This week'**
+  String get taskGroupThisWeek;
+
+  /// No description provided for @taskGroupLater.
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get taskGroupLater;
+
+  /// No description provided for @taskDueToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Due today'**
+  String get taskDueToday;
+
+  /// No description provided for @taskDueTomorrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Due tomorrow'**
+  String get taskDueTomorrow;
+
+  /// No description provided for @taskDueInDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Due in 1 day} other{Due in {count} days}}'**
+  String taskDueInDays(int count);
+
+  /// No description provided for @taskOverdueByDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Overdue by 1 day} other{Overdue by {count} days}}'**
+  String taskOverdueByDays(int count);
+
+  /// No description provided for @taskDueOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Due {date}'**
+  String taskDueOn(String date);
+
+  /// No description provided for @taskBannerTodo.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit your proof by {due}'**
+  String taskBannerTodo(String due);
+
+  /// No description provided for @taskBannerTodoNoDue.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit your proof to complete this task'**
+  String get taskBannerTodoNoDue;
+
+  /// No description provided for @taskBannerOverdue.
+  ///
+  /// In en, this message translates to:
+  /// **'This task is past its due date. Submit your proof as soon as you can.'**
+  String get taskBannerOverdue;
+
+  /// No description provided for @taskBannerPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Your proof is being reviewed. We\'ll let you know once it\'s checked.'**
+  String get taskBannerPending;
+
+  /// No description provided for @taskBannerApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved! {hours} added to your volunteering record'**
+  String taskBannerApproved(String hours);
+
+  /// No description provided for @taskBannerApprovedNoHours.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved. Great work!'**
+  String get taskBannerApprovedNoHours;
+
+  /// No description provided for @taskBannerRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Your proof needs changes'**
+  String get taskBannerRejected;
+
+  /// No description provided for @taskFilesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Files'**
+  String get taskFilesLabel;
+
+  /// No description provided for @taskProgressTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Progress'**
+  String get taskProgressTitle;
+
+  /// No description provided for @taskTimelineAssigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Assigned to you'**
+  String get taskTimelineAssigned;
+
+  /// No description provided for @taskTimelineSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Proof submitted'**
+  String get taskTimelineSubmitted;
+
+  /// No description provided for @taskTimelineReviewed.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviewed'**
+  String get taskTimelineReviewed;
+
+  /// No description provided for @taskTimelineWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Not yet'**
+  String get taskTimelineWaiting;
+
+  /// No description provided for @taskFormProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{answered} of {total} answered'**
+  String taskFormProgress(int answered, int total);
+
+  /// No description provided for @taskRequiredLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 required field left} other{{count} required fields left}}'**
+  String taskRequiredLeft(int count);
+
+  /// No description provided for @taskUploadPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to add photos'**
+  String get taskUploadPhotos;
+
+  /// No description provided for @taskUploadFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to add files'**
+  String get taskUploadFiles;
+
+  /// No description provided for @taskUploadHint.
+  ///
+  /// In en, this message translates to:
+  /// **'{types} · up to {size} MB'**
+  String taskUploadHint(String types, int size);
+
+  /// No description provided for @taskConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit your proof?'**
+  String get taskConfirmTitle;
+
+  /// No description provided for @taskConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You won\'t be able to edit your answers after submitting.'**
+  String get taskConfirmMessage;
 }
 
 class _AppLocalizationsDelegate

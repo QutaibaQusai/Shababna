@@ -76,6 +76,16 @@ class TaskSubmissionState extends Equatable {
   final String? errorMessage;
   final TaskSubmissionFeedback? feedback;
 
+  List<VerificationField> get _fields => form?.fields ?? const [];
+
+  bool _isAnswered(VerificationField field) => !(answers[field.id]?.isEmpty ?? true);
+
+  int get totalCount => _fields.length;
+
+  int get answeredCount => _fields.where(_isAnswered).length;
+
+  int get requiredLeft => _fields.where((field) => field.isRequired && !_isAnswered(field)).length;
+
   TaskSubmissionState copyWith({
     TaskSubmissionLoadStatus? status,
     VerificationForm? form,

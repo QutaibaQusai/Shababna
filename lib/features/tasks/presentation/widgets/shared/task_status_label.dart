@@ -1,32 +1,43 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
-import '../../../../../l10n/app_localizations.dart';
-import '../../../domain/repositories/tasks_repository.dart';
+import '../../../../../core/theme/app_radius.dart';
+import '../../../../../core/theme/app_sizes.dart';
+import '../../../../../core/theme/app_spacing.dart';
+import 'task_status_visual.dart';
 
 class TaskStatusLabel extends StatelessWidget {
-  const TaskStatusLabel({super.key, required this.status, this.isOverdue = false});
+  const TaskStatusLabel({super.key, required this.visual});
 
-  final TaskSubmissionStatus? status;
-  final bool isOverdue;
+  static const _tintAlpha = 0.12;
 
-  static String text(AppLocalizations l10n, TaskSubmissionStatus? status) => switch (status) {
-    null => l10n.taskStatusNotSubmitted,
-    TaskSubmissionStatus.pending => l10n.taskStatusPending,
-    TaskSubmissionStatus.approved => l10n.taskStatusApproved,
-    TaskSubmissionStatus.rejected => l10n.taskStatusRejected,
-  };
+  final TaskStatusVisual visual;
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colorScheme;
-    final l10n = context.l10n;
+    final color = visual.color(context.colorScheme);
 
-    return Text(
-      isOverdue ? l10n.taskOverdue : text(l10n, status),
-      style: context.textTheme.labelMedium?.copyWith(
-        color: isOverdue ? colors.error : colors.primary,
-        fontWeight: FontWeight.w700,
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: _tintAlpha),
+        borderRadius: AppRadius.pillRadius,
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: AppSpacing.xs, vertical: AppSpacing.xxs),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(visual.icon, size: AppSizes.iconSm, color: color),
+            SizedBox(width: AppSpacing.xxs),
+            Text(
+              visual.label(context.l10n),
+              style: context.textTheme.labelMedium?.copyWith(
+                color: color,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/routes/app_routes.dart';
+import '../../../../../core/theme/app_radius.dart';
+import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
-import '../../../domain/repositories/tasks_repository.dart';
 import '../../cubit/task_details/task_details_cubit.dart';
 import '../shared/task_file_tile.dart';
-import '../shared/task_formatters.dart';
-import '../shared/task_key_value_row.dart';
 import '../shared/task_section_title.dart';
 import 'task_description.dart';
+import 'task_progress_timeline.dart';
+import 'task_info_section.dart';
+import 'task_status_banner.dart';
 import 'task_submission_summary.dart';
 
 class TaskDetailsContent extends StatelessWidget {
@@ -25,34 +30,35 @@ class TaskDetailsContent extends StatelessWidget {
     final l10n = context.l10n;
     final isArabic = context.isArabic;
     final description = task.description(isArabic).trim();
-    final rows = [
-      (l10n.taskEventLabel, task.eventTitle(isArabic), null),
-      (
-        l10n.taskDueLabel,
-        TaskFormatters.dueDate(context, task.dueAt),
-        task.isOverdue ? context.colorScheme.error : null,
-      ),
-      (l10n.taskHoursLabel, TaskFormatters.hours(context, task.volunteeringHours), null),
-    ];
+    final showProgress = task.isAssignedToMe || task.submissionStatus != null;
 
     return ListView(
       padding: EdgeInsets.all(AppSpacing.screenMargin),
       children: [
+        TaskStatusBanner(task: task, submission: submission),
+        SizedBox(height: AppSpacing.md),
         Text(
           task.name(isArabic),
           style: context.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
         ),
+        SizedBox(height: AppSpacing.xxs),
+        _EventLink(
+          title: task.eventTitle(isArabic),
+          onTap: () => context.push(AppRoutes.eventDetailsPath(task.eventId)),
+        ),
+        SizedBox(height: AppSpacing.sm),
+        TaskInfoSection(task: task),
         if (description.isNotEmpty) ...[
           SizedBox(height: AppSpacing.md),
           TaskSectionTitle(title: l10n.taskAboutTitle),
           SizedBox(height: AppSpacing.xs),
           TaskDescription(html: description),
         ],
-        SizedBox(height: AppSpacing.md),
-        TaskSectionTitle(title: l10n.taskInfoTitle),
-        for (final (label, value, color) in rows) ...[
+        if (showProgress) ...[
+          SizedBox(height: AppSpacing.md),
+          TaskSectionTitle(title: l10n.taskProgressTitle),
           SizedBox(height: AppSpacing.sm),
-          TaskKeyValueRow(label: label, value: value, valueColor: color),
+          TaskProgressTimeline(status: task.submissionStatus, submission: submission),
         ],
         if (task.attachments.isNotEmpty) ...[
           SizedBox(height: AppSpacing.md),
@@ -81,22 +87,48 @@ class TaskDetailsContent extends StatelessWidget {
   }
 }
 
-class TaskDetailsSkeletonData {
-  TaskDetailsSkeletonData._();
+class _EventLink extends StatelessWidget {
+  const _EventLink({required this.title, required this.onTap});
 
-  static final placeholder = TaskDetails(
-    id: 'placeholder',
-    eventId: 'placeholder',
-    eventTitleEn: 'Community health awareness day',
-    eventTitleAr: 'يوم التوعية الصحية المجتمعية',
-    nameEn: 'Share photos from the awareness booth',
-    nameAr: 'شارك صوراً من ركن التوعية',
-    descriptionEn: '',
-    descriptionAr: '',
-    dueAt: DateTime(2026, 10, 20),
-    volunteeringHours: 2,
-    isAssignedToMe: true,
-    attachments: const [],
-    submissionStatus: null,
-  );
+  final String title;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final color = context.colorScheme.primary;
+
+    return Align(
+      alignment: AlignmentDirectional.centerStart,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: AppRadius.smRadius,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: AppSpacing.xxs),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(LucideIcons.calendarDays, size: AppSizes.iconSm, color: color),
+              SizedBox(width: AppSpacing.xxs),
+              Flexible(
+                child: Text(
+                  title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: context.textTheme.labelLarge?.copyWith(
+                    color: color,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              Icon(
+                context.isRTL ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
+                size: AppSizes.iconSm,
+                color: color,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

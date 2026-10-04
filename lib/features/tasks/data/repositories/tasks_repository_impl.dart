@@ -2,39 +2,32 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/data/repository_guard_mixin.dart';
 import '../../../../core/error/failures.dart';
-import '../../../../core/network/paged_result.dart';
 import '../../domain/repositories/tasks_repository.dart';
 import '../datasources/tasks_remote_data_source.dart';
 import '../mappers/tasks_mapper.dart';
-import '../models/task_models.dart';
 
 class TasksRepositoryImpl with RepositoryGuardMixin implements TasksRepository {
   TasksRepositoryImpl(this._remoteDataSource);
 
   static const _notFoundCode = 'RESOURCE_NOT_FOUND';
+  static const _pageSize = 100;
+  static const _maxPages = 5;
 
   final TasksRemoteDataSource _remoteDataSource;
 
   @override
-  Future<Either<Failure, PagedResult<TaskSummary>>> getMyTasks({
-    required int page,
-    required int pageSize,
-  }) {
-    return guard(
-      () async => _mapPage(await _remoteDataSource.getMyTasks(page: page, pageSize: pageSize)),
-    );
-  }
-
-  @override
-  Future<Either<Failure, PagedResult<TaskSummary>>> getEventTasks(
-    String eventId, {
-    required int page,
-    required int pageSize,
-  }) {
-    return guard(
-      () async =>
-          _mapPage(await _remoteDataSource.getEventTasks(eventId, page: page, pageSize: pageSize)),
-    );
+  Future<Either<Failure, List<TaskSummary>>> getAssignedTasks({String? eventId}) {
+    return guard(() async {
+      final tasks = <TaskSummary>[];
+      for (var page = 1; page <= _maxPages; page++) {
+        final response = eventId == null
+            ? await _remoteDataSource.getMyTasks(page: page, pageSize: _pageSize)
+            : await _remoteDataSource.getEventTasks(eventId, page: page, pageSize: _pageSize);
+        tasks.addAll(response.items.map((item) => item.toEntity()));
+        if (!response.hasNextPage) break;
+      }
+      return tasks;
+    });
   }
 
   @override
@@ -73,15 +66,5 @@ class TasksRepositoryImpl with RepositoryGuardMixin implements TasksRepository {
   @override
   Future<Either<Failure, String>> downloadSubmissionFile(String taskId, SubmittedFile file) {
     return guard(() => _remoteDataSource.downloadSubmissionFile(taskId, file.id, file.fileName));
-  }
-
-  PagedResult<TaskSummary> _mapPage(PagedResult<TaskSummaryModel> response) {
-    return PagedResult(
-      items: response.items.map((item) => item.toEntity()).toList(),
-      page: response.page,
-      pageSize: response.pageSize,
-      totalCount: response.totalCount,
-      hasNextPage: response.hasNextPage,
-    );
   }
 }

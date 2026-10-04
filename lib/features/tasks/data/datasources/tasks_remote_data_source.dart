@@ -34,7 +34,7 @@ class TasksRemoteDataSource {
   }) async {
     final response = await _apiConsumer.get(
       EndPoints.eventTasksOfEvent(eventId),
-      queryParameters: {'Page': page, 'PageSize': pageSize},
+      queryParameters: {'Page': page, 'PageSize': pageSize, 'AssignedOnly': true},
     );
     return PagedResult.fromJson(response as Map<String, dynamic>, TaskSummaryModel.fromJson);
   }

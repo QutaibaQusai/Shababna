@@ -407,11 +407,10 @@
   "searchEventPast": "Ended",
   "tasksMyTitle": "My tasks",
   "tasksEventTitle": "Event tasks",
+  "eventTasksCardSubtitle": "Complete your tasks and submit proof to earn volunteering hours",
   "tasksEmptyMessage": "No tasks yet",
   "taskDetailsTitle": "Task",
   "taskAboutTitle": "About the task",
-  "taskInfoTitle": "Task details",
-  "taskEventLabel": "Event",
   "taskDueLabel": "Due",
   "taskHoursLabel": "Hours",
   "taskHoursValue": "{hours} h",
@@ -427,16 +426,12 @@
   "taskAttachmentsTitle": "Attachments",
   "taskSubmissionTitle": "Your submission",
   "taskSubmittedOnLabel": "Submitted",
-  "taskCreditedHoursLabel": "Credited hours",
-  "taskRejectionReasonLabel": "Reason",
   "taskSubmitProof": "Submit proof",
   "taskSubmitAgain": "Submit again",
   "taskNotAssigned": "This task isn't assigned to you",
   "taskSignInToSubmit": "Sign in to submit",
   "taskFormNoFields": "No proof is needed for this task. Just confirm to complete it.",
   "taskFormSubmit": "Submit",
-  "taskOptional": "Optional",
-  "taskAddPhoto": "Add photo",
   "taskAddFile": "Add file",
   "taskTakePhoto": "Take a photo",
   "taskChooseFromGallery": "Choose from gallery",
@@ -459,5 +454,69 @@
   "taskSubmittedMessage": "Proof submitted. We'll review it soon.",
   "taskAlreadySubmittedMessage": "You've already submitted this task",
   "taskFormChangedMessage": "The form was updated. Please review it and submit again.",
-  "taskOpenFileFailed": "Couldn't open the file"
+  "taskOpenFileFailed": "Couldn't open the file",
+  "tasksTabAll": "All",
+  "tasksTabTodo": "To do",
+  "tasksTabInReview": "In review",
+  "tasksTabCompleted": "Completed",
+  "tasksEmptyTodo": "You're all caught up",
+  "tasksEmptyInReview": "Nothing waiting for review",
+  "tasksEmptyCompleted": "No completed tasks yet",
+  "tasksProgress": "{done} of {total} tasks completed",
+  "@tasksProgress": {
+    "placeholders": { "done": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "tasksHoursEarned": "Hours earned",
+  "tasksWaitingReview": "Waiting review",
+  "taskGroupThisWeek": "This week",
+  "taskGroupLater": "Later",
+  "taskDueToday": "Due today",
+  "taskDueTomorrow": "Due tomorrow",
+  "taskDueInDays": "{count, plural, =1{Due in 1 day} other{Due in {count} days}}",
+  "@taskDueInDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "taskOverdueByDays": "{count, plural, =1{Overdue by 1 day} other{Overdue by {count} days}}",
+  "@taskOverdueByDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "taskDueOn": "Due {date}",
+  "@taskDueOn": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "taskBannerTodo": "Submit your proof by {due}",
+  "@taskBannerTodo": {
+    "placeholders": { "due": { "type": "String" } }
+  },
+  "taskBannerTodoNoDue": "Submit your proof to complete this task",
+  "taskBannerOverdue": "This task is past its due date. Submit your proof as soon as you can.",
+  "taskBannerPending": "Your proof is being reviewed. We'll let you know once it's checked.",
+  "taskBannerApproved": "Approved! {hours} added to your volunteering record",
+  "@taskBannerApproved": {
+    "placeholders": { "hours": { "type": "String" } }
+  },
+  "taskBannerApprovedNoHours": "Approved. Great work!",
+  "taskBannerRejected": "Your proof needs changes",
+  "taskFilesLabel": "Files",
+  "taskProgressTitle": "Progress",
+  "taskTimelineAssigned": "Assigned to you",
+  "taskTimelineSubmitted": "Proof submitted",
+  "taskTimelineReviewed": "Reviewed",
+  "taskTimelineWaiting": "Not yet",
+  "taskFormProgress": "{answered} of {total} answered",
+  "@taskFormProgress": {
+    "placeholders": { "answered": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "taskRequiredLeft": "{count, plural, =1{1 required field left} other{{count} required fields left}}",
+  "@taskRequiredLeft": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "taskUploadPhotos": "Tap to add photos",
+  "taskUploadFiles": "Tap to add files",
+  "taskUploadHint": "{types} · up to {size} MB",
+  "@taskUploadHint": {
+    "placeholders": { "types": { "type": "String" }, "size": { "type": "int" } }
+  },
+  "taskConfirmTitle": "Submit your proof?",
+  "taskConfirmMessage": "You won't be able to edit your answers after submitting."
 }

@@ -1096,6 +1096,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get tasksEventTitle => 'مهام الفعالية';
 
   @override
+  String get eventTasksCardSubtitle =>
+      'أنجز مهامك وأرسل الإثبات لتحصل على ساعات التطوع';
+
+  @override
   String get tasksEmptyMessage => 'لا توجد مهام حالياً';
 
   @override
@@ -1103,12 +1107,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get taskAboutTitle => 'عن المهمة';
-
-  @override
-  String get taskInfoTitle => 'تفاصيل المهمة';
-
-  @override
-  String get taskEventLabel => 'الفعالية';
 
   @override
   String get taskDueLabel => 'الموعد النهائي';
@@ -1149,12 +1147,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get taskSubmittedOnLabel => 'تاريخ التسليم';
 
   @override
-  String get taskCreditedHoursLabel => 'الساعات المحتسبة';
-
-  @override
-  String get taskRejectionReasonLabel => 'السبب';
-
-  @override
   String get taskSubmitProof => 'تسليم الإثبات';
 
   @override
@@ -1172,12 +1164,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get taskFormSubmit => 'تسليم';
-
-  @override
-  String get taskOptional => 'اختياري';
-
-  @override
-  String get taskAddPhoto => 'إضافة صورة';
 
   @override
   String get taskAddFile => 'إضافة ملف';
@@ -1227,4 +1213,159 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get taskOpenFileFailed => 'تعذر فتح الملف';
+
+  @override
+  String get tasksTabAll => 'الكل';
+
+  @override
+  String get tasksTabTodo => 'للإنجاز';
+
+  @override
+  String get tasksTabInReview => 'قيد المراجعة';
+
+  @override
+  String get tasksTabCompleted => 'مكتملة';
+
+  @override
+  String get tasksEmptyTodo => 'أنجزت كل مهامك';
+
+  @override
+  String get tasksEmptyInReview => 'لا توجد مهام بانتظار المراجعة';
+
+  @override
+  String get tasksEmptyCompleted => 'لا توجد مهام مكتملة بعد';
+
+  @override
+  String tasksProgress(int done, int total) {
+    return 'أنجزت $done من $total مهام';
+  }
+
+  @override
+  String get tasksHoursEarned => 'ساعات مكتسبة';
+
+  @override
+  String get tasksWaitingReview => 'بانتظار المراجعة';
+
+  @override
+  String get taskGroupThisWeek => 'هذا الأسبوع';
+
+  @override
+  String get taskGroupLater => 'لاحقاً';
+
+  @override
+  String get taskDueToday => 'تنتهي اليوم';
+
+  @override
+  String get taskDueTomorrow => 'تنتهي غداً';
+
+  @override
+  String taskDueInDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'تنتهي خلال $count يوماً',
+      few: 'تنتهي خلال $count أيام',
+      two: 'تنتهي خلال يومين',
+      one: 'تنتهي خلال يوم',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String taskOverdueByDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'متأخرة $count يوماً',
+      few: 'متأخرة $count أيام',
+      two: 'متأخرة يومين',
+      one: 'متأخرة يوماً واحداً',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String taskDueOn(String date) {
+    return 'تنتهي $date';
+  }
+
+  @override
+  String taskBannerTodo(String due) {
+    return 'أرسل الإثبات قبل $due';
+  }
+
+  @override
+  String get taskBannerTodoNoDue => 'أرسل الإثبات لإتمام هذه المهمة';
+
+  @override
+  String get taskBannerOverdue =>
+      'انتهى موعد هذه المهمة. أرسل الإثبات في أقرب وقت ممكن.';
+
+  @override
+  String get taskBannerPending =>
+      'إثباتك قيد المراجعة. سنخبرك فور الانتهاء منها.';
+
+  @override
+  String taskBannerApproved(String hours) {
+    return 'تمت الموافقة! أضيفت $hours إلى سجلك التطوعي';
+  }
+
+  @override
+  String get taskBannerApprovedNoHours => 'تمت الموافقة. عمل رائع!';
+
+  @override
+  String get taskBannerRejected => 'إثباتك يحتاج إلى تعديل';
+
+  @override
+  String get taskFilesLabel => 'الملفات';
+
+  @override
+  String get taskProgressTitle => 'التقدم';
+
+  @override
+  String get taskTimelineAssigned => 'تم تكليفك';
+
+  @override
+  String get taskTimelineSubmitted => 'تم إرسال الإثبات';
+
+  @override
+  String get taskTimelineReviewed => 'تمت المراجعة';
+
+  @override
+  String get taskTimelineWaiting => 'لم يتم بعد';
+
+  @override
+  String taskFormProgress(int answered, int total) {
+    return 'تمت الإجابة على $answered من $total';
+  }
+
+  @override
+  String taskRequiredLeft(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'بقي $count حقلاً مطلوباً',
+      few: 'بقيت $count حقول مطلوبة',
+      two: 'بقي حقلان مطلوبان',
+      one: 'بقي حقل مطلوب واحد',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get taskUploadPhotos => 'اضغط لإضافة صور';
+
+  @override
+  String get taskUploadFiles => 'اضغط لإضافة ملفات';
+
+  @override
+  String taskUploadHint(String types, int size) {
+    return '$types · حتى $size ميغابايت';
+  }
+
+  @override
+  String get taskConfirmTitle => 'إرسال الإثبات؟';
+
+  @override
+  String get taskConfirmMessage => 'لن تتمكن من تعديل إجاباتك بعد الإرسال.';
 }

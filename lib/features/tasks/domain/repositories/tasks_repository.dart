@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/error/failures.dart';
-import '../../../../core/network/paged_result.dart';
 
 enum TaskSubmissionStatus { pending, approved, rejected }
 
@@ -49,9 +48,11 @@ class TaskSummary extends Equatable {
 
   String eventTitle(bool isArabic) => isArabic ? eventTitleAr : eventTitleEn;
 
+  bool get isOpen => submissionStatus == null || submissionStatus == TaskSubmissionStatus.rejected;
+
   bool get isOverdue {
     final dueAt = this.dueAt;
-    return submissionStatus == null && dueAt != null && dueAt.isBefore(DateTime.now());
+    return isOpen && dueAt != null && dueAt.isBefore(DateTime.now());
   }
 
   @override
@@ -126,13 +127,13 @@ class TaskDetails extends Equatable {
 
   String description(bool isArabic) => isArabic ? descriptionAr : descriptionEn;
 
-  bool get canSubmit =>
-      isAssignedToMe &&
-      (submissionStatus == null || submissionStatus == TaskSubmissionStatus.rejected);
+  bool get canSubmit => isAssignedToMe && isOpen;
+
+  bool get isOpen => submissionStatus == null || submissionStatus == TaskSubmissionStatus.rejected;
 
   bool get isOverdue {
     final dueAt = this.dueAt;
-    return submissionStatus == null && dueAt != null && dueAt.isBefore(DateTime.now());
+    return isOpen && dueAt != null && dueAt.isBefore(DateTime.now());
   }
 
   @override
@@ -393,16 +394,7 @@ class FilesAnswer extends TaskAnswer {
 }
 
 abstract interface class TasksRepository {
-  Future<Either<Failure, PagedResult<TaskSummary>>> getMyTasks({
-    required int page,
-    required int pageSize,
-  });
-
-  Future<Either<Failure, PagedResult<TaskSummary>>> getEventTasks(
-    String eventId, {
-    required int page,
-    required int pageSize,
-  });
+  Future<Either<Failure, List<TaskSummary>>> getAssignedTasks({String? eventId});
 
   Future<Either<Failure, TaskDetails>> getTask(String id);
 

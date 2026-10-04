@@ -61,14 +61,14 @@ class TaskSubmissionCubit extends Cubit<TaskSubmissionState> {
     _setAnswer(fieldId, FilesAnswer(_filesOf(fieldId).where((item) => item != file).toList()));
   }
 
-  Future<void> submit() async {
+  bool validate() {
     final form = state.form;
-    if (form == null || state.isSubmitting) return;
+    if (form == null || state.isSubmitting) return false;
 
     final issues = _validate(form);
     if (issues.isNotEmpty) {
       emit(state.copyWith(issues: issues, feedback: const TaskFormInvalid()));
-      return;
+      return false;
     }
 
     final totalFiles = state.answers.values.whereType<FilesAnswer>().fold<int>(
@@ -77,8 +77,13 @@ class TaskSubmissionCubit extends Cubit<TaskSubmissionState> {
     );
     if (form.maxFilesPerSubmission > 0 && totalFiles > form.maxFilesPerSubmission) {
       emit(state.copyWith(feedback: TaskTooManyFiles(form.maxFilesPerSubmission)));
-      return;
+      return false;
     }
+    return true;
+  }
+
+  Future<void> submit() async {
+    if (!validate()) return;
 
     emit(state.copyWith(isSubmitting: true, issues: const {}));
     final result = await _repository.submit(taskId, state.answers);

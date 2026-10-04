@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/extensions/context_extensions.dart';
@@ -12,6 +11,7 @@ import '../../../../core/shared/widgets/app_toast.dart';
 import '../cubit/task_details/task_details_cubit.dart';
 import '../widgets/details/task_action_bar.dart';
 import '../widgets/details/task_details_content.dart';
+import '../widgets/details/task_details_skeleton.dart';
 import '../widgets/shared/task_fill_viewport.dart';
 
 class TaskDetailsPage extends StatelessWidget {
@@ -59,14 +59,7 @@ class _TaskDetailsView extends StatelessWidget {
               onRetry: cubit.load,
             ),
           ),
-          _ => Skeletonizer(
-            enabled: true,
-            child: IgnorePointer(
-              child: TaskDetailsContent(
-                state: TaskDetailsState(task: TaskDetailsSkeletonData.placeholder),
-              ),
-            ),
-          ),
+          _ => const TaskDetailsSkeleton(),
         },
         bottomNavigationBar: const TaskActionBar(),
       ),

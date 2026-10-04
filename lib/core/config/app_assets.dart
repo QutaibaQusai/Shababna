@@ -17,11 +17,18 @@ class AppAssets {
   static const String iconProfile = 'assets/images/icon_profile.svg';
   static const String iconNotification =
       'assets/images/icon_notification_2.svg';
+  static const String iconTrophy = 'assets/images/icon_trophy.png';
+  static const String iconHourglass = 'assets/images/icon_hourglass.png';
 
   static const String illustrationSearch = 'assets/images/illustration_search.svg';
   static const String illustrationEmpty = 'assets/images/illustration_empty.svg';
   static const String illustrationWarning = 'assets/images/illustration_warning.svg';
   static const String illustrationSecureLogin = 'assets/images/illustration_secure_login.svg';
+  static const String illustrationTasks = 'assets/images/illustration_tasks.svg';
+  static const String illustrationTasksDone = 'assets/images/illustration_tasks_done.svg';
+  static const String illustrationTasksReview = 'assets/images/illustration_tasks_review.svg';
+  static const String illustrationTasksCompleted =
+      'assets/images/illustration_tasks_completed.svg';
 
   static const String onboardingVolunteer = 'assets/images/onboarding_volunteer.jpg';
   static const String onboardingEvents = 'assets/images/onboarding_events.jpg';

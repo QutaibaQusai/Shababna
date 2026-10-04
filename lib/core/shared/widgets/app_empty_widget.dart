@@ -7,9 +7,10 @@ import '../../theme/app_spacing.dart';
 import 'app_illustration.dart';
 
 class AppEmptyWidget extends StatelessWidget {
-  const AppEmptyWidget({super.key, this.message});
+  const AppEmptyWidget({super.key, this.message, this.asset = AppAssets.illustrationEmpty});
 
   final String? message;
+  final String asset;
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +20,7 @@ class AppEmptyWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            AppIllustration(
-              asset: AppAssets.illustrationEmpty,
-              height: AppSizes.illustrationSize,
-            ),
+            AppIllustration(asset: asset, height: AppSizes.illustrationSize),
             SizedBox(height: AppSpacing.md),
             Text(
               message ?? context.l10n.noItemsFound,

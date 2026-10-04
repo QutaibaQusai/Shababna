@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../core/shared/widgets/app_button.dart';
+import '../../../../core/shared/widgets/app_dialog.dart';
 import '../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../core/shared/widgets/app_toast.dart';
-import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../cubit/task_submission/task_submission_cubit.dart';
 import '../cubit/task_submission/task_submission_state.dart';
 import '../widgets/form/task_form_field.dart';
+import '../widgets/form/task_form_progress.dart';
+import '../widgets/form/task_form_skeleton.dart';
 
 class TaskSubmissionPage extends StatelessWidget {
   const TaskSubmissionPage({super.key, required this.taskId});
@@ -53,6 +54,20 @@ class _TaskSubmissionView extends StatelessWidget {
     }
   }
 
+  Future<void> _confirmAndSubmit(BuildContext context) async {
+    final cubit = context.read<TaskSubmissionCubit>();
+    if (!cubit.validate()) return;
+    final l10n = context.l10n;
+    final confirmed = await AppDialog.confirm(
+      context,
+      title: l10n.taskConfirmTitle,
+      message: l10n.taskConfirmMessage,
+      confirmText: l10n.taskFormSubmit,
+      cancelText: l10n.cancelButton,
+    );
+    if (confirmed) await cubit.submit();
+  }
+
   @override
   Widget build(BuildContext context) {
     final state = context.watch<TaskSubmissionCubit>().state;
@@ -74,11 +89,15 @@ class _TaskSubmissionView extends StatelessWidget {
               message: state.errorMessage ?? l10n.somethingWentWrong,
               onRetry: cubit.load,
             ),
-            _ when !isReady => const _FormSkeleton(),
+            _ when !isReady => const TaskFormSkeleton(),
             _ => ListView(
               padding: EdgeInsets.all(AppSpacing.screenMargin),
               keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               children: [
+                if (form.fields.isNotEmpty) ...[
+                  TaskFormProgress(answered: state.answeredCount, total: state.totalCount),
+                  SizedBox(height: AppSpacing.md),
+                ],
                 if (form.fields.isEmpty)
                   Text(
                     l10n.taskFormNoFields,
@@ -87,9 +106,10 @@ class _TaskSubmissionView extends StatelessWidget {
                     ),
                   ),
                 for (var i = 0; i < form.fields.length; i++) ...[
-                  if (i > 0) SizedBox(height: AppSpacing.md),
+                  if (i > 0) SizedBox(height: AppSpacing.lg),
                   TaskFormField(
                     key: ValueKey(form.fields[i].id),
+                    number: i + 1,
                     field: form.fields[i],
                     answer: state.answers[form.fields[i].id],
                     issue: state.issues[form.fields[i].id],
@@ -109,39 +129,28 @@ class _TaskSubmissionView extends StatelessWidget {
                       AppSpacing.screenMargin,
                       AppSpacing.md,
                     ),
-                    child: AppButton.primary(
-                      label: l10n.taskFormSubmit,
-                      onPressed: form.canSubmit ? cubit.submit : null,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (state.requiredLeft > 0) ...[
+                          Text(
+                            l10n.taskRequiredLeft(state.requiredLeft),
+                            style: context.textTheme.labelMedium?.copyWith(
+                              color: context.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                          SizedBox(height: AppSpacing.xs),
+                        ],
+                        AppButton.primary(
+                          label: l10n.taskSubmitProof,
+                          onPressed: form.canSubmit ? () => _confirmAndSubmit(context) : null,
+                        ),
+                      ],
                     ),
                   ),
                 )
               : null,
         ),
-      ),
-    );
-  }
-}
-
-class _FormSkeleton extends StatelessWidget {
-  const _FormSkeleton();
-
-  static const _placeholderCount = 3;
-
-  @override
-  Widget build(BuildContext context) {
-    return Skeletonizer(
-      enabled: true,
-      child: ListView(
-        physics: const NeverScrollableScrollPhysics(),
-        padding: EdgeInsets.all(AppSpacing.screenMargin),
-        children: [
-          for (var i = 0; i < _placeholderCount; i++) ...[
-            const Bone.text(words: 2),
-            SizedBox(height: AppSpacing.xs),
-            Bone(height: AppSpacing.xxl, borderRadius: AppRadius.mdRadius),
-            SizedBox(height: AppSpacing.md),
-          ],
-        ],
       ),
     );
   }

@@ -4,7 +4,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
-import '../../../../../core/shared/widgets/app_button.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
@@ -16,16 +15,20 @@ import '../../cubit/task_submission/task_submission_state.dart';
 import '../shared/task_file_tile.dart';
 import '../shared/task_formatters.dart';
 import 'task_file_picker.dart';
+import 'task_image_thumbnail.dart';
+import 'task_upload_zone.dart';
 
 class TaskFormField extends StatelessWidget {
   const TaskFormField({
     super.key,
+    required this.number,
     required this.field,
     required this.answer,
     required this.issue,
     required this.maxFileBytes,
   });
 
+  final int number;
   final VerificationField field;
   final TaskAnswer? answer;
   final TaskFieldIssue? issue;
@@ -48,36 +51,32 @@ class TaskFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final colors = context.colorScheme;
     final isArabic = context.isArabic;
     final hasError = issue != null;
     final description = field.description(isArabic)?.trim() ?? '';
-    final issueText = _issueText(l10n);
+    final issueText = _issueText(context.l10n);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: AppFieldLabel(label: field.label(isArabic), hasError: hasError),
-            ),
-            if (!field.isRequired)
-              Text(
-                l10n.taskOptional,
-                style: context.textTheme.labelSmall?.copyWith(color: colors.onSurfaceVariant),
-              ),
-          ],
+        _QuestionHeader(
+          number: number,
+          label: field.label(isArabic),
+          isRequired: field.isRequired,
+          hasError: hasError,
         ),
         if (description.isNotEmpty) ...[
           SizedBox(height: AppSpacing.xxs),
-          Text(
-            description,
-            style: context.textTheme.bodySmall?.copyWith(color: colors.onSurfaceVariant),
+          Padding(
+            padding: EdgeInsetsDirectional.only(start: AppSizes.iconMd + AppSpacing.xs),
+            child: Text(
+              description,
+              style: context.textTheme.bodySmall?.copyWith(color: colors.onSurfaceVariant),
+            ),
           ),
         ],
-        SizedBox(height: AppSpacing.xs),
+        SizedBox(height: AppSpacing.sm),
         switch (field.type) {
           VerificationFieldType.text || VerificationFieldType.longText => _TextInput(
             field: field,
@@ -110,12 +109,91 @@ class TaskFormField extends StatelessWidget {
               FilesAnswer(:final files) => files,
               _ => const [],
             },
+            maxFileBytes: maxFileBytes,
+            hasError: hasError,
           ),
         },
         if (issueText != null) ...[
-          SizedBox(height: AppSpacing.xxs),
-          Text(issueText, style: context.textTheme.bodySmall?.copyWith(color: colors.error)),
+          SizedBox(height: AppSpacing.xs),
+          Row(
+            children: [
+              Icon(LucideIcons.circleAlert, size: AppSizes.iconSm, color: colors.error),
+              SizedBox(width: AppSpacing.xxs),
+              Expanded(
+                child: Text(
+                  issueText,
+                  style: context.textTheme.bodySmall?.copyWith(color: colors.error),
+                ),
+              ),
+            ],
+          ),
         ],
+      ],
+    );
+  }
+}
+
+class _QuestionHeader extends StatelessWidget {
+  const _QuestionHeader({
+    required this.number,
+    required this.label,
+    required this.isRequired,
+    required this.hasError,
+  });
+
+  static const _tintAlpha = 0.12;
+
+  final int number;
+  final String label;
+  final bool isRequired;
+  final bool hasError;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colorScheme;
+    final color = hasError ? colors.error : colors.primary;
+    final labelStyle = context.textTheme.titleSmall?.copyWith(
+      fontWeight: FontWeight.bold,
+      color: hasError ? colors.error : colors.onSurface,
+    );
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        DecoratedBox(
+          decoration: BoxDecoration(
+            color: color.withValues(alpha: _tintAlpha),
+            shape: BoxShape.circle,
+          ),
+          child: SizedBox.square(
+            dimension: AppSizes.iconMd,
+            child: Center(
+              child: Text(
+                '$number',
+                style: context.textTheme.labelMedium?.copyWith(
+                  color: color,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: AppSpacing.xs),
+        Expanded(
+          child: Text.rich(
+            TextSpan(
+              text: label,
+              children: [
+                if (isRequired)
+                  TextSpan(
+                    text: ' *',
+                    style: TextStyle(color: colors.error),
+                  ),
+              ],
+            ),
+            style: labelStyle,
+          ),
+        ),
       ],
     );
   }
@@ -178,6 +256,7 @@ class _YesNoInput extends StatelessWidget {
         Expanded(
           child: _OptionTile(
             label: l10n.yesLabel,
+            icon: LucideIcons.thumbsUp,
             isSelected: value == true,
             hasError: hasError,
             onTap: () => cubit.setYesNo(field.id, true),
@@ -187,6 +266,7 @@ class _YesNoInput extends StatelessWidget {
         Expanded(
           child: _OptionTile(
             label: l10n.noLabel,
+            icon: LucideIcons.thumbsDown,
             isSelected: value == false,
             hasError: hasError,
             onTap: () => cubit.setYesNo(field.id, false),
@@ -212,20 +292,25 @@ class _ChoiceInput extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        for (var i = 0; i < field.options.length; i++) ...[
-          if (i > 0) SizedBox(height: AppSpacing.xs),
-          _OptionTile(
-            label: field.options[i].label(context.isArabic),
-            isSelected: selected.contains(field.options[i].id),
-            hasError: hasError,
-            icon: isMultiple
-                ? (selected.contains(field.options[i].id)
-                      ? LucideIcons.squareCheck
-                      : LucideIcons.square)
-                : (selected.contains(field.options[i].id)
-                      ? LucideIcons.circleDot
-                      : LucideIcons.circle),
-            onTap: () => cubit.toggleOption(field, field.options[i].id),
+        for (final option in field.options) ...[
+          if (option != field.options.first) SizedBox(height: AppSpacing.xs),
+          Builder(
+            builder: (context) {
+              final isSelected = selected.contains(option.id);
+              return _OptionTile(
+                label: option.label(context.isArabic),
+                isSelected: isSelected,
+                hasError: hasError,
+                isLeading: true,
+                icon: switch ((isMultiple, isSelected)) {
+                  (true, true) => LucideIcons.squareCheck,
+                  (true, false) => LucideIcons.square,
+                  (false, true) => LucideIcons.circleDot,
+                  (false, false) => LucideIcons.circle,
+                },
+                onTap: () => cubit.toggleOption(field, option.id),
+              );
+            },
           ),
         ],
       ],
@@ -236,63 +321,70 @@ class _ChoiceInput extends StatelessWidget {
 class _OptionTile extends StatelessWidget {
   const _OptionTile({
     required this.label,
+    required this.icon,
     required this.isSelected,
     required this.hasError,
     required this.onTap,
-    this.icon,
+    this.isLeading = false,
   });
 
+  static const _selectedAlpha = 0.08;
+  static const _duration = Duration(milliseconds: 150);
+
   final String label;
+  final IconData icon;
   final bool isSelected;
   final bool hasError;
+  final bool isLeading;
   final VoidCallback onTap;
-  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colorScheme;
-    final icon = this.icon;
     final borderColor = isSelected
         ? colors.primary
         : hasError
         ? colors.error
-        : colors.outlineVariant;
+        : Colors.transparent;
+    final contentColor = isSelected ? colors.primary : colors.onSurface;
 
     return Semantics(
       button: true,
       selected: isSelected,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: AppRadius.mdRadius,
-        child: Container(
-          constraints: BoxConstraints(minHeight: AppSizes.buttonHeight),
-          padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
-          decoration: BoxDecoration(
-            color: isSelected ? colors.primaryContainer : null,
-            border: Border.all(color: borderColor),
-            borderRadius: AppRadius.mdRadius,
-          ),
-          child: Row(
-            mainAxisAlignment: icon == null ? MainAxisAlignment.center : MainAxisAlignment.start,
-            children: [
-              if (icon != null) ...[
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: AppRadius.mdRadius,
+          child: AnimatedContainer(
+            duration: _duration,
+            constraints: BoxConstraints(minHeight: AppSizes.buttonHeight),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
+            decoration: BoxDecoration(
+              color: isSelected ? colors.primary.withValues(alpha: _selectedAlpha) : colors.surface,
+              border: Border.all(color: borderColor),
+              borderRadius: AppRadius.mdRadius,
+            ),
+            child: Row(
+              mainAxisAlignment: isLeading ? MainAxisAlignment.start : MainAxisAlignment.center,
+              children: [
                 Icon(
                   icon,
                   size: AppSizes.iconField,
                   color: isSelected ? colors.primary : colors.onSurfaceVariant,
                 ),
                 SizedBox(width: AppSpacing.xs),
-              ],
-              Flexible(
-                child: Text(
-                  label,
-                  style: context.textTheme.bodyMedium?.copyWith(
-                    color: isSelected ? colors.onPrimaryContainer : colors.onSurface,
-                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                Flexible(
+                  child: Text(
+                    label,
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      color: contentColor,
+                      fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -301,43 +393,54 @@ class _OptionTile extends StatelessWidget {
 }
 
 class _FilesInput extends StatelessWidget {
-  const _FilesInput({required this.field, required this.files});
+  const _FilesInput({
+    required this.field,
+    required this.files,
+    required this.maxFileBytes,
+    required this.hasError,
+  });
 
   static const _picker = TaskFilePicker();
   static const _imageExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+  static const _gridColumns = 3;
 
   final VerificationField field;
   final List<PickedTaskFile> files;
+  final int maxFileBytes;
+  final bool hasError;
 
-  Future<void> _addPhotos(BuildContext context) async {
+  bool get _isFileField => field.type == VerificationFieldType.file;
+
+  Future<void> _add(BuildContext context) async {
     final cubit = context.read<TaskSubmissionCubit>();
-    final source = await showModalBottomSheet<ImageSource>(
+    final l10n = context.l10n;
+    final source = await showModalBottomSheet<_PickSource>(
       context: context,
       builder: (sheetContext) => SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ListTile(
-              leading: const Icon(LucideIcons.camera),
-              title: Text(context.l10n.taskTakePhoto),
-              onTap: () => Navigator.of(sheetContext).pop(ImageSource.camera),
-            ),
-            ListTile(
-              leading: const Icon(LucideIcons.images),
-              title: Text(context.l10n.taskChooseFromGallery),
-              onTap: () => Navigator.of(sheetContext).pop(ImageSource.gallery),
-            ),
+            for (final (source, icon, title) in [
+              (_PickSource.camera, LucideIcons.camera, l10n.taskTakePhoto),
+              (_PickSource.gallery, LucideIcons.images, l10n.taskChooseFromGallery),
+              if (_isFileField) (_PickSource.document, LucideIcons.fileText, l10n.taskAddFile),
+            ])
+              ListTile(
+                leading: Icon(icon),
+                title: Text(title),
+                onTap: () => Navigator.of(sheetContext).pop(source),
+              ),
           ],
         ),
       ),
     );
-    if (source == null) return;
-    cubit.addFiles(field.id, await _picker.pickImages(source));
-  }
-
-  Future<void> _addDocuments(BuildContext context) async {
-    final cubit = context.read<TaskSubmissionCubit>();
-    cubit.addFiles(field.id, await _picker.pickDocuments(field.acceptedExtensions));
+    final picked = switch (source) {
+      null => const <PickedTaskFile>[],
+      _PickSource.camera => await _picker.pickImages(ImageSource.camera),
+      _PickSource.gallery => await _picker.pickImages(ImageSource.gallery),
+      _PickSource.document => await _picker.pickDocuments(field.acceptedExtensions),
+    };
+    cubit.addFiles(field.id, picked);
   }
 
   @override
@@ -346,44 +449,53 @@ class _FilesInput extends StatelessWidget {
     final cubit = context.read<TaskSubmissionCubit>();
     final maxFiles = field.maxFiles;
     final canAdd = maxFiles == null || files.length < maxFiles;
-    final isFileField = field.type == VerificationFieldType.file;
+    final images = files.where((file) => _imageExtensions.contains(file.extension)).toList();
+    final documents = files.where((file) => !images.contains(file)).toList();
+    final types = field.acceptedExtensions.map((extension) => extension.toUpperCase()).join(', ');
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        for (final file in files) ...[
+        if (images.isNotEmpty) ...[
+          GridView.count(
+            crossAxisCount: _gridColumns,
+            mainAxisSpacing: AppSpacing.xs,
+            crossAxisSpacing: AppSpacing.xs,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              for (final image in images)
+                TaskImageThumbnail(
+                  key: ValueKey(image.path),
+                  path: image.path,
+                  onRemove: () => cubit.removeFile(field.id, image),
+                ),
+            ],
+          ),
+          SizedBox(height: AppSpacing.xs),
+        ],
+        for (final document in documents) ...[
           TaskFileTile(
-            fileName: file.name,
-            sizeBytes: file.sizeBytes,
-            isImage: !isFileField || _imageExtensions.contains(file.extension),
-            onRemove: () => cubit.removeFile(field.id, file),
+            fileName: document.name,
+            sizeBytes: document.sizeBytes,
+            isImage: false,
+            onRemove: () => cubit.removeFile(field.id, document),
           ),
           SizedBox(height: AppSpacing.xs),
         ],
         if (canAdd)
-          Row(
-            children: [
-              Expanded(
-                child: AppButton.secondary(
-                  label: l10n.taskAddPhoto,
-                  onPressed: () => _addPhotos(context),
-                ),
-              ),
-              if (isFileField) ...[
-                SizedBox(width: AppSpacing.xs),
-                Expanded(
-                  child: AppButton.secondary(
-                    label: l10n.taskAddFile,
-                    onPressed: () => _addDocuments(context),
-                  ),
-                ),
-              ],
-            ],
+          TaskUploadZone(
+            icon: _isFileField ? LucideIcons.filePlus : LucideIcons.imagePlus,
+            title: _isFileField ? l10n.taskUploadFiles : l10n.taskUploadPhotos,
+            hint: l10n.taskUploadHint(types, TaskFormatters.megabytes(maxFileBytes)),
+            hasError: hasError,
+            onTap: () => _add(context),
           ),
         if (maxFiles != null) ...[
           SizedBox(height: AppSpacing.xxs),
           Text(
             l10n.taskFilesCount(files.length, maxFiles),
+            textAlign: TextAlign.end,
             style: context.textTheme.labelSmall?.copyWith(
               color: context.colorScheme.onSurfaceVariant,
             ),
@@ -393,3 +505,5 @@ class _FilesInput extends StatelessWidget {
     );
   }
 }
+
+enum _PickSource { camera, gallery, document }

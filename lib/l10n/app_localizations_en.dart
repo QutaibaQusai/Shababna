@@ -1091,6 +1091,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tasksEventTitle => 'Event tasks';
 
   @override
+  String get eventTasksCardSubtitle =>
+      'Complete your tasks and submit proof to earn volunteering hours';
+
+  @override
   String get tasksEmptyMessage => 'No tasks yet';
 
   @override
@@ -1098,12 +1102,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get taskAboutTitle => 'About the task';
-
-  @override
-  String get taskInfoTitle => 'Task details';
-
-  @override
-  String get taskEventLabel => 'Event';
 
   @override
   String get taskDueLabel => 'Due';
@@ -1144,12 +1142,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get taskSubmittedOnLabel => 'Submitted';
 
   @override
-  String get taskCreditedHoursLabel => 'Credited hours';
-
-  @override
-  String get taskRejectionReasonLabel => 'Reason';
-
-  @override
   String get taskSubmitProof => 'Submit proof';
 
   @override
@@ -1167,12 +1159,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get taskFormSubmit => 'Submit';
-
-  @override
-  String get taskOptional => 'Optional';
-
-  @override
-  String get taskAddPhoto => 'Add photo';
 
   @override
   String get taskAddFile => 'Add file';
@@ -1223,4 +1209,154 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get taskOpenFileFailed => 'Couldn\'t open the file';
+
+  @override
+  String get tasksTabAll => 'All';
+
+  @override
+  String get tasksTabTodo => 'To do';
+
+  @override
+  String get tasksTabInReview => 'In review';
+
+  @override
+  String get tasksTabCompleted => 'Completed';
+
+  @override
+  String get tasksEmptyTodo => 'You\'re all caught up';
+
+  @override
+  String get tasksEmptyInReview => 'Nothing waiting for review';
+
+  @override
+  String get tasksEmptyCompleted => 'No completed tasks yet';
+
+  @override
+  String tasksProgress(int done, int total) {
+    return '$done of $total tasks completed';
+  }
+
+  @override
+  String get tasksHoursEarned => 'Hours earned';
+
+  @override
+  String get tasksWaitingReview => 'Waiting review';
+
+  @override
+  String get taskGroupThisWeek => 'This week';
+
+  @override
+  String get taskGroupLater => 'Later';
+
+  @override
+  String get taskDueToday => 'Due today';
+
+  @override
+  String get taskDueTomorrow => 'Due tomorrow';
+
+  @override
+  String taskDueInDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Due in $count days',
+      one: 'Due in 1 day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String taskOverdueByDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Overdue by $count days',
+      one: 'Overdue by 1 day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String taskDueOn(String date) {
+    return 'Due $date';
+  }
+
+  @override
+  String taskBannerTodo(String due) {
+    return 'Submit your proof by $due';
+  }
+
+  @override
+  String get taskBannerTodoNoDue => 'Submit your proof to complete this task';
+
+  @override
+  String get taskBannerOverdue =>
+      'This task is past its due date. Submit your proof as soon as you can.';
+
+  @override
+  String get taskBannerPending =>
+      'Your proof is being reviewed. We\'ll let you know once it\'s checked.';
+
+  @override
+  String taskBannerApproved(String hours) {
+    return 'Approved! $hours added to your volunteering record';
+  }
+
+  @override
+  String get taskBannerApprovedNoHours => 'Approved. Great work!';
+
+  @override
+  String get taskBannerRejected => 'Your proof needs changes';
+
+  @override
+  String get taskFilesLabel => 'Files';
+
+  @override
+  String get taskProgressTitle => 'Progress';
+
+  @override
+  String get taskTimelineAssigned => 'Assigned to you';
+
+  @override
+  String get taskTimelineSubmitted => 'Proof submitted';
+
+  @override
+  String get taskTimelineReviewed => 'Reviewed';
+
+  @override
+  String get taskTimelineWaiting => 'Not yet';
+
+  @override
+  String taskFormProgress(int answered, int total) {
+    return '$answered of $total answered';
+  }
+
+  @override
+  String taskRequiredLeft(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count required fields left',
+      one: '1 required field left',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get taskUploadPhotos => 'Tap to add photos';
+
+  @override
+  String get taskUploadFiles => 'Tap to add files';
+
+  @override
+  String taskUploadHint(String types, int size) {
+    return '$types · up to $size MB';
+  }
+
+  @override
+  String get taskConfirmTitle => 'Submit your proof?';
+
+  @override
+  String get taskConfirmMessage =>
+      'You won\'t be able to edit your answers after submitting.';
 }
