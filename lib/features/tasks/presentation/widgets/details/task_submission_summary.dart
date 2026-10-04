@@ -9,15 +9,9 @@ import '../shared/task_formatters.dart';
 import '../shared/task_section_title.dart';
 
 class TaskSubmissionSummary extends StatelessWidget {
-  const TaskSubmissionSummary({
-    super.key,
-    required this.submission,
-    required this.busyFileId,
-    required this.onOpenFile,
-  });
+  const TaskSubmissionSummary({super.key, required this.submission, required this.onOpenFile});
 
   final TaskSubmission submission;
-  final String? busyFileId;
   final ValueChanged<SubmittedFile> onOpenFile;
 
   String _answerText(BuildContext context, SubmittedAnswer answer) {
@@ -49,39 +43,36 @@ class TaskSubmissionSummary extends StatelessWidget {
           style: context.textTheme.labelMedium?.copyWith(color: colors.onSurfaceVariant),
         ),
         for (final answer in submission.answers) ...[
-          SizedBox(height: AppSpacing.xs),
-          DecoratedBox(
-            decoration: BoxDecoration(color: colors.surface, borderRadius: AppRadius.mdRadius),
-            child: Padding(
-              padding: EdgeInsets.all(AppSpacing.sm),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    answer.label(isArabic),
-                    style: context.textTheme.labelMedium?.copyWith(color: colors.onSurfaceVariant),
-                  ),
-                  SizedBox(height: AppSpacing.xxs),
-                  if (answer.type.isUpload)
-                    for (final file in answer.files) ...[
-                      if (file != answer.files.first) SizedBox(height: AppSpacing.xxs),
-                      TaskFileTile(
-                        fileName: file.fileName,
-                        sizeBytes: file.sizeBytes,
-                        isImage: file.contentType.startsWith('image/'),
-                        isBusy: busyFileId == file.id,
-                        onTap: () => onOpenFile(file),
-                      ),
-                    ]
-                  else
-                    Text(
-                      _answerText(context, answer),
-                      style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
-                    ),
-                ],
-              ),
+          SizedBox(height: AppSpacing.sm),
+          Text(
+            answer.label(isArabic),
+            style: context.textTheme.labelLarge?.copyWith(
+              color: colors.onSurfaceVariant,
+              fontWeight: FontWeight.w600,
             ),
           ),
+          SizedBox(height: AppSpacing.xs),
+          if (answer.type.isUpload)
+            for (final file in answer.files) ...[
+              if (file != answer.files.first) SizedBox(height: AppSpacing.xs),
+              TaskFileTile(
+                fileName: file.fileName,
+                sizeBytes: file.sizeBytes,
+                isImage: file.contentType.startsWith('image/'),
+                onTap: () => onOpenFile(file),
+              ),
+            ]
+          else
+            DecoratedBox(
+              decoration: BoxDecoration(color: colors.surface, borderRadius: AppRadius.mdRadius),
+              child: Padding(
+                padding: EdgeInsets.all(AppSpacing.sm),
+                child: Text(
+                  _answerText(context, answer),
+                  style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+                ),
+              ),
+            ),
         ],
       ],
     );

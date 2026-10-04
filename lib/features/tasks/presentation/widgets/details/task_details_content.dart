@@ -73,18 +73,13 @@ class TaskDetailsContent extends StatelessWidget {
               fileName: attachment.fileName,
               sizeBytes: attachment.sizeBytes,
               isImage: attachment.isImage,
-              isBusy: state.busyFileId == attachment.id,
               onTap: () => cubit.openAttachment(attachment),
             ),
           ],
         ],
         if (submission != null) ...[
           SizedBox(height: AppSpacing.md),
-          TaskSubmissionSummary(
-            submission: submission,
-            busyFileId: state.busyFileId,
-            onOpenFile: cubit.openSubmissionFile,
-          ),
+          TaskSubmissionSummary(submission: submission, onOpenFile: cubit.openSubmissionFile),
         ],
       ],
     );

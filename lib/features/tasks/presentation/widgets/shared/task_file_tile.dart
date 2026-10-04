@@ -13,17 +13,13 @@ class TaskFileTile extends StatelessWidget {
     required this.fileName,
     required this.sizeBytes,
     required this.isImage,
-    this.isBusy = false,
     this.onTap,
     this.onRemove,
   });
 
-  static const _tintAlpha = 0.1;
-
   final String fileName;
   final int sizeBytes;
   final bool isImage;
-  final bool isBusy;
   final VoidCallback? onTap;
   final VoidCallback? onRemove;
 
@@ -31,31 +27,21 @@ class TaskFileTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colorScheme;
     final onRemove = this.onRemove;
-    final iconSize = AppSizes.iconButtonSize;
 
     return Material(
       color: colors.surface,
       borderRadius: AppRadius.mdRadius,
       child: InkWell(
-        onTap: isBusy ? null : onTap,
+        onTap: onTap,
         borderRadius: AppRadius.mdRadius,
         child: Padding(
-          padding: EdgeInsets.all(AppSpacing.xs),
+          padding: EdgeInsets.all(AppSpacing.sm),
           child: Row(
             children: [
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  color: colors.primary.withValues(alpha: _tintAlpha),
-                  borderRadius: AppRadius.smRadius,
-                ),
-                child: SizedBox.square(
-                  dimension: iconSize,
-                  child: Icon(
-                    isImage ? LucideIcons.image : LucideIcons.fileText,
-                    size: AppSizes.iconField,
-                    color: colors.primary,
-                  ),
-                ),
+              Icon(
+                isImage ? LucideIcons.image : LucideIcons.fileText,
+                size: AppSizes.iconMd,
+                color: colors.primary,
               ),
               SizedBox(width: AppSpacing.sm),
               Expanded(
@@ -76,19 +62,18 @@ class TaskFileTile extends StatelessWidget {
                 ),
               ),
               SizedBox(width: AppSpacing.xs),
-              if (isBusy)
-                SizedBox.square(
-                  dimension: AppSizes.iconField,
-                  child: const CircularProgressIndicator(strokeWidth: 2),
-                )
-              else if (onRemove != null)
+              if (onRemove != null)
                 IconButton(
                   onPressed: onRemove,
                   icon: Icon(LucideIcons.x, size: AppSizes.iconField),
                   tooltip: MaterialLocalizations.of(context).deleteButtonTooltip,
                 )
               else
-                Icon(LucideIcons.download, size: AppSizes.iconField, color: colors.primary),
+                Icon(
+                  context.isRTL ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
+                  size: AppSizes.iconField,
+                  color: colors.onSurfaceVariant,
+                ),
             ],
           ),
         ),
