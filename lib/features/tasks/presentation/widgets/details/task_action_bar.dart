@@ -17,7 +17,7 @@ class TaskActionBar extends StatelessWidget {
   Future<void> _openForm(BuildContext context, String taskId) async {
     final cubit = context.read<TaskDetailsCubit>();
     final submitted = await context.push<bool>(AppRoutes.taskSubmitPath(taskId));
-    if (submitted == true) await cubit.load();
+    if (submitted == true) await cubit.reloadAfterSubmit();
   }
 
   @override

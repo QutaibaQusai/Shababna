@@ -11,11 +11,14 @@ import '../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../core/shared/widgets/app_toast.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../domain/repositories/tasks_repository.dart';
 import '../cubit/task_submission/task_submission_cubit.dart';
 import '../cubit/task_submission/task_submission_state.dart';
 import '../widgets/form/task_form_field.dart';
 import '../widgets/form/task_form_progress.dart';
 import '../widgets/form/task_form_skeleton.dart';
+import '../widgets/shared/task_status_visual.dart';
 
 class TaskSubmissionPage extends StatelessWidget {
   const TaskSubmissionPage({super.key, required this.taskId});
@@ -54,6 +57,26 @@ class _TaskSubmissionView extends StatelessWidget {
     }
   }
 
+  Future<void> _confirmDiscard(BuildContext context) async {
+    final l10n = context.l10n;
+    final navigator = Navigator.of(context);
+    final discard = await AppDialog.confirm(
+      context,
+      title: l10n.discardChangesTitle,
+      message: l10n.discardChangesMessage,
+      confirmText: l10n.discardButton,
+      cancelText: l10n.cancelButton,
+    );
+    if (discard) navigator.pop();
+  }
+
+  String? _blockedReason(AppLocalizations l10n, VerificationForm form) {
+    if (form.canSubmit) return null;
+    final status = form.submissionStatus;
+    if (status == null) return l10n.taskNotAssigned;
+    return TaskStatusVisual.of(status, isOverdue: false).label(l10n);
+  }
+
   Future<void> _confirmAndSubmit(BuildContext context) async {
     final cubit = context.read<TaskSubmissionCubit>();
     if (!cubit.validate()) return;
@@ -75,81 +98,95 @@ class _TaskSubmissionView extends StatelessWidget {
     final l10n = context.l10n;
     final form = state.form;
     final isReady = state.status == TaskSubmissionLoadStatus.ready && form != null;
+    final hint = form == null
+        ? null
+        : _blockedReason(l10n, form) ??
+              (state.requiredLeft > 0 ? l10n.taskRequiredLeft(state.requiredLeft) : null);
 
     return BlocListener<TaskSubmissionCubit, TaskSubmissionState>(
       listenWhen: (previous, current) =>
           current.feedback != null && previous.feedback != current.feedback,
       listener: (context, state) => _onFeedback(context, state.feedback!),
-      child: AppLoadingOverlay(
-        isLoading: state.isSubmitting,
-        child: Scaffold(
-          appBar: AppAppBar(title: l10n.taskSubmitProof, onBack: () => context.pop()),
-          body: switch (state.status) {
-            TaskSubmissionLoadStatus.failure => AppErrorWidget(
-              message: state.errorMessage ?? l10n.somethingWentWrong,
-              onRetry: cubit.load,
+      child: PopScope(
+        canPop: !state.hasAnswers && !state.isSubmitting,
+        onPopInvokedWithResult: (didPop, _) {
+          if (!didPop && !state.isSubmitting) _confirmDiscard(context);
+        },
+        child: AppLoadingOverlay(
+          isLoading: state.isSubmitting,
+          child: Scaffold(
+            appBar: AppAppBar(
+              title: l10n.taskSubmitProof,
+              onBack: () => Navigator.of(context).maybePop(),
             ),
-            _ when !isReady => const TaskFormSkeleton(),
-            _ => ListView(
-              padding: EdgeInsets.all(AppSpacing.screenMargin),
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              children: [
-                if (form.fields.isNotEmpty) ...[
-                  TaskFormProgress(answered: state.answeredCount, total: state.totalCount),
-                  SizedBox(height: AppSpacing.md),
-                ],
-                if (form.fields.isEmpty)
-                  Text(
-                    l10n.taskFormNoFields,
-                    style: context.textTheme.bodyLarge?.copyWith(
-                      color: context.colorScheme.onSurfaceVariant,
+            body: switch (state.status) {
+              TaskSubmissionLoadStatus.failure => AppErrorWidget(
+                message: state.errorMessage ?? l10n.somethingWentWrong,
+                onRetry: cubit.load,
+              ),
+              _ when !isReady => const TaskFormSkeleton(),
+              _ => ListView(
+                padding: EdgeInsets.all(AppSpacing.screenMargin),
+                keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                children: [
+                  if (form.fields.isNotEmpty) ...[
+                    TaskFormProgress(answered: state.answeredCount, total: state.totalCount),
+                    SizedBox(height: AppSpacing.md),
+                  ],
+                  if (form.fields.isEmpty)
+                    Text(
+                      l10n.taskFormNoFields,
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        color: context.colorScheme.onSurfaceVariant,
+                      ),
                     ),
-                  ),
-                for (var i = 0; i < form.fields.length; i++) ...[
-                  if (i > 0) SizedBox(height: AppSpacing.lg),
-                  TaskFormField(
-                    key: ValueKey(form.fields[i].id),
-                    number: i + 1,
-                    field: form.fields[i],
-                    answer: state.answers[form.fields[i].id],
-                    issue: state.issues[form.fields[i].id],
-                    maxFileBytes: form.maxFileBytes,
-                  ),
-                ],
-              ],
-            ),
-          },
-          bottomNavigationBar: isReady
-              ? SafeArea(
-                  top: false,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      AppSpacing.screenMargin,
-                      AppSpacing.sm,
-                      AppSpacing.screenMargin,
-                      AppSpacing.md,
+                  for (var i = 0; i < form.fields.length; i++) ...[
+                    if (i > 0) SizedBox(height: AppSpacing.lg),
+                    TaskFormField(
+                      key: ValueKey(form.fields[i].id),
+                      number: i + 1,
+                      field: form.fields[i],
+                      answer: state.answers[form.fields[i].id],
+                      issue: state.issues[form.fields[i].id],
+                      maxFileBytes: form.maxFileBytes,
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (state.requiredLeft > 0) ...[
-                          Text(
-                            l10n.taskRequiredLeft(state.requiredLeft),
-                            style: context.textTheme.labelMedium?.copyWith(
-                              color: context.colorScheme.onSurfaceVariant,
+                  ],
+                ],
+              ),
+            },
+            bottomNavigationBar: isReady
+                ? SafeArea(
+                    top: false,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        AppSpacing.screenMargin,
+                        AppSpacing.sm,
+                        AppSpacing.screenMargin,
+                        AppSpacing.md,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (hint != null) ...[
+                            Text(
+                              hint,
+                              textAlign: TextAlign.center,
+                              style: context.textTheme.labelMedium?.copyWith(
+                                color: context.colorScheme.onSurfaceVariant,
+                              ),
                             ),
+                            SizedBox(height: AppSpacing.xs),
+                          ],
+                          AppButton.primary(
+                            label: l10n.taskSubmitProof,
+                            onPressed: form.canSubmit ? () => _confirmAndSubmit(context) : null,
                           ),
-                          SizedBox(height: AppSpacing.xs),
                         ],
-                        AppButton.primary(
-                          label: l10n.taskSubmitProof,
-                          onPressed: form.canSubmit ? () => _confirmAndSubmit(context) : null,
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                )
-              : null,
+                  )
+                : null,
+          ),
         ),
       ),
     );

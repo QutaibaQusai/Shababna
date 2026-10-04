@@ -16,6 +16,7 @@ import '../shared/task_file_tile.dart';
 import '../shared/task_formatters.dart';
 import 'task_file_picker.dart';
 import 'task_image_thumbnail.dart';
+import 'task_pick_source_sheet.dart';
 import 'task_upload_zone.dart';
 
 class TaskFormField extends StatelessWidget {
@@ -407,32 +408,12 @@ class _FilesInput extends StatelessWidget {
 
   Future<void> _add(BuildContext context) async {
     final cubit = context.read<TaskSubmissionCubit>();
-    final l10n = context.l10n;
-    final source = await showModalBottomSheet<_PickSource>(
-      context: context,
-      builder: (sheetContext) => SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            for (final (source, icon, title) in [
-              (_PickSource.camera, LucideIcons.camera, l10n.taskTakePhoto),
-              (_PickSource.gallery, LucideIcons.images, l10n.taskChooseFromGallery),
-              if (_isFileField) (_PickSource.document, LucideIcons.fileText, l10n.taskAddFile),
-            ])
-              ListTile(
-                leading: Icon(icon),
-                title: Text(title),
-                onTap: () => Navigator.of(sheetContext).pop(source),
-              ),
-          ],
-        ),
-      ),
-    );
+    final source = await TaskPickSourceSheet.show(context, allowDocuments: _isFileField);
     final picked = switch (source) {
       null => const <PickedTaskFile>[],
-      _PickSource.camera => await _picker.pickImages(ImageSource.camera),
-      _PickSource.gallery => await _picker.pickImages(ImageSource.gallery),
-      _PickSource.document => await _picker.pickDocuments(field.acceptedExtensions),
+      TaskPickSource.camera => await _picker.pickImages(ImageSource.camera),
+      TaskPickSource.gallery => await _picker.pickImages(ImageSource.gallery),
+      TaskPickSource.document => await _picker.pickDocuments(field.acceptedExtensions),
     };
     cubit.addFiles(field.id, picked);
   }
@@ -499,5 +480,3 @@ class _FilesInput extends StatelessWidget {
     );
   }
 }
-
-enum _PickSource { camera, gallery, document }

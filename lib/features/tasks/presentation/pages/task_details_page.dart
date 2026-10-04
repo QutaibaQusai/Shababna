@@ -54,21 +54,30 @@ class _TaskDetailsView extends StatelessWidget {
       listenWhen: (previous, current) =>
           current.fileFeedback != null && previous.fileFeedback != current.fileFeedback,
       listener: (context, state) => _onFileFeedback(context, state.fileFeedback!),
-      child: AppLoadingOverlay(
-        isLoading: state.busyFileId != null,
-        child: Scaffold(
-          appBar: AppAppBar(title: context.l10n.taskDetailsTitle, onBack: () => context.pop()),
-          body: switch (state) {
-            TaskDetailsState(task: _?) => TaskDetailsContent(state: state),
-            TaskDetailsState(hasError: true) => TaskFillViewport(
-              child: AppErrorWidget(
-                message: state.errorMessage ?? context.l10n.somethingWentWrong,
-                onRetry: cubit.load,
-              ),
+      child: PopScope(
+        canPop: !state.hasChanges,
+        onPopInvokedWithResult: (didPop, _) {
+          if (!didPop) context.pop(true);
+        },
+        child: AppLoadingOverlay(
+          isLoading: state.busyFileId != null,
+          child: Scaffold(
+            appBar: AppAppBar(
+              title: context.l10n.taskDetailsTitle,
+              onBack: () => context.pop(state.hasChanges),
             ),
-            _ => const TaskDetailsSkeleton(),
-          },
-          bottomNavigationBar: const TaskActionBar(),
+            body: switch (state) {
+              TaskDetailsState(task: _?) => TaskDetailsContent(state: state),
+              TaskDetailsState(hasError: true) => TaskFillViewport(
+                child: AppErrorWidget(
+                  message: state.errorMessage ?? context.l10n.somethingWentWrong,
+                  onRetry: cubit.load,
+                ),
+              ),
+              _ => const TaskDetailsSkeleton(),
+            },
+            bottomNavigationBar: const TaskActionBar(),
+          ),
         ),
       ),
     );

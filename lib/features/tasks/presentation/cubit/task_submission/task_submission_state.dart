@@ -82,6 +82,8 @@ class TaskSubmissionState extends Equatable {
 
   int get totalCount => _fields.length;
 
+  bool get hasAnswers => answers.values.any((answer) => !answer.isEmpty);
+
   int get answeredCount => _fields.where(_isAnswered).length;
 
   int get requiredLeft => _fields.where((field) => field.isRequired && !_isAnswered(field)).length;

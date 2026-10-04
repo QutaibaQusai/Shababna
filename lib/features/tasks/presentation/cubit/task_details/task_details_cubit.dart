@@ -39,6 +39,7 @@ class TaskDetailsState extends Equatable {
     this.errorMessage,
     this.busyFileId,
     this.fileFeedback,
+    this.hasChanges = false,
   });
 
   final bool isLoading;
@@ -48,6 +49,7 @@ class TaskDetailsState extends Equatable {
   final String? errorMessage;
   final String? busyFileId;
   final TaskFileFeedback? fileFeedback;
+  final bool hasChanges;
 
   TaskDetailsState copyWith({
     bool? isLoading,
@@ -55,13 +57,17 @@ class TaskDetailsState extends Equatable {
     TaskSubmission? submission,
     String? busyFileId,
     TaskFileFeedback? fileFeedback,
+    bool? hasChanges,
   }) {
     return TaskDetailsState(
       isLoading: isLoading ?? this.isLoading,
       task: task ?? this.task,
       submission: submission ?? this.submission,
+      hasError: hasError,
+      errorMessage: errorMessage,
       busyFileId: busyFileId,
       fileFeedback: fileFeedback,
+      hasChanges: hasChanges ?? this.hasChanges,
     );
   }
 
@@ -74,6 +80,7 @@ class TaskDetailsState extends Equatable {
     errorMessage,
     busyFileId,
     fileFeedback,
+    hasChanges,
   ];
 }
 
@@ -99,9 +106,14 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
       (task) async {
         final submission = task.submissionStatus == null ? null : await _loadSubmission();
         if (isClosed) return;
-        emit(TaskDetailsState(task: task, submission: submission));
+        emit(TaskDetailsState(task: task, submission: submission, hasChanges: state.hasChanges));
       },
     );
+  }
+
+  Future<void> reloadAfterSubmit() async {
+    await load();
+    if (!isClosed) emit(state.copyWith(hasChanges: true));
   }
 
   Future<void> openAttachment(TaskAttachment attachment) {

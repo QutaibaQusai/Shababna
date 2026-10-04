@@ -59,12 +59,20 @@ class TasksRepositoryImpl with RepositoryGuardMixin implements TasksRepository {
   @override
   Future<Either<Failure, String>> downloadAttachment(String taskId, TaskAttachment attachment) {
     return guard(
-      () => _remoteDataSource.downloadAttachment(taskId, attachment.id, attachment.fileName),
+      () => _remoteDataSource.downloadAttachment(
+        taskId,
+        attachment.id,
+        attachment.fileName,
+        attachment.sizeBytes,
+      ),
     );
   }
 
   @override
   Future<Either<Failure, String>> downloadSubmissionFile(String taskId, SubmittedFile file) {
-    return guard(() => _remoteDataSource.downloadSubmissionFile(taskId, file.id, file.fileName));
+    return guard(
+      () =>
+          _remoteDataSource.downloadSubmissionFile(taskId, file.id, file.fileName, file.sizeBytes),
+    );
   }
 }

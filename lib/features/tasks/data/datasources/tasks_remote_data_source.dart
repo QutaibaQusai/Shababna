@@ -13,6 +13,18 @@ class TasksRemoteDataSource {
   TasksRemoteDataSource(this._apiConsumer);
 
   static const _downloadFolder = 'shababna';
+  static const _fallbackMediaType = 'application/octet-stream';
+  static const _mediaTypes = {
+    'jpg': 'image/jpeg',
+    'jpeg': 'image/jpeg',
+    'png': 'image/png',
+    'webp': 'image/webp',
+    'pdf': 'application/pdf',
+    'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+  };
+  static final _unsafeFileNameChars = RegExp(r'[\\/:*?"<>|]');
 
   final ApiConsumer _apiConsumer;
 
@@ -71,7 +83,13 @@ class TasksRemoteDataSource {
           final indexes = <int>[];
           for (final file in picked) {
             indexes.add(files.length);
-            files.add(await MultipartFile.fromFile(file.path, filename: file.name));
+            files.add(
+              await MultipartFile.fromFile(
+                file.path,
+                filename: file.name,
+                contentType: _mediaTypeOf(file.extension),
+              ),
+            );
           }
           payload.add({'fieldId': fieldId, 'fileIndexes': indexes});
       }
@@ -85,20 +103,53 @@ class TasksRemoteDataSource {
     return TaskSubmissionModel.fromJson(response as Map<String, dynamic>);
   }
 
-  Future<String> downloadAttachment(String taskId, String attachmentId, String fileName) {
-    return _download(EndPoints.eventTaskAttachment(taskId, attachmentId), attachmentId, fileName);
+  Future<String> downloadAttachment(
+    String taskId,
+    String attachmentId,
+    String fileName,
+    int sizeBytes,
+  ) {
+    return _download(
+      EndPoints.eventTaskAttachment(taskId, attachmentId),
+      attachmentId,
+      fileName,
+      sizeBytes,
+    );
   }
 
-  Future<String> downloadSubmissionFile(String taskId, String fileId, String fileName) {
-    return _download(EndPoints.eventTaskSubmissionFile(taskId, fileId), fileId, fileName);
+  Future<String> downloadSubmissionFile(
+    String taskId,
+    String fileId,
+    String fileName,
+    int sizeBytes,
+  ) {
+    return _download(
+      EndPoints.eventTaskSubmissionFile(taskId, fileId),
+      fileId,
+      fileName,
+      sizeBytes,
+    );
   }
 
-  Future<String> _download(String endpoint, String id, String fileName) async {
+  Future<String> _download(String endpoint, String id, String fileName, int sizeBytes) async {
     final directory = Directory('${Directory.systemTemp.path}/$_downloadFolder');
     if (!await directory.exists()) await directory.create(recursive: true);
-    final safeName = fileName.replaceAll(RegExp(r'[\\/:*?"<>|]'), '_');
-    final path = '${directory.path}/${id}_$safeName';
-    await _apiConsumer.download(endpoint, path);
-    return path;
+    final safeName = fileName.replaceAll(_unsafeFileNameChars, '_');
+    final file = File('${directory.path}/${id}_$safeName');
+
+    if (sizeBytes > 0 && await file.exists() && await file.length() == sizeBytes) {
+      return file.path;
+    }
+
+    try {
+      await _apiConsumer.download(endpoint, file.path);
+    } catch (_) {
+      if (await file.exists()) await file.delete();
+      rethrow;
+    }
+    return file.path;
   }
+
+  static DioMediaType _mediaTypeOf(String extension) =>
+      DioMediaType.parse(_mediaTypes[extension] ?? _fallbackMediaType);
 }

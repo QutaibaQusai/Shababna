@@ -73,7 +73,7 @@ class TasksListBody extends StatelessWidget {
       TaskCard(
         key: ValueKey(tasks[i].id),
         task: tasks[i],
-        onReturn: cubit.refresh,
+        onReturn: cubit.reload,
         showEvent: showEvent,
       ),
     ],

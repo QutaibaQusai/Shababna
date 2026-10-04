@@ -34,8 +34,8 @@ class TaskCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () async {
-          await context.push(AppRoutes.taskDetailsPath(task.id));
-          onReturn();
+          final changed = await context.push<bool>(AppRoutes.taskDetailsPath(task.id));
+          if (changed == true) onReturn();
         },
         child: IntrinsicHeight(
           child: Row(
