@@ -1104,6 +1104,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get taskAboutTitle => 'About the task';
 
   @override
+  String get taskInfoTitle => 'Task details';
+
+  @override
   String get taskDueLabel => 'Due';
 
   @override

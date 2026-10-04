@@ -339,6 +339,7 @@
   "tasksEmptyMessage": "لا توجد مهام حالياً",
   "taskDetailsTitle": "المهمة",
   "taskAboutTitle": "عن المهمة",
+  "taskInfoTitle": "تفاصيل المهمة",
   "taskDueLabel": "الموعد النهائي",
   "taskHoursLabel": "الساعات",
   "taskHoursValue": "{hours} ساعة",

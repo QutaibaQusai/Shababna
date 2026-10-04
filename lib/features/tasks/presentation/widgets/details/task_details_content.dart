@@ -35,8 +35,6 @@ class TaskDetailsContent extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.all(AppSpacing.screenMargin),
       children: [
-        TaskStatusBanner(task: task, submission: submission),
-        SizedBox(height: AppSpacing.md),
         Text(
           task.name(isArabic),
           style: context.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
@@ -46,18 +44,24 @@ class TaskDetailsContent extends StatelessWidget {
           title: task.eventTitle(isArabic),
           onTap: () => context.push(AppRoutes.eventDetailsPath(task.eventId)),
         ),
-        SizedBox(height: AppSpacing.sm),
-        TaskInfoSection(task: task),
         if (description.isNotEmpty) ...[
           SizedBox(height: AppSpacing.md),
           TaskSectionTitle(title: l10n.taskAboutTitle),
           SizedBox(height: AppSpacing.xs),
           TaskDescription(html: description),
         ],
+        SizedBox(height: AppSpacing.md),
+        TaskSectionTitle(title: l10n.taskInfoTitle),
+        SizedBox(height: AppSpacing.sm),
+        TaskInfoSection(task: task),
+        SizedBox(height: AppSpacing.md),
         if (showProgress) ...[
-          SizedBox(height: AppSpacing.md),
           TaskSectionTitle(title: l10n.taskProgressTitle),
           SizedBox(height: AppSpacing.sm),
+        ],
+        TaskStatusBanner(task: task, submission: submission),
+        if (showProgress) ...[
+          SizedBox(height: AppSpacing.md),
           TaskProgressTimeline(status: task.submissionStatus, submission: submission),
         ],
         if (task.attachments.isNotEmpty) ...[
@@ -107,8 +111,6 @@ class _EventLink extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(LucideIcons.calendarDays, size: AppSizes.iconSm, color: color),
-              SizedBox(width: AppSpacing.xxs),
               Flexible(
                 child: Text(
                   title,

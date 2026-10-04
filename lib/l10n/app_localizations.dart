@@ -2024,6 +2024,12 @@ abstract class AppLocalizations {
   /// **'About the task'**
   String get taskAboutTitle;
 
+  /// No description provided for @taskInfoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Task details'**
+  String get taskInfoTitle;
+
   /// No description provided for @taskDueLabel.
   ///
   /// In en, this message translates to:

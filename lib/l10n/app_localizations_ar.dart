@@ -1109,6 +1109,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get taskAboutTitle => 'عن المهمة';
 
   @override
+  String get taskInfoTitle => 'تفاصيل المهمة';
+
+  @override
   String get taskDueLabel => 'الموعد النهائي';
 
   @override

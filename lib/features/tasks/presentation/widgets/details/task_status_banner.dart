@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
-import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/tasks_repository.dart';
 import '../shared/task_formatters.dart';
@@ -9,8 +8,6 @@ import '../shared/task_status_visual.dart';
 
 class TaskStatusBanner extends StatelessWidget {
   const TaskStatusBanner({super.key, required this.task, required this.submission});
-
-  static const _tintAlpha = 0.1;
 
   final TaskDetails task;
   final TaskSubmission? submission;
@@ -60,30 +57,23 @@ class _Banner extends StatelessWidget {
   Widget build(BuildContext context) {
     final message = this.message;
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: TaskStatusBanner._tintAlpha),
-        borderRadius: AppRadius.mdRadius,
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(AppSpacing.sm),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: context.textTheme.titleSmall?.copyWith(
-                color: color,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            if (message != null) ...[
-              SizedBox(height: AppSpacing.xxs),
-              Text(message, style: context.textTheme.bodySmall),
-            ],
-          ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: context.textTheme.titleSmall?.copyWith(color: color, fontWeight: FontWeight.bold),
         ),
-      ),
+        if (message != null) ...[
+          SizedBox(height: AppSpacing.xxs),
+          Text(
+            message,
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: context.colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ],
+      ],
     );
   }
 }

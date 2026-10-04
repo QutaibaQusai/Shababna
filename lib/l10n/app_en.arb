@@ -411,6 +411,7 @@
   "tasksEmptyMessage": "No tasks yet",
   "taskDetailsTitle": "Task",
   "taskAboutTitle": "About the task",
+  "taskInfoTitle": "Task details",
   "taskDueLabel": "Due",
   "taskHoursLabel": "Hours",
   "taskHoursValue": "{hours} h",
