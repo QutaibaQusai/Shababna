@@ -26,7 +26,6 @@ class SlideToConfirm extends StatefulWidget {
 class _SlideToConfirmState extends State<SlideToConfirm> with SingleTickerProviderStateMixin {
   static const _confirmThreshold = 0.85;
   static const _settleDuration = Duration(milliseconds: 250);
-  static const _fillAlpha = 0.2;
   static const _labelFadeSpeed = 1.5;
 
   late final AnimationController _progress = AnimationController(
@@ -66,7 +65,7 @@ class _SlideToConfirmState extends State<SlideToConfirm> with SingleTickerProvid
   }
 
   void _confirm() {
-    _confirmed = true;
+    setState(() => _confirmed = true);
     HapticFeedback.mediumImpact();
     _progress.animateTo(1, curve: Curves.easeOutCubic);
     widget.onConfirmed();
@@ -103,18 +102,6 @@ class _SlideToConfirmState extends State<SlideToConfirm> with SingleTickerProvid
                   return Stack(
                     alignment: AlignmentDirectional.centerStart,
                     children: [
-                      PositionedDirectional(
-                        start: 0,
-                        top: 0,
-                        bottom: 0,
-                        width: thumbSize + offset,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: colors.onPrimary.withValues(alpha: _fillAlpha),
-                            borderRadius: AppRadius.mdRadius,
-                          ),
-                        ),
-                      ),
                       Center(
                         child: Opacity(
                           opacity: (1 - _progress.value * _labelFadeSpeed).clamp(0.0, 1.0),
@@ -134,7 +121,11 @@ class _SlideToConfirmState extends State<SlideToConfirm> with SingleTickerProvid
                       ),
                       PositionedDirectional(
                         start: offset,
-                        child: _Thumb(size: thumbSize, isRtl: isRtl),
+                        child: _Thumb(
+                          size: thumbSize,
+                          isRtl: isRtl,
+                          isConfirmed: _confirmed || _progress.value >= _confirmThreshold,
+                        ),
                       ),
                     ],
                   );
@@ -149,24 +140,36 @@ class _SlideToConfirmState extends State<SlideToConfirm> with SingleTickerProvid
 }
 
 class _Thumb extends StatelessWidget {
-  const _Thumb({required this.size, required this.isRtl});
+  const _Thumb({required this.size, required this.isRtl, required this.isConfirmed});
+
+  static const _iconSwapDuration = Duration(milliseconds: 300);
+  static const _iconStartTurns = -0.25;
 
   final double size;
   final bool isRtl;
+  final bool isConfirmed;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colorScheme;
+    final icon = isConfirmed
+        ? LucideIcons.check
+        : (isRtl ? LucideIcons.chevronsLeft : LucideIcons.chevronsRight);
 
     return Container(
       width: size,
       height: size,
       decoration: BoxDecoration(color: colors.onPrimary, borderRadius: AppRadius.smRadius),
       alignment: Alignment.center,
-      child: Icon(
-        isRtl ? LucideIcons.chevronsLeft : LucideIcons.chevronsRight,
-        size: AppSizes.iconMd,
-        color: colors.primary,
+      child: AnimatedSwitcher(
+        duration: _iconSwapDuration,
+        switchInCurve: Curves.easeOutBack,
+        switchOutCurve: Curves.easeIn,
+        transitionBuilder: (child, animation) => RotationTransition(
+          turns: Tween(begin: _iconStartTurns, end: 0.0).animate(animation),
+          child: ScaleTransition(scale: animation, child: child),
+        ),
+        child: Icon(icon, key: ValueKey(icon), size: AppSizes.iconMd, color: colors.primary),
       ),
     );
   }
