@@ -9,12 +9,12 @@ class NewsRemoteDataSource {
 
   final ApiConsumer _apiConsumer;
 
-  Future<PagedResult<NewsModel>> getNews({required int page, required int pageSize}) async {
+  Future<PagedResult<NewsSummaryModel>> getNews({required int page, required int pageSize}) async {
     final response = await _apiConsumer.get(
       EndPoints.news,
       queryParameters: {'Page': page, 'PageSize': pageSize},
     );
-    return PagedResult.fromJson(response as Map<String, dynamic>, NewsModel.fromJson);
+    return PagedResult.fromJson(response as Map<String, dynamic>, NewsSummaryModel.fromJson);
   }
 
   Future<PagedResult<NewsSearchItemModel>> searchNews({

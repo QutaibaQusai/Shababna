@@ -10,18 +10,14 @@ class NewsListSkeleton extends StatelessWidget {
 
   static const _placeholderCount = 3;
 
-  static final _placeholder = NewsArticle(
+  static final _placeholder = NewsSummary(
     id: 'placeholder',
     titleEn: 'Shababna volunteers plant trees across the kingdom',
     titleAr: 'متطوعو شبابنا يزرعون الأشجار في أنحاء المملكة',
-    descriptionEn: '',
-    descriptionAr: '',
     summaryEn: 'More than two hundred volunteers spent the weekend restoring green areas together.',
     summaryAr: 'أمضى أكثر من مئتي متطوع عطلة نهاية الأسبوع في إعادة تأهيل المساحات الخضراء معاً.',
     date: DateTime(2026),
     imageUrl: '',
-    images: const [],
-    videos: const [],
   );
 
   @override

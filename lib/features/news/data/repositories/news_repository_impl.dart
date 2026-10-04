@@ -13,7 +13,7 @@ class NewsRepositoryImpl with RepositoryGuardMixin implements NewsRepository {
   final NewsRemoteDataSource _remoteDataSource;
 
   @override
-  Future<Either<Failure, PagedResult<NewsArticle>>> getNews({
+  Future<Either<Failure, PagedResult<NewsSummary>>> getNews({
     required int page,
     required int pageSize,
   }) {

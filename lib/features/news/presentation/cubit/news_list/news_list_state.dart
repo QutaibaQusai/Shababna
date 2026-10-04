@@ -16,7 +16,7 @@ class NewsListState extends Equatable {
   });
 
   final NewsListStatus status;
-  final List<NewsArticle> items;
+  final List<NewsSummary> items;
   final int page;
   final bool hasNextPage;
   final bool isLoadingMore;
@@ -28,7 +28,7 @@ class NewsListState extends Equatable {
 
   NewsListState copyWith({
     NewsListStatus? status,
-    List<NewsArticle>? items,
+    List<NewsSummary>? items,
     int? page,
     bool? hasNextPage,
     bool? isLoadingMore,

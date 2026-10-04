@@ -13,7 +13,7 @@ import '../shared/news_date_text.dart';
 class NewsCard extends StatelessWidget {
   const NewsCard({super.key, required this.article});
 
-  final NewsArticle article;
+  final NewsSummary article;
 
   @override
   Widget build(BuildContext context) {

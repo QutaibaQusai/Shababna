@@ -25,6 +25,33 @@ class NewsVideo extends Equatable {
   List<Object?> get props => [id, url, isExternal];
 }
 
+class NewsSummary extends Equatable {
+  const NewsSummary({
+    required this.id,
+    required this.titleEn,
+    required this.titleAr,
+    required this.summaryEn,
+    required this.summaryAr,
+    required this.date,
+    required this.imageUrl,
+  });
+
+  final String id;
+  final String titleEn;
+  final String titleAr;
+  final String summaryEn;
+  final String summaryAr;
+  final DateTime date;
+  final String imageUrl;
+
+  String title(bool isArabic) => isArabic ? titleAr : titleEn;
+
+  String summary(bool isArabic) => isArabic ? summaryAr : summaryEn;
+
+  @override
+  List<Object?> get props => [id, titleEn, titleAr, summaryEn, summaryAr, date, imageUrl];
+}
+
 class NewsArticle extends Equatable {
   const NewsArticle({
     required this.id,
@@ -94,7 +121,7 @@ class NewsSearchResult extends Equatable {
 }
 
 abstract interface class NewsRepository {
-  Future<Either<Failure, PagedResult<NewsArticle>>> getNews({
+  Future<Either<Failure, PagedResult<NewsSummary>>> getNews({
     required int page,
     required int pageSize,
   });

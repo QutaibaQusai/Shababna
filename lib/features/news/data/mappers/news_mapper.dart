@@ -3,6 +3,20 @@ import '../../domain/repositories/news_repository.dart';
 import '../models/news_model.dart';
 import '../models/news_search_item_model.dart';
 
+extension NewsSummaryModelMapper on NewsSummaryModel {
+  NewsSummary toEntity() {
+    return NewsSummary(
+      id: id,
+      titleEn: titleEn,
+      titleAr: titleAr,
+      summaryEn: _plainText(descriptionEn),
+      summaryAr: _plainText(descriptionAr),
+      date: DateTime.parse(date),
+      imageUrl: _toAbsoluteUrl(imageUrl),
+    );
+  }
+}
+
 extension NewsModelMapper on NewsModel {
   NewsArticle toEntity() {
     return NewsArticle(
@@ -14,40 +28,22 @@ extension NewsModelMapper on NewsModel {
       summaryEn: _plainText(descriptionEn),
       summaryAr: _plainText(descriptionAr),
       date: DateTime.parse(date),
-      imageUrl: _absoluteUrl(imageUrl),
+      imageUrl: _toAbsoluteUrl(imageUrl),
       images: images
-          .map((image) => NewsImage(id: image.id, url: _absoluteUrl(image.url)))
+          .where((image) => image.url.isNotEmpty)
+          .map((image) => NewsImage(id: image.id, url: _toAbsoluteUrl(image.url)))
           .toList(),
       videos: videos
+          .where((video) => video.url.isNotEmpty)
           .map(
             (video) => NewsVideo(
               id: video.id,
-              url: video.isExternal ? video.url : _absoluteUrl(video.url),
+              url: video.isExternal ? video.url : _toAbsoluteUrl(video.url),
               isExternal: video.isExternal,
             ),
           )
           .toList(),
     );
-  }
-
-  static final _tags = RegExp(r'<[^>]*>');
-  static final _whitespace = RegExp(r'\s+');
-  static const _entities = {
-    '&nbsp;': ' ',
-    '&amp;': '&',
-    '&quot;': '"',
-    '&#39;': "'",
-    '&apos;': "'",
-    '&lt;': '<',
-    '&gt;': '>',
-  };
-
-  String _absoluteUrl(String path) => _toAbsoluteUrl(path);
-
-  String _plainText(String html) {
-    var text = html.replaceAll(_tags, ' ');
-    _entities.forEach((entity, value) => text = text.replaceAll(entity, value));
-    return text.replaceAll(_whitespace, ' ').trim();
   }
 }
 
@@ -63,5 +59,23 @@ extension NewsSearchItemModelMapper on NewsSearchItemModel {
   }
 }
 
+final _tags = RegExp(r'<[^>]*>');
+final _whitespace = RegExp(r'\s+');
+const _entities = {
+  '&nbsp;': ' ',
+  '&amp;': '&',
+  '&quot;': '"',
+  '&#39;': "'",
+  '&apos;': "'",
+  '&lt;': '<',
+  '&gt;': '>',
+};
+
+String _plainText(String html) {
+  var text = html.replaceAll(_tags, ' ');
+  _entities.forEach((entity, value) => text = text.replaceAll(entity, value));
+  return text.replaceAll(_whitespace, ' ').trim();
+}
+
 String _toAbsoluteUrl(String path) =>
-    path.startsWith('http') ? path : '${AppConfig.baseUrl}$path';
+    path.isEmpty || path.startsWith('http') ? path : '${AppConfig.baseUrl}$path';
