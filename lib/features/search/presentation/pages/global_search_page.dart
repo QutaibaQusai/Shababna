@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/config/app_assets.dart';
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/shared/widgets/app_app_bar.dart';
+import '../../../../core/shared/widgets/app_empty_widget.dart';
 import '../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../core/shared/widgets/app_search_field.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../cubit/global_search_cubit.dart';
 import '../cubit/global_search_state.dart';
 import '../widgets/search_filter_bar.dart';
-import '../widgets/search_message.dart';
 import '../widgets/search_results_skeleton.dart';
 import '../widgets/search_results_view.dart';
 
@@ -57,14 +58,19 @@ class _GlobalSearchView extends StatelessWidget {
         SearchFilterBar(selected: state.category, onSelected: cubit.categorySelected),
         Expanded(
           child: switch (state.status) {
-            GlobalSearchStatus.idle => SearchMessage(message: context.l10n.searchIdleMessage),
+            GlobalSearchStatus.idle => AppEmptyWidget(
+              asset: AppAssets.illustrationSearch,
+              message: context.l10n.searchIdleMessage,
+            ),
             GlobalSearchStatus.loading => const SearchResultsSkeleton(),
             GlobalSearchStatus.failure => AppErrorWidget(
-                message: state.errorMessage ?? context.l10n.somethingWentWrong,
-                onRetry: cubit.retry,
-              ),
-            GlobalSearchStatus.success when state.results.isEmpty =>
-              SearchMessage(message: context.l10n.searchEmptyMessage(state.query)),
+              message: state.errorMessage ?? context.l10n.somethingWentWrong,
+              onRetry: cubit.retry,
+            ),
+            GlobalSearchStatus.success when state.results.isEmpty => AppEmptyWidget(
+              asset: AppAssets.illustrationSearch,
+              message: context.l10n.searchEmptyMessage(state.query),
+            ),
             GlobalSearchStatus.success => SearchResultsView(state: state),
           },
         ),
