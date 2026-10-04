@@ -1688,6 +1688,12 @@ abstract class AppLocalizations {
   /// **'No upcoming events right now'**
   String get eventsEmptyMessage;
 
+  /// No description provided for @eventsTypeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get eventsTypeAll;
+
   /// No description provided for @eventHours.
   ///
   /// In en, this message translates to:

@@ -16,9 +16,14 @@ class EventsRepositoryImpl with RepositoryGuardMixin implements EventsRepository
   Future<Either<Failure, PagedResult<EventSummary>>> getEvents({
     required int page,
     required int pageSize,
+    String? typeId,
   }) {
     return guard(() async {
-      final response = await _remoteDataSource.getEvents(page: page, pageSize: pageSize);
+      final response = await _remoteDataSource.getEvents(
+        page: page,
+        pageSize: pageSize,
+        typeId: typeId,
+      );
       return PagedResult(
         items: response.items.map((item) => item.toEntity()).toList(),
         page: response.page,
@@ -27,6 +32,11 @@ class EventsRepositoryImpl with RepositoryGuardMixin implements EventsRepository
         hasNextPage: response.hasNextPage,
       );
     });
+  }
+
+  @override
+  Future<Either<Failure, List<EventType>>> getEventTypes() {
+    return guard(() async => (await _remoteDataSource.getEventTypes()).toEntities());
   }
 
   @override

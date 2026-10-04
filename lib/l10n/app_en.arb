@@ -340,6 +340,7 @@
     "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
   },
   "eventsEmptyMessage": "No upcoming events right now",
+  "eventsTypeAll": "All",
   "eventHours": "{count, plural, =1{1 hour} other{{count} hours}}",
   "@eventHours": {
     "placeholders": { "count": { "type": "int" } }

@@ -18,6 +18,27 @@ class EventReference extends Equatable {
   List<Object?> get props => [id, name];
 }
 
+class EventType extends Equatable {
+  const EventType({
+    required this.id,
+    required this.nameEn,
+    required this.nameAr,
+    required this.eventsCount,
+  });
+
+  final String id;
+  final String nameEn;
+  final String nameAr;
+  final int eventsCount;
+
+  String name(bool isArabic) => isArabic ? nameAr : nameEn;
+
+  bool get hasEvents => eventsCount > 0;
+
+  @override
+  List<Object?> get props => [id, nameEn, nameAr, eventsCount];
+}
+
 class EventDonor extends Equatable {
   const EventDonor({required this.id, required this.title, required this.imageUrl});
 
@@ -209,7 +230,10 @@ abstract interface class EventsRepository {
   Future<Either<Failure, PagedResult<EventSummary>>> getEvents({
     required int page,
     required int pageSize,
+    String? typeId,
   });
+
+  Future<Either<Failure, List<EventType>>> getEventTypes();
 
   Future<Either<Failure, EventDetails>> getEventById(String id);
 

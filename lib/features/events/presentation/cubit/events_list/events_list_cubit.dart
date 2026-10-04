@@ -19,13 +19,24 @@ class EventsListCubit extends Cubit<EventsListState> {
 
   Future<void> refresh() => loadFirstPage();
 
+  Future<void> selectType(String? typeId) async {
+    if (typeId == state.typeId) return;
+    emit(EventsListState(status: EventsListStatus.loading, typeId: typeId));
+    await _fetchFirstPage();
+  }
+
   Future<void> loadMore() async {
     if (!state.canLoadMore) return;
     emit(state.copyWith(isLoadingMore: true, loadMoreFailed: false));
 
+    final typeId = state.typeId;
     final nextPage = state.page + 1;
-    final result = await _repository.getEvents(page: nextPage, pageSize: pageSize);
-    if (isClosed) return;
+    final result = await _repository.getEvents(
+      page: nextPage,
+      pageSize: pageSize,
+      typeId: typeId,
+    );
+    if (isClosed || typeId != state.typeId) return;
 
     result.fold(
       (_) => emit(state.copyWith(isLoadingMore: false, loadMoreFailed: true)),
@@ -44,8 +55,9 @@ class EventsListCubit extends Cubit<EventsListState> {
   }
 
   Future<void> _fetchFirstPage() async {
-    final result = await _repository.getEvents(page: 1, pageSize: pageSize);
-    if (isClosed) return;
+    final typeId = state.typeId;
+    final result = await _repository.getEvents(page: 1, pageSize: pageSize, typeId: typeId);
+    if (isClosed || typeId != state.typeId) return;
 
     result.fold(
       (failure) => emit(
@@ -55,6 +67,7 @@ class EventsListCubit extends Cubit<EventsListState> {
       ),
       (paged) => emit(EventsListState(
         status: EventsListStatus.success,
+        typeId: typeId,
         items: paged.items,
         page: 1,
         hasNextPage: paged.hasNextPage,

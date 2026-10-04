@@ -7,6 +7,7 @@ enum EventsListStatus { initial, loading, success, failure }
 class EventsListState extends Equatable {
   const EventsListState({
     this.status = EventsListStatus.initial,
+    this.typeId,
     this.items = const [],
     this.page = 0,
     this.hasNextPage = false,
@@ -16,6 +17,7 @@ class EventsListState extends Equatable {
   });
 
   final EventsListStatus status;
+  final String? typeId;
   final List<EventSummary> items;
   final int page;
   final bool hasNextPage;
@@ -37,6 +39,7 @@ class EventsListState extends Equatable {
   }) {
     return EventsListState(
       status: status ?? this.status,
+      typeId: typeId,
       items: items ?? this.items,
       page: page ?? this.page,
       hasNextPage: hasNextPage ?? this.hasNextPage,
@@ -49,6 +52,7 @@ class EventsListState extends Equatable {
   @override
   List<Object?> get props => [
         status,
+        typeId,
         items,
         page,
         hasNextPage,

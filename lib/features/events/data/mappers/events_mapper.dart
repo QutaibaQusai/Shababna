@@ -4,6 +4,7 @@ import '../models/event_details_model.dart';
 import '../models/event_json_parsing.dart';
 import '../models/event_registration_model.dart';
 import '../models/event_summary_model.dart';
+import '../models/event_type_model.dart';
 
 extension EventSummaryModelMapper on EventSummaryModel {
   EventSummary toEntity() {
@@ -69,6 +70,23 @@ extension EventRegistrationModelMapper on EventRegistrationModel {
       registrationStatus: _registrationStatus(registrationStatus),
       message: message,
     );
+  }
+}
+
+extension EventTypeModelsMapper on List<EventTypeModel> {
+  List<EventType> toEntities() {
+    final active = where((type) => type.isActive && type.id.isNotEmpty).toList()
+      ..sort((a, b) => a.order.compareTo(b.order));
+    return active
+        .map(
+          (type) => EventType(
+            id: type.id,
+            nameEn: type.nameEn,
+            nameAr: type.nameAr,
+            eventsCount: type.eventsCount,
+          ),
+        )
+        .toList();
   }
 }
 

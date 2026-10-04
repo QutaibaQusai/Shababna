@@ -49,6 +49,7 @@ class EndPoints {
   static String eventById(String id) => '$events/$id';
   static String eventRegister(String id) => '$events/$id/register';
   static String eventWithdraw(String id) => '$events/$id/withdraw';
+  static const String eventTypes = '/api/v1/event-types';
 
   static const String search = '/api/v1/search';
 

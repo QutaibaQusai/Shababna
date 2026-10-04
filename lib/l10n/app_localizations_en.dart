@@ -899,6 +899,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get eventsEmptyMessage => 'No upcoming events right now';
 
   @override
+  String get eventsTypeAll => 'All';
+
+  @override
   String eventHours(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

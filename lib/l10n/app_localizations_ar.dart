@@ -895,6 +895,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get eventsEmptyMessage => 'لا توجد فعاليات قادمة حالياً';
 
   @override
+  String get eventsTypeAll => 'الكل';
+
+  @override
   String eventHours(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
