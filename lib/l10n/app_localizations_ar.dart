@@ -1085,4 +1085,143 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get searchEventPast => 'انتهت';
+
+  @override
+  String get tasksMyTitle => 'مهامي';
+
+  @override
+  String get tasksEventTitle => 'مهام الفعالية';
+
+  @override
+  String get tasksEmptyMessage => 'لا توجد مهام حالياً';
+
+  @override
+  String get taskDetailsTitle => 'المهمة';
+
+  @override
+  String get taskAboutTitle => 'عن المهمة';
+
+  @override
+  String get taskInfoTitle => 'تفاصيل المهمة';
+
+  @override
+  String get taskEventLabel => 'الفعالية';
+
+  @override
+  String get taskDueLabel => 'الموعد النهائي';
+
+  @override
+  String get taskHoursLabel => 'الساعات';
+
+  @override
+  String taskHoursValue(String hours) {
+    return '$hours ساعة';
+  }
+
+  @override
+  String get taskNoDueDate => 'بدون موعد نهائي';
+
+  @override
+  String get taskOverdue => 'متأخرة';
+
+  @override
+  String get taskStatusNotSubmitted => 'لم تُسلَّم';
+
+  @override
+  String get taskStatusPending => 'قيد المراجعة';
+
+  @override
+  String get taskStatusApproved => 'مقبولة';
+
+  @override
+  String get taskStatusRejected => 'بحاجة لمراجعة';
+
+  @override
+  String get taskAttachmentsTitle => 'المرفقات';
+
+  @override
+  String get taskSubmissionTitle => 'تسليمك';
+
+  @override
+  String get taskSubmittedOnLabel => 'تاريخ التسليم';
+
+  @override
+  String get taskCreditedHoursLabel => 'الساعات المحتسبة';
+
+  @override
+  String get taskRejectionReasonLabel => 'السبب';
+
+  @override
+  String get taskSubmitProof => 'تسليم الإثبات';
+
+  @override
+  String get taskSubmitAgain => 'إعادة التسليم';
+
+  @override
+  String get taskNotAssigned => 'هذه المهمة غير مسندة إليك';
+
+  @override
+  String get taskSignInToSubmit => 'سجّل الدخول للتسليم';
+
+  @override
+  String get taskFormNoFields =>
+      'لا تحتاج هذه المهمة إلى إثبات، فقط أكّد لإتمامها.';
+
+  @override
+  String get taskFormSubmit => 'تسليم';
+
+  @override
+  String get taskOptional => 'اختياري';
+
+  @override
+  String get taskAddPhoto => 'إضافة صورة';
+
+  @override
+  String get taskAddFile => 'إضافة ملف';
+
+  @override
+  String get taskTakePhoto => 'التقاط صورة';
+
+  @override
+  String get taskChooseFromGallery => 'اختيار من المعرض';
+
+  @override
+  String taskFilesCount(int count, int max) {
+    return '$count من $max ملفات';
+  }
+
+  @override
+  String get taskIssueTooLong => 'الإجابة أطول من المسموح';
+
+  @override
+  String get taskIssueTooManyFiles => 'عدد الملفات أكثر من المسموح لهذا الحقل';
+
+  @override
+  String taskIssueFileTooLarge(int size) {
+    return 'يجب ألا يتجاوز حجم كل ملف $size ميغابايت';
+  }
+
+  @override
+  String get taskIssueUnsupportedFile => 'نوع الملف غير مدعوم';
+
+  @override
+  String get taskFormInvalidMessage => 'يرجى مراجعة الحقول المحددة';
+
+  @override
+  String taskTooManyFilesMessage(int limit) {
+    return 'يمكنك رفع $limit ملفات كحد أقصى';
+  }
+
+  @override
+  String get taskSubmittedMessage => 'تم تسليم الإثبات، وسنراجعه قريباً.';
+
+  @override
+  String get taskAlreadySubmittedMessage => 'لقد سلّمت هذه المهمة مسبقاً';
+
+  @override
+  String get taskFormChangedMessage =>
+      'تم تحديث النموذج، يرجى مراجعته والتسليم مجدداً.';
+
+  @override
+  String get taskOpenFileFailed => 'تعذر فتح الملف';
 }

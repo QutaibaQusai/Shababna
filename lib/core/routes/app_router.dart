@@ -27,6 +27,9 @@ import '../../features/profile/presentation/pages/delete_account/delete_account_
 import '../../features/profile/presentation/pages/change_phone_number/change_phone_number_page.dart';
 import '../../features/profile/presentation/pages/edit_profile/edit_profile_page.dart';
 import '../../features/search/presentation/pages/global_search_page.dart';
+import '../../features/tasks/presentation/pages/task_details_page.dart';
+import '../../features/tasks/presentation/pages/task_submission_page.dart';
+import '../../features/tasks/presentation/pages/tasks_page.dart';
 import '../../features/social_media/presentation/pages/social_media_page.dart';
 import '../shared/views/app_web_view_page.dart';
 import '../session/auth_session_cubit.dart';
@@ -161,6 +164,24 @@ class AppRouter {
           path: AppRoutes.eventDetails,
           name: AppRoutes.eventDetailsName,
           builder: (context, state) => EventDetailsPage(id: state.pathParameters['id']!),
+        ),
+        GoRoute(
+          path: AppRoutes.tasks,
+          name: AppRoutes.tasksName,
+          builder: (context, state) =>
+              TasksPage(eventId: state.uri.queryParameters[AppRoutes.eventIdQuery]),
+        ),
+        GoRoute(
+          path: AppRoutes.taskSubmit,
+          name: AppRoutes.taskSubmitName,
+          redirect: (context, state) =>
+              authSessionCubit.state.isAuthenticated ? null : AppRoutes.login,
+          builder: (context, state) => TaskSubmissionPage(taskId: state.pathParameters['id']!),
+        ),
+        GoRoute(
+          path: AppRoutes.taskDetails,
+          name: AppRoutes.taskDetailsName,
+          builder: (context, state) => TaskDetailsPage(id: state.pathParameters['id']!),
         ),
         GoRoute(
           path: AppRoutes.contactInfo,

@@ -86,6 +86,20 @@ class AppRoutes {
   static const String eventDetailsName = 'event-details';
   static String eventDetailsPath(String id) => '/events/$id';
 
+  static const String tasks = '/tasks';
+  static const String tasksName = 'tasks';
+  static const String eventIdQuery = 'eventId';
+  static String eventTasksPath(String eventId) =>
+      Uri(path: tasks, queryParameters: {eventIdQuery: eventId}).toString();
+
+  static const String taskDetails = '/tasks/:id';
+  static const String taskDetailsName = 'task-details';
+  static String taskDetailsPath(String id) => '/tasks/$id';
+
+  static const String taskSubmit = '/tasks/:id/submit';
+  static const String taskSubmitName = 'task-submit';
+  static String taskSubmitPath(String id) => '/tasks/$id/submit';
+
   static const Set<String> memberRoutes = {
     accountSecurity,
     changePassword,
@@ -95,6 +109,7 @@ class AppRoutes {
     changeEmail,
     verifyEmailChange,
     contactForm,
+    tasks,
   };
 
   static const Set<String> publicRoutes = {

@@ -32,4 +32,6 @@ abstract class ApiConsumer {
     Object? data,
     Map<String, dynamic>? queryParameters,
   });
+
+  Future<void> download(String path, String savePath);
 }

@@ -135,4 +135,13 @@ class DioConsumer implements ApiConsumer {
       handleDioExceptions(e);
     }
   }
+
+  @override
+  Future<void> download(String path, String savePath) async {
+    try {
+      await dio.download(path, savePath);
+    } on DioException catch (e) {
+      handleDioExceptions(e);
+    }
+  }
 }

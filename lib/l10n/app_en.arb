@@ -403,5 +403,60 @@
   "searchSeeAll": "See all",
   "searchEventUpcoming": "Upcoming",
   "searchEventOngoing": "Happening now",
-  "searchEventPast": "Ended"
+  "searchEventPast": "Ended",
+  "tasksMyTitle": "My tasks",
+  "tasksEventTitle": "Event tasks",
+  "tasksEmptyMessage": "No tasks yet",
+  "taskDetailsTitle": "Task",
+  "taskAboutTitle": "About the task",
+  "taskInfoTitle": "Task details",
+  "taskEventLabel": "Event",
+  "taskDueLabel": "Due",
+  "taskHoursLabel": "Hours",
+  "taskHoursValue": "{hours} h",
+  "@taskHoursValue": {
+    "placeholders": { "hours": { "type": "String" } }
+  },
+  "taskNoDueDate": "No deadline",
+  "taskOverdue": "Overdue",
+  "taskStatusNotSubmitted": "Not submitted",
+  "taskStatusPending": "Under review",
+  "taskStatusApproved": "Approved",
+  "taskStatusRejected": "Needs another look",
+  "taskAttachmentsTitle": "Attachments",
+  "taskSubmissionTitle": "Your submission",
+  "taskSubmittedOnLabel": "Submitted",
+  "taskCreditedHoursLabel": "Credited hours",
+  "taskRejectionReasonLabel": "Reason",
+  "taskSubmitProof": "Submit proof",
+  "taskSubmitAgain": "Submit again",
+  "taskNotAssigned": "This task isn't assigned to you",
+  "taskSignInToSubmit": "Sign in to submit",
+  "taskFormNoFields": "No proof is needed for this task. Just confirm to complete it.",
+  "taskFormSubmit": "Submit",
+  "taskOptional": "Optional",
+  "taskAddPhoto": "Add photo",
+  "taskAddFile": "Add file",
+  "taskTakePhoto": "Take a photo",
+  "taskChooseFromGallery": "Choose from gallery",
+  "taskFilesCount": "{count} of {max} files",
+  "@taskFilesCount": {
+    "placeholders": { "count": { "type": "int" }, "max": { "type": "int" } }
+  },
+  "taskIssueTooLong": "This answer is too long",
+  "taskIssueTooManyFiles": "Too many files for this field",
+  "taskIssueFileTooLarge": "Each file must be under {size} MB",
+  "@taskIssueFileTooLarge": {
+    "placeholders": { "size": { "type": "int" } }
+  },
+  "taskIssueUnsupportedFile": "This file type isn't supported",
+  "taskFormInvalidMessage": "Please check the highlighted fields",
+  "taskTooManyFilesMessage": "You can upload up to {limit} files",
+  "@taskTooManyFilesMessage": {
+    "placeholders": { "limit": { "type": "int" } }
+  },
+  "taskSubmittedMessage": "Proof submitted. We'll review it soon.",
+  "taskAlreadySubmittedMessage": "You've already submitted this task",
+  "taskFormChangedMessage": "The form was updated. Please review it and submit again.",
+  "taskOpenFileFailed": "Couldn't open the file"
 }

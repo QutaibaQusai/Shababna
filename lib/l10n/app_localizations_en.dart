@@ -1080,4 +1080,144 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get searchEventPast => 'Ended';
+
+  @override
+  String get tasksMyTitle => 'My tasks';
+
+  @override
+  String get tasksEventTitle => 'Event tasks';
+
+  @override
+  String get tasksEmptyMessage => 'No tasks yet';
+
+  @override
+  String get taskDetailsTitle => 'Task';
+
+  @override
+  String get taskAboutTitle => 'About the task';
+
+  @override
+  String get taskInfoTitle => 'Task details';
+
+  @override
+  String get taskEventLabel => 'Event';
+
+  @override
+  String get taskDueLabel => 'Due';
+
+  @override
+  String get taskHoursLabel => 'Hours';
+
+  @override
+  String taskHoursValue(String hours) {
+    return '$hours h';
+  }
+
+  @override
+  String get taskNoDueDate => 'No deadline';
+
+  @override
+  String get taskOverdue => 'Overdue';
+
+  @override
+  String get taskStatusNotSubmitted => 'Not submitted';
+
+  @override
+  String get taskStatusPending => 'Under review';
+
+  @override
+  String get taskStatusApproved => 'Approved';
+
+  @override
+  String get taskStatusRejected => 'Needs another look';
+
+  @override
+  String get taskAttachmentsTitle => 'Attachments';
+
+  @override
+  String get taskSubmissionTitle => 'Your submission';
+
+  @override
+  String get taskSubmittedOnLabel => 'Submitted';
+
+  @override
+  String get taskCreditedHoursLabel => 'Credited hours';
+
+  @override
+  String get taskRejectionReasonLabel => 'Reason';
+
+  @override
+  String get taskSubmitProof => 'Submit proof';
+
+  @override
+  String get taskSubmitAgain => 'Submit again';
+
+  @override
+  String get taskNotAssigned => 'This task isn\'t assigned to you';
+
+  @override
+  String get taskSignInToSubmit => 'Sign in to submit';
+
+  @override
+  String get taskFormNoFields =>
+      'No proof is needed for this task. Just confirm to complete it.';
+
+  @override
+  String get taskFormSubmit => 'Submit';
+
+  @override
+  String get taskOptional => 'Optional';
+
+  @override
+  String get taskAddPhoto => 'Add photo';
+
+  @override
+  String get taskAddFile => 'Add file';
+
+  @override
+  String get taskTakePhoto => 'Take a photo';
+
+  @override
+  String get taskChooseFromGallery => 'Choose from gallery';
+
+  @override
+  String taskFilesCount(int count, int max) {
+    return '$count of $max files';
+  }
+
+  @override
+  String get taskIssueTooLong => 'This answer is too long';
+
+  @override
+  String get taskIssueTooManyFiles => 'Too many files for this field';
+
+  @override
+  String taskIssueFileTooLarge(int size) {
+    return 'Each file must be under $size MB';
+  }
+
+  @override
+  String get taskIssueUnsupportedFile => 'This file type isn\'t supported';
+
+  @override
+  String get taskFormInvalidMessage => 'Please check the highlighted fields';
+
+  @override
+  String taskTooManyFilesMessage(int limit) {
+    return 'You can upload up to $limit files';
+  }
+
+  @override
+  String get taskSubmittedMessage => 'Proof submitted. We\'ll review it soon.';
+
+  @override
+  String get taskAlreadySubmittedMessage =>
+      'You\'ve already submitted this task';
+
+  @override
+  String get taskFormChangedMessage =>
+      'The form was updated. Please review it and submit again.';
+
+  @override
+  String get taskOpenFileFailed => 'Couldn\'t open the file';
 }

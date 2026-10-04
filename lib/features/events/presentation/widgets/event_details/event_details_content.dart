@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/shared/views/media_viewer/app_media.dart';
 import '../../../../../core/shared/views/media_viewer/show_media_browser.dart';
+import '../../../../../core/shared/widgets/app_menu_tile.dart';
 import '../../../../../core/shared/widgets/app_network_image.dart';
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
@@ -63,6 +67,14 @@ class EventDetailsContent extends StatelessWidget {
         ],
         SizedBox(height: AppSpacing.sm),
         Padding(padding: margin, child: EventDetailsTabs(event: event)),
+        if (event.registrationStatus == EventRegistrationStatus.approved) ...[
+          SizedBox(height: AppSpacing.md),
+          AppMenuTile(
+            icon: LucideIcons.listTodo,
+            title: context.l10n.tasksEventTitle,
+            onTap: () => context.push(AppRoutes.eventTasksPath(event.id)),
+          ),
+        ],
         if (event.donors.isNotEmpty) ...[
           SizedBox(height: AppSpacing.md),
           EventDonorsSection(donors: event.donors),

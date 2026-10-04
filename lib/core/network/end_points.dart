@@ -52,6 +52,16 @@ class EndPoints {
 
   static const String search = '/api/v1/search';
 
+  static const String eventTasks = '/api/v1/event-tasks';
+  static String eventTasksOfEvent(String eventId) => '$events/$eventId/tasks';
+  static String eventTask(String id) => '$eventTasks/$id';
+  static String eventTaskAttachment(String id, String attachmentId) =>
+      '$eventTasks/$id/attachments/$attachmentId';
+  static String eventTaskForm(String id) => '$eventTasks/$id/verification-form';
+  static String eventTaskSubmission(String id) => '$eventTasks/$id/submission';
+  static String eventTaskSubmissionFile(String id, String fileId) =>
+      '$eventTasks/$id/submission/files/$fileId';
+
   static const String chatbots = '/api/v1/chatbots';
   static const String chatbotQuestionsSearch = '$chatbots/questions/search';
   static String chatbotQuestions(String chatbotId) => '$chatbots/$chatbotId/questions';

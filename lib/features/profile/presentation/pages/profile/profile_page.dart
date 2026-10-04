@@ -136,6 +136,12 @@ class _ProfileViewState extends State<_ProfileView> {
                 const ProfileHeaderSkeleton(),
               SizedBox(height: AppSpacing.xs),
               const Divider(height: 1),
+              if (!isGuest)
+                AppMenuTile(
+                  icon: LucideIcons.listTodo,
+                  title: context.l10n.tasksMyTitle,
+                  onTap: () => context.push(AppRoutes.tasks),
+                ),
               AppMenuTile(
                 icon: LucideIcons.newspaper,
                 title: context.l10n.navNews,
