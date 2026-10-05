@@ -2486,12 +2486,6 @@ abstract class AppLocalizations {
   /// **'You\'ve reached the highest level'**
   String get homeImpactTopTier;
 
-  /// No description provided for @homeTasksNudge.
-  ///
-  /// In en, this message translates to:
-  /// **'{count, plural, =1{You have 1 task to do} other{You have {count} tasks to do}}'**
-  String homeTasksNudge(int count);
-
   /// No description provided for @homeSuggestedTitle.
   ///
   /// In en, this message translates to:

@@ -67,8 +67,21 @@ extension HomeNewsModelMapper on HomeNewsModel {
   }
 }
 
-extension HomeTaskStatusModelMapper on HomeTaskStatusModel {
-  bool get isOpen => submissionStatus == null || submissionStatus == _rejectedStatus;
+extension HomeTaskModelMapper on HomeTaskModel {
+  HomeTask? toOpenTask() {
+    final isOpen = submissionStatus == null || submissionStatus == _rejectedStatus;
+    if (!isOpen || id.isEmpty) return null;
+    final due = dueAtUtc;
+    return HomeTask(
+      id: id,
+      nameEn: nameEn,
+      nameAr: nameAr,
+      eventTitleEn: eventTitleEn,
+      eventTitleAr: eventTitleAr,
+      dueAt: due == null ? null : DateTime.tryParse(due)?.toLocal(),
+      needsChanges: submissionStatus == _rejectedStatus,
+    );
+  }
 }
 
 const _rejectedStatus = 'Rejected';

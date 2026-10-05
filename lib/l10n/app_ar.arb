@@ -416,7 +416,6 @@
   "homeGuestSubtitle": "سجّل الدخول لمتابعة ساعاتك التطوعية ومهامك والفعاليات المقترحة لك",
   "homeImpactToNext": "{hours} ساعة للوصول إلى {tier}",
   "homeImpactTopTier": "وصلت إلى أعلى مستوى",
-  "homeTasksNudge": "{count, plural, =1{لديك مهمة واحدة للإنجاز} =2{لديك مهمتان للإنجاز} few{لديك {count} مهام للإنجاز} other{لديك {count} مهمة للإنجاز}}",
   "homeSuggestedTitle": "مقترحة لك",
   "homeUpcomingTitle": "الفعاليات القادمة",
   "homeWhatsOnTitle": "ماذا يحدث",

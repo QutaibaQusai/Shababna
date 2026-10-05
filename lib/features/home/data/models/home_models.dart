@@ -172,12 +172,34 @@ class HomeNewsModel {
   final String imageUrl;
 }
 
-class HomeTaskStatusModel {
-  const HomeTaskStatusModel({required this.submissionStatus});
+class HomeTaskModel {
+  const HomeTaskModel({
+    required this.id,
+    required this.nameEn,
+    required this.nameAr,
+    required this.eventTitleEn,
+    required this.eventTitleAr,
+    required this.dueAtUtc,
+    required this.submissionStatus,
+  });
 
-  factory HomeTaskStatusModel.fromJson(Map<String, dynamic> json) {
-    return HomeTaskStatusModel(submissionStatus: json['mySubmissionStatus'] as String?);
+  factory HomeTaskModel.fromJson(Map<String, dynamic> json) {
+    return HomeTaskModel(
+      id: json['id'] as String? ?? '',
+      nameEn: json['nameEn'] as String? ?? '',
+      nameAr: json['nameAr'] as String? ?? '',
+      eventTitleEn: json['eventTitleEn'] as String? ?? '',
+      eventTitleAr: json['eventTitleAr'] as String? ?? '',
+      dueAtUtc: json['dueAtUtc'] as String?,
+      submissionStatus: json['mySubmissionStatus'] as String?,
+    );
   }
 
+  final String id;
+  final String nameEn;
+  final String nameAr;
+  final String eventTitleEn;
+  final String eventTitleAr;
+  final String? dueAtUtc;
   final String? submissionStatus;
 }

@@ -135,11 +135,43 @@ class HomeNews extends Equatable {
   List<Object?> get props => [id, titleEn, titleAr, summaryEn, summaryAr, date, imageUrl];
 }
 
+class HomeTask extends Equatable {
+  const HomeTask({
+    required this.id,
+    required this.nameEn,
+    required this.nameAr,
+    required this.eventTitleEn,
+    required this.eventTitleAr,
+    required this.dueAt,
+    required this.needsChanges,
+  });
+
+  final String id;
+  final String nameEn;
+  final String nameAr;
+  final String eventTitleEn;
+  final String eventTitleAr;
+  final DateTime? dueAt;
+  final bool needsChanges;
+
+  String name(bool isArabic) => isArabic ? nameAr : nameEn;
+
+  String eventTitle(bool isArabic) => isArabic ? eventTitleAr : eventTitleEn;
+
+  bool get isOverdue {
+    final dueAt = this.dueAt;
+    return dueAt != null && dueAt.isBefore(DateTime.now());
+  }
+
+  @override
+  List<Object?> get props => [id, nameEn, nameAr, eventTitleEn, eventTitleAr, dueAt, needsChanges];
+}
+
 class HomeFeed extends Equatable {
   const HomeFeed({
     this.impact,
     this.slides = const [],
-    this.openTasksCount = 0,
+    this.openTasks = const [],
     this.featuredEvents = const [],
     this.dayEvents = const [],
     this.news = const [],
@@ -147,7 +179,7 @@ class HomeFeed extends Equatable {
 
   final HomeImpact? impact;
   final List<HomeSlide> slides;
-  final int openTasksCount;
+  final List<HomeTask> openTasks;
   final List<HomeEvent> featuredEvents;
   final List<HomeEvent> dayEvents;
   final List<HomeNews> news;
@@ -155,14 +187,14 @@ class HomeFeed extends Equatable {
   HomeFeed withDayEvents(List<HomeEvent> events) => HomeFeed(
     impact: impact,
     slides: slides,
-    openTasksCount: openTasksCount,
+    openTasks: openTasks,
     featuredEvents: featuredEvents,
     dayEvents: events,
     news: news,
   );
 
   @override
-  List<Object?> get props => [impact, slides, openTasksCount, featuredEvents, dayEvents, news];
+  List<Object?> get props => [impact, slides, openTasks, featuredEvents, dayEvents, news];
 }
 
 abstract interface class HomeRepository {

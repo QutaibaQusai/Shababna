@@ -18,7 +18,7 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
   }) async {
     final impactCall = isMember ? guard(_impact) : null;
     final slidesCall = isMember ? guard(_slides) : null;
-    final tasksCall = isMember ? guard(_openTasksCount) : null;
+    final tasksCall = isMember ? guard(_openTasks) : null;
     final featuredCall = guard(() => _featuredEvents(isMember: isMember));
     final dayCall = guard(() => _eventsOn(day));
     final newsCall = guard(_news);
@@ -39,7 +39,7 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
       HomeFeed(
         impact: impact?.fold((_) => null, (value) => value),
         slides: slides?.getOrElse(() => const []) ?? const [],
-        openTasksCount: tasks?.getOrElse(() => 0) ?? 0,
+        openTasks: tasks?.getOrElse(() => const []) ?? const [],
         featuredEvents: featured.getOrElse(() => const []),
         dayEvents: dayEvents.getOrElse(() => const []),
         news: news.getOrElse(() => const []),
@@ -61,9 +61,19 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
         .toList();
   }
 
-  Future<int> _openTasksCount() async {
+  Future<List<HomeTask>> _openTasks() async {
     final tasks = await _remoteDataSource.getAssignedTasks();
-    return tasks.where((task) => task.isOpen).length;
+    final open = tasks.map((task) => task.toOpenTask()).nonNulls.toList()..sort(_compareByDue);
+    return open;
+  }
+
+  static int _compareByDue(HomeTask a, HomeTask b) {
+    final first = a.dueAt;
+    final second = b.dueAt;
+    if (first == null && second == null) return 0;
+    if (first == null) return 1;
+    if (second == null) return -1;
+    return first.compareTo(second);
   }
 
   Future<List<HomeEvent>> _featuredEvents({required bool isMember}) async {

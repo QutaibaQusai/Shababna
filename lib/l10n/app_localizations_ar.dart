@@ -1397,19 +1397,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeImpactTopTier => 'وصلت إلى أعلى مستوى';
 
   @override
-  String homeTasksNudge(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: 'لديك $count مهمة للإنجاز',
-      few: 'لديك $count مهام للإنجاز',
-      two: 'لديك مهمتان للإنجاز',
-      one: 'لديك مهمة واحدة للإنجاز',
-    );
-    return '$_temp0';
-  }
-
-  @override
   String get homeSuggestedTitle => 'مقترحة لك';
 
   @override

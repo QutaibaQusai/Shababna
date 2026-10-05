@@ -29,12 +29,12 @@ class HomeRemoteDataSource {
     return parseHomeItems(response).map(HomeSlideModel.fromJson).toList();
   }
 
-  Future<List<HomeTaskStatusModel>> getAssignedTasks() async {
+  Future<List<HomeTaskModel>> getAssignedTasks() async {
     final response = await _apiConsumer.get(
       EndPoints.eventTasks,
       queryParameters: {'Page': 1, 'PageSize': _tasksPageSize, 'AssignedOnly': true},
     );
-    return parseHomeItems(response).map(HomeTaskStatusModel.fromJson).toList();
+    return parseHomeItems(response).map(HomeTaskModel.fromJson).toList();
   }
 
   Future<List<HomeEventModel>> getSuggestedEvents() =>

@@ -530,10 +530,6 @@
     "placeholders": { "hours": { "type": "String" }, "tier": { "type": "String" } }
   },
   "homeImpactTopTier": "You've reached the highest level",
-  "homeTasksNudge": "{count, plural, =1{You have 1 task to do} other{You have {count} tasks to do}}",
-  "@homeTasksNudge": {
-    "placeholders": { "count": { "type": "int" } }
-  },
   "homeSuggestedTitle": "Suggested for you",
   "homeUpcomingTitle": "Upcoming events",
   "homeWhatsOnTitle": "What's on",

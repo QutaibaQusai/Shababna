@@ -13,7 +13,7 @@ import 'greeting/home_greeting.dart';
 import 'impact/home_impact_card.dart';
 import 'news/home_news_list.dart';
 import 'shared/home_section_header.dart';
-import 'tasks/home_tasks_nudge.dart';
+import 'tasks/home_tasks_list.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key, required this.state});
@@ -37,10 +37,10 @@ class HomeContent extends StatelessWidget {
           header: HomeSectionHeader(title: l10n.homeImpactTitle),
           child: HomeImpactCard(impact: impact),
         ),
-      if (isMember && feed.openTasksCount > 0)
+      if (isMember && feed.openTasks.isNotEmpty)
         _Section(
           header: HomeSectionHeader(title: l10n.homeTasksTitle),
-          child: HomeTasksNudge(count: feed.openTasksCount),
+          child: HomeTasksList(tasks: feed.openTasks),
         ),
       if (feed.featuredEvents.isNotEmpty)
         _Section(
