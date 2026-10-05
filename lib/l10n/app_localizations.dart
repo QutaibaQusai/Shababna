@@ -2516,12 +2516,6 @@ abstract class AppLocalizations {
   /// **'Today'**
   String get homeToday;
 
-  /// No description provided for @homeImpactTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Your impact'**
-  String get homeImpactTitle;
-
   /// No description provided for @homeTasksTitle.
   ///
   /// In en, this message translates to:

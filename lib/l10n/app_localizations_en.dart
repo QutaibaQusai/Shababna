@@ -1402,9 +1402,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeToday => 'Today';
 
   @override
-  String get homeImpactTitle => 'Your impact';
-
-  @override
   String get homeTasksTitle => 'Your tasks';
 
   @override

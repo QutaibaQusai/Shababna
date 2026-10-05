@@ -1411,9 +1411,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeToday => 'اليوم';
 
   @override
-  String get homeImpactTitle => 'أثرك';
-
-  @override
   String get homeTasksTitle => 'مهامك';
 
   @override
