@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/theme/app_radius.dart';
-import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/home_repository.dart';
 import '../shared/home_formatters.dart';
@@ -71,11 +69,26 @@ class _TaskCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        task.name(isArabic),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              task.name(isArabic),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          SizedBox(width: AppSpacing.xs),
+                          Text(
+                            task.needsChanges
+                                ? context.l10n.taskStatusRejected
+                                : HomeFormatters.relativeDue(context, task.dueAt),
+                            maxLines: 1,
+                            style: textTheme.labelMedium?.copyWith(color: dueColor),
+                          ),
+                        ],
                       ),
                       if (eventTitle.isNotEmpty) ...[
                         SizedBox(height: AppSpacing.xxs),
@@ -86,33 +99,8 @@ class _TaskCard extends StatelessWidget {
                           style: textTheme.labelMedium?.copyWith(color: colors.onSurfaceVariant),
                         ),
                       ],
-                      SizedBox(height: AppSpacing.xs),
-                      Row(
-                        children: [
-                          Icon(LucideIcons.calendarClock, size: AppSizes.iconSm, color: dueColor),
-                          SizedBox(width: AppSpacing.xxs),
-                          Flexible(
-                            child: Text(
-                              task.needsChanges
-                                  ? context.l10n.taskStatusRejected
-                                  : HomeFormatters.relativeDue(context, task.dueAt),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: textTheme.labelMedium?.copyWith(color: dueColor),
-                            ),
-                          ),
-                        ],
-                      ),
                     ],
                   ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.only(end: AppSpacing.xs),
-                child: Icon(
-                  context.isRTL ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
-                  size: AppSizes.iconField,
-                  color: colors.onSurfaceVariant,
                 ),
               ),
             ],

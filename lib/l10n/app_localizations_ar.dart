@@ -1096,10 +1096,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get tasksEventTitle => 'مهام الفعالية';
 
   @override
-  String get eventTasksCardSubtitle =>
-      'أنجز مهامك وأرسل الإثبات لتحصل على ساعات التطوع';
-
-  @override
   String get tasksEmptyMessage => 'لا توجد مهام حالياً';
 
   @override

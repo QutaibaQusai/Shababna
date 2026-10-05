@@ -2000,12 +2000,6 @@ abstract class AppLocalizations {
   /// **'Event tasks'**
   String get tasksEventTitle;
 
-  /// No description provided for @eventTasksCardSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Complete your tasks and submit proof to earn volunteering hours'**
-  String get eventTasksCardSubtitle;
-
   /// No description provided for @tasksEmptyMessage.
   ///
   /// In en, this message translates to:

@@ -1091,10 +1091,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tasksEventTitle => 'Event tasks';
 
   @override
-  String get eventTasksCardSubtitle =>
-      'Complete your tasks and submit proof to earn volunteering hours';
-
-  @override
   String get tasksEmptyMessage => 'No tasks yet';
 
   @override

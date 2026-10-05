@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/session/auth_session_cubit.dart';
 import '../../../../../core/shared/widgets/app_button.dart';
 import '../../../../../core/shared/widgets/app_dialog.dart';
@@ -98,10 +101,44 @@ class EventRegistrationBar extends StatelessWidget {
         children: [
           Expanded(child: _StatusPill(text: l10n.eventStatusPending)),
           SizedBox(width: AppSpacing.xs),
-          _WithdrawButton(label: l10n.eventWithdraw, onPressed: () => _confirmWithdraw(context)),
+          _BarButton(
+            label: l10n.eventWithdraw,
+            color: colors.error,
+            onColor: colors.onError,
+            onPressed: () => _confirmWithdraw(context),
+          ),
         ],
       ),
-      EventRegistrationStatus.approved => _StatusPill(text: l10n.eventStatusApproved),
+      EventRegistrationStatus.approved => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(LucideIcons.circleCheck, size: AppSizes.iconSm, color: colors.primary),
+              SizedBox(width: AppSpacing.xxs),
+              Text(
+                l10n.eventStatusApproved,
+                style: context.textTheme.labelLarge?.copyWith(
+                  color: colors.primary,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: AppSpacing.xs),
+          SizedBox(
+            width: double.infinity,
+            child: _BarButton(
+              label: l10n.tasksEventTitle,
+              color: colors.primary,
+              onColor: colors.onPrimary,
+              icon: context.isRTL ? LucideIcons.arrowLeft : LucideIcons.arrowRight,
+              onPressed: () => context.push(AppRoutes.eventTasksPath(event.id)),
+            ),
+          ),
+        ],
+      ),
       EventRegistrationStatus.rejected => _StatusPill(text: l10n.eventStatusRejected),
     };
   }
@@ -149,18 +186,27 @@ class _StatusPill extends StatelessWidget {
   }
 }
 
-class _WithdrawButton extends StatelessWidget {
-  const _WithdrawButton({required this.label, required this.onPressed});
+class _BarButton extends StatelessWidget {
+  const _BarButton({
+    required this.label,
+    required this.color,
+    required this.onColor,
+    required this.onPressed,
+    this.icon,
+  });
 
   final String label;
+  final Color color;
+  final Color onColor;
   final VoidCallback onPressed;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colorScheme;
+    final icon = this.icon;
 
     return Material(
-      color: colors.error,
+      color: color,
       borderRadius: AppRadius.mdRadius,
       clipBehavior: Clip.antiAlias,
       child: InkWell(
@@ -169,12 +215,21 @@ class _WithdrawButton extends StatelessWidget {
           height: AppSizes.slideToConfirmHeight,
           padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
           alignment: Alignment.center,
-          child: Text(
-            label,
-            style: context.textTheme.titleSmall?.copyWith(
-              color: colors.onError,
-              fontWeight: FontWeight.w700,
-            ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                label,
+                style: context.textTheme.titleSmall?.copyWith(
+                  color: onColor,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              if (icon != null) ...[
+                SizedBox(width: AppSpacing.xs),
+                Icon(icon, size: AppSizes.iconField, color: onColor),
+              ],
+            ],
           ),
         ),
       ),
