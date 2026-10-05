@@ -33,6 +33,9 @@ class AppSizes {
   static double get tierBadgeSizeSmall => 26.r;
   static double get progressBarHeight => 12.r;
   static double get progressBarHeightSm => 6.r;
+  static double get homeDateCellWidth => 52.r;
+  static double get homeDateCellHeight => 68.r;
+  static double get homeImpactRingRadius => 38.r;
   static double get tabIndicatorDotSize => 5.r;
   static double get slideToConfirmHeight => 44.h;
   static double get eventDonorLogoSize => 40.r;

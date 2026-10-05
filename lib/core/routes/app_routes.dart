@@ -68,9 +68,10 @@ class AppRoutes {
 
   static const String assistant = '/assistant';
   static const String assistantName = 'assistant';
-  static String assistantQuestionPath({required String topicId, required String questionId}) =>
-      Uri(path: assistant, queryParameters: {'topicId': topicId, 'questionId': questionId})
-          .toString();
+  static String assistantQuestionPath({required String topicId, required String questionId}) => Uri(
+    path: assistant,
+    queryParameters: {'topicId': topicId, 'questionId': questionId},
+  ).toString();
 
   static const String search = '/search';
   static const String searchName = 'search';
@@ -99,6 +100,10 @@ class AppRoutes {
   static const String taskSubmit = '/tasks/:id/submit';
   static const String taskSubmitName = 'task-submit';
   static String taskSubmitPath(String id) => '/tasks/$id/submit';
+
+  static const String homeSlide = '/slides/:id';
+  static const String homeSlideName = 'home-slide';
+  static String homeSlidePath(String id) => '/slides/$id';
 
   static const Set<String> memberRoutes = {
     accountSecurity,

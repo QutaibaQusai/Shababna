@@ -11,6 +11,7 @@ import '../../features/chatbot/chatbot_injection.dart';
 import '../../features/contact_info/contact_info_injection.dart';
 import '../../features/legal/legal_injection.dart';
 import '../../features/events/events_injection.dart';
+import '../../features/home/home_injection.dart';
 import '../../features/news/news_injection.dart';
 import '../../features/search/search_injection.dart';
 import '../../features/tasks/tasks_injection.dart';
@@ -90,6 +91,7 @@ Future<void> setupServiceLocator() async {
   registerLegalFeature(sl);
   registerNewsFeature(sl);
   registerEventsFeature(sl);
+  registerHomeFeature(sl);
   registerSearchFeature(sl);
   registerTasksFeature(sl);
   registerContactInfoFeature(sl);

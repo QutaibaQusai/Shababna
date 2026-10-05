@@ -14,6 +14,8 @@ import '../../features/layout/presentation/pages/main_layout_page.dart';
 import '../../features/legal/presentation/pages/legal_content_page.dart';
 import '../../features/chatbot/presentation/pages/chatbot_page.dart';
 import '../../features/events/presentation/pages/event_details_page.dart';
+import '../../features/home/domain/repositories/home_repository.dart';
+import '../../features/home/presentation/pages/slider/home_slide_details_page.dart';
 import '../../features/news/presentation/pages/news_details/news_details_page.dart';
 import '../../features/news/presentation/pages/news_list/news_list_page.dart';
 import '../../features/news/presentation/pages/news_search/news_search_page.dart';
@@ -164,6 +166,12 @@ class AppRouter {
           path: AppRoutes.eventDetails,
           name: AppRoutes.eventDetailsName,
           builder: (context, state) => EventDetailsPage(id: state.pathParameters['id']!),
+        ),
+        GoRoute(
+          path: AppRoutes.homeSlide,
+          name: AppRoutes.homeSlideName,
+          redirect: (context, state) => state.extra is HomeSlide ? null : AppRoutes.home,
+          builder: (context, state) => HomeSlideDetailsPage(slide: state.extra! as HomeSlide),
         ),
         GoRoute(
           path: AppRoutes.tasks,

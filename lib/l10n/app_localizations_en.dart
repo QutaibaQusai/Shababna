@@ -1362,4 +1362,66 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get taskConfirmMessage =>
       'You won\'t be able to edit your answers after submitting.';
+
+  @override
+  String get homeGreetingMorning => 'Good morning';
+
+  @override
+  String get homeGreetingAfternoon => 'Good afternoon';
+
+  @override
+  String get homeGreetingEvening => 'Good evening';
+
+  @override
+  String get homeGuestTitle => 'Welcome to Shababna';
+
+  @override
+  String get homeGuestSubtitle =>
+      'Sign in to track your volunteering hours, tasks and suggested events';
+
+  @override
+  String homeImpactToNext(String hours, String tier) {
+    return '$hours h to reach $tier';
+  }
+
+  @override
+  String get homeImpactTopTier => 'You\'ve reached the highest level';
+
+  @override
+  String homeTasksNudge(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'You have $count tasks to do',
+      one: 'You have 1 task to do',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get homeSuggestedTitle => 'Suggested for you';
+
+  @override
+  String get homeUpcomingTitle => 'Upcoming events';
+
+  @override
+  String get homeWhatsOnTitle => 'What\'s on';
+
+  @override
+  String get homeNoEventsOnDay => 'No events on this day';
+
+  @override
+  String get homeNewsTitle => 'Latest news';
+
+  @override
+  String get homeToday => 'Today';
+
+  @override
+  String get homeImpactTitle => 'Your impact';
+
+  @override
+  String get homeTasksTitle => 'Your tasks';
+
+  @override
+  String get homeImpactHoursLabel => 'hours volunteered';
 }

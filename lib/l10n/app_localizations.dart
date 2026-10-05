@@ -2443,6 +2443,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You won\'t be able to edit your answers after submitting.'**
   String get taskConfirmMessage;
+
+  /// No description provided for @homeGreetingMorning.
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get homeGreetingMorning;
+
+  /// No description provided for @homeGreetingAfternoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Good afternoon'**
+  String get homeGreetingAfternoon;
+
+  /// No description provided for @homeGreetingEvening.
+  ///
+  /// In en, this message translates to:
+  /// **'Good evening'**
+  String get homeGreetingEvening;
+
+  /// No description provided for @homeGuestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Shababna'**
+  String get homeGuestTitle;
+
+  /// No description provided for @homeGuestSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to track your volunteering hours, tasks and suggested events'**
+  String get homeGuestSubtitle;
+
+  /// No description provided for @homeImpactToNext.
+  ///
+  /// In en, this message translates to:
+  /// **'{hours} h to reach {tier}'**
+  String homeImpactToNext(String hours, String tier);
+
+  /// No description provided for @homeImpactTopTier.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve reached the highest level'**
+  String get homeImpactTopTier;
+
+  /// No description provided for @homeTasksNudge.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{You have 1 task to do} other{You have {count} tasks to do}}'**
+  String homeTasksNudge(int count);
+
+  /// No description provided for @homeSuggestedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggested for you'**
+  String get homeSuggestedTitle;
+
+  /// No description provided for @homeUpcomingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming events'**
+  String get homeUpcomingTitle;
+
+  /// No description provided for @homeWhatsOnTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s on'**
+  String get homeWhatsOnTitle;
+
+  /// No description provided for @homeNoEventsOnDay.
+  ///
+  /// In en, this message translates to:
+  /// **'No events on this day'**
+  String get homeNoEventsOnDay;
+
+  /// No description provided for @homeNewsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest news'**
+  String get homeNewsTitle;
+
+  /// No description provided for @homeToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get homeToday;
+
+  /// No description provided for @homeImpactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your impact'**
+  String get homeImpactTitle;
+
+  /// No description provided for @homeTasksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your tasks'**
+  String get homeTasksTitle;
+
+  /// No description provided for @homeImpactHoursLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'hours volunteered'**
+  String get homeImpactHoursLabel;
 }
 
 class _AppLocalizationsDelegate

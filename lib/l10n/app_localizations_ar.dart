@@ -1371,4 +1371,68 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get taskConfirmMessage => 'لن تتمكن من تعديل إجاباتك بعد الإرسال.';
+
+  @override
+  String get homeGreetingMorning => 'صباح الخير';
+
+  @override
+  String get homeGreetingAfternoon => 'نهارك سعيد';
+
+  @override
+  String get homeGreetingEvening => 'مساء الخير';
+
+  @override
+  String get homeGuestTitle => 'أهلاً بك في شبابنا';
+
+  @override
+  String get homeGuestSubtitle =>
+      'سجّل الدخول لمتابعة ساعاتك التطوعية ومهامك والفعاليات المقترحة لك';
+
+  @override
+  String homeImpactToNext(String hours, String tier) {
+    return '$hours ساعة للوصول إلى $tier';
+  }
+
+  @override
+  String get homeImpactTopTier => 'وصلت إلى أعلى مستوى';
+
+  @override
+  String homeTasksNudge(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'لديك $count مهمة للإنجاز',
+      few: 'لديك $count مهام للإنجاز',
+      two: 'لديك مهمتان للإنجاز',
+      one: 'لديك مهمة واحدة للإنجاز',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get homeSuggestedTitle => 'مقترحة لك';
+
+  @override
+  String get homeUpcomingTitle => 'الفعاليات القادمة';
+
+  @override
+  String get homeWhatsOnTitle => 'ماذا يحدث';
+
+  @override
+  String get homeNoEventsOnDay => 'لا توجد فعاليات في هذا اليوم';
+
+  @override
+  String get homeNewsTitle => 'آخر الأخبار';
+
+  @override
+  String get homeToday => 'اليوم';
+
+  @override
+  String get homeImpactTitle => 'أثرك';
+
+  @override
+  String get homeTasksTitle => 'مهامك';
+
+  @override
+  String get homeImpactHoursLabel => 'ساعات تطوعية';
 }

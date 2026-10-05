@@ -519,5 +519,28 @@
     "placeholders": { "types": { "type": "String" }, "size": { "type": "int" } }
   },
   "taskConfirmTitle": "Submit your proof?",
-  "taskConfirmMessage": "You won't be able to edit your answers after submitting."
+  "taskConfirmMessage": "You won't be able to edit your answers after submitting.",
+  "homeGreetingMorning": "Good morning",
+  "homeGreetingAfternoon": "Good afternoon",
+  "homeGreetingEvening": "Good evening",
+  "homeGuestTitle": "Welcome to Shababna",
+  "homeGuestSubtitle": "Sign in to track your volunteering hours, tasks and suggested events",
+  "homeImpactToNext": "{hours} h to reach {tier}",
+  "@homeImpactToNext": {
+    "placeholders": { "hours": { "type": "String" }, "tier": { "type": "String" } }
+  },
+  "homeImpactTopTier": "You've reached the highest level",
+  "homeTasksNudge": "{count, plural, =1{You have 1 task to do} other{You have {count} tasks to do}}",
+  "@homeTasksNudge": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "homeSuggestedTitle": "Suggested for you",
+  "homeUpcomingTitle": "Upcoming events",
+  "homeWhatsOnTitle": "What's on",
+  "homeNoEventsOnDay": "No events on this day",
+  "homeNewsTitle": "Latest news",
+  "homeToday": "Today",
+  "homeImpactTitle": "Your impact",
+  "homeTasksTitle": "Your tasks",
+  "homeImpactHoursLabel": "hours volunteered"
 }

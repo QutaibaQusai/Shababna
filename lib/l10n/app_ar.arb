@@ -408,5 +408,22 @@
   "taskUploadFiles": "اضغط لإضافة ملفات",
   "taskUploadHint": "{types} · حتى {size} ميغابايت",
   "taskConfirmTitle": "إرسال الإثبات؟",
-  "taskConfirmMessage": "لن تتمكن من تعديل إجاباتك بعد الإرسال."
+  "taskConfirmMessage": "لن تتمكن من تعديل إجاباتك بعد الإرسال.",
+  "homeGreetingMorning": "صباح الخير",
+  "homeGreetingAfternoon": "نهارك سعيد",
+  "homeGreetingEvening": "مساء الخير",
+  "homeGuestTitle": "أهلاً بك في شبابنا",
+  "homeGuestSubtitle": "سجّل الدخول لمتابعة ساعاتك التطوعية ومهامك والفعاليات المقترحة لك",
+  "homeImpactToNext": "{hours} ساعة للوصول إلى {tier}",
+  "homeImpactTopTier": "وصلت إلى أعلى مستوى",
+  "homeTasksNudge": "{count, plural, =1{لديك مهمة واحدة للإنجاز} =2{لديك مهمتان للإنجاز} few{لديك {count} مهام للإنجاز} other{لديك {count} مهمة للإنجاز}}",
+  "homeSuggestedTitle": "مقترحة لك",
+  "homeUpcomingTitle": "الفعاليات القادمة",
+  "homeWhatsOnTitle": "ماذا يحدث",
+  "homeNoEventsOnDay": "لا توجد فعاليات في هذا اليوم",
+  "homeNewsTitle": "آخر الأخبار",
+  "homeToday": "اليوم",
+  "homeImpactTitle": "أثرك",
+  "homeTasksTitle": "مهامك",
+  "homeImpactHoursLabel": "ساعات تطوعية"
 }
