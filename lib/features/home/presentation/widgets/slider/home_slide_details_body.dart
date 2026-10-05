@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/shared/views/media_viewer/app_media.dart';
+import '../../../../../core/shared/views/media_viewer/show_media_browser.dart';
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/home_repository.dart';
@@ -21,13 +23,16 @@ class HomeSlideDetailsBody extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.all(AppSpacing.screenMargin),
       children: [
-        Hero(
-          tag: HomeBannerCarousel.heroTag(slide.id),
-          child: ClipRRect(
-            borderRadius: AppRadius.lgRadius,
-            child: AspectRatio(
-              aspectRatio: HomeBannerCarousel.aspectRatio,
-              child: HomeAuthorizedImage(url: slide.imageUrl),
+        GestureDetector(
+          onTap: () => showMediaBrowser(context, media: [AppImageMedia(slide.imageUrl)]),
+          child: Hero(
+            tag: HomeBannerCarousel.heroTag(slide.id),
+            child: ClipRRect(
+              borderRadius: AppRadius.lgRadius,
+              child: AspectRatio(
+                aspectRatio: HomeBannerCarousel.aspectRatio,
+                child: HomeAuthorizedImage(url: slide.imageUrl),
+              ),
             ),
           ),
         ),
