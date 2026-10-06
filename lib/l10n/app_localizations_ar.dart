@@ -1415,4 +1415,18 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get homeImpactHoursLabel => 'ساعات تطوعية';
+
+  @override
+  String get eventsFilterClear => 'مسح';
+
+  @override
+  String eventsOnDate(String date) {
+    return 'فعاليات $date';
+  }
+
+  @override
+  String get eventsNoEventsOnDay => 'لا توجد فعاليات في هذا اليوم';
+
+  @override
+  String get eventsPickDate => 'اختر تاريخاً';
 }

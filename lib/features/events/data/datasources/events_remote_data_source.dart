@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import '../../../../core/network/api_consumer.dart';
 import '../../../../core/network/end_points.dart';
 import '../../../../core/network/paged_result.dart';
@@ -12,6 +14,7 @@ class EventsRemoteDataSource {
 
   static const _idempotencyKeyHeader = 'Idempotency-Key';
   static const _eventTypesPageSize = 100;
+  static final _dateFormat = DateFormat('yyyy-MM-dd');
 
   final ApiConsumer _apiConsumer;
 
@@ -19,10 +22,16 @@ class EventsRemoteDataSource {
     required int page,
     required int pageSize,
     String? typeId,
+    DateTime? date,
   }) async {
     final response = await _apiConsumer.get(
-      EndPoints.events,
-      queryParameters: {'Page': page, 'PageSize': pageSize, 'EventTypeId': ?typeId},
+      date == null ? EndPoints.events : EndPoints.eventsByDate,
+      queryParameters: {
+        'Page': page,
+        'PageSize': pageSize,
+        'EventTypeId': ?typeId,
+        if (date != null) 'Date': _dateFormat.format(date),
+      },
     );
     return PagedResult.fromJson(response as Map<String, dynamic>, EventSummaryModel.fromJson);
   }

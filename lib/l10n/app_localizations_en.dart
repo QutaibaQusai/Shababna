@@ -1406,4 +1406,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeImpactHoursLabel => 'hours volunteered';
+
+  @override
+  String get eventsFilterClear => 'Clear';
+
+  @override
+  String eventsOnDate(String date) {
+    return 'Events on $date';
+  }
+
+  @override
+  String get eventsNoEventsOnDay => 'No events on this day';
+
+  @override
+  String get eventsPickDate => 'Pick a date';
 }

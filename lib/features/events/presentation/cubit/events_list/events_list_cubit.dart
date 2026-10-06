@@ -5,7 +5,8 @@ import '../../../domain/repositories/events_repository.dart';
 import 'events_list_state.dart';
 
 class EventsListCubit extends Cubit<EventsListState> {
-  EventsListCubit(this._repository) : super(const EventsListState());
+  EventsListCubit(this._repository, {DateTime? initialDate})
+    : super(EventsListState(date: initialDate));
 
   static const pageSize = 10;
 
@@ -19,33 +20,34 @@ class EventsListCubit extends Cubit<EventsListState> {
 
   Future<void> refresh() => loadFirstPage();
 
-  Future<void> selectType(String? typeId) async {
-    if (typeId == state.typeId) return;
-    emit(EventsListState(status: EventsListStatus.loading, typeId: typeId));
-    await _fetchFirstPage();
-  }
+  Future<void> selectType(String? typeId) => _applyFilter(typeId: typeId, date: state.date);
+
+  Future<void> selectDate(DateTime? date) => _applyFilter(typeId: state.typeId, date: date);
 
   Future<void> loadMore() async {
     if (!state.canLoadMore) return;
     emit(state.copyWith(isLoadingMore: true, loadMoreFailed: false));
 
-    final typeId = state.typeId;
+    final filter = (state.typeId, state.date);
     final nextPage = state.page + 1;
     final result = await _repository.getEvents(
       page: nextPage,
       pageSize: pageSize,
-      typeId: typeId,
+      typeId: filter.$1,
+      date: filter.$2,
     );
-    if (isClosed || typeId != state.typeId) return;
+    if (isClosed || filter != (state.typeId, state.date)) return;
 
     result.fold(
       (_) => emit(state.copyWith(isLoadingMore: false, loadMoreFailed: true)),
-      (paged) => emit(state.copyWith(
-        items: [...state.items, ...paged.items],
-        page: nextPage,
-        hasNextPage: paged.hasNextPage,
-        isLoadingMore: false,
-      )),
+      (paged) => emit(
+        state.copyWith(
+          items: [...state.items, ...paged.items],
+          page: nextPage,
+          hasNextPage: paged.hasNextPage,
+          isLoadingMore: false,
+        ),
+      ),
     );
   }
 
@@ -54,10 +56,21 @@ class EventsListCubit extends Cubit<EventsListState> {
     return loadMore();
   }
 
+  Future<void> _applyFilter({required String? typeId, required DateTime? date}) async {
+    if (typeId == state.typeId && date == state.date) return;
+    emit(EventsListState(status: EventsListStatus.loading, typeId: typeId, date: date));
+    await _fetchFirstPage();
+  }
+
   Future<void> _fetchFirstPage() async {
-    final typeId = state.typeId;
-    final result = await _repository.getEvents(page: 1, pageSize: pageSize, typeId: typeId);
-    if (isClosed || typeId != state.typeId) return;
+    final filter = (state.typeId, state.date);
+    final result = await _repository.getEvents(
+      page: 1,
+      pageSize: pageSize,
+      typeId: filter.$1,
+      date: filter.$2,
+    );
+    if (isClosed || filter != (state.typeId, state.date)) return;
 
     result.fold(
       (failure) => emit(
@@ -65,13 +78,16 @@ class EventsListCubit extends Cubit<EventsListState> {
             ? state.copyWith(status: EventsListStatus.failure, errorMessage: _messageOf(failure))
             : state.copyWith(status: EventsListStatus.success),
       ),
-      (paged) => emit(EventsListState(
-        status: EventsListStatus.success,
-        typeId: typeId,
-        items: paged.items,
-        page: 1,
-        hasNextPage: paged.hasNextPage,
-      )),
+      (paged) => emit(
+        EventsListState(
+          status: EventsListStatus.success,
+          typeId: filter.$1,
+          date: filter.$2,
+          items: paged.items,
+          page: 1,
+          hasNextPage: paged.hasNextPage,
+        ),
+      ),
     );
   }
 

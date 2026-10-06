@@ -7,9 +7,11 @@ import '../../../../core/shared/widgets/app_empty_widget.dart';
 import '../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../core/shared/widgets/app_refresh_indicator.dart';
 import '../cubit/event_types/event_types_cubit.dart';
+import '../cubit/events_date_filter/events_date_filter_cubit.dart';
 import '../cubit/event_types/event_types_state.dart';
 import '../cubit/events_list/events_list_cubit.dart';
 import '../cubit/events_list/events_list_state.dart';
+import '../widgets/date_filter/events_date_filter_label.dart';
 import '../widgets/events_list/event_type_tabs.dart';
 import '../widgets/events_list/events_list_content.dart';
 import '../widgets/events_list/events_list_skeleton.dart';
@@ -47,27 +49,42 @@ class _EventsView extends StatelessWidget {
     final cubit = context.read<EventsListCubit>();
     final typesCubit = context.read<EventTypesCubit>();
 
-    return BlocListener<EventTypesCubit, EventTypesState>(
-      listenWhen: (previous, current) =>
-          previous.types != current.types && current.status == EventTypesStatus.success,
-      listener: _resetHiddenType,
+    final date = state.date;
+
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<EventTypesCubit, EventTypesState>(
+          listenWhen: (previous, current) =>
+              previous.types != current.types && current.status == EventTypesStatus.success,
+          listener: _resetHiddenType,
+        ),
+        BlocListener<EventsDateFilterCubit, DateTime?>(
+          bloc: sl<EventsDateFilterCubit>(),
+          listener: (context, date) => cubit.selectDate(date),
+        ),
+      ],
       child: Column(
         children: [
           const EventTypeTabs(),
+          if (date != null) EventsDateFilterLabel(date: date),
           Expanded(
             child: AppRefreshIndicator(
               onRefresh: () => Future.wait([cubit.refresh(), typesCubit.load()]),
               child: switch (state.status) {
                 EventsListStatus.initial || EventsListStatus.loading => const EventsListSkeleton(),
                 EventsListStatus.failure => EventFillViewport(
-                    child: AppErrorWidget(
-                      message: state.errorMessage ?? context.l10n.somethingWentWrong,
-                      onRetry: cubit.loadFirstPage,
-                    ),
+                  child: AppErrorWidget(
+                    message: state.errorMessage ?? context.l10n.somethingWentWrong,
+                    onRetry: cubit.loadFirstPage,
                   ),
+                ),
                 EventsListStatus.success when state.items.isEmpty => EventFillViewport(
-                    child: AppEmptyWidget(message: context.l10n.eventsEmptyMessage),
+                  child: AppEmptyWidget(
+                    message: date == null
+                        ? context.l10n.eventsEmptyMessage
+                        : context.l10n.eventsNoEventsOnDay,
                   ),
+                ),
                 EventsListStatus.success => EventsListContent(state: state),
               },
             ),

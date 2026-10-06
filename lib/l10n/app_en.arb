@@ -536,5 +536,12 @@
   "homeNewsTitle": "Latest news",
   "homeToday": "Today",
   "homeTasksTitle": "Your tasks",
-  "homeImpactHoursLabel": "hours volunteered"
+  "homeImpactHoursLabel": "hours volunteered",
+  "eventsFilterClear": "Clear",
+  "eventsOnDate": "Events on {date}",
+  "@eventsOnDate": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "eventsNoEventsOnDay": "No events on this day",
+  "eventsPickDate": "Pick a date"
 }

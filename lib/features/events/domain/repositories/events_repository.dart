@@ -245,6 +245,7 @@ abstract interface class EventsRepository {
     required int page,
     required int pageSize,
     String? typeId,
+    DateTime? date,
   });
 
   Future<Either<Failure, List<EventType>>> getEventTypes();

@@ -2527,6 +2527,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'hours volunteered'**
   String get homeImpactHoursLabel;
+
+  /// No description provided for @eventsFilterClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get eventsFilterClear;
+
+  /// No description provided for @eventsOnDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Events on {date}'**
+  String eventsOnDate(String date);
+
+  /// No description provided for @eventsNoEventsOnDay.
+  ///
+  /// In en, this message translates to:
+  /// **'No events on this day'**
+  String get eventsNoEventsOnDay;
+
+  /// No description provided for @eventsPickDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a date'**
+  String get eventsPickDate;
 }
 
 class _AppLocalizationsDelegate

@@ -17,12 +17,14 @@ class EventsRepositoryImpl with RepositoryGuardMixin implements EventsRepository
     required int page,
     required int pageSize,
     String? typeId,
+    DateTime? date,
   }) {
     return guard(() async {
       final response = await _remoteDataSource.getEvents(
         page: page,
         pageSize: pageSize,
         typeId: typeId,
+        date: date,
       );
       return PagedResult(
         items: response.items.map((item) => item.toEntity()).toList(),

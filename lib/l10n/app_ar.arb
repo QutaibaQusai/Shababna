@@ -422,5 +422,9 @@
   "homeNewsTitle": "آخر الأخبار",
   "homeToday": "اليوم",
   "homeTasksTitle": "مهامك",
-  "homeImpactHoursLabel": "ساعات تطوعية"
+  "homeImpactHoursLabel": "ساعات تطوعية",
+  "eventsFilterClear": "مسح",
+  "eventsOnDate": "فعاليات {date}",
+  "eventsNoEventsOnDay": "لا توجد فعاليات في هذا اليوم",
+  "eventsPickDate": "اختر تاريخاً"
 }

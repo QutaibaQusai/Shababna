@@ -11,6 +11,7 @@ import '../../../../core/routes/app_routes.dart';
 import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_sizes.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../events/presentation/widgets/date_filter/events_date_filter_sheet.dart';
 import '../cubit/layout_cubit.dart';
 import '../cubit/layout_tab.dart';
 
@@ -73,20 +74,30 @@ class _FilterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colorScheme;
-    final label = context.l10n.actionFilter;
+    final label = context.l10n.eventsPickDate;
 
     return Semantics(
       button: true,
-      enabled: false,
       label: label,
       child: Tooltip(
         message: label,
         child: Material(
           color: colors.primary,
           shape: const CircleBorder(),
-          child: SizedBox.square(
-            dimension: AppSizes.navBarHeight,
-            child: Icon(LucideIcons.listFilter, size: AppSizes.iconMd, color: colors.onPrimary),
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: () {
+              HapticFeedback.selectionClick();
+              showEventsDateFilterSheet(context);
+            },
+            child: SizedBox.square(
+              dimension: AppSizes.navBarHeight,
+              child: Icon(
+                LucideIcons.calendarSearch,
+                size: AppSizes.iconMd,
+                color: colors.onPrimary,
+              ),
+            ),
           ),
         ),
       ),
