@@ -8,4 +8,5 @@ class StorageKeys {
   static const String deviceId = 'device_id';
   static const String guestMode = 'guest_mode';
   static const String onboardingCompleted = 'onboarding_completed';
+  static const String appLockEnabled = 'app_lock_enabled';
 }

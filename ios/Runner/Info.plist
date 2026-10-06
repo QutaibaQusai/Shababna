@@ -36,6 +36,8 @@
 		<string>Shababna needs camera access to take a profile photo or national ID picture.</string>
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>Shababna needs photo library access to choose a profile photo or national ID picture.</string>
+		<key>NSFaceIDUsageDescription</key>
+		<string>Shababna uses Face ID to keep your account locked when you're away.</string>
 		<key>UIApplicationSceneManifest</key>
 		<dict>
 			<key>UIApplicationSupportsMultipleScenes</key>

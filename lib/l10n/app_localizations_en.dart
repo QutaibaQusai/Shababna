@@ -1420,4 +1420,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get eventsPickDate => 'Pick a date';
+
+  @override
+  String get appLockTitle => 'App lock';
+
+  @override
+  String get appLockSubtitle => 'Face ID, fingerprint or passcode';
+
+  @override
+  String get appLockReason => 'Verify it\'s you to continue';
+
+  @override
+  String get appLockLockedTitle => 'Shababna is locked';
+
+  @override
+  String get appLockLockedMessage =>
+      'Unlock with Face ID, fingerprint or your device passcode.';
+
+  @override
+  String get appLockUnlock => 'Unlock';
+
+  @override
+  String get appLockFailed => 'We couldn\'t verify it\'s you. Try again.';
+
+  @override
+  String get appLockUnavailable => 'Set up a screen lock on your device first.';
+
+  @override
+  String get appLockUnavailableLocked =>
+      'Your device screen lock is off. Sign out and sign in again to continue.';
 }

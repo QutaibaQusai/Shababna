@@ -2551,6 +2551,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Pick a date'**
   String get eventsPickDate;
+
+  /// No description provided for @appLockTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'App lock'**
+  String get appLockTitle;
+
+  /// No description provided for @appLockSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Face ID, fingerprint or passcode'**
+  String get appLockSubtitle;
+
+  /// No description provided for @appLockReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify it\'s you to continue'**
+  String get appLockReason;
+
+  /// No description provided for @appLockLockedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shababna is locked'**
+  String get appLockLockedTitle;
+
+  /// No description provided for @appLockLockedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock with Face ID, fingerprint or your device passcode.'**
+  String get appLockLockedMessage;
+
+  /// No description provided for @appLockUnlock.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock'**
+  String get appLockUnlock;
+
+  /// No description provided for @appLockFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t verify it\'s you. Try again.'**
+  String get appLockFailed;
+
+  /// No description provided for @appLockUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Set up a screen lock on your device first.'**
+  String get appLockUnavailable;
+
+  /// No description provided for @appLockUnavailableLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Your device screen lock is off. Sign out and sign in again to continue.'**
+  String get appLockUnavailableLocked;
 }
 
 class _AppLocalizationsDelegate

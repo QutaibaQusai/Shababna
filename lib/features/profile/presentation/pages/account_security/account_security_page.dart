@@ -8,6 +8,7 @@ import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_menu_tile.dart';
 import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/theme/app_spacing.dart';
+import '../../widgets/account_security/app_lock_tile.dart';
 
 class AccountSecurityPage extends StatelessWidget {
   const AccountSecurityPage({super.key});
@@ -36,6 +37,7 @@ class AccountSecurityPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: AppSpacing.xs),
+            const AppLockTile(),
             AppMenuTile(
               icon: LucideIcons.lock,
               title: context.l10n.changePasswordTitle,

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -24,6 +25,8 @@ import '../network/api_consumer.dart';
 import '../network/dio_consumer.dart';
 import '../notifications/notification_permission_service.dart';
 import '../routes/app_router.dart';
+import '../security/app_lock/app_lock_cubit.dart';
+import '../security/device_authenticator.dart';
 import '../services/device_identity_service.dart';
 import '../services/locale_service.dart';
 import '../services/theme_service.dart';
@@ -57,6 +60,7 @@ Future<void> setupServiceLocator() async {
   final hasStoredSession =
       await secureStorage.read(StorageKeys.accessToken) != null;
   final isGuest = sl<AppLocalStorage>().getBool(StorageKeys.guestMode) ?? false;
+  final isAppLockEnabled = await secureStorage.read(StorageKeys.appLockEnabled) != null;
   sl.registerLazySingleton<AuthSessionCubit>(
     () => AuthSessionCubit(
       sl(),
@@ -71,6 +75,12 @@ Future<void> setupServiceLocator() async {
 
   sl.registerLazySingleton<LocaleService>(() => LocaleService(sl()));
   sl.registerLazySingleton<ThemeService>(() => ThemeService(sl()));
+  sl.registerLazySingleton<DeviceAuthenticator>(
+    () => LocalDeviceAuthenticator(LocalAuthentication()),
+  );
+  sl.registerLazySingleton<AppLockCubit>(
+    () => AppLockCubit(sl(), sl(), sl(), isEnabled: isAppLockEnabled),
+  );
   sl.registerLazySingleton<NotificationPermissionService>(
     () => FirebaseNotificationPermissionService(),
   );

@@ -6,16 +6,25 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import 'core/di/service_locator.dart';
 import 'core/extensions/context_extensions.dart';
+import 'core/security/app_lock/app_lock_cubit.dart';
+import 'core/security/app_lock/app_lock_gate.dart';
 import 'core/services/locale_service.dart';
 import 'core/services/theme_service.dart';
 import 'core/session/auth_session_cubit.dart';
 import 'core/theme/app_sizes.dart';
 import 'core/theme/app_typography.dart';
 import 'core/theme/app_theme.dart';
+import 'features/auth/presentation/cubit/logout/logout_cubit.dart';
 import 'l10n/app_localizations.dart';
 
 class ShababnaApp extends StatelessWidget {
   const ShababnaApp({super.key});
+
+  static Future<void> _signOut() async {
+    final logout = sl<LogoutCubit>();
+    await logout.logout();
+    await logout.close();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +36,7 @@ class ShababnaApp extends StatelessWidget {
           BlocProvider(create: (_) => sl<LocaleService>()),
           BlocProvider(create: (_) => sl<ThemeService>()),
           BlocProvider(create: (_) => sl<AuthSessionCubit>()),
+          BlocProvider(create: (_) => sl<AppLockCubit>()),
         ],
         child: Builder(
           builder: (context) {
@@ -49,10 +59,13 @@ class ShababnaApp extends StatelessWidget {
               routerConfig: sl<GoRouter>(),
               builder: (context, child) => SkeletonizerConfig(
                 data: SkeletonizerConfigData(brightness: Theme.of(context).brightness),
-                child: GestureDetector(
-                  behavior: HitTestBehavior.translucent,
-                  onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-                  child: child,
+                child: AppLockGate(
+                  onSignOut: _signOut,
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                    child: child,
+                  ),
                 ),
               ),
             );

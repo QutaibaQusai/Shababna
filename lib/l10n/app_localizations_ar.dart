@@ -1429,4 +1429,33 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get eventsPickDate => 'اختر تاريخاً';
+
+  @override
+  String get appLockTitle => 'قفل التطبيق';
+
+  @override
+  String get appLockSubtitle => 'بصمة الوجه أو الإصبع أو رمز الجهاز';
+
+  @override
+  String get appLockReason => 'تحقق من هويتك للمتابعة';
+
+  @override
+  String get appLockLockedTitle => 'تطبيق شبابنا مقفل';
+
+  @override
+  String get appLockLockedMessage =>
+      'افتح القفل باستخدام بصمة الوجه أو الإصبع أو رمز الجهاز.';
+
+  @override
+  String get appLockUnlock => 'فتح القفل';
+
+  @override
+  String get appLockFailed => 'تعذر التحقق من هويتك. حاول مرة أخرى.';
+
+  @override
+  String get appLockUnavailable => 'قم بإعداد قفل الشاشة على جهازك أولاً.';
+
+  @override
+  String get appLockUnavailableLocked =>
+      'قفل الشاشة في جهازك غير مفعّل. سجّل الخروج ثم سجّل الدخول مرة أخرى للمتابعة.';
 }

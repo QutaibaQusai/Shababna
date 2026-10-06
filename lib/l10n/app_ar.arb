@@ -334,7 +334,7 @@
   "searchEventOngoing": "جارية الآن",
   "searchEventPast": "انتهت",
   "tasksMyTitle": "مهامي",
-  "tasksEventTitle": "مهام الفعالية",
+  "tasksEventTitle": "مهام الفعالية",
   "tasksEmptyMessage": "لا توجد مهام حالياً",
   "taskDetailsTitle": "المهمة",
   "taskAboutTitle": "عن المهمة",
@@ -426,5 +426,14 @@
   "eventsFilterClear": "مسح",
   "eventsOnDate": "فعاليات {date}",
   "eventsNoEventsOnDay": "لا توجد فعاليات في هذا اليوم",
-  "eventsPickDate": "اختر تاريخاً"
+  "eventsPickDate": "اختر تاريخاً",
+  "appLockTitle": "قفل التطبيق",
+  "appLockSubtitle": "بصمة الوجه أو الإصبع أو رمز الجهاز",
+  "appLockReason": "تحقق من هويتك للمتابعة",
+  "appLockLockedTitle": "تطبيق شبابنا مقفل",
+  "appLockLockedMessage": "افتح القفل باستخدام بصمة الوجه أو الإصبع أو رمز الجهاز.",
+  "appLockUnlock": "فتح القفل",
+  "appLockFailed": "تعذر التحقق من هويتك. حاول مرة أخرى.",
+  "appLockUnavailable": "قم بإعداد قفل الشاشة على جهازك أولاً.",
+  "appLockUnavailableLocked": "قفل الشاشة في جهازك غير مفعّل. سجّل الخروج ثم سجّل الدخول مرة أخرى للمتابعة."
 }

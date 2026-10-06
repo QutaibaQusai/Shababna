@@ -406,7 +406,7 @@
   "searchEventOngoing": "Happening now",
   "searchEventPast": "Ended",
   "tasksMyTitle": "My tasks",
-  "tasksEventTitle": "Event tasks",
+  "tasksEventTitle": "Event tasks",
   "tasksEmptyMessage": "No tasks yet",
   "taskDetailsTitle": "Task",
   "taskAboutTitle": "About the task",
@@ -543,5 +543,14 @@
     "placeholders": { "date": { "type": "String" } }
   },
   "eventsNoEventsOnDay": "No events on this day",
-  "eventsPickDate": "Pick a date"
+  "eventsPickDate": "Pick a date",
+  "appLockTitle": "App lock",
+  "appLockSubtitle": "Face ID, fingerprint or passcode",
+  "appLockReason": "Verify it's you to continue",
+  "appLockLockedTitle": "Shababna is locked",
+  "appLockLockedMessage": "Unlock with Face ID, fingerprint or your device passcode.",
+  "appLockUnlock": "Unlock",
+  "appLockFailed": "We couldn't verify it's you. Try again.",
+  "appLockUnavailable": "Set up a screen lock on your device first.",
+  "appLockUnavailableLocked": "Your device screen lock is off. Sign out and sign in again to continue."
 }
