@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/services/locale_service.dart';
 import '../../../events/presentation/pages/events_page.dart';
 import '../../../home/presentation/pages/home_page.dart';
 import '../../../profile/presentation/pages/profile/profile_page.dart';
@@ -34,6 +35,7 @@ class _MainLayoutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tab = context.watch<LayoutCubit>().state;
+    final locale = context.watch<LocaleService>().state;
 
     return PopScope(
       canPop: tab == LayoutTab.home,
@@ -44,6 +46,7 @@ class _MainLayoutView extends StatelessWidget {
         extendBody: true,
         appBar: const LayoutAppBar(),
         body: LazyIndexedStack(
+          key: ValueKey(locale),
           index: tab.index,
           children: [for (final value in LayoutTab.values) _pageFor(value)],
         ),
