@@ -15,6 +15,7 @@ class HomeBannerCarousel extends StatefulWidget {
   const HomeBannerCarousel({super.key, required this.slides});
 
   static const aspectRatio = 16 / 9;
+  static const peekWidthFactor = 0.84;
 
   static String heroTag(String slideId) => 'home-slide-$slideId';
 
@@ -29,15 +30,18 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
   static const _pageDuration = Duration(milliseconds: 450);
   static const _dotDuration = Duration(milliseconds: 250);
 
-  final _controller = PageController();
+  final _controller = ScrollController();
   Timer? _timer;
   int _page = 0;
 
   bool get _hasMany => widget.slides.length > 1;
 
+  double get _gap => AppSpacing.screenMargin;
+
   @override
   void initState() {
     super.initState();
+    _controller.addListener(_syncPage);
     _startAutoPlay();
   }
 
@@ -46,6 +50,19 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
     _timer?.cancel();
     _controller.dispose();
     super.dispose();
+  }
+
+  double _cardWidth(double viewportWidth) =>
+      _hasMany ? viewportWidth * HomeBannerCarousel.peekWidthFactor : viewportWidth - _gap * 2;
+
+  double get _itemExtent => _cardWidth(MediaQuery.sizeOf(context).width) + _gap;
+
+  void _syncPage() {
+    final position = _controller.position;
+    final page = position.pixels >= position.maxScrollExtent - 1
+        ? widget.slides.length - 1
+        : (position.pixels / _itemExtent).round();
+    if (page != _page) setState(() => _page = page);
   }
 
   void _startAutoPlay() {
@@ -59,30 +76,36 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
   void _next() {
     if (!_controller.hasClients) return;
     final next = (_page + 1) % widget.slides.length;
-    _controller.animateToPage(next, duration: _pageDuration, curve: Curves.easeOutCubic);
+    final target = (next * _itemExtent).clamp(0.0, _controller.position.maxScrollExtent);
+    _controller.animateTo(target, duration: _pageDuration, curve: Curves.easeOutCubic);
   }
 
   @override
   Widget build(BuildContext context) {
-    final margin = AppSpacing.screenMargin;
+    final cardWidth = _cardWidth(MediaQuery.sizeOf(context).width);
 
     return Column(
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: margin),
-          child: AspectRatio(
-            aspectRatio: HomeBannerCarousel.aspectRatio,
-            child: Listener(
-              onPointerDown: (_) => _stopAutoPlay(),
-              onPointerUp: (_) => _startAutoPlay(),
-              onPointerCancel: (_) => _startAutoPlay(),
-              child: ClipRRect(
-                borderRadius: AppRadius.lgRadius,
-                child: PageView.builder(
-                  controller: _controller,
-                  itemCount: widget.slides.length,
-                  onPageChanged: (page) => setState(() => _page = page),
-                  itemBuilder: (context, index) => _Slide(slide: widget.slides[index]),
+        SizedBox(
+          height: cardWidth / HomeBannerCarousel.aspectRatio,
+          child: Listener(
+            onPointerDown: (_) => _stopAutoPlay(),
+            onPointerUp: (_) => _startAutoPlay(),
+            onPointerCancel: (_) => _startAutoPlay(),
+            child: ListView.separated(
+              controller: _controller,
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.symmetric(horizontal: _gap),
+              physics: _hasMany
+                  ? _SnapScrollPhysics(itemExtent: cardWidth + _gap)
+                  : const NeverScrollableScrollPhysics(),
+              itemCount: widget.slides.length,
+              separatorBuilder: (_, _) => SizedBox(width: _gap),
+              itemBuilder: (context, index) => SizedBox(
+                width: cardWidth,
+                child: ClipRRect(
+                  borderRadius: AppRadius.lgRadius,
+                  child: _Slide(slide: widget.slides[index]),
                 ),
               ),
             ),
@@ -200,4 +223,37 @@ class _Dots extends StatelessWidget {
       ],
     );
   }
+}
+
+class _SnapScrollPhysics extends ScrollPhysics {
+  const _SnapScrollPhysics({required this.itemExtent, super.parent});
+
+  static const _halfItem = 0.5;
+
+  final double itemExtent;
+
+  @override
+  _SnapScrollPhysics applyTo(ScrollPhysics? ancestor) =>
+      _SnapScrollPhysics(itemExtent: itemExtent, parent: buildParent(ancestor));
+
+  @override
+  Simulation? createBallisticSimulation(ScrollMetrics position, double velocity) {
+    final atStart = velocity <= 0 && position.pixels <= position.minScrollExtent;
+    final atEnd = velocity >= 0 && position.pixels >= position.maxScrollExtent;
+    if (atStart || atEnd) return super.createBallisticSimulation(position, velocity);
+
+    final tolerance = toleranceFor(position);
+    var item = position.pixels / itemExtent;
+    if (velocity < -tolerance.velocity) item -= _halfItem;
+    if (velocity > tolerance.velocity) item += _halfItem;
+    final target = (item.roundToDouble() * itemExtent).clamp(
+      position.minScrollExtent,
+      position.maxScrollExtent,
+    );
+    if (target == position.pixels) return null;
+    return ScrollSpringSimulation(spring, position.pixels, target, velocity, tolerance: tolerance);
+  }
+
+  @override
+  bool get allowImplicitScrolling => false;
 }

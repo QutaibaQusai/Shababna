@@ -21,6 +21,7 @@ class HomeSkeleton extends StatelessWidget {
   Widget build(BuildContext context) {
     final margin = EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin);
     final cardWidth = HomeEventsRow.cardWidth(context);
+    final bannerWidth = MediaQuery.sizeOf(context).width * HomeBannerCarousel.peekWidthFactor;
     final tileHeight = AppSizes.compactThumbnailSize + AppSpacing.xs * 2;
 
     Widget header() => Padding(padding: margin, child: const Bone.text(words: 2));
@@ -61,10 +62,14 @@ class HomeSkeleton extends StatelessWidget {
           if (isMember) ...[
             SizedBox(height: AppSpacing.md),
             Padding(
-              padding: margin,
-              child: AspectRatio(
-                aspectRatio: HomeBannerCarousel.aspectRatio,
-                child: Bone(borderRadius: AppRadius.lgRadius),
+              padding: EdgeInsetsDirectional.only(start: AppSpacing.screenMargin),
+              child: Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: Bone(
+                  width: bannerWidth,
+                  height: bannerWidth / HomeBannerCarousel.aspectRatio,
+                  borderRadius: AppRadius.lgRadius,
+                ),
               ),
             ),
             SizedBox(height: AppSpacing.md),
