@@ -1505,4 +1505,62 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get editProfileNonConvictionLabel =>
       'في حال تم قبولك لأي فرصة من الفرص التطوعية هل توافق على احضار شهادة عدم محكومية سارية المفعول خلال فترة التطوع ؟';
+
+  @override
+  String get certificatesMyTitle => 'شهاداتي';
+
+  @override
+  String get certificatesHeaderSubtitle =>
+      'الشهادات التي حصلت عليها مقابل تطوعك';
+
+  @override
+  String get certificatesEmptyMessage =>
+      'لا توجد شهادات بعد. أكمل الفرص التطوعية للحصول عليها.';
+
+  @override
+  String get certificateDetailsTitle => 'الشهادة';
+
+  @override
+  String get certificateNumberLabel => 'رقم الشهادة';
+
+  @override
+  String get certificateVolunteerLabel => 'المتطوع';
+
+  @override
+  String get certificateHoursLabel => 'الساعات المعتمدة';
+
+  @override
+  String get certificatePeriodLabel => 'الفترة';
+
+  @override
+  String get certificateIssuedLabel => 'تاريخ الإصدار';
+
+  @override
+  String certificateIssuedOn(String date) {
+    return 'صدرت في $date';
+  }
+
+  @override
+  String get certificateVerificationCodeLabel => 'رمز التحقق';
+
+  @override
+  String get certificateCodeCopied => 'تم نسخ رمز التحقق';
+
+  @override
+  String get certificateRevoked => 'ملغاة';
+
+  @override
+  String get certificateRevokedMessage => 'تم إلغاء هذه الشهادة ولم تعد صالحة.';
+
+  @override
+  String get certificateDocumentsTitle => 'ملف الشهادة';
+
+  @override
+  String get certificateOpenArabic => 'فتح الشهادة بالعربية';
+
+  @override
+  String get certificateOpenEnglish => 'فتح الشهادة بالإنجليزية';
+
+  @override
+  String get certificateOpenFailed => 'تعذر فتح الشهادة';
 }

@@ -29,6 +29,8 @@ import '../../features/profile/presentation/pages/delete_account/delete_account_
 import '../../features/profile/presentation/pages/change_phone_number/change_phone_number_page.dart';
 import '../../features/profile/presentation/pages/edit_profile/edit_profile_page.dart';
 import '../../features/search/presentation/pages/global_search_page.dart';
+import '../../features/certificates/presentation/pages/certificate_details_page.dart';
+import '../../features/certificates/presentation/pages/certificates_page.dart';
 import '../../features/tasks/presentation/pages/task_details_page.dart';
 import '../../features/tasks/presentation/pages/task_submission_page.dart';
 import '../../features/tasks/presentation/pages/tasks_page.dart';
@@ -195,6 +197,16 @@ class AppRouter {
           path: AppRoutes.taskDetails,
           name: AppRoutes.taskDetailsName,
           builder: (context, state) => TaskDetailsPage(id: state.pathParameters['id']!),
+        ),
+        GoRoute(
+          path: AppRoutes.certificates,
+          name: AppRoutes.certificatesName,
+          builder: (context, state) => const CertificatesPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.certificateDetails,
+          name: AppRoutes.certificateDetailsName,
+          builder: (context, state) => CertificateDetailsPage(id: state.pathParameters['id']!),
         ),
         GoRoute(
           path: AppRoutes.contactInfo,

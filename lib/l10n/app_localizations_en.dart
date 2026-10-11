@@ -1494,4 +1494,63 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get editProfileNonConvictionLabel =>
       'If you are accepted for any volunteering opportunity, do you agree to provide a valid non-conviction certificate during the volunteer period?';
+
+  @override
+  String get certificatesMyTitle => 'My certificates';
+
+  @override
+  String get certificatesHeaderSubtitle =>
+      'Certificates you\'ve earned for your volunteering';
+
+  @override
+  String get certificatesEmptyMessage =>
+      'No certificates yet. Complete volunteering opportunities to earn them.';
+
+  @override
+  String get certificateDetailsTitle => 'Certificate';
+
+  @override
+  String get certificateNumberLabel => 'Certificate number';
+
+  @override
+  String get certificateVolunteerLabel => 'Volunteer';
+
+  @override
+  String get certificateHoursLabel => 'Recognized hours';
+
+  @override
+  String get certificatePeriodLabel => 'Period';
+
+  @override
+  String get certificateIssuedLabel => 'Issued on';
+
+  @override
+  String certificateIssuedOn(String date) {
+    return 'Issued $date';
+  }
+
+  @override
+  String get certificateVerificationCodeLabel => 'Verification code';
+
+  @override
+  String get certificateCodeCopied => 'Verification code copied';
+
+  @override
+  String get certificateRevoked => 'Revoked';
+
+  @override
+  String get certificateRevokedMessage =>
+      'This certificate was revoked and is no longer valid.';
+
+  @override
+  String get certificateDocumentsTitle => 'Certificate document';
+
+  @override
+  String get certificateOpenArabic => 'Open Arabic PDF';
+
+  @override
+  String get certificateOpenEnglish => 'Open English PDF';
+
+  @override
+  String get certificateOpenFailed => 'Couldn\'t open the certificate';
 }

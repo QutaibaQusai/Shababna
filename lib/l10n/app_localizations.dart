@@ -2665,6 +2665,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'If you are accepted for any volunteering opportunity, do you agree to provide a valid non-conviction certificate during the volunteer period?'**
   String get editProfileNonConvictionLabel;
+
+  /// No description provided for @certificatesMyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My certificates'**
+  String get certificatesMyTitle;
+
+  /// No description provided for @certificatesHeaderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificates you\'ve earned for your volunteering'**
+  String get certificatesHeaderSubtitle;
+
+  /// No description provided for @certificatesEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No certificates yet. Complete volunteering opportunities to earn them.'**
+  String get certificatesEmptyMessage;
+
+  /// No description provided for @certificateDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificate'**
+  String get certificateDetailsTitle;
+
+  /// No description provided for @certificateNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificate number'**
+  String get certificateNumberLabel;
+
+  /// No description provided for @certificateVolunteerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Volunteer'**
+  String get certificateVolunteerLabel;
+
+  /// No description provided for @certificateHoursLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Recognized hours'**
+  String get certificateHoursLabel;
+
+  /// No description provided for @certificatePeriodLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Period'**
+  String get certificatePeriodLabel;
+
+  /// No description provided for @certificateIssuedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued on'**
+  String get certificateIssuedLabel;
+
+  /// No description provided for @certificateIssuedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued {date}'**
+  String certificateIssuedOn(String date);
+
+  /// No description provided for @certificateVerificationCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code'**
+  String get certificateVerificationCodeLabel;
+
+  /// No description provided for @certificateCodeCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code copied'**
+  String get certificateCodeCopied;
+
+  /// No description provided for @certificateRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoked'**
+  String get certificateRevoked;
+
+  /// No description provided for @certificateRevokedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This certificate was revoked and is no longer valid.'**
+  String get certificateRevokedMessage;
+
+  /// No description provided for @certificateDocumentsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificate document'**
+  String get certificateDocumentsTitle;
+
+  /// No description provided for @certificateOpenArabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Arabic PDF'**
+  String get certificateOpenArabic;
+
+  /// No description provided for @certificateOpenEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'Open English PDF'**
+  String get certificateOpenEnglish;
+
+  /// No description provided for @certificateOpenFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t open the certificate'**
+  String get certificateOpenFailed;
 }
 
 class _AppLocalizationsDelegate

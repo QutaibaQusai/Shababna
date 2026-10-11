@@ -103,6 +103,12 @@ class AppRoutes {
   static const String taskSubmitName = 'task-submit';
   static String taskSubmitPath(String id) => '/tasks/$id/submit';
 
+  static const String certificates = '/certificates';
+  static const String certificatesName = 'certificates';
+  static const String certificateDetails = '/certificates/:id';
+  static const String certificateDetailsName = 'certificate-details';
+  static String certificateDetailsPath(String id) => '/certificates/$id';
+
   static const String homeSlide = '/slides/:id';
   static const String homeSlideName = 'home-slide';
   static String homeSlidePath(String id) => '/slides/$id';
@@ -117,6 +123,7 @@ class AppRoutes {
     verifyEmailChange,
     contactForm,
     tasks,
+    certificates,
   };
 
   static const Set<String> publicRoutes = {

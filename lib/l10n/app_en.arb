@@ -562,5 +562,26 @@
   "editProfileVolunteerAwardsLabel": "Have you previously received any awards related to volunteer work?",
   "editProfileAvailableToVolunteerLabel": "Are you available to volunteer?",
   "editProfileServiceAgreementLabel": "If you are accepted for any volunteering opportunity, do you agree to sign a 'Volunteer Service Agreement' to ensure commitment during the volunteer period?",
-  "editProfileNonConvictionLabel": "If you are accepted for any volunteering opportunity, do you agree to provide a valid non-conviction certificate during the volunteer period?"
+  "editProfileNonConvictionLabel": "If you are accepted for any volunteering opportunity, do you agree to provide a valid non-conviction certificate during the volunteer period?",
+  "certificatesMyTitle": "My certificates",
+  "certificatesHeaderSubtitle": "Certificates you've earned for your volunteering",
+  "certificatesEmptyMessage": "No certificates yet. Complete volunteering opportunities to earn them.",
+  "certificateDetailsTitle": "Certificate",
+  "certificateNumberLabel": "Certificate number",
+  "certificateVolunteerLabel": "Volunteer",
+  "certificateHoursLabel": "Recognized hours",
+  "certificatePeriodLabel": "Period",
+  "certificateIssuedLabel": "Issued on",
+  "certificateIssuedOn": "Issued {date}",
+  "@certificateIssuedOn": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "certificateVerificationCodeLabel": "Verification code",
+  "certificateCodeCopied": "Verification code copied",
+  "certificateRevoked": "Revoked",
+  "certificateRevokedMessage": "This certificate was revoked and is no longer valid.",
+  "certificateDocumentsTitle": "Certificate document",
+  "certificateOpenArabic": "Open Arabic PDF",
+  "certificateOpenEnglish": "Open English PDF",
+  "certificateOpenFailed": "Couldn't open the certificate"
 }

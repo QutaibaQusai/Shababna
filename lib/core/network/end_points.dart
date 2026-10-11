@@ -45,6 +45,9 @@ class EndPoints {
   static const String newsSearch = '$news/search';
   static String newsById(String id) => '$news/$id';
 
+  static const String certificates = '/api/v1/certificates';
+  static String certificateById(String id) => '$certificates/$id';
+
   static const String volunteeringOpportunities = '/api/v1/events';
   static String volunteeringOpportunityById(String id) => '$volunteeringOpportunities/$id';
   static String volunteeringOpportunityRegister(String id) =>

@@ -140,6 +140,12 @@ class _ProfileViewState extends State<_ProfileView> {
                   title: context.l10n.tasksMyTitle,
                   onTap: () => context.push(AppRoutes.tasks),
                 ),
+              if (!isGuest)
+                AppMenuTile(
+                  icon: LucideIcons.award,
+                  title: context.l10n.certificatesMyTitle,
+                  onTap: () => context.push(AppRoutes.certificates),
+                ),
               AppMenuTile(
                 icon: LucideIcons.newspaper,
                 title: context.l10n.navNews,

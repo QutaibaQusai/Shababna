@@ -19,6 +19,7 @@ class AppAssets {
       'assets/images/icon_notification_2.svg';
   static const String iconTrophy = 'assets/images/icon_trophy.png';
   static const String iconHourglass = 'assets/images/icon_hourglass.png';
+  static const String iconCertificate = 'assets/images/icon_certificate.svg';
   static const String iconAssociationHeart = 'assets/images/icon_about_association.svg';
 
   static const String illustrationSearch = 'assets/images/illustration_search.svg';
@@ -26,6 +27,7 @@ class AppAssets {
   static const String illustrationWarning = 'assets/images/illustration_warning.svg';
   static const String illustrationSecureLogin = 'assets/images/illustration_secure_login.svg';
   static const String illustrationAppLock = 'assets/images/illustration_app_lock.svg';
+  static const String illustrationCertificates = 'assets/images/illustration_certificates.svg';
   static const String illustrationTasks = 'assets/images/illustration_tasks.svg';
   static const String illustrationTasksDone = 'assets/images/illustration_tasks_done.svg';
   static const String illustrationTasksReview = 'assets/images/illustration_tasks_review.svg';
