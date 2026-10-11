@@ -38,13 +38,13 @@ class HomeCubit extends Cubit<HomeState> {
     if (day == state.selectedDay || state.status != HomeStatus.ready) return;
     emit(state.copyWith(selectedDay: day, isDayLoading: true));
 
-    final result = await _repository.eventsOn(day);
+    final result = await _repository.volunteeringOpportunitiesOn(day);
     if (isClosed || day != state.selectedDay) return;
 
     emit(
       state.copyWith(
         isDayLoading: false,
-        feed: state.feed.withDayEvents(result.getOrElse(() => const [])),
+        feed: state.feed.withDayVolunteeringOpportunities(result.getOrElse(() => const [])),
       ),
     );
   }

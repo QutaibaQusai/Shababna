@@ -3,7 +3,7 @@ import '../../../../l10n/app_localizations.dart';
 
 enum OnboardingStep {
   volunteer(AppAssets.onboardingVolunteer),
-  events(AppAssets.onboardingEvents),
+  volunteeringOpportunities(AppAssets.onboardingVolunteeringOpportunities),
   certificates(AppAssets.onboardingCertificates),
   theme(AppAssets.onboardingTheme),
   notifications(AppAssets.onboardingNotifications);
@@ -16,7 +16,7 @@ enum OnboardingStep {
 
   String titleLead(AppLocalizations l10n) => switch (this) {
         volunteer => l10n.onboardingVolunteerTitle,
-        events => l10n.onboardingEventsTitle,
+        volunteeringOpportunities => l10n.onboardingVolunteeringOpportunitiesTitle,
         certificates => l10n.onboardingCertificatesTitle,
         theme => l10n.onboardingThemeTitle,
         notifications => l10n.onboardingNotificationsTitle,
@@ -24,7 +24,7 @@ enum OnboardingStep {
 
   String highlight(AppLocalizations l10n) => switch (this) {
         volunteer => l10n.onboardingVolunteerHighlight,
-        events => l10n.onboardingEventsHighlight,
+        volunteeringOpportunities => l10n.onboardingVolunteeringOpportunitiesHighlight,
         certificates => l10n.onboardingCertificatesHighlight,
         theme => l10n.onboardingThemeHighlight,
         notifications => l10n.onboardingNotificationsHighlight,
@@ -32,7 +32,7 @@ enum OnboardingStep {
 
   String subtitle(AppLocalizations l10n) => switch (this) {
         volunteer => l10n.onboardingVolunteerSubtitle,
-        events => l10n.onboardingEventsSubtitle,
+        volunteeringOpportunities => l10n.onboardingVolunteeringOpportunitiesSubtitle,
         certificates => l10n.onboardingCertificatesSubtitle,
         theme => l10n.onboardingThemeSubtitle,
         notifications => l10n.onboardingNotificationsSubtitle,

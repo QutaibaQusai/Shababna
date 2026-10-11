@@ -14,7 +14,8 @@ void registerTasksFeature(GetIt sl) {
   sl.registerLazySingleton<TasksRepository>(() => TasksRepositoryImpl(sl<TasksRemoteDataSource>()));
 
   sl.registerFactoryParam<TasksListCubit, String?, void>(
-    (eventId, _) => TasksListCubit(sl<TasksRepository>(), eventId: eventId),
+    (volunteeringOpportunityId, _) =>
+        TasksListCubit(sl<TasksRepository>(), volunteeringOpportunityId: volunteeringOpportunityId),
   );
 
   sl.registerFactoryParam<TaskDetailsCubit, String, void>(

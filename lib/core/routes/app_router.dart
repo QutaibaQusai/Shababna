@@ -13,7 +13,7 @@ import '../../features/contact_info/presentation/pages/contact_info_page.dart';
 import '../../features/layout/presentation/pages/main_layout_page.dart';
 import '../../features/legal/presentation/pages/legal_content_page.dart';
 import '../../features/chatbot/presentation/pages/chatbot_page.dart';
-import '../../features/events/presentation/pages/event_details_page.dart';
+import '../../features/volunteering_opportunities/presentation/pages/volunteering_opportunity_details_page.dart';
 import '../../features/home/domain/repositories/home_repository.dart';
 import '../../features/home/presentation/pages/slider/home_slide_details_page.dart';
 import '../../features/news/presentation/pages/news_details/news_details_page.dart';
@@ -163,9 +163,10 @@ class AppRouter {
           builder: (context, state) => NewsDetailsPage(id: state.pathParameters['id']!),
         ),
         GoRoute(
-          path: AppRoutes.eventDetails,
-          name: AppRoutes.eventDetailsName,
-          builder: (context, state) => EventDetailsPage(id: state.pathParameters['id']!),
+          path: AppRoutes.volunteeringOpportunityDetails,
+          name: AppRoutes.volunteeringOpportunityDetailsName,
+          builder: (context, state) =>
+              VolunteeringOpportunityDetailsPage(id: state.pathParameters['id']!),
         ),
         GoRoute(
           path: AppRoutes.homeSlide,
@@ -176,8 +177,10 @@ class AppRouter {
         GoRoute(
           path: AppRoutes.tasks,
           name: AppRoutes.tasksName,
-          builder: (context, state) =>
-              TasksPage(eventId: state.uri.queryParameters[AppRoutes.eventIdQuery]),
+          builder: (context, state) => TasksPage(
+            volunteeringOpportunityId:
+                state.uri.queryParameters[AppRoutes.volunteeringOpportunityIdQuery],
+          ),
         ),
         GoRoute(
           path: AppRoutes.taskSubmit,

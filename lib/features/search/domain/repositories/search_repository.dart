@@ -3,12 +3,12 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../core/error/failures.dart';
 
-enum SearchCategory { events, news, faq }
+enum SearchCategory { volunteeringOpportunities, news, faq }
 
-enum SearchEventTimeline { upcoming, ongoing, past }
+enum SearchVolunteeringOpportunityTimeline { upcoming, ongoing, past }
 
-class SearchEventResult extends Equatable {
-  const SearchEventResult({
+class SearchVolunteeringOpportunityResult extends Equatable {
+  const SearchVolunteeringOpportunityResult({
     required this.id,
     required this.titleEn,
     required this.titleAr,
@@ -27,7 +27,7 @@ class SearchEventResult extends Equatable {
   final String typeNameAr;
   final DateTime from;
   final DateTime to;
-  final SearchEventTimeline timeline;
+  final SearchVolunteeringOpportunityTimeline timeline;
   final String imageUrl;
 
   String title(bool isArabic) => isArabic ? titleAr : titleEn;
@@ -102,27 +102,31 @@ class SearchGroup<T> extends Equatable {
 }
 
 class GlobalSearchResults extends Equatable {
-  const GlobalSearchResults({required this.events, required this.news, required this.faq});
+  const GlobalSearchResults({
+    required this.volunteeringOpportunities,
+    required this.news,
+    required this.faq,
+  });
 
   const GlobalSearchResults.empty()
-      : events = const SearchGroup.empty(),
+      : volunteeringOpportunities = const SearchGroup.empty(),
         news = const SearchGroup.empty(),
         faq = const SearchGroup.empty();
 
-  final SearchGroup<SearchEventResult> events;
+  final SearchGroup<SearchVolunteeringOpportunityResult> volunteeringOpportunities;
   final SearchGroup<SearchNewsResult> news;
   final SearchGroup<SearchFaqResult> faq;
 
-  bool get isEmpty => events.isEmpty && news.isEmpty && faq.isEmpty;
+  bool get isEmpty => volunteeringOpportunities.isEmpty && news.isEmpty && faq.isEmpty;
 
   bool hasMore(SearchCategory category) => switch (category) {
-        SearchCategory.events => events.hasMore,
+        SearchCategory.volunteeringOpportunities => volunteeringOpportunities.hasMore,
         SearchCategory.news => news.hasMore,
         SearchCategory.faq => faq.hasMore,
       };
 
   @override
-  List<Object?> get props => [events, news, faq];
+  List<Object?> get props => [volunteeringOpportunities, news, faq];
 }
 
 abstract interface class SearchRepository {

@@ -21,9 +21,9 @@ List<T> parseTaskList<T>(Object? value, T Function(Map<String, dynamic> json) fr
 class TaskSummaryModel {
   const TaskSummaryModel({
     required this.id,
-    required this.eventId,
-    required this.eventTitleEn,
-    required this.eventTitleAr,
+    required this.volunteeringOpportunityId,
+    required this.volunteeringOpportunityTitleEn,
+    required this.volunteeringOpportunityTitleAr,
     required this.nameEn,
     required this.nameAr,
     required this.dueAtUtc,
@@ -36,9 +36,9 @@ class TaskSummaryModel {
   factory TaskSummaryModel.fromJson(Map<String, dynamic> json) {
     return TaskSummaryModel(
       id: json['id'] as String,
-      eventId: json['eventId'] as String? ?? '',
-      eventTitleEn: json['eventTitleEn'] as String? ?? '',
-      eventTitleAr: json['eventTitleAr'] as String? ?? '',
+      volunteeringOpportunityId: json['eventId'] as String? ?? '',
+      volunteeringOpportunityTitleEn: json['eventTitleEn'] as String? ?? '',
+      volunteeringOpportunityTitleAr: json['eventTitleAr'] as String? ?? '',
       nameEn: json['nameEn'] as String? ?? '',
       nameAr: json['nameAr'] as String? ?? '',
       dueAtUtc: json['dueAtUtc'] as String?,
@@ -50,9 +50,9 @@ class TaskSummaryModel {
   }
 
   final String id;
-  final String eventId;
-  final String eventTitleEn;
-  final String eventTitleAr;
+  final String volunteeringOpportunityId;
+  final String volunteeringOpportunityTitleEn;
+  final String volunteeringOpportunityTitleAr;
   final String nameEn;
   final String nameAr;
   final String? dueAtUtc;

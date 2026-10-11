@@ -14,7 +14,11 @@ class GlobalSearchCubit extends Cubit<GlobalSearchState> {
   static const _allPerType = 5;
   static const _categoryPerType = 20;
   static const _debounce = Duration(milliseconds: 400);
-  static const _allCategories = {SearchCategory.events, SearchCategory.news, SearchCategory.faq};
+  static const _allCategories = {
+    SearchCategory.volunteeringOpportunities,
+    SearchCategory.news,
+    SearchCategory.faq,
+  };
 
   final SearchRepository _repository;
   Timer? _debounceTimer;

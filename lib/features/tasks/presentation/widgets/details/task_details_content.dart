@@ -40,9 +40,11 @@ class TaskDetailsContent extends StatelessWidget {
           style: context.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(height: AppSpacing.xxs),
-        _EventLink(
-          title: task.eventTitle(isArabic),
-          onTap: () => context.push(AppRoutes.eventDetailsPath(task.eventId)),
+        _VolunteeringOpportunityLink(
+          title: task.volunteeringOpportunityTitle(isArabic),
+          onTap: () => context.push(
+            AppRoutes.volunteeringOpportunityDetailsPath(task.volunteeringOpportunityId),
+          ),
         ),
         if (description.isNotEmpty) ...[
           SizedBox(height: AppSpacing.md),
@@ -86,8 +88,8 @@ class TaskDetailsContent extends StatelessWidget {
   }
 }
 
-class _EventLink extends StatelessWidget {
-  const _EventLink({required this.title, required this.onTap});
+class _VolunteeringOpportunityLink extends StatelessWidget {
+  const _VolunteeringOpportunityLink({required this.title, required this.onTap});
 
   final String title;
   final VoidCallback onTap;

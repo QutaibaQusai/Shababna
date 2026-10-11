@@ -40,8 +40,8 @@ class AppSizes {
   static double get calendarWeekdaysHeight => 24.r;
   static double get tabIndicatorDotSize => 5.r;
   static double get slideToConfirmHeight => 44.h;
-  static double get eventDonorLogoSize => 40.r;
-  static double get eventDonorNameMaxWidth => 120.r;
+  static double get volunteeringOpportunityDonorLogoSize => 40.r;
+  static double get volunteeringOpportunityDonorNameMaxWidth => 120.r;
 
   static double get iconSm => 16.r;
   static double get iconField => 20.r;

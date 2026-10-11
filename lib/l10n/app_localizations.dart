@@ -278,11 +278,11 @@ abstract class AppLocalizations {
   /// **'News'**
   String get navNews;
 
-  /// No description provided for @navEvents.
+  /// No description provided for @navVolunteeringOpportunities.
   ///
   /// In en, this message translates to:
-  /// **'Events'**
-  String get navEvents;
+  /// **'Volunteering opportunities'**
+  String get navVolunteeringOpportunities;
 
   /// No description provided for @navProfile.
   ///
@@ -1586,23 +1586,23 @@ abstract class AppLocalizations {
   /// **'Join the youth network of the Royal Health Awareness Society and help spread health awareness in your community.'**
   String get onboardingVolunteerSubtitle;
 
-  /// No description provided for @onboardingEventsTitle.
+  /// No description provided for @onboardingVolunteeringOpportunitiesTitle.
   ///
   /// In en, this message translates to:
   /// **'Find opportunities'**
-  String get onboardingEventsTitle;
+  String get onboardingVolunteeringOpportunitiesTitle;
 
-  /// No description provided for @onboardingEventsHighlight.
+  /// No description provided for @onboardingVolunteeringOpportunitiesHighlight.
   ///
   /// In en, this message translates to:
   /// **'near you'**
-  String get onboardingEventsHighlight;
+  String get onboardingVolunteeringOpportunitiesHighlight;
 
-  /// No description provided for @onboardingEventsSubtitle.
+  /// No description provided for @onboardingVolunteeringOpportunitiesSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Browse volunteering events across Jordan, register in a tap and follow your registration status.'**
-  String get onboardingEventsSubtitle;
+  /// **'Browse volunteering opportunities across Jordan, register in a tap and follow your registration status.'**
+  String get onboardingVolunteeringOpportunitiesSubtitle;
 
   /// No description provided for @onboardingCertificatesTitle.
   ///
@@ -1682,227 +1682,227 @@ abstract class AppLocalizations {
   /// **'Step {current} of {total}'**
   String onboardingProgressLabel(int current, int total);
 
-  /// No description provided for @eventsEmptyMessage.
+  /// No description provided for @volunteeringOpportunitiesEmptyMessage.
   ///
   /// In en, this message translates to:
-  /// **'No upcoming events right now'**
-  String get eventsEmptyMessage;
+  /// **'No upcoming volunteering opportunities right now'**
+  String get volunteeringOpportunitiesEmptyMessage;
 
-  /// No description provided for @eventsTypeAll.
+  /// No description provided for @volunteeringOpportunitiesTypeAll.
   ///
   /// In en, this message translates to:
   /// **'All'**
-  String get eventsTypeAll;
+  String get volunteeringOpportunitiesTypeAll;
 
-  /// No description provided for @eventHours.
+  /// No description provided for @volunteeringOpportunityHours.
   ///
   /// In en, this message translates to:
   /// **'{count, plural, =1{1 hour} other{{count} hours}}'**
-  String eventHours(int count);
+  String volunteeringOpportunityHours(int count);
 
-  /// No description provided for @eventVolunteers.
+  /// No description provided for @volunteeringOpportunityVolunteers.
   ///
   /// In en, this message translates to:
   /// **'{count, plural, =1{1 volunteer} other{{count} volunteers}}'**
-  String eventVolunteers(int count);
+  String volunteeringOpportunityVolunteers(int count);
 
-  /// No description provided for @eventActivities.
+  /// No description provided for @volunteeringOpportunityActivities.
   ///
   /// In en, this message translates to:
   /// **'{count, plural, =1{1 activity} other{{count} activities}}'**
-  String eventActivities(int count);
+  String volunteeringOpportunityActivities(int count);
 
-  /// No description provided for @eventInfoTitle.
+  /// No description provided for @volunteeringOpportunityInfoTitle.
   ///
   /// In en, this message translates to:
-  /// **'Event details'**
-  String get eventInfoTitle;
+  /// **'Opportunity details'**
+  String get volunteeringOpportunityInfoTitle;
 
-  /// No description provided for @eventDateLabel.
+  /// No description provided for @volunteeringOpportunityDateLabel.
   ///
   /// In en, this message translates to:
   /// **'Date'**
-  String get eventDateLabel;
+  String get volunteeringOpportunityDateLabel;
 
-  /// No description provided for @eventPlaceLabel.
+  /// No description provided for @volunteeringOpportunityPlaceLabel.
   ///
   /// In en, this message translates to:
   /// **'Place'**
-  String get eventPlaceLabel;
+  String get volunteeringOpportunityPlaceLabel;
 
-  /// No description provided for @eventHoursLabel.
+  /// No description provided for @volunteeringOpportunityHoursLabel.
   ///
   /// In en, this message translates to:
   /// **'Hours'**
-  String get eventHoursLabel;
+  String get volunteeringOpportunityHoursLabel;
 
-  /// No description provided for @eventVolunteersLabel.
+  /// No description provided for @volunteeringOpportunityVolunteersLabel.
   ///
   /// In en, this message translates to:
   /// **'Volunteers'**
-  String get eventVolunteersLabel;
+  String get volunteeringOpportunityVolunteersLabel;
 
-  /// No description provided for @eventActivitiesLabel.
+  /// No description provided for @volunteeringOpportunityActivitiesLabel.
   ///
   /// In en, this message translates to:
   /// **'Activities'**
-  String get eventActivitiesLabel;
+  String get volunteeringOpportunityActivitiesLabel;
 
-  /// No description provided for @eventAboutTitle.
+  /// No description provided for @volunteeringOpportunityAboutTitle.
   ///
   /// In en, this message translates to:
-  /// **'About the event'**
-  String get eventAboutTitle;
+  /// **'About the opportunity'**
+  String get volunteeringOpportunityAboutTitle;
 
-  /// No description provided for @eventEligibilityTitle.
+  /// No description provided for @volunteeringOpportunityEligibilityTitle.
   ///
   /// In en, this message translates to:
   /// **'Who can join'**
-  String get eventEligibilityTitle;
+  String get volunteeringOpportunityEligibilityTitle;
 
-  /// No description provided for @eventGenderBoth.
+  /// No description provided for @volunteeringOpportunityGenderBoth.
   ///
   /// In en, this message translates to:
   /// **'Everyone'**
-  String get eventGenderBoth;
+  String get volunteeringOpportunityGenderBoth;
 
-  /// No description provided for @eventGenderMale.
+  /// No description provided for @volunteeringOpportunityGenderMale.
   ///
   /// In en, this message translates to:
   /// **'Males only'**
-  String get eventGenderMale;
+  String get volunteeringOpportunityGenderMale;
 
-  /// No description provided for @eventGenderFemale.
+  /// No description provided for @volunteeringOpportunityGenderFemale.
   ///
   /// In en, this message translates to:
   /// **'Females only'**
-  String get eventGenderFemale;
+  String get volunteeringOpportunityGenderFemale;
 
-  /// No description provided for @eventAgeLabel.
+  /// No description provided for @volunteeringOpportunityAgeLabel.
   ///
   /// In en, this message translates to:
   /// **'Age'**
-  String get eventAgeLabel;
+  String get volunteeringOpportunityAgeLabel;
 
-  /// No description provided for @eventAgeRange.
+  /// No description provided for @volunteeringOpportunityAgeRange.
   ///
   /// In en, this message translates to:
   /// **'{from}–{to} years'**
-  String eventAgeRange(int from, int to);
+  String volunteeringOpportunityAgeRange(int from, int to);
 
-  /// No description provided for @eventOpenToAll.
+  /// No description provided for @volunteeringOpportunityOpenToAll.
   ///
   /// In en, this message translates to:
   /// **'Open to all'**
-  String get eventOpenToAll;
+  String get volunteeringOpportunityOpenToAll;
 
-  /// No description provided for @eventSupportedByTitle.
+  /// No description provided for @volunteeringOpportunitySupportedByTitle.
   ///
   /// In en, this message translates to:
   /// **'Supported by'**
-  String get eventSupportedByTitle;
+  String get volunteeringOpportunitySupportedByTitle;
 
-  /// No description provided for @eventSlideToRegister.
+  /// No description provided for @volunteeringOpportunitySlideToRegister.
   ///
   /// In en, this message translates to:
   /// **'Slide to register'**
-  String get eventSlideToRegister;
+  String get volunteeringOpportunitySlideToRegister;
 
-  /// No description provided for @eventSlideToRegisterAgain.
+  /// No description provided for @volunteeringOpportunitySlideToRegisterAgain.
   ///
   /// In en, this message translates to:
   /// **'Slide to register again'**
-  String get eventSlideToRegisterAgain;
+  String get volunteeringOpportunitySlideToRegisterAgain;
 
-  /// No description provided for @eventSignInToRegister.
+  /// No description provided for @volunteeringOpportunitySignInToRegister.
   ///
   /// In en, this message translates to:
   /// **'Sign in to register'**
-  String get eventSignInToRegister;
+  String get volunteeringOpportunitySignInToRegister;
 
-  /// No description provided for @eventEnded.
+  /// No description provided for @volunteeringOpportunityEnded.
   ///
   /// In en, this message translates to:
-  /// **'This event has ended'**
-  String get eventEnded;
+  /// **'This opportunity has ended'**
+  String get volunteeringOpportunityEnded;
 
-  /// No description provided for @eventRequiresApprovalHint.
+  /// No description provided for @volunteeringOpportunityRequiresApprovalHint.
   ///
   /// In en, this message translates to:
   /// **'Registrations are reviewed by the organisers'**
-  String get eventRequiresApprovalHint;
+  String get volunteeringOpportunityRequiresApprovalHint;
 
-  /// No description provided for @eventStatusPending.
+  /// No description provided for @volunteeringOpportunityStatusPending.
   ///
   /// In en, this message translates to:
   /// **'Pending approval'**
-  String get eventStatusPending;
+  String get volunteeringOpportunityStatusPending;
 
-  /// No description provided for @eventStatusApproved.
+  /// No description provided for @volunteeringOpportunityStatusApproved.
   ///
   /// In en, this message translates to:
   /// **'You\'re registered'**
-  String get eventStatusApproved;
+  String get volunteeringOpportunityStatusApproved;
 
-  /// No description provided for @eventStatusRejected.
+  /// No description provided for @volunteeringOpportunityStatusRejected.
   ///
   /// In en, this message translates to:
   /// **'Registration not accepted'**
-  String get eventStatusRejected;
+  String get volunteeringOpportunityStatusRejected;
 
-  /// No description provided for @eventWithdraw.
+  /// No description provided for @volunteeringOpportunityWithdraw.
   ///
   /// In en, this message translates to:
   /// **'Withdraw'**
-  String get eventWithdraw;
+  String get volunteeringOpportunityWithdraw;
 
-  /// No description provided for @eventWithdrawConfirmTitle.
+  /// No description provided for @volunteeringOpportunityWithdrawConfirmTitle.
   ///
   /// In en, this message translates to:
   /// **'Withdraw your registration?'**
-  String get eventWithdrawConfirmTitle;
+  String get volunteeringOpportunityWithdrawConfirmTitle;
 
-  /// No description provided for @eventWithdrawConfirmMessage.
+  /// No description provided for @volunteeringOpportunityWithdrawConfirmMessage.
   ///
   /// In en, this message translates to:
   /// **'You can register again later as long as registration is open.'**
-  String get eventWithdrawConfirmMessage;
+  String get volunteeringOpportunityWithdrawConfirmMessage;
 
-  /// No description provided for @eventRegisteredApprovedMessage.
+  /// No description provided for @volunteeringOpportunityRegisteredApprovedMessage.
   ///
   /// In en, this message translates to:
   /// **'You\'re registered. See you there!'**
-  String get eventRegisteredApprovedMessage;
+  String get volunteeringOpportunityRegisteredApprovedMessage;
 
-  /// No description provided for @eventRegisteredPendingMessage.
+  /// No description provided for @volunteeringOpportunityRegisteredPendingMessage.
   ///
   /// In en, this message translates to:
   /// **'Request sent. We\'ll let you know once it\'s reviewed.'**
-  String get eventRegisteredPendingMessage;
+  String get volunteeringOpportunityRegisteredPendingMessage;
 
-  /// No description provided for @eventWithdrawnMessage.
+  /// No description provided for @volunteeringOpportunityWithdrawnMessage.
   ///
   /// In en, this message translates to:
-  /// **'You\'ve withdrawn from this event'**
-  String get eventWithdrawnMessage;
+  /// **'You\'ve withdrawn from this opportunity'**
+  String get volunteeringOpportunityWithdrawnMessage;
 
-  /// No description provided for @eventRegistrationClosedMessage.
+  /// No description provided for @volunteeringOpportunityRegistrationClosedMessage.
   ///
   /// In en, this message translates to:
-  /// **'Registration for this event is closed'**
-  String get eventRegistrationClosedMessage;
+  /// **'Registration for this opportunity is closed'**
+  String get volunteeringOpportunityRegistrationClosedMessage;
 
-  /// No description provided for @eventRegistrationRejectedMessage.
+  /// No description provided for @volunteeringOpportunityRegistrationRejectedMessage.
   ///
   /// In en, this message translates to:
-  /// **'Your registration for this event was not accepted'**
-  String get eventRegistrationRejectedMessage;
+  /// **'Your registration for this opportunity was not accepted'**
+  String get volunteeringOpportunityRegistrationRejectedMessage;
 
-  /// No description provided for @eventStatusChangedMessage.
+  /// No description provided for @volunteeringOpportunityStatusChangedMessage.
   ///
   /// In en, this message translates to:
   /// **'Your registration status was updated'**
-  String get eventStatusChangedMessage;
+  String get volunteeringOpportunityStatusChangedMessage;
 
   /// No description provided for @profileIncompleteTitle.
   ///
@@ -1913,7 +1913,7 @@ abstract class AppLocalizations {
   /// No description provided for @profileIncompleteMessage.
   ///
   /// In en, this message translates to:
-  /// **'To register for events, please fill in the following:'**
+  /// **'To register for volunteering opportunities, please fill in the following:'**
   String get profileIncompleteMessage;
 
   /// No description provided for @searchTitle.
@@ -1925,7 +1925,7 @@ abstract class AppLocalizations {
   /// No description provided for @searchHint.
   ///
   /// In en, this message translates to:
-  /// **'Search events, news and questions'**
+  /// **'Search opportunities, news and questions'**
   String get searchHint;
 
   /// No description provided for @searchIdleMessage.
@@ -1946,11 +1946,11 @@ abstract class AppLocalizations {
   /// **'All'**
   String get searchFilterAll;
 
-  /// No description provided for @searchFilterEvents.
+  /// No description provided for @searchFilterVolunteeringOpportunities.
   ///
   /// In en, this message translates to:
-  /// **'Events'**
-  String get searchFilterEvents;
+  /// **'Opportunities'**
+  String get searchFilterVolunteeringOpportunities;
 
   /// No description provided for @searchFilterNews.
   ///
@@ -1970,23 +1970,23 @@ abstract class AppLocalizations {
   /// **'See all'**
   String get searchSeeAll;
 
-  /// No description provided for @searchEventUpcoming.
+  /// No description provided for @searchVolunteeringOpportunityUpcoming.
   ///
   /// In en, this message translates to:
   /// **'Upcoming'**
-  String get searchEventUpcoming;
+  String get searchVolunteeringOpportunityUpcoming;
 
-  /// No description provided for @searchEventOngoing.
+  /// No description provided for @searchVolunteeringOpportunityOngoing.
   ///
   /// In en, this message translates to:
   /// **'Happening now'**
-  String get searchEventOngoing;
+  String get searchVolunteeringOpportunityOngoing;
 
-  /// No description provided for @searchEventPast.
+  /// No description provided for @searchVolunteeringOpportunityPast.
   ///
   /// In en, this message translates to:
   /// **'Ended'**
-  String get searchEventPast;
+  String get searchVolunteeringOpportunityPast;
 
   /// No description provided for @tasksMyTitle.
   ///
@@ -1994,11 +1994,11 @@ abstract class AppLocalizations {
   /// **'My tasks'**
   String get tasksMyTitle;
 
-  /// No description provided for @tasksEventTitle.
+  /// No description provided for @tasksVolunteeringOpportunityTitle.
   ///
   /// In en, this message translates to:
-  /// **'Event tasks'**
-  String get tasksEventTitle;
+  /// **'Opportunity tasks'**
+  String get tasksVolunteeringOpportunityTitle;
 
   /// No description provided for @tasksEmptyMessage.
   ///
@@ -2465,7 +2465,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeGuestSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Sign in to track your volunteering hours, tasks and suggested events'**
+  /// **'Sign in to track your volunteering hours, tasks and suggested opportunities'**
   String get homeGuestSubtitle;
 
   /// No description provided for @homeImpactToNext.
@@ -2489,7 +2489,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeUpcomingTitle.
   ///
   /// In en, this message translates to:
-  /// **'Upcoming events'**
+  /// **'Upcoming opportunities'**
   String get homeUpcomingTitle;
 
   /// No description provided for @homeWhatsOnTitle.
@@ -2498,11 +2498,11 @@ abstract class AppLocalizations {
   /// **'What\'s on'**
   String get homeWhatsOnTitle;
 
-  /// No description provided for @homeNoEventsOnDay.
+  /// No description provided for @homeNoVolunteeringOpportunitiesOnDay.
   ///
   /// In en, this message translates to:
-  /// **'No events on this day'**
-  String get homeNoEventsOnDay;
+  /// **'No opportunities on this day'**
+  String get homeNoVolunteeringOpportunitiesOnDay;
 
   /// No description provided for @homeNewsTitle.
   ///
@@ -2528,29 +2528,29 @@ abstract class AppLocalizations {
   /// **'hours volunteered'**
   String get homeImpactHoursLabel;
 
-  /// No description provided for @eventsFilterClear.
+  /// No description provided for @volunteeringOpportunitiesFilterClear.
   ///
   /// In en, this message translates to:
   /// **'Clear'**
-  String get eventsFilterClear;
+  String get volunteeringOpportunitiesFilterClear;
 
-  /// No description provided for @eventsOnDate.
+  /// No description provided for @volunteeringOpportunitiesOnDate.
   ///
   /// In en, this message translates to:
-  /// **'Events on {date}'**
-  String eventsOnDate(String date);
+  /// **'Opportunities on {date}'**
+  String volunteeringOpportunitiesOnDate(String date);
 
-  /// No description provided for @eventsNoEventsOnDay.
+  /// No description provided for @volunteeringOpportunitiesNoVolunteeringOpportunitiesOnDay.
   ///
   /// In en, this message translates to:
-  /// **'No events on this day'**
-  String get eventsNoEventsOnDay;
+  /// **'No opportunities on this day'**
+  String get volunteeringOpportunitiesNoVolunteeringOpportunitiesOnDay;
 
-  /// No description provided for @eventsPickDate.
+  /// No description provided for @volunteeringOpportunitiesPickDate.
   ///
   /// In en, this message translates to:
   /// **'Pick a date'**
-  String get eventsPickDate;
+  String get volunteeringOpportunitiesPickDate;
 
   /// No description provided for @appLockTitle.
   ///

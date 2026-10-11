@@ -9,10 +9,10 @@ import '../../domain/repositories/search_repository.dart';
 import 'search_date_format.dart';
 import 'search_result_tile.dart';
 
-class SearchEventTile extends StatelessWidget {
-  const SearchEventTile({super.key, required this.result});
+class SearchVolunteeringOpportunityTile extends StatelessWidget {
+  const SearchVolunteeringOpportunityTile({super.key, required this.result});
 
-  final SearchEventResult result;
+  final SearchVolunteeringOpportunityResult result;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class SearchEventTile extends StatelessWidget {
       title: result.title(isArabic),
       subtitle: typeName.isEmpty ? dates : '$typeName · $dates',
       trailing: _TimelineLabel(timeline: result.timeline),
-      onTap: () => context.push(AppRoutes.eventDetailsPath(result.id)),
+      onTap: () => context.push(AppRoutes.volunteeringOpportunityDetailsPath(result.id)),
     );
   }
 }
@@ -69,16 +69,25 @@ class SearchFaqTile extends StatelessWidget {
 class _TimelineLabel extends StatelessWidget {
   const _TimelineLabel({required this.timeline});
 
-  final SearchEventTimeline timeline;
+  final SearchVolunteeringOpportunityTimeline timeline;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final colorScheme = context.colorScheme;
     final (label, color) = switch (timeline) {
-      SearchEventTimeline.upcoming => (l10n.searchEventUpcoming, colorScheme.primary),
-      SearchEventTimeline.ongoing => (l10n.searchEventOngoing, AppColors.successColor),
-      SearchEventTimeline.past => (l10n.searchEventPast, colorScheme.onSurfaceVariant),
+      SearchVolunteeringOpportunityTimeline.upcoming => (
+        l10n.searchVolunteeringOpportunityUpcoming,
+        colorScheme.primary,
+      ),
+      SearchVolunteeringOpportunityTimeline.ongoing => (
+        l10n.searchVolunteeringOpportunityOngoing,
+        AppColors.successColor,
+      ),
+      SearchVolunteeringOpportunityTimeline.past => (
+        l10n.searchVolunteeringOpportunityPast,
+        colorScheme.onSurfaceVariant,
+      ),
     };
 
     return Text(

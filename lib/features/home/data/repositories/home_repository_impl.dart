@@ -19,18 +19,25 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
     final impactCall = isMember ? guard(_impact) : null;
     final slidesCall = isMember ? guard(_slides) : null;
     final tasksCall = isMember ? guard(_openTasks) : null;
-    final featuredCall = guard(() => _featuredEvents(isMember: isMember));
-    final dayCall = guard(() => _eventsOn(day));
+    final featuredCall = guard(() => _featuredVolunteeringOpportunities(isMember: isMember));
+    final dayCall = guard(() => _volunteeringOpportunitiesOn(day));
     final newsCall = guard(_news);
 
     final impact = await impactCall;
     final slides = await slidesCall;
     final tasks = await tasksCall;
     final featured = await featuredCall;
-    final dayEvents = await dayCall;
+    final dayVolunteeringOpportunities = await dayCall;
     final news = await newsCall;
 
-    final results = <Either<Failure, Object>>[?impact, ?slides, ?tasks, featured, dayEvents, news];
+    final results = <Either<Failure, Object>>[
+      ?impact,
+      ?slides,
+      ?tasks,
+      featured,
+      dayVolunteeringOpportunities,
+      news,
+    ];
     if (results.every((result) => result.isLeft())) {
       return Left(results.first.fold((failure) => failure, (_) => const UnexpectedFailure('')));
     }
@@ -40,15 +47,17 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
         impact: impact?.fold((_) => null, (value) => value),
         slides: slides?.getOrElse(() => const []) ?? const [],
         openTasks: tasks?.getOrElse(() => const []) ?? const [],
-        featuredEvents: featured.getOrElse(() => const []),
-        dayEvents: dayEvents.getOrElse(() => const []),
+        featuredVolunteeringOpportunities: featured.getOrElse(() => const []),
+        dayVolunteeringOpportunities: dayVolunteeringOpportunities.getOrElse(() => const []),
         news: news.getOrElse(() => const []),
       ),
     );
   }
 
   @override
-  Future<Either<Failure, List<HomeEvent>>> eventsOn(DateTime day) => guard(() => _eventsOn(day));
+  Future<Either<Failure, List<HomeVolunteeringOpportunity>>> volunteeringOpportunitiesOn(
+    DateTime day,
+  ) => guard(() => _volunteeringOpportunitiesOn(day));
 
   Future<HomeImpact> _impact() async => (await _remoteDataSource.getProfile()).toEntity();
 
@@ -76,16 +85,24 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
     return first.compareTo(second);
   }
 
-  Future<List<HomeEvent>> _featuredEvents({required bool isMember}) async {
-    final events = isMember
-        ? await _remoteDataSource.getSuggestedEvents()
-        : await _remoteDataSource.getUpcomingEvents();
-    return events.map((event) => event.toEntity()).nonNulls.toList();
+  Future<List<HomeVolunteeringOpportunity>> _featuredVolunteeringOpportunities({
+    required bool isMember,
+  }) async {
+    final volunteeringOpportunities = isMember
+        ? await _remoteDataSource.getSuggestedVolunteeringOpportunities()
+        : await _remoteDataSource.getUpcomingVolunteeringOpportunities();
+    return volunteeringOpportunities
+        .map((volunteeringOpportunity) => volunteeringOpportunity.toEntity())
+        .nonNulls
+        .toList();
   }
 
-  Future<List<HomeEvent>> _eventsOn(DateTime day) async {
-    final events = await _remoteDataSource.getEventsOn(day);
-    return events.map((event) => event.toEntity()).nonNulls.toList();
+  Future<List<HomeVolunteeringOpportunity>> _volunteeringOpportunitiesOn(DateTime day) async {
+    final volunteeringOpportunities = await _remoteDataSource.getVolunteeringOpportunitiesOn(day);
+    return volunteeringOpportunities
+        .map((volunteeringOpportunity) => volunteeringOpportunity.toEntity())
+        .nonNulls
+        .toList();
   }
 
   Future<List<HomeNews>> _news() async {

@@ -15,7 +15,7 @@ class SearchFilterBar extends StatelessWidget {
 
   static String label(AppLocalizations l10n, SearchCategory? category) => switch (category) {
         null => l10n.searchFilterAll,
-        SearchCategory.events => l10n.searchFilterEvents,
+        SearchCategory.volunteeringOpportunities => l10n.searchFilterVolunteeringOpportunities,
         SearchCategory.news => l10n.searchFilterNews,
         SearchCategory.faq => l10n.searchFilterFaq,
       };

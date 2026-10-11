@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/services/locale_service.dart';
-import '../../../events/presentation/pages/events_page.dart';
+import '../../../volunteering_opportunities/presentation/pages/volunteering_opportunities_page.dart';
 import '../../../home/presentation/pages/home_page.dart';
 import '../../../profile/presentation/pages/profile/profile_page.dart';
 import '../cubit/layout_cubit.dart';
@@ -28,7 +28,7 @@ class _MainLayoutView extends StatelessWidget {
 
   static Widget _pageFor(LayoutTab tab) => switch (tab) {
     LayoutTab.home => const HomePage(),
-    LayoutTab.events => const EventsPage(),
+    LayoutTab.volunteeringOpportunities => const VolunteeringOpportunitiesPage(),
     LayoutTab.profile => const ProfilePage(),
   };
 

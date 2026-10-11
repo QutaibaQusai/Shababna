@@ -5,27 +5,27 @@ import '../models/global_search_response_model.dart';
 extension GlobalSearchResponseModelMapper on GlobalSearchResponseModel {
   GlobalSearchResults toEntity() {
     return GlobalSearchResults(
-      events: _group(events, (item) => item.toEntity()),
+      volunteeringOpportunities: _group(volunteeringOpportunities, (item) => item.toEntity()),
       news: _group(news, (item) => item.toEntity()),
       faq: _group(faq, (item) => item.toEntity()),
     );
   }
 }
 
-extension on SearchEventItemModel {
-  SearchEventResult toEntity() {
-    return SearchEventResult(
+extension on SearchVolunteeringOpportunityItemModel {
+  SearchVolunteeringOpportunityResult toEntity() {
+    return SearchVolunteeringOpportunityResult(
       id: id,
       titleEn: titleEn,
       titleAr: titleAr,
-      typeNameEn: eventTypeNameEn,
-      typeNameAr: eventTypeNameAr,
+      typeNameEn: volunteeringOpportunityTypeNameEn,
+      typeNameAr: volunteeringOpportunityTypeNameAr,
       from: DateTime.parse(from),
       to: DateTime.parse(to),
       timeline: switch (status) {
-        'Ongoing' => SearchEventTimeline.ongoing,
-        'Past' => SearchEventTimeline.past,
-        _ => SearchEventTimeline.upcoming,
+        'Ongoing' => SearchVolunteeringOpportunityTimeline.ongoing,
+        'Past' => SearchVolunteeringOpportunityTimeline.past,
+        _ => SearchVolunteeringOpportunityTimeline.upcoming,
       },
       imageUrl: _toAbsoluteUrl(imageUrl),
     );

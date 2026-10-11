@@ -15,10 +15,10 @@ import 'task_tabs.dart';
 import 'tasks_summary_header.dart';
 
 class TasksListBody extends StatelessWidget {
-  const TasksListBody({super.key, required this.state, required this.showEvent});
+  const TasksListBody({super.key, required this.state, required this.showVolunteeringOpportunity});
 
   final TasksListState state;
-  final bool showEvent;
+  final bool showVolunteeringOpportunity;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +74,7 @@ class TasksListBody extends StatelessWidget {
         key: ValueKey(tasks[i].id),
         task: tasks[i],
         onReturn: cubit.reload,
-        showEvent: showEvent,
+        showVolunteeringOpportunity: showVolunteeringOpportunity,
       ),
     ],
   ];

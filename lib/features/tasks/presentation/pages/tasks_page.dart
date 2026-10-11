@@ -16,23 +16,23 @@ import '../widgets/list/tasks_list_body.dart';
 import '../widgets/shared/task_fill_viewport.dart';
 
 class TasksPage extends StatelessWidget {
-  const TasksPage({super.key, this.eventId});
+  const TasksPage({super.key, this.volunteeringOpportunityId});
 
-  final String? eventId;
+  final String? volunteeringOpportunityId;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => sl<TasksListCubit>(param1: eventId)..load(),
-      child: _TasksView(isEventTasks: eventId != null),
+      create: (_) => sl<TasksListCubit>(param1: volunteeringOpportunityId)..load(),
+      child: _TasksView(isVolunteeringOpportunityTasks: volunteeringOpportunityId != null),
     );
   }
 }
 
 class _TasksView extends StatelessWidget {
-  const _TasksView({required this.isEventTasks});
+  const _TasksView({required this.isVolunteeringOpportunityTasks});
 
-  final bool isEventTasks;
+  final bool isVolunteeringOpportunityTasks;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,9 @@ class _TasksView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppAppBar(
-        title: isEventTasks ? l10n.tasksEventTitle : l10n.tasksMyTitle,
+        title: isVolunteeringOpportunityTasks
+            ? l10n.tasksVolunteeringOpportunityTitle
+            : l10n.tasksMyTitle,
         onBack: () => context.pop(),
       ),
       body: SafeArea(
@@ -64,7 +66,10 @@ class _TasksView extends StatelessWidget {
                 message: l10n.tasksEmptyMessage,
               ),
             ),
-            TasksListStatus.success => TasksListBody(state: state, showEvent: !isEventTasks),
+            TasksListStatus.success => TasksListBody(
+              state: state,
+              showVolunteeringOpportunity: !isVolunteeringOpportunityTasks,
+            ),
           },
         ),
       ),

@@ -105,7 +105,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navNews => 'News';
 
   @override
-  String get navEvents => 'Events';
+  String get navVolunteeringOpportunities => 'Volunteering opportunities';
 
   @override
   String get navProfile => 'My Account';
@@ -841,14 +841,14 @@ class AppLocalizationsEn extends AppLocalizations {
       'Join the youth network of the Royal Health Awareness Society and help spread health awareness in your community.';
 
   @override
-  String get onboardingEventsTitle => 'Find opportunities';
+  String get onboardingVolunteeringOpportunitiesTitle => 'Find opportunities';
 
   @override
-  String get onboardingEventsHighlight => 'near you';
+  String get onboardingVolunteeringOpportunitiesHighlight => 'near you';
 
   @override
-  String get onboardingEventsSubtitle =>
-      'Browse volunteering events across Jordan, register in a tap and follow your registration status.';
+  String get onboardingVolunteeringOpportunitiesSubtitle =>
+      'Browse volunteering opportunities across Jordan, register in a tap and follow your registration status.';
 
   @override
   String get onboardingCertificatesTitle => 'Earn hours and';
@@ -896,13 +896,14 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get eventsEmptyMessage => 'No upcoming events right now';
+  String get volunteeringOpportunitiesEmptyMessage =>
+      'No upcoming volunteering opportunities right now';
 
   @override
-  String get eventsTypeAll => 'All';
+  String get volunteeringOpportunitiesTypeAll => 'All';
 
   @override
-  String eventHours(int count) {
+  String volunteeringOpportunityHours(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
@@ -913,7 +914,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String eventVolunteers(int count) {
+  String volunteeringOpportunityVolunteers(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
@@ -924,7 +925,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String eventActivities(int count) {
+  String volunteeringOpportunityActivities(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
@@ -935,108 +936,112 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get eventInfoTitle => 'Event details';
+  String get volunteeringOpportunityInfoTitle => 'Opportunity details';
 
   @override
-  String get eventDateLabel => 'Date';
+  String get volunteeringOpportunityDateLabel => 'Date';
 
   @override
-  String get eventPlaceLabel => 'Place';
+  String get volunteeringOpportunityPlaceLabel => 'Place';
 
   @override
-  String get eventHoursLabel => 'Hours';
+  String get volunteeringOpportunityHoursLabel => 'Hours';
 
   @override
-  String get eventVolunteersLabel => 'Volunteers';
+  String get volunteeringOpportunityVolunteersLabel => 'Volunteers';
 
   @override
-  String get eventActivitiesLabel => 'Activities';
+  String get volunteeringOpportunityActivitiesLabel => 'Activities';
 
   @override
-  String get eventAboutTitle => 'About the event';
+  String get volunteeringOpportunityAboutTitle => 'About the opportunity';
 
   @override
-  String get eventEligibilityTitle => 'Who can join';
+  String get volunteeringOpportunityEligibilityTitle => 'Who can join';
 
   @override
-  String get eventGenderBoth => 'Everyone';
+  String get volunteeringOpportunityGenderBoth => 'Everyone';
 
   @override
-  String get eventGenderMale => 'Males only';
+  String get volunteeringOpportunityGenderMale => 'Males only';
 
   @override
-  String get eventGenderFemale => 'Females only';
+  String get volunteeringOpportunityGenderFemale => 'Females only';
 
   @override
-  String get eventAgeLabel => 'Age';
+  String get volunteeringOpportunityAgeLabel => 'Age';
 
   @override
-  String eventAgeRange(int from, int to) {
+  String volunteeringOpportunityAgeRange(int from, int to) {
     return '$from–$to years';
   }
 
   @override
-  String get eventOpenToAll => 'Open to all';
+  String get volunteeringOpportunityOpenToAll => 'Open to all';
 
   @override
-  String get eventSupportedByTitle => 'Supported by';
+  String get volunteeringOpportunitySupportedByTitle => 'Supported by';
 
   @override
-  String get eventSlideToRegister => 'Slide to register';
+  String get volunteeringOpportunitySlideToRegister => 'Slide to register';
 
   @override
-  String get eventSlideToRegisterAgain => 'Slide to register again';
+  String get volunteeringOpportunitySlideToRegisterAgain =>
+      'Slide to register again';
 
   @override
-  String get eventSignInToRegister => 'Sign in to register';
+  String get volunteeringOpportunitySignInToRegister => 'Sign in to register';
 
   @override
-  String get eventEnded => 'This event has ended';
+  String get volunteeringOpportunityEnded => 'This opportunity has ended';
 
   @override
-  String get eventRequiresApprovalHint =>
+  String get volunteeringOpportunityRequiresApprovalHint =>
       'Registrations are reviewed by the organisers';
 
   @override
-  String get eventStatusPending => 'Pending approval';
+  String get volunteeringOpportunityStatusPending => 'Pending approval';
 
   @override
-  String get eventStatusApproved => 'You\'re registered';
+  String get volunteeringOpportunityStatusApproved => 'You\'re registered';
 
   @override
-  String get eventStatusRejected => 'Registration not accepted';
+  String get volunteeringOpportunityStatusRejected =>
+      'Registration not accepted';
 
   @override
-  String get eventWithdraw => 'Withdraw';
+  String get volunteeringOpportunityWithdraw => 'Withdraw';
 
   @override
-  String get eventWithdrawConfirmTitle => 'Withdraw your registration?';
+  String get volunteeringOpportunityWithdrawConfirmTitle =>
+      'Withdraw your registration?';
 
   @override
-  String get eventWithdrawConfirmMessage =>
+  String get volunteeringOpportunityWithdrawConfirmMessage =>
       'You can register again later as long as registration is open.';
 
   @override
-  String get eventRegisteredApprovedMessage =>
+  String get volunteeringOpportunityRegisteredApprovedMessage =>
       'You\'re registered. See you there!';
 
   @override
-  String get eventRegisteredPendingMessage =>
+  String get volunteeringOpportunityRegisteredPendingMessage =>
       'Request sent. We\'ll let you know once it\'s reviewed.';
 
   @override
-  String get eventWithdrawnMessage => 'You\'ve withdrawn from this event';
+  String get volunteeringOpportunityWithdrawnMessage =>
+      'You\'ve withdrawn from this opportunity';
 
   @override
-  String get eventRegistrationClosedMessage =>
-      'Registration for this event is closed';
+  String get volunteeringOpportunityRegistrationClosedMessage =>
+      'Registration for this opportunity is closed';
 
   @override
-  String get eventRegistrationRejectedMessage =>
-      'Your registration for this event was not accepted';
+  String get volunteeringOpportunityRegistrationRejectedMessage =>
+      'Your registration for this opportunity was not accepted';
 
   @override
-  String get eventStatusChangedMessage =>
+  String get volunteeringOpportunityStatusChangedMessage =>
       'Your registration status was updated';
 
   @override
@@ -1044,13 +1049,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileIncompleteMessage =>
-      'To register for events, please fill in the following:';
+      'To register for volunteering opportunities, please fill in the following:';
 
   @override
   String get searchTitle => 'Search';
 
   @override
-  String get searchHint => 'Search events, news and questions';
+  String get searchHint => 'Search opportunities, news and questions';
 
   @override
   String get searchIdleMessage => 'Type at least 2 letters to search';
@@ -1064,7 +1069,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get searchFilterAll => 'All';
 
   @override
-  String get searchFilterEvents => 'Events';
+  String get searchFilterVolunteeringOpportunities => 'Opportunities';
 
   @override
   String get searchFilterNews => 'News';
@@ -1076,19 +1081,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get searchSeeAll => 'See all';
 
   @override
-  String get searchEventUpcoming => 'Upcoming';
+  String get searchVolunteeringOpportunityUpcoming => 'Upcoming';
 
   @override
-  String get searchEventOngoing => 'Happening now';
+  String get searchVolunteeringOpportunityOngoing => 'Happening now';
 
   @override
-  String get searchEventPast => 'Ended';
+  String get searchVolunteeringOpportunityPast => 'Ended';
 
   @override
   String get tasksMyTitle => 'My tasks';
 
   @override
-  String get tasksEventTitle => 'Event tasks';
+  String get tasksVolunteeringOpportunityTitle => 'Opportunity tasks';
 
   @override
   String get tasksEmptyMessage => 'No tasks yet';
@@ -1373,7 +1378,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeGuestSubtitle =>
-      'Sign in to track your volunteering hours, tasks and suggested events';
+      'Sign in to track your volunteering hours, tasks and suggested opportunities';
 
   @override
   String homeImpactToNext(String hours, String tier) {
@@ -1387,13 +1392,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeSuggestedTitle => 'Suggested for you';
 
   @override
-  String get homeUpcomingTitle => 'Upcoming events';
+  String get homeUpcomingTitle => 'Upcoming opportunities';
 
   @override
   String get homeWhatsOnTitle => 'What\'s on';
 
   @override
-  String get homeNoEventsOnDay => 'No events on this day';
+  String get homeNoVolunteeringOpportunitiesOnDay =>
+      'No opportunities on this day';
 
   @override
   String get homeNewsTitle => 'Latest news';
@@ -1408,18 +1414,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeImpactHoursLabel => 'hours volunteered';
 
   @override
-  String get eventsFilterClear => 'Clear';
+  String get volunteeringOpportunitiesFilterClear => 'Clear';
 
   @override
-  String eventsOnDate(String date) {
-    return 'Events on $date';
+  String volunteeringOpportunitiesOnDate(String date) {
+    return 'Opportunities on $date';
   }
 
   @override
-  String get eventsNoEventsOnDay => 'No events on this day';
+  String get volunteeringOpportunitiesNoVolunteeringOpportunitiesOnDay =>
+      'No opportunities on this day';
 
   @override
-  String get eventsPickDate => 'Pick a date';
+  String get volunteeringOpportunitiesPickDate => 'Pick a date';
 
   @override
   String get appLockTitle => 'App lock';

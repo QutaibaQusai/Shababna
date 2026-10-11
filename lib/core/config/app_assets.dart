@@ -32,7 +32,8 @@ class AppAssets {
       'assets/images/illustration_tasks_completed.svg';
 
   static const String onboardingVolunteer = 'assets/images/onboarding_volunteer.jpg';
-  static const String onboardingEvents = 'assets/images/onboarding_events.jpg';
+  static const String onboardingVolunteeringOpportunities =
+      'assets/images/onboarding_volunteering_opportunities.jpg';
   static const String onboardingCertificates = 'assets/images/onboarding_certificates.jpg';
   static const String onboardingTheme = 'assets/images/onboarding_theme.jpg';
   static const String onboardingNotifications = 'assets/images/onboarding_notifications.jpg';

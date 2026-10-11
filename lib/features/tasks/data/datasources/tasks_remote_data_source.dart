@@ -33,36 +33,38 @@ class TasksRemoteDataSource {
     required int pageSize,
   }) async {
     final response = await _apiConsumer.get(
-      EndPoints.eventTasks,
+      EndPoints.volunteeringOpportunityTasks,
       queryParameters: {'Page': page, 'PageSize': pageSize, 'AssignedOnly': true},
     );
     return PagedResult.fromJson(response as Map<String, dynamic>, TaskSummaryModel.fromJson);
   }
 
-  Future<PagedResult<TaskSummaryModel>> getEventTasks(
-    String eventId, {
+  Future<PagedResult<TaskSummaryModel>> getVolunteeringOpportunityTasks(
+    String volunteeringOpportunityId, {
     required int page,
     required int pageSize,
   }) async {
     final response = await _apiConsumer.get(
-      EndPoints.eventTasksOfEvent(eventId),
+      EndPoints.volunteeringOpportunityTasksOfVolunteeringOpportunity(volunteeringOpportunityId),
       queryParameters: {'Page': page, 'PageSize': pageSize, 'AssignedOnly': true},
     );
     return PagedResult.fromJson(response as Map<String, dynamic>, TaskSummaryModel.fromJson);
   }
 
   Future<TaskDetailsModel> getTask(String id) async {
-    final response = await _apiConsumer.get(EndPoints.eventTask(id));
+    final response = await _apiConsumer.get(EndPoints.volunteeringOpportunityTask(id));
     return TaskDetailsModel.fromJson(response as Map<String, dynamic>);
   }
 
   Future<VerificationFormModel> getForm(String taskId) async {
-    final response = await _apiConsumer.get(EndPoints.eventTaskForm(taskId));
+    final response = await _apiConsumer.get(EndPoints.volunteeringOpportunityTaskForm(taskId));
     return VerificationFormModel.fromJson(response as Map<String, dynamic>);
   }
 
   Future<TaskSubmissionModel> getSubmission(String taskId) async {
-    final response = await _apiConsumer.get(EndPoints.eventTaskSubmission(taskId));
+    final response = await _apiConsumer.get(
+      EndPoints.volunteeringOpportunityTaskSubmission(taskId),
+    );
     return TaskSubmissionModel.fromJson(response as Map<String, dynamic>);
   }
 
@@ -96,7 +98,7 @@ class TasksRemoteDataSource {
     }
 
     final response = await _apiConsumer.post(
-      EndPoints.eventTaskSubmission(taskId),
+      EndPoints.volunteeringOpportunityTaskSubmission(taskId),
       data: {'Answers': jsonEncode(payload), 'Files': files},
       isFormData: true,
     );
@@ -110,7 +112,7 @@ class TasksRemoteDataSource {
     int sizeBytes,
   ) {
     return _download(
-      EndPoints.eventTaskAttachment(taskId, attachmentId),
+      EndPoints.volunteeringOpportunityTaskAttachment(taskId, attachmentId),
       attachmentId,
       fileName,
       sizeBytes,
@@ -124,7 +126,7 @@ class TasksRemoteDataSource {
     int sizeBytes,
   ) {
     return _download(
-      EndPoints.eventTaskSubmissionFile(taskId, fileId),
+      EndPoints.volunteeringOpportunityTaskSubmissionFile(taskId, fileId),
       fileId,
       fileName,
       sizeBytes,

@@ -83,8 +83,8 @@ class HomeImpact extends Equatable {
   ];
 }
 
-class HomeEvent extends Equatable {
-  const HomeEvent({
+class HomeVolunteeringOpportunity extends Equatable {
+  const HomeVolunteeringOpportunity({
     required this.id,
     required this.titleEn,
     required this.titleAr,
@@ -140,8 +140,8 @@ class HomeTask extends Equatable {
     required this.id,
     required this.nameEn,
     required this.nameAr,
-    required this.eventTitleEn,
-    required this.eventTitleAr,
+    required this.volunteeringOpportunityTitleEn,
+    required this.volunteeringOpportunityTitleAr,
     required this.dueAt,
     required this.needsChanges,
   });
@@ -149,14 +149,15 @@ class HomeTask extends Equatable {
   final String id;
   final String nameEn;
   final String nameAr;
-  final String eventTitleEn;
-  final String eventTitleAr;
+  final String volunteeringOpportunityTitleEn;
+  final String volunteeringOpportunityTitleAr;
   final DateTime? dueAt;
   final bool needsChanges;
 
   String name(bool isArabic) => isArabic ? nameAr : nameEn;
 
-  String eventTitle(bool isArabic) => isArabic ? eventTitleAr : eventTitleEn;
+  String volunteeringOpportunityTitle(bool isArabic) =>
+      isArabic ? volunteeringOpportunityTitleAr : volunteeringOpportunityTitleEn;
 
   bool get isOverdue {
     final dueAt = this.dueAt;
@@ -164,7 +165,15 @@ class HomeTask extends Equatable {
   }
 
   @override
-  List<Object?> get props => [id, nameEn, nameAr, eventTitleEn, eventTitleAr, dueAt, needsChanges];
+  List<Object?> get props => [
+    id,
+    nameEn,
+    nameAr,
+    volunteeringOpportunityTitleEn,
+    volunteeringOpportunityTitleAr,
+    dueAt,
+    needsChanges,
+  ];
 }
 
 class HomeFeed extends Equatable {
@@ -172,33 +181,44 @@ class HomeFeed extends Equatable {
     this.impact,
     this.slides = const [],
     this.openTasks = const [],
-    this.featuredEvents = const [],
-    this.dayEvents = const [],
+    this.featuredVolunteeringOpportunities = const [],
+    this.dayVolunteeringOpportunities = const [],
     this.news = const [],
   });
 
   final HomeImpact? impact;
   final List<HomeSlide> slides;
   final List<HomeTask> openTasks;
-  final List<HomeEvent> featuredEvents;
-  final List<HomeEvent> dayEvents;
+  final List<HomeVolunteeringOpportunity> featuredVolunteeringOpportunities;
+  final List<HomeVolunteeringOpportunity> dayVolunteeringOpportunities;
   final List<HomeNews> news;
 
-  HomeFeed withDayEvents(List<HomeEvent> events) => HomeFeed(
+  HomeFeed withDayVolunteeringOpportunities(
+    List<HomeVolunteeringOpportunity> volunteeringOpportunities,
+  ) => HomeFeed(
     impact: impact,
     slides: slides,
     openTasks: openTasks,
-    featuredEvents: featuredEvents,
-    dayEvents: events,
+    featuredVolunteeringOpportunities: featuredVolunteeringOpportunities,
+    dayVolunteeringOpportunities: volunteeringOpportunities,
     news: news,
   );
 
   @override
-  List<Object?> get props => [impact, slides, openTasks, featuredEvents, dayEvents, news];
+  List<Object?> get props => [
+    impact,
+    slides,
+    openTasks,
+    featuredVolunteeringOpportunities,
+    dayVolunteeringOpportunities,
+    news,
+  ];
 }
 
 abstract interface class HomeRepository {
   Future<Either<Failure, HomeFeed>> loadFeed({required bool isMember, required DateTime day});
 
-  Future<Either<Failure, List<HomeEvent>>> eventsOn(DateTime day);
+  Future<Either<Failure, List<HomeVolunteeringOpportunity>>> volunteeringOpportunitiesOn(
+    DateTime day,
+  );
 }

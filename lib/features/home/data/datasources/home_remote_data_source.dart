@@ -9,7 +9,7 @@ class HomeRemoteDataSource {
 
   static const _slidesPageSize = 10;
   static const _featuredPageSize = 10;
-  static const _dayEventsPageSize = 20;
+  static const _dayVolunteeringOpportunitiesPageSize = 20;
   static const _newsPageSize = 3;
   static const _tasksPageSize = 100;
   static final _dateFormat = DateFormat('yyyy-MM-dd');
@@ -31,23 +31,30 @@ class HomeRemoteDataSource {
 
   Future<List<HomeTaskModel>> getAssignedTasks() async {
     final response = await _apiConsumer.get(
-      EndPoints.eventTasks,
+      EndPoints.volunteeringOpportunityTasks,
       queryParameters: {'Page': 1, 'PageSize': _tasksPageSize, 'AssignedOnly': true},
     );
     return parseHomeItems(response).map(HomeTaskModel.fromJson).toList();
   }
 
-  Future<List<HomeEventModel>> getSuggestedEvents() =>
-      _events(EndPoints.eventsSuggested, {'Page': 1, 'PageSize': _featuredPageSize});
+  Future<List<HomeVolunteeringOpportunityModel>> getSuggestedVolunteeringOpportunities() =>
+      _volunteeringOpportunities(EndPoints.volunteeringOpportunitiesSuggested, {
+        'Page': 1,
+        'PageSize': _featuredPageSize,
+      });
 
-  Future<List<HomeEventModel>> getUpcomingEvents() =>
-      _events(EndPoints.events, {'Page': 1, 'PageSize': _featuredPageSize});
+  Future<List<HomeVolunteeringOpportunityModel>> getUpcomingVolunteeringOpportunities() =>
+      _volunteeringOpportunities(EndPoints.volunteeringOpportunities, {
+        'Page': 1,
+        'PageSize': _featuredPageSize,
+      });
 
-  Future<List<HomeEventModel>> getEventsOn(DateTime day) => _events(EndPoints.eventsByDate, {
-    'Date': _dateFormat.format(day),
-    'Page': 1,
-    'PageSize': _dayEventsPageSize,
-  });
+  Future<List<HomeVolunteeringOpportunityModel>> getVolunteeringOpportunitiesOn(DateTime day) =>
+      _volunteeringOpportunities(EndPoints.volunteeringOpportunitiesByDate, {
+        'Date': _dateFormat.format(day),
+        'Page': 1,
+        'PageSize': _dayVolunteeringOpportunitiesPageSize,
+      });
 
   Future<List<HomeNewsModel>> getLatestNews() async {
     final response = await _apiConsumer.get(
@@ -57,8 +64,11 @@ class HomeRemoteDataSource {
     return parseHomeItems(response).map(HomeNewsModel.fromJson).toList();
   }
 
-  Future<List<HomeEventModel>> _events(String endpoint, Map<String, dynamic> query) async {
+  Future<List<HomeVolunteeringOpportunityModel>> _volunteeringOpportunities(
+    String endpoint,
+    Map<String, dynamic> query,
+  ) async {
     final response = await _apiConsumer.get(endpoint, queryParameters: query);
-    return parseHomeItems(response).map(HomeEventModel.fromJson).toList();
+    return parseHomeItems(response).map(HomeVolunteeringOpportunityModel.fromJson).toList();
   }
 }

@@ -11,7 +11,7 @@ import '../../../../core/routes/app_routes.dart';
 import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_sizes.dart';
 import '../../../../core/theme/app_spacing.dart';
-import '../../../events/presentation/widgets/date_filter/events_date_filter_sheet.dart';
+import '../../../volunteering_opportunities/presentation/widgets/date_filter/volunteering_opportunities_date_filter_sheet.dart';
 import '../cubit/layout_cubit.dart';
 import '../cubit/layout_tab.dart';
 
@@ -74,7 +74,7 @@ class _FilterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colorScheme;
-    final label = context.l10n.eventsPickDate;
+    final label = context.l10n.volunteeringOpportunitiesPickDate;
 
     return Semantics(
       button: true,
@@ -88,7 +88,7 @@ class _FilterButton extends StatelessWidget {
           child: InkWell(
             onTap: () {
               HapticFeedback.selectionClick();
-              showEventsDateFilterSheet(context);
+              showVolunteeringOpportunitiesDateFilterSheet(context);
             },
             child: SizedBox.square(
               dimension: AppSizes.navBarHeight,

@@ -5,9 +5,9 @@ extension TaskSummaryModelMapper on TaskSummaryModel {
   TaskSummary toEntity() {
     return TaskSummary(
       id: id,
-      eventId: eventId,
-      eventTitleEn: eventTitleEn,
-      eventTitleAr: eventTitleAr,
+      volunteeringOpportunityId: volunteeringOpportunityId,
+      volunteeringOpportunityTitleEn: volunteeringOpportunityTitleEn,
+      volunteeringOpportunityTitleAr: volunteeringOpportunityTitleAr,
       nameEn: nameEn,
       nameAr: nameAr,
       dueAt: _localTime(dueAtUtc),
@@ -23,9 +23,9 @@ extension TaskDetailsModelMapper on TaskDetailsModel {
   TaskDetails toEntity() {
     return TaskDetails(
       id: summary.id,
-      eventId: summary.eventId,
-      eventTitleEn: summary.eventTitleEn,
-      eventTitleAr: summary.eventTitleAr,
+      volunteeringOpportunityId: summary.volunteeringOpportunityId,
+      volunteeringOpportunityTitleEn: summary.volunteeringOpportunityTitleEn,
+      volunteeringOpportunityTitleAr: summary.volunteeringOpportunityTitleAr,
       nameEn: summary.nameEn,
       nameAr: summary.nameAr,
       descriptionEn: descriptionEn,

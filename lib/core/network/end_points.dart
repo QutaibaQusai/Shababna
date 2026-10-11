@@ -45,27 +45,33 @@ class EndPoints {
   static const String newsSearch = '$news/search';
   static String newsById(String id) => '$news/$id';
 
-  static const String events = '/api/v1/events';
-  static String eventById(String id) => '$events/$id';
-  static String eventRegister(String id) => '$events/$id/register';
-  static String eventWithdraw(String id) => '$events/$id/withdraw';
-  static const String eventTypes = '/api/v1/event-types';
-  static const String eventsSuggested = '$events/suggested';
-  static const String eventsByDate = '$events/by-date';
+  static const String volunteeringOpportunities = '/api/v1/events';
+  static String volunteeringOpportunityById(String id) => '$volunteeringOpportunities/$id';
+  static String volunteeringOpportunityRegister(String id) =>
+      '$volunteeringOpportunities/$id/register';
+  static String volunteeringOpportunityWithdraw(String id) =>
+      '$volunteeringOpportunities/$id/withdraw';
+  static const String volunteeringOpportunityTypes = '/api/v1/event-types';
+  static const String volunteeringOpportunitiesSuggested = '$volunteeringOpportunities/suggested';
+  static const String volunteeringOpportunitiesByDate = '$volunteeringOpportunities/by-date';
 
   static const String sliders = '/api/v1/sliders';
 
   static const String search = '/api/v1/search';
 
-  static const String eventTasks = '/api/v1/event-tasks';
-  static String eventTasksOfEvent(String eventId) => '$events/$eventId/tasks';
-  static String eventTask(String id) => '$eventTasks/$id';
-  static String eventTaskAttachment(String id, String attachmentId) =>
-      '$eventTasks/$id/attachments/$attachmentId';
-  static String eventTaskForm(String id) => '$eventTasks/$id/verification-form';
-  static String eventTaskSubmission(String id) => '$eventTasks/$id/submission';
-  static String eventTaskSubmissionFile(String id, String fileId) =>
-      '$eventTasks/$id/submission/files/$fileId';
+  static const String volunteeringOpportunityTasks = '/api/v1/event-tasks';
+  static String volunteeringOpportunityTasksOfVolunteeringOpportunity(
+    String volunteeringOpportunityId,
+  ) => '$volunteeringOpportunities/$volunteeringOpportunityId/tasks';
+  static String volunteeringOpportunityTask(String id) => '$volunteeringOpportunityTasks/$id';
+  static String volunteeringOpportunityTaskAttachment(String id, String attachmentId) =>
+      '$volunteeringOpportunityTasks/$id/attachments/$attachmentId';
+  static String volunteeringOpportunityTaskForm(String id) =>
+      '$volunteeringOpportunityTasks/$id/verification-form';
+  static String volunteeringOpportunityTaskSubmission(String id) =>
+      '$volunteeringOpportunityTasks/$id/submission';
+  static String volunteeringOpportunityTaskSubmissionFile(String id, String fileId) =>
+      '$volunteeringOpportunityTasks/$id/submission/files/$fileId';
 
   static const String chatbots = '/api/v1/chatbots';
   static const String chatbotQuestionsSearch = '$chatbots/questions/search';

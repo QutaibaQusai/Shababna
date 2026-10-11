@@ -16,13 +16,17 @@ class TasksRepositoryImpl with RepositoryGuardMixin implements TasksRepository {
   final TasksRemoteDataSource _remoteDataSource;
 
   @override
-  Future<Either<Failure, List<TaskSummary>>> getAssignedTasks({String? eventId}) {
+  Future<Either<Failure, List<TaskSummary>>> getAssignedTasks({String? volunteeringOpportunityId}) {
     return guard(() async {
       final tasks = <TaskSummary>[];
       for (var page = 1; page <= _maxPages; page++) {
-        final response = eventId == null
+        final response = volunteeringOpportunityId == null
             ? await _remoteDataSource.getMyTasks(page: page, pageSize: _pageSize)
-            : await _remoteDataSource.getEventTasks(eventId, page: page, pageSize: _pageSize);
+            : await _remoteDataSource.getVolunteeringOpportunityTasks(
+                volunteeringOpportunityId,
+                page: page,
+                pageSize: _pageSize,
+              );
         tasks.addAll(response.items.map((item) => item.toEntity()));
         if (!response.hasNextPage) break;
       }

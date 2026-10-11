@@ -6,7 +6,7 @@ import '../../../../core/theme/app_sizes.dart';
 import '../../../../core/theme/app_spacing.dart';
 import 'slider/home_banner_carousel.dart';
 import 'whats_on/home_date_strip.dart';
-import 'suggested/home_events_row.dart';
+import 'suggested/home_volunteering_opportunities_row.dart';
 
 class HomeSkeleton extends StatelessWidget {
   const HomeSkeleton({super.key, required this.isMember});
@@ -20,7 +20,7 @@ class HomeSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final margin = EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin);
-    final cardWidth = HomeEventsRow.cardWidth(context);
+    final cardWidth = HomeVolunteeringOpportunitiesRow.cardWidth(context);
     final bannerWidth = MediaQuery.sizeOf(context).width * HomeBannerCarousel.peekWidthFactor;
     final tileHeight = AppSizes.compactThumbnailSize + AppSpacing.xs * 2;
 
@@ -99,7 +99,7 @@ class HomeSkeleton extends StatelessWidget {
           header(),
           SizedBox(height: AppSpacing.sm),
           SizedBox(
-            height: cardWidth / HomeEventsRow.cardAspectRatio,
+            height: cardWidth / HomeVolunteeringOpportunitiesRow.cardAspectRatio,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               physics: const NeverScrollableScrollPhysics(),

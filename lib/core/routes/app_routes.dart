@@ -83,15 +83,17 @@ class AppRoutes {
   static const String newsDetailsName = 'news-details';
   static String newsDetailsPath(String id) => '/news/$id';
 
-  static const String eventDetails = '/events/:id';
-  static const String eventDetailsName = 'event-details';
-  static String eventDetailsPath(String id) => '/events/$id';
+  static const String volunteeringOpportunityDetails = '/volunteering-opportunities/:id';
+  static const String volunteeringOpportunityDetailsName = 'volunteering-opportunity-details';
+  static String volunteeringOpportunityDetailsPath(String id) => '/volunteering-opportunities/$id';
 
   static const String tasks = '/tasks';
   static const String tasksName = 'tasks';
-  static const String eventIdQuery = 'eventId';
-  static String eventTasksPath(String eventId) =>
-      Uri(path: tasks, queryParameters: {eventIdQuery: eventId}).toString();
+  static const String volunteeringOpportunityIdQuery = 'volunteeringOpportunityId';
+  static String volunteeringOpportunityTasksPath(String volunteeringOpportunityId) => Uri(
+    path: tasks,
+    queryParameters: {volunteeringOpportunityIdQuery: volunteeringOpportunityId},
+  ).toString();
 
   static const String taskDetails = '/tasks/:id';
   static const String taskDetailsName = 'task-details';

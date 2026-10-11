@@ -6,10 +6,11 @@ import '../../../domain/task_grouping.dart';
 import 'tasks_list_state.dart';
 
 class TasksListCubit extends Cubit<TasksListState> {
-  TasksListCubit(this._repository, {this.eventId}) : super(const TasksListState());
+  TasksListCubit(this._repository, {this.volunteeringOpportunityId})
+    : super(const TasksListState());
 
   final TasksRepository _repository;
-  final String? eventId;
+  final String? volunteeringOpportunityId;
 
   Future<void> load() async {
     if (state.status == TasksListStatus.loading) return;
@@ -26,7 +27,9 @@ class TasksListCubit extends Cubit<TasksListState> {
   }
 
   Future<void> _fetch() async {
-    final result = await _repository.getAssignedTasks(eventId: eventId);
+    final result = await _repository.getAssignedTasks(
+      volunteeringOpportunityId: volunteeringOpportunityId,
+    );
     if (isClosed) return;
 
     result.fold(

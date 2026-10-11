@@ -1,23 +1,23 @@
-class SearchEventItemModel {
-  const SearchEventItemModel({
+class SearchVolunteeringOpportunityItemModel {
+  const SearchVolunteeringOpportunityItemModel({
     required this.id,
     required this.titleEn,
     required this.titleAr,
-    required this.eventTypeNameEn,
-    required this.eventTypeNameAr,
+    required this.volunteeringOpportunityTypeNameEn,
+    required this.volunteeringOpportunityTypeNameAr,
     required this.from,
     required this.to,
     required this.status,
     required this.imageUrl,
   });
 
-  factory SearchEventItemModel.fromJson(Map<String, dynamic> json) {
-    return SearchEventItemModel(
+  factory SearchVolunteeringOpportunityItemModel.fromJson(Map<String, dynamic> json) {
+    return SearchVolunteeringOpportunityItemModel(
       id: json['id'] as String,
       titleEn: json['titleEn'] as String? ?? '',
       titleAr: json['titleAr'] as String? ?? '',
-      eventTypeNameEn: json['eventTypeNameEn'] as String? ?? '',
-      eventTypeNameAr: json['eventTypeNameAr'] as String? ?? '',
+      volunteeringOpportunityTypeNameEn: json['eventTypeNameEn'] as String? ?? '',
+      volunteeringOpportunityTypeNameAr: json['eventTypeNameAr'] as String? ?? '',
       from: json['from'] as String,
       to: json['to'] as String,
       status: json['status'] as String? ?? '',
@@ -28,8 +28,8 @@ class SearchEventItemModel {
   final String id;
   final String titleEn;
   final String titleAr;
-  final String eventTypeNameEn;
-  final String eventTypeNameAr;
+  final String volunteeringOpportunityTypeNameEn;
+  final String volunteeringOpportunityTypeNameAr;
   final String from;
   final String to;
   final String status;
@@ -114,20 +114,23 @@ class SearchGroupModel<T> {
 
 class GlobalSearchResponseModel {
   const GlobalSearchResponseModel({
-    required this.events,
+    required this.volunteeringOpportunities,
     required this.news,
     required this.faq,
   });
 
   factory GlobalSearchResponseModel.fromJson(Map<String, dynamic> json) {
     return GlobalSearchResponseModel(
-      events: SearchGroupModel.fromJson(json['events'], SearchEventItemModel.fromJson),
+      volunteeringOpportunities: SearchGroupModel.fromJson(
+        json['events'],
+        SearchVolunteeringOpportunityItemModel.fromJson,
+      ),
       news: SearchGroupModel.fromJson(json['news'], SearchNewsItemModel.fromJson),
       faq: SearchGroupModel.fromJson(json['faq'], SearchFaqItemModel.fromJson),
     );
   }
 
-  final SearchGroupModel<SearchEventItemModel> events;
+  final SearchGroupModel<SearchVolunteeringOpportunityItemModel> volunteeringOpportunities;
   final SearchGroupModel<SearchNewsItemModel> news;
   final SearchGroupModel<SearchFaqItemModel> faq;
 }

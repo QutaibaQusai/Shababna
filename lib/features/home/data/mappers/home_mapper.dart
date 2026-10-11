@@ -34,12 +34,12 @@ extension on HomeTierModel {
   );
 }
 
-extension HomeEventModelMapper on HomeEventModel {
-  HomeEvent? toEntity() {
+extension HomeVolunteeringOpportunityModelMapper on HomeVolunteeringOpportunityModel {
+  HomeVolunteeringOpportunity? toEntity() {
     final start = DateTime.tryParse(from);
     final end = DateTime.tryParse(to);
     if (id.isEmpty || start == null || end == null) return null;
-    return HomeEvent(
+    return HomeVolunteeringOpportunity(
       id: id,
       titleEn: titleEn,
       titleAr: titleAr,
@@ -76,8 +76,8 @@ extension HomeTaskModelMapper on HomeTaskModel {
       id: id,
       nameEn: nameEn,
       nameAr: nameAr,
-      eventTitleEn: eventTitleEn,
-      eventTitleAr: eventTitleAr,
+      volunteeringOpportunityTitleEn: volunteeringOpportunityTitleEn,
+      volunteeringOpportunityTitleAr: volunteeringOpportunityTitleAr,
       dueAt: due == null ? null : DateTime.tryParse(due)?.toLocal(),
       needsChanges: submissionStatus == _rejectedStatus,
     );

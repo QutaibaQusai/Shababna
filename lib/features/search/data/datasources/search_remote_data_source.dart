@@ -25,7 +25,7 @@ class SearchRemoteDataSource {
   }
 
   String _apiType(SearchCategory category) => switch (category) {
-        SearchCategory.events => 'Events',
+        SearchCategory.volunteeringOpportunities => 'Events',
         SearchCategory.news => 'News',
         SearchCategory.faq => 'Faq',
       };

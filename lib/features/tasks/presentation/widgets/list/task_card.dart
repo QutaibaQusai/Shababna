@@ -13,13 +13,18 @@ import '../shared/task_status_label.dart';
 import '../shared/task_status_visual.dart';
 
 class TaskCard extends StatelessWidget {
-  const TaskCard({super.key, required this.task, required this.onReturn, this.showEvent = true});
+  const TaskCard({
+    super.key,
+    required this.task,
+    required this.onReturn,
+    this.showVolunteeringOpportunity = true,
+  });
 
   static const _stripeWidth = 6.0;
 
   final TaskSummary task;
   final VoidCallback onReturn;
-  final bool showEvent;
+  final bool showVolunteeringOpportunity;
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +62,10 @@ class TaskCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: context.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
                       ),
-                      if (showEvent) ...[
+                      if (showVolunteeringOpportunity) ...[
                         SizedBox(height: AppSpacing.xxs),
                         Text(
-                          task.eventTitle(isArabic),
+                          task.volunteeringOpportunityTitle(isArabic),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: context.textTheme.labelMedium?.copyWith(

@@ -7,8 +7,8 @@ import '../cubit/home_cubit.dart';
 import '../cubit/home_state.dart';
 import 'slider/home_banner_carousel.dart';
 import 'whats_on/home_date_strip.dart';
-import 'whats_on/home_day_events.dart';
-import 'suggested/home_events_row.dart';
+import 'whats_on/home_day_volunteering_opportunities.dart';
+import 'suggested/home_volunteering_opportunities_row.dart';
 import 'greeting/home_greeting.dart';
 import 'impact/home_impact_card.dart';
 import 'news/home_news_list.dart';
@@ -38,12 +38,14 @@ class HomeContent extends StatelessWidget {
           header: HomeSectionHeader(title: l10n.homeTasksTitle),
           child: HomeTasksList(tasks: feed.openTasks),
         ),
-      if (feed.featuredEvents.isNotEmpty)
+      if (feed.featuredVolunteeringOpportunities.isNotEmpty)
         _Section(
           header: HomeSectionHeader(
             title: isMember ? l10n.homeSuggestedTitle : l10n.homeUpcomingTitle,
           ),
-          child: HomeEventsRow(events: feed.featuredEvents),
+          child: HomeVolunteeringOpportunitiesRow(
+            volunteeringOpportunities: feed.featuredVolunteeringOpportunities,
+          ),
         ),
       _Section(
         header: HomeSectionHeader(title: l10n.homeWhatsOnTitle),
@@ -55,7 +57,10 @@ class HomeContent extends StatelessWidget {
               onSelected: cubit.selectDay,
             ),
             SizedBox(height: AppSpacing.sm),
-            HomeDayEvents(events: feed.dayEvents, isLoading: state.isDayLoading),
+            HomeDayVolunteeringOpportunities(
+              volunteeringOpportunities: feed.dayVolunteeringOpportunities,
+              isLoading: state.isDayLoading,
+            ),
           ],
         ),
       ),

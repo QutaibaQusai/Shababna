@@ -7,5 +7,5 @@ class AppShareLinks {
   static const String socialMedia = '/social-media';
 
   static String newsDetails(String id) => '/news/$id';
-  static String eventDetails(String id) => '/events/$id';
+  static String volunteeringOpportunityDetails(String id) => '/events/$id';
 }

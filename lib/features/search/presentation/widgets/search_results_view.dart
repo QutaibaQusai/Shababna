@@ -18,8 +18,9 @@ class SearchResultsView extends StatelessWidget {
   List<Widget> _tiles(SearchCategory category) {
     final results = state.results;
     return switch (category) {
-      SearchCategory.events =>
-        results.events.items.map((item) => SearchEventTile(result: item)).toList(),
+      SearchCategory.volunteeringOpportunities => results.volunteeringOpportunities.items
+          .map((item) => SearchVolunteeringOpportunityTile(result: item))
+          .toList(),
       SearchCategory.news => results.news.items.map((item) => SearchNewsTile(result: item)).toList(),
       SearchCategory.faq => results.faq.items.map((item) => SearchFaqTile(result: item)).toList(),
     };

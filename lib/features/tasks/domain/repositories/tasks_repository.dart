@@ -20,9 +20,9 @@ enum VerificationFieldType {
 class TaskSummary extends Equatable {
   const TaskSummary({
     required this.id,
-    required this.eventId,
-    required this.eventTitleEn,
-    required this.eventTitleAr,
+    required this.volunteeringOpportunityId,
+    required this.volunteeringOpportunityTitleEn,
+    required this.volunteeringOpportunityTitleAr,
     required this.nameEn,
     required this.nameAr,
     required this.dueAt,
@@ -33,9 +33,9 @@ class TaskSummary extends Equatable {
   });
 
   final String id;
-  final String eventId;
-  final String eventTitleEn;
-  final String eventTitleAr;
+  final String volunteeringOpportunityId;
+  final String volunteeringOpportunityTitleEn;
+  final String volunteeringOpportunityTitleAr;
   final String nameEn;
   final String nameAr;
   final DateTime? dueAt;
@@ -46,7 +46,8 @@ class TaskSummary extends Equatable {
 
   String name(bool isArabic) => isArabic ? nameAr : nameEn;
 
-  String eventTitle(bool isArabic) => isArabic ? eventTitleAr : eventTitleEn;
+  String volunteeringOpportunityTitle(bool isArabic) =>
+      isArabic ? volunteeringOpportunityTitleAr : volunteeringOpportunityTitleEn;
 
   bool get isOpen => submissionStatus == null || submissionStatus == TaskSubmissionStatus.rejected;
 
@@ -58,9 +59,9 @@ class TaskSummary extends Equatable {
   @override
   List<Object?> get props => [
     id,
-    eventId,
-    eventTitleEn,
-    eventTitleAr,
+    volunteeringOpportunityId,
+    volunteeringOpportunityTitleEn,
+    volunteeringOpportunityTitleAr,
     nameEn,
     nameAr,
     dueAt,
@@ -93,9 +94,9 @@ class TaskAttachment extends Equatable {
 class TaskDetails extends Equatable {
   const TaskDetails({
     required this.id,
-    required this.eventId,
-    required this.eventTitleEn,
-    required this.eventTitleAr,
+    required this.volunteeringOpportunityId,
+    required this.volunteeringOpportunityTitleEn,
+    required this.volunteeringOpportunityTitleAr,
     required this.nameEn,
     required this.nameAr,
     required this.descriptionEn,
@@ -108,9 +109,9 @@ class TaskDetails extends Equatable {
   });
 
   final String id;
-  final String eventId;
-  final String eventTitleEn;
-  final String eventTitleAr;
+  final String volunteeringOpportunityId;
+  final String volunteeringOpportunityTitleEn;
+  final String volunteeringOpportunityTitleAr;
   final String nameEn;
   final String nameAr;
   final String descriptionEn;
@@ -123,7 +124,8 @@ class TaskDetails extends Equatable {
 
   String name(bool isArabic) => isArabic ? nameAr : nameEn;
 
-  String eventTitle(bool isArabic) => isArabic ? eventTitleAr : eventTitleEn;
+  String volunteeringOpportunityTitle(bool isArabic) =>
+      isArabic ? volunteeringOpportunityTitleAr : volunteeringOpportunityTitleEn;
 
   String description(bool isArabic) => isArabic ? descriptionAr : descriptionEn;
 
@@ -139,9 +141,9 @@ class TaskDetails extends Equatable {
   @override
   List<Object?> get props => [
     id,
-    eventId,
-    eventTitleEn,
-    eventTitleAr,
+    volunteeringOpportunityId,
+    volunteeringOpportunityTitleEn,
+    volunteeringOpportunityTitleAr,
     nameEn,
     nameAr,
     descriptionEn,
@@ -394,7 +396,7 @@ class FilesAnswer extends TaskAnswer {
 }
 
 abstract interface class TasksRepository {
-  Future<Either<Failure, List<TaskSummary>>> getAssignedTasks({String? eventId});
+  Future<Either<Failure, List<TaskSummary>>> getAssignedTasks({String? volunteeringOpportunityId});
 
   Future<Either<Failure, TaskDetails>> getTask(String id);
 

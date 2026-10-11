@@ -107,8 +107,8 @@ class HomeProfileModel {
   final int tierProgressPercentage;
 }
 
-class HomeEventModel {
-  const HomeEventModel({
+class HomeVolunteeringOpportunityModel {
+  const HomeVolunteeringOpportunityModel({
     required this.id,
     required this.titleEn,
     required this.titleAr,
@@ -118,9 +118,9 @@ class HomeEventModel {
     required this.imageUrl,
   });
 
-  factory HomeEventModel.fromJson(Map<String, dynamic> json) {
+  factory HomeVolunteeringOpportunityModel.fromJson(Map<String, dynamic> json) {
     final type = json['eventType'];
-    return HomeEventModel(
+    return HomeVolunteeringOpportunityModel(
       id: json['id'] as String? ?? '',
       titleEn: json['titleEn'] as String? ?? '',
       titleAr: json['titleAr'] as String? ?? '',
@@ -177,8 +177,8 @@ class HomeTaskModel {
     required this.id,
     required this.nameEn,
     required this.nameAr,
-    required this.eventTitleEn,
-    required this.eventTitleAr,
+    required this.volunteeringOpportunityTitleEn,
+    required this.volunteeringOpportunityTitleAr,
     required this.dueAtUtc,
     required this.submissionStatus,
   });
@@ -188,8 +188,8 @@ class HomeTaskModel {
       id: json['id'] as String? ?? '',
       nameEn: json['nameEn'] as String? ?? '',
       nameAr: json['nameAr'] as String? ?? '',
-      eventTitleEn: json['eventTitleEn'] as String? ?? '',
-      eventTitleAr: json['eventTitleAr'] as String? ?? '',
+      volunteeringOpportunityTitleEn: json['eventTitleEn'] as String? ?? '',
+      volunteeringOpportunityTitleAr: json['eventTitleAr'] as String? ?? '',
       dueAtUtc: json['dueAtUtc'] as String?,
       submissionStatus: json['mySubmissionStatus'] as String?,
     );
@@ -198,8 +198,8 @@ class HomeTaskModel {
   final String id;
   final String nameEn;
   final String nameAr;
-  final String eventTitleEn;
-  final String eventTitleAr;
+  final String volunteeringOpportunityTitleEn;
+  final String volunteeringOpportunityTitleAr;
   final String? dueAtUtc;
   final String? submissionStatus;
 }

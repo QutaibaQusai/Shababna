@@ -7,7 +7,7 @@ enum LayoutNavAction { assistant, filter }
 
 enum LayoutTab {
   home(LucideIcons.house),
-  events(LucideIcons.calendarDays),
+  volunteeringOpportunities(LucideIcons.calendarDays),
   profile(LucideIcons.userRound);
 
   const LayoutTab(this.icon);
@@ -20,13 +20,13 @@ enum LayoutTab {
 
   LayoutNavAction? get navAction => switch (this) {
     home => LayoutNavAction.assistant,
-    events => LayoutNavAction.filter,
+    volunteeringOpportunities => LayoutNavAction.filter,
     profile => null,
   };
 
   String label(AppLocalizations l10n) => switch (this) {
     home => l10n.navHome,
-    events => l10n.navEvents,
+    volunteeringOpportunities => l10n.navVolunteeringOpportunities,
     profile => l10n.navProfile,
   };
 }

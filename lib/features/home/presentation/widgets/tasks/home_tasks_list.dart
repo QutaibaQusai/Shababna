@@ -47,7 +47,7 @@ class _TaskCard extends StatelessWidget {
     final isArabic = context.isArabic;
     final isUrgent = task.needsChanges || task.isOverdue;
     final dueColor = isUrgent ? colors.error : colors.onSurfaceVariant;
-    final eventTitle = task.eventTitle(isArabic);
+    final volunteeringOpportunityTitle = task.volunteeringOpportunityTitle(isArabic);
 
     return Material(
       color: colors.surface,
@@ -90,10 +90,10 @@ class _TaskCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      if (eventTitle.isNotEmpty) ...[
+                      if (volunteeringOpportunityTitle.isNotEmpty) ...[
                         SizedBox(height: AppSpacing.xxs),
                         Text(
-                          eventTitle,
+                          volunteeringOpportunityTitle,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: textTheme.labelMedium?.copyWith(color: colors.onSurfaceVariant),
