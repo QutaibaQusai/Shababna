@@ -809,13 +809,13 @@ abstract class AppLocalizations {
   /// No description provided for @fullNameArLabel.
   ///
   /// In en, this message translates to:
-  /// **'Full name (Arabic)'**
+  /// **'Full name in Arabic (as in the civil ID)'**
   String get fullNameArLabel;
 
   /// No description provided for @fullNameEnLabel.
   ///
   /// In en, this message translates to:
-  /// **'Full name (English)'**
+  /// **'Full name in English (as in the civil ID)'**
   String get fullNameEnLabel;
 
   /// No description provided for @stepContactTitle.
