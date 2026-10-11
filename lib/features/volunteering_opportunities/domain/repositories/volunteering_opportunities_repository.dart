@@ -70,6 +70,35 @@ class VolunteeringOpportunityImage extends Equatable {
   List<Object?> get props => [id, url];
 }
 
+class VolunteeringOpportunityProperty extends Equatable {
+  const VolunteeringOpportunityProperty({
+    required this.labelEn,
+    required this.labelAr,
+    required this.valueEn,
+    required this.valueAr,
+  });
+
+  final String labelEn;
+  final String labelAr;
+  final String valueEn;
+  final String valueAr;
+
+  String label(bool isArabic) => _localized(isArabic, en: labelEn, ar: labelAr);
+
+  String value(bool isArabic) => _localized(isArabic, en: valueEn, ar: valueAr);
+
+  bool get isComplete =>
+      (labelEn.isNotEmpty || labelAr.isNotEmpty) && (valueEn.isNotEmpty || valueAr.isNotEmpty);
+
+  static String _localized(bool isArabic, {required String en, required String ar}) {
+    final preferred = isArabic ? ar : en;
+    return preferred.isNotEmpty ? preferred : (isArabic ? en : ar);
+  }
+
+  @override
+  List<Object?> get props => [labelEn, labelAr, valueEn, valueAr];
+}
+
 class VolunteeringOpportunitySummary extends Equatable {
   const VolunteeringOpportunitySummary({
     required this.id,
@@ -149,6 +178,7 @@ class VolunteeringOpportunityDetails extends Equatable {
     required this.registrationStatus,
     required this.donors,
     required this.images,
+    required this.properties,
   });
 
   final String id;
@@ -174,6 +204,7 @@ class VolunteeringOpportunityDetails extends Equatable {
   final VolunteeringOpportunityRegistrationStatus registrationStatus;
   final List<VolunteeringOpportunityDonor> donors;
   final List<VolunteeringOpportunityImage> images;
+  final List<VolunteeringOpportunityProperty> properties;
 
   String title(bool isArabic) => isArabic ? titleAr : titleEn;
 
@@ -211,6 +242,7 @@ class VolunteeringOpportunityDetails extends Equatable {
       registrationStatus: registrationStatus ?? this.registrationStatus,
       donors: donors,
       images: images,
+      properties: properties,
     );
   }
 
@@ -239,6 +271,7 @@ class VolunteeringOpportunityDetails extends Equatable {
     registrationStatus,
     donors,
     images,
+    properties,
   ];
 }
 

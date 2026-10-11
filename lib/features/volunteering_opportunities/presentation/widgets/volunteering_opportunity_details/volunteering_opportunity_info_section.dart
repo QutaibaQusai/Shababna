@@ -14,6 +14,7 @@ class VolunteeringOpportunityInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final isArabic = context.isArabic;
     final rows = [
       (
         l10n.volunteeringOpportunityDateLabel,
@@ -39,6 +40,8 @@ class VolunteeringOpportunityInfoSection extends StatelessWidget {
           l10n.volunteeringOpportunityActivitiesLabel,
           l10n.volunteeringOpportunityActivities(volunteeringOpportunity.activitiesCount),
         ),
+      for (final property in volunteeringOpportunity.properties)
+        (property.label(isArabic), property.value(isArabic)),
     ];
 
     return Column(

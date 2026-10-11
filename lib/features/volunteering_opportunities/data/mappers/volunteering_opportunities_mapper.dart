@@ -66,6 +66,17 @@ extension VolunteeringOpportunityDetailsModelMapper on VolunteeringOpportunityDe
             (image) => VolunteeringOpportunityImage(id: image.id, url: _toAbsoluteUrl(image.url)),
           )
           .toList(),
+      properties: properties
+          .map(
+            (property) => VolunteeringOpportunityProperty(
+              labelEn: property.labelEn,
+              labelAr: property.labelAr,
+              valueEn: property.valueEn,
+              valueAr: property.valueAr,
+            ),
+          )
+          .where((property) => property.isComplete)
+          .toList(),
     );
   }
 }

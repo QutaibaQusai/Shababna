@@ -34,6 +34,29 @@ class VolunteeringOpportunityImageModel {
   final String url;
 }
 
+class VolunteeringOpportunityPropertyModel {
+  const VolunteeringOpportunityPropertyModel({
+    required this.labelEn,
+    required this.labelAr,
+    required this.valueEn,
+    required this.valueAr,
+  });
+
+  factory VolunteeringOpportunityPropertyModel.fromJson(Map<String, dynamic> json) {
+    return VolunteeringOpportunityPropertyModel(
+      labelEn: (json['labelEn'] as String? ?? '').trim(),
+      labelAr: (json['labelAr'] as String? ?? '').trim(),
+      valueEn: (json['valueEn'] as String? ?? '').trim(),
+      valueAr: (json['valueAr'] as String? ?? '').trim(),
+    );
+  }
+
+  final String labelEn;
+  final String labelAr;
+  final String valueEn;
+  final String valueAr;
+}
+
 class VolunteeringOpportunityDetailsModel {
   const VolunteeringOpportunityDetailsModel({
     required this.id,
@@ -59,6 +82,7 @@ class VolunteeringOpportunityDetailsModel {
     required this.registrationStatus,
     required this.donors,
     required this.images,
+    required this.properties,
   });
 
   factory VolunteeringOpportunityDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -103,6 +127,10 @@ class VolunteeringOpportunityDetailsModel {
         json['images'],
         VolunteeringOpportunityImageModel.fromJson,
       ),
+      properties: parseVolunteeringOpportunityList(
+        json['properties'],
+        VolunteeringOpportunityPropertyModel.fromJson,
+      ),
     );
   }
 
@@ -129,4 +157,5 @@ class VolunteeringOpportunityDetailsModel {
   final String registrationStatus;
   final List<VolunteeringOpportunityDonorModel> donors;
   final List<VolunteeringOpportunityImageModel> images;
+  final List<VolunteeringOpportunityPropertyModel> properties;
 }
