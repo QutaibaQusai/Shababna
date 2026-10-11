@@ -274,7 +274,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get educationLabel => 'المؤهل العلمي';
 
   @override
-  String get majorLabel => 'التخصص';
+  String get majorLabel => 'التخصص الجامعي';
 
   @override
   String get universityNameLabel => 'اسم الجامعة';
@@ -283,16 +283,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get nearestLandmarkLabel => 'أقرب معلم';
 
   @override
-  String get districtLabel => 'المنطقة';
+  String get districtLabel => 'اللواء';
 
   @override
   String get neighborhoodLabel => 'الحي';
 
   @override
   String get detailedAddressLabel => 'العنوان التفصيلي';
-
-  @override
-  String get isFirstTimeVolunteerLabel => 'متطوع لأول مرة';
 
   @override
   String get volunteerAwardsLabel => 'جوائز تطوعية';
@@ -311,16 +308,17 @@ class AppLocalizationsAr extends AppLocalizations {
   String get estimatedWeeklyHoursLabel => 'الساعات الأسبوعية المتوقعة';
 
   @override
-  String get volunteeringTypesLabel => 'أنواع التطوع';
+  String get volunteeringTypesLabel => 'أنواع العمل التطوعي';
 
   @override
-  String get otherVolunteeringSubjectsLabel => 'مجالات تطوع أخرى';
+  String get otherVolunteeringSubjectsLabel =>
+      'ما هي المواضيع/المواد التي قدمتها أثناء فترة تطوعك';
 
   @override
   String get cvLabel => 'السيرة الذاتية';
 
   @override
-  String get nationalIdPictureLabel => 'صورة الهوية الوطنية';
+  String get nationalIdPictureLabel => 'بطاقة الهوية';
 
   @override
   String get documentUploadedStatus => 'تم الرفع';
@@ -1468,4 +1466,37 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get appLockUnavailableLocked =>
       'قفل الشاشة في جهازك غير مفعّل. سجّل الخروج ثم سجّل الدخول مرة أخرى للمتابعة.';
+
+  @override
+  String get governorateLabel => 'المحافظة';
+
+  @override
+  String get highestEducationLabel => 'أعلى مستوى تعليمي وصلت له';
+
+  @override
+  String get editProfileNearestLandmarkLabel =>
+      'أقرب معلم أو مركز شبابي أو جمعية خيرية لمكان سكنك';
+
+  @override
+  String get editProfileWeeklyHoursLabel =>
+      'ماهي عدد الساعات الأسبوعية المقدرة من وقتك للتطوع؟';
+
+  @override
+  String get editProfilePreviousExperienceLabel =>
+      'هل لديك/كِ خبرة سابقة في العمل التطوعي؟';
+
+  @override
+  String get editProfileVolunteerAwardsLabel =>
+      'هل حصلت سابقاً على جوائز متعلقة بالعمل التطوعي؟';
+
+  @override
+  String get editProfileAvailableToVolunteerLabel => 'هل أنت/تِ متفرغ للتطوع؟';
+
+  @override
+  String get editProfileServiceAgreementLabel =>
+      'في حال تم قبولك لأي فرصة من الفرص التطوعية هل توافق على توقيع عقد \'اتفاقية تقديم خدمات تطوع\' لضمان الالتزام خلال فترة التطوع ؟';
+
+  @override
+  String get editProfileNonConvictionLabel =>
+      'في حال تم قبولك لأي فرصة من الفرص التطوعية هل توافق على احضار شهادة عدم محكومية سارية المفعول خلال فترة التطوع ؟';
 }

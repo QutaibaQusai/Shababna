@@ -61,31 +61,32 @@ class EditProfileVolunteeringSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         SwitchRow(
-          label: l10n.isFirstTimeVolunteerLabel,
-          value: draft.isFirstTimeVolunteer,
-          onChanged: (value) => edit((d) => d.copyWith(isFirstTimeVolunteer: value)),
+          label: l10n.editProfilePreviousExperienceLabel,
+          value: !draft.isFirstTimeVolunteer,
+          onChanged: (hasExperience) =>
+              edit((d) => d.copyWith(isFirstTimeVolunteer: !hasExperience)),
         ),
         switchRow(
           ProfileMissingField.volunteerAwards,
-          l10n.volunteerAwardsLabel,
+          l10n.editProfileVolunteerAwardsLabel,
           draft.volunteerAwards,
           (value) => edit((d) => d.copyWith(volunteerAwards: value)),
         ),
         switchRow(
           ProfileMissingField.isAvailableToVolunteer,
-          l10n.isAvailableToVolunteerLabel,
+          l10n.editProfileAvailableToVolunteerLabel,
           draft.isAvailableToVolunteer,
           (value) => edit((d) => d.copyWith(isAvailableToVolunteer: value)),
         ),
         switchRow(
           ProfileMissingField.willSignVolunteerServiceAgreement,
-          l10n.willSignVolunteerServiceAgreementLabel,
+          l10n.editProfileServiceAgreementLabel,
           draft.willSignVolunteerServiceAgreement,
           (value) => edit((d) => d.copyWith(willSignVolunteerServiceAgreement: value)),
         ),
         switchRow(
           ProfileMissingField.willProvideNcc,
-          l10n.willProvideNccLabel,
+          l10n.editProfileNonConvictionLabel,
           draft.willProvideNcc,
           (value) => edit((d) => d.copyWith(willProvideNcc: value)),
         ),
@@ -93,7 +94,7 @@ class EditProfileVolunteeringSection extends StatelessWidget {
         anchor(
           ProfileMissingField.estimatedWeeklyHours,
           AppTextField(
-            label: l10n.estimatedWeeklyHoursLabel,
+            label: l10n.editProfileWeeklyHoursLabel,
             hasError: isMissing(ProfileMissingField.estimatedWeeklyHours),
             controller: weeklyHoursController,
             prefixIcon: LucideIcons.clock,

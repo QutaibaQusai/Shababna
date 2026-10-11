@@ -36,7 +36,7 @@ class EditProfileAddressSection extends StatelessWidget {
         anchor(
           ProfileMissingField.nearestLandmark,
           AppTextField(
-            label: l10n.nearestLandmarkLabel,
+            label: l10n.editProfileNearestLandmarkLabel,
             hasError: isMissing(ProfileMissingField.nearestLandmark),
             controller: nearestLandmarkController,
             prefixIcon: LucideIcons.landmark,

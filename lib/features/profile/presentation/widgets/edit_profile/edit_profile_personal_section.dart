@@ -98,7 +98,7 @@ class EditProfilePersonalSection extends StatelessWidget {
         anchor(
           ProfileMissingField.city,
           ProfileLookupField<City>(
-            label: l10n.cityLabel,
+            label: l10n.governorateLabel,
             hasError: isMissing(ProfileMissingField.city),
             icon: LucideIcons.mapPin,
             selectedId: draft.city?.id,
@@ -117,7 +117,7 @@ class EditProfilePersonalSection extends StatelessWidget {
         anchor(
           ProfileMissingField.education,
           ProfileLookupField<Education>(
-            label: l10n.educationLabel,
+            label: l10n.highestEducationLabel,
             hasError: isMissing(ProfileMissingField.education),
             icon: LucideIcons.graduationCap,
             selectedId: draft.education?.id,

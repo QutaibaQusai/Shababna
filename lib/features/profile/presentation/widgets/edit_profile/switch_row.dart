@@ -22,16 +22,16 @@ class SwitchRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: AppSpacing.xs),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Text(
-              label,
-              style: context.textTheme.bodyMedium?.copyWith(
-                color: hasError ? context.colorScheme.error : null,
-              ),
+          Text(
+            label,
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: hasError ? context.colorScheme.error : null,
             ),
           ),
+          SizedBox(height: AppSpacing.xs),
           AppSwitch(value: value, onChanged: onChanged),
         ],
       ),

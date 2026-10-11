@@ -593,7 +593,7 @@ abstract class AppLocalizations {
   /// No description provided for @dateOfBirthLabel.
   ///
   /// In en, this message translates to:
-  /// **'Date of birth'**
+  /// **'Birthdate'**
   String get dateOfBirthLabel;
 
   /// No description provided for @nationalityLabel.
@@ -617,7 +617,7 @@ abstract class AppLocalizations {
   /// No description provided for @majorLabel.
   ///
   /// In en, this message translates to:
-  /// **'Major'**
+  /// **'University major'**
   String get majorLabel;
 
   /// No description provided for @universityNameLabel.
@@ -649,12 +649,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Detailed address'**
   String get detailedAddressLabel;
-
-  /// No description provided for @isFirstTimeVolunteerLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'First-time volunteer'**
-  String get isFirstTimeVolunteerLabel;
 
   /// No description provided for @volunteerAwardsLabel.
   ///
@@ -695,7 +689,7 @@ abstract class AppLocalizations {
   /// No description provided for @otherVolunteeringSubjectsLabel.
   ///
   /// In en, this message translates to:
-  /// **'Other volunteering subjects'**
+  /// **'What subjects/materials did you present during your volunteer period?'**
   String get otherVolunteeringSubjectsLabel;
 
   /// No description provided for @cvLabel.
@@ -707,7 +701,7 @@ abstract class AppLocalizations {
   /// No description provided for @nationalIdPictureLabel.
   ///
   /// In en, this message translates to:
-  /// **'National ID picture'**
+  /// **'ID card'**
   String get nationalIdPictureLabel;
 
   /// No description provided for @documentUploadedStatus.
@@ -2605,6 +2599,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your device screen lock is off. Sign out and sign in again to continue.'**
   String get appLockUnavailableLocked;
+
+  /// No description provided for @governorateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Governorate'**
+  String get governorateLabel;
+
+  /// No description provided for @highestEducationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest educational level achieved'**
+  String get highestEducationLabel;
+
+  /// No description provided for @editProfileNearestLandmarkLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearest landmark, youth center, or charity organization to your place of residence'**
+  String get editProfileNearestLandmarkLabel;
+
+  /// No description provided for @editProfileWeeklyHoursLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the estimated number of weekly hours you dedicate to volunteering?'**
+  String get editProfileWeeklyHoursLabel;
+
+  /// No description provided for @editProfilePreviousExperienceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you have previous experience in volunteer work?'**
+  String get editProfilePreviousExperienceLabel;
+
+  /// No description provided for @editProfileVolunteerAwardsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Have you previously received any awards related to volunteer work?'**
+  String get editProfileVolunteerAwardsLabel;
+
+  /// No description provided for @editProfileAvailableToVolunteerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you available to volunteer?'**
+  String get editProfileAvailableToVolunteerLabel;
+
+  /// No description provided for @editProfileServiceAgreementLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'If you are accepted for any volunteering opportunity, do you agree to sign a \'Volunteer Service Agreement\' to ensure commitment during the volunteer period?'**
+  String get editProfileServiceAgreementLabel;
+
+  /// No description provided for @editProfileNonConvictionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'If you are accepted for any volunteering opportunity, do you agree to provide a valid non-conviction certificate during the volunteer period?'**
+  String get editProfileNonConvictionLabel;
 }
 
 class _AppLocalizationsDelegate

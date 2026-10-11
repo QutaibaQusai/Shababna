@@ -264,7 +264,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get genderFemale => 'Female';
 
   @override
-  String get dateOfBirthLabel => 'Date of birth';
+  String get dateOfBirthLabel => 'Birthdate';
 
   @override
   String get nationalityLabel => 'Nationality';
@@ -276,7 +276,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get educationLabel => 'Education';
 
   @override
-  String get majorLabel => 'Major';
+  String get majorLabel => 'University major';
 
   @override
   String get universityNameLabel => 'University name';
@@ -292,9 +292,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get detailedAddressLabel => 'Detailed address';
-
-  @override
-  String get isFirstTimeVolunteerLabel => 'First-time volunteer';
 
   @override
   String get volunteerAwardsLabel => 'Volunteer awards';
@@ -316,13 +313,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get volunteeringTypesLabel => 'Volunteering types';
 
   @override
-  String get otherVolunteeringSubjectsLabel => 'Other volunteering subjects';
+  String get otherVolunteeringSubjectsLabel =>
+      'What subjects/materials did you present during your volunteer period?';
 
   @override
   String get cvLabel => 'CV';
 
   @override
-  String get nationalIdPictureLabel => 'National ID picture';
+  String get nationalIdPictureLabel => 'ID card';
 
   @override
   String get documentUploadedStatus => 'Uploaded';
@@ -1456,4 +1454,38 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get appLockUnavailableLocked =>
       'Your device screen lock is off. Sign out and sign in again to continue.';
+
+  @override
+  String get governorateLabel => 'Governorate';
+
+  @override
+  String get highestEducationLabel => 'Highest educational level achieved';
+
+  @override
+  String get editProfileNearestLandmarkLabel =>
+      'Nearest landmark, youth center, or charity organization to your place of residence';
+
+  @override
+  String get editProfileWeeklyHoursLabel =>
+      'What is the estimated number of weekly hours you dedicate to volunteering?';
+
+  @override
+  String get editProfilePreviousExperienceLabel =>
+      'Do you have previous experience in volunteer work?';
+
+  @override
+  String get editProfileVolunteerAwardsLabel =>
+      'Have you previously received any awards related to volunteer work?';
+
+  @override
+  String get editProfileAvailableToVolunteerLabel =>
+      'Are you available to volunteer?';
+
+  @override
+  String get editProfileServiceAgreementLabel =>
+      'If you are accepted for any volunteering opportunity, do you agree to sign a \'Volunteer Service Agreement\' to ensure commitment during the volunteer period?';
+
+  @override
+  String get editProfileNonConvictionLabel =>
+      'If you are accepted for any volunteering opportunity, do you agree to provide a valid non-conviction certificate during the volunteer period?';
 }
