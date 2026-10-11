@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
-import '../../../../../core/shared/widgets/app_button.dart';
-import '../../../../../core/shared/widgets/guest_gate.dart';
+import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../shared/home_formatters.dart';
 
@@ -45,11 +45,31 @@ class HomeGreeting extends StatelessWidget {
             : [
                 Text(l10n.homeGuestTitle, style: titleStyle),
                 SizedBox(height: AppSpacing.xxs),
-                Text(l10n.homeGuestSubtitle, style: mutedStyle),
-                SizedBox(height: AppSpacing.sm),
-                AppButton.primary(
-                  label: l10n.loginButton,
-                  onPressed: () => ensureSignedIn(context),
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(text: '${l10n.homeGuestSubtitle} '),
+                      WidgetSpan(
+                        alignment: PlaceholderAlignment.baseline,
+                        baseline: TextBaseline.alphabetic,
+                        child: Semantics(
+                          button: true,
+                          child: GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            onTap: () => context.push(AppRoutes.loginModal),
+                            child: Text(
+                              l10n.loginButton,
+                              style: mutedStyle?.copyWith(
+                                color: colors.primary,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  style: mutedStyle,
                 ),
               ],
       ),

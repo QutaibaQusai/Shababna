@@ -31,7 +31,7 @@ class HomeContent extends StatelessWidget {
 
     final sections = <Widget>[
       HomeGreeting(isMember: isMember, fullName: impact?.fullName(context.isArabic)),
-      if (isMember && feed.slides.isNotEmpty) HomeBannerCarousel(slides: feed.slides),
+      if (feed.slides.isNotEmpty) HomeBannerCarousel(slides: feed.slides),
       if (isMember && impact != null) HomeImpactCard(impact: impact),
       if (isMember && feed.openTasks.isNotEmpty)
         _Section(

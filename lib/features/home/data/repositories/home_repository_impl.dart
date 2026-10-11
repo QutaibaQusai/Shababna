@@ -17,7 +17,7 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
     required DateTime day,
   }) async {
     final impactCall = isMember ? guard(_impact) : null;
-    final slidesCall = isMember ? guard(_slides) : null;
+    final slidesCall = guard(_slides);
     final tasksCall = isMember ? guard(_openTasks) : null;
     final featuredCall = guard(() => _featuredVolunteeringOpportunities(isMember: isMember));
     final dayCall = guard(() => _volunteeringOpportunitiesOn(day));
@@ -32,7 +32,7 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
 
     final results = <Either<Failure, Object>>[
       ?impact,
-      ?slides,
+      slides,
       ?tasks,
       featured,
       dayVolunteeringOpportunities,
@@ -45,7 +45,7 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
     return Right(
       HomeFeed(
         impact: impact?.fold((_) => null, (value) => value),
-        slides: slides?.getOrElse(() => const []) ?? const [],
+        slides: slides.getOrElse(() => const []),
         openTasks: tasks?.getOrElse(() => const []) ?? const [],
         featuredVolunteeringOpportunities: featured.getOrElse(() => const []),
         dayVolunteeringOpportunities: dayVolunteeringOpportunities.getOrElse(() => const []),

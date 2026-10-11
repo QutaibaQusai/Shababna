@@ -54,6 +54,8 @@ class AppRouter {
         final location = state.matchedLocation;
         final isPublicRoute = AppRoutes.publicRoutes.contains(location);
         final isOnboarding = location == AppRoutes.onboarding;
+        final isModalLogin = location == AppRoutes.login &&
+            state.uri.queryParameters[AppRoutes.modalQuery] == 'true';
 
         if (authSessionCubit.state == AuthStatus.unauthenticated) {
           if (!onboardingRepository.isCompleted) {
@@ -63,7 +65,7 @@ class AppRouter {
         }
 
         return switch (authSessionCubit.state) {
-          AuthStatus.authenticated => isPublicRoute ? AppRoutes.home : null,
+          AuthStatus.authenticated => isPublicRoute && !isModalLogin ? AppRoutes.home : null,
           AuthStatus.guest =>
             AppRoutes.memberRoutes.contains(location) ? AppRoutes.login : null,
           AuthStatus.unauthenticated => isPublicRoute ? null : AppRoutes.login,

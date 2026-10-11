@@ -52,26 +52,22 @@ class HomeSkeleton extends StatelessWidget {
                 const Bone.text(words: 2),
                 SizedBox(height: AppSpacing.xs),
                 const Bone.text(words: 3),
-                if (!isMember) ...[
-                  SizedBox(height: AppSpacing.sm),
-                  Bone(height: AppSizes.buttonHeight, borderRadius: AppRadius.mdRadius),
-                ],
               ],
             ),
           ),
-          if (isMember) ...[
-            SizedBox(height: AppSpacing.md),
-            Padding(
-              padding: EdgeInsetsDirectional.only(start: AppSpacing.screenMargin),
-              child: Align(
-                alignment: AlignmentDirectional.centerStart,
-                child: Bone(
-                  width: bannerWidth,
-                  height: bannerWidth / HomeBannerCarousel.aspectRatio,
-                  borderRadius: AppRadius.lgRadius,
-                ),
+          SizedBox(height: AppSpacing.md),
+          Padding(
+            padding: EdgeInsetsDirectional.only(start: AppSpacing.screenMargin),
+            child: Align(
+              alignment: AlignmentDirectional.centerStart,
+              child: Bone(
+                width: bannerWidth,
+                height: bannerWidth / HomeBannerCarousel.aspectRatio,
+                borderRadius: AppRadius.lgRadius,
               ),
             ),
+          ),
+          if (isMember) ...[
             SizedBox(height: AppSpacing.md),
             Padding(
               padding: margin,

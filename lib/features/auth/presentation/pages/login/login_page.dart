@@ -80,6 +80,9 @@ class _LoginViewState extends State<_LoginView> {
         if (state.status == FormStatus.failure && state.errorMessage != null) {
           AppToast.error(context, state.errorMessage!);
         }
+        if (state.status == FormStatus.success && widget.isModal && context.canPop()) {
+          context.pop();
+        }
       },
       child: BlocBuilder<LoginCubit, LoginState>(
         builder: (context, state) {
