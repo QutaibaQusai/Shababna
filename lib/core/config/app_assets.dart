@@ -19,6 +19,7 @@ class AppAssets {
       'assets/images/icon_notification_2.svg';
   static const String iconTrophy = 'assets/images/icon_trophy.png';
   static const String iconHourglass = 'assets/images/icon_hourglass.png';
+  static const String iconAssociationHeart = 'assets/images/icon_about_association.svg';
 
   static const String illustrationSearch = 'assets/images/illustration_search.svg';
   static const String illustrationEmpty = 'assets/images/illustration_empty.svg';

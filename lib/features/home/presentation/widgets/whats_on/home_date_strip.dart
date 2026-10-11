@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/config/app_assets.dart';
 import '../../../../../core/extensions/context_extensions.dart';
+import '../../../../../core/shared/widgets/app_svg_icon.dart';
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
@@ -61,8 +63,9 @@ class _DayCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colorScheme;
-    final foreground = isSelected ? colors.onPrimary : colors.onSurface;
-    final muted = isSelected ? colors.onPrimary : colors.onSurfaceVariant;
+    final heartColor = isSelected ? colors.primary : colors.outlineVariant;
+    final numberColor = isSelected ? colors.primary : colors.onSurface;
+    final labelColor = isSelected ? colors.primary : colors.onSurfaceVariant;
 
     return Semantics(
       button: true,
@@ -70,13 +73,8 @@ class _DayCell extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: AppRadius.mdRadius,
-        child: AnimatedContainer(
-          duration: _duration,
+        child: SizedBox(
           width: AppSizes.homeDateCellWidth,
-          decoration: BoxDecoration(
-            color: isSelected ? colors.primary : colors.surface,
-            borderRadius: AppRadius.mdRadius,
-          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -85,16 +83,35 @@ class _DayCell extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: context.textTheme.labelSmall?.copyWith(
-                  color: muted,
+                  color: labelColor,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               SizedBox(height: AppSpacing.xxs),
-              Text(
-                HomeFormatters.dayOfMonth(context, day),
-                style: context.textTheme.titleMedium?.copyWith(
-                  color: foreground,
-                  fontWeight: FontWeight.w800,
+              SizedBox.square(
+                dimension: AppSizes.homeDateHeartSize,
+                child: Stack(
+                  children: [
+                    TweenAnimationBuilder<Color?>(
+                      tween: ColorTween(end: heartColor),
+                      duration: _duration,
+                      builder: (context, color, _) => AppSvgIcon(
+                        asset: AppAssets.iconAssociationHeart,
+                        size: AppSizes.homeDateHeartSize,
+                        color: color,
+                      ),
+                    ),
+                    Center(
+                      child: AnimatedDefaultTextStyle(
+                        duration: _duration,
+                        style: context.textTheme.titleMedium!.copyWith(
+                          color: numberColor,
+                          fontWeight: isSelected ? FontWeight.w800 : FontWeight.w700,
+                        ),
+                        child: Text(HomeFormatters.dayOfMonth(context, day)),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

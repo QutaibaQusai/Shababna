@@ -120,8 +120,17 @@ class HomeSkeleton extends StatelessWidget {
               padding: margin,
               itemCount: HomeDateStrip.dayCount,
               separatorBuilder: (_, _) => SizedBox(width: AppSpacing.xs),
-              itemBuilder: (_, _) =>
-                  Bone(width: AppSizes.homeDateCellWidth, borderRadius: AppRadius.mdRadius),
+              itemBuilder: (_, _) => SizedBox(
+                width: AppSizes.homeDateCellWidth,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Bone.text(words: 1),
+                    SizedBox(height: AppSpacing.xxs),
+                    Bone.circle(size: AppSizes.homeDateHeartSize),
+                  ],
+                ),
+              ),
             ),
           ),
           SizedBox(height: AppSpacing.sm),

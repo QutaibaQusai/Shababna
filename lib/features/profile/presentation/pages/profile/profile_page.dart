@@ -74,8 +74,7 @@ class _ProfileViewState extends State<_ProfileView> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (_) =>
-          BlocProvider.value(value: context.read<LocaleService>(), child: const LanguageSheet()),
+      builder: (_) => const LanguageSheet(),
     );
   }
 
@@ -83,8 +82,7 @@ class _ProfileViewState extends State<_ProfileView> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (_) =>
-          BlocProvider.value(value: context.read<ThemeService>(), child: const ThemeSheet()),
+      builder: (_) => const ThemeSheet(),
     );
   }
 

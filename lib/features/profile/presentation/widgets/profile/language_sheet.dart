@@ -15,8 +15,9 @@ class LanguageSheet extends StatelessWidget {
     final languageCode = context.watch<LocaleService>().languageCode;
 
     void select(String code) {
-      context.read<LocaleService>().setLocale(Locale(code));
+      final localeService = context.read<LocaleService>();
       Navigator.pop(context);
+      localeService.setLocale(Locale(code));
     }
 
     return SafeArea(

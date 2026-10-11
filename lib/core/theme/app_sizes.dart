@@ -35,6 +35,7 @@ class AppSizes {
   static double get progressBarHeightSm => 6.r;
   static double get homeDateCellWidth => 52.r;
   static double get homeDateCellHeight => 68.r;
+  static double get homeDateHeartSize => 46.r;
   static double get homeImpactRingRadius => 38.r;
   static double get calendarRowHeight => 44.r;
   static double get calendarWeekdaysHeight => 24.r;
