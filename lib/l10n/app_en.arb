@@ -27,6 +27,8 @@
   "choosePhotoButton": "Choose Photo",
   "replacePhotoButton": "Replace Photo",
   "removePhotoButton": "Remove Photo",
+  "changePhotoButton": "Change Photo",
+  "addPhotoButton": "Add Photo",
 
   "editCvSuccessMessage": "CV updated successfully",
   "uploadCvButton": "Upload CV",

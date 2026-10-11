@@ -83,6 +83,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get removePhotoButton => 'Remove Photo';
 
   @override
+  String get changePhotoButton => 'Change Photo';
+
+  @override
+  String get addPhotoButton => 'Add Photo';
+
+  @override
   String get editCvSuccessMessage => 'CV updated successfully';
 
   @override

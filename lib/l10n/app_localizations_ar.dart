@@ -82,6 +82,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get removePhotoButton => 'إزالة الصورة';
 
   @override
+  String get changePhotoButton => 'تغيير الصورة';
+
+  @override
+  String get addPhotoButton => 'إضافة صورة';
+
+  @override
   String get editCvSuccessMessage => 'تم تحديث السيرة الذاتية بنجاح';
 
   @override

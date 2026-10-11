@@ -27,6 +27,8 @@
   "choosePhotoButton": "اختيار صورة",
   "replacePhotoButton": "استبدال الصورة",
   "removePhotoButton": "إزالة الصورة",
+  "changePhotoButton": "تغيير الصورة",
+  "addPhotoButton": "إضافة صورة",
 
   "editCvSuccessMessage": "تم تحديث السيرة الذاتية بنجاح",
   "uploadCvButton": "رفع السيرة الذاتية",

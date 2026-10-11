@@ -31,6 +31,9 @@ class AppSizes {
   static double get chatMediaHeight => 168.r;
   static double get tierBadgeSize => 32.r;
   static double get tierBadgeSizeSmall => 26.r;
+  static double get tierArcStroke => 6.r;
+  static double get tierArcGap => 4.r;
+  static double get tierArcMedalSize => 30.r;
   static double get progressBarHeight => 12.r;
   static double get progressBarHeightSm => 6.r;
   static double get homeDateCellWidth => 52.r;

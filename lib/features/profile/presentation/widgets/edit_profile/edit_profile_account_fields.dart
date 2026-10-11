@@ -14,6 +14,7 @@ import '../../cubit/profile_attachment/profile_attachment_state.dart';
 import 'edit_profile_picture_field.dart';
 import 'field_card.dart';
 import 'profile_attachment_flow.dart';
+import 'tier_progress_summary.dart';
 
 class EditProfileAvatar extends StatelessWidget {
   const EditProfileAvatar({super.key});
@@ -23,7 +24,18 @@ class EditProfileAvatar extends StatelessWidget {
     final profileState = context.watch<ProfileCubit>().state;
     final profile = profileState.profile;
     if (profile == null) return const SizedBox.shrink();
-    return _PictureField(profile: profile, profileState: profileState);
+    return Column(
+      children: [
+        _PictureField(profile: profile, profileState: profileState),
+        SizedBox(height: AppSpacing.xs),
+        TierProgressSummary(
+          tier: profile.tier,
+          nextTier: profile.nextTier,
+          volunteeringHours: profile.volunteeringHours,
+          percentage: profile.tierProgressPercentage,
+        ),
+      ],
+    );
   }
 }
 
@@ -86,6 +98,9 @@ class _PictureField extends StatelessWidget {
           cacheKey: profileState.pictureCacheKey,
           localFilePath: state.isBusyWith(ProfileAttachment.picture) ? state.pendingPicturePath : null,
           isBusy: state.isBusyWith(ProfileAttachment.picture),
+          tier: profile.tier,
+          nextTier: profile.nextTier,
+          tierPercentage: profile.tierProgressPercentage,
           onTap: () => ProfileAttachmentFlow.start(
             context,
             ProfileAttachment.picture,

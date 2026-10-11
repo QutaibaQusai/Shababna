@@ -27,7 +27,6 @@ import '../../widgets/edit_profile/edit_profile_personal_section.dart';
 import '../../widgets/edit_profile/edit_profile_skeleton.dart';
 import '../../widgets/edit_profile/edit_profile_volunteering_section.dart';
 import '../../widgets/edit_profile/profile_attachment_flow.dart';
-import '../../widgets/edit_profile/volunteer_tier_progress.dart';
 
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({super.key, this.missingFields = const []});
@@ -277,8 +276,6 @@ class _EditProfileViewState extends State<_EditProfileView> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const EditProfileAvatar(),
-            SizedBox(height: AppSpacing.md),
-            const VolunteerTierProgress(),
             SizedBox(height: AppSpacing.md),
             const EditProfileContactFields(),
             SizedBox(height: AppSpacing.sm),

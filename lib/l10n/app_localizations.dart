@@ -236,6 +236,18 @@ abstract class AppLocalizations {
   /// **'Remove Photo'**
   String get removePhotoButton;
 
+  /// No description provided for @changePhotoButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Photo'**
+  String get changePhotoButton;
+
+  /// No description provided for @addPhotoButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Photo'**
+  String get addPhotoButton;
+
   /// No description provided for @editCvSuccessMessage.
   ///
   /// In en, this message translates to:
