@@ -193,7 +193,8 @@ class _InfoCard extends StatelessWidget {
       child: Column(
         children: [
           for (var i = 0; i < children.length; i++) ...[
-            if (i > 0) SizedBox(height: AppSpacing.sm),
+            if (i > 0)
+              Divider(height: AppSpacing.md, color: context.colorScheme.outlineVariant),
             children[i],
           ],
         ],
@@ -237,16 +238,27 @@ class _InfoRow extends StatelessWidget {
                 child: Text(
                   value,
                   textDirection: valueDirection,
+                  textAlign: context.isRTL ? TextAlign.right : TextAlign.left,
                   style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
                 ),
               ),
-              if (onCopy != null)
+              if (onCopy != null) ...[
+                SizedBox(width: AppSpacing.xs),
                 IconButton(
                   onPressed: onCopy,
                   tooltip: MaterialLocalizations.of(context).copyButtonLabel,
-                  visualDensity: VisualDensity.compact,
-                  icon: Icon(LucideIcons.copy, size: AppSizes.iconSm),
+                  style: IconButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                  icon: Icon(
+                    LucideIcons.copy,
+                    size: AppSizes.iconSm,
+                    color: context.colorScheme.primary,
+                  ),
                 ),
+              ],
             ],
           ),
         ),
