@@ -2690,6 +2690,12 @@ abstract class AppLocalizations {
   /// **'Certificate'**
   String get certificateDetailsTitle;
 
+  /// No description provided for @certificateInfoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificate details'**
+  String get certificateInfoTitle;
+
   /// No description provided for @certificateNumberLabel.
   ///
   /// In en, this message translates to:

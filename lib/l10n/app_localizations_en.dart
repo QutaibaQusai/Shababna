@@ -1510,6 +1510,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get certificateDetailsTitle => 'Certificate';
 
   @override
+  String get certificateInfoTitle => 'Certificate details';
+
+  @override
   String get certificateNumberLabel => 'Certificate number';
 
   @override

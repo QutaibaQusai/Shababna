@@ -450,6 +450,7 @@
   "certificatesHeaderSubtitle": "الشهادات التي حصلت عليها مقابل تطوعك",
   "certificatesEmptyMessage": "لا توجد شهادات بعد. أكمل الفرص التطوعية للحصول عليها.",
   "certificateDetailsTitle": "الشهادة",
+  "certificateInfoTitle": "تفاصيل الشهادة",
   "certificateNumberLabel": "رقم الشهادة",
   "certificateVolunteerLabel": "المتطوع",
   "certificateHoursLabel": "الساعات المعتمدة",

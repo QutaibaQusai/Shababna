@@ -567,6 +567,7 @@
   "certificatesHeaderSubtitle": "Certificates you've earned for your volunteering",
   "certificatesEmptyMessage": "No certificates yet. Complete volunteering opportunities to earn them.",
   "certificateDetailsTitle": "Certificate",
+  "certificateInfoTitle": "Certificate details",
   "certificateNumberLabel": "Certificate number",
   "certificateVolunteerLabel": "Volunteer",
   "certificateHoursLabel": "Recognized hours",

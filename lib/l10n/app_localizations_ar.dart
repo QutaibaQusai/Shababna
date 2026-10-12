@@ -1521,6 +1521,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get certificateDetailsTitle => 'الشهادة';
 
   @override
+  String get certificateInfoTitle => 'تفاصيل الشهادة';
+
+  @override
   String get certificateNumberLabel => 'رقم الشهادة';
 
   @override

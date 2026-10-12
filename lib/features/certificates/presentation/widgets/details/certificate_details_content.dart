@@ -39,7 +39,8 @@ class CertificateDetailsContent extends StatelessWidget {
           _RevokedBanner(revokedAt: certificate.revokedAt),
         ],
         SizedBox(height: AppSpacing.md),
-        _InfoCard(
+        _InfoSection(
+          title: l10n.certificateInfoTitle,
           children: [
             _InfoRow(
               label: l10n.certificateNumberLabel,
@@ -71,11 +72,8 @@ class CertificateDetailsContent extends StatelessWidget {
         ),
         if (showDocuments) ...[
           SizedBox(height: AppSpacing.md),
-          Text(
-            l10n.certificateDocumentsTitle,
-            style: context.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: AppSpacing.xs),
+          _SectionTitle(l10n.certificateDocumentsTitle),
+          SizedBox(height: AppSpacing.sm),
           for (final language in languages) ...[
             if (language != languages.first) SizedBox(height: AppSpacing.xs),
             _DocumentButton(
@@ -177,28 +175,31 @@ class _RevokedBanner extends StatelessWidget {
   }
 }
 
-class _InfoCard extends StatelessWidget {
-  const _InfoCard({required this.children});
+class _SectionTitle extends StatelessWidget {
+  const _SectionTitle(this.title);
 
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(title, style: context.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold));
+  }
+}
+
+class _InfoSection extends StatelessWidget {
+  const _InfoSection({required this.title, required this.children});
+
+  final String title;
   final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(AppSpacing.sm),
-      decoration: BoxDecoration(
-        color: context.colorScheme.surface,
-        borderRadius: AppRadius.lgRadius,
-      ),
-      child: Column(
-        children: [
-          for (var i = 0; i < children.length; i++) ...[
-            if (i > 0)
-              Divider(height: AppSpacing.md, color: context.colorScheme.outlineVariant),
-            children[i],
-          ],
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _SectionTitle(title),
+        for (final child in children) ...[SizedBox(height: AppSpacing.sm), child],
+      ],
     );
   }
 }
@@ -219,6 +220,7 @@ class _InfoRow extends StatelessWidget {
     final onCopy = this.onCopy;
 
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           flex: _labelFlex,
@@ -233,6 +235,7 @@ class _InfoRow extends StatelessWidget {
         Expanded(
           flex: _valueFlex,
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Flexible(
                 child: Text(

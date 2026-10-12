@@ -8,7 +8,7 @@ import '../../../../../core/theme/app_spacing.dart';
 class CertificateDetailsSkeleton extends StatelessWidget {
   const CertificateDetailsSkeleton({super.key});
 
-  static const _infoAspectRatio = 1.8;
+  static const _infoRowCount = 5;
   static const _buttonCount = 2;
 
   @override
@@ -31,10 +31,11 @@ class CertificateDetailsSkeleton extends StatelessWidget {
           SizedBox(height: AppSpacing.xxs),
           const Center(child: Bone.text(words: 2)),
           SizedBox(height: AppSpacing.md),
-          AspectRatio(
-            aspectRatio: _infoAspectRatio,
-            child: Bone(borderRadius: AppRadius.lgRadius),
-          ),
+          const Bone.text(words: 2),
+          for (var i = 0; i < _infoRowCount; i++) ...[
+            SizedBox(height: AppSpacing.sm),
+            const Bone.text(words: 6),
+          ],
           SizedBox(height: AppSpacing.md),
           const Bone.text(words: 2),
           for (var i = 0; i < _buttonCount; i++) ...[
