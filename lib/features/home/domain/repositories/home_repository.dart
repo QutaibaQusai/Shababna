@@ -176,6 +176,44 @@ class HomeTask extends Equatable {
   ];
 }
 
+class HomeOccasion extends Equatable {
+  const HomeOccasion({
+    required this.id,
+    required this.titleEn,
+    required this.titleAr,
+    required this.descriptionEn,
+    required this.descriptionAr,
+  });
+
+  final String id;
+  final String titleEn;
+  final String titleAr;
+  final String descriptionEn;
+  final String descriptionAr;
+
+  String title(bool isArabic) => _localized(isArabic, en: titleEn, ar: titleAr);
+
+  String description(bool isArabic) => _localized(isArabic, en: descriptionEn, ar: descriptionAr);
+
+  static String _localized(bool isArabic, {required String en, required String ar}) {
+    final preferred = isArabic ? ar : en;
+    return preferred.isNotEmpty ? preferred : (isArabic ? en : ar);
+  }
+
+  @override
+  List<Object?> get props => [id, titleEn, titleAr, descriptionEn, descriptionAr];
+}
+
+class HomeDayAgenda extends Equatable {
+  const HomeDayAgenda({required this.volunteeringOpportunities, required this.occasions});
+
+  final List<HomeVolunteeringOpportunity> volunteeringOpportunities;
+  final List<HomeOccasion> occasions;
+
+  @override
+  List<Object?> get props => [volunteeringOpportunities, occasions];
+}
+
 class HomeFeed extends Equatable {
   const HomeFeed({
     this.impact,
@@ -183,6 +221,7 @@ class HomeFeed extends Equatable {
     this.openTasks = const [],
     this.featuredVolunteeringOpportunities = const [],
     this.dayVolunteeringOpportunities = const [],
+    this.dayOccasions = const [],
     this.news = const [],
   });
 
@@ -191,16 +230,16 @@ class HomeFeed extends Equatable {
   final List<HomeTask> openTasks;
   final List<HomeVolunteeringOpportunity> featuredVolunteeringOpportunities;
   final List<HomeVolunteeringOpportunity> dayVolunteeringOpportunities;
+  final List<HomeOccasion> dayOccasions;
   final List<HomeNews> news;
 
-  HomeFeed withDayVolunteeringOpportunities(
-    List<HomeVolunteeringOpportunity> volunteeringOpportunities,
-  ) => HomeFeed(
+  HomeFeed withDay(HomeDayAgenda agenda) => HomeFeed(
     impact: impact,
     slides: slides,
     openTasks: openTasks,
     featuredVolunteeringOpportunities: featuredVolunteeringOpportunities,
-    dayVolunteeringOpportunities: volunteeringOpportunities,
+    dayVolunteeringOpportunities: agenda.volunteeringOpportunities,
+    dayOccasions: agenda.occasions,
     news: news,
   );
 
@@ -211,6 +250,7 @@ class HomeFeed extends Equatable {
     openTasks,
     featuredVolunteeringOpportunities,
     dayVolunteeringOpportunities,
+    dayOccasions,
     news,
   ];
 }
@@ -218,7 +258,5 @@ class HomeFeed extends Equatable {
 abstract interface class HomeRepository {
   Future<Either<Failure, HomeFeed>> loadFeed({required bool isMember, required DateTime day});
 
-  Future<Either<Failure, List<HomeVolunteeringOpportunity>>> volunteeringOpportunitiesOn(
-    DateTime day,
-  );
+  Future<Either<Failure, HomeDayAgenda>> loadDay(DateTime day);
 }

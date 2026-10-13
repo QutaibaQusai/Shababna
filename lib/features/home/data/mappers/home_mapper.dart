@@ -13,6 +13,21 @@ extension HomeSlideModelMapper on HomeSlideModel {
   );
 }
 
+extension HomeOccasionModelMapper on HomeOccasionModel {
+  HomeOccasion? toEntity() {
+    final titleEn = this.titleEn.trim();
+    final titleAr = this.titleAr.trim();
+    if (titleEn.isEmpty && titleAr.isEmpty) return null;
+    return HomeOccasion(
+      id: id,
+      titleEn: titleEn,
+      titleAr: titleAr,
+      descriptionEn: descriptionEn.trim(),
+      descriptionAr: descriptionAr.trim(),
+    );
+  }
+}
+
 extension HomeProfileModelMapper on HomeProfileModel {
   HomeImpact toEntity() => HomeImpact(
     fullNameEn: fullNameEn.trim(),

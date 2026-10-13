@@ -18,6 +18,37 @@ List<Map<String, dynamic>> parseHomeItems(Object? response) {
   return items.whereType<Map<String, dynamic>>().toList();
 }
 
+List<Map<String, dynamic>> parseHomeList(Object? response) {
+  if (response is! List) return const [];
+  return response.whereType<Map<String, dynamic>>().toList();
+}
+
+class HomeOccasionModel {
+  const HomeOccasionModel({
+    required this.id,
+    required this.titleEn,
+    required this.titleAr,
+    required this.descriptionEn,
+    required this.descriptionAr,
+  });
+
+  factory HomeOccasionModel.fromJson(Map<String, dynamic> json) {
+    return HomeOccasionModel(
+      id: json['id'] as String? ?? '',
+      titleEn: json['titleEn'] as String? ?? '',
+      titleAr: json['titleAr'] as String? ?? '',
+      descriptionEn: json['descriptionEn'] as String? ?? '',
+      descriptionAr: json['descriptionAr'] as String? ?? '',
+    );
+  }
+
+  final String id;
+  final String titleEn;
+  final String titleAr;
+  final String descriptionEn;
+  final String descriptionAr;
+}
+
 class HomeSlideModel {
   const HomeSlideModel({
     required this.id,

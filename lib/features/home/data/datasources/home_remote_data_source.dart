@@ -56,6 +56,14 @@ class HomeRemoteDataSource {
         'PageSize': _dayVolunteeringOpportunitiesPageSize,
       });
 
+  Future<List<HomeOccasionModel>> getOccasionsOn(DateTime day) async {
+    final response = await _apiConsumer.get(
+      EndPoints.holidays,
+      queryParameters: {'Date': _dateFormat.format(day)},
+    );
+    return parseHomeList(response).map(HomeOccasionModel.fromJson).toList();
+  }
+
   Future<List<HomeNewsModel>> getLatestNews() async {
     final response = await _apiConsumer.get(
       EndPoints.news,

@@ -21,6 +21,7 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
     final tasksCall = isMember ? guard(_openTasks) : null;
     final featuredCall = guard(() => _featuredVolunteeringOpportunities(isMember: isMember));
     final dayCall = guard(() => _volunteeringOpportunitiesOn(day));
+    final occasionsCall = _occasionsOn(day);
     final newsCall = guard(_news);
 
     final impact = await impactCall;
@@ -28,6 +29,7 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
     final tasks = await tasksCall;
     final featured = await featuredCall;
     final dayVolunteeringOpportunities = await dayCall;
+    final occasions = await occasionsCall;
     final news = await newsCall;
 
     final results = <Either<Failure, Object>>[
@@ -49,15 +51,32 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
         openTasks: tasks?.getOrElse(() => const []) ?? const [],
         featuredVolunteeringOpportunities: featured.getOrElse(() => const []),
         dayVolunteeringOpportunities: dayVolunteeringOpportunities.getOrElse(() => const []),
+        dayOccasions: occasions,
         news: news.getOrElse(() => const []),
       ),
     );
   }
 
   @override
-  Future<Either<Failure, List<HomeVolunteeringOpportunity>>> volunteeringOpportunitiesOn(
-    DateTime day,
-  ) => guard(() => _volunteeringOpportunitiesOn(day));
+  Future<Either<Failure, HomeDayAgenda>> loadDay(DateTime day) async {
+    final volunteeringOpportunitiesCall = guard(() => _volunteeringOpportunitiesOn(day));
+    final occasionsCall = _occasionsOn(day);
+
+    final volunteeringOpportunities = await volunteeringOpportunitiesCall;
+    final occasions = await occasionsCall;
+
+    return volunteeringOpportunities.map(
+      (items) => HomeDayAgenda(volunteeringOpportunities: items, occasions: occasions),
+    );
+  }
+
+  Future<List<HomeOccasion>> _occasionsOn(DateTime day) async {
+    final result = await guard(() async {
+      final occasions = await _remoteDataSource.getOccasionsOn(day);
+      return occasions.map((occasion) => occasion.toEntity()).nonNulls.toList();
+    });
+    return result.getOrElse(() => const []);
+  }
 
   Future<HomeImpact> _impact() async => (await _remoteDataSource.getProfile()).toEntity();
 
