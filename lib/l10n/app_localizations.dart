@@ -1832,6 +1832,12 @@ abstract class AppLocalizations {
   /// **'This opportunity has ended'**
   String get volunteeringOpportunityEnded;
 
+  /// No description provided for @volunteeringOpportunityEndedTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Ended'**
+  String get volunteeringOpportunityEndedTag;
+
   /// No description provided for @volunteeringOpportunityRequiresApprovalHint.
   ///
   /// In en, this message translates to:

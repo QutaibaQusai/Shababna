@@ -1010,6 +1010,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get volunteeringOpportunityEnded => 'انتهت هذه الفرصة';
 
   @override
+  String get volunteeringOpportunityEndedTag => 'انتهت';
+
+  @override
   String get volunteeringOpportunityRequiresApprovalHint =>
       'تتم مراجعة طلبات التسجيل من قِبل المنظمين';
 

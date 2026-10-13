@@ -307,6 +307,7 @@
   "volunteeringOpportunitySlideToRegisterAgain": "اسحب للتسجيل مجدداً",
   "volunteeringOpportunitySignInToRegister": "سجّل الدخول للتسجيل",
   "volunteeringOpportunityEnded": "انتهت هذه الفرصة",
+  "volunteeringOpportunityEndedTag": "انتهت",
   "volunteeringOpportunityRequiresApprovalHint": "تتم مراجعة طلبات التسجيل من قِبل المنظمين",
   "volunteeringOpportunityStatusPending": "بانتظار الموافقة",
   "volunteeringOpportunityStatusApproved": "أنت مسجّل",

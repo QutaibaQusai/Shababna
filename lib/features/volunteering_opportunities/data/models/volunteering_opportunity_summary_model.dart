@@ -16,6 +16,7 @@ class VolunteeringOpportunitySummaryModel {
     required this.volunteersCount,
     required this.requiresApproval,
     required this.imageUrl,
+    required this.hasEnded,
   });
 
   factory VolunteeringOpportunitySummaryModel.fromJson(Map<String, dynamic> json) {
@@ -36,6 +37,7 @@ class VolunteeringOpportunitySummaryModel {
       volunteersCount: parseVolunteeringOpportunityInt(json['volunteersCount']),
       requiresApproval: json['requiresApproval'] as bool? ?? false,
       imageUrl: json['imageUrl'] as String? ?? '',
+      hasEnded: json['hasEnded'] as bool? ?? false,
     );
   }
 
@@ -53,4 +55,5 @@ class VolunteeringOpportunitySummaryModel {
   final int volunteersCount;
   final bool requiresApproval;
   final String imageUrl;
+  final bool hasEnded;
 }

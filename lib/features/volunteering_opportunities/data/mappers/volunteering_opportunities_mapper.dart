@@ -23,6 +23,7 @@ extension VolunteeringOpportunitySummaryModelMapper on VolunteeringOpportunitySu
       volunteersCount: volunteersCount,
       requiresApproval: requiresApproval,
       imageUrl: _toAbsoluteUrl(imageUrl),
+      hasEnded: hasEnded,
     );
   }
 }
@@ -77,6 +78,7 @@ extension VolunteeringOpportunityDetailsModelMapper on VolunteeringOpportunityDe
           )
           .where((property) => property.isComplete)
           .toList(),
+      hasEnded: hasEnded,
     );
   }
 }

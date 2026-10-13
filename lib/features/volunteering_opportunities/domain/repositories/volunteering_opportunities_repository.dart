@@ -115,6 +115,7 @@ class VolunteeringOpportunitySummary extends Equatable {
     required this.volunteersCount,
     required this.requiresApproval,
     required this.imageUrl,
+    required this.hasEnded,
   });
 
   final String id;
@@ -131,6 +132,7 @@ class VolunteeringOpportunitySummary extends Equatable {
   final int volunteersCount;
   final bool requiresApproval;
   final String imageUrl;
+  final bool hasEnded;
 
   String title(bool isArabic) => isArabic ? titleAr : titleEn;
 
@@ -150,6 +152,7 @@ class VolunteeringOpportunitySummary extends Equatable {
     volunteersCount,
     requiresApproval,
     imageUrl,
+    hasEnded,
   ];
 }
 
@@ -179,6 +182,7 @@ class VolunteeringOpportunityDetails extends Equatable {
     required this.donors,
     required this.images,
     required this.properties,
+    required this.hasEnded,
   });
 
   final String id;
@@ -205,15 +209,11 @@ class VolunteeringOpportunityDetails extends Equatable {
   final List<VolunteeringOpportunityDonor> donors;
   final List<VolunteeringOpportunityImage> images;
   final List<VolunteeringOpportunityProperty> properties;
+  final bool hasEnded;
 
   String title(bool isArabic) => isArabic ? titleAr : titleEn;
 
   String description(bool isArabic) => isArabic ? descriptionAr : descriptionEn;
-
-  bool get hasEnded {
-    final now = DateTime.now();
-    return to.isBefore(DateTime(now.year, now.month, now.day));
-  }
 
   VolunteeringOpportunityDetails copyWith({
     VolunteeringOpportunityRegistrationStatus? registrationStatus,
@@ -243,6 +243,7 @@ class VolunteeringOpportunityDetails extends Equatable {
       donors: donors,
       images: images,
       properties: properties,
+      hasEnded: hasEnded,
     );
   }
 
@@ -272,6 +273,7 @@ class VolunteeringOpportunityDetails extends Equatable {
     donors,
     images,
     properties,
+    hasEnded,
   ];
 }
 

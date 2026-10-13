@@ -22,6 +22,7 @@ class VolunteeringOpportunityCard extends StatelessWidget {
   static const _scrimStops = [0.35, 1.0];
   static const _scrim = [Colors.transparent, Color(0xE6000000)];
   static const _muted = Color(0xCCFFFFFF);
+  static const _endedTagColor = Color(0x99000000);
 
   static bool isTallAt(int index) => index % 4 == 0 || index % 4 == 3;
 
@@ -59,6 +60,28 @@ class VolunteeringOpportunityCard extends StatelessWidget {
                   ),
                 ),
               ),
+              if (volunteeringOpportunity.hasEnded)
+                PositionedDirectional(
+                  top: AppSpacing.xs,
+                  start: AppSpacing.xs,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppSpacing.xs,
+                      vertical: AppSpacing.xxs,
+                    ),
+                    decoration: BoxDecoration(
+                      color: _endedTagColor,
+                      borderRadius: AppRadius.pillRadius,
+                    ),
+                    child: Text(
+                      context.l10n.volunteeringOpportunityEndedTag,
+                      style: textTheme.labelSmall?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
               Positioned(
                 left: 0,
                 right: 0,

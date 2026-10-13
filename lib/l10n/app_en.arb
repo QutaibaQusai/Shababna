@@ -376,6 +376,7 @@
   "volunteeringOpportunitySlideToRegisterAgain": "Slide to register again",
   "volunteeringOpportunitySignInToRegister": "Sign in to register",
   "volunteeringOpportunityEnded": "This opportunity has ended",
+  "volunteeringOpportunityEndedTag": "Ended",
   "volunteeringOpportunityRequiresApprovalHint": "Registrations are reviewed by the organisers",
   "volunteeringOpportunityStatusPending": "Pending approval",
   "volunteeringOpportunityStatusApproved": "You're registered",

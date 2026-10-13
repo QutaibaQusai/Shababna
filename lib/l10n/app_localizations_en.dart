@@ -1000,6 +1000,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get volunteeringOpportunityEnded => 'This opportunity has ended';
 
   @override
+  String get volunteeringOpportunityEndedTag => 'Ended';
+
+  @override
   String get volunteeringOpportunityRequiresApprovalHint =>
       'Registrations are reviewed by the organisers';
 

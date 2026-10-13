@@ -83,6 +83,7 @@ class VolunteeringOpportunityDetailsModel {
     required this.donors,
     required this.images,
     required this.properties,
+    required this.hasEnded,
   });
 
   factory VolunteeringOpportunityDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -131,6 +132,7 @@ class VolunteeringOpportunityDetailsModel {
         json['properties'],
         VolunteeringOpportunityPropertyModel.fromJson,
       ),
+      hasEnded: json['hasEnded'] as bool? ?? false,
     );
   }
 
@@ -158,4 +160,5 @@ class VolunteeringOpportunityDetailsModel {
   final List<VolunteeringOpportunityDonorModel> donors;
   final List<VolunteeringOpportunityImageModel> images;
   final List<VolunteeringOpportunityPropertyModel> properties;
+  final bool hasEnded;
 }
