@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../../../../core/di/service_locator.dart';
+import '../../../../core/notifications/notification_permission_service.dart';
 import '../../domain/services/push_registration_coordinator.dart';
 import '../cubit/unread_count/unread_count_cubit.dart';
 import '../navigation/push_tap_handler.dart';
@@ -24,9 +25,12 @@ class _PushNotificationsScopeState extends State<PushNotificationsScope> {
     WidgetsBinding.instance.addPostFrameCallback((_) => _start());
   }
 
-  void _start() {
-    sl<PushRegistrationCoordinator>().start();
+  Future<void> _start() async {
     sl<PushTapHandler>().start();
+    try {
+      await sl<NotificationPermissionService>().request();
+    } catch (_) {}
+    sl<PushRegistrationCoordinator>().start();
   }
 
   void _onResume() {
