@@ -14,8 +14,6 @@ class NotificationTile extends StatelessWidget {
     required this.onTap,
   });
 
-  static const _unreadTintAlpha = 0.05;
-
   final AppNotification notification;
   final VoidCallback onTap;
 
@@ -27,9 +25,7 @@ class NotificationTile extends StatelessWidget {
     final body = notification.body(isArabic);
 
     return Material(
-      color: isUnread
-          ? colors.primary.withValues(alpha: _unreadTintAlpha)
-          : Colors.transparent,
+      color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
         child: Padding(
@@ -57,6 +53,7 @@ class NotificationTile extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: context.textTheme.titleSmall?.copyWith(
+                              color: isUnread ? colors.primary : null,
                               fontWeight: isUnread
                                   ? FontWeight.w700
                                   : FontWeight.w500,
