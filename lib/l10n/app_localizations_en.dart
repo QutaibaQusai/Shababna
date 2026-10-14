@@ -1559,4 +1559,124 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get certificateOpenFailed => 'Couldn\'t open the certificate';
+
+  @override
+  String get notificationsTitle => 'Notifications';
+
+  @override
+  String get notificationsEmptyMessage => 'You\'re all caught up';
+
+  @override
+  String notificationsUnreadLabel(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count unread notifications',
+      one: '1 unread notification',
+      zero: 'No unread notifications',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get notificationsJustNow => 'Just now';
+
+  @override
+  String notificationsMinutesAgo(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count min ago',
+      one: '1 min ago',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationsHoursAgo(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count hours ago',
+      one: '1 hour ago',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get notificationsYesterday => 'Yesterday';
+
+  @override
+  String get notificationSettingsTitle => 'Notification settings';
+
+  @override
+  String get notificationSettingsHeaderTitle => 'Your notifications';
+
+  @override
+  String get notificationSettingsSubtitle =>
+      'Choose what you want to be notified about';
+
+  @override
+  String get notificationPrefNews => 'News';
+
+  @override
+  String get notificationPrefNewsHint => 'New stories from Shababna';
+
+  @override
+  String get notificationPrefOpportunities => 'Volunteering opportunities';
+
+  @override
+  String get notificationPrefOpportunitiesHint =>
+      'New opportunities and updates to ones you follow';
+
+  @override
+  String get notificationPrefRegistrations => 'Registrations';
+
+  @override
+  String get notificationPrefRegistrationsHint =>
+      'Updates on your opportunity registrations';
+
+  @override
+  String get notificationPrefTasks => 'Tasks';
+
+  @override
+  String get notificationPrefTasksHint => 'New tasks and submission results';
+
+  @override
+  String get notificationPrefTier => 'Volunteer level';
+
+  @override
+  String get notificationPrefTierHint => 'When you reach a new level';
+
+  @override
+  String get notificationPrefCertificates => 'Certificates';
+
+  @override
+  String get notificationPrefCertificatesHint =>
+      'When a new certificate is issued to you';
+
+  @override
+  String get notificationGeneralNote =>
+      'Important announcements from Shababna are always on.';
+
+  @override
+  String get notificationPermissionOffTitle =>
+      'Notifications are off on this device';
+
+  @override
+  String get notificationPermissionOffMessage =>
+      'Turn them on so you don\'t miss new opportunities and updates.';
+
+  @override
+  String get notificationPermissionTurnOn => 'Turn on';
+
+  @override
+  String get notificationPermissionSettingsHint =>
+      'To turn them on, allow notifications for Shababna in your phone settings.';
+
+  @override
+  String get notificationsSendTest => 'Send test notification';
+
+  @override
+  String get notificationsTestSent => 'Test sent. It arrives in a few seconds.';
 }

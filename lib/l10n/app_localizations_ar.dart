@@ -1569,4 +1569,129 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get certificateOpenFailed => 'تعذر فتح الشهادة';
+
+  @override
+  String get notificationsTitle => 'الإشعارات';
+
+  @override
+  String get notificationsEmptyMessage => 'لا توجد إشعارات جديدة';
+
+  @override
+  String notificationsUnreadLabel(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count إشعار غير مقروء',
+      many: '$count إشعاراً غير مقروء',
+      few: '$count إشعارات غير مقروءة',
+      two: 'إشعاران غير مقروءين',
+      one: 'إشعار واحد غير مقروء',
+      zero: 'لا توجد إشعارات غير مقروءة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get notificationsJustNow => 'الآن';
+
+  @override
+  String notificationsMinutesAgo(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'قبل $count دقيقة',
+      few: 'قبل $count دقائق',
+      two: 'قبل دقيقتين',
+      one: 'قبل دقيقة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationsHoursAgo(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'قبل $count ساعة',
+      few: 'قبل $count ساعات',
+      two: 'قبل ساعتين',
+      one: 'قبل ساعة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get notificationsYesterday => 'أمس';
+
+  @override
+  String get notificationSettingsTitle => 'إعدادات الإشعارات';
+
+  @override
+  String get notificationSettingsHeaderTitle => 'إشعاراتك';
+
+  @override
+  String get notificationSettingsSubtitle => 'اختر ما تريد أن نُعلمك به';
+
+  @override
+  String get notificationPrefNews => 'الأخبار';
+
+  @override
+  String get notificationPrefNewsHint => 'أحدث أخبار شبابنا';
+
+  @override
+  String get notificationPrefOpportunities => 'الفرص التطوعية';
+
+  @override
+  String get notificationPrefOpportunitiesHint =>
+      'الفرص الجديدة وتحديثات الفرص التي تتابعها';
+
+  @override
+  String get notificationPrefRegistrations => 'التسجيلات';
+
+  @override
+  String get notificationPrefRegistrationsHint =>
+      'تحديثات تسجيلك في الفرص التطوعية';
+
+  @override
+  String get notificationPrefTasks => 'المهام';
+
+  @override
+  String get notificationPrefTasksHint => 'المهام الجديدة ونتائج تسليمها';
+
+  @override
+  String get notificationPrefTier => 'مستوى التطوع';
+
+  @override
+  String get notificationPrefTierHint => 'عند وصولك إلى مستوى جديد';
+
+  @override
+  String get notificationPrefCertificates => 'الشهادات';
+
+  @override
+  String get notificationPrefCertificatesHint => 'عند إصدار شهادة جديدة لك';
+
+  @override
+  String get notificationGeneralNote =>
+      'الإعلانات المهمة من شبابنا مفعّلة دائماً.';
+
+  @override
+  String get notificationPermissionOffTitle =>
+      'الإشعارات متوقفة على هذا الجهاز';
+
+  @override
+  String get notificationPermissionOffMessage =>
+      'فعّلها حتى لا تفوتك الفرص التطوعية والتحديثات الجديدة.';
+
+  @override
+  String get notificationPermissionTurnOn => 'تفعيل';
+
+  @override
+  String get notificationPermissionSettingsHint =>
+      'لتفعيلها، اسمح بإشعارات شبابنا من إعدادات هاتفك.';
+
+  @override
+  String get notificationsSendTest => 'إرسال إشعار تجريبي';
+
+  @override
+  String get notificationsTestSent => 'تم الإرسال، سيصلك خلال ثوانٍ.';
 }

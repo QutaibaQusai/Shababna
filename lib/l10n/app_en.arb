@@ -585,5 +585,43 @@
   "certificateDocumentsTitle": "Certificate document",
   "certificateOpenArabic": "Open Arabic PDF",
   "certificateOpenEnglish": "Open English PDF",
-  "certificateOpenFailed": "Couldn't open the certificate"
+  "certificateOpenFailed": "Couldn't open the certificate",
+  "notificationsTitle": "Notifications",
+  "notificationsEmptyMessage": "You're all caught up",
+  "notificationsUnreadLabel": "{count, plural, =0{No unread notifications} =1{1 unread notification} other{{count} unread notifications}}",
+  "@notificationsUnreadLabel": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "notificationsJustNow": "Just now",
+  "notificationsMinutesAgo": "{count, plural, =1{1 min ago} other{{count} min ago}}",
+  "@notificationsMinutesAgo": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "notificationsHoursAgo": "{count, plural, =1{1 hour ago} other{{count} hours ago}}",
+  "@notificationsHoursAgo": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "notificationsYesterday": "Yesterday",
+  "notificationSettingsTitle": "Notification settings",
+  "notificationSettingsHeaderTitle": "Your notifications",
+  "notificationSettingsSubtitle": "Choose what you want to be notified about",
+  "notificationPrefNews": "News",
+  "notificationPrefNewsHint": "New stories from Shababna",
+  "notificationPrefOpportunities": "Volunteering opportunities",
+  "notificationPrefOpportunitiesHint": "New opportunities and updates to ones you follow",
+  "notificationPrefRegistrations": "Registrations",
+  "notificationPrefRegistrationsHint": "Updates on your opportunity registrations",
+  "notificationPrefTasks": "Tasks",
+  "notificationPrefTasksHint": "New tasks and submission results",
+  "notificationPrefTier": "Volunteer level",
+  "notificationPrefTierHint": "When you reach a new level",
+  "notificationPrefCertificates": "Certificates",
+  "notificationPrefCertificatesHint": "When a new certificate is issued to you",
+  "notificationGeneralNote": "Important announcements from Shababna are always on.",
+  "notificationPermissionOffTitle": "Notifications are off on this device",
+  "notificationPermissionOffMessage": "Turn them on so you don't miss new opportunities and updates.",
+  "notificationPermissionTurnOn": "Turn on",
+  "notificationPermissionSettingsHint": "To turn them on, allow notifications for Shababna in your phone settings.",
+  "notificationsSendTest": "Send test notification",
+  "notificationsTestSent": "Test sent. It arrives in a few seconds."
 }

@@ -17,6 +17,7 @@ import '../../features/news/news_injection.dart';
 import '../../features/search/search_injection.dart';
 import '../../features/tasks/tasks_injection.dart';
 import '../../features/certificates/certificates_injection.dart';
+import '../../features/notifications/notifications_injection.dart';
 import '../../features/onboarding/domain/repositories/onboarding_repository.dart';
 import '../../features/onboarding/onboarding_injection.dart';
 import '../../features/profile/profile_injection.dart';
@@ -25,6 +26,7 @@ import '../logging/app_logger.dart';
 import '../network/api_consumer.dart';
 import '../network/dio_consumer.dart';
 import '../notifications/notification_permission_service.dart';
+import '../notifications/push_notification_service.dart';
 import '../routes/app_router.dart';
 import '../security/app_lock/app_lock_cubit.dart';
 import '../security/device_authenticator.dart';
@@ -85,6 +87,9 @@ Future<void> setupServiceLocator() async {
   sl.registerLazySingleton<NotificationPermissionService>(
     () => FirebaseNotificationPermissionService(),
   );
+  sl.registerLazySingleton<PushNotificationService>(
+    () => FirebasePushNotificationService(sl()),
+  );
 
   sl.registerLazySingleton<ApiConsumer>(
     () => DioConsumer(
@@ -106,6 +111,7 @@ Future<void> setupServiceLocator() async {
   registerSearchFeature(sl);
   registerTasksFeature(sl);
   registerCertificatesFeature(sl);
+  registerNotificationsFeature(sl);
   registerContactInfoFeature(sl);
   registerChatbotFeature(sl);
   registerContactFormFeature(sl);

@@ -2785,6 +2785,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Couldn\'t open the certificate'**
   String get certificateOpenFailed;
+
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsTitle;
+
+  /// No description provided for @notificationsEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re all caught up'**
+  String get notificationsEmptyMessage;
+
+  /// No description provided for @notificationsUnreadLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No unread notifications} =1{1 unread notification} other{{count} unread notifications}}'**
+  String notificationsUnreadLabel(int count);
+
+  /// No description provided for @notificationsJustNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Just now'**
+  String get notificationsJustNow;
+
+  /// No description provided for @notificationsMinutesAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 min ago} other{{count} min ago}}'**
+  String notificationsMinutesAgo(int count);
+
+  /// No description provided for @notificationsHoursAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 hour ago} other{{count} hours ago}}'**
+  String notificationsHoursAgo(int count);
+
+  /// No description provided for @notificationsYesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get notificationsYesterday;
+
+  /// No description provided for @notificationSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification settings'**
+  String get notificationSettingsTitle;
+
+  /// No description provided for @notificationSettingsHeaderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your notifications'**
+  String get notificationSettingsHeaderTitle;
+
+  /// No description provided for @notificationSettingsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose what you want to be notified about'**
+  String get notificationSettingsSubtitle;
+
+  /// No description provided for @notificationPrefNews.
+  ///
+  /// In en, this message translates to:
+  /// **'News'**
+  String get notificationPrefNews;
+
+  /// No description provided for @notificationPrefNewsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'New stories from Shababna'**
+  String get notificationPrefNewsHint;
+
+  /// No description provided for @notificationPrefOpportunities.
+  ///
+  /// In en, this message translates to:
+  /// **'Volunteering opportunities'**
+  String get notificationPrefOpportunities;
+
+  /// No description provided for @notificationPrefOpportunitiesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'New opportunities and updates to ones you follow'**
+  String get notificationPrefOpportunitiesHint;
+
+  /// No description provided for @notificationPrefRegistrations.
+  ///
+  /// In en, this message translates to:
+  /// **'Registrations'**
+  String get notificationPrefRegistrations;
+
+  /// No description provided for @notificationPrefRegistrationsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Updates on your opportunity registrations'**
+  String get notificationPrefRegistrationsHint;
+
+  /// No description provided for @notificationPrefTasks.
+  ///
+  /// In en, this message translates to:
+  /// **'Tasks'**
+  String get notificationPrefTasks;
+
+  /// No description provided for @notificationPrefTasksHint.
+  ///
+  /// In en, this message translates to:
+  /// **'New tasks and submission results'**
+  String get notificationPrefTasksHint;
+
+  /// No description provided for @notificationPrefTier.
+  ///
+  /// In en, this message translates to:
+  /// **'Volunteer level'**
+  String get notificationPrefTier;
+
+  /// No description provided for @notificationPrefTierHint.
+  ///
+  /// In en, this message translates to:
+  /// **'When you reach a new level'**
+  String get notificationPrefTierHint;
+
+  /// No description provided for @notificationPrefCertificates.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificates'**
+  String get notificationPrefCertificates;
+
+  /// No description provided for @notificationPrefCertificatesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'When a new certificate is issued to you'**
+  String get notificationPrefCertificatesHint;
+
+  /// No description provided for @notificationGeneralNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Important announcements from Shababna are always on.'**
+  String get notificationGeneralNote;
+
+  /// No description provided for @notificationPermissionOffTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications are off on this device'**
+  String get notificationPermissionOffTitle;
+
+  /// No description provided for @notificationPermissionOffMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn them on so you don\'t miss new opportunities and updates.'**
+  String get notificationPermissionOffMessage;
+
+  /// No description provided for @notificationPermissionTurnOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on'**
+  String get notificationPermissionTurnOn;
+
+  /// No description provided for @notificationPermissionSettingsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'To turn them on, allow notifications for Shababna in your phone settings.'**
+  String get notificationPermissionSettingsHint;
+
+  /// No description provided for @notificationsSendTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Send test notification'**
+  String get notificationsSendTest;
+
+  /// No description provided for @notificationsTestSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Test sent. It arrives in a few seconds.'**
+  String get notificationsTestSent;
 }
 
 class _AppLocalizationsDelegate

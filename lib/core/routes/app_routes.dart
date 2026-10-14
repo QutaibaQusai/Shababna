@@ -109,6 +109,17 @@ class AppRoutes {
   static const String certificateDetailsName = 'certificate-details';
   static String certificateDetailsPath(String id) => '/certificates/$id';
 
+  static const String notifications = '/notifications';
+  static const String notificationsName = 'notifications';
+  static const String notificationSettings = '/notifications/settings';
+  static const String notificationSettingsName = 'notification-settings';
+  static const String notificationDetails = '/notifications/:id';
+  static const String notificationDetailsName = 'notification-details';
+  static String notificationDetailsPath(String id) => '/notifications/$id';
+
+  static bool isMemberOnly(String location) =>
+      memberRoutes.contains(location) || location.startsWith('$notifications/');
+
   static const String homeSlide = '/slides/:id';
   static const String homeSlideName = 'home-slide';
   static String homeSlidePath(String id) => '/slides/$id';
@@ -124,6 +135,8 @@ class AppRoutes {
     contactForm,
     tasks,
     certificates,
+    notifications,
+    notificationSettings,
   };
 
   static const Set<String> publicRoutes = {

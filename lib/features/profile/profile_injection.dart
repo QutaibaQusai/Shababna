@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 
 import '../../core/network/api_consumer.dart';
+import '../../core/notifications/push_device_registrar.dart';
 import '../../core/session/auth_session_cubit.dart';
 import 'data/datasources/change_password_remote_data_source.dart';
 import 'data/datasources/profile_email_remote_data_source.dart';
@@ -84,11 +85,14 @@ void registerProfileFeature(GetIt sl) {
     (newEmail, _) => VerifyEmailChangeCubit(
       sl<ProfileEmailRepository>(),
       sl<ProfileCubit>(),
+      sl<PushDeviceRegistrar>(),
       newEmail: newEmail,
     ),
   );
 
-  sl.registerFactory<ChangePasswordCubit>(() => ChangePasswordCubit(sl<ChangePasswordRepository>()));
+  sl.registerFactory<ChangePasswordCubit>(
+    () => ChangePasswordCubit(sl<ChangePasswordRepository>(), sl<PushDeviceRegistrar>()),
+  );
 
   sl.registerFactory<DeleteAccountCubit>(
     () => DeleteAccountCubit(sl<ProfileRepository>(), sl<AuthSessionCubit>()),

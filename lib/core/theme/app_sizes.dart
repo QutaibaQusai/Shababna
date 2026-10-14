@@ -43,6 +43,9 @@ class AppSizes {
   static double get calendarRowHeight => 44.r;
   static double get calendarWeekdaysHeight => 24.r;
   static double get tabIndicatorDotSize => 5.r;
+  static double get notificationBadgeSize => 18.r;
+  static double get notificationIconSize => 44.r;
+  static double get notificationUnreadDotSize => 8.r;
   static double get slideToConfirmHeight => 44.h;
   static double get volunteeringOpportunityDonorLogoSize => 40.r;
   static double get volunteeringOpportunityDonorNameMaxWidth => 120.r;

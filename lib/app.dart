@@ -15,6 +15,8 @@ import 'core/theme/app_sizes.dart';
 import 'core/theme/app_typography.dart';
 import 'core/theme/app_theme.dart';
 import 'features/auth/presentation/cubit/logout/logout_cubit.dart';
+import 'features/notifications/presentation/cubit/unread_count/unread_count_cubit.dart';
+import 'features/notifications/presentation/widgets/push_notifications_scope.dart';
 import 'l10n/app_localizations.dart';
 
 class ShababnaApp extends StatelessWidget {
@@ -37,39 +39,42 @@ class ShababnaApp extends StatelessWidget {
           BlocProvider(create: (_) => sl<ThemeService>()),
           BlocProvider(create: (_) => sl<AuthSessionCubit>()),
           BlocProvider(create: (_) => sl<AppLockCubit>()),
+          BlocProvider(create: (_) => sl<UnreadCountCubit>()),
         ],
-        child: Builder(
-          builder: (context) {
-            final locale = context.watch<LocaleService>().state;
-            final themeMode = context.watch<ThemeService>().state;
-            final effectiveLocale =
-                locale ?? WidgetsBinding.instance.platformDispatcher.locale;
-            final fontFamily = effectiveLocale.languageCode == 'ar'
-                ? AppTypography.fontFamilyArabic
-                : AppTypography.fontFamilyLatin;
-            return MaterialApp.router(
-              onGenerateTitle: (context) => context.l10n.appName,
-              debugShowCheckedModeBanner: false,
-              theme: AppTheme.light(fontFamily: fontFamily),
-              darkTheme: AppTheme.dark(fontFamily: fontFamily),
-              themeMode: themeMode,
-              locale: locale,
-              localizationsDelegates: AppLocalizations.localizationsDelegates,
-              supportedLocales: AppLocalizations.supportedLocales,
-              routerConfig: sl<GoRouter>(),
-              builder: (context, child) => SkeletonizerConfig(
-                data: SkeletonizerConfigData(brightness: Theme.of(context).brightness),
-                child: AppLockGate(
-                  onSignOut: _signOut,
-                  child: GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-                    child: child,
+        child: PushNotificationsScope(
+          child: Builder(
+            builder: (context) {
+              final locale = context.watch<LocaleService>().state;
+              final themeMode = context.watch<ThemeService>().state;
+              final effectiveLocale =
+                  locale ?? WidgetsBinding.instance.platformDispatcher.locale;
+              final fontFamily = effectiveLocale.languageCode == 'ar'
+                  ? AppTypography.fontFamilyArabic
+                  : AppTypography.fontFamilyLatin;
+              return MaterialApp.router(
+                onGenerateTitle: (context) => context.l10n.appName,
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.light(fontFamily: fontFamily),
+                darkTheme: AppTheme.dark(fontFamily: fontFamily),
+                themeMode: themeMode,
+                locale: locale,
+                localizationsDelegates: AppLocalizations.localizationsDelegates,
+                supportedLocales: AppLocalizations.supportedLocales,
+                routerConfig: sl<GoRouter>(),
+                builder: (context, child) => SkeletonizerConfig(
+                  data: SkeletonizerConfigData(brightness: Theme.of(context).brightness),
+                  child: AppLockGate(
+                    onSignOut: _signOut,
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                      child: child,
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

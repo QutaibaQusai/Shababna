@@ -31,6 +31,9 @@ import '../../features/profile/presentation/pages/edit_profile/edit_profile_page
 import '../../features/search/presentation/pages/global_search_page.dart';
 import '../../features/certificates/presentation/pages/certificate_details_page.dart';
 import '../../features/certificates/presentation/pages/certificates_page.dart';
+import '../../features/notifications/presentation/pages/notification_details_page.dart';
+import '../../features/notifications/presentation/pages/notification_settings_page.dart';
+import '../../features/notifications/presentation/pages/notifications_page.dart';
 import '../../features/tasks/presentation/pages/task_details_page.dart';
 import '../../features/tasks/presentation/pages/task_submission_page.dart';
 import '../../features/tasks/presentation/pages/tasks_page.dart';
@@ -69,7 +72,7 @@ class AppRouter {
         return switch (authSessionCubit.state) {
           AuthStatus.authenticated => isPublicRoute && !isModalLogin ? AppRoutes.home : null,
           AuthStatus.guest =>
-            AppRoutes.memberRoutes.contains(location) ? AppRoutes.login : null,
+            AppRoutes.isMemberOnly(location) ? AppRoutes.login : null,
           AuthStatus.unauthenticated => isPublicRoute ? null : AppRoutes.login,
         };
       },
@@ -207,6 +210,21 @@ class AppRouter {
           path: AppRoutes.certificateDetails,
           name: AppRoutes.certificateDetailsName,
           builder: (context, state) => CertificateDetailsPage(id: state.pathParameters['id']!),
+        ),
+        GoRoute(
+          path: AppRoutes.notifications,
+          name: AppRoutes.notificationsName,
+          builder: (context, state) => const NotificationsPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.notificationSettings,
+          name: AppRoutes.notificationSettingsName,
+          builder: (context, state) => const NotificationSettingsPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.notificationDetails,
+          name: AppRoutes.notificationDetailsName,
+          builder: (context, state) => NotificationDetailsPage(id: state.pathParameters['id']!),
         ),
         GoRoute(
           path: AppRoutes.contactInfo,

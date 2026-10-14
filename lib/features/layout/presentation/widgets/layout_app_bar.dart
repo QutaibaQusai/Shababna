@@ -3,12 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '../../../../core/config/app_assets.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/shared/widgets/app_icon_button.dart';
-import '../../../../core/shared/widgets/app_toast.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../notifications/presentation/widgets/notification_bell_button.dart';
 import '../cubit/layout_cubit.dart';
 
 class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -21,8 +20,6 @@ class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final tab = context.watch<LayoutCubit>().state;
     final l10n = context.l10n;
-
-    void showComingSoon() => AppToast.info(context, l10n.comingSoonMessage);
 
     return AppBar(
       automaticallyImplyLeading: false,
@@ -44,11 +41,7 @@ class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 SizedBox(width: AppSpacing.xs),
               ],
-              AppIconButton.svg(
-                svgAsset: AppAssets.iconNotification,
-                semanticLabel: l10n.actionNotifications,
-                onPressed: showComingSoon,
-              ),
+              const NotificationBellButton(),
               SizedBox(width: AppSpacing.screenMargin),
             ]
           : null,

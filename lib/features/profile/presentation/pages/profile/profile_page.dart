@@ -23,7 +23,6 @@ import '../../widgets/profile/language_sheet.dart';
 import '../../widgets/profile/logout_sheet.dart';
 import '../../widgets/profile/profile_header_skeleton.dart';
 import '../../widgets/profile/profile_header_tile.dart';
-import '../../widgets/profile/profile_toggle_tile.dart';
 import '../../widgets/profile/theme_sheet.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -165,7 +164,12 @@ class _ProfileViewState extends State<_ProfileView> {
                 value: _themeLabel(context, themeMode),
                 onTap: () => _openThemeSheet(context),
               ),
-              const _NotificationsToggleTile(),
+              if (!isGuest)
+                AppMenuTile(
+                  icon: LucideIcons.bell,
+                  title: context.l10n.profileMenuNotifications,
+                  onTap: () => context.push(AppRoutes.notificationSettings),
+                ),
               if (!isGuest)
                 AppMenuTile(
                   icon: LucideIcons.shieldCheck,
@@ -217,28 +221,6 @@ class _ProfileViewState extends State<_ProfileView> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _NotificationsToggleTile extends StatefulWidget {
-  const _NotificationsToggleTile();
-
-  @override
-  State<_NotificationsToggleTile> createState() => _NotificationsToggleTileState();
-}
-
-class _NotificationsToggleTileState extends State<_NotificationsToggleTile> {
-  bool _enabled = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return ProfileToggleTile(
-      icon: LucideIcons.bell,
-      title: context.l10n.profileMenuNotifications,
-      subtitle: context.l10n.profileMenuNotificationsSubtitle,
-      value: _enabled,
-      onChanged: (value) => setState(() => _enabled = value),
     );
   }
 }

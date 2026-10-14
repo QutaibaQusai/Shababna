@@ -47,6 +47,14 @@ class EndPoints {
 
   static const String holidays = '/api/v1/holidays';
 
+  static const String notifications = '/api/v1/notifications';
+  static const String notificationsUnreadCount = '$notifications/unread-count';
+  static const String notificationPreferences = '$notifications/preferences';
+  static const String notificationDeviceToken = '$notifications/device-token';
+  static const String notificationsTest = '$notifications/test';
+  static String notificationById(String id) => '$notifications/$id';
+  static String notificationRead(String id) => '$notifications/$id/read';
+
   static const String certificates = '/api/v1/certificates';
   static String certificateById(String id) => '$certificates/$id';
 
