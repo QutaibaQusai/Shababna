@@ -5,8 +5,8 @@ flutter_launcher_icons:
   remove_alpha_ios: true
 
   # Standard icon (used as fallback and for older Android), and base for iOS
-  image_path: "assets/images/logo_icon.png"
+  image_path: "assets/images/logo_heart_icon.png"
 
   # Android adaptive icon (API 26+)
-  adaptive_icon_background: "#004C96"
-  adaptive_icon_foreground: "assets/images/logo_android12.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/logo_heart_foreground.png"
