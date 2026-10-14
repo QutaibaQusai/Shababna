@@ -53,7 +53,7 @@ class NotificationBellButton extends StatelessWidget {
                   ),
                   padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxs),
                   decoration: BoxDecoration(
-                    color: colors.error,
+                    color: colors.primary,
                     borderRadius: AppRadius.pillRadius,
                     border: Border.all(
                       color: colors.surface,
@@ -65,7 +65,7 @@ class NotificationBellButton extends StatelessWidget {
                     count > _maxShownCount ? '$_maxShownCount+' : '$count',
                     textDirection: TextDirection.ltr,
                     style: context.textTheme.labelSmall?.copyWith(
-                      color: colors.onError,
+                      color: colors.onPrimary,
                       fontWeight: FontWeight.w700,
                       height: 1,
                     ),
