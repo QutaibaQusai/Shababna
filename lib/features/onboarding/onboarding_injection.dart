@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 
-import '../../core/notifications/notification_permission_service.dart';
 import '../../core/storage/local_storage.dart';
 import 'data/repositories/onboarding_repository_impl.dart';
 import 'domain/repositories/onboarding_repository.dart';
@@ -12,6 +11,6 @@ void registerOnboardingFeature(GetIt sl) {
   );
 
   sl.registerFactory<OnboardingCubit>(
-    () => OnboardingCubit(sl<OnboardingRepository>(), sl<NotificationPermissionService>()),
+    () => OnboardingCubit(sl<OnboardingRepository>()),
   );
 }

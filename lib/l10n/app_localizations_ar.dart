@@ -827,75 +827,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get assistantTyping => 'شبابنا يكتب';
 
   @override
-  String get onboardingNext => 'التالي';
-
-  @override
-  String get onboardingGetStarted => 'لنبدأ';
-
-  @override
-  String get onboardingVolunteerTitle => 'تطوّع مع';
-
-  @override
-  String get onboardingVolunteerHighlight => 'شبابنا';
-
-  @override
-  String get onboardingVolunteerSubtitle =>
-      'انضم إلى الشبكة الشبابية للجمعية الملكية للتوعية الصحية، وساهم في نشر الوعي الصحي في مجتمعك.';
-
-  @override
-  String get onboardingVolunteeringOpportunitiesTitle => 'اكتشف فرص التطوع';
-
-  @override
-  String get onboardingVolunteeringOpportunitiesHighlight => 'القريبة منك';
-
-  @override
-  String get onboardingVolunteeringOpportunitiesSubtitle =>
-      'تصفّح الفرص التطوعية في مختلف أنحاء الأردن، وسجّل بلمسة واحدة وتابع حالة تسجيلك.';
-
-  @override
-  String get onboardingCertificatesTitle => 'اجمع الساعات واحصل على';
-
-  @override
-  String get onboardingCertificatesHighlight => 'الشهادات';
-
-  @override
-  String get onboardingCertificatesSubtitle =>
-      'كل مهمة تنجزها تضيف إلى ساعات تطوعك، وترفع مستواك، وتمنحك شهادات تدعم سيرتك الذاتية.';
-
-  @override
-  String get onboardingThemeTitle => 'اختر';
-
-  @override
-  String get onboardingThemeHighlight => 'المظهر';
-
-  @override
-  String get onboardingThemeSubtitle =>
-      'اختر الوضع الفاتح أو الداكن، أو اتبع إعدادات هاتفك.';
-
-  @override
-  String get onboardingNotificationsTitle => 'ابقَ';
-
-  @override
-  String get onboardingNotificationsHighlight => 'على اطلاع';
-
-  @override
-  String get onboardingNotificationsSubtitle =>
-      'احصل على إشعارات بفرص التطوع الجديدة، وتحديثات تسجيلاتك، وآخر الأخبار.';
-
-  @override
-  String get onboardingNotificationsEnable => 'تفعيل الإشعارات';
-
-  @override
-  String get onboardingNotificationsEnabled => 'الإشعارات مفعّلة';
-
-  @override
-  String get onboardingNotificationsDenied =>
-      'الإشعارات متوقفة، ويمكنك تفعيلها لاحقاً من إعدادات هاتفك.';
-
-  @override
-  String onboardingProgressLabel(int current, int total) {
-    return 'الخطوة $current من $total';
-  }
+  String get onboardingGetStarted => 'عِش التجربة';
 
   @override
   String get volunteeringOpportunitiesEmptyMessage =>

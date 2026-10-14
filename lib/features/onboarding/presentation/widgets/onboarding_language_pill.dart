@@ -7,7 +7,6 @@ import '../../../../core/services/locale_service.dart';
 import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_typography.dart';
-import 'onboarding_palette.dart';
 
 class OnboardingLanguagePill extends StatelessWidget {
   const OnboardingLanguagePill({super.key});
@@ -36,7 +35,7 @@ class OnboardingLanguagePill extends StatelessWidget {
           child: Text(
             isArabic ? _switchToEnglish : _switchToArabic,
             style: context.textTheme.titleMedium?.copyWith(
-              color: OnboardingPalette.foreground,
+              color: context.colorScheme.primary,
               fontWeight: FontWeight.w700,
               fontFamily: isArabic
                   ? AppTypography.fontFamilyLatin

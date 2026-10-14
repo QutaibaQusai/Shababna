@@ -37,12 +37,7 @@ class AppAssets {
   static const String illustrationTasksCompleted =
       'assets/images/illustration_tasks_completed.svg';
 
-  static const String onboardingVolunteer = 'assets/images/onboarding_volunteer.jpg';
-  static const String onboardingVolunteeringOpportunities =
-      'assets/images/onboarding_volunteering_opportunities.jpg';
-  static const String onboardingCertificates = 'assets/images/onboarding_certificates.jpg';
-  static const String onboardingTheme = 'assets/images/onboarding_theme.jpg';
-  static const String onboardingNotifications = 'assets/images/onboarding_notifications.jpg';
+  static const String onboardingBackground = 'assets/images/onboarding_background.png';
 
   static const String assistantAnimation = 'assets/animations/assistant_robot.json';
 }

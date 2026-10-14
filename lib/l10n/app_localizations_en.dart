@@ -829,75 +829,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get assistantTyping => 'Shababna is typing';
 
   @override
-  String get onboardingNext => 'Next';
-
-  @override
-  String get onboardingGetStarted => 'Get started';
-
-  @override
-  String get onboardingVolunteerTitle => 'Volunteer with';
-
-  @override
-  String get onboardingVolunteerHighlight => 'Shababna';
-
-  @override
-  String get onboardingVolunteerSubtitle =>
-      'Join the youth network of the Royal Health Awareness Society and help spread health awareness in your community.';
-
-  @override
-  String get onboardingVolunteeringOpportunitiesTitle => 'Find opportunities';
-
-  @override
-  String get onboardingVolunteeringOpportunitiesHighlight => 'near you';
-
-  @override
-  String get onboardingVolunteeringOpportunitiesSubtitle =>
-      'Browse volunteering opportunities across Jordan, register in a tap and follow your registration status.';
-
-  @override
-  String get onboardingCertificatesTitle => 'Earn hours and';
-
-  @override
-  String get onboardingCertificatesHighlight => 'certificates';
-
-  @override
-  String get onboardingCertificatesSubtitle =>
-      'Every task you complete adds volunteering hours, levels up your tier and earns you certificates for your CV.';
-
-  @override
-  String get onboardingThemeTitle => 'Pick your';
-
-  @override
-  String get onboardingThemeHighlight => 'look';
-
-  @override
-  String get onboardingThemeSubtitle =>
-      'Choose light, dark, or follow your phone\'s setting.';
-
-  @override
-  String get onboardingNotificationsTitle => 'Stay in';
-
-  @override
-  String get onboardingNotificationsHighlight => 'the loop';
-
-  @override
-  String get onboardingNotificationsSubtitle =>
-      'Get notified about new volunteering opportunities, updates on your registrations and the latest news.';
-
-  @override
-  String get onboardingNotificationsEnable => 'Turn on notifications';
-
-  @override
-  String get onboardingNotificationsEnabled => 'Notifications are on';
-
-  @override
-  String get onboardingNotificationsDenied =>
-      'Notifications are off. You can turn them on later from your phone settings.';
-
-  @override
-  String onboardingProgressLabel(int current, int total) {
-    return 'Step $current of $total';
-  }
+  String get onboardingGetStarted => 'Live the experience';
 
   @override
   String get volunteeringOpportunitiesEmptyMessage =>
