@@ -21,6 +21,9 @@ class AppAssets {
   static const String iconHourglass = 'assets/images/icon_hourglass.png';
   static const String iconCertificate = 'assets/images/icon_certificate.svg';
   static const String iconAssociationHeart = 'assets/images/icon_about_association.svg';
+  static const String iconRegistration = 'assets/images/icon_registration.svg';
+  static const String iconTask = 'assets/images/icon_task.svg';
+  static const String iconTier = 'assets/images/icon_tier.svg';
 
   static const String illustrationSearch = 'assets/images/illustration_search.svg';
   static const String illustrationEmpty = 'assets/images/illustration_empty.svg';

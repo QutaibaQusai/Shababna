@@ -75,11 +75,4 @@ class NotificationsRemoteDataSource {
       },
     );
   }
-
-  Future<void> sendTest({required String type, String? targetId}) {
-    return _apiConsumer.post(
-      EndPoints.notificationsTest,
-      data: {'type': type, 'targetId': ?targetId},
-    );
-  }
 }

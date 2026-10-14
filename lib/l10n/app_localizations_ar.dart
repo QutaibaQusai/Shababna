@@ -1690,8 +1690,5 @@ class AppLocalizationsAr extends AppLocalizations {
       'لتفعيلها، اسمح بإشعارات شبابنا من إعدادات هاتفك.';
 
   @override
-  String get notificationsSendTest => 'إرسال إشعار تجريبي';
-
-  @override
-  String get notificationsTestSent => 'تم الإرسال، سيصلك خلال ثوانٍ.';
+  String get notificationDetailsTitle => 'تفاصيل الإشعار';
 }

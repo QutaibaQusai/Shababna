@@ -7,6 +7,7 @@ class NotificationTimeText extends StatelessWidget {
   const NotificationTimeText({super.key, required this.createdAt});
 
   static const _minutesPerHour = 60;
+  static const _clockSkewTolerance = Duration(minutes: 1);
 
   final DateTime createdAt;
 
@@ -16,6 +17,11 @@ class NotificationTimeText extends StatelessWidget {
     final difference = now.difference(createdAt);
     final locale = context.locale.toLanguageTag();
 
+    if (difference < -_clockSkewTolerance) {
+      return DateUtils.isSameDay(createdAt, now)
+          ? DateFormat.jm(locale).format(createdAt)
+          : DateFormat.yMMMd(locale).format(createdAt);
+    }
     if (difference.inMinutes < 1) return l10n.notificationsJustNow;
     if (difference.inMinutes < _minutesPerHour) {
       return l10n.notificationsMinutesAgo(difference.inMinutes);

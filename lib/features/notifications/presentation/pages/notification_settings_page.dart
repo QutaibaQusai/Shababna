@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -65,19 +64,6 @@ class _NotificationSettingsViewState extends State<_NotificationSettingsView> {
     super.dispose();
   }
 
-  void _onFeedback(
-    BuildContext context,
-    NotificationSettingsFeedback feedback,
-  ) {
-    final l10n = context.l10n;
-    switch (feedback) {
-      case NotificationSettingsError(:final message):
-        AppToast.error(context, message ?? l10n.somethingWentWrong);
-      case NotificationTestSent():
-        AppToast.success(context, l10n.notificationsTestSent);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -87,8 +73,11 @@ class _NotificationSettingsViewState extends State<_NotificationSettingsView> {
 
     return BlocListener<NotificationSettingsCubit, NotificationSettingsState>(
       listenWhen: (previous, current) =>
-          current.feedback != null && previous.feedback != current.feedback,
-      listener: (context, state) => _onFeedback(context, state.feedback!),
+          current.saveError != null && previous.saveError != current.saveError,
+      listener: (context, state) => AppToast.error(
+        context,
+        state.saveError?.message ?? context.l10n.somethingWentWrong,
+      ),
       child: switch (state.status) {
         NotificationSettingsStatus.failure => AppErrorWidget(
           message: state.errorMessage ?? l10n.somethingWentWrong,
@@ -126,13 +115,6 @@ class _NotificationSettingsViewState extends State<_NotificationSettingsView> {
             ),
             SizedBox(height: AppSpacing.sm),
             const _GeneralNote(),
-            if (kDebugMode) ...[
-              SizedBox(height: AppSpacing.lg),
-              AppButton.secondary(
-                label: l10n.notificationsSendTest,
-                onPressed: state.isSendingTest ? null : cubit.sendTest,
-              ),
-            ],
           ],
         ),
       },

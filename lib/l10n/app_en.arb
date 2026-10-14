@@ -622,6 +622,5 @@
   "notificationPermissionOffMessage": "Turn them on so you don't miss new opportunities and updates.",
   "notificationPermissionTurnOn": "Turn on",
   "notificationPermissionSettingsHint": "To turn them on, allow notifications for Shababna in your phone settings.",
-  "notificationsSendTest": "Send test notification",
-  "notificationsTestSent": "Test sent. It arrives in a few seconds."
+  "notificationDetailsTitle": "Notification details"
 }

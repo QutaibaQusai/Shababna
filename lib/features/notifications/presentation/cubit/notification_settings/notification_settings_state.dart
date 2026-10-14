@@ -5,11 +5,7 @@ import '../../../domain/repositories/notifications_repository.dart';
 
 enum NotificationSettingsStatus { loading, ready, failure }
 
-sealed class NotificationSettingsFeedback extends Equatable {
-  const NotificationSettingsFeedback();
-}
-
-final class NotificationSettingsError extends NotificationSettingsFeedback {
+final class NotificationSettingsError extends Equatable {
   const NotificationSettingsError(this.message);
 
   final String? message;
@@ -18,28 +14,19 @@ final class NotificationSettingsError extends NotificationSettingsFeedback {
   List<Object?> get props => [message, identityHashCode(this)];
 }
 
-final class NotificationTestSent extends NotificationSettingsFeedback {
-  const NotificationTestSent();
-
-  @override
-  List<Object?> get props => [identityHashCode(this)];
-}
-
 class NotificationSettingsState extends Equatable {
   const NotificationSettingsState({
     this.status = NotificationSettingsStatus.loading,
     this.preferences,
     this.permission = NotificationPermissionStatus.notDetermined,
-    this.isSendingTest = false,
-    this.feedback,
+    this.saveError,
     this.errorMessage,
   });
 
   final NotificationSettingsStatus status;
   final NotificationPreferences? preferences;
   final NotificationPermissionStatus permission;
-  final bool isSendingTest;
-  final NotificationSettingsFeedback? feedback;
+  final NotificationSettingsError? saveError;
   final String? errorMessage;
 
   bool get isPermissionGranted =>
@@ -52,16 +39,14 @@ class NotificationSettingsState extends Equatable {
     NotificationSettingsStatus? status,
     NotificationPreferences? preferences,
     NotificationPermissionStatus? permission,
-    bool? isSendingTest,
-    NotificationSettingsFeedback? feedback,
+    NotificationSettingsError? saveError,
     String? errorMessage,
   }) {
     return NotificationSettingsState(
       status: status ?? this.status,
       preferences: preferences ?? this.preferences,
       permission: permission ?? this.permission,
-      isSendingTest: isSendingTest ?? this.isSendingTest,
-      feedback: feedback ?? this.feedback,
+      saveError: saveError ?? this.saveError,
       errorMessage: errorMessage,
     );
   }
@@ -71,8 +56,7 @@ class NotificationSettingsState extends Equatable {
     status,
     preferences,
     permission,
-    isSendingTest,
-    feedback,
+    saveError,
     errorMessage,
   ];
 }

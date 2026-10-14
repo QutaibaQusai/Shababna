@@ -493,6 +493,5 @@
   "notificationPermissionOffMessage": "فعّلها حتى لا تفوتك الفرص التطوعية والتحديثات الجديدة.",
   "notificationPermissionTurnOn": "تفعيل",
   "notificationPermissionSettingsHint": "لتفعيلها، اسمح بإشعارات شبابنا من إعدادات هاتفك.",
-  "notificationsSendTest": "إرسال إشعار تجريبي",
-  "notificationsTestSent": "تم الإرسال، سيصلك خلال ثوانٍ."
+  "notificationDetailsTitle": "تفاصيل الإشعار"
 }

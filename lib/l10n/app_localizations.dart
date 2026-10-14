@@ -2948,17 +2948,11 @@ abstract class AppLocalizations {
   /// **'To turn them on, allow notifications for Shababna in your phone settings.'**
   String get notificationPermissionSettingsHint;
 
-  /// No description provided for @notificationsSendTest.
+  /// No description provided for @notificationDetailsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Send test notification'**
-  String get notificationsSendTest;
-
-  /// No description provided for @notificationsTestSent.
-  ///
-  /// In en, this message translates to:
-  /// **'Test sent. It arrives in a few seconds.'**
-  String get notificationsTestSent;
+  /// **'Notification details'**
+  String get notificationDetailsTitle;
 }
 
 class _AppLocalizationsDelegate

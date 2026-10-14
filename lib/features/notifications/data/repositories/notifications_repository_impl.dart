@@ -3,7 +3,6 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/data/repository_guard_mixin.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/network/paged_result.dart';
-import '../../../../core/notifications/push_message.dart';
 import '../../domain/repositories/notifications_repository.dart';
 import '../datasources/notifications_remote_data_source.dart';
 import '../mappers/notifications_mapper.dart';
@@ -84,16 +83,6 @@ class NotificationsRepositoryImpl
         platform: platform.name,
         language: language,
       ),
-    );
-  }
-
-  @override
-  Future<Either<Failure, void>> sendTest({
-    required NotificationType type,
-    String? targetId,
-  }) {
-    return guard(
-      () => _remoteDataSource.sendTest(type: type.name, targetId: targetId),
     );
   }
 }

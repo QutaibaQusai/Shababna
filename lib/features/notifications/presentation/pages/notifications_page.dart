@@ -118,9 +118,13 @@ class _NotificationsList extends StatelessWidget {
       onNotification: (notification) => _onScroll(context, notification),
       child: ListView.separated(
         physics: const AlwaysScrollableScrollPhysics(),
-        padding: EdgeInsets.all(AppSpacing.screenMargin),
+        padding: EdgeInsets.symmetric(vertical: AppSpacing.xs),
         itemCount: items.length + (state.hasNextPage ? 1 : 0),
-        separatorBuilder: (_, _) => SizedBox(height: AppSpacing.xs),
+        separatorBuilder: (_, _) => Divider(
+          height: 1,
+          indent: AppSpacing.screenMargin,
+          endIndent: AppSpacing.screenMargin,
+        ),
         itemBuilder: (context, index) {
           if (index == items.length) {
             return NotificationsLoadMoreFooter(

@@ -160,9 +160,4 @@ abstract interface class NotificationsRepository {
     required DevicePlatform platform,
     required String language,
   });
-
-  Future<Either<Failure, void>> sendTest({
-    required NotificationType type,
-    String? targetId,
-  });
 }

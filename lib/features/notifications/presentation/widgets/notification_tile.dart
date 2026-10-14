@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
-import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_sizes.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../domain/repositories/notifications_repository.dart';
 import 'notification_time_text.dart';
-import 'notification_type_icon.dart';
+import 'notification_icon.dart';
 
 class NotificationTile extends StatelessWidget {
   const NotificationTile({
@@ -31,16 +30,20 @@ class NotificationTile extends StatelessWidget {
       color: isUnread
           ? colors.primary.withValues(alpha: _unreadTintAlpha)
           : Colors.transparent,
-      borderRadius: AppRadius.lgRadius,
       child: InkWell(
         onTap: onTap,
-        borderRadius: AppRadius.lgRadius,
         child: Padding(
-          padding: EdgeInsets.all(AppSpacing.sm),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.screenMargin,
+            vertical: AppSpacing.sm,
+          ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              NotificationTypeIcon(type: notification.type),
+              NotificationIcon(
+                type: notification.type,
+                color: isUnread ? colors.primary : colors.onSurfaceVariant,
+              ),
               SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: Column(
@@ -60,37 +63,58 @@ class NotificationTile extends StatelessWidget {
                             ),
                           ),
                         ),
-                        if (isUnread) ...[
-                          SizedBox(width: AppSpacing.xs),
-                          Container(
-                            width: AppSizes.notificationUnreadDotSize,
-                            height: AppSizes.notificationUnreadDotSize,
-                            decoration: BoxDecoration(
-                              color: colors.primary,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        ],
+                        SizedBox(width: AppSpacing.xs),
+                        NotificationTimeText(createdAt: notification.createdAt),
                       ],
                     ),
                     if (body.isNotEmpty) ...[
                       SizedBox(height: AppSpacing.xxs),
-                      Text(
-                        body,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: context.textTheme.bodySmall?.copyWith(
-                          color: colors.onSurfaceVariant,
-                        ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              body,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: context.textTheme.bodySmall?.copyWith(
+                                color: colors.onSurfaceVariant,
+                              ),
+                            ),
+                          ),
+                          if (isUnread) ...[
+                            SizedBox(width: AppSpacing.xs),
+                            const _UnreadDot(),
+                          ],
+                        ],
                       ),
                     ],
-                    SizedBox(height: AppSpacing.xs),
-                    NotificationTimeText(createdAt: notification.createdAt),
                   ],
                 ),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _UnreadDot extends StatelessWidget {
+  const _UnreadDot();
+
+  @override
+  Widget build(BuildContext context) {
+    final size = AppSizes.notificationUnreadDotSize;
+
+    return Padding(
+      padding: EdgeInsets.only(top: AppSpacing.xxs),
+      child: Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          color: context.colorScheme.primary,
+          shape: BoxShape.circle,
         ),
       ),
     );

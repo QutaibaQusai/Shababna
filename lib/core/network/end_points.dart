@@ -51,7 +51,6 @@ class EndPoints {
   static const String notificationsUnreadCount = '$notifications/unread-count';
   static const String notificationPreferences = '$notifications/preferences';
   static const String notificationDeviceToken = '$notifications/device-token';
-  static const String notificationsTest = '$notifications/test';
   static String notificationById(String id) => '$notifications/$id';
   static String notificationRead(String id) => '$notifications/$id/read';
 

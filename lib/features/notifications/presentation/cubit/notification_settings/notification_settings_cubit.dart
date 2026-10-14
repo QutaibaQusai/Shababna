@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/error/failures.dart';
 import '../../../../../core/notifications/notification_permission_service.dart';
 import '../../../../../core/notifications/push_device_registrar.dart';
-import '../../../../../core/notifications/push_message.dart';
 import '../../../domain/repositories/notifications_repository.dart';
 import 'notification_settings_state.dart';
 
@@ -74,33 +73,10 @@ class NotificationSettingsCubit extends Cubit<NotificationSettingsState> {
       (failure) => emit(
         state.copyWith(
           preferences: previous,
-          feedback: NotificationSettingsError(_messageOf(failure)),
+          saveError: NotificationSettingsError(_messageOf(failure)),
         ),
       ),
       (saved) => emit(state.copyWith(preferences: saved)),
-    );
-  }
-
-  Future<void> sendTest() async {
-    if (state.isSendingTest) return;
-    emit(state.copyWith(isSendingTest: true));
-
-    final result = await _repository.sendTest(type: NotificationType.general);
-    if (isClosed) return;
-
-    result.fold(
-      (failure) => emit(
-        state.copyWith(
-          isSendingTest: false,
-          feedback: NotificationSettingsError(_messageOf(failure)),
-        ),
-      ),
-      (_) => emit(
-        state.copyWith(
-          isSendingTest: false,
-          feedback: const NotificationTestSent(),
-        ),
-      ),
     );
   }
 

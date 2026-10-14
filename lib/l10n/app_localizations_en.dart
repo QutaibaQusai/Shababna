@@ -1675,8 +1675,5 @@ class AppLocalizationsEn extends AppLocalizations {
       'To turn them on, allow notifications for Shababna in your phone settings.';
 
   @override
-  String get notificationsSendTest => 'Send test notification';
-
-  @override
-  String get notificationsTestSent => 'Test sent. It arrives in a few seconds.';
+  String get notificationDetailsTitle => 'Notification details';
 }
