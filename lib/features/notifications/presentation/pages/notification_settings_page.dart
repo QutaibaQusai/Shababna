@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/extensions/context_extensions.dart';
@@ -19,6 +18,7 @@ import '../../../../l10n/app_localizations.dart';
 import '../../domain/repositories/notifications_repository.dart';
 import '../cubit/notification_settings/notification_settings_cubit.dart';
 import '../cubit/notification_settings/notification_settings_state.dart';
+import '../widgets/notification_preferences_skeleton.dart';
 
 class NotificationSettingsPage extends StatelessWidget {
   const NotificationSettingsPage({super.key});
@@ -98,21 +98,15 @@ class _NotificationSettingsViewState extends State<_NotificationSettingsView> {
               subtitle: l10n.notificationSettingsSubtitle,
             ),
             SizedBox(height: AppSpacing.md),
-            Skeletonizer(
-              enabled: preferences == null,
-              child: Column(
-                children: [
-                  for (final preference in NotificationPreference.values)
-                    _PreferenceRow(
-                      preference: preference,
-                      value: preferences?.isEnabled(preference) ?? true,
-                      onChanged: preferences == null
-                          ? null
-                          : () => cubit.toggle(preference),
-                    ),
-                ],
-              ),
-            ),
+            if (preferences == null)
+              const NotificationPreferencesSkeleton()
+            else
+              for (final preference in NotificationPreference.values)
+                _PreferenceRow(
+                  preference: preference,
+                  value: preferences.isEnabled(preference),
+                  onChanged: () => cubit.toggle(preference),
+                ),
             SizedBox(height: AppSpacing.sm),
             const _GeneralNote(),
           ],
@@ -131,7 +125,7 @@ class _PreferenceRow extends StatelessWidget {
 
   final NotificationPreference preference;
   final bool value;
-  final VoidCallback? onChanged;
+  final VoidCallback onChanged;
 
   (String, String) _texts(AppLocalizations l10n) => switch (preference) {
     NotificationPreference.news => (
@@ -163,7 +157,6 @@ class _PreferenceRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final (title, hint) = _texts(context.l10n);
-    final onChanged = this.onChanged;
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: AppSpacing.xs),
@@ -193,7 +186,7 @@ class _PreferenceRow extends StatelessWidget {
           AppSwitch(
             value: value,
             onChanged: (selected) {
-              if (onChanged != null && selected != value) onChanged();
+              if (selected != value) onChanged();
             },
           ),
         ],
