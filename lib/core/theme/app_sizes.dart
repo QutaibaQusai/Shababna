@@ -22,7 +22,7 @@ class AppSizes {
   static double get avatarSize => 56.r;
   static double get illustrationSize => 140.r;
   static double get illustrationSizeCompact => 110.r;
-  static double get brandLogoHeight => 150.r;
+  static double get loginLogoHeight => 88.r;
   static double get listThumbnailSize => 104.r;
   static double get compactThumbnailSize => 64.r;
   static double get chatAvatarSize => 28.r;

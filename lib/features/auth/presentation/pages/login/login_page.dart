@@ -106,10 +106,11 @@ class _LoginViewState extends State<_LoginView> {
                       children: [
                         SizedBox(height: AppSpacing.lg),
                         Image.asset(
-                          AppAssets.logoFor(context.theme.brightness),
-                          height: AppSizes.brandLogoHeight,
+                          AppAssets.loginLogo,
+                          height: AppSizes.loginLogoHeight,
                           fit: BoxFit.contain,
                         ),
+                        SizedBox(height: AppSpacing.md),
                         Text(
                           context.l10n.loginTitle,
                           textAlign: TextAlign.center,
