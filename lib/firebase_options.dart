@@ -50,19 +50,18 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCaUw-iMjE_a8IeZWc81MwkbtAFbLB24Xs',
-    appId: '1:326085457889:android:0a780d369fe78edc9004a0',
-    messagingSenderId: '326085457889',
-    projectId: 'shababna',
-    storageBucket: 'shababna.firebasestorage.app',
+    apiKey: 'AIzaSyBS8jwZ-4dcyo_qtQshq4et1FKi4PFbk1o',
+    appId: '1:144991423739:android:ebb11fc6668d403b30f45e',
+    messagingSenderId: '144991423739',
+    projectId: 'shababna-f8f58',
+    storageBucket: 'shababna-f8f58.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDm_jlHSmPDs7sec2KnXR-bB8II8EtfipM',
-    appId: '1:326085457889:ios:10a6a4f1686a48529004a0',
-    messagingSenderId: '326085457889',
-    projectId: 'shababna',
-    storageBucket: 'shababna.firebasestorage.app',
-    iosBundleId: 'com.hitech.shababna',
+    apiKey: 'AIzaSyAwTkxSNdkQ-SHFPWfqTaKpZL8DpstcLIQ',
+    appId: '1:144991423739:ios:a7b4dbccc3985d3630f45e',
+    messagingSenderId: '144991423739',
+    projectId: 'shababna-f8f58',
+    storageBucket: 'shababna-f8f58.firebasestorage.app',
+    iosBundleId: 'com.hashtechsllc.shababna',
   );
 }

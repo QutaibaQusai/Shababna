@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "326085457889",
-    "project_id": "shababna",
-    "storage_bucket": "shababna.firebasestorage.app"
+    "project_number": "144991423739",
+    "project_id": "shababna-f8f58",
+    "storage_bucket": "shababna-f8f58.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:326085457889:android:0a780d369fe78edc9004a0",
+        "mobilesdk_app_id": "1:144991423739:android:ebb11fc6668d403b30f45e",
         "android_client_info": {
-          "package_name": "com.hitech.shababna"
+          "package_name": "com.hashtechs.shababnaapp"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCaUw-iMjE_a8IeZWc81MwkbtAFbLB24Xs"
+          "current_key": "AIzaSyBS8jwZ-4dcyo_qtQshq4et1FKi4PFbk1o"
         }
       ],
       "services": {
