@@ -66,6 +66,7 @@ class EndPoints {
   static const String volunteeringOpportunityTypes = '/api/v1/event-types';
   static const String volunteeringOpportunitiesSuggested = '$volunteeringOpportunities/suggested';
   static const String volunteeringOpportunitiesByDate = '$volunteeringOpportunities/by-date';
+  static const String volunteeringOpportunitiesUpcoming = '$volunteeringOpportunities/upcoming';
 
   static const String sliders = '/api/v1/sliders';
 

@@ -44,7 +44,7 @@ class HomeRemoteDataSource {
       });
 
   Future<List<HomeVolunteeringOpportunityModel>> getUpcomingVolunteeringOpportunities() =>
-      _volunteeringOpportunities(EndPoints.volunteeringOpportunities, {
+      _volunteeringOpportunities(EndPoints.volunteeringOpportunitiesUpcoming, {
         'Page': 1,
         'PageSize': _featuredPageSize,
       });
