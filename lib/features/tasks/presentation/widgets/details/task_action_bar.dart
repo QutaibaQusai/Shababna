@@ -10,6 +10,7 @@ import '../../../../../core/shared/widgets/guest_gate.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/tasks_repository.dart';
 import '../../cubit/task_details/task_details_cubit.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class TaskActionBar extends StatelessWidget {
   const TaskActionBar({super.key});
@@ -44,8 +45,7 @@ class TaskActionBar extends StatelessWidget {
 
     return Material(
       color: context.colorScheme.surface,
-      child: SafeArea(
-        top: false,
+      child: AppBottomSafeArea(
         child: Padding(
           padding: EdgeInsets.fromLTRB(
             AppSpacing.screenMargin,

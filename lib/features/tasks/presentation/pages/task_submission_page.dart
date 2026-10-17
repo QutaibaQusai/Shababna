@@ -19,6 +19,7 @@ import '../widgets/form/task_form_field.dart';
 import '../widgets/form/task_form_progress.dart';
 import '../widgets/form/task_form_skeleton.dart';
 import '../widgets/shared/task_status_visual.dart';
+import '../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class TaskSubmissionPage extends StatelessWidget {
   const TaskSubmissionPage({super.key, required this.taskId});
@@ -156,8 +157,7 @@ class _TaskSubmissionView extends StatelessWidget {
               ),
             },
             bottomNavigationBar: isReady
-                ? SafeArea(
-                    top: false,
+                ? AppBottomSafeArea(
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
                         AppSpacing.screenMargin,

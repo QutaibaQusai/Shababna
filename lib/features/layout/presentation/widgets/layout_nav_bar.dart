@@ -14,14 +14,14 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../volunteering_opportunities/presentation/widgets/date_filter/volunteering_opportunities_date_filter_sheet.dart';
 import '../cubit/layout_cubit.dart';
 import '../cubit/layout_tab.dart';
+import '../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class LayoutNavBar extends StatelessWidget {
   const LayoutNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
+    return AppBottomSafeArea(
       child: Padding(
         padding: EdgeInsets.fromLTRB(
           AppSpacing.screenMargin,

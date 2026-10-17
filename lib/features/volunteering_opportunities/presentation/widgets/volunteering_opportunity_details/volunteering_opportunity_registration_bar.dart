@@ -15,6 +15,7 @@ import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/volunteering_opportunities_repository.dart';
 import '../../cubit/volunteering_opportunity_details/volunteering_opportunity_details_cubit.dart';
 import 'slide_to_confirm.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class VolunteeringOpportunityRegistrationBar extends StatelessWidget {
   const VolunteeringOpportunityRegistrationBar({super.key});
@@ -30,8 +31,7 @@ class VolunteeringOpportunityRegistrationBar extends StatelessWidget {
 
     return Material(
       color: context.colorScheme.surface,
-      child: SafeArea(
-        top: false,
+      child: AppBottomSafeArea(
         child: Padding(
           padding: EdgeInsets.fromLTRB(
             AppSpacing.screenMargin,
