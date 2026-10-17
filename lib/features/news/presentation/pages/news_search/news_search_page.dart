@@ -14,6 +14,7 @@ import '../../cubit/news_search/news_search_cubit.dart';
 import '../../cubit/news_search/news_search_state.dart';
 import '../../widgets/news_search/news_search_list_skeleton.dart';
 import '../../widgets/news_search/news_search_results.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class NewsSearchPage extends StatelessWidget {
   const NewsSearchPage({super.key});
@@ -24,7 +25,7 @@ class NewsSearchPage extends StatelessWidget {
       create: (_) => sl<NewsSearchCubit>(),
       child: Scaffold(
         appBar: AppAppBar(title: context.l10n.newsSearchTitle, onBack: () => context.pop()),
-        body: const SafeArea(top: false, child: _NewsSearchView()),
+        body: const AppBottomSafeArea(child: _NewsSearchView()),
       ),
     );
   }

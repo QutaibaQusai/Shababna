@@ -10,6 +10,7 @@ import '../../theme/app_sizes.dart';
 import '../../theme/app_spacing.dart';
 import 'app_button.dart';
 import 'app_illustration.dart';
+import 'app_bottom_safe_area.dart';
 
 Future<bool> ensureSignedIn(BuildContext context) async {
   if (context.read<AuthSessionCubit>().state.isAuthenticated) return true;
@@ -48,7 +49,8 @@ class GuestGate extends StatelessWidget {
     final status = context.watch<AuthSessionCubit>().state;
     if (!status.isGuest) return child;
 
-    return SafeArea(
+    return AppBottomSafeArea(
+      top: true,
       child: Center(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(AppSpacing.screenMargin),

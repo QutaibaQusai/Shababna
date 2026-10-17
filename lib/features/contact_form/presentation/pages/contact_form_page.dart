@@ -16,6 +16,7 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/validators/app_validators.dart';
 import '../cubit/contact_form_cubit.dart';
 import '../cubit/contact_form_state.dart';
+import '../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class ContactFormPage extends StatelessWidget {
   const ContactFormPage({super.key});
@@ -82,7 +83,8 @@ class _ContactFormViewState extends State<_ContactFormView> {
                 title: context.l10n.profileMenuContactUs,
                 onBack: () => context.pop(),
               ),
-              body: SafeArea(
+              body: AppBottomSafeArea(
+                top: true,
                 child: Padding(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Column(

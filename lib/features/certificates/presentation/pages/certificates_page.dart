@@ -14,6 +14,7 @@ import '../cubit/certificates_list/certificates_list_state.dart';
 import '../widgets/list/certificates_list_content.dart';
 import '../widgets/list/certificates_list_skeleton.dart';
 import '../widgets/shared/certificate_fill_viewport.dart';
+import '../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class CertificatesPage extends StatelessWidget {
   const CertificatesPage({super.key});
@@ -24,7 +25,7 @@ class CertificatesPage extends StatelessWidget {
       create: (_) => sl<CertificatesListCubit>()..loadFirstPage(),
       child: Scaffold(
         appBar: AppAppBar(title: context.l10n.certificatesMyTitle, onBack: () => context.pop()),
-        body: const SafeArea(top: false, child: _CertificatesView()),
+        body: const AppBottomSafeArea(child: _CertificatesView()),
       ),
     );
   }

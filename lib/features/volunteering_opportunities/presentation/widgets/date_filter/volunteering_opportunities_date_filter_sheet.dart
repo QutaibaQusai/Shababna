@@ -9,6 +9,7 @@ import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../cubit/volunteering_opportunities_date_filter/volunteering_opportunities_date_filter_cubit.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 Future<void> showVolunteeringOpportunitiesDateFilterSheet(BuildContext context) async {
   final filter = sl<VolunteeringOpportunitiesDateFilterCubit>();
@@ -60,7 +61,8 @@ class _DateFilterSheetState extends State<_DateFilterSheet> {
       fontWeight: FontWeight.w600,
     );
 
-    return SafeArea(
+    return AppBottomSafeArea(
+      top: true,
       child: Padding(
         padding: EdgeInsets.all(AppSpacing.screenMargin),
         child: Material(

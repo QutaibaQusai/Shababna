@@ -15,6 +15,7 @@ import '../../cubit/news_list/news_list_state.dart';
 import '../../widgets/news_list/news_list_content.dart';
 import '../../widgets/news_list/news_list_skeleton.dart';
 import '../../widgets/shared/news_fill_viewport.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class NewsListPage extends StatelessWidget {
   const NewsListPage({super.key});
@@ -25,7 +26,7 @@ class NewsListPage extends StatelessWidget {
       create: (_) => sl<NewsListCubit>()..loadFirstPage(),
       child: Scaffold(
         appBar: AppAppBar(title: context.l10n.navNews, onBack: () => context.pop()),
-        body: const SafeArea(top: false, child: _NewsListView()),
+        body: const AppBottomSafeArea(child: _NewsListView()),
         floatingActionButton: FloatingActionButton(
           tooltip: context.l10n.newsSearchTitle,
           shape: const CircleBorder(),

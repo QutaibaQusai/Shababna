@@ -17,6 +17,7 @@ import '../../../../../core/shared/widgets/app_toast.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../cubit/forgot_password/forgot_password_cubit.dart';
 import '../../cubit/forgot_password/forgot_password_state.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});
@@ -74,7 +75,8 @@ class _ForgotPasswordViewState extends State<_ForgotPasswordView> {
                 title: context.l10n.accountRecoveryTitle,
                 onBack: () => context.go(AppRoutes.login),
               ),
-              body: SafeArea(
+              body: AppBottomSafeArea(
+                top: true,
                 child: Padding(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Column(

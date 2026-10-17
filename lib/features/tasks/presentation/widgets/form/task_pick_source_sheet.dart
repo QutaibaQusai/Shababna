@@ -5,6 +5,7 @@ import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 enum TaskPickSource { camera, gallery, document }
 
@@ -33,7 +34,8 @@ class _SheetView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return AppBottomSafeArea(
+      top: true,
       child: Padding(
         padding: EdgeInsets.fromLTRB(
           AppSpacing.screenMargin,

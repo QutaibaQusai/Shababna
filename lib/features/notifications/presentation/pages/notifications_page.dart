@@ -22,6 +22,7 @@ import '../widgets/notification_tile.dart';
 import '../widgets/notifications_fill_viewport.dart';
 import '../widgets/notifications_list_skeleton.dart';
 import '../widgets/notifications_load_more_footer.dart';
+import '../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});
@@ -42,7 +43,7 @@ class NotificationsPage extends StatelessWidget {
             ),
           ],
         ),
-        body: const SafeArea(top: false, child: _NotificationsView()),
+        body: const AppBottomSafeArea(child: _NotificationsView()),
       ),
     );
   }

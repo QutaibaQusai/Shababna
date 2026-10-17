@@ -9,6 +9,7 @@ import '../../../../../core/shared/widgets/app_menu_tile.dart';
 import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../widgets/account_security/app_lock_tile.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class AccountSecurityPage extends StatelessWidget {
   const AccountSecurityPage({super.key});
@@ -20,7 +21,8 @@ class AccountSecurityPage extends StatelessWidget {
         title: context.l10n.profileMenuAccountSecurity,
         onBack: () => context.pop(),
       ),
-      body: SafeArea(
+      body: AppBottomSafeArea(
+        top: true,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [

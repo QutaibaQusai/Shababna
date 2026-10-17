@@ -18,6 +18,7 @@ import '../../../../../core/validators/app_validators.dart';
 import '../../cubit/change_email/verify_email_change_cubit.dart';
 import '../../cubit/change_email/verify_email_change_state.dart';
 import '../../cubit/profile/profile_cubit.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class VerifyEmailChangePage extends StatelessWidget {
   const VerifyEmailChangePage({super.key, required this.newEmail});
@@ -109,7 +110,8 @@ class _VerifyEmailChangeViewState extends State<_VerifyEmailChangeView> {
                 title: context.l10n.verifyEmailChangeTitle,
                 onBack: () => context.pop(),
               ),
-              body: SafeArea(
+              body: AppBottomSafeArea(
+                top: true,
                 child: Padding(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Column(

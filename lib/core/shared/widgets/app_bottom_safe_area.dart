@@ -2,10 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 class AppBottomSafeArea extends StatelessWidget {
-  const AppBottomSafeArea({super.key, required this.child});
+  const AppBottomSafeArea({super.key, this.top = false, required this.child});
 
   static const _iosInsetFactor = 0.5;
 
+  final bool top;
   final Widget child;
 
   @override
@@ -15,7 +16,7 @@ class AppBottomSafeArea extends StatelessWidget {
         ? inset * _iosInsetFactor
         : inset;
 
-    return Padding(
+    final content = Padding(
       padding: EdgeInsets.only(bottom: bottom),
       child: MediaQuery.removePadding(
         context: context,
@@ -23,5 +24,7 @@ class AppBottomSafeArea extends StatelessWidget {
         child: child,
       ),
     );
+
+    return top ? SafeArea(bottom: false, child: content) : content;
   }
 }

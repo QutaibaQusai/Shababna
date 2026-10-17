@@ -18,6 +18,7 @@ import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../core/validators/app_validators.dart';
 import '../../cubit/delete_account/delete_account_cubit.dart';
 import '../../cubit/delete_account/delete_account_state.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class DeleteAccountPage extends StatelessWidget {
   const DeleteAccountPage({super.key});
@@ -104,7 +105,8 @@ class _DeleteAccountViewState extends State<_DeleteAccountView> {
               title: context.l10n.deleteAccountTitle,
               onBack: () => context.pop(),
             ),
-            body: SafeArea(
+            body: AppBottomSafeArea(
+              top: true,
               child: Padding(
                 padding: EdgeInsets.all(AppSpacing.screenMargin),
                 child: Column(

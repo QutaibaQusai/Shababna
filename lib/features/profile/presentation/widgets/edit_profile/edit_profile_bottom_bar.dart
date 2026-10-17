@@ -4,6 +4,7 @@ import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/shared/widgets/app_button.dart';
 import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_spacing.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class EditProfileBottomBar extends StatelessWidget {
   const EditProfileBottomBar({super.key, required this.percentage, required this.onSave});
@@ -13,8 +14,7 @@ class EditProfileBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
+    return AppBottomSafeArea(
       child: Container(
         padding: EdgeInsets.all(AppSpacing.screenMargin),
         decoration: BoxDecoration(

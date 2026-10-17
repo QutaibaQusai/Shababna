@@ -10,6 +10,7 @@ import '../../domain/repositories/notifications_repository.dart';
 import '../cubit/notification_details/notification_details_cubit.dart';
 import '../widgets/notification_details_content.dart';
 import '../widgets/notification_details_skeleton.dart';
+import '../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class NotificationDetailsPage extends StatelessWidget {
   const NotificationDetailsPage({super.key, required this.id});
@@ -39,8 +40,7 @@ class _NotificationDetailsView extends StatelessWidget {
         title: context.l10n.notificationDetailsTitle,
         onBack: () => context.pop(),
       ),
-      body: SafeArea(
-        top: false,
+      body: AppBottomSafeArea(
         child: switch (notification) {
           final AppNotification value => NotificationDetailsContent(
             notification: value,

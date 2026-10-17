@@ -9,6 +9,7 @@ import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../utils/profile_missing_field.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 Future<void> showProfileIncompleteSheet(BuildContext context, List<String> missingFields) {
   return showModalBottomSheet<void>(
@@ -36,7 +37,8 @@ class _ProfileIncompleteSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    return SafeArea(
+    return AppBottomSafeArea(
+      top: true,
       child: Padding(
         padding: EdgeInsets.fromLTRB(
           AppSpacing.screenMargin,

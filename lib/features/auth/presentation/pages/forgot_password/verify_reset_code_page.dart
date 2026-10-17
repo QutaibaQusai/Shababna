@@ -19,6 +19,7 @@ import '../../../../../core/validators/app_validators.dart';
 import '../../cubit/forgot_password/verify_reset_code_cubit.dart';
 import '../../cubit/forgot_password/verify_reset_code_state.dart';
 import 'reset_password_args.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class VerifyResetCodePage extends StatelessWidget {
   const VerifyResetCodePage({super.key, required this.email});
@@ -94,7 +95,8 @@ class _VerifyResetCodeViewState extends State<_VerifyResetCodeView> {
                 title: context.l10n.accountRecoveryTitle,
                 onBack: () => context.go(AppRoutes.forgotPassword),
               ),
-              body: SafeArea(
+              body: AppBottomSafeArea(
+                top: true,
                 child: Padding(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Column(

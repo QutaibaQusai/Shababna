@@ -19,6 +19,7 @@ import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../core/validators/app_validators.dart';
 import '../../cubit/login/login_cubit.dart';
 import '../../cubit/login/login_state.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key, this.isModal = false});
@@ -96,7 +97,8 @@ class _LoginViewState extends State<_LoginView> {
                       onBack: () => context.pop(),
                     )
                   : null,
-              body: SafeArea(
+              body: AppBottomSafeArea(
+                top: true,
                 child: SingleChildScrollView(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Form(

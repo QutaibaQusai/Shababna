@@ -8,6 +8,7 @@ import '../../theme/app_colors.dart';
 import '../../theme/app_radius.dart';
 import '../../theme/app_sizes.dart';
 import '../../theme/app_spacing.dart';
+import 'app_bottom_safe_area.dart';
 
 enum AppToastType { success, error, warning, info }
 
@@ -188,7 +189,8 @@ class _ToastBannerState extends State<_ToastBanner> with TickerProviderStateMixi
 
     return Semantics(
       liveRegion: true,
-      child: SafeArea(
+      child: AppBottomSafeArea(
+        top: true,
         child: Align(
           alignment: Alignment.topCenter,
           child: Padding(

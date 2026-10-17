@@ -9,6 +9,7 @@ import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../auth/presentation/cubit/logout/logout_cubit.dart';
 import '../../../../auth/presentation/cubit/logout/logout_state.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class LogoutSheet extends StatelessWidget {
   const LogoutSheet({super.key});
@@ -24,7 +25,8 @@ class LogoutSheet extends StatelessWidget {
       builder: (context, state) {
         final isSubmitting = state.status == FormStatus.submitting;
 
-        return SafeArea(
+        return AppBottomSafeArea(
+          top: true,
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: AppSpacing.screenMargin,

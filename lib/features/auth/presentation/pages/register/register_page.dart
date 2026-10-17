@@ -22,6 +22,7 @@ import '../../widgets/register/register_step_indicator.dart';
 import '../../widgets/register/register_step_name.dart';
 import '../../widgets/register/register_step_password.dart';
 import '../../widgets/register/register_step_verify_email.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -218,7 +219,8 @@ class _RegisterViewState extends State<_RegisterView> {
                 title: context.l10n.registerTitle,
                 onBack: _goBack,
               ),
-              body: SafeArea(
+              body: AppBottomSafeArea(
+                top: true,
                 child: Padding(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Column(

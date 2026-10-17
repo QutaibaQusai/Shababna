@@ -19,6 +19,7 @@ import '../../cubit/change_email/change_email_cubit.dart';
 import '../../cubit/change_email/change_email_state.dart';
 import '../../cubit/profile/profile_cubit.dart';
 import '../../widgets/edit_profile/field_card.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class ChangeEmailPage extends StatelessWidget {
   const ChangeEmailPage({super.key});
@@ -111,7 +112,8 @@ class _ChangeEmailViewState extends State<_ChangeEmailView> {
               title: context.l10n.changeEmailTitle,
               onBack: () => context.pop(),
             ),
-            body: SafeArea(
+            body: AppBottomSafeArea(
+              top: true,
               child: Padding(
                 padding: EdgeInsets.all(AppSpacing.screenMargin),
                 child: Column(

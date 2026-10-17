@@ -13,6 +13,7 @@ import '../../../../core/shared/widgets/share_icon_button.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../cubit/about_us_cubit.dart';
 import '../widgets/about_us_skeleton.dart';
+import '../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class AboutUsPage extends StatelessWidget {
   const AboutUsPage({super.key});
@@ -39,7 +40,8 @@ class _AboutUsView extends StatelessWidget {
         onBack: () => context.pop(),
         actions: [ShareIconButton(path: AppShareLinks.aboutUs)],
       ),
-      body: SafeArea(
+      body: AppBottomSafeArea(
+        top: true,
         child: AppRefreshIndicator(
           onRefresh: () => context.read<AboutUsCubit>().loadAboutUs(),
           child: SingleChildScrollView(

@@ -18,6 +18,7 @@ import '../../../../../core/theme/app_spacing.dart';
 import '../../cubit/forgot_password/reset_password_cubit.dart';
 import '../../cubit/forgot_password/reset_password_state.dart';
 import 'reset_password_args.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class ResetPasswordPage extends StatelessWidget {
   const ResetPasswordPage({super.key, required this.args});
@@ -84,7 +85,8 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                 title: context.l10n.resetPasswordAppBarTitle,
                 onBack: () => context.go(AppRoutes.forgotPassword),
               ),
-              body: SafeArea(
+              body: AppBottomSafeArea(
+                top: true,
                 child: Padding(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Column(

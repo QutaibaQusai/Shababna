@@ -16,6 +16,7 @@ import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../core/validators/app_validators.dart';
 import '../../cubit/change_password/change_password_cubit.dart';
 import '../../cubit/change_password/change_password_state.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({super.key});
@@ -80,7 +81,8 @@ class _ChangePasswordViewState extends State<_ChangePasswordView> {
                 title: context.l10n.changePasswordTitle,
                 onBack: () => context.pop(),
               ),
-              body: SafeArea(
+              body: AppBottomSafeArea(
+                top: true,
                 child: Padding(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: Column(

@@ -11,6 +11,7 @@ import '../../widgets/app_network_image.dart';
 import '../../widgets/app_video_player.dart';
 import 'app_media.dart';
 import 'media_slide_up_route.dart';
+import '../../widgets/app_bottom_safe_area.dart';
 
 class MediaViewerPage extends StatefulWidget {
   const MediaViewerPage({super.key, required this.media, required this.initialIndex});
@@ -51,8 +52,7 @@ class _MediaViewerPageState extends State<MediaViewerPage> {
         leadingIcon: LucideIcons.x,
         onBack: () => Navigator.of(context).pop(),
       ),
-      body: SafeArea(
-        top: false,
+      body: AppBottomSafeArea(
         child: PageView.builder(
           controller: _controller,
           itemCount: count,

@@ -10,6 +10,7 @@ import 'app_error_widget.dart';
 import 'app_loader.dart';
 import 'app_search_field.dart';
 import 'app_text_field.dart';
+import 'app_bottom_safe_area.dart';
 
 class AppPickerField<T> extends StatefulWidget {
   const AppPickerField({
@@ -151,7 +152,8 @@ class _PickerSheetState<T> extends State<_PickerSheet<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return AppBottomSafeArea(
+      top: true,
       child: SizedBox(
         height: MediaQuery.sizeOf(context).height * 0.7,
         child: Padding(

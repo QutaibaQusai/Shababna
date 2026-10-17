@@ -11,6 +11,7 @@ import '../../../../core/shared/widgets/app_button.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../cubit/onboarding_cubit.dart';
 import '../widgets/onboarding_language_pill.dart';
+import '../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -69,8 +70,7 @@ class _OnboardingView extends StatelessWidget {
               start: 0,
               end: 0,
               bottom: 0,
-              child: SafeArea(
-                top: false,
+              child: AppBottomSafeArea(
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(
                     margin,

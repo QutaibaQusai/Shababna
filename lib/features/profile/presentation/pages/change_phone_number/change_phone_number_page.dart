@@ -23,6 +23,7 @@ import '../../cubit/change_phone_number/change_phone_number_state.dart';
 import '../../cubit/profile/profile_cubit.dart';
 import '../../utils/phone_number_parts.dart';
 import '../../../../../core/shared/widgets/app_page_header.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class ChangePhoneNumberPage extends StatelessWidget {
   const ChangePhoneNumberPage({super.key});
@@ -133,7 +134,8 @@ class _ChangePhoneNumberViewState extends State<_ChangePhoneNumberView> {
                 title: context.l10n.changePhoneNumberTitle,
                 onBack: () => context.pop(),
               ),
-              body: SafeArea(
+              body: AppBottomSafeArea(
+                top: true,
                 child: Padding(
                   padding: EdgeInsets.all(AppSpacing.screenMargin),
                   child: _buildBody(context, state),

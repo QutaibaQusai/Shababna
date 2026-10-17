@@ -19,6 +19,7 @@ import '../../domain/repositories/notifications_repository.dart';
 import '../cubit/notification_settings/notification_settings_cubit.dart';
 import '../cubit/notification_settings/notification_settings_state.dart';
 import '../widgets/notification_preferences_skeleton.dart';
+import '../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class NotificationSettingsPage extends StatelessWidget {
   const NotificationSettingsPage({super.key});
@@ -32,7 +33,7 @@ class NotificationSettingsPage extends StatelessWidget {
           title: context.l10n.notificationSettingsTitle,
           onBack: () => context.pop(),
         ),
-        body: const SafeArea(top: false, child: _NotificationSettingsView()),
+        body: const AppBottomSafeArea(child: _NotificationSettingsView()),
       ),
     );
   }

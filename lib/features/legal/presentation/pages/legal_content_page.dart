@@ -14,6 +14,7 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../domain/repositories/legal_repository.dart';
 import '../cubit/legal_cubit.dart';
 import '../widgets/legal_content_skeleton.dart';
+import '../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 enum LegalDocumentType { privacyPolicy, termsAndConditions }
 
@@ -63,7 +64,8 @@ class _LegalContentView extends StatelessWidget {
         onBack: () => context.pop(),
         actions: [ShareIconButton(path: _pathFor())],
       ),
-      body: SafeArea(
+      body: AppBottomSafeArea(
+        top: true,
         child: AppRefreshIndicator(
           onRefresh: () => context.read<LegalCubit>().loadContent(),
           child: SingleChildScrollView(

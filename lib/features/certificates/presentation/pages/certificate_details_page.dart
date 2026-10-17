@@ -14,6 +14,7 @@ import '../cubit/certificate_details/certificate_details_cubit.dart';
 import '../cubit/certificate_details/certificate_details_state.dart';
 import '../widgets/details/certificate_details_content.dart';
 import '../widgets/details/certificate_details_skeleton.dart';
+import '../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class CertificateDetailsPage extends StatelessWidget {
   const CertificateDetailsPage({super.key, required this.id});
@@ -66,8 +67,7 @@ class _CertificateDetailsView extends StatelessWidget {
             title: context.l10n.certificateDetailsTitle,
             onBack: () => context.pop(),
           ),
-          body: SafeArea(
-            top: false,
+          body: AppBottomSafeArea(
             child: switch (certificate) {
               null when state.hasError => AppErrorWidget(
                 message: state.errorMessage ?? context.l10n.somethingWentWrong,

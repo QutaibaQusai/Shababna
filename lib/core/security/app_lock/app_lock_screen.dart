@@ -7,6 +7,7 @@ import '../../shared/widgets/app_illustration.dart';
 import '../../theme/app_sizes.dart';
 import '../../theme/app_spacing.dart';
 import '../device_authenticator.dart';
+import '../../shared/widgets/app_bottom_safe_area.dart';
 
 class AppLockScreen extends StatefulWidget {
   const AppLockScreen({
@@ -52,7 +53,8 @@ class _AppLockScreenState extends State<AppLockScreen> {
 
     return Material(
       color: Theme.of(context).scaffoldBackgroundColor,
-      child: SafeArea(
+      child: AppBottomSafeArea(
+        top: true,
         child: Padding(
           padding: EdgeInsets.all(AppSpacing.screenMargin),
           child: Column(

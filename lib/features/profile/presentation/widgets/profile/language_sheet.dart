@@ -6,6 +6,7 @@ import '../../../../../core/services/locale_service.dart';
 import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import 'sheet_option_tile.dart';
+import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class LanguageSheet extends StatelessWidget {
   const LanguageSheet({super.key});
@@ -20,7 +21,8 @@ class LanguageSheet extends StatelessWidget {
       localeService.setLocale(Locale(code));
     }
 
-    return SafeArea(
+    return AppBottomSafeArea(
+      top: true,
       child: Padding(
        padding: EdgeInsets.only(
           left: AppSpacing.screenMargin,

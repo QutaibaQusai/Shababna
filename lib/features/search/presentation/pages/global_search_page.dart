@@ -15,6 +15,7 @@ import '../cubit/global_search_state.dart';
 import '../widgets/search_filter_bar.dart';
 import '../widgets/search_results_skeleton.dart';
 import '../widgets/search_results_view.dart';
+import '../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class GlobalSearchPage extends StatelessWidget {
   const GlobalSearchPage({super.key});
@@ -25,7 +26,7 @@ class GlobalSearchPage extends StatelessWidget {
       create: (_) => sl<GlobalSearchCubit>(),
       child: Scaffold(
         appBar: AppAppBar(title: context.l10n.searchTitle, onBack: () => context.pop()),
-        body: const SafeArea(top: false, child: _GlobalSearchView()),
+        body: const AppBottomSafeArea(child: _GlobalSearchView()),
       ),
     );
   }
