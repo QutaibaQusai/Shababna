@@ -21,6 +21,7 @@ import '../../../../auth/presentation/cubit/logout/logout_cubit.dart';
 import '../../widgets/profile/guest_profile_header.dart';
 import '../../widgets/profile/language_sheet.dart';
 import '../../widgets/profile/logout_sheet.dart';
+import '../../widgets/profile/profile_company_watermark.dart';
 import '../../widgets/profile/profile_header_skeleton.dart';
 import '../../widgets/profile/profile_header_tile.dart';
 import '../../widgets/profile/theme_sheet.dart';
@@ -217,6 +218,7 @@ class _ProfileViewState extends State<_ProfileView> {
                   isDestructive: true,
                   onTap: () => _openLogoutSheet(context),
                 ),
+              const ProfileCompanyWatermark(),
             ],
           ),
         ),
