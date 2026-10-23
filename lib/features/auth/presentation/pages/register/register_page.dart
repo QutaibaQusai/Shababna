@@ -149,9 +149,17 @@ class _RegisterViewState extends State<_RegisterView> {
         );
   }
 
+  void _returnToLogin() {
+    if (context.canPop()) {
+      context.pop();
+    } else {
+      context.go(AppRoutes.login);
+    }
+  }
+
   void _goBack() {
     if (_currentStep == _nameStep) {
-      context.go(AppRoutes.login);
+      _returnToLogin();
       return;
     }
     setState(() => _currentStep--);
@@ -161,7 +169,7 @@ class _RegisterViewState extends State<_RegisterView> {
   void _onRegisterStatusChanged(BuildContext context, RegisterState state) {
     if (state.status == FormStatus.success) {
       AppToast.success(context, context.l10n.registrationCompleteMessage);
-      context.go(AppRoutes.login);
+      _returnToLogin();
     } else if (state.status == FormStatus.failure && state.errorMessage != null) {
       AppToast.error(context, state.errorMessage!);
     }
@@ -282,7 +290,7 @@ class _RegisterViewState extends State<_RegisterView> {
                               Text(context.l10n.alreadyHaveAccountPrompt),
                               AppButton.text(
                                 label: context.l10n.loginLink,
-                                onPressed: () => context.go(AppRoutes.login),
+                                onPressed: _returnToLogin,
                               ),
                             ],
                           ),
