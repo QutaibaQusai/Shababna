@@ -218,23 +218,12 @@ class HomeOccasion extends Equatable {
   List<Object?> get props => [id, titleEn, titleAr, descriptionEn, descriptionAr];
 }
 
-class HomeDayAgenda extends Equatable {
-  const HomeDayAgenda({required this.volunteeringOpportunities, required this.occasions});
-
-  final List<HomeVolunteeringOpportunity> volunteeringOpportunities;
-  final List<HomeOccasion> occasions;
-
-  @override
-  List<Object?> get props => [volunteeringOpportunities, occasions];
-}
-
 class HomeFeed extends Equatable {
   const HomeFeed({
     this.impact,
     this.slides = const [],
     this.openTasks = const [],
     this.featuredVolunteeringOpportunities = const [],
-    this.dayVolunteeringOpportunities = const [],
     this.dayOccasions = const [],
     this.news = const [],
   });
@@ -243,17 +232,15 @@ class HomeFeed extends Equatable {
   final List<HomeSlide> slides;
   final List<HomeTask> openTasks;
   final List<HomeVolunteeringOpportunity> featuredVolunteeringOpportunities;
-  final List<HomeVolunteeringOpportunity> dayVolunteeringOpportunities;
   final List<HomeOccasion> dayOccasions;
   final List<HomeNews> news;
 
-  HomeFeed withDay(HomeDayAgenda agenda) => HomeFeed(
+  HomeFeed withDayOccasions(List<HomeOccasion> occasions) => HomeFeed(
     impact: impact,
     slides: slides,
     openTasks: openTasks,
     featuredVolunteeringOpportunities: featuredVolunteeringOpportunities,
-    dayVolunteeringOpportunities: agenda.volunteeringOpportunities,
-    dayOccasions: agenda.occasions,
+    dayOccasions: occasions,
     news: news,
   );
 
@@ -263,7 +250,6 @@ class HomeFeed extends Equatable {
     slides,
     openTasks,
     featuredVolunteeringOpportunities,
-    dayVolunteeringOpportunities,
     dayOccasions,
     news,
   ];
@@ -272,5 +258,5 @@ class HomeFeed extends Equatable {
 abstract interface class HomeRepository {
   Future<Either<Failure, HomeFeed>> loadFeed({required bool isMember, required DateTime day});
 
-  Future<Either<Failure, HomeDayAgenda>> loadDay(DateTime day);
+  Future<Either<Failure, List<HomeOccasion>>> loadDayOccasions(DateTime day);
 }

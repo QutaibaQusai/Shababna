@@ -1352,8 +1352,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeWhatsOnTitle => 'ماذا يحدث';
 
   @override
-  String get homeNoVolunteeringOpportunitiesOnDay =>
-      'لا توجد فرص تطوعية في هذا اليوم';
+  String get homeNoOccasionsOnDay => 'لا توجد مناسبات في هذا اليوم';
 
   @override
   String get homeNewsTitle => 'آخر الأخبار';

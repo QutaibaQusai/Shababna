@@ -1340,8 +1340,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeWhatsOnTitle => 'What\'s on';
 
   @override
-  String get homeNoVolunteeringOpportunitiesOnDay =>
-      'No opportunities on this day';
+  String get homeNoOccasionsOnDay => 'No occasions on this day';
 
   @override
   String get homeNewsTitle => 'Latest news';

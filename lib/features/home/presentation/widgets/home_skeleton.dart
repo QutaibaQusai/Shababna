@@ -12,7 +12,6 @@ class HomeSkeleton extends StatelessWidget {
   const HomeSkeleton({super.key, required this.isMember});
 
   static const _cardCount = 3;
-  static const _tileCount = 2;
   static const _newsCount = 3;
 
   final bool isMember;
@@ -132,7 +131,17 @@ class HomeSkeleton extends StatelessWidget {
             ),
           ),
           SizedBox(height: AppSpacing.sm),
-          tiles(_tileCount),
+          Padding(
+            padding: margin,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Bone.text(words: 3),
+                SizedBox(height: AppSpacing.xxs),
+                const Bone.text(words: 6),
+              ],
+            ),
+          ),
           SizedBox(height: AppSpacing.md),
           header(),
           SizedBox(height: AppSpacing.sm),

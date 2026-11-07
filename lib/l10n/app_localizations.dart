@@ -2396,11 +2396,11 @@ abstract class AppLocalizations {
   /// **'What\'s on'**
   String get homeWhatsOnTitle;
 
-  /// No description provided for @homeNoVolunteeringOpportunitiesOnDay.
+  /// No description provided for @homeNoOccasionsOnDay.
   ///
   /// In en, this message translates to:
-  /// **'No opportunities on this day'**
-  String get homeNoVolunteeringOpportunitiesOnDay;
+  /// **'No occasions on this day'**
+  String get homeNoOccasionsOnDay;
 
   /// No description provided for @homeNewsTitle.
   ///

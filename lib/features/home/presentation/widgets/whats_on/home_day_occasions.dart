@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../domain/repositories/home_repository.dart';
 
 class HomeDayOccasions extends StatelessWidget {
-  const HomeDayOccasions({super.key, required this.occasions});
+  const HomeDayOccasions({
+    super.key,
+    required this.occasions,
+    required this.isLoading,
+  });
 
   static const _duration = Duration(milliseconds: 250);
+  static const _placeholder = HomeOccasion(
+    id: '',
+    titleEn: 'National occasion title',
+    titleAr: 'عنوان المناسبة الوطنية',
+    descriptionEn: 'A short description of this occasion and why it matters',
+    descriptionAr: 'وصف قصير لهذه المناسبة وأهميتها',
+  );
 
   final List<HomeOccasion> occasions;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -17,24 +30,44 @@ class HomeDayOccasions extends StatelessWidget {
       duration: _duration,
       curve: Curves.easeOut,
       alignment: AlignmentDirectional.topCenter,
-      child: occasions.isEmpty
-          ? const SizedBox(width: double.infinity)
-          : Padding(
-              padding: EdgeInsets.fromLTRB(
-                AppSpacing.screenMargin,
-                0,
-                AppSpacing.screenMargin,
-                AppSpacing.sm,
-              ),
-              child: Column(
-                children: [
-                  for (var i = 0; i < occasions.length; i++) ...[
-                    if (i > 0) SizedBox(height: AppSpacing.xs),
-                    _OccasionCard(occasion: occasions[i]),
-                  ],
-                ],
-              ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin),
+        child: _content(context),
+      ),
+    );
+  }
+
+  Widget _content(BuildContext context) {
+    if (isLoading) {
+      return const Skeletonizer(
+        enabled: true,
+        child: _OccasionCard(occasion: _placeholder),
+      );
+    }
+
+    if (occasions.isEmpty) {
+      return Padding(
+        padding: EdgeInsets.symmetric(vertical: AppSpacing.sm),
+        child: SizedBox(
+          width: double.infinity,
+          child: Text(
+            context.l10n.homeNoOccasionsOnDay,
+            textAlign: TextAlign.center,
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: context.colorScheme.onSurfaceVariant,
             ),
+          ),
+        ),
+      );
+    }
+
+    return Column(
+      children: [
+        for (var i = 0; i < occasions.length; i++) ...[
+          if (i > 0) SizedBox(height: AppSpacing.xs),
+          _OccasionCard(occasion: occasions[i]),
+        ],
+      ],
     );
   }
 }
@@ -56,7 +89,9 @@ class _OccasionCard extends StatelessWidget {
         children: [
           Text(
             occasion.title(isArabic),
-            style: context.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
+            style: context.textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
           ),
           if (description.isNotEmpty) ...[
             SizedBox(height: AppSpacing.xxs),

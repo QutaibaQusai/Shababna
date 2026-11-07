@@ -8,7 +8,6 @@ import '../cubit/home_state.dart';
 import 'slider/home_banner_carousel.dart';
 import 'whats_on/home_date_strip.dart';
 import 'whats_on/home_day_occasions.dart';
-import 'whats_on/home_day_volunteering_opportunities.dart';
 import 'suggested/home_volunteering_opportunities_row.dart';
 import 'greeting/home_greeting.dart';
 import 'impact/home_impact_card.dart';
@@ -62,11 +61,7 @@ class HomeContent extends StatelessWidget {
               onSelected: cubit.selectDay,
             ),
             SizedBox(height: AppSpacing.sm),
-            HomeDayOccasions(occasions: state.isDayLoading ? const [] : feed.dayOccasions),
-            HomeDayVolunteeringOpportunities(
-              volunteeringOpportunities: feed.dayVolunteeringOpportunities,
-              isLoading: state.isDayLoading,
-            ),
+            HomeDayOccasions(occasions: feed.dayOccasions, isLoading: state.isDayLoading),
           ],
         ),
       ),
