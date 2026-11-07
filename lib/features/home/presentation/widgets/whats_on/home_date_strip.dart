@@ -16,7 +16,7 @@ class HomeDateStrip extends StatelessWidget {
     required this.onSelected,
   });
 
-  static const dayCount = 14;
+  static const dayCount = 10;
 
   final DateTime today;
   final DateTime selected;
