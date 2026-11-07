@@ -66,9 +66,23 @@ class HomeImpact extends Equatable {
   final double remainingHours;
   final int progressPercentage;
 
+  static final _nameSeparator = RegExp(r'\s+');
+  static const _compoundNamePrefixes = {'عبد', 'abd', 'abdul', 'abdel'};
+  static const _nameConnectors = {'al', 'el'};
+
   String fullName(bool isArabic) {
     final preferred = isArabic ? fullNameAr : fullNameEn;
     return preferred.isNotEmpty ? preferred : (isArabic ? fullNameEn : fullNameAr);
+  }
+
+  String firstName(bool isArabic) {
+    final parts = fullName(isArabic).trim().split(_nameSeparator).where((part) => part.isNotEmpty).toList();
+    if (parts.isEmpty) return '';
+    if (parts.length == 1 || !_compoundNamePrefixes.contains(parts.first.toLowerCase())) {
+      return parts.first;
+    }
+    final hasConnector = parts.length > 2 && _nameConnectors.contains(parts[1].toLowerCase());
+    return parts.take(hasConnector ? 3 : 2).join(' ');
   }
 
   @override

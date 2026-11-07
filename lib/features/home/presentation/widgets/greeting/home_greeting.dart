@@ -7,10 +7,10 @@ import '../../../../../core/theme/app_spacing.dart';
 import '../shared/home_formatters.dart';
 
 class HomeGreeting extends StatelessWidget {
-  const HomeGreeting({super.key, required this.isMember, required this.fullName});
+  const HomeGreeting({super.key, required this.isMember, required this.firstName});
 
   final bool isMember;
-  final String? fullName;
+  final String? firstName;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class HomeGreeting extends StatelessWidget {
     final colors = context.colorScheme;
     final titleStyle = context.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold);
     final mutedStyle = context.textTheme.bodyMedium?.copyWith(color: colors.onSurfaceVariant);
-    final fullName = this.fullName;
+    final firstName = this.firstName;
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin),
@@ -36,7 +36,7 @@ class HomeGreeting extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      if (fullName != null && fullName.isNotEmpty) TextSpan(text: ', $fullName'),
+                      if (firstName != null && firstName.isNotEmpty) TextSpan(text: ', $firstName'),
                     ],
                   ),
                   style: titleStyle,
