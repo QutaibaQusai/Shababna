@@ -27,7 +27,6 @@ class HomeContent extends StatelessWidget {
     final feed = state.feed;
     final impact = feed.impact;
     final isMember = state.isMember;
-    final now = DateTime.now();
 
     final sections = <Widget>[
       HomeGreeting(isMember: isMember, firstName: impact?.firstName(context.isArabic)),
@@ -56,12 +55,13 @@ class HomeContent extends StatelessWidget {
         child: Column(
           children: [
             HomeDateStrip(
-              today: DateTime(now.year, now.month, now.day),
+              days: state.whatsOnDays,
               selected: state.selectedDay,
+              occasionDays: feed.occasionDays,
               onSelected: cubit.selectDay,
             ),
             SizedBox(height: AppSpacing.sm),
-            HomeDayOccasions(occasions: feed.dayOccasions, isLoading: state.isDayLoading),
+            HomeDayOccasions(occasions: feed.occasionsOn(state.selectedDay)),
           ],
         ),
       ),

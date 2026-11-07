@@ -4,8 +4,8 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_sizes.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../cubit/home_cubit.dart';
 import 'slider/home_banner_carousel.dart';
-import 'whats_on/home_date_strip.dart';
 import 'suggested/home_volunteering_opportunities_row.dart';
 
 class HomeSkeleton extends StatelessWidget {
@@ -115,7 +115,7 @@ class HomeSkeleton extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               physics: const NeverScrollableScrollPhysics(),
               padding: margin,
-              itemCount: HomeDateStrip.dayCount,
+              itemCount: HomeCubit.whatsOnDayCount,
               separatorBuilder: (_, _) => SizedBox(width: AppSpacing.xs),
               itemBuilder: (_, _) => SizedBox(
                 width: AppSizes.homeDateCellWidth,

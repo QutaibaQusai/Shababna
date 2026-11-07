@@ -7,22 +7,28 @@ import 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this._repository) : super(HomeState(selectedDay: _today()));
 
+  static const whatsOnDayCount = 10;
+
   final HomeRepository _repository;
   int _loadId = 0;
 
   Future<void> load({required bool isMember}) async {
     final loadId = ++_loadId;
     final today = _today();
+    final days = [
+      for (var i = 0; i < whatsOnDayCount; i++) DateTime(today.year, today.month, today.day + i),
+    ];
     emit(
       HomeState(
         status: HomeStatus.loading,
         isMember: isMember,
         selectedDay: today,
+        whatsOnDays: days,
         feed: state.feed,
       ),
     );
 
-    final result = await _repository.loadFeed(isMember: isMember, day: today);
+    final result = await _repository.loadFeed(isMember: isMember, days: days);
     if (isClosed || loadId != _loadId) return;
 
     result.fold(
@@ -34,19 +40,9 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> refresh() => load(isMember: state.isMember);
 
-  Future<void> selectDay(DateTime day) async {
+  void selectDay(DateTime day) {
     if (day == state.selectedDay || state.status != HomeStatus.ready) return;
-    emit(state.copyWith(selectedDay: day, isDayLoading: true));
-
-    final result = await _repository.loadDayOccasions(day);
-    if (isClosed || day != state.selectedDay) return;
-
-    emit(
-      state.copyWith(
-        isDayLoading: false,
-        feed: state.feed.withDayOccasions(result.getOrElse(() => const [])),
-      ),
-    );
+    emit(state.copyWith(selectedDay: day));
   }
 
   static DateTime _today() {

@@ -10,7 +10,7 @@ class HomeState extends Equatable {
     this.status = HomeStatus.loading,
     this.isMember = false,
     this.feed = const HomeFeed(),
-    this.isDayLoading = false,
+    this.whatsOnDays = const [],
     this.errorMessage,
   });
 
@@ -18,7 +18,7 @@ class HomeState extends Equatable {
   final bool isMember;
   final HomeFeed feed;
   final DateTime selectedDay;
-  final bool isDayLoading;
+  final List<DateTime> whatsOnDays;
   final String? errorMessage;
 
   HomeState copyWith({
@@ -26,7 +26,6 @@ class HomeState extends Equatable {
     bool? isMember,
     HomeFeed? feed,
     DateTime? selectedDay,
-    bool? isDayLoading,
     String? errorMessage,
   }) {
     return HomeState(
@@ -34,11 +33,18 @@ class HomeState extends Equatable {
       isMember: isMember ?? this.isMember,
       feed: feed ?? this.feed,
       selectedDay: selectedDay ?? this.selectedDay,
-      isDayLoading: isDayLoading ?? this.isDayLoading,
+      whatsOnDays: whatsOnDays,
       errorMessage: errorMessage,
     );
   }
 
   @override
-  List<Object?> get props => [status, isMember, feed, selectedDay, isDayLoading, errorMessage];
+  List<Object?> get props => [
+    status,
+    isMember,
+    feed,
+    selectedDay,
+    whatsOnDays,
+    errorMessage,
+  ];
 }

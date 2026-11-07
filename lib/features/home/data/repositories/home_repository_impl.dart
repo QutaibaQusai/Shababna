@@ -14,13 +14,13 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
   @override
   Future<Either<Failure, HomeFeed>> loadFeed({
     required bool isMember,
-    required DateTime day,
+    required List<DateTime> days,
   }) async {
     final impactCall = isMember ? guard(_impact) : null;
     final slidesCall = guard(_slides);
     final tasksCall = isMember ? guard(_openTasks) : null;
     final featuredCall = guard(() => _featuredVolunteeringOpportunities(isMember: isMember));
-    final occasionsCall = guard(() => _occasionsOn(day));
+    final occasionsCall = _occasionsByDay(days);
     final newsCall = guard(_news);
 
     final impact = await impactCall;
@@ -48,15 +48,24 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
         slides: slides.getOrElse(() => const []),
         openTasks: tasks?.getOrElse(() => const []) ?? const [],
         featuredVolunteeringOpportunities: featured.getOrElse(() => const []),
-        dayOccasions: occasions.getOrElse(() => const []),
+        occasionsByDay: occasions.getOrElse(() => const {}),
         news: news.getOrElse(() => const []),
       ),
     );
   }
 
-  @override
-  Future<Either<Failure, List<HomeOccasion>>> loadDayOccasions(DateTime day) =>
-      guard(() => _occasionsOn(day));
+  Future<Either<Failure, Map<DateTime, List<HomeOccasion>>>> _occasionsByDay(
+    List<DateTime> days,
+  ) async {
+    final results = await Future.wait([for (final day in days) guard(() => _occasionsOn(day))]);
+    if (results.isNotEmpty && results.every((result) => result.isLeft())) {
+      return Left(results.first.fold((failure) => failure, (_) => const UnexpectedFailure('')));
+    }
+    return Right({
+      for (var i = 0; i < days.length; i++)
+        if (results[i].isRight()) days[i]: results[i].getOrElse(() => const []),
+    });
+  }
 
   Future<List<HomeOccasion>> _occasionsOn(DateTime day) async {
     final occasions = await _remoteDataSource.getOccasionsOn(day);

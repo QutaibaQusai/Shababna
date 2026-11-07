@@ -224,7 +224,7 @@ class HomeFeed extends Equatable {
     this.slides = const [],
     this.openTasks = const [],
     this.featuredVolunteeringOpportunities = const [],
-    this.dayOccasions = const [],
+    this.occasionsByDay = const {},
     this.news = const [],
   });
 
@@ -232,17 +232,15 @@ class HomeFeed extends Equatable {
   final List<HomeSlide> slides;
   final List<HomeTask> openTasks;
   final List<HomeVolunteeringOpportunity> featuredVolunteeringOpportunities;
-  final List<HomeOccasion> dayOccasions;
+  final Map<DateTime, List<HomeOccasion>> occasionsByDay;
   final List<HomeNews> news;
 
-  HomeFeed withDayOccasions(List<HomeOccasion> occasions) => HomeFeed(
-    impact: impact,
-    slides: slides,
-    openTasks: openTasks,
-    featuredVolunteeringOpportunities: featuredVolunteeringOpportunities,
-    dayOccasions: occasions,
-    news: news,
-  );
+  List<HomeOccasion> occasionsOn(DateTime day) => occasionsByDay[day] ?? const [];
+
+  Set<DateTime> get occasionDays => {
+    for (final entry in occasionsByDay.entries)
+      if (entry.value.isNotEmpty) entry.key,
+  };
 
   @override
   List<Object?> get props => [
@@ -250,13 +248,14 @@ class HomeFeed extends Equatable {
     slides,
     openTasks,
     featuredVolunteeringOpportunities,
-    dayOccasions,
+    occasionsByDay,
     news,
   ];
 }
 
 abstract interface class HomeRepository {
-  Future<Either<Failure, HomeFeed>> loadFeed({required bool isMember, required DateTime day});
-
-  Future<Either<Failure, List<HomeOccasion>>> loadDayOccasions(DateTime day);
+  Future<Either<Failure, HomeFeed>> loadFeed({
+    required bool isMember,
+    required List<DateTime> days,
+  });
 }
