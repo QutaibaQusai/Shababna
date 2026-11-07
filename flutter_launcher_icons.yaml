@@ -5,8 +5,9 @@ flutter_launcher_icons:
   remove_alpha_ios: true
 
   # Standard icon (used as fallback and for older Android), and base for iOS
-  image_path: "assets/images/logo_heart_icon.png"
+  image_path: "assets/images/rhas_logo.png"
 
-  # Android adaptive icon (API 26+)
-  adaptive_icon_background: "#FFFFFF"
-  adaptive_icon_foreground: "assets/images/logo_heart_foreground.png"
+  # Android adaptive icon (API 26+): the logo scaled into the safe zone on the
+  # logo's own blue, so circle and squircle masks never cut the heart
+  adaptive_icon_background: "#0D4D93"
+  adaptive_icon_foreground: "assets/branding/app_icon_foreground.png"

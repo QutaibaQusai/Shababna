@@ -14,6 +14,7 @@ import '../../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/shared/widgets/app_toast.dart';
 import '../../../../../core/state/form_status.dart';
+import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_sizes.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../core/validators/app_validators.dart';
@@ -107,10 +108,16 @@ class _LoginViewState extends State<_LoginView> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         SizedBox(height: AppSpacing.lg),
-                        Image.asset(
-                          AppAssets.loginLogo,
-                          height: AppSizes.loginLogoHeight,
-                          fit: BoxFit.contain,
+                        Center(
+                          child: ClipRRect(
+                            borderRadius: AppRadius.mdRadius,
+                            child: Image.asset(
+                              AppAssets.loginLogo,
+                              width: AppSizes.loginLogoSize,
+                              height: AppSizes.loginLogoSize,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                         SizedBox(height: AppSpacing.md),
                         Text(

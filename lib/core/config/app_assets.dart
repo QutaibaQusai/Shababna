@@ -1,7 +1,7 @@
 class AppAssets {
   AppAssets._();
 
-  static const String loginLogo = 'assets/images/login_logo.png';
+  static const String loginLogo = 'assets/images/rhas_logo.png';
   static const String hitechLogoLightMode = 'assets/images/hitech_logo_light_mode.png';
   static const String hitechLogoDarkMode = 'assets/images/hitech_logo_dark_mode.png';
   static const String logoIcon = 'assets/images/logo_icon.png';

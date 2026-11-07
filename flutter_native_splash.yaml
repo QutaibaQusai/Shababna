@@ -3,28 +3,22 @@
 # The generator drops android:screenOrientation="portrait" from
 # AndroidManifest.xml; restore that line after running it.
 #
-# Light and dark follow the device theme. The background colors match the app
-# theme scaffold backgrounds (AppColors.backgroundLight / backgroundDark), so
-# the splash hands over to the first screen without a color flash. The
-# light-blue association heart reads well on both.
+# Brand splash: the whole screen is the app primary color (AppColors.primaryColor)
+# with the RHAS heart in the middle, the same in light and dark mode.
 #
-# One image everywhere: splash_logo.png is a 1152x1152 transparent canvas with
-# the heart 560px wide in the middle. Android 12+'s SplashScreen API masks the
-# icon to a circle about two-thirds of the canvas
-# (https://developer.android.com/develop/ui/views/launch/splash-screen), and
-# the heart's corners stay inside it. On older Android and iOS the package
-# treats the image as 4x (xxxhdpi), so the heart shows at about 140dp.
+# One image everywhere: assets/branding/splash_logo.png is a 1152x1152
+# transparent canvas with the logo's heart cut out, 520px wide, in the middle.
+# Android 12+'s SplashScreen API masks the icon to a 768px circle in the middle
+# of that canvas (https://pub.dev/packages/flutter_native_splash), and the heart
+# stays inside it. On older Android and iOS the image is treated as 4x, so the
+# heart shows at about 130dp.
 flutter_native_splash:
-  color: "#FFFFFF"
-  image: assets/images/splash_logo.png
-  color_dark: "#0B1014"
-  image_dark: assets/images/splash_logo.png
+  color: "#004C96"
+  image: assets/branding/splash_logo.png
 
   android_12:
-    color: "#FFFFFF"
-    image: assets/images/splash_logo.png
-    color_dark: "#0B1014"
-    image_dark: assets/images/splash_logo.png
+    color: "#004C96"
+    image: assets/branding/splash_logo.png
 
   android: true
   ios: true
