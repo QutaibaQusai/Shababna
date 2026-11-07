@@ -32,6 +32,8 @@ class AppAssets {
       'assets/images/illustration_tasks_completed.svg';
 
   static const String onboardingBackground = 'assets/images/onboarding_background.png';
+  static const String homeDecorationLeft = 'assets/images/home_decoration_left.svg';
+  static const String homeDecorationRight = 'assets/images/home_decoration_right.svg';
 
   static const String assistantAnimation = 'assets/animations/assistant_robot.json';
 }

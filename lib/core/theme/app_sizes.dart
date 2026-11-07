@@ -41,6 +41,8 @@ class AppSizes {
   static double get homeDateCellHeight => 68.r;
   static double get homeDateHeartSize => 46.r;
   static double get homeImpactRingRadius => 38.r;
+  static double get homeDecorationLeftWidth => 72.r;
+  static double get homeDecorationRightWidth => 105.r;
   static double get calendarRowHeight => 44.r;
   static double get calendarWeekdaysHeight => 24.r;
   static double get tabIndicatorDotSize => 5.r;

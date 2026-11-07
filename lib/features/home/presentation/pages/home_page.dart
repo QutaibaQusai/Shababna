@@ -9,6 +9,7 @@ import '../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../core/shared/widgets/app_refresh_indicator.dart';
 import '../cubit/home_cubit.dart';
 import '../cubit/home_state.dart';
+import '../widgets/home_background_decoration.dart';
 import '../widgets/home_content.dart';
 import '../widgets/home_skeleton.dart';
 
@@ -38,23 +39,29 @@ class _HomeView extends StatelessWidget {
     return BlocListener<AuthSessionCubit, AuthStatus>(
       listenWhen: (previous, current) => previous.isAuthenticated != current.isAuthenticated,
       listener: (context, status) => cubit.load(isMember: status.isAuthenticated),
-      child: AppRefreshIndicator(
-        onRefresh: cubit.refresh,
-        child: AnimatedSwitcher(
-          duration: _switchDuration,
-          child: switch (state.status) {
-            HomeStatus.loading => HomeSkeleton(
-              key: const ValueKey(HomeStatus.loading),
-              isMember: state.isMember,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          const HomeBackgroundDecoration(),
+          AppRefreshIndicator(
+            onRefresh: cubit.refresh,
+            child: AnimatedSwitcher(
+              duration: _switchDuration,
+              child: switch (state.status) {
+                HomeStatus.loading => HomeSkeleton(
+                  key: const ValueKey(HomeStatus.loading),
+                  isMember: state.isMember,
+                ),
+                HomeStatus.failure => _HomeError(
+                  key: const ValueKey(HomeStatus.failure),
+                  message: state.errorMessage ?? context.l10n.somethingWentWrong,
+                  onRetry: cubit.refresh,
+                ),
+                HomeStatus.ready => HomeContent(key: const ValueKey(HomeStatus.ready), state: state),
+              },
             ),
-            HomeStatus.failure => _HomeError(
-              key: const ValueKey(HomeStatus.failure),
-              message: state.errorMessage ?? context.l10n.somethingWentWrong,
-              onRetry: cubit.refresh,
-            ),
-            HomeStatus.ready => HomeContent(key: const ValueKey(HomeStatus.ready), state: state),
-          },
-        ),
+          ),
+        ],
       ),
     );
   }
