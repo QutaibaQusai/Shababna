@@ -56,6 +56,8 @@ class HomeSkeleton extends StatelessWidget {
             ),
           ),
           SizedBox(height: AppSpacing.md),
+          header(),
+          SizedBox(height: AppSpacing.sm),
           Padding(
             padding: EdgeInsetsDirectional.only(start: AppSpacing.screenMargin),
             child: Align(

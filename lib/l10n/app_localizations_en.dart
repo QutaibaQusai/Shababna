@@ -1328,6 +1328,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeImpactTopTier => 'You\'ve reached the highest level';
 
   @override
+  String get homeHealthTipsTitle => 'Health tips';
+
+  @override
   String get homeSuggestedTitle => 'Suggested for you';
 
   @override

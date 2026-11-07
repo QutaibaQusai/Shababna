@@ -2372,6 +2372,12 @@ abstract class AppLocalizations {
   /// **'You\'ve reached the highest level'**
   String get homeImpactTopTier;
 
+  /// No description provided for @homeHealthTipsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Health tips'**
+  String get homeHealthTipsTitle;
+
   /// No description provided for @homeSuggestedTitle.
   ///
   /// In en, this message translates to:

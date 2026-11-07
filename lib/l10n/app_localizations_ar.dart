@@ -1340,6 +1340,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeImpactTopTier => 'وصلت إلى أعلى مستوى';
 
   @override
+  String get homeHealthTipsTitle => 'نصائح صحية';
+
+  @override
   String get homeSuggestedTitle => 'مقترحة لك';
 
   @override

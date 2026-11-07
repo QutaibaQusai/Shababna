@@ -508,6 +508,7 @@
     "placeholders": { "hours": { "type": "String" }, "tier": { "type": "String" } }
   },
   "homeImpactTopTier": "You've reached the highest level",
+  "homeHealthTipsTitle": "Health tips",
   "homeSuggestedTitle": "Suggested for you",
   "homeUpcomingTitle": "Upcoming opportunities",
   "homeWhatsOnTitle": "What's on",
