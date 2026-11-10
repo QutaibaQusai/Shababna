@@ -3,7 +3,6 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_sizes.dart';
 import '../../../../core/theme/app_spacing.dart';
 import 'dashboard_card.dart';
@@ -66,7 +65,7 @@ class DashboardStatCard extends StatelessWidget {
           ),
           if (badge != null) ...[
             SizedBox(height: AppSpacing.xs),
-            _PendingPill(label: badge),
+            _PendingLabel(label: badge),
           ],
         ],
       ),
@@ -74,32 +73,20 @@ class DashboardStatCard extends StatelessWidget {
   }
 }
 
-class _PendingPill extends StatelessWidget {
-  const _PendingPill({required this.label});
-
-  static const _backgroundAlpha = 0.12;
+class _PendingLabel extends StatelessWidget {
+  const _PendingLabel({required this.label});
 
   final String label;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xs,
-        vertical: AppSpacing.xxs,
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.warningColor.withValues(alpha: _backgroundAlpha),
-        borderRadius: AppRadius.pillRadius,
-      ),
-      child: Text(
-        label,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: context.textTheme.labelSmall?.copyWith(
-          color: AppColors.warningColor,
-          fontWeight: FontWeight.bold,
-        ),
+    return Text(
+      label,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: context.textTheme.labelSmall?.copyWith(
+        color: AppColors.warningColor,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
