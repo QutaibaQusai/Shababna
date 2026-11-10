@@ -105,6 +105,8 @@ class AppRoutes {
 
   static const String certificates = '/certificates';
   static const String certificatesName = 'certificates';
+  static const String dashboard = '/my-impact';
+  static const String dashboardName = 'my-impact';
   static const String certificateDetails = '/certificates/:id';
   static const String certificateDetailsName = 'certificate-details';
   static String certificateDetailsPath(String id) => '/certificates/$id';
@@ -135,6 +137,7 @@ class AppRoutes {
     contactForm,
     tasks,
     certificates,
+    dashboard,
     notifications,
     notificationSettings,
   };

@@ -31,6 +31,7 @@ import '../../features/profile/presentation/pages/edit_profile/edit_profile_page
 import '../../features/search/presentation/pages/global_search_page.dart';
 import '../../features/certificates/presentation/pages/certificate_details_page.dart';
 import '../../features/certificates/presentation/pages/certificates_page.dart';
+import '../../features/dashboard/presentation/pages/dashboard_page.dart';
 import '../../features/notifications/presentation/pages/notification_details_page.dart';
 import '../../features/notifications/presentation/pages/notification_settings_page.dart';
 import '../../features/notifications/presentation/pages/notifications_page.dart';
@@ -205,6 +206,11 @@ class AppRouter {
           path: AppRoutes.certificates,
           name: AppRoutes.certificatesName,
           builder: (context, state) => const CertificatesPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.dashboard,
+          name: AppRoutes.dashboardName,
+          builder: (context, state) => const DashboardPage(),
         ),
         GoRoute(
           path: AppRoutes.certificateDetails,

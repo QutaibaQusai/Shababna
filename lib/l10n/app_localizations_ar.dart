@@ -1444,6 +1444,49 @@ class AppLocalizationsAr extends AppLocalizations {
   String get certificatesMyTitle => 'شهاداتي';
 
   @override
+  String get myImpactTitle => 'إنجازاتي';
+
+  @override
+  String get impactHeaderSubtitle => 'ملخص رحلتك التطوعية';
+
+  @override
+  String get impactHoursLabel => 'ساعات التطوع';
+
+  @override
+  String impactToNextTier(String hours, String tier) {
+    return '$hours ساعة للوصول إلى $tier';
+  }
+
+  @override
+  String get impactTopTier => 'وصلت إلى أعلى مستوى';
+
+  @override
+  String get impactNoTier => 'لا يوجد مستوى بعد';
+
+  @override
+  String get impactEvents => 'الفعاليات';
+
+  @override
+  String get impactCompleted => 'مكتملة';
+
+  @override
+  String get impactUpcoming => 'قادمة';
+
+  @override
+  String get impactPending => 'بانتظار الموافقة';
+
+  @override
+  String get impactCertificates => 'الشهادات';
+
+  @override
+  String get impactTasksCompleted => 'المهام المنجزة';
+
+  @override
+  String impactPendingReview(int count) {
+    return '$count قيد المراجعة';
+  }
+
+  @override
   String get certificatesHeaderSubtitle =>
       'الشهادات التي حصلت عليها مقابل تطوعك';
 

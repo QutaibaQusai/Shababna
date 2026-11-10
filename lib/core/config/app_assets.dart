@@ -13,6 +13,11 @@ class AppAssets {
       'assets/images/icon_notification_2.svg';
   static const String iconTrophy = 'assets/images/icon_trophy.png';
   static const String iconHourglass = 'assets/images/icon_hourglass.png';
+  static const String iconCalendar3d = 'assets/images/icon_calendar_3d.png';
+  static const String iconDiploma = 'assets/images/icon_diploma.png';
+  static const String iconChecklist = 'assets/images/icon_checklist.png';
+  static const String iconCheckCircle = 'assets/images/icon_check_circle.png';
+  static const String iconAlarmClock = 'assets/images/icon_alarm_clock.png';
   static const String iconCertificate = 'assets/images/icon_certificate.svg';
   static const String iconAssociationHeart = 'assets/images/icon_about_association.svg';
   static const String iconAssociationHeartFilled =

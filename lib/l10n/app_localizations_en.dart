@@ -1433,6 +1433,49 @@ class AppLocalizationsEn extends AppLocalizations {
   String get certificatesMyTitle => 'My certificates';
 
   @override
+  String get myImpactTitle => 'My impact';
+
+  @override
+  String get impactHeaderSubtitle => 'A summary of your volunteering journey';
+
+  @override
+  String get impactHoursLabel => 'Volunteering hours';
+
+  @override
+  String impactToNextTier(String hours, String tier) {
+    return '$hours hours to $tier';
+  }
+
+  @override
+  String get impactTopTier => 'Highest level reached';
+
+  @override
+  String get impactNoTier => 'No level yet';
+
+  @override
+  String get impactEvents => 'Events';
+
+  @override
+  String get impactCompleted => 'Completed';
+
+  @override
+  String get impactUpcoming => 'Upcoming';
+
+  @override
+  String get impactPending => 'Pending';
+
+  @override
+  String get impactCertificates => 'Certificates';
+
+  @override
+  String get impactTasksCompleted => 'Tasks completed';
+
+  @override
+  String impactPendingReview(int count) {
+    return '$count pending review';
+  }
+
+  @override
   String get certificatesHeaderSubtitle =>
       'Certificates you\'ve earned for your volunteering';
 

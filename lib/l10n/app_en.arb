@@ -542,6 +542,25 @@
   "editProfileServiceAgreementLabel": "If you are accepted for any volunteering opportunity, do you agree to sign a 'Volunteer Service Agreement' to ensure commitment during the volunteer period?",
   "editProfileNonConvictionLabel": "If you are accepted for any volunteering opportunity, do you agree to provide a valid non-conviction certificate during the volunteer period?",
   "certificatesMyTitle": "My certificates",
+  "myImpactTitle": "My impact",
+  "impactHeaderSubtitle": "A summary of your volunteering journey",
+  "impactHoursLabel": "Volunteering hours",
+  "impactToNextTier": "{hours} hours to {tier}",
+  "@impactToNextTier": {
+    "placeholders": { "hours": { "type": "String" }, "tier": { "type": "String" } }
+  },
+  "impactTopTier": "Highest level reached",
+  "impactNoTier": "No level yet",
+  "impactEvents": "Events",
+  "impactCompleted": "Completed",
+  "impactUpcoming": "Upcoming",
+  "impactPending": "Pending",
+  "impactCertificates": "Certificates",
+  "impactTasksCompleted": "Tasks completed",
+  "impactPendingReview": "{count} pending review",
+  "@impactPendingReview": {
+    "placeholders": { "count": { "type": "int" } }
+  },
   "certificatesHeaderSubtitle": "Certificates you've earned for your volunteering",
   "certificatesEmptyMessage": "No certificates yet. Complete volunteering opportunities to earn them.",
   "certificateDetailsTitle": "Certificate",

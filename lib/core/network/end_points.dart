@@ -25,6 +25,7 @@ class EndPoints {
 
   static const String changePassword = '/api/v1/profile/change-password';
   static const String profileDetails = '/api/v2/profile/details';
+  static const String dashboard = '/api/v2/dashboard';
 
   static const String countries = '/api/v1/countries';
   static const String cities = '/api/v1/cities';

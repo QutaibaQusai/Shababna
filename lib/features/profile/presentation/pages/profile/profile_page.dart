@@ -136,6 +136,12 @@ class _ProfileViewState extends State<_ProfileView> {
               const Divider(height: 1),
               if (!isGuest)
                 AppMenuTile(
+                  icon: LucideIcons.chartNoAxesColumn,
+                  title: context.l10n.myImpactTitle,
+                  onTap: () => context.push(AppRoutes.dashboard),
+                ),
+              if (!isGuest)
+                AppMenuTile(
                   icon: LucideIcons.listTodo,
                   title: context.l10n.tasksMyTitle,
                   onTap: () => context.push(AppRoutes.tasks),

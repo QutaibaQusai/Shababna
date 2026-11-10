@@ -2558,6 +2558,84 @@ abstract class AppLocalizations {
   /// **'My certificates'**
   String get certificatesMyTitle;
 
+  /// No description provided for @myImpactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My impact'**
+  String get myImpactTitle;
+
+  /// No description provided for @impactHeaderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A summary of your volunteering journey'**
+  String get impactHeaderSubtitle;
+
+  /// No description provided for @impactHoursLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Volunteering hours'**
+  String get impactHoursLabel;
+
+  /// No description provided for @impactToNextTier.
+  ///
+  /// In en, this message translates to:
+  /// **'{hours} hours to {tier}'**
+  String impactToNextTier(String hours, String tier);
+
+  /// No description provided for @impactTopTier.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest level reached'**
+  String get impactTopTier;
+
+  /// No description provided for @impactNoTier.
+  ///
+  /// In en, this message translates to:
+  /// **'No level yet'**
+  String get impactNoTier;
+
+  /// No description provided for @impactEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Events'**
+  String get impactEvents;
+
+  /// No description provided for @impactCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get impactCompleted;
+
+  /// No description provided for @impactUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming'**
+  String get impactUpcoming;
+
+  /// No description provided for @impactPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get impactPending;
+
+  /// No description provided for @impactCertificates.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificates'**
+  String get impactCertificates;
+
+  /// No description provided for @impactTasksCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Tasks completed'**
+  String get impactTasksCompleted;
+
+  /// No description provided for @impactPendingReview.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} pending review'**
+  String impactPendingReview(int count);
+
   /// No description provided for @certificatesHeaderSubtitle.
   ///
   /// In en, this message translates to:
