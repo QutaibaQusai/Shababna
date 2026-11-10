@@ -155,7 +155,10 @@ class Profile {
   final NextVolunteerTier? nextTier;
   final int tierProgressPercentage;
 
-  String fullName(bool isArabic) => isArabic ? fullNameAr : fullNameEn;
+  String fullName(bool isArabic) {
+    final preferred = (isArabic ? fullNameAr : fullNameEn).trim();
+    return preferred.isNotEmpty ? preferred : (isArabic ? fullNameEn : fullNameAr).trim();
+  }
 
   Profile copyWith({String? phoneNumber, String? email, bool? emailConfirmed}) {
     return Profile(
@@ -201,6 +204,8 @@ class Profile {
 
 class ProfileDetails extends Equatable {
   const ProfileDetails({
+    this.fullNameAr = '',
+    this.fullNameEn = '',
     this.nationality,
     this.city,
     this.dateOfBirth,
@@ -224,6 +229,8 @@ class ProfileDetails extends Equatable {
 
   factory ProfileDetails.fromProfile(Profile profile) {
     return ProfileDetails(
+      fullNameAr: profile.fullNameAr,
+      fullNameEn: profile.fullNameEn,
       nationality: profile.nationality,
       city: profile.city,
       dateOfBirth: profile.dateOfBirth,
@@ -246,6 +253,8 @@ class ProfileDetails extends Equatable {
     );
   }
 
+  final String fullNameAr;
+  final String fullNameEn;
   final ProfileReference? nationality;
   final ProfileReference? city;
   final DateTime? dateOfBirth;
@@ -269,6 +278,8 @@ class ProfileDetails extends Equatable {
   bool get isMajorRequired => education?.isMajorRequired ?? false;
 
   ProfileDetails copyWith({
+    String? fullNameAr,
+    String? fullNameEn,
     ProfileReference? nationality,
     ProfileReference? city,
     DateTime? dateOfBirth,
@@ -290,6 +301,8 @@ class ProfileDetails extends Equatable {
     String? otherVolunteeringSubjects,
   }) {
     return ProfileDetails(
+      fullNameAr: fullNameAr ?? this.fullNameAr,
+      fullNameEn: fullNameEn ?? this.fullNameEn,
       nationality: nationality ?? this.nationality,
       city: city ?? this.city,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
@@ -315,6 +328,8 @@ class ProfileDetails extends Equatable {
 
   @override
   List<Object?> get props => [
+        fullNameAr.trim(),
+        fullNameEn.trim(),
         nationality,
         city,
         dateOfBirth,

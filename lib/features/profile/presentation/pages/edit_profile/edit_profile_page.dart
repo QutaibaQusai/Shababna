@@ -23,6 +23,7 @@ import '../../widgets/edit_profile/edit_profile_address_section.dart';
 import '../../widgets/edit_profile/edit_profile_bottom_bar.dart';
 import '../../widgets/edit_profile/edit_profile_documents_section.dart';
 import '../../widgets/edit_profile/edit_profile_form_scope.dart';
+import '../../widgets/edit_profile/edit_profile_name_fields.dart';
 import '../../widgets/edit_profile/edit_profile_personal_section.dart';
 import '../../widgets/edit_profile/edit_profile_skeleton.dart';
 import '../../widgets/edit_profile/edit_profile_volunteering_section.dart';
@@ -110,6 +111,8 @@ class _EditProfileViewState extends State<_EditProfileView> {
   final _fieldKeys = {for (final field in ProfileMissingField.values) field: GlobalKey()};
   bool _showMissing = false;
 
+  late final _fullNameArController = TextEditingController();
+  late final _fullNameEnController = TextEditingController();
   late final _majorController = TextEditingController();
   late final _universityNameController = TextEditingController();
   late final _nearestLandmarkController = TextEditingController();
@@ -151,6 +154,8 @@ class _EditProfileViewState extends State<_EditProfileView> {
 
   @override
   void dispose() {
+    _fullNameArController.dispose();
+    _fullNameEnController.dispose();
     _majorController.dispose();
     _universityNameController.dispose();
     _nearestLandmarkController.dispose();
@@ -167,6 +172,8 @@ class _EditProfileViewState extends State<_EditProfileView> {
       if (controller.text != value) controller.text = value;
     }
 
+    sync(_fullNameArController, details.fullNameAr);
+    sync(_fullNameEnController, details.fullNameEn);
     sync(_majorController, details.major);
     sync(_universityNameController, details.universityName);
     sync(_nearestLandmarkController, details.nearestLandmark);
@@ -277,6 +284,12 @@ class _EditProfileViewState extends State<_EditProfileView> {
           children: [
             const EditProfileAvatar(),
             SizedBox(height: AppSpacing.md),
+            EditProfileNameFields(
+              scope: scope,
+              fullNameArController: _fullNameArController,
+              fullNameEnController: _fullNameEnController,
+            ),
+            SizedBox(height: AppSpacing.sm),
             const EditProfileContactFields(),
             SizedBox(height: AppSpacing.sm),
             EditProfilePersonalSection(

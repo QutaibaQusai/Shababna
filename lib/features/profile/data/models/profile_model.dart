@@ -139,8 +139,8 @@ class ProfileModel {
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
     return ProfileModel(
       id: json['id'] as String,
-      fullNameEn: json['fullNameEn'] as String,
-      fullNameAr: json['fullNameAr'] as String,
+      fullNameEn: json['fullNameEn'] as String? ?? '',
+      fullNameAr: json['fullNameAr'] as String? ?? '',
       email: json['email'] as String,
       emailConfirmed: json['emailConfirmed'] as bool,
       phoneNumber: json['phoneNumber'] as String?,

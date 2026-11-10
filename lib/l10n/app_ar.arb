@@ -128,8 +128,6 @@
   "registerLink": "إنشاء حساب",
 
   "registerTitle": "إنشاء حساب",
-  "stepNameTitle": "اسمك",
-  "stepNameSubtitle": "أدخل اسمك الكامل بالعربية والإنجليزية",
   "fullNameArLabel": "الاسم الرباعي بالعربية (كما في هوية الأحوال المدنية)",
   "fullNameEnLabel": "الاسم الرباعي بالإنجليزية (كما في هوية الأحوال المدنية)",
   "stepContactTitle": "بيانات التواصل",
@@ -185,6 +183,7 @@
   "contactFormTitle": "أرسل لنا رسالة",
   "contactFormSubtitle": "سنعاود التواصل معك في أقرب وقت ممكن",
   "fullNameLabel": "الاسم الكامل",
+  "defaultUserName": "مستخدم",
   "subjectLabel": "الموضوع",
   "messageLabel": "الرسالة",
   "contactSendButton": "إرسال",

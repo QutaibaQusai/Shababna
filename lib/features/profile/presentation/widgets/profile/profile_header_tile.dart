@@ -19,6 +19,7 @@ class ProfileHeaderTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final name = profile.fullName(context.isArabic);
+    final displayName = name.isEmpty ? context.l10n.defaultUserName : name;
     final tier = profile.tier;
 
     return InkWell(
@@ -45,7 +46,7 @@ class ProfileHeaderTile extends StatelessWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          name,
+                          displayName,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: context.textTheme.displaySmall?.copyWith(

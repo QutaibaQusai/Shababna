@@ -99,6 +99,8 @@ extension ProfileModelMapper on ProfileModel {
 extension ProfileDetailsMapper on ProfileDetails {
   UpdateProfileDetailsRequestModel toRequest() {
     return UpdateProfileDetailsRequestModel(
+      fullNameEn: fullNameEn.trim(),
+      fullNameAr: fullNameAr.trim(),
       nationalityId: nationality?.id,
       cityId: city?.id,
       dateOfBirth: dateOfBirth == null ? null : _isoDate(dateOfBirth!),

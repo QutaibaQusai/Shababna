@@ -128,8 +128,6 @@
   "registerLink": "Register",
 
   "registerTitle": "Create account",
-  "stepNameTitle": "Your name",
-  "stepNameSubtitle": "Tell us your full name in Arabic and English",
   "fullNameArLabel": "Full name in Arabic (as in the civil ID)",
   "fullNameEnLabel": "Full name in English (as in the civil ID)",
   "stepContactTitle": "Contact details",
@@ -200,6 +198,7 @@
   "contactFormTitle": "Send us a message",
   "contactFormSubtitle": "We'll get back to you as soon as possible",
   "fullNameLabel": "Full Name",
+  "defaultUserName": "User",
   "subjectLabel": "Subject",
   "messageLabel": "Message",
   "contactSendButton": "Send",

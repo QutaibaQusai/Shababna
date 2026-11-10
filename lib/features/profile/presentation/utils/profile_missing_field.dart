@@ -2,6 +2,8 @@ import '../../../../l10n/app_localizations.dart';
 import '../../domain/repositories/profile_repository.dart';
 
 enum ProfileMissingField {
+  fullNameAr,
+  fullNameEn,
   gender,
   dateOfBirth,
   nationality,
@@ -21,6 +23,8 @@ enum ProfileMissingField {
   nationalIdPicture;
 
   static ProfileMissingField? fromApi(String key) => switch (key) {
+    'fullNameAr' => fullNameAr,
+    'fullNameEn' => fullNameEn,
     'gender' => gender,
     'dateOfBirth' => dateOfBirth,
     'nationality' => nationality,
@@ -42,6 +46,8 @@ enum ProfileMissingField {
   };
 
   String label(AppLocalizations l10n) => switch (this) {
+    fullNameAr => l10n.fullNameArLabel,
+    fullNameEn => l10n.fullNameEnLabel,
     gender => l10n.genderLabel,
     dateOfBirth => l10n.dateOfBirthLabel,
     nationality => l10n.nationalityLabel,
@@ -65,6 +71,8 @@ enum ProfileMissingField {
       keys.map(fromApi).nonNulls.toSet();
 
   bool isFilled(ProfileDetails details, {required bool hasNationalIdPicture}) => switch (this) {
+    fullNameAr => details.fullNameAr.trim().isNotEmpty,
+    fullNameEn => details.fullNameEn.trim().isNotEmpty,
     gender => details.gender != null,
     dateOfBirth => details.dateOfBirth != null,
     nationality => details.nationality != null,

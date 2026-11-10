@@ -1,5 +1,7 @@
 class UpdateProfileDetailsRequestModel {
   const UpdateProfileDetailsRequestModel({
+    required this.fullNameEn,
+    required this.fullNameAr,
     this.nationalityId,
     this.cityId,
     this.dateOfBirth,
@@ -21,6 +23,8 @@ class UpdateProfileDetailsRequestModel {
     this.otherVolunteeringSubjects,
   });
 
+  final String fullNameEn;
+  final String fullNameAr;
   final String? nationalityId;
   final String? cityId;
   final String? dateOfBirth;
@@ -42,6 +46,8 @@ class UpdateProfileDetailsRequestModel {
   final String? otherVolunteeringSubjects;
 
   Map<String, dynamic> toJson() => {
+        'fullNameEn': fullNameEn,
+        'fullNameAr': fullNameAr,
         'nationalityId': nationalityId,
         'cityId': cityId,
         'dateOfBirth': dateOfBirth,

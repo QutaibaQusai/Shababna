@@ -51,12 +51,6 @@ class EditProfileContactFields extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         FieldCard(
-          label: context.l10n.fullNameLabel,
-          icon: LucideIcons.user,
-          value: profile.fullName(context.isArabic),
-        ),
-        SizedBox(height: AppSpacing.sm),
-        FieldCard(
           label: context.l10n.phoneNumberLabel,
           icon: LucideIcons.phone,
           value: profile.phoneNumber,
