@@ -14,6 +14,7 @@ import 'impact/home_impact_card.dart';
 import 'news/home_news_list.dart';
 import 'shared/home_section_header.dart';
 import 'tasks/home_tasks_list.dart';
+import 'upcoming/home_upcoming_list.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key, required this.state});
@@ -41,13 +42,11 @@ class HomeContent extends StatelessWidget {
           header: HomeSectionHeader(title: l10n.homeTasksTitle),
           child: HomeTasksList(tasks: feed.openTasks),
         ),
-      if (feed.featuredVolunteeringOpportunities.isNotEmpty)
+      if (isMember && feed.suggestedVolunteeringOpportunities.isNotEmpty)
         _Section(
-          header: HomeSectionHeader(
-            title: isMember ? l10n.homeSuggestedTitle : l10n.homeUpcomingTitle,
-          ),
+          header: HomeSectionHeader(title: l10n.homeSuggestedTitle),
           child: HomeVolunteeringOpportunitiesRow(
-            volunteeringOpportunities: feed.featuredVolunteeringOpportunities,
+            volunteeringOpportunities: feed.suggestedVolunteeringOpportunities,
           ),
         ),
       _Section(
@@ -65,6 +64,13 @@ class HomeContent extends StatelessWidget {
           ],
         ),
       ),
+      if (feed.upcomingVolunteeringOpportunities.isNotEmpty)
+        _Section(
+          header: HomeSectionHeader(title: l10n.homeUpcomingTitle),
+          child: HomeUpcomingList(
+            volunteeringOpportunities: feed.upcomingVolunteeringOpportunities,
+          ),
+        ),
       if (feed.news.isNotEmpty)
         _Section(
           header: HomeSectionHeader(title: l10n.homeNewsTitle),

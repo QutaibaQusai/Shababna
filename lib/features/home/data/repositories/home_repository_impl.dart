@@ -5,6 +5,7 @@ import '../../../../core/error/failures.dart';
 import '../../domain/repositories/home_repository.dart';
 import '../datasources/home_remote_data_source.dart';
 import '../mappers/home_mapper.dart';
+import '../models/home_models.dart';
 
 class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
   HomeRepositoryImpl(this._remoteDataSource);
@@ -19,14 +20,16 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
     final impactCall = isMember ? guard(_impact) : null;
     final slidesCall = guard(_slides);
     final tasksCall = isMember ? guard(_openTasks) : null;
-    final featuredCall = guard(() => _featuredVolunteeringOpportunities(isMember: isMember));
+    final suggestedCall = isMember ? guard(_suggested) : null;
+    final upcomingCall = guard(_upcoming);
     final occasionsCall = _occasionsByDay(days);
     final newsCall = guard(_news);
 
     final impact = await impactCall;
     final slides = await slidesCall;
     final tasks = await tasksCall;
-    final featured = await featuredCall;
+    final suggested = await suggestedCall;
+    final upcoming = await upcomingCall;
     final occasions = await occasionsCall;
     final news = await newsCall;
 
@@ -34,7 +37,8 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
       ?impact,
       slides,
       ?tasks,
-      featured,
+      ?suggested,
+      upcoming,
       occasions,
       news,
     ];
@@ -47,7 +51,8 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
         impact: impact?.fold((_) => null, (value) => value),
         slides: slides.getOrElse(() => const []),
         openTasks: tasks?.getOrElse(() => const []) ?? const [],
-        featuredVolunteeringOpportunities: featured.getOrElse(() => const []),
+        suggestedVolunteeringOpportunities: suggested?.getOrElse(() => const []) ?? const [],
+        upcomingVolunteeringOpportunities: upcoming.getOrElse(() => const []),
         occasionsByDay: occasions.getOrElse(() => const {}),
         news: news.getOrElse(() => const []),
       ),
@@ -98,12 +103,15 @@ class HomeRepositoryImpl with RepositoryGuardMixin implements HomeRepository {
     return first.compareTo(second);
   }
 
-  Future<List<HomeVolunteeringOpportunity>> _featuredVolunteeringOpportunities({
-    required bool isMember,
-  }) async {
-    final volunteeringOpportunities = isMember
-        ? await _remoteDataSource.getSuggestedVolunteeringOpportunities()
-        : await _remoteDataSource.getUpcomingVolunteeringOpportunities();
+  Future<List<HomeVolunteeringOpportunity>> _suggested() async =>
+      _toEntities(await _remoteDataSource.getSuggestedVolunteeringOpportunities());
+
+  Future<List<HomeVolunteeringOpportunity>> _upcoming() async =>
+      _toEntities(await _remoteDataSource.getUpcomingVolunteeringOpportunities());
+
+  static List<HomeVolunteeringOpportunity> _toEntities(
+    List<HomeVolunteeringOpportunityModel> volunteeringOpportunities,
+  ) {
     return volunteeringOpportunities
         .map((volunteeringOpportunity) => volunteeringOpportunity.toEntity())
         .nonNulls

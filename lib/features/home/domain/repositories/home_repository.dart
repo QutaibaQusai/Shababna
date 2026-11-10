@@ -223,7 +223,8 @@ class HomeFeed extends Equatable {
     this.impact,
     this.slides = const [],
     this.openTasks = const [],
-    this.featuredVolunteeringOpportunities = const [],
+    this.suggestedVolunteeringOpportunities = const [],
+    this.upcomingVolunteeringOpportunities = const [],
     this.occasionsByDay = const {},
     this.news = const [],
   });
@@ -231,7 +232,8 @@ class HomeFeed extends Equatable {
   final HomeImpact? impact;
   final List<HomeSlide> slides;
   final List<HomeTask> openTasks;
-  final List<HomeVolunteeringOpportunity> featuredVolunteeringOpportunities;
+  final List<HomeVolunteeringOpportunity> suggestedVolunteeringOpportunities;
+  final List<HomeVolunteeringOpportunity> upcomingVolunteeringOpportunities;
   final Map<DateTime, List<HomeOccasion>> occasionsByDay;
   final List<HomeNews> news;
 
@@ -247,7 +249,8 @@ class HomeFeed extends Equatable {
     impact,
     slides,
     openTasks,
-    featuredVolunteeringOpportunities,
+    suggestedVolunteeringOpportunities,
+    upcomingVolunteeringOpportunities,
     occasionsByDay,
     news,
   ];

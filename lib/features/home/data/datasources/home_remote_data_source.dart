@@ -9,6 +9,7 @@ class HomeRemoteDataSource {
 
   static const _slidesPageSize = 10;
   static const _featuredPageSize = 10;
+  static const _upcomingPageSize = 3;
   static const _newsPageSize = 3;
   static const _tasksPageSize = 100;
   static final _dateFormat = DateFormat('yyyy-MM-dd');
@@ -45,7 +46,7 @@ class HomeRemoteDataSource {
   Future<List<HomeVolunteeringOpportunityModel>> getUpcomingVolunteeringOpportunities() =>
       _volunteeringOpportunities(EndPoints.volunteeringOpportunitiesUpcoming, {
         'Page': 1,
-        'PageSize': _featuredPageSize,
+        'PageSize': _upcomingPageSize,
       });
 
   Future<List<HomeOccasionModel>> getOccasionsOn(DateTime day) async {
