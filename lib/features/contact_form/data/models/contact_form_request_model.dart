@@ -12,9 +12,9 @@ class ContactFormRequestModel {
   final String body;
 
   Map<String, dynamic> toJson() => {
-        'fullName': fullName,
-        'email': email,
-        'subject': subject,
-        'body': body,
-      };
+    'fullName': fullName,
+    'email': email,
+    'subject': subject,
+    'body': body,
+  };
 }

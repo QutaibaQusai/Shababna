@@ -10,10 +10,10 @@ import '../../../../../core/services/locale_service.dart';
 import '../../../../../core/services/theme_service.dart';
 import '../../../../../core/session/auth_session_cubit.dart';
 import '../../../../../core/session/auth_status.dart';
+import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../../core/shared/widgets/app_menu_tile.dart';
 import '../../../../../core/shared/widgets/app_refresh_indicator.dart';
-import '../../../../../core/shared/widgets/guest_gate.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../legal/presentation/pages/legal_content_page.dart';
 import '../../cubit/profile/profile_cubit.dart';
@@ -31,7 +31,10 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(value: sl<ProfileCubit>(), child: const _ProfileView());
+    return Scaffold(
+      appBar: AppAppBar(title: context.l10n.navProfile, onBack: () => context.pop()),
+      body: BlocProvider.value(value: sl<ProfileCubit>(), child: const _ProfileView()),
+    );
   }
 }
 
@@ -57,11 +60,6 @@ class _ProfileViewState extends State<_ProfileView> {
     if (context.read<AuthSessionCubit>().state.isAuthenticated) {
       await context.read<ProfileCubit>().refresh(silent: true);
     }
-  }
-
-  Future<void> _openContactForm(BuildContext context) async {
-    if (!await ensureSignedIn(context) || !context.mounted) return;
-    context.push(AppRoutes.contactForm);
   }
 
   String _themeLabel(BuildContext context, ThemeMode mode) => switch (mode) {
@@ -184,14 +182,14 @@ class _ProfileViewState extends State<_ProfileView> {
                   onTap: () => context.push(AppRoutes.accountSecurity),
                 ),
               AppMenuTile(
-                icon: LucideIcons.info,
+                icon: LucideIcons.phone,
                 title: context.l10n.profileMenuContactInfo,
                 onTap: () => context.push(AppRoutes.contactInfo),
               ),
               AppMenuTile(
                 icon: LucideIcons.messageCircle,
                 title: context.l10n.profileMenuContactUs,
-                onTap: () => _openContactForm(context),
+                onTap: () => context.push(AppRoutes.contactForm),
               ),
               AppMenuTile(
                 icon: LucideIcons.users,

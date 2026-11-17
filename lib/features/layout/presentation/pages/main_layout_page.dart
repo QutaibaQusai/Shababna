@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/services/locale_service.dart';
+import '../../../contact_form/presentation/pages/contact_form_page.dart';
+import '../../../contact_info/presentation/pages/contact_info_page.dart';
 import '../../../volunteering_opportunities/presentation/pages/volunteering_opportunities_page.dart';
 import '../../../home/presentation/pages/home_page.dart';
-import '../../../profile/presentation/pages/profile/profile_page.dart';
 import '../cubit/layout_cubit.dart';
 import '../cubit/layout_tab.dart';
 import '../widgets/layout_app_bar.dart';
@@ -16,10 +17,7 @@ class MainLayoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => LayoutCubit(),
-      child: const _MainLayoutView(),
-    );
+    return BlocProvider(create: (_) => LayoutCubit(), child: const _MainLayoutView());
   }
 }
 
@@ -29,7 +27,8 @@ class _MainLayoutView extends StatelessWidget {
   static Widget _pageFor(LayoutTab tab) => switch (tab) {
     LayoutTab.home => const HomePage(),
     LayoutTab.volunteeringOpportunities => const VolunteeringOpportunitiesPage(),
-    LayoutTab.profile => const ProfilePage(),
+    LayoutTab.contactInfo => const ContactInfoView(),
+    LayoutTab.contactForm => const ContactFormView(),
   };
 
   @override

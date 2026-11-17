@@ -9,6 +9,7 @@ import '../../../../core/config/app_assets.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/theme/app_radius.dart';
+import '../../../../core/theme/app_shadows.dart';
 import '../../../../core/theme/app_sizes.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../volunteering_opportunities/presentation/widgets/date_filter/volunteering_opportunities_date_filter_sheet.dart';
@@ -21,6 +22,8 @@ class LayoutNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (MediaQuery.viewInsetsOf(context).bottom > 0) return const SizedBox.shrink();
+
     return AppBottomSafeArea(
       child: Padding(
         padding: EdgeInsets.fromLTRB(
@@ -29,13 +32,7 @@ class LayoutNavBar extends StatelessWidget {
           AppSpacing.screenMargin,
           AppSpacing.xs,
         ),
-        child: const Row(
-          children: [
-            _TabsPill(),
-            Spacer(),
-            _NavAction(),
-          ],
-        ),
+        child: const Row(children: [_TabsPill(), Spacer(), _NavAction()]),
       ),
     );
   }
@@ -60,7 +57,9 @@ class _NavAction extends StatelessWidget {
         child: FadeTransition(opacity: animation, child: child),
       ),
       child: switch (action) {
-        LayoutNavAction.assistant => const _AssistantButton(key: ValueKey(LayoutNavAction.assistant)),
+        LayoutNavAction.assistant => const _AssistantButton(
+          key: ValueKey(LayoutNavAction.assistant),
+        ),
         LayoutNavAction.filter => const _FilterButton(key: ValueKey(LayoutNavAction.filter)),
         null => const SizedBox.shrink(),
       },
@@ -83,6 +82,8 @@ class _FilterButton extends StatelessWidget {
         message: label,
         child: Material(
           color: colors.primary,
+          elevation: AppShadows.low,
+          shadowColor: colors.shadow,
           shape: const CircleBorder(),
           clipBehavior: Clip.antiAlias,
           child: InkWell(
@@ -116,10 +117,7 @@ class _TabsPill extends StatelessWidget {
     return Container(
       height: AppSizes.navBarHeight,
       padding: EdgeInsets.all(AppSpacing.xxs),
-      decoration: BoxDecoration(
-        color: colors.surface,
-        borderRadius: AppRadius.pillRadius,
-      ),
+      decoration: BoxDecoration(color: colors.surface, borderRadius: AppRadius.pillRadius),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -147,34 +145,53 @@ class _TabItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colorScheme;
-    final label = tab.label(context.l10n);
-    final size = AppSizes.navItemSize;
+    final l10n = context.l10n;
 
     return Semantics(
       button: true,
       selected: isSelected,
-      label: label,
-      child: Tooltip(
-        message: label,
-        child: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: () => _select(context),
-          child: AnimatedContainer(
-            duration: _duration,
-            curve: Curves.easeOut,
-            width: size,
-            height: size,
-            decoration: BoxDecoration(
-              color: isSelected ? colors.primary : Colors.transparent,
-              shape: BoxShape.circle,
-            ),
-            child: Center(
-              child: Icon(
-                tab.icon,
-                size: AppSizes.iconMd,
-                color: isSelected ? colors.onPrimary : colors.onSurface,
+      label: tab.label(l10n),
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => _select(context),
+        child: SizedBox(
+          width: AppSizes.navItemWidth,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AnimatedContainer(
+                duration: _duration,
+                curve: Curves.easeOut,
+                width: AppSizes.navIndicatorSize,
+                height: AppSizes.navIndicatorSize,
+                decoration: BoxDecoration(
+                  color: isSelected ? colors.primary : Colors.transparent,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  tab.icon,
+                  size: AppSizes.iconMd,
+                  color: isSelected ? colors.onPrimary : colors.onSurface,
+                ),
               ),
-            ),
+              SizedBox(height: AppSpacing.xxs),
+              Flexible(
+                child: ExcludeSemantics(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: AnimatedDefaultTextStyle(
+                      duration: _duration,
+                      curve: Curves.easeOut,
+                      style: context.textTheme.labelSmall!.copyWith(
+                        color: isSelected ? colors.primary : colors.onSurfaceVariant,
+                        fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                      ),
+                      child: Text(tab.navLabel(l10n), maxLines: 1),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -227,6 +244,8 @@ class _AssistantButton extends StatelessWidget {
         message: label,
         child: Material(
           color: colors.primary,
+          elevation: AppShadows.low,
+          shadowColor: colors.shadow,
           shape: const CircleBorder(),
           clipBehavior: Clip.antiAlias,
           child: InkWell(

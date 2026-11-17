@@ -302,6 +302,24 @@ abstract class AppLocalizations {
   /// **'My Account'**
   String get navProfile;
 
+  /// No description provided for @navVolunteerShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Volunteer'**
+  String get navVolunteerShort;
+
+  /// No description provided for @navContactShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get navContactShort;
+
+  /// No description provided for @navInfoShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Info'**
+  String get navInfoShort;
+
   /// No description provided for @profileMenuLanguage.
   ///
   /// In en, this message translates to:
@@ -1081,6 +1099,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We\'ll get back to you as soon as possible'**
   String get contactFormSubtitle;
+
+  /// No description provided for @contactFormRateLimited.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve sent several messages. Please wait a minute and try again.'**
+  String get contactFormRateLimited;
 
   /// No description provided for @fullNameLabel.
   ///

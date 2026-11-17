@@ -20,12 +20,7 @@ class ContactFormRepositoryImpl with RepositoryGuardMixin implements ContactForm
   }) {
     return guard(() {
       return _remoteDataSource.submitContactForm(
-        ContactFormRequestModel(
-          fullName: fullName,
-          email: email,
-          subject: subject,
-          body: body,
-        ),
+        ContactFormRequestModel(fullName: fullName, email: email, subject: subject, body: body),
       );
     });
   }

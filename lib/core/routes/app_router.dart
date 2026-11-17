@@ -28,6 +28,7 @@ import '../../features/profile/presentation/pages/change_password/change_passwor
 import '../../features/profile/presentation/pages/delete_account/delete_account_page.dart';
 import '../../features/profile/presentation/pages/change_phone_number/change_phone_number_page.dart';
 import '../../features/profile/presentation/pages/edit_profile/edit_profile_page.dart';
+import '../../features/profile/presentation/pages/profile/profile_page.dart';
 import '../../features/search/presentation/pages/global_search_page.dart';
 import '../../features/certificates/presentation/pages/certificate_details_page.dart';
 import '../../features/certificates/presentation/pages/certificates_page.dart';
@@ -236,6 +237,11 @@ class AppRouter {
           path: AppRoutes.contactInfo,
           name: AppRoutes.contactInfoName,
           builder: (context, state) => const ContactInfoPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.profile,
+          name: AppRoutes.profileName,
+          builder: (context, state) => const ProfilePage(),
         ),
         GoRoute(
           path: AppRoutes.contactForm,

@@ -21,15 +21,27 @@ class ContactInfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => sl<ContactInfoCubit>()..loadContactInfo(),
-      child: const _ContactInfoView(),
+    return Scaffold(
+      appBar: AppAppBar(title: context.l10n.profileMenuContactInfo, onBack: () => context.pop()),
+      body: const ContactInfoView(),
     );
   }
 }
 
-class _ContactInfoView extends StatelessWidget {
-  const _ContactInfoView();
+class ContactInfoView extends StatelessWidget {
+  const ContactInfoView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => sl<ContactInfoCubit>()..loadContactInfo(),
+      child: const _ContactInfoBody(),
+    );
+  }
+}
+
+class _ContactInfoBody extends StatelessWidget {
+  const _ContactInfoBody();
 
   Future<void> _launch(Uri uri) async {
     if (await canLaunchUrl(uri)) {
@@ -40,26 +52,26 @@ class _ContactInfoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<ContactInfoCubit>().state;
+    final margin = AppSpacing.screenMargin;
 
-    return Scaffold(
-      appBar: AppAppBar(
-        title: context.l10n.profileMenuContactInfo,
-        onBack: () => context.pop(),
-      ),
-      body: AppRefreshIndicator(
-        onRefresh: () => context.read<ContactInfoCubit>().loadContactInfo(),
-        child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          padding: EdgeInsets.all(AppSpacing.screenMargin),
-          child: state.errorMessage != null && !state.isLoading
-              ? AppErrorWidget(
-                  message: state.errorMessage!,
-                  onRetry: () => context.read<ContactInfoCubit>().loadContactInfo(),
-                )
-              : state.isLoading || state.content == null
-                  ? const ContactInfoSkeleton()
-                  : _ContactInfoSection(content: state.content!, onLaunch: _launch),
+    return AppRefreshIndicator(
+      onRefresh: () => context.read<ContactInfoCubit>().loadContactInfo(),
+      child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        padding: EdgeInsets.fromLTRB(
+          margin,
+          margin,
+          margin,
+          margin + MediaQuery.paddingOf(context).bottom,
         ),
+        child: state.errorMessage != null && !state.isLoading
+            ? AppErrorWidget(
+                message: state.errorMessage!,
+                onRetry: () => context.read<ContactInfoCubit>().loadContactInfo(),
+              )
+            : state.isLoading || state.content == null
+            ? const ContactInfoSkeleton()
+            : _ContactInfoSection(content: state.content!, onLaunch: _launch),
       ),
     );
   }

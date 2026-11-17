@@ -116,6 +116,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get navProfile => 'حسابي';
 
   @override
+  String get navVolunteerShort => 'تطوع';
+
+  @override
+  String get navContactShort => 'تواصل';
+
+  @override
+  String get navInfoShort => 'معلومات';
+
+  @override
   String get profileMenuLanguage => 'اللغة';
 
   @override
@@ -525,6 +534,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get contactFormSubtitle => 'سنعاود التواصل معك في أقرب وقت ممكن';
+
+  @override
+  String get contactFormRateLimited =>
+      'لقد أرسلت عدة رسائل. يرجى الانتظار دقيقة ثم المحاولة مرة أخرى.';
 
   @override
   String get fullNameLabel => 'الاسم الكامل';

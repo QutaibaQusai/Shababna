@@ -117,6 +117,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navProfile => 'My Account';
 
   @override
+  String get navVolunteerShort => 'Volunteer';
+
+  @override
+  String get navContactShort => 'Contact';
+
+  @override
+  String get navInfoShort => 'Info';
+
+  @override
   String get profileMenuLanguage => 'Language';
 
   @override
@@ -527,6 +536,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get contactFormSubtitle =>
       'We\'ll get back to you as soon as possible';
+
+  @override
+  String get contactFormRateLimited =>
+      'You\'ve sent several messages. Please wait a minute and try again.';
 
   @override
   String get fullNameLabel => 'Full Name';

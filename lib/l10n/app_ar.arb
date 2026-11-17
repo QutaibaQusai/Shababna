@@ -41,6 +41,9 @@
   "navNews": "الأخبار",
   "navVolunteeringOpportunities": "الفرص التطوعية",
   "navProfile": "حسابي",
+  "navVolunteerShort": "تطوع",
+  "navContactShort": "تواصل",
+  "navInfoShort": "معلومات",
 
   "profileMenuLanguage": "اللغة",
   "profileMenuLanguageSubtitle": "اختر لغتك المفضلة",
@@ -182,6 +185,7 @@
   "contactInfoOpenInMaps": "فتح الموقع في خرائط جوجل",
   "contactFormTitle": "أرسل لنا رسالة",
   "contactFormSubtitle": "سنعاود التواصل معك في أقرب وقت ممكن",
+  "contactFormRateLimited": "لقد أرسلت عدة رسائل. يرجى الانتظار دقيقة ثم المحاولة مرة أخرى.",
   "fullNameLabel": "الاسم الكامل",
   "defaultUserName": "مستخدم",
   "subjectLabel": "الموضوع",

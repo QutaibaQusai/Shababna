@@ -30,6 +30,9 @@ class AppRoutes {
   static const String contactInfo = '/contact-info';
   static const String contactInfoName = 'contact-info';
 
+  static const String profile = '/profile';
+  static const String profileName = 'profile';
+
   static const String contactForm = '/contact-form';
   static const String contactFormName = 'contact-form';
 
@@ -134,7 +137,6 @@ class AppRoutes {
     changePhoneNumber,
     changeEmail,
     verifyEmailChange,
-    contactForm,
     tasks,
     certificates,
     dashboard,

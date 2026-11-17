@@ -27,9 +27,7 @@ class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         tab.label(l10n),
         overflow: TextOverflow.ellipsis,
-        style: context.textTheme.headlineLarge?.copyWith(
-          fontWeight: FontWeight.w700,
-        ),
+        style: context.textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.w700),
       ),
       actions: tab.hasActions
           ? [
@@ -42,6 +40,12 @@ class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
                 SizedBox(width: AppSpacing.xs),
               ],
               const NotificationBellButton(),
+              SizedBox(width: AppSpacing.xs),
+              AppIconButton(
+                icon: LucideIcons.userRound,
+                semanticLabel: l10n.navProfile,
+                onPressed: () => context.push(AppRoutes.profile),
+              ),
               SizedBox(width: AppSpacing.screenMargin),
             ]
           : null,

@@ -8,25 +8,34 @@ enum LayoutNavAction { assistant, filter }
 enum LayoutTab {
   home(LucideIcons.house),
   volunteeringOpportunities(LucideIcons.calendarDays),
-  profile(LucideIcons.userRound);
+  contactInfo(LucideIcons.phone),
+  contactForm(LucideIcons.messageCircle);
 
   const LayoutTab(this.icon);
 
   final IconData icon;
 
-  bool get hasSearch => this != profile;
+  bool get hasSearch => hasActions;
 
-  bool get hasActions => this != profile;
+  bool get hasActions => this == home || this == volunteeringOpportunities;
 
   LayoutNavAction? get navAction => switch (this) {
     home => LayoutNavAction.assistant,
     volunteeringOpportunities => LayoutNavAction.filter,
-    profile => null,
+    contactInfo || contactForm => null,
   };
 
   String label(AppLocalizations l10n) => switch (this) {
     home => l10n.navHome,
     volunteeringOpportunities => l10n.navVolunteeringOpportunities,
-    profile => l10n.navProfile,
+    contactInfo => l10n.profileMenuContactInfo,
+    contactForm => l10n.profileMenuContactUs,
+  };
+
+  String navLabel(AppLocalizations l10n) => switch (this) {
+    home => l10n.navHome,
+    volunteeringOpportunities => l10n.navVolunteerShort,
+    contactInfo => l10n.navInfoShort,
+    contactForm => l10n.navContactShort,
   };
 }
