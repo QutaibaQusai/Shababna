@@ -170,8 +170,6 @@ class _RegisterViewState extends State<_RegisterView> {
     if (state.status == FormStatus.success) {
       AppToast.success(context, context.l10n.registrationCompleteMessage);
       _returnToLogin();
-    } else if (state.status == FormStatus.failure && state.errorMessage != null) {
-      AppToast.error(context, state.errorMessage!);
     }
   }
 
@@ -273,6 +271,8 @@ class _RegisterViewState extends State<_RegisterView> {
                               formKey: _stepFormKeys[_passwordStep],
                               passwordController: _passwordController,
                               confirmPasswordController: _confirmPasswordController,
+                              errorMessage: state.errorMessage,
+                              onPasswordChanged: context.read<RegisterCubit>().clearError,
                             ),
                           ],
                         ),

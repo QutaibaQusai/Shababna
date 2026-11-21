@@ -6,6 +6,7 @@ import '../../../../../core/validators/app_validators.dart';
 import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/theme/app_spacing.dart';
+import '../../../../../core/shared/widgets/app_error_box.dart';
 
 class RegisterStepPassword extends StatelessWidget {
   const RegisterStepPassword({
@@ -13,14 +14,20 @@ class RegisterStepPassword extends StatelessWidget {
     required this.formKey,
     required this.passwordController,
     required this.confirmPasswordController,
+    required this.onPasswordChanged,
+    this.errorMessage,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
+  final VoidCallback onPasswordChanged;
+  final String? errorMessage;
 
   @override
   Widget build(BuildContext context) {
+    final errorMessage = this.errorMessage;
+
     return SingleChildScrollView(
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       child: Form(
@@ -39,6 +46,7 @@ class RegisterStepPassword extends StatelessWidget {
               obscureText: true,
               prefixIcon: LucideIcons.lock,
               textInputAction: TextInputAction.next,
+              onChanged: (_) => onPasswordChanged(),
               validator: AppValidators.required(context.l10n.fieldRequiredError),
             ),
             SizedBox(height: AppSpacing.sm),
@@ -48,6 +56,7 @@ class RegisterStepPassword extends StatelessWidget {
               obscureText: true,
               prefixIcon: LucideIcons.lock,
               textInputAction: TextInputAction.done,
+              onChanged: (_) => onPasswordChanged(),
               validator: AppValidators.combine([
                 AppValidators.required(context.l10n.fieldRequiredError),
                 AppValidators.match(
@@ -56,6 +65,10 @@ class RegisterStepPassword extends StatelessWidget {
                 ),
               ]),
             ),
+            if (errorMessage != null) ...[
+              SizedBox(height: AppSpacing.sm),
+              AppErrorBox(message: errorMessage),
+            ],
           ],
         ),
       ),

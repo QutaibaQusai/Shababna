@@ -24,11 +24,18 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       confirmPassword: confirmPassword,
     );
 
+    if (isClosed) return;
+
     result.fold(
       (failure) => emit(
         ResetPasswordState(status: FormStatus.failure, errorMessage: failure.displayMessage),
       ),
       (_) => emit(const ResetPasswordState(status: FormStatus.success)),
     );
+  }
+
+  void clearError() {
+    if (state.errorMessage == null) return;
+    emit(const ResetPasswordState());
   }
 }

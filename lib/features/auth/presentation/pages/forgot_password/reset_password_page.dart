@@ -10,6 +10,7 @@ import '../../../../../core/state/form_status.dart';
 import '../../../../../core/validators/app_validators.dart';
 import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_button.dart';
+import '../../../../../core/shared/widgets/app_error_box.dart';
 import '../../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
@@ -72,8 +73,6 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
         if (state.status == FormStatus.success) {
           AppToast.success(context, context.l10n.passwordResetSuccessMessage);
           context.go(AppRoutes.login);
-        } else if (state.status == FormStatus.failure && state.errorMessage != null) {
-          AppToast.error(context, state.errorMessage!);
         }
       },
       child: BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
@@ -111,6 +110,7 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                                   prefixIcon: LucideIcons.lock,
                                   textInputAction: TextInputAction.next,
                                   autofocus: true,
+                                  onChanged: (_) => context.read<ResetPasswordCubit>().clearError(),
                                   validator: AppValidators.required(context.l10n.fieldRequiredError),
                                 ),
                                 SizedBox(height: AppSpacing.sm),
@@ -120,6 +120,7 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                                   obscureText: true,
                                   prefixIcon: LucideIcons.lock,
                                   textInputAction: TextInputAction.done,
+                                  onChanged: (_) => context.read<ResetPasswordCubit>().clearError(),
                                   validator: AppValidators.combine([
                                     AppValidators.required(context.l10n.fieldRequiredError),
                                     AppValidators.match(
@@ -128,6 +129,10 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                                     ),
                                   ]),
                                 ),
+                                if (state.errorMessage != null) ...[
+                                  SizedBox(height: AppSpacing.sm),
+                                  AppErrorBox(message: state.errorMessage!),
+                                ],
                               ],
                             ),
                           ),

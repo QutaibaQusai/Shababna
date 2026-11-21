@@ -7,6 +7,7 @@ import '../../../../../core/di/service_locator.dart';
 import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_button.dart';
+import '../../../../../core/shared/widgets/app_error_box.dart';
 import '../../../../../core/shared/widgets/app_loading_overlay.dart';
 import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/shared/widgets/app_text_field.dart';
@@ -68,8 +69,6 @@ class _ChangePasswordViewState extends State<_ChangePasswordView> {
         if (state.status == FormStatus.success) {
           AppToast.success(context, context.l10n.changePasswordSuccessMessage);
           context.pop();
-        } else if (state.status == FormStatus.failure) {
-          AppToast.error(context, state.errorMessage ?? context.l10n.somethingWentWrong);
         }
       },
       child: BlocBuilder<ChangePasswordCubit, ChangePasswordState>(
@@ -107,6 +106,7 @@ class _ChangePasswordViewState extends State<_ChangePasswordView> {
                                   prefixIcon: LucideIcons.lock,
                                   textInputAction: TextInputAction.next,
                                   autofocus: true,
+                                  onChanged: (_) => context.read<ChangePasswordCubit>().clearError(),
                                   validator: AppValidators.required(context.l10n.fieldRequiredError),
                                 ),
                                 SizedBox(height: AppSpacing.sm),
@@ -116,6 +116,7 @@ class _ChangePasswordViewState extends State<_ChangePasswordView> {
                                   obscureText: true,
                                   prefixIcon: LucideIcons.lock,
                                   textInputAction: TextInputAction.next,
+                                  onChanged: (_) => context.read<ChangePasswordCubit>().clearError(),
                                   validator: AppValidators.required(context.l10n.fieldRequiredError),
                                 ),
                                 SizedBox(height: AppSpacing.sm),
@@ -125,6 +126,7 @@ class _ChangePasswordViewState extends State<_ChangePasswordView> {
                                   obscureText: true,
                                   prefixIcon: LucideIcons.lock,
                                   textInputAction: TextInputAction.done,
+                                  onChanged: (_) => context.read<ChangePasswordCubit>().clearError(),
                                   validator: AppValidators.combine([
                                     AppValidators.required(context.l10n.fieldRequiredError),
                                     AppValidators.match(
@@ -133,6 +135,12 @@ class _ChangePasswordViewState extends State<_ChangePasswordView> {
                                     ),
                                   ]),
                                 ),
+                                if (state.status == FormStatus.failure) ...[
+                                  SizedBox(height: AppSpacing.sm),
+                                  AppErrorBox(
+                                    message: state.errorMessage ?? context.l10n.somethingWentWrong,
+                                  ),
+                                ],
                               ],
                             ),
                           ),

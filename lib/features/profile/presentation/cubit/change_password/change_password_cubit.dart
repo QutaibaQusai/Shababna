@@ -39,4 +39,9 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
       },
     );
   }
+
+  void clearError() {
+    if (state.status != FormStatus.failure) return;
+    emit(const ChangePasswordState());
+  }
 }

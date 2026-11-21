@@ -45,11 +45,18 @@ class RegisterCubit extends Cubit<RegisterState> {
       verificationToken: verificationToken,
     );
 
+    if (isClosed) return;
+
     result.fold(
       (failure) => emit(
         state.copyWith(status: FormStatus.failure, errorMessage: failure.displayMessage),
       ),
       (_) => emit(state.copyWith(status: FormStatus.success)),
     );
+  }
+
+  void clearError() {
+    if (state.errorMessage == null) return;
+    emit(state.copyWith(status: FormStatus.initial, phoneCodesError: state.phoneCodesError));
   }
 }

@@ -25,7 +25,6 @@ class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       centerTitle: false,
       title: Text(
-        
         tab.label(l10n),
         overflow: TextOverflow.ellipsis,
         style: context.textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.w700),
