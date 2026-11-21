@@ -19,7 +19,6 @@ class HomeGreeting extends StatelessWidget {
     final titleStyle = context.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold);
     final mutedStyle = context.textTheme.bodyMedium?.copyWith(color: colors.onSurfaceVariant);
     final firstName = this.firstName;
-    final displayName = firstName == null || firstName.isEmpty ? l10n.defaultUserName : firstName;
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin),
@@ -37,7 +36,7 @@ class HomeGreeting extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      TextSpan(text: ', $displayName'),
+                      if (firstName != null && firstName.isNotEmpty) TextSpan(text: ', $firstName'),
                     ],
                   ),
                   style: titleStyle,

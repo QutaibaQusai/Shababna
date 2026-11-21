@@ -62,16 +62,11 @@ class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
   @override
   Future<Either<Failure, String>> verifyRegistrationCode({
     required String email,
-    required String phoneNumber,
     required String code,
   }) {
     return guard(() async {
       final response = await _remoteDataSource.verifyRegistrationCode(
-        VerifyRegistrationCodeRequestModel(
-          email: email,
-          phoneNumber: phoneNumber,
-          code: code,
-        ),
+        VerifyRegistrationCodeRequestModel(email: email, code: code),
       );
       return response.verificationToken;
     });
@@ -81,6 +76,8 @@ class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
   Future<Either<Failure, void>> register({
     required String email,
     required String phoneNumber,
+    required String fullNameEn,
+    required String fullNameAr,
     required String password,
     required String confirmPassword,
     required String verificationToken,
@@ -90,6 +87,8 @@ class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
         RegisterRequestModel(
           email: email,
           phoneNumber: phoneNumber,
+          fullNameEn: fullNameEn,
+          fullNameAr: fullNameAr,
           password: password,
           confirmPassword: confirmPassword,
           verificationToken: verificationToken,

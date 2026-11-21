@@ -25,18 +25,10 @@ class RegisterVerifyCubit extends Cubit<RegisterVerifyState> {
     );
   }
 
-  Future<void> verify({
-    required String email,
-    required String phoneNumber,
-    required String code,
-  }) async {
+  Future<void> verify({required String email, required String code}) async {
     emit(state.copyWith(status: FormStatus.submitting));
 
-    final result = await _repository.verifyRegistrationCode(
-      email: email,
-      phoneNumber: phoneNumber,
-      code: code,
-    );
+    final result = await _repository.verifyRegistrationCode(email: email, code: code);
 
     result.fold(
       (failure) => emit(

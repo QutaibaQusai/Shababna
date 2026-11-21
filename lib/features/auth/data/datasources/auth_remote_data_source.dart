@@ -6,6 +6,7 @@ import '../models/email_request_model.dart';
 import '../models/login_request_model.dart';
 import '../models/message_response_model.dart';
 import '../models/register_request_model.dart';
+import '../models/register_response_model.dart';
 import '../models/reset_password_request_model.dart';
 import '../models/token_response_model.dart';
 import '../models/verify_registration_code_request_model.dart';
@@ -46,12 +47,13 @@ class AuthRemoteDataSource {
     return VerifyRegistrationCodeResponseModel.fromJson(response as Map<String, dynamic>);
   }
 
-  Future<void> register(RegisterRequestModel request) {
-    return _apiConsumer.post(
+  Future<RegisterResponseModel> register(RegisterRequestModel request) async {
+    final response = await _apiConsumer.post(
       EndPoints.register,
       data: request.toFormMap(),
       isFormData: true,
     );
+    return RegisterResponseModel.fromJson(response as Map<String, dynamic>);
   }
 
   Future<MessageResponseModel> forgotPassword(EmailRequestModel request) async {

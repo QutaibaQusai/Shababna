@@ -381,6 +381,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registerTitle => 'Create account';
 
   @override
+  String get stepNameTitle => 'Your name';
+
+  @override
+  String get stepNameSubtitle => 'Tell us your full name in Arabic and English';
+
+  @override
   String get fullNameArLabel => 'Full name in Arabic (as in the civil ID)';
 
   @override
@@ -543,9 +549,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fullNameLabel => 'Full Name';
-
-  @override
-  String get defaultUserName => 'User';
 
   @override
   String get subjectLabel => 'Subject';

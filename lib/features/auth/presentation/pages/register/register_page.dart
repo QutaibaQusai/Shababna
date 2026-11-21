@@ -19,6 +19,7 @@ import '../../cubit/register/register_verify_cubit.dart';
 import '../../cubit/register/register_verify_state.dart';
 import '../../widgets/register/register_step_contact.dart';
 import '../../widgets/register/register_step_indicator.dart';
+import '../../widgets/register/register_step_name.dart';
 import '../../widgets/register/register_step_password.dart';
 import '../../widgets/register/register_step_verify_email.dart';
 import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
@@ -46,17 +47,20 @@ class _RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<_RegisterView> {
-  static const _stepCount = 3;
-  static const _contactStep = 0;
-  static const _codeStep = 1;
-  static const _passwordStep = 2;
+  static const _stepCount = 4;
+  static const _nameStep = 0;
+  static const _contactStep = 1;
+  static const _codeStep = 2;
+  static const _passwordStep = 3;
   static const _defaultCountryCode = 'JO';
   static const _stepDuration = Duration(milliseconds: 250);
 
   final _pageController = PageController();
   final _stepFormKeys = List.generate(_stepCount, (_) => GlobalKey<FormState>());
-  int _currentStep = _contactStep;
+  int _currentStep = _nameStep;
 
+  final _fullNameArController = TextEditingController();
+  final _fullNameEnController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -68,6 +72,8 @@ class _RegisterViewState extends State<_RegisterView> {
   @override
   void dispose() {
     _pageController.dispose();
+    _fullNameArController.dispose();
+    _fullNameEnController.dispose();
     _emailController.dispose();
     _phoneNumberController.dispose();
     _passwordController.dispose();
@@ -105,6 +111,8 @@ class _RegisterViewState extends State<_RegisterView> {
         _verifyCode();
       case _passwordStep:
         _register();
+      default:
+        _advance();
     }
   }
 
@@ -118,7 +126,6 @@ class _RegisterViewState extends State<_RegisterView> {
   void _verifyCode() {
     context.read<RegisterVerifyCubit>().verify(
           email: _emailController.text.trim(),
-          phoneNumber: _composedPhoneNumber,
           code: _otpController.text.trim(),
         );
   }
@@ -134,6 +141,8 @@ class _RegisterViewState extends State<_RegisterView> {
     context.read<RegisterCubit>().submit(
           email: _emailController.text.trim(),
           phoneNumber: _composedPhoneNumber,
+          fullNameEn: _fullNameEnController.text.trim(),
+          fullNameAr: _fullNameArController.text.trim(),
           password: _passwordController.text,
           confirmPassword: _confirmPasswordController.text,
           verificationToken: context.read<RegisterVerifyCubit>().state.verificationToken!,
@@ -149,7 +158,7 @@ class _RegisterViewState extends State<_RegisterView> {
   }
 
   void _goBack() {
-    if (_currentStep == _contactStep) {
+    if (_currentStep == _nameStep) {
       _returnToLogin();
       return;
     }
@@ -183,7 +192,8 @@ class _RegisterViewState extends State<_RegisterView> {
   String _primaryLabel(BuildContext context) => switch (_currentStep) {
         _contactStep => context.l10n.sendCodeButton,
         _codeStep => context.l10n.verifyButton,
-        _ => context.l10n.createAccountButton,
+        _passwordStep => context.l10n.createAccountButton,
+        _ => context.l10n.nextButton,
       };
 
   @override
@@ -234,6 +244,11 @@ class _RegisterViewState extends State<_RegisterView> {
                           controller: _pageController,
                           physics: const NeverScrollableScrollPhysics(),
                           children: [
+                            RegisterStepName(
+                              formKey: _stepFormKeys[_nameStep],
+                              fullNameArController: _fullNameArController,
+                              fullNameEnController: _fullNameEnController,
+                            ),
                             RegisterStepContact(
                               formKey: _stepFormKeys[_contactStep],
                               emailController: _emailController,

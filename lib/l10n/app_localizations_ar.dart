@@ -379,6 +379,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get registerTitle => 'إنشاء حساب';
 
   @override
+  String get stepNameTitle => 'اسمك';
+
+  @override
+  String get stepNameSubtitle => 'أدخل اسمك الكامل بالعربية والإنجليزية';
+
+  @override
   String get fullNameArLabel =>
       'الاسم الرباعي بالعربية (كما في هوية الأحوال المدنية)';
 
@@ -541,9 +547,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get fullNameLabel => 'الاسم الكامل';
-
-  @override
-  String get defaultUserName => 'مستخدم';
 
   @override
   String get subjectLabel => 'الموضوع';

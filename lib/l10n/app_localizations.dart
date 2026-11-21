@@ -818,6 +818,18 @@ abstract class AppLocalizations {
   /// **'Create account'**
   String get registerTitle;
 
+  /// No description provided for @stepNameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get stepNameTitle;
+
+  /// No description provided for @stepNameSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us your full name in Arabic and English'**
+  String get stepNameSubtitle;
+
   /// No description provided for @fullNameArLabel.
   ///
   /// In en, this message translates to:
@@ -1111,12 +1123,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Full Name'**
   String get fullNameLabel;
-
-  /// No description provided for @defaultUserName.
-  ///
-  /// In en, this message translates to:
-  /// **'User'**
-  String get defaultUserName;
 
   /// No description provided for @subjectLabel.
   ///
