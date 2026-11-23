@@ -13,7 +13,6 @@ import '../../../../../core/session/auth_status.dart';
 import '../../../../../core/shared/widgets/app_app_bar.dart';
 import '../../../../../core/shared/widgets/app_error_widget.dart';
 import '../../../../../core/shared/widgets/app_menu_tile.dart';
-import '../../../../../core/shared/widgets/app_refresh_indicator.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../legal/presentation/pages/legal_content_page.dart';
 import '../../cubit/profile/profile_cubit.dart';
@@ -111,120 +110,114 @@ class _ProfileViewState extends State<_ProfileView> {
           listener: (context, _) => _refreshIfMember(),
         ),
       ],
-      child: AppRefreshIndicator(
-        onRefresh: _refreshIfMember,
-        child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          padding: EdgeInsets.only(bottom: MediaQuery.paddingOf(context).bottom),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (isGuest)
-                const GuestProfileHeader()
-              else if (profile != null)
-                ProfileHeaderTile(profile: profile, pictureCacheKey: state.pictureCacheKey)
-              else if (state.hasError)
-                AppErrorWidget(
-                  message: state.errorMessage ?? context.l10n.somethingWentWrong,
-                  onRetry: () => context.read<ProfileCubit>().refresh(),
-                )
-              else
-                const ProfileHeaderSkeleton(),
-              SizedBox(height: AppSpacing.xs),
-              const Divider(height: 1),
-              if (!isGuest)
-                AppMenuTile(
-                  icon: LucideIcons.chartNoAxesColumn,
-                  title: context.l10n.myImpactTitle,
-                  onTap: () => context.push(AppRoutes.dashboard),
-                ),
-              if (!isGuest)
-                AppMenuTile(
-                  icon: LucideIcons.listTodo,
-                  title: context.l10n.tasksMyTitle,
-                  onTap: () => context.push(AppRoutes.tasks),
-                ),
-              if (!isGuest)
-                AppMenuTile(
-                  icon: LucideIcons.award,
-                  title: context.l10n.certificatesMyTitle,
-                  onTap: () => context.push(AppRoutes.certificates),
-                ),
+      child: SingleChildScrollView(
+        padding: EdgeInsets.only(bottom: MediaQuery.paddingOf(context).bottom),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (isGuest)
+              const GuestProfileHeader()
+            else if (profile != null)
+              ProfileHeaderTile(profile: profile, pictureCacheKey: state.pictureCacheKey)
+            else if (state.hasError)
+              AppErrorWidget(
+                message: state.errorMessage ?? context.l10n.somethingWentWrong,
+                onRetry: () => context.read<ProfileCubit>().refresh(),
+              )
+            else
+              const ProfileHeaderSkeleton(),
+            SizedBox(height: AppSpacing.xs),
+            const Divider(height: 1),
+            if (!isGuest)
               AppMenuTile(
-                icon: LucideIcons.newspaper,
-                title: context.l10n.navNews,
-                onTap: () => context.push(AppRoutes.news),
+                icon: LucideIcons.chartNoAxesColumn,
+                title: context.l10n.myImpactTitle,
+                onTap: () => context.push(AppRoutes.dashboard),
               ),
+            if (!isGuest)
               AppMenuTile(
-                icon: LucideIcons.languages,
-                title: context.l10n.profileMenuLanguage,
-                value: languageCode == 'ar'
-                    ? context.l10n.languageArabic
-                    : context.l10n.languageEnglish,
-                onTap: () => _openLanguageSheet(context),
+                icon: LucideIcons.listTodo,
+                title: context.l10n.tasksMyTitle,
+                onTap: () => context.push(AppRoutes.tasks),
               ),
+            if (!isGuest)
               AppMenuTile(
-                icon: LucideIcons.palette,
-                title: context.l10n.profileMenuTheme,
-                value: _themeLabel(context, themeMode),
-                onTap: () => _openThemeSheet(context),
+                icon: LucideIcons.award,
+                title: context.l10n.certificatesMyTitle,
+                onTap: () => context.push(AppRoutes.certificates),
               ),
-              if (!isGuest)
-                AppMenuTile(
-                  icon: LucideIcons.bell,
-                  title: context.l10n.profileMenuNotifications,
-                  onTap: () => context.push(AppRoutes.notificationSettings),
-                ),
-              if (!isGuest)
-                AppMenuTile(
-                  icon: LucideIcons.shieldCheck,
-                  title: context.l10n.profileMenuAccountSecurity,
-                  onTap: () => context.push(AppRoutes.accountSecurity),
-                ),
+            AppMenuTile(
+              icon: LucideIcons.newspaper,
+              title: context.l10n.navNews,
+              onTap: () => context.push(AppRoutes.news),
+            ),
+            AppMenuTile(
+              icon: LucideIcons.languages,
+              title: context.l10n.profileMenuLanguage,
+              value: languageCode == 'ar'
+                  ? context.l10n.languageArabic
+                  : context.l10n.languageEnglish,
+              onTap: () => _openLanguageSheet(context),
+            ),
+            AppMenuTile(
+              icon: LucideIcons.palette,
+              title: context.l10n.profileMenuTheme,
+              value: _themeLabel(context, themeMode),
+              onTap: () => _openThemeSheet(context),
+            ),
+            if (!isGuest)
               AppMenuTile(
-                icon: LucideIcons.phone,
-                title: context.l10n.profileMenuContactInfo,
-                onTap: () => context.push(AppRoutes.contactInfo),
+                icon: LucideIcons.bell,
+                title: context.l10n.profileMenuNotifications,
+                onTap: () => context.push(AppRoutes.notificationSettings),
               ),
+            if (!isGuest)
               AppMenuTile(
-                icon: LucideIcons.messageCircle,
-                title: context.l10n.profileMenuContactUs,
-                onTap: () => context.push(AppRoutes.contactForm),
+                icon: LucideIcons.shieldCheck,
+                title: context.l10n.profileMenuAccountSecurity,
+                onTap: () => context.push(AppRoutes.accountSecurity),
               ),
+            AppMenuTile(
+              icon: LucideIcons.phone,
+              title: context.l10n.profileMenuContactInfo,
+              onTap: () => context.push(AppRoutes.contactInfo),
+            ),
+            AppMenuTile(
+              icon: LucideIcons.messageCircle,
+              title: context.l10n.profileMenuContactUs,
+              onTap: () => context.push(AppRoutes.contactForm),
+            ),
+            AppMenuTile(
+              icon: LucideIcons.users,
+              title: context.l10n.profileMenuAboutUs,
+              onTap: () => context.push(AppRoutes.aboutUs),
+            ),
+            AppMenuTile(
+              icon: LucideIcons.share2,
+              title: context.l10n.profileMenuSocialMedia,
+              onTap: () => context.push(AppRoutes.socialMedia),
+            ),
+            AppMenuTile(
+              icon: LucideIcons.shield,
+              title: context.l10n.profileMenuPrivacyPolicy,
+              onTap: () =>
+                  context.push(AppRoutes.legalContent, extra: LegalDocumentType.privacyPolicy),
+            ),
+            AppMenuTile(
+              icon: LucideIcons.fileText,
+              title: context.l10n.profileMenuTermsAndConditions,
+              onTap: () =>
+                  context.push(AppRoutes.legalContent, extra: LegalDocumentType.termsAndConditions),
+            ),
+            if (!isGuest)
               AppMenuTile(
-                icon: LucideIcons.users,
-                title: context.l10n.profileMenuAboutUs,
-                onTap: () => context.push(AppRoutes.aboutUs),
+                icon: LucideIcons.power,
+                title: context.l10n.profileMenuLogout,
+                isDestructive: true,
+                onTap: () => _openLogoutSheet(context),
               ),
-              AppMenuTile(
-                icon: LucideIcons.share2,
-                title: context.l10n.profileMenuSocialMedia,
-                onTap: () => context.push(AppRoutes.socialMedia),
-              ),
-              AppMenuTile(
-                icon: LucideIcons.shield,
-                title: context.l10n.profileMenuPrivacyPolicy,
-                onTap: () =>
-                    context.push(AppRoutes.legalContent, extra: LegalDocumentType.privacyPolicy),
-              ),
-              AppMenuTile(
-                icon: LucideIcons.fileText,
-                title: context.l10n.profileMenuTermsAndConditions,
-                onTap: () => context.push(
-                  AppRoutes.legalContent,
-                  extra: LegalDocumentType.termsAndConditions,
-                ),
-              ),
-              if (!isGuest)
-                AppMenuTile(
-                  icon: LucideIcons.power,
-                  title: context.l10n.profileMenuLogout,
-                  isDestructive: true,
-                  onTap: () => _openLogoutSheet(context),
-                ),
-              const ProfileCompanyWatermark(),
-            ],
-          ),
+            const ProfileCompanyWatermark(),
+          ],
         ),
       ),
     );
