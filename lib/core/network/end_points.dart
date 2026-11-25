@@ -1,7 +1,9 @@
 class EndPoints {
   EndPoints._();
 
-  static const String login = '/api/v1/auth/login';
+  static const String login = '/api/v2/auth/login';
+  static const String otpSend = '/api/v2/auth/otp/send';
+  static const String otpVerify = '/api/v2/auth/otp/verify';
   static const String checkRegistration = '/api/v2/auth/check-registration';
   static const String verifyRegistrationCode = '/api/v2/auth/verify-registration-code';
   static const String register = '/api/v2/auth/register';

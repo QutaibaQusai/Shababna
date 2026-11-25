@@ -21,6 +21,9 @@ class AppRoutes {
   static const String verifyResetCode = '/verify-reset-code';
   static const String verifyResetCodeName = 'verify-reset-code';
 
+  static const String loginVerification = '/login-verification';
+  static const String loginVerificationName = 'login-verification';
+
   static const String resetPassword = '/reset-password';
   static const String resetPasswordName = 'reset-password';
 
@@ -150,6 +153,7 @@ class AppRoutes {
     register,
     forgotPassword,
     verifyResetCode,
+    loginVerification,
     resetPassword,
   };
 }

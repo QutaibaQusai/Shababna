@@ -122,6 +122,7 @@
 
   "loginTitle": "Welcome to Shababna",
   "loginSubtitle": "Discover volunteering opportunities, track your impact, and earn certificates for every contribution.",
+  "identifierLabel": "Email or phone number",
   "emailLabel": "Email",
   "emailHint": "you@example.com",
   "passwordLabel": "Password",

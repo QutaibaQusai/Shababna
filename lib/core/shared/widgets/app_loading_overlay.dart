@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../config/app_assets.dart';
 import '../../extensions/context_extensions.dart';
 import '../../theme/app_sizes.dart';
-import '../../theme/app_spacing.dart';
+import 'app_brand_loader.dart';
 
 class AppLoadingOverlay extends StatefulWidget {
   const AppLoadingOverlay({super.key, required this.isLoading, required this.child});
@@ -33,24 +32,7 @@ class _AppLoadingOverlayState extends State<AppLoadingOverlay> {
           Positioned.fill(
             child: ColoredBox(
               color: context.colorScheme.scrim.withValues(alpha: 0.4),
-              child: Center(
-                child: SizedBox(
-                  width: AppSizes.loadingIndicatorSize,
-                  height: AppSizes.loadingIndicatorSize,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      const SizedBox.expand(child: CircularProgressIndicator(strokeWidth: 3)),
-                      Padding(
-                        padding: EdgeInsets.all(AppSpacing.xs),
-                        child: ClipOval(
-                          child: Image.asset(AppAssets.logoIcon, fit: BoxFit.cover),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              child: Center(child: AppBrandLoader(size: AppSizes.loadingIndicatorSize)),
             ),
           ),
       ],

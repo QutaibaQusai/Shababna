@@ -770,6 +770,12 @@ abstract class AppLocalizations {
   /// **'Discover volunteering opportunities, track your impact, and earn certificates for every contribution.'**
   String get loginSubtitle;
 
+  /// No description provided for @identifierLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Email or phone number'**
+  String get identifierLabel;
+
   /// No description provided for @emailLabel.
   ///
   /// In en, this message translates to:

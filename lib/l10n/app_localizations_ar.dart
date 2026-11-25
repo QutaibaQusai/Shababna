@@ -355,6 +355,9 @@ class AppLocalizationsAr extends AppLocalizations {
       'اكتشف فرص التطوّع، وتابع أثرك، واحصل على شهادات تقديراً لكل مساهمة.';
 
   @override
+  String get identifierLabel => 'البريد الإلكتروني أو رقم الهاتف';
+
+  @override
   String get emailLabel => 'البريد الإلكتروني';
 
   @override

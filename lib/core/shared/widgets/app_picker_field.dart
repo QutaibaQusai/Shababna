@@ -5,6 +5,7 @@ import '../../extensions/context_extensions.dart';
 import '../../theme/app_radius.dart';
 import '../../theme/app_sizes.dart';
 import '../../theme/app_spacing.dart';
+import 'app_brand_loader.dart';
 import 'app_empty_widget.dart';
 import 'app_error_widget.dart';
 import 'app_loader.dart';
@@ -73,14 +74,46 @@ class _AppPickerFieldState<T> extends State<AppPickerField<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return AppTextField(
-      label: widget.label,
-      controller: _controller,
-      readOnly: true,
-      prefixIcon: widget.prefixIcon,
-      suffix: Icon(LucideIcons.chevronDown, size: AppSizes.iconField),
-      validator: widget.validator,
-      onTap: () => _openSheet(context),
+    if (!widget.isLoading) {
+      return AppTextField(
+        label: widget.label,
+        controller: _controller,
+        readOnly: true,
+        prefixIcon: widget.prefixIcon,
+        suffix: Icon(LucideIcons.chevronDown, size: AppSizes.iconField),
+        validator: widget.validator,
+        onTap: () => _openSheet(context),
+      );
+    }
+
+    final loadingField = Stack(
+      children: [
+        AppTextField(
+          label: '',
+          controller: _controller,
+          readOnly: true,
+          prefixIcon: widget.prefixIcon,
+          suffix: const SizedBox.shrink(),
+          validator: widget.validator,
+        ),
+        Positioned.fill(
+          child: IgnorePointer(
+            child: Center(child: AppBrandLoader(size: AppSizes.fieldLoaderSize, strokeWidth: 2)),
+          ),
+        ),
+      ],
+    );
+
+    if (widget.label.isEmpty) return loadingField;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AppFieldLabel(label: widget.label),
+        SizedBox(height: AppSpacing.xs),
+        loadingField,
+      ],
     );
   }
 
@@ -144,8 +177,7 @@ class _PickerSheetState<T> extends State<_PickerSheet<T>> {
   void _onSearchChanged(String query) {
     setState(() {
       _filteredItems = widget.items
-          .where((item) =>
-              widget.itemLabel(item).toLowerCase().contains(query.toLowerCase()))
+          .where((item) => widget.itemLabel(item).toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
   }
@@ -158,7 +190,6 @@ class _PickerSheetState<T> extends State<_PickerSheet<T>> {
         height: MediaQuery.sizeOf(context).height * 0.7,
         child: Padding(
           padding: EdgeInsets.only(
-            
             left: AppSpacing.screenMargin,
             right: AppSpacing.screenMargin,
             bottom: AppSpacing.screenMargin,

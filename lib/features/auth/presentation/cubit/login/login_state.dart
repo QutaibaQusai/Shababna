@@ -1,20 +1,16 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../../../core/state/form_status.dart';
+import '../../../domain/login_verification.dart';
+
+enum LoginStatus { initial, submitting, success, failure, needsVerification }
 
 class LoginState extends Equatable {
-  const LoginState({this.status = FormStatus.initial, this.errorMessage});
+  const LoginState({this.status = LoginStatus.initial, this.message, this.pending});
 
-  final FormStatus status;
-  final String? errorMessage;
-
-  LoginState copyWith({FormStatus? status, String? errorMessage}) {
-    return LoginState(
-      status: status ?? this.status,
-      errorMessage: errorMessage,
-    );
-  }
+  final LoginStatus status;
+  final String? message;
+  final PendingVerification? pending;
 
   @override
-  List<Object?> get props => [status, errorMessage];
+  List<Object?> get props => [status, message, pending];
 }

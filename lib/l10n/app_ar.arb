@@ -122,6 +122,7 @@
 
   "loginTitle": "أهلاً بك في شبابنا",
   "loginSubtitle": "اكتشف فرص التطوّع، وتابع أثرك، واحصل على شهادات تقديراً لكل مساهمة.",
+  "identifierLabel": "البريد الإلكتروني أو رقم الهاتف",
   "emailLabel": "البريد الإلكتروني",
   "emailHint": "example@email.com",
   "passwordLabel": "كلمة المرور",

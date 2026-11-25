@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
+import '../auth_identifier.dart';
+import '../login_verification.dart';
 import '../verification_channel.dart';
 
 class CountryPhoneCode {
@@ -22,9 +24,16 @@ class CountryPhoneCode {
 }
 
 abstract interface class AuthRepository {
-  Future<Either<Failure, void>> login({
-    required String email,
+  Future<Either<Failure, LoginOutcome>> login({
+    required AuthIdentifier identifier,
     required String password,
+  });
+
+  Future<Either<Failure, int>> sendLoginCode(PendingVerification pending);
+
+  Future<Either<Failure, void>> verifyLoginCode({
+    required PendingVerification pending,
+    required String code,
   });
 
   Future<Either<Failure, String>> checkRegistration({

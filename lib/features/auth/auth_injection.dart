@@ -7,9 +7,12 @@ import '../../core/session/auth_session_cubit.dart';
 import '../../core/storage/secure_storage.dart';
 import 'data/datasources/auth_remote_data_source.dart';
 import 'data/repositories/auth_repository_impl.dart';
+import 'domain/login_verification.dart';
 import 'domain/repositories/auth_repository.dart';
 import 'presentation/cubit/forgot_password/forgot_password_cubit.dart';
 import 'presentation/cubit/login/login_cubit.dart';
+import 'presentation/cubit/login_verification/login_verification_cubit.dart';
+import 'presentation/cubit/phone_codes/phone_codes_cubit.dart';
 import 'presentation/cubit/logout/logout_cubit.dart';
 import 'presentation/cubit/register/register_cubit.dart';
 import 'presentation/cubit/forgot_password/reset_password_cubit.dart';
@@ -32,6 +35,10 @@ void registerAuthFeature(GetIt sl) {
   sl.registerFactory<LoginCubit>(
     () => LoginCubit(sl<AuthRepository>(), sl<AuthSessionCubit>()),
   );
+  sl.registerFactoryParam<LoginVerificationCubit, PendingVerification, void>(
+    (pending, _) => LoginVerificationCubit(sl<AuthRepository>(), pending: pending),
+  );
+  sl.registerLazySingleton<PhoneCodesCubit>(() => PhoneCodesCubit(sl<AuthRepository>()));
   sl.registerFactory<LogoutCubit>(
     () => LogoutCubit(sl<AuthRepository>(), sl<AuthSessionCubit>(), sl<AppLogger>()),
   );

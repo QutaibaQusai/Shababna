@@ -59,4 +59,6 @@ class AppSizes {
   static double get iconMd => 24.r;
   static double get iconLg => 32.r;
   static double get profileBadgeSize => 36.r;
+  static double get countryCodePickerWidth => 100.r;
+  static double get fieldLoaderSize => 22.r;
 }

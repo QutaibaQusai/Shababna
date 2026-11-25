@@ -7,6 +7,8 @@ import '../../features/auth/presentation/pages/register/register_page.dart';
 import '../../features/auth/presentation/pages/forgot_password/reset_password_args.dart';
 import '../../features/auth/presentation/pages/forgot_password/reset_password_page.dart';
 import '../../features/auth/presentation/pages/forgot_password/verify_reset_code_page.dart';
+import '../../features/auth/domain/login_verification.dart';
+import '../../features/auth/presentation/pages/login/login_verification_page.dart';
 import '../../features/about_us/presentation/pages/about_us_page.dart';
 import '../../features/contact_form/presentation/pages/contact_form_page.dart';
 import '../../features/contact_info/presentation/pages/contact_info_page.dart';
@@ -121,6 +123,14 @@ class AppRouter {
               state.extra is String ? null : AppRoutes.forgotPassword,
           builder: (context, state) =>
               VerifyResetCodePage(email: state.extra! as String),
+        ),
+        GoRoute(
+          path: AppRoutes.loginVerification,
+          name: AppRoutes.loginVerificationName,
+          redirect: (context, state) =>
+              state.extra is PendingVerification ? null : AppRoutes.login,
+          builder: (context, state) =>
+              LoginVerificationPage(pending: state.extra! as PendingVerification),
         ),
         GoRoute(
           path: AppRoutes.resetPassword,

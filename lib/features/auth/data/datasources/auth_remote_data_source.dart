@@ -7,8 +7,12 @@ import '../models/login_request_model.dart';
 import '../models/message_response_model.dart';
 import '../models/register_request_model.dart';
 import '../models/reset_password_request_model.dart';
+import '../models/send_otp_request_model.dart';
+import '../models/send_otp_response_model.dart';
 import '../models/token_response_model.dart';
 import '../models/verify_registration_code_request_model.dart';
+import '../models/verify_otp_request_model.dart';
+import '../models/verify_otp_response_model.dart';
 import '../models/verify_registration_code_response_model.dart';
 import '../models/verify_reset_code_request_model.dart';
 import '../models/verify_reset_code_response_model.dart';
@@ -74,6 +78,16 @@ class AuthRemoteDataSource {
 
   Future<void> resetPassword(ResetPasswordRequestModel request) {
     return _apiConsumer.post(EndPoints.resetPassword, data: request.toJson());
+  }
+
+  Future<SendOtpResponseModel> sendOtp(SendOtpRequestModel request) async {
+    final response = await _apiConsumer.post(EndPoints.otpSend, data: request.toJson());
+    return SendOtpResponseModel.fromJson(response as Map<String, dynamic>);
+  }
+
+  Future<VerifyOtpResponseModel> verifyOtp(VerifyOtpRequestModel request) async {
+    final response = await _apiConsumer.post(EndPoints.otpVerify, data: request.toJson());
+    return VerifyOtpResponseModel.fromJson(response as Map<String, dynamic>);
   }
 
   Future<List<CountryPhoneCodeModel>> getPhoneCodes() async {

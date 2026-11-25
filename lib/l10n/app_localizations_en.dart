@@ -357,6 +357,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'Discover volunteering opportunities, track your impact, and earn certificates for every contribution.';
 
   @override
+  String get identifierLabel => 'Email or phone number';
+
+  @override
   String get emailLabel => 'Email';
 
   @override
