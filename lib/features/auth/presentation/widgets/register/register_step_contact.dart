@@ -8,6 +8,8 @@ import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../core/validators/app_validators.dart';
 import '../../../domain/repositories/auth_repository.dart';
+import '../../../domain/verification_channel.dart';
+import 'register_channel_selector.dart';
 
 class RegisterStepContact extends StatelessWidget {
   const RegisterStepContact({
@@ -18,11 +20,15 @@ class RegisterStepContact extends StatelessWidget {
     required this.phoneCodes,
     required this.selectedPhoneCode,
     required this.onPhoneCodeSelected,
+    required this.channel,
+    required this.onChannelChanged,
     this.isLoadingPhoneCodes = false,
     this.phoneCodesError,
     this.onRetryLoadPhoneCodes,
   });
 
+  final VerificationChannel channel;
+  final ValueChanged<VerificationChannel> onChannelChanged;
   final GlobalKey<FormState> formKey;
   final TextEditingController emailController;
   final TextEditingController phoneNumberController;
@@ -49,6 +55,8 @@ class RegisterStepContact extends StatelessWidget {
               subtitle: context.l10n.stepContactSubtitle,
             ),
             SizedBox(height: AppSpacing.md),
+            RegisterChannelSelector(value: channel, onChanged: onChannelChanged),
+            SizedBox(height: AppSpacing.sm),
             AppTextField(
               label: context.l10n.emailLabel,
               hint: context.l10n.emailHint,

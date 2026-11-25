@@ -137,8 +137,8 @@
   "lastNameLabel": "Last name",
   "fullNameArLabel": "Full name in Arabic (as in the civil ID)",
   "fullNameEnLabel": "Full name in English (as in the civil ID)",
-  "stepContactTitle": "Contact details",
-  "stepContactSubtitle": "We'll use this to verify your account and keep you updated",
+  "stepContactTitle": "How should we send your code?",
+  "stepContactSubtitle": "Choose SMS or email, then enter your email and phone number",
   "phoneNumberLabel": "Phone number",
   "stepPasswordTitle": "Set a password",
   "stepPasswordSubtitle": "Choose a strong password to secure your account",
@@ -150,6 +150,9 @@
   "loginLink": "Login",
 
   "verifyEmailTitle": "Verify your email",
+  "verifyPhoneTitle": "Verify your phone number",
+  "channelSms": "SMS",
+  "channelEmail": "Email",
   "verifyEmailSubtitle": "Enter the code sent to {email}",
   "@verifyEmailSubtitle": {
     "placeholders": { "email": { "type": "String" } }

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
+import '../verification_channel.dart';
 
 class CountryPhoneCode {
   const CountryPhoneCode({
@@ -29,6 +30,7 @@ abstract interface class AuthRepository {
   Future<Either<Failure, String>> checkRegistration({
     required String email,
     required String phoneNumber,
+    required VerificationChannel channel,
   });
 
   Future<Either<Failure, String>> verifyRegistrationCode({

@@ -1,10 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 import '../../../../../core/state/form_status.dart';
+import '../../../domain/verification_channel.dart';
 
 class RegisterVerifyState extends Equatable {
   const RegisterVerifyState({
     this.status = FormStatus.initial,
+    this.channel = VerificationChannel.email,
     this.errorMessage,
     this.verificationToken,
     this.resendMessage,
@@ -12,6 +14,7 @@ class RegisterVerifyState extends Equatable {
   });
 
   final FormStatus status;
+  final VerificationChannel channel;
   final String? errorMessage;
   final String? verificationToken;
   final String? resendMessage;
@@ -19,6 +22,7 @@ class RegisterVerifyState extends Equatable {
 
   RegisterVerifyState copyWith({
     FormStatus? status,
+    VerificationChannel? channel,
     String? errorMessage,
     String? verificationToken,
     String? resendMessage,
@@ -26,6 +30,7 @@ class RegisterVerifyState extends Equatable {
   }) {
     return RegisterVerifyState(
       status: status ?? this.status,
+      channel: channel ?? this.channel,
       errorMessage: errorMessage,
       verificationToken: verificationToken ?? this.verificationToken,
       resendMessage: resendMessage,
@@ -35,10 +40,11 @@ class RegisterVerifyState extends Equatable {
 
   @override
   List<Object?> get props => [
-        status,
-        errorMessage,
-        verificationToken,
-        resendMessage,
-        resendFailed,
-      ];
+    status,
+    channel,
+    errorMessage,
+    verificationToken,
+    resendMessage,
+    resendFailed,
+  ];
 }

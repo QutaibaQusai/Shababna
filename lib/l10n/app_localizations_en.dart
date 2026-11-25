@@ -400,11 +400,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fullNameEnLabel => 'Full name in English (as in the civil ID)';
 
   @override
-  String get stepContactTitle => 'Contact details';
+  String get stepContactTitle => 'How should we send your code?';
 
   @override
   String get stepContactSubtitle =>
-      'We\'ll use this to verify your account and keep you updated';
+      'Choose SMS or email, then enter your email and phone number';
 
   @override
   String get phoneNumberLabel => 'Phone number';
@@ -436,6 +436,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get verifyEmailTitle => 'Verify your email';
+
+  @override
+  String get verifyPhoneTitle => 'Verify your phone number';
+
+  @override
+  String get channelSms => 'SMS';
+
+  @override
+  String get channelEmail => 'Email';
 
   @override
   String verifyEmailSubtitle(String email) {

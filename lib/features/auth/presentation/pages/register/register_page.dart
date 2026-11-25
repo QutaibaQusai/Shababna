@@ -13,6 +13,7 @@ import '../../../../../core/state/form_status.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../core/utils/phone_number.dart';
 import '../../../domain/repositories/auth_repository.dart';
+import '../../../domain/verification_channel.dart';
 import '../../cubit/register/register_cubit.dart';
 import '../../cubit/register/register_state.dart';
 import '../../cubit/register/register_verify_cubit.dart';
@@ -21,7 +22,7 @@ import '../../widgets/register/register_step_contact.dart';
 import '../../widgets/register/register_step_indicator.dart';
 import '../../widgets/register/register_step_name.dart';
 import '../../widgets/register/register_step_password.dart';
-import '../../widgets/register/register_step_verify_email.dart';
+import '../../widgets/register/register_step_verify_code.dart';
 import '../../../../../core/shared/widgets/app_bottom_safe_area.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -126,6 +127,11 @@ class _RegisterViewState extends State<_RegisterView> {
         );
   }
 
+  String _codeDestination(VerificationChannel channel) => switch (channel) {
+        VerificationChannel.phone => _selectedPhoneCode == null ? '' : _composedPhoneNumber,
+        VerificationChannel.email => _emailController.text.trim(),
+      };
+
   void _verifyCode() {
     context.read<RegisterVerifyCubit>().verify(
           email: _emailController.text.trim(),
@@ -218,8 +224,8 @@ class _RegisterViewState extends State<_RegisterView> {
       ],
       child: BlocBuilder<RegisterCubit, RegisterState>(
         builder: (context, state) {
-          final isVerifying =
-              context.watch<RegisterVerifyCubit>().state.status == FormStatus.submitting;
+          final verifyState = context.watch<RegisterVerifyCubit>().state;
+          final isVerifying = verifyState.status == FormStatus.submitting;
 
           return AppLoadingOverlay(
             isLoading: state.status == FormStatus.submitting || isVerifying,
@@ -258,15 +264,18 @@ class _RegisterViewState extends State<_RegisterView> {
                               selectedPhoneCode: _selectedPhoneCode,
                               onPhoneCodeSelected: (code) =>
                                   setState(() => _selectedPhoneCode = code),
+                              channel: verifyState.channel,
+                              onChannelChanged: context.read<RegisterVerifyCubit>().selectChannel,
                               isLoadingPhoneCodes: state.isLoadingPhoneCodes,
                               phoneCodesError: state.phoneCodesError,
                               onRetryLoadPhoneCodes: () =>
                                   context.read<RegisterCubit>().loadPhoneCodes(),
                             ),
-                            RegisterStepVerifyEmail(
+                            RegisterStepVerifyCode(
                               formKey: _stepFormKeys[_codeStep],
                               codeController: _otpController,
-                              email: _emailController.text.trim(),
+                              channel: verifyState.channel,
+                              destination: _codeDestination(verifyState.channel),
                               onCompleted: _goNext,
                               onResend: _resendCode,
                             ),

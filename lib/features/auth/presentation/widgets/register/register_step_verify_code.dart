@@ -7,25 +7,36 @@ import '../../../../../core/shared/widgets/app_otp_field.dart';
 import '../../../../../core/shared/widgets/app_page_header.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../core/validators/app_validators.dart';
+import '../../../domain/verification_channel.dart';
 
-class RegisterStepVerifyEmail extends StatelessWidget {
-  const RegisterStepVerifyEmail({
+class RegisterStepVerifyCode extends StatelessWidget {
+  const RegisterStepVerifyCode({
     super.key,
     required this.formKey,
     required this.codeController,
-    required this.email,
+    required this.channel,
+    required this.destination,
     required this.onCompleted,
     required this.onResend,
   });
 
+  static const _leftToRightIsolate = '\u2066';
+  static const _popDirectionalIsolate = '\u2069';
+
   final GlobalKey<FormState> formKey;
   final TextEditingController codeController;
-  final String email;
+  final VerificationChannel channel;
+  final String destination;
   final VoidCallback onCompleted;
   final VoidCallback onResend;
 
   @override
   Widget build(BuildContext context) {
+    final isPhone = channel == VerificationChannel.phone;
+    final shownDestination = isPhone
+        ? '$_leftToRightIsolate$destination$_popDirectionalIsolate'
+        : destination;
+
     return SingleChildScrollView(
       child: Form(
         key: formKey,
@@ -33,8 +44,8 @@ class RegisterStepVerifyEmail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AppPageHeader(
-              title: context.l10n.verifyEmailTitle,
-              subtitle: context.l10n.verifyEmailSubtitle(email),
+              title: isPhone ? context.l10n.verifyPhoneTitle : context.l10n.verifyEmailTitle,
+              subtitle: context.l10n.verifyEmailSubtitle(shownDestination),
             ),
             SizedBox(height: AppSpacing.md),
             AppOtpField(
@@ -49,10 +60,7 @@ class RegisterStepVerifyEmail extends StatelessWidget {
             SizedBox(height: AppSpacing.md),
             Center(child: Text(context.l10n.resendCodePrompt)),
             Center(
-              child: AppCooldownTimer(
-                label: context.l10n.resendCodeButton,
-                onPressed: onResend,
-              ),
+              child: AppCooldownTimer(label: context.l10n.resendCodeButton, onPressed: onResend),
             ),
           ],
         ),

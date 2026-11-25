@@ -6,6 +6,7 @@ import '../../../../core/services/device_identity_service.dart';
 import '../../../../core/storage/secure_storage.dart';
 import '../../../../core/storage/storage_keys.dart';
 import '../../domain/repositories/auth_repository.dart';
+import '../../domain/verification_channel.dart';
 import '../datasources/auth_remote_data_source.dart';
 import '../models/check_registration_request_model.dart';
 import '../models/email_request_model.dart';
@@ -50,10 +51,11 @@ class AuthRepositoryImpl with RepositoryGuardMixin implements AuthRepository {
   Future<Either<Failure, String>> checkRegistration({
     required String email,
     required String phoneNumber,
+    required VerificationChannel channel,
   }) {
     return guard(() async {
       final response = await _remoteDataSource.checkRegistration(
-        CheckRegistrationRequestModel(email: email, phoneNumber: phoneNumber),
+        CheckRegistrationRequestModel(email: email, phoneNumber: phoneNumber, channel: channel),
       );
       return response.message;
     });

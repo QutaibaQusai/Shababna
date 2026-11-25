@@ -400,11 +400,11 @@ class AppLocalizationsAr extends AppLocalizations {
       'الاسم الرباعي بالإنجليزية (كما في هوية الأحوال المدنية)';
 
   @override
-  String get stepContactTitle => 'بيانات التواصل';
+  String get stepContactTitle => 'كيف نرسل لك رمز التحقق؟';
 
   @override
   String get stepContactSubtitle =>
-      'سنستخدم هذه البيانات للتحقق من حسابك وإبقائك على اطلاع';
+      'اختر الرسالة النصية أو البريد الإلكتروني، ثم أدخل بريدك ورقم هاتفك';
 
   @override
   String get phoneNumberLabel => 'رقم الهاتف';
@@ -435,6 +435,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get verifyEmailTitle => 'تأكيد البريد الإلكتروني';
+
+  @override
+  String get verifyPhoneTitle => 'تأكيد رقم الهاتف';
+
+  @override
+  String get channelSms => 'رسالة نصية';
+
+  @override
+  String get channelEmail => 'البريد الإلكتروني';
 
   @override
   String verifyEmailSubtitle(String email) {

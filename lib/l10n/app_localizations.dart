@@ -857,13 +857,13 @@ abstract class AppLocalizations {
   /// No description provided for @stepContactTitle.
   ///
   /// In en, this message translates to:
-  /// **'Contact details'**
+  /// **'How should we send your code?'**
   String get stepContactTitle;
 
   /// No description provided for @stepContactSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'We\'ll use this to verify your account and keep you updated'**
+  /// **'Choose SMS or email, then enter your email and phone number'**
   String get stepContactSubtitle;
 
   /// No description provided for @phoneNumberLabel.
@@ -925,6 +925,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Verify your email'**
   String get verifyEmailTitle;
+
+  /// No description provided for @verifyPhoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify your phone number'**
+  String get verifyPhoneTitle;
+
+  /// No description provided for @channelSms.
+  ///
+  /// In en, this message translates to:
+  /// **'SMS'**
+  String get channelSms;
+
+  /// No description provided for @channelEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get channelEmail;
 
   /// No description provided for @verifyEmailSubtitle.
   ///
