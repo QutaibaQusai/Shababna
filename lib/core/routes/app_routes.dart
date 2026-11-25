@@ -68,6 +68,8 @@ class AppRoutes {
 
   static const String verifyEmailChange = '/verify-email-change';
   static const String verifyEmailChangeName = 'verify-email-change';
+  static const String verifyContact = '/verify-contact';
+  static const String verifyContactName = 'verify-contact';
 
   static const String news = '/news';
   static const String newsName = 'news';
@@ -140,6 +142,7 @@ class AppRoutes {
     changePhoneNumber,
     changeEmail,
     verifyEmailChange,
+    verifyContact,
     tasks,
     certificates,
     dashboard,

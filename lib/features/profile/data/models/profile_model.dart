@@ -103,6 +103,7 @@ class ProfileModel {
     required this.fullNameAr,
     required this.email,
     required this.emailConfirmed,
+    this.phoneNumberVerified,
     required this.phoneNumber,
     required this.profilePictureUrl,
     required this.hasProfilePicture,
@@ -143,6 +144,7 @@ class ProfileModel {
       fullNameAr: json['fullNameAr'] as String? ?? '',
       email: json['email'] as String,
       emailConfirmed: json['emailConfirmed'] as bool,
+      phoneNumberVerified: json['phoneNumberVerified'] as bool?,
       phoneNumber: json['phoneNumber'] as String?,
       profilePictureUrl: json['profilePictureUrl'] as String?,
       hasProfilePicture: json['hasProfilePicture'] as bool,
@@ -194,6 +196,7 @@ class ProfileModel {
   final String fullNameAr;
   final String email;
   final bool emailConfirmed;
+  final bool? phoneNumberVerified;
   final String? phoneNumber;
   final String? profilePictureUrl;
   final bool hasProfilePicture;

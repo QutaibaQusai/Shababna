@@ -9,6 +9,8 @@ import '../../features/auth/presentation/pages/forgot_password/reset_password_pa
 import '../../features/auth/presentation/pages/forgot_password/verify_reset_code_page.dart';
 import '../../features/auth/domain/login_verification.dart';
 import '../../features/auth/presentation/pages/login/login_verification_page.dart';
+import '../../features/auth/domain/verification_channel.dart';
+import '../../features/profile/presentation/pages/verify_contact/verify_contact_page.dart';
 import '../../features/about_us/presentation/pages/about_us_page.dart';
 import '../../features/contact_form/presentation/pages/contact_form_page.dart';
 import '../../features/contact_info/presentation/pages/contact_info_page.dart';
@@ -316,6 +318,14 @@ class AppRouter {
           name: AppRoutes.verifyEmailChangeName,
           redirect: (context, state) => state.extra is String ? null : AppRoutes.editProfile,
           builder: (context, state) => VerifyEmailChangePage(newEmail: state.extra! as String),
+        ),
+        GoRoute(
+          path: AppRoutes.verifyContact,
+          name: AppRoutes.verifyContactName,
+          redirect: (context, state) =>
+              state.extra is VerificationChannel ? null : AppRoutes.editProfile,
+          builder: (context, state) =>
+              VerifyContactPage(channel: state.extra! as VerificationChannel),
         ),
       ],
     );

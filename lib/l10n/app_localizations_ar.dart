@@ -616,6 +616,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get emailNotVerifiedLabel => 'غير موثّق';
 
   @override
+  String get contactVerifiedMessage => 'تم التحقق بنجاح';
+
+  @override
   String get currentEmailLabel => 'البريد الإلكتروني الحالي';
 
   @override

@@ -230,6 +230,7 @@
   },
   "emailVerifiedLabel": "Verified",
   "emailNotVerifiedLabel": "Not verified",
+  "contactVerifiedMessage": "Verified successfully",
   "currentEmailLabel": "Current email",
   "newEmailSameAsCurrentError": "New email must be different from your current email",
   "profileVerifyEmailSubtitle": "Enter the code we sent to {email} to confirm your new email",

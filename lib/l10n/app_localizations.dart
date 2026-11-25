@@ -1244,6 +1244,12 @@ abstract class AppLocalizations {
   /// **'Not verified'**
   String get emailNotVerifiedLabel;
 
+  /// No description provided for @contactVerifiedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified successfully'**
+  String get contactVerifiedMessage;
+
   /// No description provided for @currentEmailLabel.
   ///
   /// In en, this message translates to:

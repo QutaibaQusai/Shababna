@@ -3,15 +3,19 @@ import 'package:get_it/get_it.dart';
 import '../../core/network/api_consumer.dart';
 import '../../core/notifications/push_device_registrar.dart';
 import '../../core/session/auth_session_cubit.dart';
+import '../auth/domain/verification_channel.dart';
 import 'data/datasources/change_password_remote_data_source.dart';
+import 'data/datasources/contact_verification_remote_data_source.dart';
 import 'data/datasources/profile_email_remote_data_source.dart';
 import 'data/datasources/profile_lookups_remote_data_source.dart';
 import 'data/datasources/profile_remote_data_source.dart';
 import 'data/repositories/change_password_repository_impl.dart';
+import 'data/repositories/contact_verification_repository_impl.dart';
 import 'data/repositories/profile_email_repository_impl.dart';
 import 'data/repositories/profile_lookups_repository_impl.dart';
 import 'data/repositories/profile_repository_impl.dart';
 import 'domain/repositories/change_password_repository.dart';
+import 'domain/repositories/contact_verification_repository.dart';
 import 'domain/repositories/profile_email_repository.dart';
 import 'domain/repositories/profile_lookups_repository.dart';
 import 'domain/repositories/profile_repository.dart';
@@ -23,6 +27,7 @@ import 'presentation/cubit/delete_account/delete_account_cubit.dart';
 import 'presentation/cubit/edit_profile/edit_profile_cubit.dart';
 import 'presentation/cubit/profile/profile_cubit.dart';
 import 'presentation/cubit/profile_attachment/profile_attachment_cubit.dart';
+import 'presentation/cubit/verify_contact/verify_contact_cubit.dart';
 
 void registerProfileFeature(GetIt sl) {
   sl.registerLazySingleton<ProfileRemoteDataSource>(
@@ -96,5 +101,19 @@ void registerProfileFeature(GetIt sl) {
 
   sl.registerFactory<DeleteAccountCubit>(
     () => DeleteAccountCubit(sl<ProfileRepository>(), sl<AuthSessionCubit>()),
+  );
+
+  sl.registerLazySingleton<ContactVerificationRemoteDataSource>(
+    () => ContactVerificationRemoteDataSource(sl<ApiConsumer>()),
+  );
+  sl.registerLazySingleton<ContactVerificationRepository>(
+    () => ContactVerificationRepositoryImpl(sl<ContactVerificationRemoteDataSource>()),
+  );
+  sl.registerFactoryParam<VerifyContactCubit, VerificationChannel, void>(
+    (channel, _) => VerifyContactCubit(
+      sl<ContactVerificationRepository>(),
+      sl<ProfileCubit>(),
+      channel: channel,
+    ),
   );
 }

@@ -209,6 +209,7 @@
   "fileTooLargeError": "حجم الملف كبير جداً. الحد الأقصى {size} ميغابايت",
   "emailVerifiedLabel": "موثّق",
   "emailNotVerifiedLabel": "غير موثّق",
+  "contactVerifiedMessage": "تم التحقق بنجاح",
   "currentEmailLabel": "البريد الإلكتروني الحالي",
   "newEmailSameAsCurrentError": "يجب أن يختلف البريد الإلكتروني الجديد عن الحالي",
   "profileVerifyEmailSubtitle": "أدخل الرمز المرسل إلى {email} لتأكيد بريدك الإلكتروني الجديد",

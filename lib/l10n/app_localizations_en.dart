@@ -618,6 +618,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailNotVerifiedLabel => 'Not verified';
 
   @override
+  String get contactVerifiedMessage => 'Verified successfully';
+
+  @override
   String get currentEmailLabel => 'Current email';
 
   @override

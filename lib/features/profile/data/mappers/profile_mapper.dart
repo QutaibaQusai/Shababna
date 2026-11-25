@@ -11,6 +11,7 @@ extension ProfileModelMapper on ProfileModel {
       fullNameAr: fullNameAr,
       email: email,
       emailConfirmed: emailConfirmed,
+      phoneNumberVerified: phoneNumberVerified,
       phoneNumber: phoneNumber,
       profilePictureUrl: _absoluteUrl(profilePictureUrl),
       hasProfilePicture: hasProfilePicture,

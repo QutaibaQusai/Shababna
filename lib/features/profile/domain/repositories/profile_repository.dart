@@ -85,6 +85,7 @@ class Profile {
     required this.fullNameAr,
     required this.email,
     required this.emailConfirmed,
+    this.phoneNumberVerified,
     required this.phoneNumber,
     required this.profilePictureUrl,
     required this.hasProfilePicture,
@@ -123,6 +124,7 @@ class Profile {
   final String fullNameAr;
   final String email;
   final bool emailConfirmed;
+  final bool? phoneNumberVerified;
   final String? phoneNumber;
   final String? profilePictureUrl;
   final bool hasProfilePicture;
@@ -160,13 +162,19 @@ class Profile {
     return preferred.isNotEmpty ? preferred : (isArabic ? fullNameEn : fullNameAr).trim();
   }
 
-  Profile copyWith({String? phoneNumber, String? email, bool? emailConfirmed}) {
+  Profile copyWith({
+    String? phoneNumber,
+    String? email,
+    bool? emailConfirmed,
+    bool? phoneNumberVerified,
+  }) {
     return Profile(
       id: id,
       fullNameEn: fullNameEn,
       fullNameAr: fullNameAr,
       email: email ?? this.email,
       emailConfirmed: emailConfirmed ?? this.emailConfirmed,
+      phoneNumberVerified: phoneNumberVerified ?? this.phoneNumberVerified,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       profilePictureUrl: profilePictureUrl,
       hasProfilePicture: hasProfilePicture,
