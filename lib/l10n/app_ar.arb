@@ -132,7 +132,9 @@
 
   "registerTitle": "إنشاء حساب",
   "stepNameTitle": "اسمك",
-  "stepNameSubtitle": "أدخل اسمك الكامل بالعربية والإنجليزية",
+  "stepNameSubtitle": "أدخل اسمك الأول واسم العائلة بالعربية أو الإنجليزية",
+  "firstNameLabel": "الاسم الأول",
+  "lastNameLabel": "اسم العائلة",
   "fullNameArLabel": "الاسم الرباعي بالعربية (كما في هوية الأحوال المدنية)",
   "fullNameEnLabel": "الاسم الرباعي بالإنجليزية (كما في هوية الأحوال المدنية)",
   "stepContactTitle": "بيانات التواصل",

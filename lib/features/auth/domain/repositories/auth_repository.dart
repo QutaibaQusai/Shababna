@@ -33,14 +33,14 @@ abstract interface class AuthRepository {
 
   Future<Either<Failure, String>> verifyRegistrationCode({
     required String email,
+    required String phoneNumber,
     required String code,
   });
 
   Future<Either<Failure, void>> register({
     required String email,
     required String phoneNumber,
-    required String fullNameEn,
-    required String fullNameAr,
+    required String fullName,
     required String password,
     required String confirmPassword,
     required String verificationToken,

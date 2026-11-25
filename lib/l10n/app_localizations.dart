@@ -827,8 +827,20 @@ abstract class AppLocalizations {
   /// No description provided for @stepNameSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Tell us your full name in Arabic and English'**
+  /// **'Enter your first and last name in Arabic or English'**
   String get stepNameSubtitle;
+
+  /// No description provided for @firstNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'First name'**
+  String get firstNameLabel;
+
+  /// No description provided for @lastNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Last name'**
+  String get lastNameLabel;
 
   /// No description provided for @fullNameArLabel.
   ///

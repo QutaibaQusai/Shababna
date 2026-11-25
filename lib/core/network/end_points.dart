@@ -2,9 +2,9 @@ class EndPoints {
   EndPoints._();
 
   static const String login = '/api/v1/auth/login';
-  static const String checkRegistration = '/api/v1/auth/check-registration';
-  static const String verifyRegistrationCode = '/api/v1/auth/verify-registration-code';
-  static const String register = '/api/v1/auth/register';
+  static const String checkRegistration = '/api/v2/auth/check-registration';
+  static const String verifyRegistrationCode = '/api/v2/auth/verify-registration-code';
+  static const String register = '/api/v2/auth/register';
   static const String forgotPassword = '/api/v1/auth/forgot-password';
   static const String verifyResetCode = '/api/v1/auth/verify-reset-code';
   static const String resetPassword = '/api/v1/auth/reset-password';

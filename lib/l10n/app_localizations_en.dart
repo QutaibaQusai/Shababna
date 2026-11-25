@@ -384,7 +384,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stepNameTitle => 'Your name';
 
   @override
-  String get stepNameSubtitle => 'Tell us your full name in Arabic and English';
+  String get stepNameSubtitle =>
+      'Enter your first and last name in Arabic or English';
+
+  @override
+  String get firstNameLabel => 'First name';
+
+  @override
+  String get lastNameLabel => 'Last name';
 
   @override
   String get fullNameArLabel => 'Full name in Arabic (as in the civil ID)';

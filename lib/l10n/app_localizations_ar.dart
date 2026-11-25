@@ -382,7 +382,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get stepNameTitle => 'اسمك';
 
   @override
-  String get stepNameSubtitle => 'أدخل اسمك الكامل بالعربية والإنجليزية';
+  String get stepNameSubtitle =>
+      'أدخل اسمك الأول واسم العائلة بالعربية أو الإنجليزية';
+
+  @override
+  String get firstNameLabel => 'الاسم الأول';
+
+  @override
+  String get lastNameLabel => 'اسم العائلة';
 
   @override
   String get fullNameArLabel =>

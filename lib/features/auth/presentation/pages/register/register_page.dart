@@ -59,8 +59,8 @@ class _RegisterViewState extends State<_RegisterView> {
   final _stepFormKeys = List.generate(_stepCount, (_) => GlobalKey<FormState>());
   int _currentStep = _nameStep;
 
-  final _fullNameArController = TextEditingController();
-  final _fullNameEnController = TextEditingController();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -72,8 +72,8 @@ class _RegisterViewState extends State<_RegisterView> {
   @override
   void dispose() {
     _pageController.dispose();
-    _fullNameArController.dispose();
-    _fullNameEnController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
     _emailController.dispose();
     _phoneNumberController.dispose();
     _passwordController.dispose();
@@ -95,6 +95,9 @@ class _RegisterViewState extends State<_RegisterView> {
         callingCode: _selectedPhoneCode!.callingCode,
         input: _phoneNumberController.text,
       );
+
+  String get _fullName =>
+      '${_firstNameController.text.trim()} ${_lastNameController.text.trim()}';
 
   void _advance() {
     setState(() => _currentStep++);
@@ -126,6 +129,7 @@ class _RegisterViewState extends State<_RegisterView> {
   void _verifyCode() {
     context.read<RegisterVerifyCubit>().verify(
           email: _emailController.text.trim(),
+          phoneNumber: _composedPhoneNumber,
           code: _otpController.text.trim(),
         );
   }
@@ -141,8 +145,7 @@ class _RegisterViewState extends State<_RegisterView> {
     context.read<RegisterCubit>().submit(
           email: _emailController.text.trim(),
           phoneNumber: _composedPhoneNumber,
-          fullNameEn: _fullNameEnController.text.trim(),
-          fullNameAr: _fullNameArController.text.trim(),
+          fullName: _fullName,
           password: _passwordController.text,
           confirmPassword: _confirmPasswordController.text,
           verificationToken: context.read<RegisterVerifyCubit>().state.verificationToken!,
@@ -244,8 +247,8 @@ class _RegisterViewState extends State<_RegisterView> {
                           children: [
                             RegisterStepName(
                               formKey: _stepFormKeys[_nameStep],
-                              fullNameArController: _fullNameArController,
-                              fullNameEnController: _fullNameEnController,
+                              firstNameController: _firstNameController,
+                              lastNameController: _lastNameController,
                             ),
                             RegisterStepContact(
                               formKey: _stepFormKeys[_contactStep],

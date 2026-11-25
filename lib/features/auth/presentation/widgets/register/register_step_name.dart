@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../../../core/extensions/context_extensions.dart';
@@ -11,17 +12,20 @@ class RegisterStepName extends StatelessWidget {
   const RegisterStepName({
     super.key,
     required this.formKey,
-    required this.fullNameArController,
-    required this.fullNameEnController,
+    required this.firstNameController,
+    required this.lastNameController,
   });
 
+  static const _maxNamePartLength = 99;
+
   final GlobalKey<FormState> formKey;
-  final TextEditingController fullNameArController;
-  final TextEditingController fullNameEnController;
+  final TextEditingController firstNameController;
+  final TextEditingController lastNameController;
 
   @override
   Widget build(BuildContext context) {
     final required = AppValidators.required(context.l10n.fieldRequiredError);
+    final lengthLimit = [LengthLimitingTextInputFormatter(_maxNamePartLength)];
 
     return SingleChildScrollView(
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -36,19 +40,21 @@ class RegisterStepName extends StatelessWidget {
             ),
             SizedBox(height: AppSpacing.md),
             AppTextField(
-              label: context.l10n.fullNameArLabel,
-              controller: fullNameArController,
+              label: context.l10n.firstNameLabel,
+              controller: firstNameController,
               validator: required,
               prefixIcon: LucideIcons.user,
               textInputAction: TextInputAction.next,
+              inputFormatters: lengthLimit,
             ),
             SizedBox(height: AppSpacing.sm),
             AppTextField(
-              label: context.l10n.fullNameEnLabel,
-              controller: fullNameEnController,
+              label: context.l10n.lastNameLabel,
+              controller: lastNameController,
               validator: required,
               prefixIcon: LucideIcons.user,
               textInputAction: TextInputAction.done,
+              inputFormatters: lengthLimit,
             ),
           ],
         ),
