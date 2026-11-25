@@ -60,8 +60,7 @@ class _RegisterViewState extends State<_RegisterView> {
   final _stepFormKeys = List.generate(_stepCount, (_) => GlobalKey<FormState>());
   int _currentStep = _nameStep;
 
-  final _firstNameController = TextEditingController();
-  final _lastNameController = TextEditingController();
+  final _fullNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -73,8 +72,7 @@ class _RegisterViewState extends State<_RegisterView> {
   @override
   void dispose() {
     _pageController.dispose();
-    _firstNameController.dispose();
-    _lastNameController.dispose();
+    _fullNameController.dispose();
     _emailController.dispose();
     _phoneNumberController.dispose();
     _passwordController.dispose();
@@ -97,8 +95,7 @@ class _RegisterViewState extends State<_RegisterView> {
         input: _phoneNumberController.text,
       );
 
-  String get _fullName =>
-      '${_firstNameController.text.trim()} ${_lastNameController.text.trim()}';
+  String get _fullName => _fullNameController.text.trim();
 
   void _advance() {
     setState(() => _currentStep++);
@@ -253,8 +250,7 @@ class _RegisterViewState extends State<_RegisterView> {
                           children: [
                             RegisterStepName(
                               formKey: _stepFormKeys[_nameStep],
-                              firstNameController: _firstNameController,
-                              lastNameController: _lastNameController,
+                              fullNameController: _fullNameController,
                             ),
                             RegisterStepContact(
                               formKey: _stepFormKeys[_contactStep],

@@ -9,23 +9,16 @@ import '../../../../../core/shared/widgets/app_text_field.dart';
 import '../../../../../core/theme/app_spacing.dart';
 
 class RegisterStepName extends StatelessWidget {
-  const RegisterStepName({
-    super.key,
-    required this.formKey,
-    required this.firstNameController,
-    required this.lastNameController,
-  });
+  const RegisterStepName({super.key, required this.formKey, required this.fullNameController});
 
-  static const _maxNamePartLength = 99;
+  static const _maxNameLength = 200;
 
   final GlobalKey<FormState> formKey;
-  final TextEditingController firstNameController;
-  final TextEditingController lastNameController;
+  final TextEditingController fullNameController;
 
   @override
   Widget build(BuildContext context) {
-    final required = AppValidators.required(context.l10n.fieldRequiredError);
-    final lengthLimit = [LengthLimitingTextInputFormatter(_maxNamePartLength)];
+    final l10n = context.l10n;
 
     return SingleChildScrollView(
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -34,27 +27,15 @@ class RegisterStepName extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppPageHeader(
-              title: context.l10n.stepNameTitle,
-              subtitle: context.l10n.stepNameSubtitle,
-            ),
+            AppPageHeader(title: l10n.stepNameTitle, subtitle: l10n.stepNameSubtitle),
             SizedBox(height: AppSpacing.md),
             AppTextField(
-              label: context.l10n.firstNameLabel,
-              controller: firstNameController,
-              validator: required,
-              prefixIcon: LucideIcons.user,
-              textInputAction: TextInputAction.next,
-              inputFormatters: lengthLimit,
-            ),
-            SizedBox(height: AppSpacing.sm),
-            AppTextField(
-              label: context.l10n.lastNameLabel,
-              controller: lastNameController,
-              validator: required,
+              label: l10n.registerFullNameLabel,
+              controller: fullNameController,
               prefixIcon: LucideIcons.user,
               textInputAction: TextInputAction.done,
-              inputFormatters: lengthLimit,
+              inputFormatters: [LengthLimitingTextInputFormatter(_maxNameLength)],
+              validator: AppValidators.required(l10n.fieldRequiredError),
             ),
           ],
         ),

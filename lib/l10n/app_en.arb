@@ -133,9 +133,8 @@
 
   "registerTitle": "Create account",
   "stepNameTitle": "Your name",
-  "stepNameSubtitle": "Enter your first and last name in Arabic or English",
-  "firstNameLabel": "First name",
-  "lastNameLabel": "Last name",
+  "stepNameSubtitle": "Enter your full name (first and last) in Arabic or English",
+  "registerFullNameLabel": "Full name (first and last)",
   "fullNameArLabel": "Full name in Arabic (as in the civil ID)",
   "fullNameEnLabel": "Full name in English (as in the civil ID)",
   "stepContactTitle": "How should we send your code?",
